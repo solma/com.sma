@@ -1,4 +1,4 @@
-package com.shuoma.combinatorics;
+package com.shuoma.alg.combinatorics;
 import java.util.*;
 
 public class Permutaion {
