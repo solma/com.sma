@@ -38,10 +38,13 @@ public class DFS {
 				if(e.status==Edge.STATUS.UNVISITED){
 					Node oppo=e.opposite(cur);
 					if(oppo.status==Node.STATUS.UNVISITED){
+						e.status=Edge.STATUS.VISITED;
 						oppo.status=Node.STATUS.VISITED;
 						oppo.prev=cur;
 						if(oppo.equals(end)) return oppo;
 						stack.add(oppo);
+					}else if(oppo.status==Node.STATUS.VISITED){
+						e.status=Edge.STATUS.CROSSED;
 					}
 				}
 			}

@@ -31,6 +31,6 @@ public abstract class Graph {
 			else System.out.print(path.get(i));
 			if(i<path.size()-1) System.out.print(" --> ");
 		}
-		System.out.println();
+		//System.out.println();
 	}
 }

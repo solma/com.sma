@@ -8,7 +8,7 @@ public abstract class Edge {
 	 * For graph traversal algorithms
 	 */
 	public static enum STATUS{
-		UNVISITED, VISITED
+		UNVISITED, VISITED, CROSSED;
 	}
 	public STATUS status;
 	

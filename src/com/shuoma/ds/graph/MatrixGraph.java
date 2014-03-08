@@ -124,8 +124,8 @@ public class MatrixGraph extends Graph {
 		//bfs
 		BFS bfs=new BFS();
 		graph.reset();
-		//bfs.find(graph, start, end );
-		//graph.printPath( graph.buildPath(start, end) );
+		bfs.find(graph, start, end );
+		graph.printPath( graph.buildPath(start, end) );
 		
 		//dfs
 		DFS dfs=new DFS();
@@ -152,7 +152,7 @@ public class MatrixGraph extends Graph {
 		//Kruskal
 		Kruskal kruskal=new Kruskal();
 		graph.reset();
-		Tree tree=kruskal.buildMST(graph, start);
-		graph.printPath(tree.traverse(TRAVERSAL_ORDER.PREORDER), true);
+		//Tree tree=kruskal.buildMST(graph, start);
+		//graph.printPath(tree.traverse(TRAVERSAL_ORDER.PREORDER), true);
 	}
 }

@@ -1,9 +1,13 @@
 package com.shuoma.ds.graph;
 import java.util.*;
+import org.apache.commons.math3.random.MersenneTwister;
 
 public class BinarySearchTree{
 	private BSTNode root;
-
+	public enum TRAVERSAL_ORDER{
+		PREORDER, INORDER, POSTORDER;
+	}
+	
     public class BSTNode extends Node {
         String id;
         double value;
@@ -160,12 +164,12 @@ public class BinarySearchTree{
     /*
      * Preorder print
      */
-    public void printTree(String order){
-        switch(order.toLowerCase()){
-            case "pre":
+    public void printTree(TRAVERSAL_ORDER order){
+        switch(order){
+            case PREORDER:
                 printTreePreorder(root);
                 break;
-            case "post":
+            case POSTORDER:
                 printTreePostorder(root);
                 break;
             default:
@@ -281,7 +285,7 @@ public class BinarySearchTree{
         }
     }
     
-    /*
+    /**
      * For the key values 1...numKeys, how many structurally unique 
        binary search trees are possible that store those keys?
        Strategy: consider that each value could be the root. 
@@ -462,9 +466,7 @@ public class BinarySearchTree{
 
     
     private BinarySearchTree merge(BinarySearchTree t2){
-        root=spine(root)[0];
-        t2.root=spine(t2.root)[0];
-        return new BinarySearchTree( balanceTree(merge(root, t2.root)) );
+    	return new BinarySearchTree( balanceTree(merge(spine(root)[0], spine(t2.root)[0])) );
     }
     
         //merge sort
@@ -566,10 +568,10 @@ public class BinarySearchTree{
     //***********************
 
     public static void main(String[] args) {
-        new BinarySearchTree().mainNonStatic();
+        new BinarySearchTree().main();
     }
     
-    public void mainNonStatic() {
+    public void main() {
         BinarySearchTree bst = new BinarySearchTree();
         bst.insert("5");
         bst.insert("22");
@@ -612,10 +614,40 @@ public class BinarySearchTree{
         bst2.insert("13");
         bst2.insert("9");
         bst2.insert("2");
-        //bst2.printPrettyTree();        
-        // BinarySearchTree merged=bst.merge(bst2);
-        // merged.printTree("");
-        System.out.println(Integer.highestOneBit(1234) );
-        System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );
+        bst2.printPrettyTree();        
+        
+        BinarySearchTree merged=bst.merge(bst2);
+        merged.printPrettyTree();
+        
+        merged.root=merged.flattenRecursive(merged.root)[0];
+        merged.printTree(TRAVERSAL_ORDER.POSTORDER);
+        //merged.printPrettyTree();
+        
+        //System.out.println(Integer.highestOneBit(1234) );
+        //System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );
     }
+    
+    private BSTNode[] flattenRecursive(BSTNode cur) {
+    	BSTNode[] firstAndLast=new BSTNode[2];
+        firstAndLast[0]=firstAndLast[1]=cur;
+        BSTNode[] next;
+        
+        BSTNode firstOfRightSubtree=null; 
+        if(cur.right!=null){ 
+            next=flattenRecursive(cur.right); 
+            firstAndLast[1]=next[1]; 
+            firstOfRightSubtree=next[0]; 
+        } 
+        if(cur.left!=null){ 
+            next=flattenRecursive(cur.left);    
+            cur.left=null; 
+            cur.right=next[0]; 
+            next[1].right=firstOfRightSubtree; //connecting left and right subtrees 
+            if(firstAndLast[1].equals(cur)) firstAndLast[1]=next[1]; //update last 
+            //firstAndLast[0]=cur; //update first 
+        } 
+        
+        return firstAndLast;
+    }
+
 }

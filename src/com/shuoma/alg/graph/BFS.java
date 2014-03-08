@@ -8,6 +8,7 @@ import sun.net.www.content.text.plain;
 import com.shuoma.ds.graph.Edge;
 import com.shuoma.ds.graph.Graph;
 import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.Edge.STATUS;
 
 public class BFS {
 	public ArrayList<Node> path=new ArrayList<Node>();
@@ -39,11 +40,20 @@ public class BFS {
 					if(e.status==Edge.STATUS.UNVISITED){
 						Node oppo=e.opposite(cur);
 						if(oppo.status==Node.STATUS.UNVISITED){
+							e.status=STATUS.VISITED;
 							oppo.status=Node.STATUS.VISITED;
 							oppo.prev=cur;
 							if(oppo.equals(end)) return oppo;
 							nextLvl.add(oppo);
+						}else if(oppo.status==Node.STATUS.VISITED){
+							e.status=Edge.STATUS.CROSSED;
+							if(verbose){
+								System.out.print("Cycle Detected : ");
+								g.printPath(g.buildPath(oppo, cur),true);
+								System.out.println(" --> "+ oppo.value);
+							}
 						}
+						
 					}
 				}
 			}
