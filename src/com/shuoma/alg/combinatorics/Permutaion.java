@@ -2,7 +2,10 @@ package com.shuoma.alg.combinatorics;
 import java.util.*;
 
 
+
 public class Permutaion {
+	
+	
 	public static void main(String[] args){
 		new Permutaion().main();
 	}
@@ -55,7 +58,7 @@ public class Permutaion {
 			if(cur[i-1]<cur[i]) break;
 		}
 		if(i==0){
-			Arrays.sort(cur);
+			swap(cur);
 			return new String(cur);
 		}
 		i-=1;
@@ -87,9 +90,7 @@ public class Permutaion {
 			if(cur[i-1]>cur[i]) break;
 		}
 		if(i==0){
-			Arrays.sort(cur);
-			int lo=0, hi=cur.length-1;
-			while(lo<hi)swap(cur, lo++, hi--);
+			swap(cur);
 			return new String(cur);
 		}
 		i-=1;
@@ -113,5 +114,12 @@ public class Permutaion {
 		swap=array[i];
 		array[i]=array[j];
 		array[j]=swap;
+	}
+	
+	void swap(char[] array){
+		int l=0, r=array.length-1;
+		while(l<r){
+			swap(array, l++, r--);
+		}
 	}
 }

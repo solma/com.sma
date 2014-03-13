@@ -305,14 +305,40 @@ public class BinarySearchTree{
      */
     
     public boolean isBST(){
-        return isBST(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
+        return isBST(root)==null?false:true;
+    	//return isBST(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
     }
     
-        private boolean isBST(BSTNode node, double max, double min){
-        if (node==null) return true;
-        if (node.value>max || node.value<min) return false;
-        return isBST(node.left, node.value-1, min) && isBST(node.right, max, node.value+1);
-    }
+    //top-down
+		private boolean isBST(BSTNode node, double max, double min) {
+			if (node == null)
+				return true;
+			if (node.value > max || node.value < min)
+				return false;
+			return isBST(node.left, node.value - 1, min)
+					&& isBST(node.right, max, node.value + 1);
+		}
+		
+		//bottom-up
+		private double[] isBST(BSTNode node) {
+			if (node == null)	return new double[]{Integer.MAX_VALUE, Integer.MIN_VALUE};
+		    
+		    double[] range={node.value, node.value};
+		    double[] rangeLeft=isBST(node.left);
+		    if(rangeLeft==null || node.value <= rangeLeft[1]) return null;
+		    range[0]=Math.min(range[0], rangeLeft[0]);
+		    range[1]=Math.max(range[1], rangeLeft[1]);
+		    
+		    double[] rangeRight=isBST(node.right);
+		    if(rangeRight==null || node.value >= rangeRight[0]) return null;
+		    range[0]=Math.min(range[0], rangeRight[0]);
+		    range[1]=Math.max(range[1], rangeRight[1]);
+		    
+		    return range;
+		}
+     
+        
+      
     
     /*
      * test if two trees are identical
