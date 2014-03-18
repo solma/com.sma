@@ -9,6 +9,8 @@ public class StringMatching {
 	}
 
 	void main() {
+		//TODO Aho¨CCorasick algorithm
+		
 		/*Scanner sc = new Scanner(System.in);
 		String s = sc.nextLine();
 		System.out.println(reverseString(s));
