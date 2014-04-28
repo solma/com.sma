@@ -24,16 +24,19 @@ public class StringMatching {
 		
 		//print next('ababc')
 		//match('abbba', 'bba', 'bf')
-		String mode="sunday";
-		int idx=match("ababcababababcabab", "baba", "kmp");
-		System.out.println(idx);
-		//calNext("participate in parachute");
-		//calNext("ababcababababcabab",mode);
+		String mode="kmp";
+		//int idx=match("ababcababababcabab", "baba", "kmp");
+		///System.out.println(idx);
+		String s;
+		s="participate in parachute";
+		System.out.println(s+" 's next="+Arrays.toString(	next(s,mode) ));
+		s="ababcababababcabab";
+		System.out.println(s+" 's next="+ Arrays.toString( next(s,mode) ));
 
 	}
 	
 	// calculate the next array in KMP/sunday algorithm
-	public int[] calNext(String t, String method){
+	public int[] next(String t, String method){
 		int[] next=null;
 		switch (method) {
 		case "kmp":
@@ -41,9 +44,10 @@ public class StringMatching {
 			next[0]=-1;
 			int i=0, j=-1;
 			while(i<t.length()-1){
-				/*System.out.println(i+" "+t.charAt(i)+" "+j+" "+t.charAt(j)
-						+" "+t.substring(0,i+1)+" "+Arrays.toString(Arrays.copyOfRange(next, 0, i+1)) );
-				*/
+				System.out.print("i="+i+" "+t.charAt(i)+" j="+j+" ");
+				if(j>=0) System.out.print(t.charAt(j));
+				System.out.println(" "+t.substring(0,i+1)+" "+Arrays.toString(Arrays.copyOfRange(next, 0, i+1)) );
+				
 				if(j==-1 || t.charAt(i)==t.charAt(j)){
 					i+=1;
 					j+=1;
@@ -70,7 +74,7 @@ public class StringMatching {
 	public int match(String s, String t, String method){
 		//preprocessing before match
 		int[] next=null;
-		if( method.equals("kmp") || method.equals("sunday")) next=calNext(t,method);
+		if( method.equals("kmp") || method.equals("sunday")) next=next(t,method);
 
 		int i,j;
 		i=j=0;
