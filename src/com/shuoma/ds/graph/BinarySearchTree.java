@@ -348,14 +348,12 @@ public class BinarySearchTree{
     }
     
         private boolean sameTree(BSTNode one, BSTNode another){
-        if (one==null && another==null) return true;
-        else{
-            if (one!=null&& another!=null){
-                if(one.value!=another.value) return false;
-                return sameTree(one.left, another.left) && sameTree(one.right, another.right);
-            }else return false;
+	        if (one==null && another==null) return true;
+	        else{
+	            if (one==null || another==null || one.value!=another.value) return false;
+	            else return sameTree(one.left, another.left) && sameTree(one.right, another.right);
+	        }
         }
-    }
     
       
     /*
