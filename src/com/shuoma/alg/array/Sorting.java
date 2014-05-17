@@ -16,11 +16,11 @@ public class Sorting {
         // System.out.println(Arrays.binarySearch(a, 1) );
         // System.out.println(binarySearch(a, 1));
 
-        testSortAlgorithms();
+        //testSortAlgorithms();
         
         testSelectionAlgorithms();
    
-        testSearchAlgorithms();
+        //testSearchAlgorithms();
     }
     
    

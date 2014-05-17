@@ -396,10 +396,14 @@ public class BinarySearchTree{
     
     public void printPrettyTree(){
         //System.out.println(String.format("%-3d%5d", 12, 3));
-     
+    	
         HashMap<BSTNode, Integer> spaceAhead=new HashMap<BSTNode, Integer>();
         int[] cumSum=new int[]{0};
         BSTNode root=this.root;
+        if(root==null){
+        	System.err.println("Empty root node");
+        	return;
+        }
         calSpaceAhead(root, spaceAhead, cumSum);   //traverse the tree inorderly to calculate the spaces before each node
         int size=cumSum[0]*2;
         
@@ -469,28 +473,9 @@ public class BinarySearchTree{
             return String.valueOf(num).length();
         }
         
-        //flatten a tree to a linkedlist using inorder travesal
-        public BSTNode[] spine(BSTNode cur) {   
-            BSTNode[] firstAndLast=new BSTNode[2];
-            firstAndLast[0]=firstAndLast[1]=cur;
-            BSTNode[] next;
-            if(cur.left!=null){
-                next=spine(cur.left);   
-                next[1].right=cur;
-                cur.left=null;
-                firstAndLast[0]=next[0];
-            }
-            if(cur.right!=null){
-                next=spine(cur.right);
-                cur.right=next[0];
-                firstAndLast[1]=next[1];                
-            }
-            return firstAndLast;
-        } 
-
-    
+            
     private BinarySearchTree merge(BinarySearchTree t2){
-    	return new BinarySearchTree( balanceTree(merge(spine(root)[0], spine(t2.root)[0])) );
+    	return new BinarySearchTree( balanceTree(merge(flattenRecursiveInorder(root)[0], flattenRecursiveInorder(t2.root)[0])) );
     }
     
         //merge sort
@@ -556,17 +541,18 @@ public class BinarySearchTree{
             return subtree(t1.left, t2)||subtree(t1.right, t2);
         }
     
-    public BSTNode firstCommonAncestor(BSTNode n1, BSTNode n2){
+        
+    public BSTNode leastCommonAncestor(BSTNode n1, BSTNode n2){
         if(n1==null) return n2;
         if(n2==null) return n1;
         //System.out.println(n1+" "+n2);
-        return firstCommonAncestor(root, n1, n2);
+        return leastCommonAncestor(root, n1, n2);
     }
     
-        private BSTNode firstCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2){
+        private BSTNode leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2){
         if(cur==null || cur.value==n1.value|| cur.value==n2.value) return cur;
-        BSTNode l= firstCommonAncestor(cur.left, n1, n2);
-        BSTNode r= firstCommonAncestor(cur.right, n1, n2);
+        BSTNode l= leastCommonAncestor(cur.left, n1, n2);
+        BSTNode r= leastCommonAncestor(cur.right, n1, n2);
         //System.out.println(cur+" "+l+" "+r);
         if(l!=null && r!=null) return cur; 
         return l==null?r:l;
@@ -595,6 +581,8 @@ public class BinarySearchTree{
         new BinarySearchTree().main();
     }
     
+    
+    //TODO main
     public void main() {
         BinarySearchTree bst = new BinarySearchTree();
         bst.insert("5");
@@ -618,7 +606,7 @@ public class BinarySearchTree{
 
         //System.out.print(bst.firstCommonAncestor(new Node("20"), new Node("22") ));
         
-        bst.printPrettyTree();
+        //bst.printPrettyTree();
         System.out.println(bst.successorInorder(5));
        
         
@@ -628,7 +616,7 @@ public class BinarySearchTree{
         bst1.insert("7");
         bst1.insert("20");
         bst1.insert("6");
-        bst1.printPrettyTree();
+        //bst1.printPrettyTree();
 
         // System.out.print(bst.subtree(bst1));
         
@@ -638,37 +626,60 @@ public class BinarySearchTree{
         bst2.insert("13");
         bst2.insert("9");
         bst2.insert("2");
-        bst2.printPrettyTree();        
+        //bst2.printPrettyTree();        
         
         BinarySearchTree merged=bst.merge(bst2);
-        merged.printPrettyTree();
-        
-        merged.root=merged.flattenRecursive(merged.root)[0];
-        merged.printTree(TRAVERSAL_ORDER.POSTORDER);
         //merged.printPrettyTree();
+        
+        merged.root=merged.flattenRecursiveInorder(merged.root)[0];
+        	//merged.flattenRecursivePreorder(merged.root)[0];
+        
+        //merged.printTree(TRAVERSAL_ORDER.POSTORDER);
+        merged.printPrettyTree();
         
         //System.out.println(Integer.highestOneBit(1234) );
         //System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );
     }
     
-    private BSTNode[] flattenRecursive(BSTNode cur) {
+    private BSTNode[] flattenRecursivePreorder(BSTNode cur) {
     	BSTNode[] firstAndLast=new BSTNode[2];
         firstAndLast[0]=firstAndLast[1]=cur;
         BSTNode[] next;
         
         BSTNode firstOfRightSubtree=null; 
         if(cur.right!=null){ 
-            next=flattenRecursive(cur.right); 
+            next=flattenRecursivePreorder(cur.right); 
             firstAndLast[1]=next[1]; 
             firstOfRightSubtree=next[0]; 
         } 
         if(cur.left!=null){ 
-            next=flattenRecursive(cur.left);    
+            next=flattenRecursivePreorder(cur.left);    
             cur.left=null; 
             cur.right=next[0]; 
             next[1].right=firstOfRightSubtree; //connecting left and right subtrees 
             if(firstAndLast[1].equals(cur)) firstAndLast[1]=next[1]; //update last 
             //firstAndLast[0]=cur; //update first 
+        } 
+        
+        return firstAndLast;
+    }
+    
+    private BSTNode[] flattenRecursiveInorder(BSTNode cur) {
+    	BSTNode[] firstAndLast=new BSTNode[2];
+        firstAndLast[0]=firstAndLast[1]=cur;
+        BSTNode[] next;
+        
+        if(cur.left!=null){ 
+            next=flattenRecursiveInorder(cur.left); 
+            firstAndLast[0]=next[0];
+            next[1].right=cur;             
+            cur.left=null;
+        } 
+        
+        if(cur.right!=null){ 
+            next=flattenRecursiveInorder(cur.right);    
+            cur.right=next[0]; 
+            firstAndLast[1]=next[1]; //update last 
         } 
         
         return firstAndLast;
