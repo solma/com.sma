@@ -1,6 +1,8 @@
-package com.shuoma.ds.graph;
+package com.shuoma.ds.tree;
 import java.util.*;
 import org.apache.commons.math3.random.MersenneTwister;
+
+import com.shuoma.ds.graph.Node;
 
 public class BinarySearchTree{
 	private BSTNode root;

@@ -5,8 +5,8 @@ import java.util.PriorityQueue;
 import com.shuoma.ds.graph.Edge;
 import com.shuoma.ds.graph.Graph;
 import com.shuoma.ds.graph.Node;
-import com.shuoma.ds.graph.Tree;
-import com.shuoma.ds.graph.TreeNode;
+import com.shuoma.ds.tree.Tree;
+import com.shuoma.ds.tree.TreeNode;
 
 public class Kruskal {
 	public static final boolean verbose=true;

@@ -8,7 +8,7 @@ import com.shuoma.alg.graph.BFS;
 import com.shuoma.alg.graph.DFS;
 import com.shuoma.alg.graph.Dijkstra;
 import com.shuoma.alg.graph.Kruskal;
-import com.shuoma.ds.graph.Tree.TRAVERSAL_ORDER;
+import com.shuoma.ds.tree.Tree.TRAVERSAL_ORDER;
 
 
 

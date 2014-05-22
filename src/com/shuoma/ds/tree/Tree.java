@@ -1,7 +1,9 @@
-package com.shuoma.ds.graph;
+package com.shuoma.ds.tree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.shuoma.ds.graph.Node;
 
 
 
@@ -10,6 +12,7 @@ public class Tree{
 	public HashMap<String, TreeNode> treeNodes;
 	
 	public TreeNode root;
+	
 	public Tree(TreeNode root){
 		this.root=root;
 		treeNodes=new HashMap<String, TreeNode>();

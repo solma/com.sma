@@ -1,4 +1,6 @@
-package com.shuoma.ds.graph;
+package com.shuoma.ds.tree;
+
+import com.shuoma.ds.graph.Node;
 
 
 public class BinaryTreeNode extends Node {

@@ -1,6 +1,8 @@
-package com.shuoma.ds.graph;
+package com.shuoma.ds.tree;
 
 import java.util.ArrayList;
+
+import com.shuoma.ds.graph.Node;
 
 
 public class TreeNode extends Node{
