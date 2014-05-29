@@ -6,8 +6,12 @@ import com.shuoma.ds.graph.Node;
 
 public class BinarySearchTree{
 	private BSTNode root;
-	public enum TRAVERSAL_ORDER{
+	public enum TraversalOrder{
 		PREORDER, INORDER, POSTORDER;
+	}
+	
+	public enum Implementation{
+		RECURSION, ITERATIVE;
 	}
 	
     public class BSTNode extends Node {
@@ -166,16 +170,19 @@ public class BinarySearchTree{
     /*
      * Preorder print
      */
-    public void printTree(TRAVERSAL_ORDER order){
+    public void printTree(TraversalOrder order, Implementation impl){
         switch(order){
             case PREORDER:
-                printTreePreorder(root);
+            	if(impl==Implementation.RECURSION) printTreePreorder(root);
+                else printTreePreorderNonRecursive(root);
                 break;
             case POSTORDER:
-                printTreePostorder(root);
+            	if(impl==Implementation.RECURSION) printTreePostorder(root);
+                else printTreePostorderNonRecursive(root);
                 break;
             default:
-                printTreeInorder(root);
+                if(impl==Implementation.RECURSION) printTreeInorder(root);
+                else printTreeInorderNonRecursive(root);
                 break;            
         }
         System.out.println();
@@ -188,6 +195,75 @@ public class BinarySearchTree{
         printTreeInorder(cur.left);
         System.out.println(cur);
         printTreeInorder(cur.right);
+    }
+    
+    private void printTreeInorderNonRecursive(BSTNode cur){
+    	Stack<BSTNode> stck=new Stack<BSTNode>();
+    		
+    	while(!stck.empty()||cur!=null){
+    		if(cur!=null){
+    			stck.push(cur);
+    			cur=cur.left;
+    		}else{
+    			BSTNode top=stck.pop();
+    			System.out.println(top);
+    			cur=top.right;
+    		}
+    	}
+    }
+    
+    private void printTreePostorderNonRecursive(BSTNode cur){
+		Stack<BSTNode> stck = new Stack<BSTNode>();
+		if (cur == null) 	return;
+		/*
+		 * We will need current pointer to the node we are currently traversing
+		 * and the pointer to the node we traversed previously.
+		 */
+		BSTNode prev = null;
+		stck.push(cur);
+		while (!stck.empty()) {
+			cur = stck.peek();
+			/* Traverse the tree down */
+			if (prev == null || prev.left == cur || prev.right == cur) {
+				if (cur.left != null)
+					stck.push(cur.left);
+				else {
+					if (cur.right != null)
+						stck.push(cur.right);
+					else {
+						System.out.println(cur);
+						stck.pop();
+					}
+				}
+			} else {/* Traverse the tree up from the left */
+				if (cur.left == prev) {
+					if (cur.right != null)
+						stck.push(cur.right);
+					else {
+						System.out.println(cur);
+						stck.pop();
+					}
+				} else {
+					if (cur.right == prev) {
+						System.out.println(cur);
+						stck.pop();
+					}
+				}
+			}
+			prev = cur;
+		}
+		return;
+    }
+    
+    private void printTreePreorderNonRecursive(BSTNode cur){
+    	Stack<BSTNode> stck=new Stack<BSTNode>();
+    	stck.push(cur);
+    	while(!stck.empty()){
+    		BSTNode top=stck.pop();
+			System.out.println(top);
+			if(top.right!=null) stck.push(top.right);
+			if(top.left!=null) stck.push(top.left);
+    	}
     }
     
     private void printTreePreorder(BSTNode cur){
@@ -599,8 +675,11 @@ public class BinarySearchTree{
         //bst.mirror();
         
         //bst.printTreeInLevels();
-        //bst.printTree("post");
-        //bst.printTree("pre");
+        Implementation impl=Implementation.ITERATIVE;
+        bst.printTree(TraversalOrder.POSTORDER, impl);
+        bst.printTree(TraversalOrder.PREORDER, impl);
+        bst.printTree(TraversalOrder.INORDER, impl);
+        bst.printPrettyTree();
         //bst.printPaths();
         
         //System.out.println(bst.countTree(7));
@@ -637,7 +716,7 @@ public class BinarySearchTree{
         	//merged.flattenRecursivePreorder(merged.root)[0];
         
         //merged.printTree(TRAVERSAL_ORDER.POSTORDER);
-        merged.printPrettyTree();
+        //merged.printPrettyTree();
         
         //System.out.println(Integer.highestOneBit(1234) );
         //System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );

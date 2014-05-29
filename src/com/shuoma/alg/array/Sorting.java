@@ -2,77 +2,64 @@ package com.shuoma.alg.array;
 
 import java.util.*;
 
+import com.shuoma.ds.MaxHeap;
+import com.shuoma.helper.CommonUtils;
+
 public class Sorting {
-	public static int MAX_VALUE=1000; //used by count sorting
-    public static Random r = new Random();
     
     public static void main(String[] args) {
         new Sorting().main();
     }
 
+    //TODO main method
     void main() {
         // System.out.println(r.nextInt(100)+r.nextFloat());
         int min = (1 << 31) + -1;
         // System.out.println(Arrays.binarySearch(a, 1) );
         // System.out.println(binarySearch(a, 1));
 
-        //testSortAlgorithms();
-        
-        testSelectionAlgorithms();
-   
-        //testSearchAlgorithms();
+        testSortAlgorithms();
+
     }
     
-   
+   public enum SortingAlg{
+	   QUICKSORT, COUNTSORT, INSERTIONSORT, BUBBLESORT, HEAPSORT;
+   }
 
     void testSortAlgorithms() {
-        int sortAlgorithmChoice;
-        for(int code=1;code<=4;code++){
-            sortAlgorithmChoice=code;
-            for (int i = 0; i < 10000; i++) {
-                int[] a = genRandomArray();
+        //SortingAlg[] algs={SortingAlg.HEAPSORT};
+    	for(SortingAlg alg: SortingAlg.values()){
+            for (int i = 0; i < 1000; i++) {
+                int[] a = CommonUtils.genRandomArray();
                 int[] cpy = Arrays.copyOf(a, a.length);
-                switch (sortAlgorithmChoice) {
-                case 1:
+                switch (alg) {
+                case QUICKSORT:
                     quickSort(cpy, 0, cpy.length - 1);
                     break;
-                case 2:
+                case COUNTSORT:
                     cpy=countSort(cpy);
                     break;
-                case 3:
-                    cpy=insertSort(cpy);
+                case INSERTIONSORT:
+                    cpy=insertionSort(cpy);
                     break;
-                case 4:
+                case BUBBLESORT:
                     bubbleSort(cpy);
                     break;
+                case HEAPSORT:
+                	heapSort(cpy);
+                	break;
+                default:
+                	break;
                 }
-                sortUsingLibrary(a);
-                if (!isSame(a, cpy))
-                    System.out.println(Arrays.toString(cpy));
+                Arrays.sort(a);
+                if (!isSame(a, cpy)){
+                    System.out.println("array="+Arrays.toString(cpy));
+                }
             }
         }
     }
 
-        int[] genRandomArray() {
-            int length = r.nextInt(10);
-            int[] ret = new int[length];
-            for (int i = 0; i < length; i++) {
-                ret[i] = r.nextInt(MAX_VALUE)*(r.nextBoolean()?1:-1);
-            }
-            return ret;
-        }
-
-        void sortUsingLibrary(int[] a) {
-            Arrays.sort(a);
-        }
-
-        void swap(int[] a, int i, int j) {
-            if (i == j) return;
-            int tmp = a[i];
-            a[i] = a[j];
-            a[j] = tmp;
-        }
-
+       
         boolean isSame(int[] a, int[] cpy) {
             if (a.length != cpy.length)
                 return false;
@@ -90,11 +77,11 @@ public class Sorting {
             for (int i = 0; i < a.length; i++)
                 for (int j = i + 1; j < a.length; j++)
                     if (a[j] < a[i]) {
-                        swap(a, i, j);
+                        CommonUtils.swap(a, i, j);
                     }
         }
 
-        int[] insertSort(int[] a) {
+        int[] insertionSort(int[] a) {
             //not in place
             int[] b = new int[a.length];
             Arrays.fill(b, Integer.MAX_VALUE);
@@ -108,8 +95,11 @@ public class Sorting {
             return b;
         }
 
+        
+        
         int[] countSort(int[] a) {
-            //not in place
+            int MAX_VALUE=1000;
+        	//not in place
             int[] b = new int[a.length];
             int[] c = new int[MAX_VALUE*2+1];
             Arrays.fill(c, 0);
@@ -136,22 +126,41 @@ public class Sorting {
             int partition(int[] a, int low, int high) {
                 int med = low + (high - low) / 2;
                 int pivot = a[med];
-                swap(a, med, high);
+                CommonUtils.swap(a, med, high);
                 int storeIdx = low;
                 for (int i = low; i < high; i++) {
                     if (a[i] < pivot)
-                        swap(a, storeIdx++, i);
+                    	CommonUtils.swap(a, storeIdx++, i);
                 }
-                swap(a, storeIdx, high);
+                CommonUtils.swap(a, storeIdx, high);
                 return storeIdx;
             }
+    
+    void heapSort(int[] a){
+    	int n=a.length;
+    	if(n<2) return;
+    	
+    	MaxHeap heap=new MaxHeap(a);
+    	//build heap
+    	for(int i=n/2;i>=0;i--){
+    		//System.out.println(heap);
+    		heap.heapify(i);
+    	}
+    	
+    	
+    	//heapsort
+    	for(int i=0;i<n-1;i++){
+    		CommonUtils.swap(a, 0, n-1-i);
+    		heap.heapify(0, n-1-i);
+    	}
+    }
 
     void testSelectionAlgorithms(){
         int sortAlgorithmChoice;
         for(int code=1;code<=1;code++){
             sortAlgorithmChoice=code;
             for (int i = 0; i < 100; i++) {
-                int[] a = genRandomArray();
+                int[] a = CommonUtils.genRandomArray();
                 int K;
                 for(int j=1;j<=a.length;j++){
                     K=j;
@@ -161,7 +170,7 @@ public class Sorting {
                         quickSelect(cpy, 0, cpy.length - 1, K);
                         break;
                     }
-                    sortUsingLibrary(a);
+                    Arrays.sort(a);
                     if ( a[K-1]!=cpy[K-1] ) 
                         System.out.println(Arrays.toString(cpy)+" "+K+" "+a[K-1]);
             
@@ -181,37 +190,6 @@ public class Sorting {
                 if(cut<K-1) quickSelect(a, cut+1, r, K-cut-1);
         }
         
-    void testSearchAlgorithms(){
-    	BinarySearch bs=new BinarySearch();
-        int sortAlgorithmChoice;
-        for(int code=1;code<=2;code++){
-            sortAlgorithmChoice=code;
-            for (int i = 0; i < 1000; i++) {
-                int[] a = genRandomArray();
-                if(a.length==0) continue;
-                sortUsingLibrary(a);
-                int[] cpy = Arrays.copyOf(a, a.length);
-                int rand=r.nextInt((int) (a.length*1.2 ));
-                int key;
-                if(rand>=0&&rand<cpy.length) key=cpy[rand];
-                else key=rand;
-                int idx=-1;
-                switch (sortAlgorithmChoice) {
-                case 1:
-                    idx=bs.binarySearchFirstAppear(cpy, key);
-                    if ( idx!=bs.linearSearchFirstAppear(cpy, key) ) 
-                        System.out.println(Arrays.toString(cpy)+" "+key+" "+idx);
-                    break;
-                case 2:
-                    idx=bs.binarySearchLastAppear(cpy, key);
-                    if ( idx!=bs.linearSearchLastAppear(cpy, key) ) 
-                        System.out.println(Arrays.toString(cpy)+" "+key+" "+idx);
-                    break;
-                
-                }
-                
-           }
-        }
-    }
+    
         
 }

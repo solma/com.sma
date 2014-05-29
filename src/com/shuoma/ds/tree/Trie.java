@@ -66,13 +66,16 @@ public class Trie{
 	public String shortestPrefix(String s){
 		String shortestPrefix="";
 		TrieNode cur=root;
-		for(int i=0;i<s.length();i++){
+		int i=0;
+		for(;i<s.length();i++){
 			char c=s.charAt(i);
 			shortestPrefix+=String.valueOf(c);
-			if(!cur.children.containsKey(c))	break;
+			if(!cur.children.containsKey(c)){				
+				break;
+			}
 			cur=cur.children.get(c);			
 		}
-		return shortestPrefix.equals(s)?"":shortestPrefix;
+		return i==s.length()?"":shortestPrefix;
 	}
 
 }
