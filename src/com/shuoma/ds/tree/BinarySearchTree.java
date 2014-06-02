@@ -327,14 +327,14 @@ public class BinarySearchTree{
         mirror(root);
     }
     
-        private void mirror(BSTNode cur){
-        if (cur==null) return;
-        BSTNode tmp=cur.left;
-        cur.left=cur.right;
-        cur.right=tmp;
-        mirror(cur.left);
-        mirror(cur.right);        
-    }
+        private BSTNode mirror(BSTNode cur){
+	        if (cur!=null){
+		        BSTNode tmp=mirror(cur.left);
+		        cur.left=mirror(cur.right);
+		        cur.right=tmp; 
+		    }
+	        return cur;
+        }
     
     /*
      * printPaths
@@ -672,7 +672,11 @@ public class BinarySearchTree{
         bst.insert("6");
         bst.insert("10");
         //System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
-        //bst.mirror();
+        bst.mirror();
+        bst.printPrettyTree();
+        
+        if(5>3) return;
+        
         
         //bst.printTreeInLevels();
         Implementation impl=Implementation.ITERATIVE;

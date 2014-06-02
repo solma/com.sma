@@ -27,9 +27,10 @@ public class Sorting {
    }
 
     void testSortAlgorithms() {
-        //SortingAlg[] algs={SortingAlg.HEAPSORT};
-    	for(SortingAlg alg: SortingAlg.values()){
-            for (int i = 0; i < 1000; i++) {
+        SortingAlg[] algs={SortingAlg.QUICKSORT};
+        //algs=SortingAlg.values();
+    	for(SortingAlg alg: algs){
+            for (int i = 0; i < 10000; i++) {
                 int[] a = CommonUtils.genRandomArray();
                 int[] cpy = Arrays.copyOf(a, a.length);
                 switch (alg) {
@@ -53,7 +54,7 @@ public class Sorting {
                 }
                 Arrays.sort(a);
                 if (!isSame(a, cpy)){
-                    System.out.println("array="+Arrays.toString(cpy));
+                    System.out.println("cpy array="+Arrays.toString(cpy));
                 }
             }
         }
@@ -124,16 +125,19 @@ public class Sorting {
         }
     
             int partition(int[] a, int low, int high) {
-                int med = low + (high - low) / 2;
+            	int med = low + (high - low) / 2;
                 int pivot = a[med];
-                CommonUtils.swap(a, med, high);
-                int storeIdx = low;
-                for (int i = low; i < high; i++) {
-                    if (a[i] < pivot)
-                    	CommonUtils.swap(a, storeIdx++, i);
+                
+                int smallerIdx=low, largerIdx=high+1;
+                for(int i=smallerIdx;i<largerIdx;){
+                	if (a[i] < pivot)
+                    	CommonUtils.swap(a, i++, smallerIdx++);
+                    else{
+                    	if(a[i]==pivot) i++;
+                    	else CommonUtils.swap(a, i, --largerIdx);
+                    }
                 }
-                CommonUtils.swap(a, storeIdx, high);
-                return storeIdx;
+                return largerIdx-1;
             }
     
     void heapSort(int[] a){

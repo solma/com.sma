@@ -1,13 +1,19 @@
 package com.shuoma.ds.tree;
 
-import org.apache.commons.math3.analysis.solvers.BracketedUnivariateSolver;
+import java.util.ArrayList;
+
 
 
 public class Trie{
 	public TrieNode root;
 	
 	public Trie(){
-		root=new TrieNode('0');
+		root=new TrieNode('0', "");
+	}
+	
+	public Trie(String[] words){
+		root=new TrieNode('0',"");
+		for(String word: words) add(word);
 	}
 	
 	public void add(String s){
@@ -17,11 +23,34 @@ public class Trie{
 		TrieNode cur=root;
 		for(int i=0;i<sLen;i++){
 			char c=s.charAt(i);
-			if(!cur.children.containsKey(c)){
-				cur.children.put(c, new TrieNode(c));
-			}
+			if(!cur.children.containsKey(c)){				
+				cur.children.put(c, new TrieNode(c, s.substring(0,i+1)));
+			}			
 			cur=cur.children.get(c);
+			if(i==sLen-1) cur.increaseCnt();//increase cnt if this is the last ch of a word
 		}
+	}
+	
+	/**
+	 * 
+	 * @return for each node return the path to the node
+	 */
+	public ArrayList<TrieNode> levelTravesal(){
+		ArrayList<TrieNode> allNodes=new ArrayList<TrieNode>();
+		ArrayList<TrieNode> curLvl=new ArrayList<TrieNode>(), nxtLvl;
+		curLvl.add(root);
+		while(!curLvl.isEmpty()){
+			nxtLvl=new ArrayList<TrieNode>();
+			while(!curLvl.isEmpty()){
+				TrieNode first=curLvl.remove(0);
+				allNodes.add(first);
+				for(TrieNode child: first.children.values()){
+					nxtLvl.add(child);
+				}
+			}
+			curLvl=nxtLvl;
+		}
+		return allNodes;
 	}
 	
 	/**
