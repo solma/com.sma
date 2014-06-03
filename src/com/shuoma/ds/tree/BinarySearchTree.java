@@ -17,8 +17,8 @@ public class BinarySearchTree{
     public class BSTNode extends Node {
         String id;
         double value;
-        BSTNode left;
-        BSTNode right;
+        public BSTNode left;
+        public BSTNode right;
         BSTNode next;
         
         public BSTNode(Node node) {
