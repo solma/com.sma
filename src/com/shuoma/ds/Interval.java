@@ -34,6 +34,11 @@ public class Interval implements Comparable<Interval>{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param list
+	 * @return the last interval whose end is smaller than the start of this interval
+	 */
 	public int bisect(ArrayList<Interval> list){
 		int l=-1, r=list.size();
 		while(l+1!=r){

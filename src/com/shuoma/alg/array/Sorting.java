@@ -27,7 +27,7 @@ public class Sorting {
    }
 
     void testSortAlgorithms() {
-        SortingAlg[] algs={SortingAlg.QUICKSORT};
+        SortingAlg[] algs={SortingAlg.HEAPSORT};
         //algs=SortingAlg.values();
     	for(SortingAlg alg: algs){
             for (int i = 0; i < 10000; i++) {
@@ -145,13 +145,6 @@ public class Sorting {
     	if(n<2) return;
     	
     	MaxHeap heap=new MaxHeap(a);
-    	//build heap
-    	for(int i=n/2;i>=0;i--){
-    		//System.out.println(heap);
-    		heap.heapify(i);
-    	}
-    	
-    	
     	//heapsort
     	for(int i=0;i<n-1;i++){
     		CommonUtils.swap(a, 0, n-1-i);
