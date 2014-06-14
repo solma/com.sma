@@ -28,14 +28,15 @@ public abstract class Graph {
 	}
 	
 	public void printPath(ArrayList<ArrayList<Node>> paths, boolean byValue){
+		System.out.println("All Paths:");
 		for(ArrayList<Node> path: paths){
-			System.out.println("New Path:");
 			for(int i=0;i<path.size();i++){
 				if(byValue) System.out.print(path.get(i).value);
 				else System.out.print(path.get(i));
 				if(i<path.size()-1) System.out.print(" --> ");
 			}
+			
+			System.out.println();
 		}
-		//System.out.println();
 	}
 }

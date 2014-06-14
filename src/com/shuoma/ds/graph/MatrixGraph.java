@@ -108,12 +108,11 @@ public class MatrixGraph extends Graph {
 	}
 	
 	public static void main(String[] args){
-        double[][] matrix={
-{7   , 2    ,3   , 1},
-{2 ,   5   , 1 ,   1},
-{3  ,  1   , 7 ,   3},
-{3   , 5  ,  3 ,   1}
-};
+		double[][] matrix = { 
+				{ 7, 2, 3, 1 },
+				{ 2, 1, 5, 1 },
+				{ 3, 5, 5, 3 },
+				{ 3, 5, 3, 1 } };
 		MatrixGraph graph=new MatrixGraph(matrix);
 
 		/*	for(Edge edge: graph.getEdgeList()){
