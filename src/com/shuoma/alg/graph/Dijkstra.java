@@ -8,6 +8,7 @@ import com.shuoma.ds.graph.Graph;
 import com.shuoma.ds.graph.Node;
 import com.sun.org.apache.xml.internal.security.utils.IgnoreAllErrorHandler;
 
+
 public class Dijkstra {
 	public ArrayList<Node> path=new ArrayList<Node>();
 	public static final boolean verbose=true;
