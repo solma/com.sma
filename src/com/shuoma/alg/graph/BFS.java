@@ -42,14 +42,14 @@ public class BFS {
 						if(oppo.status==Node.STATUS.UNVISITED){
 							e.status=STATUS.VISITED;
 							oppo.status=Node.STATUS.VISITED;
-							oppo.prev=cur;
+							oppo.prevs.add(cur);
 							if(oppo.equals(end)) return oppo;
 							nextLvl.add(oppo);
 						}else if(oppo.status==Node.STATUS.VISITED){
 							e.status=Edge.STATUS.CROSSED;
 							if(verbose){
 								System.out.print("Cycle Detected : ");
-								g.printPath(g.buildPath(oppo, cur),true);
+								//g.printPath(g.buildAllPath(oppo, cur),true);
 								System.out.println(" --> "+ oppo.value);
 							}
 						}

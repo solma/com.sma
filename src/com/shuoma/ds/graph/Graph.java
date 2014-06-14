@@ -10,26 +10,31 @@ public abstract class Graph {
 		for(Node node: nodes.values()) node.reset();
 	}
 	
-	public ArrayList<Node> buildPath(Node start, Node end){
-		ArrayList<Node> path=new ArrayList<Node>();
-		Node cur=end;
-		while(cur!=null&&!cur.equals(start)){
-			path.add(0, cur);
-			cur=cur.prev;
+	public ArrayList<ArrayList<Node>> buildAllPaths(Node start, Node cur, ArrayList<Node> path){
+		 ArrayList<ArrayList<Node>> allPaths=new  ArrayList<ArrayList<Node>>();
+		if(cur.equals(start)){
+			allPaths.add(new ArrayList<Node>(path));
 		}
-		if(start.equals(cur)) path.add(0,cur);
-		return path;
+		for(Node prev: cur.prevs){
+			path.add(0, prev);
+			allPaths.addAll(buildAllPaths(start, prev, path) );
+			path.remove(0);
+		}
+		return allPaths;
+	}	
+	
+	public void printPath(ArrayList<ArrayList<Node>> paths){
+		printPath(paths,false);
 	}
 	
-	public void printPath(ArrayList<Node> path){
-		printPath(path,false);
-	}
-	
-	public void printPath(ArrayList<Node> path, boolean byValue){
-		for(int i=0;i<path.size();i++){
-			if(byValue) System.out.print(path.get(i).value);
-			else System.out.print(path.get(i));
-			if(i<path.size()-1) System.out.print(" --> ");
+	public void printPath(ArrayList<ArrayList<Node>> paths, boolean byValue){
+		for(ArrayList<Node> path: paths){
+			System.out.println("New Path:");
+			for(int i=0;i<path.size();i++){
+				if(byValue) System.out.print(path.get(i).value);
+				else System.out.print(path.get(i));
+				if(i<path.size()-1) System.out.print(" --> ");
+			}
 		}
 		//System.out.println();
 	}

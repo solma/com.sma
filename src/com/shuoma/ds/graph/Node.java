@@ -1,6 +1,7 @@
 package com.shuoma.ds.graph;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class Node implements Comparable<Node> {
@@ -18,12 +19,12 @@ public abstract class Node implements Comparable<Node> {
 	}
 	
 	public STATUS status;
-	public Node prev;
+	public List<Node> prevs;
 	
 	public void reset(){
 		status=STATUS.UNVISITED;
 		for(Edge e:adjacentList) e.status=Edge.STATUS.UNVISITED;
-		prev=null;
+		prevs=new ArrayList<Node>();
 	}
 	
 	/**

@@ -40,7 +40,8 @@ public class DFS {
 					if(oppo.status==Node.STATUS.UNVISITED){
 						e.status=Edge.STATUS.VISITED;
 						oppo.status=Node.STATUS.VISITED;
-						oppo.prev=cur;
+						oppo.prevs.add(cur);
+					
 						if(oppo.equals(end)) return oppo;
 						stack.add(oppo);
 					}else if(oppo.status==Node.STATUS.VISITED){

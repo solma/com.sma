@@ -111,7 +111,7 @@ public class MatrixGraph extends Graph {
         double[][] matrix={
 {7   , 2    ,3   , 1},
 {2 ,   5   , 1 ,   1},
-{3  ,  6   , 7 ,   3},
+{3  ,  1   , 7 ,   3},
 {3   , 5  ,  3 ,   1}
 };
 		MatrixGraph graph=new MatrixGraph(matrix);
@@ -124,8 +124,10 @@ public class MatrixGraph extends Graph {
 		//bfs
 		BFS bfs=new BFS();
 		graph.reset();
-		bfs.find(graph, start, end );
-		graph.printPath( graph.buildPath(start, end) );
+		//bfs.find(graph, start, end );
+		
+		ArrayList<Node> path=new ArrayList<Node>();
+		//graph.printPath( graph.buildAllPaths(start, end, path) );
 		
 		//dfs
 		DFS dfs=new DFS();
@@ -145,8 +147,7 @@ public class MatrixGraph extends Graph {
 		//dijkstra
 		Dijkstra dijkstra=new Dijkstra();
 		graph.reset();
-		//dijkstra.find(graph, start, end );
-		//graph.printPath( graph.buildPath(start, end), true );
+		graph.printPath( dijkstra.find(graph, start, end ) );
 		
 		
 		//Kruskal

@@ -30,7 +30,7 @@ public class Kruskal {
 			
 			if(lvl==0) tree=new Tree(new TreeNode(cur));
 			else{
-				TreeNode father=(TreeNode) tree.treeNodes.get(cur.prev.id);
+				TreeNode father=(TreeNode) tree.treeNodes.get(cur.prevs.get(0).id);
 				TreeNode child=new TreeNode(cur);
 				father.children.add(child);
 				tree.treeNodes.put(child.id, child);
@@ -45,7 +45,7 @@ public class Kruskal {
 					Node oppo=e.opposite(cur);
 					if(oppo.status==Node.STATUS.UNVISITED){
 						oppo.status=Node.STATUS.VISITED;
-						oppo.prev=cur;
+						oppo.prevs.add(cur);
 						
 						double newDist=oppo.value;
 						if(oppo.dis>newDist){
