@@ -8,6 +8,8 @@ import com.shuoma.alg.graph.BFS;
 import com.shuoma.alg.graph.DFS;
 import com.shuoma.alg.graph.Dijkstra;
 import com.shuoma.alg.graph.Kruskal;
+import com.shuoma.ds.graph.Node.STATUS;
+import com.shuoma.ds.tree.Tree;
 import com.shuoma.ds.tree.Tree.TRAVERSAL_ORDER;
 
 
@@ -19,7 +21,8 @@ import com.shuoma.ds.tree.Tree.TRAVERSAL_ORDER;
  *
  */
 public class MatrixGraph extends Graph {
-	public static final int[][] NEIGHBOR_ELEMENTS={{-1, 0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
+	//{-1, 0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}
+	public static final int[][] NEIGHBOR_ELEMENTS={{-1, 0},{0,1},{1,0},{0,-1}};
 	
 	class MatrixNode extends Node{
 		public static final String ID_DELIMETER="-";
@@ -31,7 +34,13 @@ public class MatrixGraph extends Graph {
 			reset();
 		}
 		
-		
+		@Override
+		public void reset(){
+			status=STATUS.UNVISITED;
+			for(Edge e:adjacentList) e.status=Edge.STATUS.UNVISITED;
+			prevs=new ArrayList<Node>();
+			dis=Double.MAX_VALUE;			
+		}
 		
 		public String toString(){
 			return id;
@@ -57,6 +66,9 @@ public class MatrixGraph extends Graph {
 			return "("+from+","+to+")";
 		}
 	}
+	
+
+
 	
 	
 	public Node getNode(int row, int col){
@@ -110,8 +122,8 @@ public class MatrixGraph extends Graph {
 	public static void main(String[] args){
 		double[][] matrix = { 
 				{ 7, 2, 3, 1 },
-				{ 2, 1, 5, 1 },
-				{ 3, 5, 5, 3 },
+				{ 2, 5, 1, 1 },
+				{ 3, 1, 5, 3 },
 				{ 3, 5, 3, 1 } };
 		MatrixGraph graph=new MatrixGraph(matrix);
 
@@ -123,7 +135,7 @@ public class MatrixGraph extends Graph {
 		//bfs
 		BFS bfs=new BFS();
 		graph.reset();
-		//bfs.find(graph, start, end );
+		graph.printPath( bfs.find(graph, start, end ) );
 		
 		ArrayList<Node> path=new ArrayList<Node>();
 		//graph.printPath( graph.buildAllPaths(start, end, path) );

@@ -11,7 +11,7 @@ public abstract class Graph {
 	}
 	
 	public ArrayList<ArrayList<Node>> buildAllPaths(Node start, Node cur, ArrayList<Node> path){
-		 ArrayList<ArrayList<Node>> allPaths=new  ArrayList<ArrayList<Node>>();
+		ArrayList<ArrayList<Node>> allPaths=new  ArrayList<ArrayList<Node>>();
 		if(cur.equals(start)){
 			allPaths.add(new ArrayList<Node>(path));
 		}

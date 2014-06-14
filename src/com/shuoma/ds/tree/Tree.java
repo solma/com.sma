@@ -32,7 +32,7 @@ public class Tree{
  * @param order: one of the values defined in Tree.TRAVERSAL_ORDER
  * @return
  */
-	public ArrayList<Node> traverse(TRAVERSAL_ORDER order){
+	public ArrayList<ArrayList<Node>> traverse(TRAVERSAL_ORDER order){
 		ArrayList<Node> treeNodes=new ArrayList<Node>();
 		if(root!=null){
 			switch (order) {
@@ -46,8 +46,9 @@ public class Tree{
 				throw new IllegalArgumentException();
 			}
 		}
-		return treeNodes;
-		
+		ArrayList<ArrayList<Node>> allPaths=new ArrayList<ArrayList<Node>>();
+		allPaths.add(treeNodes);
+		return allPaths;
 	}
 	
 	public ArrayList<Node> traverse(TreeNode start, ArrayList<Node> treeNodes, TRAVERSAL_ORDER order){

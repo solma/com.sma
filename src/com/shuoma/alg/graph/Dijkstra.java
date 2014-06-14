@@ -6,7 +6,6 @@ import java.util.PriorityQueue;
 import com.shuoma.ds.graph.Edge;
 import com.shuoma.ds.graph.Graph;
 import com.shuoma.ds.graph.Node;
-import com.sun.org.apache.xml.internal.security.utils.IgnoreAllErrorHandler;
 
 
 public class Dijkstra {
@@ -37,9 +36,6 @@ public class Dijkstra {
 			
 			cur.status=Node.STATUS.EXPANED;
 			if(verbose){
-				if(lvl==12){
-					boolean ca=true;
-				}
 				System.out.println("level "+lvl+" :  pos:"+cur+" , value:"+cur.value+",  dis:"+cur.dis);
 			}
 			for(Edge e: cur.adjacentList){
@@ -47,19 +43,16 @@ public class Dijkstra {
 					Node oppo=e.opposite(cur);
 					
 					double newDist=oppo.value+cur.dis;
-					if(newDist<oppo.dis){
-						pq.remove(oppo);
-						oppo.dis=newDist;
-						pq.add(oppo);
-						oppo.prevs.clear();//remove old prevs
+					if(newDist<=oppo.dis){
+						if(newDist<oppo.dis){
+							pq.remove(oppo);
+							oppo.dis=newDist;
+							pq.add(oppo);
+							oppo.prevs.clear();//remove old prevs
+						}
+						oppo.prevs.add(cur);
 					}
-					oppo.prevs.add(cur);
-					
-//					if(oppo.status==Node.STATUS.UNVISITED){
-//						if(!oppo.equals(end))
-//							oppo.status=Node.STATUS.VISITED;
-//						
-//					}
+						
 				}
 			}
 			lvl++;

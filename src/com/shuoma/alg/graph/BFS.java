@@ -14,17 +14,19 @@ public class BFS {
 	public ArrayList<Node> path=new ArrayList<Node>();
 	public static final boolean verbose=true;
 	/**
-	 * return null if not find
+	 * return all paths; and null if not find
 	 * @param g
 	 * @param end: target node; if null, then traverse 
 	 */
-	public Node find(Graph g, Node start, Node end){
+	public ArrayList<ArrayList<Node>> find(Graph g, Node start, Node end){
 		if(verbose){
 			System.out.println("**** BFS Searching Illustration ****");
 		}
-		if(start==null||start.equals(end)) return start;
+		if(start==null||end==null) return new ArrayList<ArrayList<Node>>();
+		
 		LinkedList<Node> curLvl=new LinkedList<Node>();
 		start.status=Node.STATUS.VISITED;
+		start.dis=0;
 		curLvl.add(start);
 		
 		int lvl=0;
@@ -35,6 +37,8 @@ public class BFS {
 			LinkedList<Node> nextLvl=new LinkedList<Node>();
 			while(curLvl.size()>0){
 				Node cur=curLvl.poll();
+				if(cur.equals(end)) break;
+				
 				cur.status=Node.STATUS.EXPANED;
 				for(Edge e: cur.adjacentList){
 					if(e.status==Edge.STATUS.UNVISITED){
@@ -42,10 +46,9 @@ public class BFS {
 						if(oppo.status==Node.STATUS.UNVISITED){
 							e.status=STATUS.VISITED;
 							oppo.status=Node.STATUS.VISITED;
-							oppo.prevs.add(cur);
-							if(oppo.equals(end)) return oppo;
 							nextLvl.add(oppo);
-						}else if(oppo.status==Node.STATUS.VISITED){
+						}
+						else if(oppo.status==Node.STATUS.VISITED){
 							e.status=Edge.STATUS.CROSSED;
 							if(verbose){
 								System.out.print("Cycle Detected : ");
@@ -53,7 +56,14 @@ public class BFS {
 								System.out.println(" --> "+ oppo.value);
 							}
 						}
-						
+						double newDist=lvl+1;
+						if(newDist<=oppo.dis){
+							if(oppo.equals(start)){
+								boolean debug=true;
+							}
+							oppo.dis=newDist;
+							oppo.prevs.add(cur);
+						}
 					}
 				}
 			}
@@ -61,7 +71,10 @@ public class BFS {
 			curLvl=nextLvl;
 			lvl++;
 		}
-		return null;
+		
+		ArrayList<Node> path=new ArrayList<Node>();
+		path.add(end);
+		return g.buildAllPaths(start, end, path);
 	}
 	
 	public void traverse(Graph g, Node start){
