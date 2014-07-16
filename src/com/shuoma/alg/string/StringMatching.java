@@ -28,7 +28,8 @@ public class StringMatching {
 		//int idx=match("ababcababababcabab", "baba", "kmp");
 		///System.out.println(idx);
 		String s;
-		s="participate in parachute";
+		//s="participate in parachute";
+		s="abab";
 		System.out.println(s+" 's next="+Arrays.toString(	next(s,mode) ));
 		s="ababcababababcabab";
 		System.out.println(s+" 's next="+ Arrays.toString( next(s,mode) ));

@@ -40,6 +40,7 @@ public class Dijkstra {
 			}
 			for(Edge e: cur.adjacentList){
 				if(e.status==Edge.STATUS.UNVISITED){
+					e.status=Edge.STATUS.VISITED;
 					Node oppo=e.opposite(cur);
 					
 					double newDist=oppo.value+cur.dis;

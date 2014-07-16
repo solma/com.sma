@@ -231,8 +231,8 @@ public class BinarySearchTree{
 					if (cur.right != null)
 						stck.push(cur.right);
 					else {
-						System.out.println(cur);
-						stck.pop();
+						//leaf node case
+						System.out.println(stck.pop());
 					}
 				}
 			} else {/* Traverse the tree up from the left */
@@ -240,13 +240,11 @@ public class BinarySearchTree{
 					if (cur.right != null)
 						stck.push(cur.right);
 					else {
-						System.out.println(cur);
-						stck.pop();
+						System.out.println(stck.pop());
 					}
 				} else {
 					if (cur.right == prev) {
-						System.out.println(cur);
-						stck.pop();
+						System.out.println(stck.pop());
 					}
 				}
 			}

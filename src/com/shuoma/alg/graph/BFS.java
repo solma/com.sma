@@ -43,12 +43,13 @@ public class BFS {
 				for(Edge e: cur.adjacentList){
 					if(e.status==Edge.STATUS.UNVISITED){
 						Node oppo=e.opposite(cur);
-						if(oppo.status==Node.STATUS.UNVISITED){
-							e.status=STATUS.VISITED;
-							oppo.status=Node.STATUS.VISITED;
-							nextLvl.add(oppo);
-						}
-						else if(oppo.status==Node.STATUS.VISITED){
+						
+//						if(oppo.status==Node.STATUS.UNVISITED){
+//							e.status=STATUS.VISITED;
+//							oppo.status=Node.STATUS.VISITED;
+//							nextLvl.add(oppo);
+//						}else 
+						if(oppo.dis<Integer.MAX_VALUE){
 							e.status=Edge.STATUS.CROSSED;
 							if(verbose){
 								System.out.print("Cycle Detected : ");
@@ -58,10 +59,11 @@ public class BFS {
 						}
 						double newDist=lvl+1;
 						if(newDist<=oppo.dis){
-							if(oppo.equals(start)){
-								boolean debug=true;
+							if(newDist<oppo.dis){
+								oppo.dis=newDist;
+								oppo.prevs.clear();
+								nextLvl.add(oppo);
 							}
-							oppo.dis=newDist;
 							oppo.prevs.add(cur);
 						}
 					}
