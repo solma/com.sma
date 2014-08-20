@@ -8,7 +8,7 @@ public class Selecting {
 
 	public static void main(String[] args) {
 		int[] arr={3, 101, 123,  1, 2, 5, 13, 67, 10};
-		//System.out.println(selectKthLargest(arr,5));
+		System.out.println(selectKthLargest(arr,5));
 		
 		
 		int[] tournamentTree=new int[(arr.length<<1)-1];

@@ -49,7 +49,18 @@ public class Interval implements Comparable<Interval>{
 		return l;
 	}
 	
+	@Override
 	public String toString(){
-		return "("+start+"~"+end+" : "+weight+")";
+		return toString(true);
+	}
+	
+	
+	public String toString(boolean rangeOnly){
+		String ret;
+		if(start-(int)start==.0&&end-(int)end==.0) ret=(int)start+"~"+(int)end;
+		else ret=start+"~"+end;
+		
+		if(!rangeOnly) ret="("+ret+" : "+weight+")";
+		return ret;
 	}
 }

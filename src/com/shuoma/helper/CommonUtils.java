@@ -32,8 +32,8 @@ public class CommonUtils {
     }
     
     
-	public static int[] genRandomArray() {
-        int length = r.nextInt(10)+2; //at least two elements
+	public static int[] genRandomArray(int minSize) {
+        int length = r.nextInt(10)+minSize; //at least two elements
         int[] ret = new int[length];
         for (int i = 0; i < length; i++) {
             ret[i] = r.nextInt(1000)*(r.nextBoolean()?1:-1);
