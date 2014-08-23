@@ -128,7 +128,6 @@ public class RangeMinimumQuery {
 						nextLvL.add(new ArrayInterval(Math.min(cur.start, nxt.start), Math.max(cur.end, nxt.end), Math.min(cur.min, nxt.min), cur, nxt));
 						i+=2;
 					}else{
-						
 						nextLvL.add(cur);
 						i++;
 					}
