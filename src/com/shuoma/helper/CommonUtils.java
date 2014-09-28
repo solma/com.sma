@@ -32,14 +32,32 @@ public class CommonUtils {
     }
     
     
-	public static int[] genRandomArray(int minSize) {
+	public static int[] genRandomArrayWithMinSize(int minSize) {
         int length = r.nextInt(10)+minSize; //at least two elements
+        return genRandomArray(length,1000, false, true);
+    }
+	
+	/**
+	 * 
+	 * @param length:  size of array
+	 * @param maxNumber: possible maximum value for elements
+	 * @param oneBased: index starting from 1
+	 * @param canBeNegative:  elements can be negative
+	 * @return random array
+	 */
+	public static int[] genRandomArray(int length, int maxNumber,
+		boolean oneBased, boolean canBeNegative) {
         int[] ret = new int[length];
         for (int i = 0; i < length; i++) {
-            ret[i] = r.nextInt(1000)*(r.nextBoolean()?1:-1);
+            ret[i] = r.nextInt(maxNumber);
+            if(!oneBased) ret[i]+=1;
+            if(canBeNegative) ret[i]*=(r.nextBoolean()?1:-1);
         }
         return ret;
     }
+	
+	
+	
 	
 	
 	/***

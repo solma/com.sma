@@ -44,7 +44,7 @@ public class RangeMinimumQuery {
 			return;
 		}
 		
-		int[] rdmArray=CommonUtils.genRandomArray(10);
+		int[] rdmArray=CommonUtils.genRandomArrayWithMinSize(10);
 		Random rand=new Random();
 		int noOfQueries=rand.nextInt(10)+10;
 		Interval[] queries=new Interval[noOfQueries];

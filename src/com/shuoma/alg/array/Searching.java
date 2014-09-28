@@ -30,7 +30,7 @@ public class Searching {
 	static Random r = new Random();
 
 	public int[] generateRandomRotateArray() {
-		int[] array = CommonUtils.genRandomArray(2);
+		int[] array = CommonUtils.genRandomArrayWithMinSize(2);
 		Arrays.sort(array);
 		int n = array.length;
 		int rotatedIdx = r.nextInt(n);
@@ -125,7 +125,7 @@ public class Searching {
 					a = generateRandomRotateArray();
 					break;
 				default:
-					a = CommonUtils.genRandomArray(10);
+					a = CommonUtils.genRandomArrayWithMinSize(10);
 					Arrays.sort(a);
 					break;
 				}

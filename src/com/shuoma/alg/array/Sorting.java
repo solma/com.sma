@@ -31,7 +31,7 @@ public class Sorting {
         //algs=SortingAlg.values();
     	for(SortingAlg alg: algs){
             for (int i = 0; i < 10000; i++) {
-                int[] a = CommonUtils.genRandomArray(10);
+                int[] a = CommonUtils.genRandomArrayWithMinSize(10);
                 int[] cpy = Arrays.copyOf(a, a.length);
                 switch (alg) {
                 case QUICKSORT:
@@ -157,7 +157,7 @@ public class Sorting {
         for(int code=1;code<=1;code++){
             sortAlgorithmChoice=code;
             for (int i = 0; i < 100; i++) {
-                int[] a = CommonUtils.genRandomArray(10);
+                int[] a = CommonUtils.genRandomArrayWithMinSize(10);
                 int K;
                 for(int j=1;j<=a.length;j++){
                     K=j;
