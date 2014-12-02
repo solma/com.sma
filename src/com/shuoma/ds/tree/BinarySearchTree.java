@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class BinarySearchTree {
-  private BSTNode root;
+  private BstNode root;
 
   public enum TraversalOrder {
     PREORDER, INORDER, POSTORDER;
@@ -20,63 +20,26 @@ public class BinarySearchTree {
     RECURSION, ITERATIVE;
   }
 
-  public class BSTNode extends Node {
-    String id;
-    double value;
-    public BSTNode left;
-    public BSTNode right;
-    BSTNode next;
-
-    public BSTNode(Node node) {
-      id = node.id;
-      value = node.value;
-    }
-
-    BSTNode(BSTNode copy) {
-      this.id = copy.id;
-      this.value = copy.value;
-      this.left = copy.left;
-      this.right = copy.right;
-    }
-
-    BSTNode(String key, int value) {
-      this.id = key;
-      this.value = value;
-      left = null;
-      right = null;
-      next = null;
-    }
-
-    BSTNode(String key) {
-      this(key, Integer.parseInt(key));
-    }
-
-    @Override
-    public String toString() {
-      return "(" + id + "," + value + ")";
-    }
-  }
-
   public BinarySearchTree() {
     root = null;
   }
 
-  public BinarySearchTree(BSTNode root) {
+  public BinarySearchTree(BstNode root) {
     this.root = root;
   }
 
-  private ArrayList<BSTNode> BuildAllBinaryTreesPermutation(int min, int max) {
-    ArrayList<BSTNode> ret = new ArrayList<BSTNode>();
+  private ArrayList<BstNode> BuildAllBinaryTreesPermutation(int min, int max) {
+    ArrayList<BstNode> ret = new ArrayList<BstNode>();
     if (min > max) {
       ret.add(null);
     } else {
       for (int i = min; i <= max; i++) {
-        BSTNode root = new BSTNode(String.valueOf(i), i);
-        ArrayList<BSTNode> left_trees = BuildAllBinaryTreesPermutation(min, i - 1);
-        ArrayList<BSTNode> right_trees = BuildAllBinaryTreesPermutation(i + 1, max);
-        for (BSTNode l : left_trees)
-          for (BSTNode r : right_trees) {
-            BSTNode newTree = new BSTNode(root);
+        BstNode root = new BstNode(String.valueOf(i), i);
+        ArrayList<BstNode> left_trees = BuildAllBinaryTreesPermutation(min, i - 1);
+        ArrayList<BstNode> right_trees = BuildAllBinaryTreesPermutation(i + 1, max);
+        for (BstNode l : left_trees)
+          for (BstNode r : right_trees) {
+            BstNode newTree = new BstNode(root);
             ret.add(newTree);
             newTree.left = l;
             newTree.right = r;
@@ -100,27 +63,70 @@ public class BinarySearchTree {
     return sum;
   }
 
+  private BstNode[] flattenRecursivePreorder(BstNode cur) {
+    BstNode[] firstAndLast = new BstNode[2];
+    firstAndLast[0] = firstAndLast[1] = cur;
+    BstNode[] next;
+
+    BstNode firstOfRightSubtree = null;
+    if (cur.right != null) {
+      next = flattenRecursivePreorder(cur.right);
+      firstAndLast[1] = next[1];
+      firstOfRightSubtree = next[0];
+    }
+    if (cur.left != null) {
+      next = flattenRecursivePreorder(cur.left);
+      cur.left = null;
+      cur.right = next[0];
+      next[1].right = firstOfRightSubtree; // connecting left and right subtrees
+      if (firstAndLast[1].equals(cur)) firstAndLast[1] = next[1]; // update last
+      // firstAndLast[0]=cur; //update first
+    }
+
+    return firstAndLast;
+  }
+
+  private BstNode[] flattenRecursiveInorder(BstNode cur) {
+    BstNode[] firstAndLast = new BstNode[2];
+    firstAndLast[0] = firstAndLast[1] = cur;
+    BstNode[] next;
+
+    if (cur.left != null) {
+      next = flattenRecursiveInorder(cur.left);
+      firstAndLast[0] = next[0];
+      next[1].right = cur;
+      cur.left = null;
+    }
+
+    if (cur.right != null) {
+      next = flattenRecursiveInorder(cur.right);
+      cur.right = next[0];
+      firstAndLast[1] = next[1]; // update last
+    }
+    return firstAndLast;
+  }
+
   /**
    * the recursion implementation of basic BST operations
    */
   public void insert(String key) {
     if (root == null)
-      root = new BSTNode(key);
+      root = new BstNode(key);
     else
       insert(root, key);
   }
 
-  private void insert(BSTNode cur, String key) {
+  private void insert(BstNode cur, String key) {
     if (cur.value >= Integer.parseInt(key)) {
       if (cur.left != null)
         insert(cur.left, key);
       else
-        cur.left = new BSTNode(key);
+        cur.left = new BstNode(key);
     } else {
       if (cur.right != null)
         insert(cur.right, key);
       else
-        cur.right = new BSTNode(key);
+        cur.right = new BstNode(key);
     }
   }
 
@@ -133,14 +139,14 @@ public class BinarySearchTree {
   }
 
   // top-down
-  private boolean isBST(BSTNode node, double max, double min) {
+  private boolean isBST(BstNode node, double max, double min) {
     if (node == null) return true;
     if (node.value > max || node.value < min) return false;
     return isBST(node.left, node.value - 1, min) && isBST(node.right, max, node.value + 1);
   }
 
   // bottom-up
-  private double[] isBST(BSTNode node) {
+  private double[] isBST(BstNode node) {
     if (node == null) return new double[] {Integer.MAX_VALUE, Integer.MIN_VALUE};
 
     double[] range = {node.value, node.value};
@@ -153,8 +159,23 @@ public class BinarySearchTree {
     if (rangeRight == null || node.value >= rangeRight[0]) return null;
     range[0] = Math.min(range[0], rangeRight[0]);
     range[1] = Math.max(range[1], rangeRight[1]);
-
     return range;
+  }
+
+  public BstNode leastCommonAncestor(BstNode n1, BstNode n2) {
+    if (n1 == null) return n2;
+    if (n2 == null) return n1;
+    // System.out.println(n1+" "+n2);
+    return leastCommonAncestor(root, n1, n2);
+  }
+
+  private BstNode leastCommonAncestor(BstNode cur, BstNode n1, BstNode n2) {
+    if (cur == null || cur.value == n1.value || cur.value == n2.value) return cur;
+    BstNode l = leastCommonAncestor(cur.left, n1, n2);
+    BstNode r = leastCommonAncestor(cur.right, n1, n2);
+    // System.out.println(cur+" "+l+" "+r);
+    if (l != null && r != null) return cur;
+    return l == null ? r : l;
   }
 
   public int longestOnesidePath() {
@@ -193,7 +214,7 @@ public class BinarySearchTree {
     return maxDepth(root, 0);
   }
 
-  private int maxDepth(BSTNode cur, int depth) {
+  private int maxDepth(BstNode cur, int depth) {
     if (cur == null) return depth;
     int leftDepth = maxDepth(cur.left, depth + 1);
     int rightDepth = maxDepth(cur.right, depth + 1);
@@ -213,7 +234,7 @@ public class BinarySearchTree {
     }
   }
 
-  private void maxDepthDifference(BSTNode cur, int curDepth, int[] depthPair) {
+  private void maxDepthDifference(BstNode cur, int curDepth, int[] depthPair) {
     if (cur == null) return;
     if (cur.right == null && cur.left == null) {
       depthPair[0] = Math.min(depthPair[0], curDepth);
@@ -231,7 +252,7 @@ public class BinarySearchTree {
     return minValue(root, Integer.MAX_VALUE);
   }
 
-  private double minValue(BSTNode cur, double value) {
+  private double minValue(BstNode cur, double value) {
     if (cur == null) return value;
     if (cur.value < value) {
       value = cur.value;
@@ -251,9 +272,9 @@ public class BinarySearchTree {
     mirror(root);
   }
 
-  private BSTNode mirror(BSTNode cur) {
+  private BstNode mirror(BstNode cur) {
     if (cur != null) {
-      BSTNode tmp = mirror(cur.left);
+      BstNode tmp = mirror(cur.left);
       cur.left = mirror(cur.right);
       cur.right = tmp;
     }
@@ -287,7 +308,7 @@ public class BinarySearchTree {
     System.out.println();
   }
 
-  private void printTreeInorder(BSTNode cur) {
+  private void printTreeInorder(BstNode cur) {
     if (cur == null) {
       return;
     }
@@ -296,29 +317,29 @@ public class BinarySearchTree {
     printTreeInorder(cur.right);
   }
 
-  private void printTreeInorderNonRecursive(BSTNode cur) {
-    Stack<BSTNode> stck = new Stack<BSTNode>();
+  private void printTreeInorderNonRecursive(BstNode cur) {
+    Stack<BstNode> stck = new Stack<BstNode>();
 
     while (!stck.empty() || cur != null) {
       if (cur != null) {
         stck.push(cur);
         cur = cur.left;
       } else {
-        BSTNode top = stck.pop();
+        BstNode top = stck.pop();
         System.out.println(top);
         cur = top.right;
       }
     }
   }
 
-  private void printTreePostorderNonRecursive(BSTNode cur) {
-    Stack<BSTNode> stck = new Stack<BSTNode>();
+  private void printTreePostorderNonRecursive(BstNode cur) {
+    Stack<BstNode> stck = new Stack<BstNode>();
     if (cur == null) return;
     /*
      * We will need current pointer to the node we are currently traversing and the pointer to the
      * node we traversed previously.
      */
-    BSTNode prev = null;
+    BstNode prev = null;
     stck.push(cur);
     while (!stck.empty()) {
       cur = stck.peek();
@@ -352,18 +373,18 @@ public class BinarySearchTree {
     return;
   }
 
-  private void printTreePreorderNonRecursive(BSTNode cur) {
-    Stack<BSTNode> stck = new Stack<BSTNode>();
+  private void printTreePreorderNonRecursive(BstNode cur) {
+    Stack<BstNode> stck = new Stack<BstNode>();
     stck.push(cur);
     while (!stck.empty()) {
-      BSTNode top = stck.pop();
+      BstNode top = stck.pop();
       System.out.println(top);
       if (top.right != null) stck.push(top.right);
       if (top.left != null) stck.push(top.left);
     }
   }
 
-  private void printTreePreorder(BSTNode cur) {
+  private void printTreePreorder(BstNode cur) {
     if (cur == null) {
       return;
     }
@@ -386,7 +407,7 @@ public class BinarySearchTree {
     System.out.println();
   }
 
-  private void printTreePostorder(BSTNode cur) {
+  private void printTreePostorder(BstNode cur) {
     if (cur == null) {
       return;
     }
@@ -400,16 +421,16 @@ public class BinarySearchTree {
     System.out.println();
   }
 
-  private void printTreeInLevels(BSTNode root) {
+  private void printTreeInLevels(BstNode root) {
     if (root == null) return;
-    LinkedList<BSTNode> currentLvl = new LinkedList<BSTNode>();
-    LinkedList<BSTNode> nextLvl = new LinkedList<BSTNode>();
+    LinkedList<BstNode> currentLvl = new LinkedList<BstNode>();
+    LinkedList<BstNode> nextLvl = new LinkedList<BstNode>();
     nextLvl.add(root);
     while (!nextLvl.isEmpty()) {
       currentLvl = nextLvl;
-      nextLvl = new LinkedList<BSTNode>();
+      nextLvl = new LinkedList<BstNode>();
       while (!currentLvl.isEmpty()) {
-        BSTNode cur = currentLvl.pop();
+        BstNode cur = currentLvl.pop();
         System.out.print(cur + "\t");
         if (cur.left != null) nextLvl.add(cur.left);
         if (cur.right != null) nextLvl.add(cur.right);
@@ -428,7 +449,7 @@ public class BinarySearchTree {
     printPaths(root, "", allPaths);
   }
 
-  private void printPaths(BSTNode cur, String parentKey, HashMap<String, ArrayList<String>> allPaths) {
+  private void printPaths(BstNode cur, String parentKey, HashMap<String, ArrayList<String>> allPaths) {
     if (cur != null) {
       ArrayList<String> path = allPaths.get(parentKey);
       ArrayList<String> newPath = new ArrayList<String>();
@@ -447,16 +468,14 @@ public class BinarySearchTree {
     }
   }
 
-
-
   /*
    * test if two trees are identical
    */
-  public boolean sameTree(BSTNode otherTreeRoot) {
+  public boolean sameTree(BstNode otherTreeRoot) {
     return sameTree(root, otherTreeRoot);
   }
 
-  private boolean sameTree(BSTNode one, BSTNode another) {
+  private boolean sameTree(BstNode one, BstNode another) {
     if (one == null && another == null)
       return true;
     else {
@@ -467,7 +486,7 @@ public class BinarySearchTree {
     }
   }
 
-  public BSTNode search(BSTNode cur, String key) {
+  public BstNode search(BstNode cur, String key) {
     if (cur == null) return cur;
     if (cur.id.compareTo(key) > 0)
       return search(cur.left, key);
@@ -486,7 +505,7 @@ public class BinarySearchTree {
     return size(root, 0);
   }
 
-  private int size(BSTNode cur, int num) {
+  private int size(BstNode cur, int num) {
     if (cur == null) return num;
     return size(cur.left, num) + 1 + size(cur.right, num);
   }
@@ -497,21 +516,19 @@ public class BinarySearchTree {
    * each value could be the root. Recursively find the size of the left and right subtrees. """
    */
   public void printAllBinaryTreesPermutation(int n) {
-    ArrayList<BSTNode> trees = BuildAllBinaryTreesPermutation(1, n);
-    for (BSTNode t : trees) {
+    ArrayList<BstNode> trees = BuildAllBinaryTreesPermutation(1, n);
+    for (BstNode t : trees) {
       printTreeInLevels(t);
       System.out.println();
     }
   }
 
-
-
   public void printPrettyTree() {
     // System.out.println(String.format("%-3d%5d", 12, 3));
 
-    HashMap<BSTNode, Integer> spaceAhead = new HashMap<BSTNode, Integer>();
+    HashMap<BstNode, Integer> spaceAhead = new HashMap<BstNode, Integer>();
     int[] cumSum = new int[] {0};
-    BSTNode root = this.root;
+    BstNode root = this.root;
     if (root == null) {
       System.err.println("Empty root node");
       return;
@@ -528,11 +545,11 @@ public class BinarySearchTree {
     // populate the char array by travesing the tree by level;
     int row = 0;
     // printTree("pre");
-    HashMap<BSTNode, Integer> rows = new HashMap<BSTNode, Integer>(); // stores the row position of
+    HashMap<BstNode, Integer> rows = new HashMap<BstNode, Integer>(); // stores the row position of
                                                                       // nodes
     rows.put(root, 0); // root is at 0th row
     while (root != null) {
-      BSTNode nextLvl = null, prev = null;
+      BstNode nextLvl = null, prev = null;
       for (; root != null; root = root.next) {
         if (nextLvl == null) nextLvl = root.left != null ? root.left : root.right;
         int space = spaceAhead.get(root);
@@ -572,8 +589,8 @@ public class BinarySearchTree {
     }
   }
 
-  private BSTNode balanceTree(BSTNode root) {
-    ArrayList<BSTNode> nodes = new ArrayList<BSTNode>();
+  private BstNode balanceTree(BstNode root) {
+    ArrayList<BstNode> nodes = new ArrayList<BstNode>();
     while (root != null) {
       nodes.add(root);
       root = root.right;
@@ -581,18 +598,18 @@ public class BinarySearchTree {
     return balanceTreeRecursive(nodes);
   }
 
-  private BSTNode balanceTreeRecursive(List<BSTNode> nodes) {
+  private BstNode balanceTreeRecursive(List<BstNode> nodes) {
     int n = nodes.size();
     if (n == 0) return null;
     int mid = n / 2;
-    BSTNode root = nodes.get(mid);
+    BstNode root = nodes.get(mid);
     root.left = balanceTreeRecursive(nodes.subList(0, mid));
     root.right = balanceTreeRecursive(nodes.subList(mid + 1, n));
     return root;
   }
 
   // traverse inorderly, return the total width of spaces of the tree
-  private void calSpaceAhead(BSTNode root, HashMap<BSTNode, Integer> spaceAhead, int[] cumSum) {
+  private void calSpaceAhead(BstNode root, HashMap<BstNode, Integer> spaceAhead, int[] cumSum) {
     if (root == null) return;
     calSpaceAhead(root.left, spaceAhead, cumSum);
     // System.out.println(root.value+" : "+cumSum[0]);
@@ -611,8 +628,8 @@ public class BinarySearchTree {
   }
 
   // merge sort
-  private BSTNode merge(BSTNode l1, BSTNode l2) {
-    BSTNode head = l2, l2Prev = null;
+  private BstNode merge(BstNode l1, BstNode l2) {
+    BstNode head = l2, l2Prev = null;
     while (l1 != null && l2 != null) {
       if (l1.value >= l2.value) {
         l2Prev = l2;
@@ -651,7 +668,7 @@ public class BinarySearchTree {
     return subtree(root, s.root);
   }
 
-  private boolean subtree(BSTNode t1, BSTNode t2) {
+  private boolean subtree(BstNode t1, BstNode t2) {
     if (t2 == null) return true;
     if (t1 == null) return false;
 
@@ -663,42 +680,21 @@ public class BinarySearchTree {
     return subtree(t1.left, t2) || subtree(t1.right, t2);
   }
 
-
-  public BSTNode leastCommonAncestor(BSTNode n1, BSTNode n2) {
-    if (n1 == null) return n2;
-    if (n2 == null) return n1;
-    // System.out.println(n1+" "+n2);
-    return leastCommonAncestor(root, n1, n2);
-  }
-
-  private BSTNode leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
-    if (cur == null || cur.value == n1.value || cur.value == n2.value) return cur;
-    BSTNode l = leastCommonAncestor(cur.left, n1, n2);
-    BSTNode r = leastCommonAncestor(cur.right, n1, n2);
-    // System.out.println(cur+" "+l+" "+r);
-    if (l != null && r != null) return cur;
-    return l == null ? r : l;
-  }
-
   // find the successor of a node in inorder travesal
-  public BSTNode successorInorder(int value) {
+  public BstNode successorInorder(int value) {
     if (root == null) return root;
     return successorInorder(root, value, new int[] {0});
   }
 
-  private BSTNode successorInorder(BSTNode cur, int value, int[] isFound) {
+  private BstNode successorInorder(BstNode cur, int value, int[] isFound) {
     // System.out.println(Arrays.toString(isFound)+" "+cur);
     if (cur == null) return cur;
-    BSTNode left = successorInorder(cur.left, value, isFound);
+    BstNode left = successorInorder(cur.left, value, isFound);
     if (left != null) return left;
     if (isFound[0] == 1) return cur; // next Node;
     if (cur.value == value) isFound[0] = 1;
     return successorInorder(cur.right, value, isFound);
   }
-
-  // ***********************
-  // main method
-  // ***********************
 
   public static void main(String[] args) {
     new BinarySearchTree().main();
@@ -734,7 +730,6 @@ public class BinarySearchTree {
 
     if (true) return;
 
-
     // bst.printTreeInLevels();
     Implementation impl = Implementation.ITERATIVE;
     bst.printTree(TraversalOrder.POSTORDER, impl);
@@ -750,7 +745,6 @@ public class BinarySearchTree {
 
     // bst.printPrettyTree();
     System.out.println(bst.successorInorder(5));
-
 
     // test subtree()
     BinarySearchTree bst1 = new BinarySearchTree();
@@ -783,56 +777,49 @@ public class BinarySearchTree {
     // System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );
   }
 
-  private BSTNode[] flattenRecursivePreorder(BSTNode cur) {
-    BSTNode[] firstAndLast = new BSTNode[2];
-    firstAndLast[0] = firstAndLast[1] = cur;
-    BSTNode[] next;
+  public static class BstNode extends Node {
+    String id;
+    double value;
+    public BstNode left;
+    public BstNode right;
+    BstNode next;
 
-    BSTNode firstOfRightSubtree = null;
-    if (cur.right != null) {
-      next = flattenRecursivePreorder(cur.right);
-      firstAndLast[1] = next[1];
-      firstOfRightSubtree = next[0];
-    }
-    if (cur.left != null) {
-      next = flattenRecursivePreorder(cur.left);
-      cur.left = null;
-      cur.right = next[0];
-      next[1].right = firstOfRightSubtree; // connecting left and right subtrees
-      if (firstAndLast[1].equals(cur)) firstAndLast[1] = next[1]; // update last
-      // firstAndLast[0]=cur; //update first
+    public BstNode(Node node) {
+      id = node.id;
+      value = node.value;
     }
 
-    return firstAndLast;
-  }
-
-  private BSTNode[] flattenRecursiveInorder(BSTNode cur) {
-    BSTNode[] firstAndLast = new BSTNode[2];
-    firstAndLast[0] = firstAndLast[1] = cur;
-    BSTNode[] next;
-
-    if (cur.left != null) {
-      next = flattenRecursiveInorder(cur.left);
-      firstAndLast[0] = next[0];
-      next[1].right = cur;
-      cur.left = null;
+    BstNode(BstNode copy) {
+      this.id = copy.id;
+      this.value = copy.value;
+      this.left = copy.left;
+      this.right = copy.right;
     }
 
-    if (cur.right != null) {
-      next = flattenRecursiveInorder(cur.right);
-      cur.right = next[0];
-      firstAndLast[1] = next[1]; // update last
+    BstNode(String key, int value) {
+      this.id = key;
+      this.value = value;
+      left = null;
+      right = null;
+      next = null;
     }
 
-    return firstAndLast;
+    BstNode(String key) {
+      this(key, Integer.parseInt(key));
+    }
+
+    @Override
+    public String toString() {
+      return "(" + id + "," + value + ")";
+    }
   }
 
   private static class WrapperNode {
-    private BSTNode node;
+    private BstNode node;
     private int direction;
     private int len;
 
-    public WrapperNode(BSTNode node) {
+    public WrapperNode(BstNode node) {
       this.node = node;
     }
   }
