@@ -2,8 +2,6 @@ package com.shuoma.alg.combinatorics;
 
 import java.util.ArrayList;
 
-
-
 public class Permutaion {
 
 
