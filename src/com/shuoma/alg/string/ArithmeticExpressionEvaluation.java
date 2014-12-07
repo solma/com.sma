@@ -1,6 +1,6 @@
 package com.shuoma.alg.string;
 
-import com.shuoma.helper.CommonUtils;
+import com.shuoma.helper.MathUtil;
 
 import java.util.Stack;
 
@@ -22,12 +22,12 @@ public class ArithmeticExpressionEvaluation {
 
     for (int i = 0; i < expression.length(); i++) {
       char c = expression.charAt(i);
-      if (CommonUtils.isNumber(c)) {
+      if (MathUtil.isNumber(c)) {
         output.append(c);
       } else {// an operator
         if (c != '(') {
           while (!operatorStck.isEmpty()
-              && (c == ')' || CommonUtils.higherOrEqualPriority(operatorStck.peek(), c))) {
+              && (c == ')' || MathUtil.higherOrEqualPriority(operatorStck.peek(), c))) {
             char popOut = operatorStck.pop();
             if (popOut == '(') break;
             output.append(popOut);
@@ -47,11 +47,11 @@ public class ArithmeticExpressionEvaluation {
     Stack<Double> numStck = new Stack<Double>();
     for (int i = 0; i < rpnExpr.length(); i++) {
       char c = rpnExpr.charAt(i);
-      if (CommonUtils.isNumber(c)) {
+      if (MathUtil.isNumber(c)) {
         numStck.push(c - '0' + .0);
       } else {
         Double b = numStck.pop(), a = numStck.pop();
-        numStck.push(CommonUtils.operator(a, b, c));
+        numStck.push(MathUtil.operator(a, b, c));
       }
     }
     return numStck.pop();

@@ -2,7 +2,7 @@ package com.shuoma.ds;
 
 import java.util.Arrays;
 
-import com.shuoma.helper.CommonUtils;
+import com.shuoma.helper.RandomArrayUtil;
 
 public class MaxHeap {
 	int[] data;
