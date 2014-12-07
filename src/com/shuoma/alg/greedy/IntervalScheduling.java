@@ -1,7 +1,7 @@
 package com.shuoma.alg.greedy;
 
 import com.shuoma.alg.dp.WeightedIntervalScheduling;
-import com.shuoma.ds.Interval;
+import com.shuoma.ds.misc.Interval;
 
 import java.util.ArrayList;
 import java.util.Collections;

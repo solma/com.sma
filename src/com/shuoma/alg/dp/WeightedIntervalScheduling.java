@@ -1,6 +1,6 @@
 package com.shuoma.alg.dp;
 
-import com.shuoma.ds.Interval;
+import com.shuoma.ds.misc.Interval;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package com.shuoma.alg.array;
 
-import com.shuoma.ds.Interval;
+import com.shuoma.ds.misc.Interval;
 import com.shuoma.helper.RandomArrayUtil;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.shuoma.alg.array;
 
-import com.shuoma.ds.MaxHeap;
+import com.shuoma.ds.misc.MaxHeap;
 import com.shuoma.ds.tree.TournamentTree;
 
 public class Selecting {
