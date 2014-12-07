@@ -1,4 +1,4 @@
-package com.shuoma.alg.math;
+package com.shuoma.ds.math;
 
 import com.shuoma.helper.MathUtil;
 
