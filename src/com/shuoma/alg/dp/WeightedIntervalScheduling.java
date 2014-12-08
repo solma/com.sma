@@ -79,5 +79,4 @@ public class WeightedIntervalScheduling {
     }
     return list;
   }
-
 }
