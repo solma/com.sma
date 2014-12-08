@@ -46,8 +46,13 @@ public class Decimal {
         .add(repeatingDecimals).toString();
   }
 
+  @Override
+  public String toString() {
+    return value;
+  }
+
   public static void main(String[] args) {
-    Decimal fraction = new Decimal("3.14159265.358");
+    Decimal fraction = new Decimal("0.31.3");
     System.out.println(fraction.toSimpleFraction());
   }
 }
