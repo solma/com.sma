@@ -159,8 +159,6 @@ public class RangeMinimumQuery {
     }
   }
 
-
-
   class ArrayInterval extends Interval {
     double min;
     ArrayInterval left, right;
@@ -207,5 +205,4 @@ public class RangeMinimumQuery {
       return start + "~" + end + ":" + min;
     }
   }
-
 }

@@ -41,7 +41,6 @@ public class Kruskal {
         }
       }
 
-
       for (Edge e : cur.adjacentList) {
         if (e.status == Edge.STATUS.UNVISITED) {
           Node oppo = e.opposite(cur);
@@ -63,6 +62,4 @@ public class Kruskal {
     }
     return tree;
   }
-
-
 }
