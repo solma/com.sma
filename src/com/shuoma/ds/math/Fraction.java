@@ -2,6 +2,9 @@ package com.shuoma.ds.math;
 
 import com.shuoma.helper.MathUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Fraction {
   long numerator;
   long denominator;
@@ -35,11 +38,23 @@ public class Fraction {
     proper();
     StringBuilder sb = new StringBuilder();
 
-    long num = numerator;
-    for (int i = 0; i < 20; i++) {
-      sb.append(num / denominator);
-      if (i == 0) sb.append('.');
-      num = (num % denominator) * 10;
+    sb.append((numerator > 0 ^ denominator > 0) ? "-" : "");
+    long n = Math.abs(this.numerator), d = Math.abs(this.denominator);
+    sb.append(n / d);
+    long r = n % d;
+    if (r > 0) {
+      sb.append(".");
+      Map<Long, Integer> fractionalPart = new HashMap<Long, Integer>();
+      while (r > 0) {
+        if (fractionalPart.containsKey(r)) {
+          sb.insert(fractionalPart.get(r), ".");
+          break;
+        }
+        fractionalPart.put(r, sb.length());
+        r *= 10;
+        sb.append(r / d);
+        r %= d;
+      }
     }
     return new Decimal(sb.toString());
   }
@@ -50,6 +65,6 @@ public class Fraction {
   }
 
   public static void main(String[] args) {
-    System.out.println(new Fraction(10, 60).toDecimal());
+    System.out.println(new Fraction(1, 200).toDecimal());
   }
 }

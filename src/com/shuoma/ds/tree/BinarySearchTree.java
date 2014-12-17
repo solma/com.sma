@@ -589,6 +589,39 @@ public class BinarySearchTree {
     }
   }
 
+  public boolean subtree(BinarySearchTree s) {
+    if (s == null) return true;
+    return subtree(root, s.root);
+  }
+
+  private boolean subtree(BstNode t1, BstNode t2) {
+    if (t2 == null) return true;
+    if (t1 == null) return false;
+
+    if (t1.value == t2.value) { // current node of t1 matches t2's root
+      // System.out.println(t1+" " + t2+" "+t1.right+" "+t2.right );
+      return subtree(t1.left, t2.left) && subtree(t1.right, t2.right);
+    }
+    // System.out.println(t1+" " + t2 );
+    return subtree(t1.left, t2) || subtree(t1.right, t2);
+  }
+
+  // find the successor of a node in inorder travesal
+  public BstNode successorInorder(int value) {
+    if (root == null) return root;
+    return successorInorder(root, value, new int[] {0});
+  }
+
+  private BstNode successorInorder(BstNode cur, int value, int[] isFound) {
+    // System.out.println(Arrays.toString(isFound)+" "+cur);
+    if (cur == null) return cur;
+    BstNode left = successorInorder(cur.left, value, isFound);
+    if (left != null) return left;
+    if (isFound[0] == 1) return cur; // next Node;
+    if (cur.value == value) isFound[0] = 1;
+    return successorInorder(cur.right, value, isFound);
+  }
+
   private BstNode balanceTree(BstNode root) {
     ArrayList<BstNode> nodes = new ArrayList<BstNode>();
     while (root != null) {
@@ -661,39 +694,6 @@ public class BinarySearchTree {
     String v = String.valueOf(value);
     for (int j = 0; j < v.length(); j++)
       prettyTree[row][j + startCol] = v.charAt(j);
-  }
-
-  public boolean subtree(BinarySearchTree s) {
-    if (s == null) return true;
-    return subtree(root, s.root);
-  }
-
-  private boolean subtree(BstNode t1, BstNode t2) {
-    if (t2 == null) return true;
-    if (t1 == null) return false;
-
-    if (t1.value == t2.value) { // current node of t1 matches t2's root
-      // System.out.println(t1+" " + t2+" "+t1.right+" "+t2.right );
-      return subtree(t1.left, t2.left) && subtree(t1.right, t2.right);
-    }
-    // System.out.println(t1+" " + t2 );
-    return subtree(t1.left, t2) || subtree(t1.right, t2);
-  }
-
-  // find the successor of a node in inorder travesal
-  public BstNode successorInorder(int value) {
-    if (root == null) return root;
-    return successorInorder(root, value, new int[] {0});
-  }
-
-  private BstNode successorInorder(BstNode cur, int value, int[] isFound) {
-    // System.out.println(Arrays.toString(isFound)+" "+cur);
-    if (cur == null) return cur;
-    BstNode left = successorInorder(cur.left, value, isFound);
-    if (left != null) return left;
-    if (isFound[0] == 1) return cur; // next Node;
-    if (cur.value == value) isFound[0] = 1;
-    return successorInorder(cur.right, value, isFound);
   }
 
   public static void main(String[] args) {

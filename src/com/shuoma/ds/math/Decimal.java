@@ -52,7 +52,7 @@ public class Decimal {
   }
 
   public static void main(String[] args) {
-    Decimal fraction = new Decimal("0.31.3");
+    Decimal fraction = new Decimal("0.05");
     System.out.println(fraction.toSimpleFraction());
   }
 }
