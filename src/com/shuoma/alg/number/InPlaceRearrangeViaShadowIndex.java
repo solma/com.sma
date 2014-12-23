@@ -89,7 +89,7 @@ public class InPlaceRearrangeViaShadowIndex {
     System.out.println("Values: " + Arrays.toString(cpy));
 
     cpy = Arrays.copyOf(arr, arr.length);
-    // permuteLinearSpace(index, cpy);
-    // System.out.println("Values: " + Arrays.toString(cpy));
+    permuteLinearSpace(index, cpy);
+    System.out.println("Values: " + Arrays.toString(cpy));
   }
 }
