@@ -1,6 +1,6 @@
 package com.shuoma.alg.number;
 
-import com.shuoma.util.RandomArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -11,7 +11,6 @@ public class Searching {
     new Searching().main();
   }
 
-  // TODO main method
   public void main() {
     // testSearchAlgorithms();
 
@@ -30,12 +29,12 @@ public class Searching {
   static Random r = new Random();
 
   public int[] generateRandomRotateArray() {
-    int[] array = RandomArrayUtil.genRandomArrayWithMinSize(2);
+    int[] array = RandomUtil.genRandomArrayWithMinSize(2);
     Arrays.sort(array);
     int n = array.length;
     int rotatedIdx = r.nextInt(n);
     // System.out.println("rotated idx="+(n-rotatedIdx)%n );
-    return RandomArrayUtil.rotate(array, rotatedIdx);
+    return RandomUtil.leftShift(array, rotatedIdx);
   }
 
   int searchInARotatedArray(int[] array, int key) {
@@ -126,7 +125,7 @@ public class Searching {
             a = generateRandomRotateArray();
             break;
           default:
-            a = RandomArrayUtil.genRandomArrayWithMinSize(10);
+            a = RandomUtil.genRandomArrayWithMinSize(10);
             Arrays.sort(a);
             break;
         }

@@ -1,7 +1,8 @@
 package com.shuoma.alg.number;
 
 import com.shuoma.ds.misc.MaxHeap;
-import com.shuoma.util.RandomArrayUtil;
+import com.shuoma.util.ArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.Arrays;
 
@@ -29,7 +30,7 @@ public class Sorting {
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
       for (int i = 0; i < 10000; i++) {
-        int[] a = RandomArrayUtil.genRandomArrayWithMinSize(10);
+        int[] a = RandomUtil.genRandomArrayWithMinSize(10);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {
           case QUICKSORT:
@@ -73,7 +74,7 @@ public class Sorting {
     for (int i = 0; i < a.length; i++)
       for (int j = i + 1; j < a.length; j++)
         if (a[j] < a[i]) {
-          RandomArrayUtil.swap(a, i, j);
+          ArrayUtil.swap(a, i, j);
         }
   }
 
@@ -126,12 +127,12 @@ public class Sorting {
     int smallerIdx = low, largerIdx = high + 1;
     for (int i = smallerIdx; i < largerIdx;) {
       if (a[i] < pivot)
-        RandomArrayUtil.swap(a, i++, smallerIdx++);
+        ArrayUtil.swap(a, i++, smallerIdx++);
       else {
         if (a[i] == pivot)
           i++;
         else
-          RandomArrayUtil.swap(a, i, --largerIdx);
+          ArrayUtil.swap(a, i, --largerIdx);
       }
     }
     return largerIdx - 1;
@@ -144,7 +145,7 @@ public class Sorting {
     MaxHeap heap = new MaxHeap(a);
     // heapsort
     for (int i = 0; i < n - 1; i++) {
-      RandomArrayUtil.swap(a, 0, n - 1 - i);
+      ArrayUtil.swap(a, 0, n - 1 - i);
       heap.heapify(0, n - 1 - i);
     }
   }
@@ -154,7 +155,7 @@ public class Sorting {
     for (int code = 1; code <= 1; code++) {
       sortAlgorithmChoice = code;
       for (int i = 0; i < 100; i++) {
-        int[] a = RandomArrayUtil.genRandomArrayWithMinSize(10);
+        int[] a = RandomUtil.genRandomArrayWithMinSize(10);
         int K;
         for (int j = 1; j <= a.length; j++) {
           K = j;

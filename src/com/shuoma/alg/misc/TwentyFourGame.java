@@ -6,7 +6,7 @@ package com.shuoma.alg.misc;
  * @author solma
  *
  */
-import com.shuoma.util.RandomArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -141,7 +141,7 @@ public class TwentyFourGame {
 
   public void main() {
     // {3, 4, 5, 8};
-    int[] randArray = RandomArrayUtil.genRandomArray(4, 13, true, false);
+    int[] randArray = RandomUtil.genRandomArray(4, 13, true, false);
 
     Hand hand = new Hand(randArray);
     System.out.println("hand is=" + hand);

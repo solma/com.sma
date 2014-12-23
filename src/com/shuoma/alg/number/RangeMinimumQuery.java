@@ -1,7 +1,7 @@
 package com.shuoma.alg.number;
 
 import com.shuoma.ds.misc.Interval;
-import com.shuoma.util.RandomArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class RangeMinimumQuery {
       return;
     }
 
-    int[] rdmArray = RandomArrayUtil.genRandomArrayWithMinSize(10);
+    int[] rdmArray = RandomUtil.genRandomArrayWithMinSize(10);
     Random rand = new Random();
     int noOfQueries = rand.nextInt(10) + 10;
     Interval[] queries = new Interval[noOfQueries];

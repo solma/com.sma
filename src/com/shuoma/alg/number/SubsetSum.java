@@ -1,6 +1,6 @@
 package com.shuoma.alg.number;
 
-import com.shuoma.util.RandomArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +50,7 @@ public class SubsetSum {
   }
 
   public static void main(String[] args) {
-    int[] arr = RandomArrayUtil.genRandomArray(7, 10, true, false);
+    int[] arr = RandomUtil.genRandomArray(7, 10, true, false);
     System.out.println(Arrays.toString(arr));
     partitionProblem(arr);
   }

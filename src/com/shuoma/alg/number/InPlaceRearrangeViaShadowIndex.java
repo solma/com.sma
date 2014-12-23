@@ -1,5 +1,8 @@
 package com.shuoma.alg.number;
 
+import com.shuoma.util.ArrayUtil;
+import com.shuoma.util.RandomUtil;
+
 // source: http://www.careercup.com/question?id=4669539153346560
 import java.util.Arrays;
 
@@ -31,7 +34,7 @@ public class InPlaceRearrangeViaShadowIndex {
         j = perm[j];
       }
 
-      System.out.println("i=" + i);
+      //System.out.println("i=" + i);
       if (i == j
       // isMin
       ) {
@@ -44,7 +47,7 @@ public class InPlaceRearrangeViaShadowIndex {
 
           curIdx = nextIdx;
           curValue = nextValue;
-          System.out.println("\tcurIdx=" + curIdx + " " + Arrays.toString(A));
+          //System.out.println("\tcurIdx=" + curIdx + " " + Arrays.toString(A));
         } while (curIdx != i);
       }
     }
@@ -74,22 +77,40 @@ public class InPlaceRearrangeViaShadowIndex {
     }
   }
 
+  static void arrange(int[] pos, int[] num) {
+    for (int i = 0; i < num.length; ) {
+      if (pos[i] == i) {
+        i++;
+        continue;
+      }
+      ArrayUtil.swap(num, i, pos[i]);
+      ArrayUtil.swap(pos, i, pos[i]);
+    }
+  }
+
   // place arr[i] at index[i]
   public static void main(String[] args) {
 
-    // 14, 27, 3, 2, 7, 21
-    int[] arr = {12, 5, 13, 17};
-    // 4, 7, 3, 0, 8, 2, 5, 9, 6, 1
-    int[] index = {2, 0, 1, 3};
-    System.out.println("Values: " + Arrays.toString(arr));
-    System.out.println(" Index: " + Arrays.toString(index));
+    for(int j = 0; j < 10; j++) {
+      int size = RandomUtil.r.nextInt(5) + 5;
+      int[] arr = RandomUtil.genRandomArray(size, 10, false, false);
+      int[] index = ArrayUtil.naturalArray(size);
+      RandomUtil.shuffle(index);
 
-    int[] cpy = Arrays.copyOf(arr, arr.length);
-    permuteConstantSpace(index, cpy);
-    System.out.println("Values: " + Arrays.toString(cpy));
+      int[][] cpy = new int[3][];
+      for(int i = 0; i < cpy.length; i++)
+        cpy[i] = Arrays.copyOf(arr, arr.length);
 
-    cpy = Arrays.copyOf(arr, arr.length);
-    permuteLinearSpace(index, cpy);
-    System.out.println("Values: " + Arrays.toString(cpy));
+      permuteConstantSpace(index, cpy[0]);
+      permuteLinearSpace(index, cpy[1]);
+      arrange(index, cpy[2]);
+      if (! (ArrayUtil.equals(cpy[0], cpy[1]) && ArrayUtil.equals(cpy[0], cpy[2]))) {
+        System.out.println(" array: " + Arrays.toString(arr));
+        System.out.println(" index: " + Arrays.toString(index));
+        System.out.println(" cpy[0]: " + Arrays.toString(cpy[0]));
+        System.out.println(" cpy[1]: " + Arrays.toString(cpy[1]));
+        System.out.println(" cpy[2]: " + Arrays.toString(cpy[2]));
+      }
+    }
   }
 }
