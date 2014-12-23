@@ -11,7 +11,7 @@ public class ArrayUtil {
     return true;
   }
 
-  public static int[] naturalArray(int size) {
+  public static int[] getNaturalArray(int size) {
     int[] res = new int[size];
     for(int i = 0; i < size; i++) res[i] = i;
     return res;

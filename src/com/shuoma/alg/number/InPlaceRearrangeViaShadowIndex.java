@@ -94,7 +94,7 @@ public class InPlaceRearrangeViaShadowIndex {
     for(int j = 0; j < 10; j++) {
       int size = RandomUtil.r.nextInt(5) + 5;
       int[] arr = RandomUtil.genRandomArray(size, 10, false, false);
-      int[] index = ArrayUtil.naturalArray(size);
+      int[] index = ArrayUtil.getNaturalArray(size);
       RandomUtil.shuffle(index);
 
       int[][] cpy = new int[3][];
