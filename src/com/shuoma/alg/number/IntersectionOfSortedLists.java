@@ -65,10 +65,6 @@ public class IntersectionOfSortedLists {
         for (int i = 0; i < pos.length; i++)
           pos[i]++;
       }
-
     }
-
-
   }
-
 }

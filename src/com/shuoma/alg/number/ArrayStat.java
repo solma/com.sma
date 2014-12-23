@@ -1,7 +1,7 @@
 package com.shuoma.alg.number;
 
 /*
- * given an array A,size=n,elements range from 0~n-1,some number missing some repeated. Find which
+ * given an array A,size=n,elements range from 0~n-1, some number missing some repeated. Find which
  * numbers are missing and which are repeated. Time: O(n), Space: O(1)? Source: daizhiguizhong
  */
 
