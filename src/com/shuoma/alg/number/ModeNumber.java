@@ -12,7 +12,6 @@ public class ModeNumber {
     new ModeNumber().modeNumber(new int[] {1, 3, 2, 2, 3, 2, 3, 1}, 3);
   }
 
-
   // linear time and constant space
   public int[] modeNumber(int[] num, int m) {
     HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
