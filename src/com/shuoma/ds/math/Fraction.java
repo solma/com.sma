@@ -65,6 +65,6 @@ public class Fraction {
   }
 
   public static void main(String[] args) {
-    System.out.println(new Fraction(1, 200).toDecimal());
+    System.out.println(new Fraction(Integer.parseInt(args[0]), Integer.parseInt(args[1])).toDecimal());
   }
 }

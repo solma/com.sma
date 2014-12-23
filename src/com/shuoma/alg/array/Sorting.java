@@ -17,9 +17,7 @@ public class Sorting {
     int min = (1 << 31) + -1;
     // System.out.println(Arrays.binarySearch(a, 1) );
     // System.out.println(binarySearch(a, 1));
-
     testSortAlgorithms();
-
   }
 
   public enum SortingAlg {
@@ -60,7 +58,6 @@ public class Sorting {
     }
   }
 
-
   boolean isSame(int[] a, int[] cpy) {
     if (a.length != cpy.length) return false;
     for (int i = 0; i < a.length; i++) {
@@ -95,8 +92,6 @@ public class Sorting {
     }
     return b;
   }
-
-
 
   int[] countSort(int[] a) {
     int MAX_VALUE = 1000;
@@ -172,7 +167,6 @@ public class Sorting {
           Arrays.sort(a);
           if (a[K - 1] != cpy[K - 1])
             System.out.println(Arrays.toString(cpy) + " " + K + " " + a[K - 1]);
-
         }
       }
     }
@@ -188,7 +182,4 @@ public class Sorting {
       quickSelect(a, l, cut - 1, K);
     else if (cut < K - 1) quickSelect(a, cut + 1, r, K - cut - 1);
   }
-
-
-
 }
