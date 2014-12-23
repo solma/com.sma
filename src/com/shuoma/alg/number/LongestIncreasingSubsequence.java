@@ -1,3 +1,4 @@
+package com.shuoma.alg.number;
 // source: 编程之美
 // http://blog.csdn.net/liangbopirates/article/details/9421399
 import java.util.ArrayList;

@@ -1,3 +1,4 @@
+package com.shuoma.alg.string;
 /**  Given a byte array, which is an encoding of characters. 
   *  Here is the rule:
   * a. If the first bit of a byte is 0, that byte stands for a one-byte character

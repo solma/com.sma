@@ -1,3 +1,4 @@
+package com.shuoma.alg.number;
 //source: http://www.careercup.com/question?id=4669539153346560
 import java.util.*;
 

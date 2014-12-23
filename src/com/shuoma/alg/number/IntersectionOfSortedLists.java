@@ -1,4 +1,4 @@
-package com.shuoma.alg.linear;
+package com.shuoma.alg.number;
 
 import java.util.ArrayList;
 import java.util.Collections;

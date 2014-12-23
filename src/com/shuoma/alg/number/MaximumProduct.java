@@ -1,6 +1,6 @@
-
+package com.shuoma.alg.number;
 /***
- * Given an integer n, find a1...am, a decomposition of n 
+ * Given an integer n, find a1...am, a decomposition of n
  * (i.e. a1+...+am=n and  a1~am are positive integers)
  * where a1*a2*...*am is the largest
  *
@@ -10,15 +10,15 @@ public class MaximumProduct {
 	public static void main(String[] args) {
 		new MaximumProduct().main();
 	}
-	
+
 	public void main(){
-		
+
 		for(int n=2;n<20;n++)
 			System.out.println(n+":"+getMaxProduct1(n));
 	}
-	
+
 	/**
-	 * basic dp 
+	 * basic dp
 	 */
 	public long getMaxProduct0(int n){
 		if(n<2) return -1;
@@ -31,14 +31,14 @@ public class MaximumProduct {
 		}
 		return dp[n];
 	}
-	
+
 	/***
 	 * Decompose n into the form of 2^x+3^y
 	 */
 	public long getMaxProduct1(int n){
 		if(n<2) return -1;
 		if(n==2) return 1;
-		
+
 		int x,y;
 		x=y=0;
 		switch(n%3){
@@ -52,7 +52,7 @@ public class MaximumProduct {
 			x=1;y=(n-2)/3;
 			break;
 		}
-		
+
 		return (long) (Math.pow(2, x)*Math.pow(3, y));
 	}
 

@@ -1,13 +1,13 @@
+package com.shuoma.alg.number;
 //source: crack the interview
 //kth number in the form of 3^i*5^j*7^k
-import java.lang.Math;
-import java.util.*;
+import java.util.ArrayList;
 public class KthNumber{
 
     public static void main(String[] args){
         new KthNumber().kthNumber(20);
     }
-    
+
     //get kth number
     void kthNumber(int n){
         if(n<1) return;

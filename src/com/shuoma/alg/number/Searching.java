@@ -1,4 +1,4 @@
-package com.shuoma.alg.linear;
+package com.shuoma.alg.number;
 
 import com.shuoma.util.RandomArrayUtil;
 
