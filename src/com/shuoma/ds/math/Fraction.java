@@ -1,6 +1,6 @@
 package com.shuoma.ds.math;
 
-import com.shuoma.helper.MathUtil;
+import com.shuoma.util.MathUtil;
 
 import java.util.HashMap;
 import java.util.Map;

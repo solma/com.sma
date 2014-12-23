@@ -1,6 +1,6 @@
 package com.shuoma.alg.string;
 
-import com.shuoma.helper.MathUtil;
+import com.shuoma.util.MathUtil;
 
 import java.util.Stack;
 

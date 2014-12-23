@@ -1,4 +1,4 @@
-package com.shuoma.alg.array;
+package com.shuoma.alg.linear;
 
 import com.shuoma.ds.misc.MaxHeap;
 import com.shuoma.ds.tree.TournamentTree;

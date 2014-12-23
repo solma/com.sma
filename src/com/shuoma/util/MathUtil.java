@@ -1,4 +1,4 @@
-package com.shuoma.helper;
+package com.shuoma.util;
 
 public class MathUtil {
 

@@ -1,4 +1,4 @@
-package com.shuoma.helper;
+package com.shuoma.util;
 
 import java.util.Random;
 

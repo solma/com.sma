@@ -1,6 +1,6 @@
-package com.shuoma.alg.array;
+package com.shuoma.alg.linear;
 
-import com.shuoma.helper.RandomArrayUtil;
+import com.shuoma.util.RandomArrayUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
