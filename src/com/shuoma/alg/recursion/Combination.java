@@ -1,4 +1,4 @@
-package com.shuoma.alg.combinatorics;
+package com.shuoma.alg.recursion;
 
 import java.util.ArrayList;
 

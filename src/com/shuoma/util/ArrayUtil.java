@@ -1,8 +1,9 @@
 package com.shuoma.util;
 
-
 public class ArrayUtil {
   public static boolean equals(int[] a, int[] b) {
+    if (a == null && b == null) return true;
+    if (a == null || b == null) return false;
     int la = a.length, lb = b.length;
     if (la != lb) return false;
     for (int i = 0; i < la; i++) {

@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.dp;
 // source: 编程之美
 // http://blog.csdn.net/liangbopirates/article/details/9421399
 import com.shuoma.util.RandomUtil;

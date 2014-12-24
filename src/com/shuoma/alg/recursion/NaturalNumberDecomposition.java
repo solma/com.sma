@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.recursion;
 
 import java.util.ArrayList;
 import java.util.Collections;

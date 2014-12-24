@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.dp;
 
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;

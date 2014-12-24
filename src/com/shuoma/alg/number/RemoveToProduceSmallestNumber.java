@@ -60,7 +60,5 @@ public class RemoveToProduceSmallestNumber {
       System.out.print(nArray[i]);
     }
     System.out.println();
-
-
   }
 }

@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.dp;
 /***
  * Given an integer n, find a1...am, a decomposition of n
  * (i.e. a1+...+am=n and  a1~am are positive integers)
