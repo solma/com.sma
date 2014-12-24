@@ -7,19 +7,18 @@ import java.util.Arrays;
 /*
  * reference: http://www.mitbbs.com/article_t/JobHunting/32719993.html
  *
- * an array consisting of 0's and 1's. Reverse at most one element (0->1 or 1->0) to maximize
- * the length of a homogeneous subarray (a homogeneous array is an array of all 0's or all 1's).
- * Return the length.
- * e.g. [1 0 1]，reverse 0，return 3
- * [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return 4.
+ * an array consisting of 0's and 1's. Reverse at most one element (0->1 or 1->0) to maximize the
+ * length of a homogeneous subarray (a homogeneous array is an array of all 0's or all 1's). Return
+ * the length. e.g. [1 0 1]，reverse 0，return 3 [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return
+ * 4.
  */
 
 public class LongestContinuousSubarrayWithChange {
 
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++) {
-      //0, 0, 0, 1, 1, 0, 0; 1, 1, 0, 1, 0, 0, 0
-      //int[] ary = new int[] {1, 1, 0, 1, 0, 0, 0};
+      // 0, 0, 0, 1, 1, 0, 0; 1, 1, 0, 1, 0, 0, 0
+      // int[] ary = new int[] {1, 1, 0, 1, 0, 0, 0};
       int[] ary = RandomUtil.genRandomArray(7, 2, false, false);
       int[] res = new int[3];
       res[0] = maxConsecutive(ary);
@@ -35,6 +34,7 @@ public class LongestContinuousSubarrayWithChange {
 
   /**
    * this solution is wrong.
+   *
    * @param ary
    * @return
    */
@@ -47,13 +47,15 @@ public class LongestContinuousSubarrayWithChange {
       maxL = Math.max(maxL, Math.max(++changed[x], ++noChange[x]));
       changed[1 - x] = 1 + noChange[1 - x];
       noChange[1 - x] = 0;
-      //System.out.println(maxL + " " + Arrays.toString(changed) + " " + Arrays.toString(noChange));
+      // System.out.println(maxL + " " + Arrays.toString(changed) + " " +
+      // Arrays.toString(noChange));
     }
     return maxL;
   }
 
   /**
    * complex logic but correct solution
+   *
    * @param ary
    * @return
    */
@@ -66,7 +68,7 @@ public class LongestContinuousSubarrayWithChange {
     reversedElementForNoReverse[0] = -1;
 
     int maxL = 1;
-    for (int i = 1; i< ary.length; i++) {
+    for (int i = 1; i < ary.length; i++) {
       // do not change ary[i]
       if (ary[i] != ary[i - 1]) {
         noReverse[i] = reverse[i - 1] + 1;
@@ -83,21 +85,21 @@ public class LongestContinuousSubarrayWithChange {
         else
           reverse[i] = i - reversedElementForNoReverse[i - 1];
       } else {
-          reverse[i] = 1;
+        reverse[i] = 1;
       }
 
       maxL = Math.max(maxL, Math.max(reverse[i], noReverse[i]));
     }
-    //System.out.println(Arrays.toString(reverse));
-    //System.out.println(Arrays.toString(noReverse));
-    //System.out.println(Arrays.toString(reversedElementForNoReverse));
+    // System.out.println(Arrays.toString(reverse));
+    // System.out.println(Arrays.toString(noReverse));
+    // System.out.println(Arrays.toString(reversedElementForNoReverse));
 
     return maxL;
   }
 
   static int maxConsecutiveBase(int[] ary) {
     int n = ary.length;
-    int [] cpy;
+    int[] cpy;
     int maxL = 1;
     for (int i = 0; i < n; i++) {
       cpy = Arrays.copyOf(ary, n);
@@ -110,7 +112,8 @@ public class LongestContinuousSubarrayWithChange {
   private static int getLongestHomogenousSubarray(int[] cpy) {
     int maxL = 1, curL = maxL;
     for (int i = 1; i < cpy.length; i++) {
-      if (cpy[i] == cpy[i - 1]) curL++;
+      if (cpy[i] == cpy[i - 1])
+        curL++;
       else {
         maxL = Math.max(maxL, curL);
         curL = 1;
