@@ -1,7 +1,5 @@
 package com.shuoma.alg.number;
 
-
-
 // given a number n remove k digits such that the resulting number is minimized
 // source: wechat
 
