@@ -1,64 +1,44 @@
 package com.shuoma.alg.number;
 
-import java.util.ArrayList;
+
+
 // given a number n remove k digits such that the resulting number is minimized
 // source: wechat
 
 public class RemoveToProduceSmallestNumber {
   public static void main(String[] args) {
-    int n = Integer.parseInt(args[0]), k = Integer.parseInt(args[1]);
-    new RemoveToProduceSmallestNumber().main(n, k);
-  }
-
-  public void main(int n, int k) {
+//    int n = Integer.parseInt(args[0]), k = Integer.parseInt(args[1]);
+    int n = 198124, k = 3;
     remove(n, k);
   }
 
-  public void remove(int n, int k) {
+  static void remove(int n, int k) {
     // put n into an array
-    ArrayList<Integer> nList = new ArrayList<Integer>();
-    while (n > 0) {
-      nList.add(n % 10);
-      n /= 10;
-    }
-    int[] nArray = new int[nList.size()];
-    for (int i = 0; i < nArray.length; i++) {
-      nArray[i] = nList.get(nArray.length - 1 - i);
-    }
-    // System.out.println(Arrays.toString(nArray));
-    // System.out.println(nList);
+    char[] nArray = String.valueOf(n).toCharArray();
 
-    // remove k digits
-    int cntRemovedDigits = 0;
-    int idx = 0;
-    int preIdx = 0;
+    // find/marking k digits to be removed
+    int cntRemovedDigits = 0, idx = 0, preIdx = 0;
+    char toBeRemoved = '+'; // any char before '0'
     while (cntRemovedDigits < k && idx < nArray.length - 1) {
-      while (nArray[preIdx++] == -1);
+      System.out.println(new String(nArray) + " " + preIdx + " " + idx);
+      while (nArray[preIdx++] == toBeRemoved);
       if (nArray[idx] > nArray[idx + 1]) {
         cntRemovedDigits += 1;
-        nArray[idx] = -1;
+        nArray[idx] = toBeRemoved;
         if (preIdx > 0) {
           preIdx--;
-          // idx--;
         }
       } else {
         idx++;
       }
-      // System.out.println(nArray[preIdx]+", "+nArray[idx]);
     }
 
-    // shift array to remove digits
-    int deletedCnt = 0;
+    // remove marked digits in place
+    int storeIdx = 0;
     for (int i = 0; i < nArray.length; i++) {
-      if (nArray[i] == -1)
-        deletedCnt++;
-      else {
-        nArray[i - deletedCnt] = nArray[i];
-      }
+      if (nArray[i] != toBeRemoved)
+        nArray[storeIdx++] = nArray[i];
     }
-    for (int i = 0; i < nArray.length - k; i++) {
-      System.out.print(nArray[i]);
-    }
-    System.out.println();
+    System.out.println(new String(nArray).substring(0, nArray.length - k));
   }
 }
