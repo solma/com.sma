@@ -18,8 +18,16 @@ public class RandomUtil {
     int[] ret = new int[length];
     for (int i = 0; i < length; i++) {
       ret[i] = r.nextInt(maxNumber);
-      if (!oneBased) ret[i] += 1;
-      if (canBeNegative) ret[i] *= (r.nextBoolean() ? 1 : -1);
+    }
+    if (oneBased) {
+      for (int i = 0; i < length; i++) {
+        ret[i] += 1;
+      }
+    }
+    if (canBeNegative) {
+      for (int i = 0; i < length; i++) {
+        ret[i] *= (r.nextBoolean() ? 1 : -1);
+      }
     }
     return ret;
   }

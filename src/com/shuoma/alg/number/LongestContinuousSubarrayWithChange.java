@@ -18,12 +18,14 @@ public class LongestContinuousSubarrayWithChange {
 
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++) {
-      // new int[] {1, 1, 0, 1, 0, 0};
-      int[] ary = RandomUtil.genRandomArray(7, 1, false, false);
+      //0, 0, 0, 1, 1, 0, 0; 1, 1, 0, 1, 0, 0, 0
+      //int[] ary = new int[] {1, 1, 0, 1, 0, 0, 0};
+      int[] ary = RandomUtil.genRandomArray(7, 2, false, false);
       int[] res = new int[3];
       res[0] = maxConsecutive(ary);
       res[1] = maxConsecutive1(ary);
-      if (res[0] != res[1]) {
+      res[2] = maxConsecutiveBase(ary);
+      if (res[1] != res[2]) {
         System.out.println(Arrays.toString(ary));
         System.out.println(Arrays.toString(res));
         System.out.println();
@@ -31,6 +33,11 @@ public class LongestContinuousSubarrayWithChange {
     }
   }
 
+  /**
+   * this solution is wrong.
+   * @param ary
+   * @return
+   */
   static int maxConsecutive(int[] ary) {
     int[] changed = {0, 0};
     int[] noChange = {0, 0};
@@ -42,30 +49,74 @@ public class LongestContinuousSubarrayWithChange {
       noChange[1 - x] = 0;
       //System.out.println(maxL + " " + Arrays.toString(changed) + " " + Arrays.toString(noChange));
     }
+    return maxL;
+  }
+
+  /**
+   * complex logic but correct solution
+   * @param ary
+   * @return
+   */
+  static int maxConsecutive1(int[] ary) {
+    int[] reverse = new int[ary.length];
+    int[] noReverse = new int[ary.length];
+    // when noReverse gets the max, records which element is reversed
+    int[] reversedElementForNoReverse = new int[ary.length];
+    reverse[0] = noReverse[0] = 1;
+    reversedElementForNoReverse[0] = -1;
+
+    int maxL = 1;
+    for (int i = 1; i< ary.length; i++) {
+      // do not change ary[i]
+      if (ary[i] != ary[i - 1]) {
+        noReverse[i] = reverse[i - 1] + 1;
+        reversedElementForNoReverse[i] = i - 1;
+      } else {
+        noReverse[i] = noReverse[i - 1] + 1;
+        reversedElementForNoReverse[i] = reversedElementForNoReverse[i - 1];
+      }
+
+      // change ary[i]
+      if (ary[i] != ary[i - 1]) {
+        if (reversedElementForNoReverse[i - 1] < 0) // not reverse any yet before
+          reverse[i] = noReverse[i - 1] + 1;
+        else
+          reverse[i] = i - reversedElementForNoReverse[i - 1];
+      } else {
+          reverse[i] = 1;
+      }
+
+      maxL = Math.max(maxL, Math.max(reverse[i], noReverse[i]));
+    }
+    //System.out.println(Arrays.toString(reverse));
+    //System.out.println(Arrays.toString(noReverse));
+    //System.out.println(Arrays.toString(reversedElementForNoReverse));
 
     return maxL;
   }
 
-  static int maxConsecutive1(int[] ary) {
-    int[] changed = new int[ary.length];
-    int[] noChange = new int[ary.length];
-    // when noChange reaches max record if any element before i has been reversed
-    boolean[] hasChangedBefore = new boolean[ary.length];
-    changed[0] = noChange[0] = 1;
+  static int maxConsecutiveBase(int[] ary) {
+    int n = ary.length;
+    int [] cpy;
     int maxL = 1;
-
-    for (int i = 1; i< ary.length; i++) {
-      if (ary[i] == ary[i - 1]) {
-        noChange[i] = noChange[i - 1] + 1;
-      } else {
-        noChange[i] = changed[i - 1] + 1;
-        hasChangedBefore[i] = true;
-        if(!hasChangedBefore[i - 1])
-          changed[i] = noChange[i - 1] + 1;
-      }
-      maxL = Math.max(maxL, Math.max(changed[i], noChange[i]));
+    for (int i = 0; i < n; i++) {
+      cpy = Arrays.copyOf(ary, n);
+      cpy[i] = 1 - cpy[i];
+      maxL = Math.max(maxL, getLongestHomogenousSubarray(cpy));
     }
+    return Math.max(maxL, getLongestHomogenousSubarray(ary));
+  }
 
+  private static int getLongestHomogenousSubarray(int[] cpy) {
+    int maxL = 1, curL = maxL;
+    for (int i = 1; i < cpy.length; i++) {
+      if (cpy[i] == cpy[i - 1]) curL++;
+      else {
+        maxL = Math.max(maxL, curL);
+        curL = 1;
+      }
+    }
+    maxL = Math.max(maxL, curL);
     return maxL;
   }
 }
