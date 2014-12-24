@@ -18,6 +18,21 @@ public class ArrayUtil {
     return res;
   }
 
+  public static void reverse(char[] array) {
+    int l = 0, r = array.length - 1;
+    while (l < r) {
+      swap(array, l++, r--);
+    }
+  }
+
+  public static void swap(char[] array, int i, int j) {
+    if (i == j) return;
+    char swap;
+    swap = array[i];
+    array[i] = array[j];
+    array[j] = swap;
+  }
+
   public static void swap(int[] a, int i, int j) {
     int n = a.length;
     if (i == j || i < 0 || j < 0 || i >= n || j >= n) return;

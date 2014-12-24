@@ -1,63 +1,54 @@
 package com.shuoma.alg.recursion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Combination {
   public static void main(String[] args) {
-    new Combination().main();
+     String s1="1233";
+     allCombinationsI(s1, new ArrayList<String>());
+     System.out.println(allCombinations(s1));
+     System.out.println(combinationsOfSizeN(s1, 2));
   }
 
-  void main() {
-    // String s1="123";
-    // allCombinationsByIteration(s1, new ArrayList<String>());
-    // //myInuitiveAlgrithm(s1, new ArrayList<String>());
-
-
-    // ArrayList<String> res;
-    // res=new ArrayList<String>();
-    // //allPermutationsByRecursion(s1, res, new StringBuilder());
-    // for (int i = 0; i < res.size(); i++)
-    // System.out.println((i + 1) + ". " + res.get(i));
-    // System.out.println();
-
-    // res.clear();
-    // //allCombinationsByRecursion(s1, res, new StringBuilder(), 0);
-    // for (int i = 0; i < res.size(); i++)
-    // System.out.println((i + 1) + ". " + res.get(i));
-    // System.out.println();
-    System.out.println(myInuitiveAlgrithm("235"));
-    // System.out.println( combinationsByRecursion("235", new StringBuilder(), 0) );
-    // System.out.println( permutationsByRecursion("235", new StringBuilder()) );
-    // System.out.println( firstKPermutationsByRecursion("235", new StringBuilder(), 3) );
+  public static List<String> allCombinations(String input) {
+    return allCombinations(input, new StringBuilder(), 0);
   }
 
-  void CombinationsByRecursion(String input, int n, ArrayList<String> res, StringBuilder sb, int startIdx) {
-    char[] array = input.toCharArray();
-    int len = array.length;
-    if (sb.length() == n + 1) return;
-    for (int i = startIdx; i < len; i++) {
-      sb.append(array[i]);
-      System.out.println(startIdx + " " + i + " " + len + " " + sb.toString());
-      if (sb.length() == n) res.add(sb.toString());
-      CombinationsByRecursion(input, n, res, sb, i + 1);
-      sb.deleteCharAt(sb.length() - 1);
-    }
-  }
-
-
-  ArrayList<String> combinationsByRecursion(String input, StringBuilder com, int sIdx) {
-    ArrayList<String> ret = new ArrayList<String>();
+  static List<String> allCombinations(String input, StringBuilder com, int sIdx) {
+    List<String> ret = new ArrayList<>();
     for (int i = sIdx; i < input.length(); i++) {
       com.append(input.charAt(i));
       ret.add(com.toString());
-      for (String s : combinationsByRecursion(input, com, i + 1))
+      for (String s : allCombinations(input, com, i + 1))
         ret.add(s);
       com.deleteCharAt(com.length() - 1);
     }
     return ret;
   }
 
-  void allCombinationsByIteration(String input, ArrayList<String> res) {
+  public static List<String> combinationsOfSizeN(String input, int size) {
+    return combinationsOfSizeN(input, size, new StringBuilder(), 0);
+  }
+
+  static List<String> combinationsOfSizeN(String input, int n, StringBuilder sb, int startIdx) {
+    List<String> ret = new ArrayList<>();
+    char[] array = input.toCharArray();
+    int len = array.length;
+    if (sb.length() == n) {
+      ret.add(sb.toString());
+      return ret;
+    }
+    for (int i = startIdx; i < len; i++) {
+      sb.append(array[i]);
+      ret.addAll(combinationsOfSizeN(input, n, sb, i + 1));
+      sb.deleteCharAt(sb.length() - 1);
+    }
+    return ret;
+  }
+
+  /** By iteration. */
+  static void allCombinationsI(String input, ArrayList<String> res) {
     if (input != null && input.length() > 0) {
       char[] array = input.toCharArray();
       String[] copy = new String[1];
@@ -75,8 +66,8 @@ public class Combination {
     }
   }
 
-  ArrayList<String> myInuitiveAlgrithm(String input) {
-    ArrayList<String> res = new ArrayList<String>();
+  static List<String> myInuitiveAlgrithm(String input) {
+    List<String> res = new ArrayList<>();
     if (input != null && input.length() > 0) {
       char[] array = input.toCharArray();
       String[] copy = new String[1];
@@ -93,11 +84,4 @@ public class Combination {
     }
     return res;
   }
-
-  /*
-   * ArrayList<String> myInuitiveAlgrithm(String input){ //generate grey code of permutations
-   * ArrayList<String> res=new ArrayList<String>();
-   *
-   * return res; }
-   */
 }

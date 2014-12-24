@@ -13,7 +13,6 @@ public abstract class Edge {
 
   public STATUS status;
 
-
   public Node opposite(Node one) {
     if (one.equals(from)) return to;
     if (one.equals(to)) return from;
