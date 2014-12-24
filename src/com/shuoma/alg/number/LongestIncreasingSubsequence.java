@@ -1,31 +1,20 @@
 package com.shuoma.alg.number;
 // source: 编程之美
 // http://blog.csdn.net/liangbopirates/article/details/9421399
+import com.shuoma.util.RandomUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Random;
 
 public class LongestIncreasingSubsequence {
   public static void main(String[] args) {
     new LongestIncreasingSubsequence().main();
   }
 
-  private Random rand = new Random();
-
-  int[] genRanArray() {
-    int n = rand.nextInt(10) + 8;
-    int[] ret = new int[n];
-    for (int i = 0; i < n; i++) {
-      ret[i] = rand.nextInt(100) + 1;
-    }
-    return ret;
-  }
-
   public void main() {
     for (int i = 0; i < 5; i++) {
-      int[] num;
-      num = genRanArray();
+      int[] num = RandomUtil.genRandomArray(10, 100, false, false);
       // {77, 97, 30, 63, 89, 75, 99, 34, 43, 80, 46, 37, 64, 31, 23, 12}
       // num=new int[]{77, 97, 30, 63, 89, 75, 99, 34, 43, 80, 46, 37, 64, 31, 23, 12};
       System.out.println("array=" + Arrays.toString(num));
