@@ -1,6 +1,5 @@
-package com.shuoma.alg.number;
+package com.shuoma.ds.linkedlist;
 
-import com.shuoma.ds.linkedlist.ListNode;
 
 // delete duplicates in the linked list without extra space
 // source: crack the interview
