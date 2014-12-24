@@ -1,14 +1,13 @@
 package com.shuoma.ds.linkedlist;
 
 public class ListNode {
-  int val;
-  ListNode next;
+  public int val;
+  public ListNode next;
 
   public ListNode(int x) {
     val = x;
     next = null;
   }
-
 
   public static ListNode buildList(int[] array) {
     ListNode pseudoHead = new ListNode(0);
@@ -31,6 +30,4 @@ public class ListNode {
     sb.append("end");
     return sb.toString();
   }
-
-
 }
