@@ -30,7 +30,6 @@ public class TournamentTree {
     }
   }
 
-
   public int[] losersOfRoot() {
     int[] path = new int[(int) Math.log(nodes.length) + 1];
     int noOfLosersOfRoot = 0;
@@ -48,7 +47,4 @@ public class TournamentTree {
     }
     return Arrays.copyOf(path, noOfLosersOfRoot);
   }
-
-
-
 }

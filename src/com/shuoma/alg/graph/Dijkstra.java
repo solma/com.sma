@@ -65,8 +65,6 @@ public class Dijkstra {
     return g.buildAllPaths(start, end, path);
   }
 
-
-
   public void traverse(Graph g, Node start) {
     find(g, start, null);
   }

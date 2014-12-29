@@ -10,7 +10,6 @@ public class ListOperation {
     // System.out.println(splitAlternatively(l1));
     // System.out.println(l1);
 
-
     // test join
     // joinAlternatively(l1, l2);
     // System.out.println(l1);
@@ -81,5 +80,4 @@ public class ListOperation {
     }
     return l1;
   }
-
 }
