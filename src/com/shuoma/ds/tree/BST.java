@@ -231,33 +231,17 @@ public class BST {
       return root;
     }
 
-    /**
-     * the recursion implementation of basic BST operations
-     */
-    public void insert(String key) {
-      if (root == null)
-        root = new BSTNode(key);
-      else
-        insert(root, key);
-    }
-
     public void insert(int[] keys) {
       for (int key : keys)
-        insert(String.valueOf(key));
+        root = insert(root, String.valueOf(key));
     }
 
-    protected void insert(BSTNode cur, String key) {
-      if (cur.value >= Integer.parseInt(key)) {
-        if (cur.left != null)
-          insert(cur.left, key);
-        else
-          cur.left = new BSTNode(key);
-      } else {
-        if (cur.right != null)
-          insert(cur.right, key);
-        else
-          cur.right = new BSTNode(key);
-      }
+    /** the recursion implementation of basic BST operations. */
+    protected BSTNode insert(BSTNode cur, String key) {
+      if (cur == null) return new BSTNode(key);
+      if (cur.value >= Integer.parseInt(key)) cur.left = insert(cur.left, key);
+      else cur.right = insert(cur.right, key);
+      return cur;
     }
 
     /**

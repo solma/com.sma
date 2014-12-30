@@ -69,7 +69,7 @@ public class CountingInversion {
     int value;
     int size;
     int smallerItemCnt;
-    BSTNodeWithSize parent, left, right;
+    BSTNodeWithSize left, right;
 
     public BSTNodeWithSize(int value, int smallerNodeCnt, List<Integer> res) {
       this.value = value;
