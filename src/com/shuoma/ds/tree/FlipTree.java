@@ -1,6 +1,6 @@
 package com.shuoma.ds.tree;
 
-import com.shuoma.ds.tree.BinarySearchTree.BstNode;
+import com.shuoma.ds.tree.BST.BSTNode;
 // ref:http://www.mitbbs.com/article_t/JobHunting/32695977.html
 
 // Given a binary tree where all the right nodes are either empty or leaf
@@ -38,11 +38,11 @@ import com.shuoma.ds.tree.BinarySearchTree.BstNode;
 
 public class FlipTree {
 
-  BstNode convert(BstNode root) {
+  BSTNode convert(BSTNode root) {
     if (root == null || root.left == null) return root;
 
-    BstNode left = root.left;
-    BstNode newRoot = convert(left);
+    BSTNode left = root.left;
+    BSTNode newRoot = convert(left);
     left.right = root;
     left.left = root.right;
     root.left = root.right = null;

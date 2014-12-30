@@ -20,9 +20,9 @@ public class NumbersWithNIncreasingDigits {
       return ret;
     }
     if (sb.length() + 10 - sIdx >= n) {
-      for (int i = sIdx; i < 10; i++) {
+      for (int i = sIdx + 1; i <= 9; i++) {
         sb.append(i);
-        ret.addAll(numbersWithNIncreasingDigits(n, sb, i + 1));
+        ret.addAll(numbersWithNIncreasingDigits(n, sb, i));
         sb.deleteCharAt(sb.length() - 1);
       }
     }
