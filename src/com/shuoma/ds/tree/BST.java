@@ -13,6 +13,18 @@ import java.util.Stack;
 
 public class BST {
   public static void main(String[] args) {
+    /**
+     *                    5
+     *                   / \
+     *                  3   22
+     *                 /    / \
+     *                1    7   25
+     *                    / \
+     *                   6   20
+     *                    \
+     *                    13
+     */
+
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
     BinarySearchTree bst = new BinarySearchTree(nodes);
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
@@ -67,43 +79,6 @@ public class BST {
     // System.out.println(Arrays.toString(Integer.toBinaryString(1234 & 0xaaaaaaa).toCharArray()) );
   }
 
-  public static class BSTNode extends Node {
-    String id;
-    double value;
-    public BSTNode left;
-    public BSTNode right;
-    BSTNode next;
-
-    public BSTNode(Node node) {
-      id = node.id;
-      value = node.value;
-    }
-
-    BSTNode(BSTNode copy) {
-      this.id = copy.id;
-      this.value = copy.value;
-      this.left = copy.left;
-      this.right = copy.right;
-    }
-
-    BSTNode(String key, int value) {
-      this.id = key;
-      this.value = value;
-      left = null;
-      right = null;
-      next = null;
-    }
-
-    BSTNode(String key) {
-      this(key, Integer.parseInt(key));
-    }
-
-    @Override
-    public String toString() {
-      return "(" + id + "," + value + ")";
-    }
-  }
-
   public static class BinarySearchTree {
     private BSTNode root;
 
@@ -115,7 +90,6 @@ public class BST {
       RECURSION, ITERATIVE;
     }
 
-
     public BinarySearchTree(int[] keys) {
       insert(keys);
     }
@@ -124,21 +98,39 @@ public class BST {
       this.root = root;
     }
 
-    public BSTNode find(String key) {
-      return find(root, key);
+    private ArrayList<BSTNode> buildAllBinaryTreesPermutation(int min, int max) {
+      ArrayList<BSTNode> ret = new ArrayList<BSTNode>();
+      if (min > max) {
+        ret.add(null);
+      } else {
+        for (int i = min; i <= max; i++) {
+          BSTNode root = new BSTNode(String.valueOf(i), i);
+          ArrayList<BSTNode> left_trees = buildAllBinaryTreesPermutation(min, i - 1);
+          ArrayList<BSTNode> right_trees = buildAllBinaryTreesPermutation(i + 1, max);
+          for (BSTNode l : left_trees)
+            for (BSTNode r : right_trees) {
+              BSTNode newTree = new BSTNode(root);
+              ret.add(newTree);
+              newTree.left = l;
+              newTree.right = r;
+            }
+        }
+      }
+      return ret;
     }
 
-    public BSTNode find(BSTNode node) {
-      return find(root, node.id);
-    }
-
-    private BSTNode find(BSTNode cur, String id) {
-      if (cur == null) return null;
-      int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
-      if (compare == 0)
-        return cur;
-      else
-        return compare > 0 ? find(cur.right, id) : find(cur.left, id);
+    /**
+     * For the key values 1...numKeys, how many structurally unique binary search trees are possible
+     * that store those keys? Strategy: consider that each value could be the root. Recursively find
+     * the size of the left and right subtrees.
+     */
+    public int countTree(int N) {
+      if (N <= 1) return 1;
+      int sum = 0;
+      for (int i = 1; i <= N; i++) {
+        sum += countTree(i - 1) * countTree(N - i);
+      }
+      return sum;
     }
 
     /** Return the root after the deletion */
@@ -175,39 +167,21 @@ public class BST {
       return cur;
     }
 
-    private ArrayList<BSTNode> BuildAllBinaryTreesPermutation(int min, int max) {
-      ArrayList<BSTNode> ret = new ArrayList<BSTNode>();
-      if (min > max) {
-        ret.add(null);
-      } else {
-        for (int i = min; i <= max; i++) {
-          BSTNode root = new BSTNode(String.valueOf(i), i);
-          ArrayList<BSTNode> left_trees = BuildAllBinaryTreesPermutation(min, i - 1);
-          ArrayList<BSTNode> right_trees = BuildAllBinaryTreesPermutation(i + 1, max);
-          for (BSTNode l : left_trees)
-            for (BSTNode r : right_trees) {
-              BSTNode newTree = new BSTNode(root);
-              ret.add(newTree);
-              newTree.left = l;
-              newTree.right = r;
-            }
-        }
-      }
-      return ret;
+    public BSTNode find(String key) {
+      return find(root, key);
     }
 
-    /**
-     * For the key values 1...numKeys, how many structurally unique binary search trees are possible
-     * that store those keys? Strategy: consider that each value could be the root. Recursively find
-     * the size of the left and right subtrees.
-     */
-    public int countTree(int N) {
-      if (N <= 1) return 1;
-      int sum = 0;
-      for (int i = 1; i <= N; i++) {
-        sum += countTree(i - 1) * countTree(N - i);
-      }
-      return sum;
+    public BSTNode find(BSTNode node) {
+      return find(root, node.id);
+    }
+
+    private BSTNode find(BSTNode cur, String id) {
+      if (cur == null) return null;
+      int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
+      if (compare == 0)
+        return cur;
+      else
+        return compare > 0 ? find(cur.right, id) : find(cur.left, id);
     }
 
     private BSTNode[] flattenRecursivePreorder(BSTNode cur) {
@@ -253,6 +227,10 @@ public class BST {
       return firstAndLast;
     }
 
+    public BSTNode getRoot() {
+      return root;
+    }
+
     /**
      * the recursion implementation of basic BST operations
      */
@@ -268,7 +246,7 @@ public class BST {
         insert(String.valueOf(key));
     }
 
-    private void insert(BSTNode cur, String key) {
+    protected void insert(BSTNode cur, String key) {
       if (cur.value >= Integer.parseInt(key)) {
         if (cur.left != null)
           insert(cur.left, key);
@@ -332,11 +310,11 @@ public class BST {
 
     public int longestOnesidePath() {
       int[] maxLen = new int[1];
-      longestOnesidePath(new WrapperNode(root), null, 0, maxLen);
+      longestOnesidePath(new DirectedBSTNode(root), null, 0, maxLen);
       return maxLen[0];
     }
 
-    private void longestOnesidePath(WrapperNode cur, WrapperNode parent, int dir, int[] maxLen) {
+    private void longestOnesidePath(DirectedBSTNode cur, DirectedBSTNode parent, int dir, int[] maxLen) {
       switch (dir) {
         case 0: // root node
           cur.direction = 0;
@@ -358,10 +336,10 @@ public class BST {
           break;
       }
       maxLen[0] = Math.max(maxLen[0], cur.len);
-      if (cur.node.left != null)
-        longestOnesidePath(new WrapperNode(cur.node.left), cur, 1, maxLen);
-      if (cur.node.right != null)
-        longestOnesidePath(new WrapperNode(cur.node.right), cur, -1, maxLen);
+      if (cur.left != null)
+        longestOnesidePath(new DirectedBSTNode(cur.left), cur, 1, maxLen);
+      if (cur.right != null)
+        longestOnesidePath(new DirectedBSTNode(cur.right), cur, -1, maxLen);
     }
 
     /*
@@ -673,7 +651,7 @@ public class BST {
      * each value could be the root. Recursively find the size of the left and right subtrees. """
      */
     public void printAllBinaryTreesPermutation(int n) {
-      ArrayList<BSTNode> trees = BuildAllBinaryTreesPermutation(1, n);
+      ArrayList<BSTNode> trees = buildAllBinaryTreesPermutation(1, n);
       for (BSTNode t : trees) {
         printTreeInLevels(t);
         System.out.println();
@@ -690,9 +668,8 @@ public class BST {
         System.err.println("Empty root node");
         return;
       }
-      calSpaceAhead(root, spaceAhead, cumSum); // traverse the tree inorderly to calculate the
-                                               // spaces
-                                               // before each node
+      // traverse the tree inorderly to calculate the spaces before each node
+      calSpaceAhead(root, spaceAhead, cumSum);
       int size = cumSum[0] * 2;
 
       // represent a tree using two-dimensional char array
@@ -702,10 +679,8 @@ public class BST {
 
       // populate the char array by travesing the tree by level;
       int row = 0;
-      // printTree("pre");
-      HashMap<BSTNode, Integer> rows = new HashMap<BSTNode, Integer>(); // stores the row position
-                                                                        // of
-                                                                        // nodes
+      // stores the row position of nodes
+      HashMap<BSTNode, Integer> rows = new HashMap<BSTNode, Integer>();
       rows.put(root, 0); // root is at 0th row
       while (root != null) {
         BSTNode nextLvl = null, prev = null;
@@ -732,7 +707,6 @@ public class BST {
               prettyTree[r++][i] = '\\';
             rows.put(root.right, r);
           }
-
         }
         root = nextLvl;
         // row++;
@@ -856,13 +830,49 @@ public class BST {
     }
   }
 
-  private static class WrapperNode {
-    private BSTNode node;
+  public static class BSTNode extends Node {
+    public String id;
+    public double value;
+    public BSTNode left;
+    public BSTNode right;
+    BSTNode next;
+
+    public BSTNode(Node node) {
+      id = node.id;
+      value = node.value;
+    }
+
+    protected BSTNode(BSTNode copy) {
+      this.id = copy.id;
+      this.value = copy.value;
+      this.left = copy.left;
+      this.right = copy.right;
+    }
+
+    protected BSTNode(String key, int value) {
+      this.id = key;
+      this.value = value;
+      left = null;
+      right = null;
+      next = null;
+    }
+
+    public BSTNode(String key) {
+      this(key, Integer.parseInt(key));
+    }
+
+    @Override
+    public String toString() {
+      return "(" + id + "," + value + ")";
+    }
+  }
+
+  private static class DirectedBSTNode extends BSTNode{
     private int direction;
     private int len;
 
-    public WrapperNode(BSTNode node) {
-      this.node = node;
+    public DirectedBSTNode(BSTNode node) {
+      super(node);
     }
   }
 }

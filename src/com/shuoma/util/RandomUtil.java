@@ -49,10 +49,11 @@ public class RandomUtil {
     return ret;
   }
 
-  public static void shuffle(int[] arr) {
+  public static int[] shuffle(int[] arr) {
     for(int i = 0; i < arr.length; i++) {
       int swap = i + r.nextInt(arr.length - i);
       ArrayUtil.swap(arr, i, swap);
     }
+    return arr;
   }
 }
