@@ -1,6 +1,7 @@
 package com.shuoma.alg.number;
 
 import com.shuoma.util.ArrayUtil;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +13,9 @@ import java.util.List;
 // is smaller than A[i]. Time complexity: O(nlgn)
 public class CountingInversion {
   public static void main(String[] args) {
-    for (int i = 0; i < 1; i++) {
-      int [] arr = {3, 4, 0, 2, 1};
-      // int[] arr = RandomUtil.shuffle(ArrayUtil.getNaturalArray(RandomUtil.r.nextInt(6) + 5));
+    for (int i = 0; i < 100; i++) {
+      //int [] arr = {3, 4, 0, 2, 1};
+      int[] arr = RandomUtil.shuffle(ArrayUtil.getNaturalArray(RandomUtil.r.nextInt(10) + 15));
       //System.out.println(Arrays.toString(arr));
       int[][] res = new int[2][arr.length];
       res[0] = countInversion(arr);
@@ -49,7 +50,7 @@ public class CountingInversion {
 
     public BSTWithSize(int[] keys) {
       result = new ArrayList<>();
-      for (int i : ArrayUtil.reverse(keys)) {
+      for (int i : ArrayUtil.reverse(Arrays.copyOf(keys, keys.length))) {
         insert(root, i, 0);
       }
     }
