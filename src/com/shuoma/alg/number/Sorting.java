@@ -44,8 +44,8 @@ public class Sorting {
     SortingAlg[] algs = {SortingAlg.RADIXSORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
-      for (int i = 0; i < 10000; i++) {
-        int[] a = RandomUtil.genRandomArrayWithMinSize(100);
+      for (int i = 0; i < 1; i++) {
+        int[] a = RandomUtil.genRandomArrayWithMinSize(10);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {
           case BUBBLESORT:
@@ -254,16 +254,16 @@ public class Sorting {
     int dev = 1;
     int maxDigitSymbols = getDigitLength((int) ArrayUtil.max(ArrayUtil.intToDoubleArray(a)), radix);
     for (int i = 0; i < maxDigitSymbols; i++, dev *= 10, mod *= 10) {
-        //System.out.println(Arrays.toString(array));
         for(int j = 0; j < a.length; j++) {
             int bucket = (a[j] % mod) / dev;
             counter[bucket].add(a[j]);
         }
+        System.out.println(Arrays.toString(counter));
+
         int pos = 0;
         for(int j = 0; j < counter.length; j++) {
             Integer value = null;
             while ((value = counter[j].poll()) != null) {
-                //System.out.println(value);
                 a[pos++] = value;
             }
         }
