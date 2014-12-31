@@ -30,7 +30,7 @@ public class LongestIncreasingSubsequence {
     }
   }
 
-  // this can only be used to get the length but not the actuall sequence
+  // this can only be used to get the length but not the actual sequence
   int[] queueBased(int[] num) {
     int n = num.length;
     if (n == 0) return null;
@@ -74,8 +74,6 @@ public class LongestIncreasingSubsequence {
     public void add(ArrayList<Integer> path) {
       paths.add(path);
     }
-
-
   }
 
 

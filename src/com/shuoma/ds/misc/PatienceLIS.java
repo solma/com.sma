@@ -5,37 +5,46 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class PatienceSorting {
+public class PatienceLIS {
   public static <E extends Comparable<? super E>> List<E> lis(List<E> n) {
     List<Node<E>> pileTops = new ArrayList<Node<E>>();
     // sort into piles
     for (E x : n) {
-      Node<E> node = new Node<E>();
-      node.value = x;
+      Node<E> node = new Node<E>(x);
       int i = Collections.binarySearch(pileTops, node);
-      if (i < 0) i = ~i;
-      if (i != 0) node.pointer = pileTops.get(i - 1);
+      if (i < 0) i = ~i; // get the insertion point
+      if (i > 0) node.prev = pileTops.get(i - 1);
       if (i != pileTops.size())
         pileTops.set(i, node);
       else
         pileTops.add(node);
+      System.out.println("x:" + node + " i:" + i + " piles:" + pileTops);
     }
+
     // extract LIS from nodes
     List<E> result = new ArrayList<E>();
     for (Node<E> node = pileTops.size() == 0 ? null : pileTops.get(pileTops.size() - 1); node != null; node =
-        node.pointer)
-      result.add(node.value);
-    Collections.reverse(result);
+        node.prev)
+      result.add(0, node.value);
     return result;
   }
 
   private static class Node<E extends Comparable<? super E>> implements Comparable<Node<E>> {
     public E value;
-    public Node<E> pointer;
+    public Node<E> prev;
+
+    Node(E value) {
+      this.value = value;
+    }
 
     @Override
     public int compareTo(Node<E> y) {
       return value.compareTo(y.value);
+    }
+
+    @Override
+    public String toString() {
+      return value.toString() + ((prev == null) ? "" : (" -> " + prev.toString()));
     }
   }
 
