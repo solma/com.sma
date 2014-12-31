@@ -1,4 +1,4 @@
-package com.shuoma.ds.misc;
+package com.shuoma.alg.misc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +49,7 @@ public class PatienceLIS {
   }
 
   public static void main(String[] args) {
-    List<Integer> d = Arrays.asList(3, 2, 6, 4, 5, 1);
+    List<Integer> d = Arrays.asList(6, 3, 5, 10, 11, 2, 9, 14, 13, 7, 4, 8, 12);
     System.out.printf("an L.I.S. of %s is %s\n", d, lis(d));
     d = Arrays.asList(0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15);
     System.out.printf("an L.I.S. of %s is %s\n", d, lis(d));

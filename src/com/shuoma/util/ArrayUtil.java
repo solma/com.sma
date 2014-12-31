@@ -88,6 +88,15 @@ public class ArrayUtil {
     return sum / (list.size() - 1);
   }
 
+  public static int[] concat(int[] a, int[] b) {
+    if (a == null) return b;
+    if (b == null) return a;
+    int[] c = new int[a.length + b.length];
+    System.arraycopy(a, 0, c, 0, a.length);
+    System.arraycopy(b, 0, c, a.length, b.length);
+    return c;
+  }
+
   public static double[] doubleListToDoubleArray(List<Double> values) {
     if (values == null) return null;
     double[] ret = new double[values.size()];
@@ -178,6 +187,13 @@ public class ArrayUtil {
       min = Math.min(min, values[i]);
     }
     return min;
+  }
+
+  public static int[] negateSign(int[] a) {
+    for (int i = 0; i < a.length; i++) {
+      a[i] *= -1;
+    }
+    return a;
   }
 
   public static void reverse(char[] array) {

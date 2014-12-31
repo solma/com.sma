@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class RandomUtil {
 
-  public static Random r = new Random();
+  public static final Random r = new Random();
+  public static final int MAX_RANDOM_VALUE = 1000;
 
   /**
    *
@@ -33,8 +34,12 @@ public class RandomUtil {
   }
 
   public static int[] genRandomArrayWithMinSize(int minSize) {
+    return genRandomArrayWithMinSize(minSize, MAX_RANDOM_VALUE);
+  }
+
+  public static int[] genRandomArrayWithMinSize(int minSize ,int maxValue) {
     int length = r.nextInt(10) + minSize; // at least two elements
-    return genRandomArray(length, 1000, false, true);
+    return genRandomArray(length, maxValue, false, true);
   }
 
   public static int[] leftShift(int[] a, int start) {
