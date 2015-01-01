@@ -64,6 +64,8 @@ public class Segment {
   }
 
   /** Different from slope comparison. **/
+  // // http://www.dcs.gla.ac.uk/~pat/52233/slides/Geometry1x1.pdf
+  // http://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect
   public Orientation getOrientation (Point p) {
     double res = (e.y - s.y) * (p.x - e.x) - (e.x - s.x) * (p.y - e.y);
     if (res == 0) return Orientation.COLLINEAR;
@@ -85,9 +87,16 @@ public class Segment {
 
     //System.out.println(o1 + " " + o2 + " " + o3 + " " + o4);
     if ( (!o1.equals(o2) && !o3.equals(o4)) ||
-        (o1 == Orientation.COLLINEAR && o1 == o2 && o1 == o3 && o1 == o4 && ((s.x <= seg.s.x && seg.s.x <= e.x) || (s.x <= seg.e.x && seg.e.x <= e.x) || (seg.s.x <= s.x && s.x <= seg.e.x) || (seg.s.x <= e.x && e.x <= seg.e.x)))
+        (o1 == Orientation.COLLINEAR && o1 == o2 && o1 == o3 && o1 == o4 && (onSegment(seg.s) || onSegment(seg.e)))
       )
       return true;
+    return false;
+  }
+
+  public boolean onSegment(Point p) {
+    if (p.x <= Math.max(s.x, e.x) && p.x >= Math.min(s.x, e.x) &&
+        p.y <= Math.max(s.y, e.y) && p.y >= Math.min(s.y, e.y))
+       return true;
     return false;
   }
 
