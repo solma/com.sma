@@ -101,6 +101,7 @@ public class Sorting {
   public static int[] countSort(int[] a) {
     // not in place
     int[] b = new int[a.length];
+    // add RandomUtil.MAX_RANDOM_VALUE to offset negative numbers
     int[] c = new int[RandomUtil.MAX_RANDOM_VALUE * 2 + 1];
     Arrays.fill(c, 0);
     int i;
