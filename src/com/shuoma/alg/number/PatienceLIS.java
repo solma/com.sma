@@ -1,10 +1,10 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg.number;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
+// http://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf
 public class PatienceLIS {
   public static <E extends Comparable<? super E>> List<E> lis(List<E> n) {
     List<Node<E>> pileTops = new ArrayList<Node<E>>();

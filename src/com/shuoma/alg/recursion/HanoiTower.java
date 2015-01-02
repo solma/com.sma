@@ -1,4 +1,4 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg.recursion;
 
 public class HanoiTower {
   public static void main(String[] args) {

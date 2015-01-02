@@ -1,4 +1,4 @@
-package com.shuoma.alg.misc;
+package com.shuoma.ds.misc;
 
 import java.util.Arrays;
 
