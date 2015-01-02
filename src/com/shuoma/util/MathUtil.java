@@ -2,6 +2,12 @@ package com.shuoma.util;
 
 public class MathUtil {
 
+  public static long factorial (int n) {
+    long res = 1;
+    for (; n > 1; n--) res *= n;
+    return res;
+  }
+
   public static long greatestCommonDivisor(long a, long b) {
     return b == 0 ? a : greatestCommonDivisor(b, a%b);
   }

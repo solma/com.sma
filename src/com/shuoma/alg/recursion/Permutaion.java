@@ -1,15 +1,21 @@
 package com.shuoma.alg.recursion;
 
 import com.shuoma.util.ArrayUtil;
+import com.shuoma.util.MathUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Permutaion {
 
   public static void main(String[] args) {
-    String curPermutation = "dcba";
-    System.out.println(nextPermutation(curPermutation));
-    System.out.println(prevPermutation(curPermutation));
+    // String curPermutation = "dcba";
+    // System.out.println(nextPermutation(curPermutation));
+    // System.out.println(prevPermutation(curPermutation));
+    //System.out.println(iThPermutation("abcd", 10));
+    System.out.println(nearestPermutation("1234", 1784));
   }
 
   public static ArrayList<String> allPermutations(String input) {
@@ -47,6 +53,61 @@ public class Permutaion {
       perm.deleteCharAt(perm.length() - 1);
     }
     return ret;
+  }
+
+  // ith factorial numbering system (0-based counting)
+  public static String iThPermutation(String input, long ith) {
+    int n = input.length();
+    Map<Integer, Character> map = new HashMap<>();
+    for (int i = 0; i < n; i++)
+      map.put(i + 1, input.charAt(i));
+
+    int[] inversion = new int[n];
+    for (int div = 1; ith > 0; div++) {
+      inversion[div - 1] += ith % div;
+      ith /= div;
+    }
+    //System.out.println("inversion = " + Arrays.toString(inversion));
+    int[] res = recover(ArrayUtil.reverse(inversion));
+    //System.out.println("res = " + Arrays.toString(res));
+
+    StringBuilder sb = new StringBuilder();
+    for (int i : res) sb.append(map.get(i));
+    return sb.toString();
+  }
+
+  // find the permutation of input that is closes to target
+  public static long nearestPermutation(String input, int target) {
+    char[] nums = input.toCharArray();
+    Arrays.sort(nums);
+
+    int smallest = Integer.parseInt(new String(nums));
+    if (target <= smallest) return smallest;
+    int largest = Integer.parseInt(new String(ArrayUtil.reverse(nums)));
+    if (target >= largest) return largest;
+
+    // between smallest and largest, binary search
+    long l = 0, r = MathUtil.factorial(nums.length) - 1;
+    long curPermutation, cloestPermutation = smallest, diff = target;
+    while (l <= r) {
+      long m = l + ((r - l) >> 1);
+      curPermutation = Integer.parseInt(iThPermutation(input, m));
+      System.out.println("l:" + l + " m:" + m + " r:" + r);
+      System.out.println(" permutation:" + curPermutation);
+      if (curPermutation == target) {
+        return curPermutation;
+      } else {
+        if (curPermutation < target) l = m + 1;
+        else r = m - 1;
+        long curDiff = Math.abs(curPermutation - target);
+        if (curDiff < diff) {
+          diff = curDiff;
+          cloestPermutation = curPermutation;
+        }
+      }
+      if (m == l && m == r) break;
+    }
+    return cloestPermutation;
   }
 
   public static String nextPermutation(String curPermutation) {
@@ -101,5 +162,79 @@ public class Permutaion {
       ArrayUtil.swap(cur, i++, j--);
     }
     return new String(cur);
+  }
+
+
+  // codes for restore inversion to array
+  public static class BSTNode {
+    int value;
+    int size;
+    BSTNode left, right;
+
+    public BSTNode(int value) {
+      this.value = value;
+      this.size = 1;
+    }
+  }
+
+  static BSTNode create(int N) {
+    return create(1, N);
+  }
+
+  static BSTNode create(int low, int high) {
+    if (low > high) return null;
+    int mid = low + (high - low) / 2;
+    BSTNode node = new BSTNode(mid);
+    node.size = high - low + 1;
+    node.left = create(low, mid - 1);
+    node.right = create(mid + 1, high);
+    return node;
+  }
+
+  static BSTNode select(BSTNode node, int K) {
+    if (node == null) return null;
+    int leftSize = node.left == null ? 0 : node.left.size;
+    if (K == leftSize + 1)
+      return node;
+    else if (K <= leftSize)
+      return select(node.left, K);
+    else
+      return select(node.right, K - leftSize - 1);
+  }
+
+  private static BSTNode delete(BSTNode node, BSTNode target) {
+    if (node == null) return null;
+    if (target.value < node.value)
+      node.left = delete(node.left, target);
+    else if (target.value > node.value)
+      node.right = delete(node.right, target);
+    else {
+      if (node.left == null) return node.right;
+      if (node.right == null) return node.left;
+      BSTNode successor = node.right;
+      BSTNode parent = node;
+      while (successor.left != null) {
+        parent = successor;
+        successor = successor.left;
+      }
+      node.value = successor.value;
+      if (parent.left == successor)
+        parent.left = successor.right;
+      else
+        parent.right = successor.right;
+    }
+    node.size--;
+    return node;
+  }
+
+  public static int[] recover(int[] a) {
+    BSTNode root = create(a.length);
+    int[] b = new int[a.length];
+    for (int i = 0; i < a.length; i++) {
+      BSTNode node = select(root, a[i] + 1);
+      b[i] = node.value;
+      root = delete(root, node);
+    }
+    return b;
   }
 }

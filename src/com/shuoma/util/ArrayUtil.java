@@ -196,11 +196,12 @@ public class ArrayUtil {
     return a;
   }
 
-  public static void reverse(char[] array) {
+  public static char[] reverse(char[] array) {
     int l = 0, r = array.length - 1;
     while (l < r) {
       swap(array, l++, r--);
     }
+    return array;
   }
 
   public static int[] reverse(int[] array) {
