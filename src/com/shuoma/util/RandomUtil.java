@@ -1,5 +1,6 @@
 package com.shuoma.util;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class RandomUtil {
@@ -31,6 +32,15 @@ public class RandomUtil {
       }
     }
     return ret;
+  }
+
+  public static int[] generateRandomRotateArray() {
+    int[] array = RandomUtil.genRandomArrayWithMinSize(2);
+    Arrays.sort(array);
+    int n = array.length;
+    int rotatedIdx = RandomUtil.r.nextInt(n);
+    // System.out.println("rotated idx="+(n-rotatedIdx)%n );
+    return RandomUtil.leftShift(array, rotatedIdx);
   }
 
   public static int[] genRandomArrayWithMinSize(int minSize) {

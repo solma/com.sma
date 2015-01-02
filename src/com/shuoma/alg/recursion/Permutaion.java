@@ -92,8 +92,8 @@ public class Permutaion {
     while (l <= r) {
       long m = l + ((r - l) >> 1);
       curPermutation = Integer.parseInt(iThPermutation(input, m));
-      System.out.println("l:" + l + " m:" + m + " r:" + r);
-      System.out.println(" permutation:" + curPermutation);
+//      System.out.println("l:" + l + " m:" + m + " r:" + r);
+//      System.out.println(" permutation:" + curPermutation);
       if (curPermutation == target) {
         return curPermutation;
       } else {
