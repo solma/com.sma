@@ -44,8 +44,8 @@ public class Sorting {
     SortingAlg[] algs = {SortingAlg.RADIXSORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
-      for (int i = 0; i < 1; i++) {
-        int[] a = RandomUtil.genRandomArrayWithMinSize(10);
+      for (int i = 0; i < 10000; i++) {
+        int[] a = RandomUtil.genRandomArrayWithMinSize(100);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {
           case BUBBLESORT:
@@ -99,19 +99,18 @@ public class Sorting {
   }
 
   public static int[] countSort(int[] a) {
-    // not in place
-    int[] b = new int[a.length];
     // add RandomUtil.MAX_RANDOM_VALUE to offset negative numbers
+    for (int i = 0; i < a.length; i++) a[i] += RandomUtil.MAX_RANDOM_VALUE;
+    // not in place
     int[] c = new int[RandomUtil.MAX_RANDOM_VALUE * 2 + 1];
     Arrays.fill(c, 0);
-    int i;
-    for (i = 0; i < a.length; i++)
-      c[a[i] + RandomUtil.MAX_RANDOM_VALUE]++;
-    for (i = 1; i < c.length; i++)
-      c[i] += c[i - 1];
-    for (i = 0; i < a.length; i++) {
-      b[c[a[i] + RandomUtil.MAX_RANDOM_VALUE] - 1] = a[i];
-      c[a[i] + RandomUtil.MAX_RANDOM_VALUE]--;
+    for (int i = 0; i < a.length; i++) c[a[i]]++;
+    for (int i = 1; i < c.length; i++) c[i] += c[i - 1];
+
+    int[] b = new int[a.length];
+    for (int i = 0; i < a.length; i++) {
+      b[c[a[i]] - 1] = a[i] - RandomUtil.MAX_RANDOM_VALUE;
+      c[a[i]]--;
     }
     return b;
   }
@@ -226,7 +225,6 @@ public class Sorting {
 
   public static int[] radixSort(int[] a) {
     if (a.length == 0) return null;
-
     List<Integer>[] lists = new LinkedList[3];
     for(int i = 0; i<lists.length; i++) lists[i] = new LinkedList<>();
     for (int i : a){
@@ -259,7 +257,7 @@ public class Sorting {
             int bucket = (a[j] % mod) / dev;
             counter[bucket].add(a[j]);
         }
-        System.out.println(Arrays.toString(counter));
+        //System.out.println(Arrays.toString(counter));
 
         int pos = 0;
         for(int j = 0; j < counter.length; j++) {
