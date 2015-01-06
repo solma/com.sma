@@ -1,19 +1,33 @@
-package com.shuoma.alg.string;
+package com.shuoma.alg.number;
 
 import com.shuoma.util.MathUtil;
 
 import java.util.Stack;
 
-public class ArithmeticExpressionEvaluation {
+public class Calculator {
 
   public static void main(String[] args) {
-    new ArithmeticExpressionEvaluation().main("(3*2)-(5/2)");
+    new Calculator().main("(3*2)-(5/2)");
   }
 
   public void main(String expression) {
     String rpn = toRPN(expression);
     System.out.println(rpn);
     System.out.println(evaluate(rpn));
+  }
+
+  public static double evaluate(String rpnExpr) {
+    Stack<Double> numStck = new Stack<Double>();
+    for (int i = 0; i < rpnExpr.length(); i++) {
+      char c = rpnExpr.charAt(i);
+      if (MathUtil.isNumber(c)) {
+        numStck.push(c - '0' + .0);
+      } else {
+        Double b = numStck.pop(), a = numStck.pop();
+        numStck.push(MathUtil.operator(a, b, c));
+      }
+    }
+    return numStck.pop();
   }
 
   public String toRPN(String expression) {
@@ -39,24 +53,6 @@ public class ArithmeticExpressionEvaluation {
 
     while (!operatorStck.isEmpty())
       output.append(operatorStck.pop());
-
     return output.toString();
   }
-
-  public static double evaluate(String rpnExpr) {
-    Stack<Double> numStck = new Stack<Double>();
-    for (int i = 0; i < rpnExpr.length(); i++) {
-      char c = rpnExpr.charAt(i);
-      if (MathUtil.isNumber(c)) {
-        numStck.push(c - '0' + .0);
-      } else {
-        Double b = numStck.pop(), a = numStck.pop();
-        numStck.push(MathUtil.operator(a, b, c));
-      }
-    }
-    return numStck.pop();
-  }
-
-
-
 }

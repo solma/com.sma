@@ -13,7 +13,6 @@ public class MathUtil {
   }
 
   /**
-   *
    * @param newChar
    * @param stackTop
    * @return newChar >= stackTop

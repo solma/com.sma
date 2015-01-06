@@ -7,10 +7,11 @@ import java.util.Arrays;
 /*
  * reference: http://www.mitbbs.com/article_t/JobHunting/32719993.html
  *
- * an array consisting of 0's and 1's. Reverse at most one element (0->1 or 1->0) to maximize the
- * length of a homogeneous subarray (a homogeneous array is an array of all 0's or all 1's). Return
- * the length. e.g. [1 0 1]，reverse 0，return 3 [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return
- * 4.
+ * Given an array consisting of 0's and 1's. Reverse at most one element (0->1 or 1->0) to maximize
+ * the length of a homogeneous subarray (a homogeneous array is an array of all 0's or all 1's).
+ * Return the length. e.g.
+ * given [1 0 1]，reverse 0，return 3
+ * given [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return 4.
  */
 
 public class LongestContinuousSubarrayWithChange {
@@ -34,7 +35,7 @@ public class LongestContinuousSubarrayWithChange {
 
   /**
    * try to reverse 1 and 0 respectively
-   * keep two varibles to reverse one bit
+   * use two variables when reverse for either case
    */
   static int maxConsecutive(int[] ary) {
     int max = getLongestHomogenousSubarray(ary); // no change
