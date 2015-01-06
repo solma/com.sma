@@ -85,32 +85,35 @@ public class InPlaceRearrangeViaShadowIndex {
       }
       ArrayUtil.swap(num, i, pos[i]);
       ArrayUtil.swap(pos, i, pos[i]);
+      System.out.println(i + " num = " + Arrays.toString(num) + " pos = " + Arrays.toString(pos));
     }
   }
 
   // place arr[i] at index[i]
   public static void main(String[] args) {
 
-    for(int j = 0; j < 10; j++) {
+    for(int j = 0; j < 1; j++) {
       int size = RandomUtil.r.nextInt(5) + 5;
-      int[] arr = RandomUtil.genRandomArray(size, 10, false, false);
-      int[] index = ArrayUtil.getNaturalArray(size);
-      RandomUtil.shuffle(index);
+      //int[] arr = RandomUtil.genRandomArray(size, 10, false, false);
+      //int[] index = ArrayUtil.getNaturalArray(size);
+      //RandomUtil.shuffle(index);
+      int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
+      int[] index = {0, 2, 4, 6, 1, 3, 5, 7};
 
       int[][] cpy = new int[3][];
       for(int i = 0; i < cpy.length; i++)
         cpy[i] = Arrays.copyOf(arr, arr.length);
 
-      permuteConstantSpace(index, cpy[0]);
-      permuteLinearSpace(index, cpy[1]);
-      arrange(index, cpy[2]);
-      if (! (ArrayUtil.equals(cpy[0], cpy[1]) && ArrayUtil.equals(cpy[0], cpy[2]))) {
+      permuteConstantSpace(Arrays.copyOf(index, index.length), cpy[0]);
+      permuteLinearSpace(Arrays.copyOf(index, index.length), cpy[1]);
+      arrange(Arrays.copyOf(index, index.length), cpy[2]);
+      //if (! (ArrayUtil.equals(cpy[0], cpy[1]) && ArrayUtil.equals(cpy[0], cpy[2]))) {
         System.out.println(" array: " + Arrays.toString(arr));
         System.out.println(" index: " + Arrays.toString(index));
         System.out.println(" cpy[0]: " + Arrays.toString(cpy[0]));
         System.out.println(" cpy[1]: " + Arrays.toString(cpy[1]));
         System.out.println(" cpy[2]: " + Arrays.toString(cpy[2]));
-      }
+      //}
     }
   }
 }
