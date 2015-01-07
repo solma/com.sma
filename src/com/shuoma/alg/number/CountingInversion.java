@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 /*
  *  Having a int array A[], generate another int array B[], B[i] is the count of elements
  *  in A[i+1] ~ A[n-1] which is smaller than A[i]. Time complexity: O(nlgn)
