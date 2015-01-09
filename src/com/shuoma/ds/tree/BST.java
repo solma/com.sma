@@ -21,8 +21,10 @@ public class BST {
      *                1    7   25
      *                    / \
      *                   6   20
-     *                    \
-     *                    13
+     *                      /
+     *                     10
+     *                       \
+     *                       13
      */
 
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
@@ -34,6 +36,7 @@ public class BST {
     bst.delete("7");
     bst.printTreeInLevels();
     bst.printPrettyTree();
+    bst.printTreeInorderNonRecursiveWithoutStack();
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
 
     if (true) return;
@@ -450,6 +453,27 @@ public class BST {
         }
       }
     }
+
+    public void printTreeInorderNonRecursiveWithoutStack() {
+      printTreeInorderNonRecursiveWithoutStack(root.left, root);
+    }
+
+    private void printTreeInorderNonRecursiveWithoutStack (BSTNode current, BSTNode parent) {
+      while (current != null) {
+          if (parent != null) {
+              parent.left = current.right;
+              current.right = parent;
+          }
+          if (current.left != null) {
+              parent = current;
+              current = current.left;
+          } else {
+              System.out.println(current.value);
+              current = current.right;
+              parent = null;
+          }
+      }
+  }
 
     private void printTreePostorderNonRecursive(BSTNode cur) {
       Stack<BSTNode> stck = new Stack<BSTNode>();

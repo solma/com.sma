@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Permutaion {
+public class Permutation {
 
   public static void main(String[] args) {
     // String curPermutation = "dcba";
