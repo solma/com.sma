@@ -153,14 +153,19 @@ public class BST {
         if (cur.left == null) return cur.right;
         if (cur.right == null) return cur.left;
         // get Min of right tree
-        BSTNode successor = cur.right;
-        while (successor.left != null)
+        BSTNode successor = cur.right, parent = cur;
+        while (successor.left != null) {
+          parent = successor;
           successor = successor.left;
+        }
         // replace cur by successor
         cur.value = successor.value;
         cur.id = successor.id;
         // remove successor from right tree
-        cur.right = delete(cur.right, successor.id);
+        if (parent.left == successor) parent.left = successor.right;
+        else parent.right = successor.right;
+        // alternative approach :
+        //cur.right = delete(cur.right, successor.id);
       } else {
         if (compare > 0)
           cur.right = delete(cur.right, id);

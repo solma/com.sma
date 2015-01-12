@@ -108,7 +108,7 @@ public class Searching {
         if (a[mid] < key) low = mid + 1;
         else high = mid - 1;
       }
-      if (low == mid && high == mid) break;
+      // if (low == mid && high == mid) break;
     }
     return -1;
   }
