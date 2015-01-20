@@ -67,8 +67,8 @@ public class Segment {
     // It falls where t = [(p-s) . (e-s)] / l2
     double tVector = Point.dot(Point.minus(p, s), Point.minus(e, s)) / l2;
     System.out.println("t = " + tVector);
-    if (tVector < 0.0) return Point.distance(p, s);       // Beyond the 'v' end of the segment
-    else if (tVector > 1.0) return Point.distance(p, e);  // Beyond the 'w' end of the segment
+    if (tVector < 0.0) return Point.distance(p, s);       // Beyond the 's' end of the segment
+    else if (tVector > 1.0) return Point.distance(p, e);  // Beyond the 'e' end of the segment
     Point projection = Point.add(s, Point.multiply(tVector, Point.minus(e, s)));  // Projection falls on the segment
     return Point.distance(p, projection);
   }

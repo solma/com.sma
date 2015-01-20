@@ -1,8 +1,9 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg.dp;
 
-public class MatrixOrderOptimization {
+
+public class MatrixMultiplication {
   public static void main(String[] args) {
-    new MatrixOrderOptimization().main();
+    new MatrixMultiplication().main();
   }
 
   public void main() {
@@ -16,6 +17,8 @@ public class MatrixOrderOptimization {
     }
     printOptimalParenthesizations(partition, 0, partition.length - 1, expr.toString());
     System.out.println(expr);
+
+    System.out.println(count(p));
   }
 
   protected int[][] cost;
@@ -46,7 +49,6 @@ public class MatrixOrderOptimization {
     }
   }
 
-
   void printOptimalParenthesizations(int[][] partition, int i, int j, String expr) {
     if (i != j) {
       int split = partition[i][j];
@@ -64,5 +66,66 @@ public class MatrixOrderOptimization {
       printOptimalParenthesizations(partition, i, split, expr);
       printOptimalParenthesizations(partition, split + 1, j, expr);
     }
+  }
+
+
+
+
+  static class Result {
+    int cost;
+    String combination;
+    @Override
+    public String toString() {
+      return combination;
+    }
+  }
+
+  public static Result count(int[] dim) {
+    int N = dim.length;
+    int[][] opt = new int[N][N];
+    int[][] sol = new int[N][N];
+
+    for (int i = 1; i < N; i++)
+      opt[i][i] = 0;
+
+    for (int l = 2; l < N; l++) { // l is the length of matrix chain
+      for (int i = 1; i < N - l + 1; i++) { // i is the start of the chain
+        int j = i + l - 1; // j is the end of the chain
+        opt[i][j] = Integer.MAX_VALUE;
+        for (int k = i; k < j; k++) {
+          int ten = opt[i][k] + opt[k + 1][j] + dim[i - 1] * dim[k] * dim[j];
+          if (ten < opt[i][j]) {
+            opt[i][j] = ten;
+            sol[i][j] = k;
+          }
+        }
+      }
+    }
+
+    Result result = new Result();
+    result.cost = opt[1][N - 1];
+    result.combination = buildCombination(N, sol);
+    return result;
+  }
+
+  private static String buildCombination(int N, int[][] sol) {
+    StringBuilder builder = new StringBuilder();
+    for (int i = 1; i < N; i++) {
+      builder.append((char) ('A' + (i - 1)));
+    }
+    return addBracket(builder.toString(), 1, N - 1, sol[1][N - 1], sol);
+  }
+
+  private static String addBracket(String str, int i, int j, int k, int[][] sol) {
+    if (str.length() <= 2) return str;
+    String a = str.substring(i - 1, k);
+    String b = str.substring(k, j);
+    StringBuilder builder = new StringBuilder();
+    builder.append("(");
+    builder.append(addBracket(a, i, k, sol[i][k], sol));
+    builder.append(")(");
+    builder.append(addBracket(b, 1, j - k, sol[k][j], sol));
+    builder.append(")");
+    return builder.toString();
   }
 }

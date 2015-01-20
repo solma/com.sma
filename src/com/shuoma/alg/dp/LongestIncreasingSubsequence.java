@@ -1,11 +1,15 @@
 package com.shuoma.alg.dp;
-// source: 编程之美
+
 // http://blog.csdn.net/liangbopirates/article/details/9421399
+import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class LongestIncreasingSubsequence {
   public static void main(String[] args) {
@@ -17,12 +21,19 @@ public class LongestIncreasingSubsequence {
       int[] num = RandomUtil.genRandomArray(10, 100, false, false);
       // {77, 97, 30, 63, 89, 75, 99, 34, 43, 80, 46, 37, 64, 31, 23, 12}
       // num=new int[]{77, 97, 30, 63, 89, 75, 99, 34, 43, 80, 46, 37, 64, 31, 23, 12};
-      System.out.println("array=" + Arrays.toString(num));
-      int[] a = queueBased(num);
+      // System.out.println("array=" + Arrays.toString(num));
+      int[] a = queueBasedLengthOnly(num);
       int[] b = dp(num);
       int[] c = dpWithBinarySearch(num);
+      int[] d = patienceSortingMethod(num);
+      if (!ArrayUtil.equals(b, d)) {
+        System.out.println("array = " + Arrays.toString(num));
+        System.out.println("b = " + Arrays.toString(b));
+        System.out.println("c = " + Arrays.toString(c));
+        System.out.println("d = " + Arrays.toString(d));
+      }
       if (a == null || b == null || a.length != b.length || a.length != c.length) {
-        System.out.println(Arrays.toString(num));
+        System.out.println("array = " + Arrays.toString(num));
         System.out.println(a.length + "  " + Arrays.toString(a));
         System.out.println(b.length + "  " + Arrays.toString(b));
         System.out.println(c.length + " " + Arrays.toString(c));
@@ -30,8 +41,43 @@ public class LongestIncreasingSubsequence {
     }
   }
 
+  int[] patienceSortingMethod(int[] num) {
+    List<Node> pileTops = new LinkedList<>();
+    for (int i : num) {
+      Node n = new Node(i);
+      int insertionIdx = Collections.binarySearch(pileTops, n);
+      if (insertionIdx < 0) insertionIdx = ~insertionIdx;
+      if (insertionIdx > 0) n.prev = pileTops.get(insertionIdx - 1);
+      if (insertionIdx < pileTops.size())
+        pileTops.set(insertionIdx, n);
+      else
+        pileTops.add(n);
+    }
+
+    List<Integer> res = new LinkedList<>();
+    for (Node cur = pileTops.get(pileTops.size() - 1); cur != null; cur = cur.prev) {
+      res.add(0, cur.val);
+    }
+    return ArrayUtil.integerListToIntArray(res);
+  }
+
+  class Node implements Comparable<Node> {
+    int val;
+    Node prev;
+
+    public Node(int value) {
+      this.val = value;
+    }
+
+    @Override
+    public int compareTo(Node o) {
+      return val - o.val;
+    }
+  }
+
+
   // this can only be used to get the length but not the actual sequence
-  int[] queueBased(int[] num) {
+  int[] queueBasedLengthOnly(int[] num) {
     int n = num.length;
     if (n == 0) return null;
     ArrayList<Integer> queue = new ArrayList<Integer>();
@@ -58,24 +104,6 @@ public class LongestIncreasingSubsequence {
       ret[i] = queue.get(i);
     return ret;
   }
-
-
-  class LIS {
-    int len;
-    int min;
-    ArrayList<ArrayList<Integer>> paths;
-
-    public LIS(int length, int minEndValue) {
-      this.len = length;
-      this.min = minEndValue;
-      paths = new ArrayList<ArrayList<Integer>>();
-    }
-
-    public void add(ArrayList<Integer> path) {
-      paths.add(path);
-    }
-  }
-
 
   int[] dpWithBinarySearch(int[] nums) {
 
@@ -111,10 +139,10 @@ public class LongestIncreasingSubsequence {
         }
         curLIS.min = nums[i];
       }
-      System.out.println("i=" + i + " l=" + l + ", maxLis=" + maxLis);
+      // System.out.println("i=" + i + " l=" + l + ", maxLis=" + maxLis);
       for (Integer len : lisOfAllLength.keySet()) {
-        System.out.println("len=" + len + " :" + "  min=" + lisOfAllLength.get(len).min + "   lis="
-            + lisOfAllLength.get(len).paths);
+        // System.out.println("len=" + len + " :" + "  min=" + lisOfAllLength.get(len).min +
+        // "   lis=" + lisOfAllLength.get(len).paths);
       }
     }
 
@@ -126,51 +154,50 @@ public class LongestIncreasingSubsequence {
     return ret;
   }
 
-  int[] dp(int[] nums) {
-    // as we discussed in slides, in order to use DP in this example, we need
-    // 1. a size array to keep track of longest LIS ending with current position
-    // 2. an accordingly string array to keep track of the path for printing out
-    String[] paths = new String[nums.length];
-    int[] sizes = new int[nums.length];
+  class LIS {
+    int len;
+    int min;
+    ArrayList<ArrayList<Integer>> paths;
 
-    // firstly we assign the initial values to each path/size, by setting size
-    // to 1 and path equals the value (that means initially each path starting/ending
-    // with its current position
-    for (int i = 0; i < nums.length; i++) {
-      sizes[i] = 1;
-      paths[i] = nums[i] + " ";// we add a space for separation
+    public LIS(int length, int minEndValue) {
+      this.len = length;
+      this.min = minEndValue;
+      paths = new ArrayList<ArrayList<Integer>>();
     }
 
-    // before we start the loop,
-    // we define a support variable called maxLength to keep track
-    int maxLength = 1;// notice it is 1, but it really does not matter if sets to 0
+    public void add(ArrayList<Integer> path) {
+      paths.add(path);
+    }
+  }
 
-    for (int i = 1; i < nums.length; i++) {
-      // notice we start from 2nd postion, 1st position is no point
-      for (int j = 0; j < i; j++) { // the inner loop is to check all previous items!
-        // now it's the key step,
-        // when do we append our current index to the previous subsequence?
-        // it has to meet 2 requirements,
-        // current>previous ending and size is increasing!
-        if (nums[i] > nums[j] && sizes[i] < sizes[j] + 1) { // notice plus one!!
-                                                            // if so, we need update sizes and path
-          sizes[i] = sizes[j] + 1;
-          paths[i] = paths[j] + nums[i] + " ";// append current values to end!
-          // also update the maxLength if necessary
+  int[] dp(int[] values) {
+    int max = 0;
+    int[] optimal = new int[values.length];
+    int[] seq = new int[values.length];
+
+    for(int i = 0; i < optimal.length; i ++) {
+        optimal[i] = 1;
+        seq[i] = i;
+    }
+
+    for(int i = 1; i < optimal.length; i ++) {
+        for(int j = 0; j < i; j ++ ) {
+            if(values[j] < values[i])
+                if(optimal[j] + 1 > optimal[i]) {
+                    optimal[i] = optimal[j] + 1;
+                    seq[i] = j;
+                    if(optimal[i] > optimal[max]) max = i;
+                }
         }
-      }
-      if (maxLength < sizes[i]) maxLength = sizes[i];
     }
-    for (int i = 1; i < nums.length; i++) {
-      if (sizes[i] == maxLength) {
-        String[] fields = paths[i].split(" ");
-        int[] ret = new int[fields.length];
-        for (int j = 0; j < ret.length; j++)
-          ret[j] = Integer.parseInt(fields[j]);
-        return ret;
-      }
+
+    //backtrace the result
+    int[] result = new int[optimal[max]];
+    int current = max;
+    for(int i = result.length - 1; i >= 0; i-- ){
+        result[i] = values[current];
+        current = seq[current];
     }
-    return null;
-    // return maxLength;
+    return result;
   }
 }
