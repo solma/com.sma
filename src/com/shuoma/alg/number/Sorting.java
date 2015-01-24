@@ -106,7 +106,6 @@ public class Sorting {
     Arrays.fill(c, 0);
     for (int i = 0; i < a.length; i++) c[a[i]]++;
     for (int i = 1; i < c.length; i++) c[i] += c[i - 1];
-
     int[] b = new int[a.length];
     for (int i = 0; i < a.length; i++) {
       b[c[a[i]] - 1] = a[i] - RandomUtil.MAX_RANDOM_VALUE;
@@ -278,6 +277,7 @@ public class Sorting {
     }
     return cnt;
   }
+
 
   public static class Pile<Integer> extends Stack<Integer> implements Comparable <Pile<Integer>> {
     @Override
