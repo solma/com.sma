@@ -78,15 +78,18 @@ public class InPlaceRearrangeViaShadowIndex {
   }
 
   static void arrange(int[] pos, int[] num) {
+    int swapCnt = 0;
     for (int i = 0; i < num.length; ) {
       if (pos[i] == i) {
         i++;
         continue;
       }
+      swapCnt++;
       ArrayUtil.swap(num, i, pos[i]);
       ArrayUtil.swap(pos, i, pos[i]);
-      System.out.println(i + " num = " + Arrays.toString(num) + " pos = " + Arrays.toString(pos));
+      //System.out.println(i + " num = " + Arrays.toString(num) + " pos = " + Arrays.toString(pos));
     }
+    System.out.println("swapCnt = " + swapCnt);
   }
 
   // place arr[i] at index[i]
@@ -98,7 +101,9 @@ public class InPlaceRearrangeViaShadowIndex {
       //int[] index = ArrayUtil.getNaturalArray(size);
       //RandomUtil.shuffle(index);
       int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
-      int[] index = {0, 2, 4, 6, 1, 3, 5, 7};
+      
+      //{0, 2, 4, 6, 1, 3, 5, 7}
+      int[] index = {1, 3, 5, 4, 6, 0, 7, 2};
 
       int[][] cpy = new int[3][];
       for(int i = 0; i < cpy.length; i++)
