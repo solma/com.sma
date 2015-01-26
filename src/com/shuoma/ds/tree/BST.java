@@ -1,6 +1,5 @@
 package com.shuoma.ds.tree;
 
-import com.shuoma.ds.graph.Node;
 import com.shuoma.ds.tree.BST.BinarySearchTree.Implementation;
 import com.shuoma.ds.tree.BST.BinarySearchTree.TraversalOrder;
 
@@ -701,7 +700,7 @@ public class BST {
           if (nextLvl == null) nextLvl = root.left != null ? root.left : root.right;
           int space = spaceAhead.get(root);
           row = rows.get(root);
-          putNumberInLine(prettyTree, row, space, root.value);
+          putNumberInLine(prettyTree, row, space, root.id);
           if (root.left != null) {
             if (prev != null) prev.next = root.left;
             prev = root.left;
@@ -836,47 +835,10 @@ public class BST {
       return head;
     }
 
-    private void putNumberInLine(char[][] prettyTree, int row, int startCol, double value) {
+    private void putNumberInLine(char[][] prettyTree, int row, int startCol, String value) {
       String v = String.valueOf(value);
       for (int j = 0; j < v.length(); j++)
-        prettyTree[row][j + startCol] = v.charAt(j);
-    }
-  }
-
-  public static class BSTNode extends Node {
-    public String id;
-    public double value;
-    public BSTNode left;
-    public BSTNode right;
-    BSTNode next;
-
-    public BSTNode(Node node) {
-      id = node.id;
-      value = node.value;
-    }
-
-    protected BSTNode(BSTNode copy) {
-      this.id = copy.id;
-      this.value = copy.value;
-      this.left = copy.left;
-      this.right = copy.right;
-    }
-
-    protected BSTNode(String key, int value) {
-      this.id = key;
-      this.value = value;
-      left = null;
-      right = null;
-      next = null;
-    }
-
-    public BSTNode(String key) {
-      this(key, Integer.parseInt(key));
-    }
-
-    @Override
-    public String toString() {
-      return "(" + id + "," + value + ")";
+        prettyTree[row][j + startCol] = value.charAt(0);
     }
   }
 

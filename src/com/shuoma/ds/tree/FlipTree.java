@@ -1,6 +1,5 @@
 package com.shuoma.ds.tree;
 
-import com.shuoma.ds.tree.BST.BSTNode;
 // ref:http://www.mitbbs.com/article_t/JobHunting/32695977.html
 
 // Given a binary tree where all the right nodes are either empty or leaf
