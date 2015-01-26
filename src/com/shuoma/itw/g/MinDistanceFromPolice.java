@@ -19,7 +19,7 @@ public class MinDistanceFromPolice {
         new MinDistanceFromPolice().minDis(roads);
     }
 
-    class Cell implements Comparable<Cell>{
+    class Cell{
         int i;
         int j;  
         int dis;
@@ -28,11 +28,6 @@ public class MinDistanceFromPolice {
             this.i = i;
             this.j = j;
             this.dis = dis;
-        }
-        
-        @Override
-        public int compareTo(Cell o) {
-            return dis - o.dis;
         }
         
         @Override
