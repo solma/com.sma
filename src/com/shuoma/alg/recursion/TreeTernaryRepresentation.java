@@ -1,4 +1,4 @@
-package com.shuoma.itw.g;
+package com.shuoma.alg.recursion;
 
 import com.shuoma.ds.tree.BST;
 import com.shuoma.ds.tree.BSTNode;

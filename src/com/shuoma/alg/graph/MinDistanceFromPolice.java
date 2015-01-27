@@ -1,4 +1,4 @@
-package com.shuoma.itw.g;
+package com.shuoma.alg.graph;
 
 import java.util.Arrays;
 import java.util.LinkedList;
