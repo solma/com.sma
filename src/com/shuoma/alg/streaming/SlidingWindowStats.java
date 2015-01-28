@@ -1,29 +1,12 @@
 package com.shuoma.alg.streaming;
 
-import com.shuoma.util.RandomUtil;
-
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Deque;
 
 /**
  * Given a stream, compute the stats, e.g. average, min of a sliding window.
  */
 public class SlidingWindowStats {
-  public static void main(String[] args) {
-    int length = 100, K = 3;
-    int[] ary;
-
-    ary = RandomUtil.genRandomArray(length, 10, true, false);
-    //ary = new int[] {1, 4, 8, 9, 10, 5, 5, 10, 8, 5};
-
-    SlidingWindowStats ins = new SlidingWindowStats(K, ary);
-
-    System.out.println(Arrays.toString(ary));
-    //    System.out.println("\t" + Arrays.toString(ins.average()));
-    System.out.println("\t" + Arrays.toString(ins.max()));
-  }
-
   /**
    * Window size.
    */
