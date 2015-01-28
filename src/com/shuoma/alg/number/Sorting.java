@@ -278,7 +278,6 @@ public class Sorting {
     return cnt;
   }
 
-
   public static class Pile<Integer> extends Stack<Integer> implements Comparable <Pile<Integer>> {
     @Override
     public int compareTo(Pile<Integer> o) {
