@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * Given n sorted list, pick n numbers one number from each list
  * such that the difference between the largest and smallest number is minimized.
  */
-public class CloestNumbersFromDifferentLists {
+public class ClosestNumbersFromDifferentLists {
   public static void main(String[] args) {
     // sorted lists
     int[][] lists = { {3, 5, 8, 10}, {2, 4, 9}, {5, 6, 7, 11}};
