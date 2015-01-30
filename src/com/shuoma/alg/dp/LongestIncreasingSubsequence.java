@@ -26,7 +26,7 @@ public class LongestIncreasingSubsequence {
       int[] b = dp(num);
       int[] c = dpWithBinarySearch(num);
       int[] d = patienceSortingMethod(num);
-      if (!ArrayUtil.equals(b, d)) {
+      if (!Arrays.equals(b, d)) {
         System.out.println("array = " + Arrays.toString(num));
         System.out.println("b = " + Arrays.toString(b));
         System.out.println("c = " + Arrays.toString(c));

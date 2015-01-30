@@ -20,7 +20,7 @@ public class CountingInversion {
       int[][] res = new int[2][arr.length];
       res[0] = countInversion(arr);
       res[1] = countInversionBase(arr);
-      if (!ArrayUtil.equals(res[0], res[1])) {
+      if (!Arrays.equals(res[0], res[1])) {
         System.out.println(Arrays.toString(arr));
         System.out.println(Arrays.toString(res[0]));
         System.out.println(Arrays.toString(res[1]));

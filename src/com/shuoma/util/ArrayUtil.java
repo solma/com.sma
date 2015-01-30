@@ -115,17 +115,6 @@ public class ArrayUtil {
     return ret;
   }
 
-  public static boolean equals(int[] a, int[] b) {
-    if (a == null && b == null) return true;
-    if (a == null || b == null) return false;
-    int la = a.length, lb = b.length;
-    if (la != lb) return false;
-    for (int i = 0; i < la; i++) {
-      if (a[i] != b[i]) return false;
-    }
-    return true;
-  }
-
   public static double[] floatToDoubleArray(float[] arr) {
     if (arr == null) return null;
     int n = arr.length;

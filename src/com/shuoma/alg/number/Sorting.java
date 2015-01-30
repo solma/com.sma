@@ -77,7 +77,7 @@ public class Sorting {
         }
         int[] sortBase = Arrays.copyOf(a, a.length);
         Arrays.sort(sortBase);
-        if (!ArrayUtil.equals(sortBase, cpy)) {
+        if (!Arrays.equals(sortBase, cpy)) {
           System.out.println(alg);
           System.out.println(Arrays.toString(a));
           System.out.println(Arrays.toString(cpy));
@@ -278,10 +278,12 @@ public class Sorting {
     return cnt;
   }
 
-  public static class Pile<Integer> extends Stack<Integer> implements Comparable <Pile<Integer>> {
+  private static class Pile<Integer> extends Stack<Integer> implements Comparable <Pile<Integer>> {
     @Override
     public int compareTo(Pile<Integer> o) {
       return ((int) peek()) - ((int) o.peek());
     }
   }
 }
+
+

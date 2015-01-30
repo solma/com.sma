@@ -30,10 +30,10 @@ public class NaturalNumberDecomposition {
 
   public ArrayList<ArrayList<Integer>> decomposeRecursion(int target, int s, ArrayList<Integer> cur, int lvl) {
 
-    ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
+    ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
 
     if (target == 0) {
-      ret.add(new ArrayList<Integer>(cur));
+      ret.add(new ArrayList<>(cur));
       return ret;
     }
 
@@ -50,21 +50,20 @@ public class NaturalNumberDecomposition {
     return ret;
   }
 
-
   class Decomposition {
     ArrayList<Integer> seq;
 
     public Decomposition(ArrayList<Integer> ori) {
-      seq = new ArrayList<Integer>(ori);
+      seq = new ArrayList<>(ori);
     }
 
     @Override
     public boolean equals(Object decomp) {
       if (decomp instanceof Decomposition) {
-        HashSet<Integer> thisSeq = new HashSet<Integer>();
+        HashSet<Integer> thisSeq = new HashSet<>();
         thisSeq.addAll(seq);
 
-        HashSet<Integer> other = new HashSet<Integer>();
+        HashSet<Integer> other = new HashSet<>();
         other.addAll(((Decomposition) decomp).seq);
 
         return thisSeq.equals(other);
@@ -88,16 +87,14 @@ public class NaturalNumberDecomposition {
     }
   }
 
-
-
   void decompose(int n, HashMap<Integer, HashSet<Decomposition>> allDecomposes) {
-    HashSet<Decomposition> setForN = new HashSet<Decomposition>();
+    HashSet<Decomposition> setForN = new HashSet<>();
 
     if (n > 0) {
       decompose(n - 1, allDecomposes);
       for (int i = 0; i <= n - 1; i++) {
         for (Decomposition decomp : allDecomposes.get(i)) {
-          ArrayList<Integer> cpy = new ArrayList<Integer>(decomp.seq);
+          ArrayList<Integer> cpy = new ArrayList<>(decomp.seq);
           cpy.add(n - i);
           setForN.add(new Decomposition(cpy));
         }
