@@ -10,16 +10,17 @@ public class SubarraySumTest extends TestCase {
 
   @Test
   public void testFindSum() throws Exception {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 100000; i++) {
       int K = RandomUtil.r.nextInt(10) + 10;
       int[] a;
       a = RandomUtil.genRandomArray(10, K / 2, true, false);
-      //a = new int[]{7, 10, 3, 7, 10, 3, 7, 4, 6, 8};
+      //a = new int[]{7, 2, 2, 5, 6, 9, 7, 1, 5, 2};
+      //K = 19;
       int[][] res = new int[2][];
       res[0] = findSumDummy(a, K);
       res[1] = (new SubarraySum(a, K)).findSum();
       if (res[0][2] != res[1][2]) {
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(a) + " " + K);
         System.out.println(Arrays.toString(res[0]) + " " + Arrays.toString(res[1]));
       }
     }

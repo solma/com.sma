@@ -28,7 +28,6 @@ public class SubarraySum {
     }
 
     int[] res = new int[3];
-
     int i;
     for (i = 0; i < a.length; i++) {
       sum += a[i];
@@ -42,38 +41,41 @@ public class SubarraySum {
       if (sum == K) {
         return res;
       }
-
       updateDiff(res);
     }
-
     updateDiff(res);
-    if (sum < K && K - sum < diff) {
-      cur[1] = i - 1;
-      res = Arrays.copyOf(cur, 3);
-      res[2] = K - sum;
-    }
     return res;
   }
 
-  void updateDiff(int[] res) {
-    diff = Math.min(Math.abs(sum - K), diff);
-
-    int removeFirst = Math.abs(sum - a[cur[0]] - K), removeLast = Math.abs(sum - a[cur[1]] - K);
-    if (removeFirst < diff && removeFirst <= removeLast) {
-      diff = removeFirst;
-      res[0]++;
-    } else {
-      if (removeLast < diff && removeLast < removeFirst) {
-        diff = removeLast;
+  int[] updateDiff(int[] res) {
+    int diffWithoutLast;
+    if (sum > K) {
+      diff = Math.min(sum - K, diff);
+      diffWithoutLast = K - (sum - a[cur[1]]);
+      if (diffWithoutLast < diff) {
+        diff = diffWithoutLast;
         res[1]--;
       }
-    }
-    res[2] = diff;
 
-    while (sum > K) {
-      sum -= a[cur[0]];
-      cur[0]++;
+      while (sum > K) {
+        sum -= a[cur[0]];
+        cur[0]++;
+      }
     }
+
+    if (K - sum < diff) {
+      diff = K - sum;
+      res[0] = cur[0];
+      res[1] = cur[1];
+    }
+    diffWithoutLast = sum + (cur[0] > 0 ? a[cur[0] - 1] : 0) - K;
+    if (diffWithoutLast > 0 && diffWithoutLast < diff) {
+      diff = diffWithoutLast;
+      res[0]--;
+    }
+
+    res[2] = diff;
     //System.out.println(Arrays.toString(res));
+    return res;
   }
 }
