@@ -16,7 +16,7 @@ public class Kruskal {
       System.out.println("**** Kruskal Building Illustration ****");
     }
     if (start == null) return null;
-    PriorityQueue<Node> pq = new PriorityQueue<Node>();
+    PriorityQueue<Node> pq = new PriorityQueue<>();
     start.dis = 0;
     start.status = Node.STATUS.VISITED;
     pq.add(start);

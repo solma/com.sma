@@ -24,7 +24,7 @@ public class MatrixGraph extends Graph {
 
     public MatrixNode(int row, int col, double v) {
       id = row + ID_DELIMETER + col;
-      adjacentList = new ArrayList<Edge>();
+      adjacentList = new ArrayList<>();
       value = v;
       dis = Double.MAX_VALUE;
       reset();
@@ -35,7 +35,7 @@ public class MatrixGraph extends Graph {
       status = STATUS.UNVISITED;
       for (Edge e : adjacentList)
         e.status = Edge.STATUS.UNVISITED;
-      prevs = new ArrayList<Node>();
+      prevs = new ArrayList<>();
       dis = Double.MAX_VALUE;
     }
 

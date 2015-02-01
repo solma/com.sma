@@ -4,19 +4,19 @@ package com.shuoma.alg.number;
 // kth number in the form of 3^i*5^j*7^k
 import java.util.ArrayList;
 
-public class KthNumber {
+public class KthMagicNumber {
 
   public static void main(String[] args) {
-    new KthNumber().kthNumber(20);
+    new KthMagicNumber().kthNumber(20);
   }
 
   // get kth number
   void kthNumber(int n) {
     if (n < 1) return;
     System.out.println(1);
-    ArrayList<Integer> q3 = new ArrayList<Integer>();
-    ArrayList<Integer> q5 = new ArrayList<Integer>();
-    ArrayList<Integer> q7 = new ArrayList<Integer>();
+    ArrayList<Integer> q3 = new ArrayList<>();
+    ArrayList<Integer> q5 = new ArrayList<>();
+    ArrayList<Integer> q7 = new ArrayList<>();
     q3.add(3);
     q5.add(5);
     q7.add(7);

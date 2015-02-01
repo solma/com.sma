@@ -3,11 +3,21 @@ package com.shuoma.ds.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Node implements Comparable<Node> {
-  public String id;
+public class Node implements Comparable<Node> {
   public ArrayList<Edge> adjacentList;
+  public String id;
+  /**
+   * Shortest path aglorithm
+   */
+  public double value;
+  public double dis;
+
 
   public Node() {}
+
+  public Node(int val) {
+    this.value = val;
+  }
 
   /**
    * Fields for traversal algorithm
@@ -26,11 +36,7 @@ public abstract class Node implements Comparable<Node> {
     prevs = new ArrayList<Node>();
   }
 
-  /**
-   * Shortest path aglorithm
-   */
-  public double value;
-  public double dis;
+
 
   @Override
   public int compareTo(Node other) {

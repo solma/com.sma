@@ -7,9 +7,9 @@ package com.shuoma.alg.number;
 
 import java.util.Arrays;
 
-public class ArrayStat {
+public class CountMissingAndRepeatingNumbers {
   public static void main(String[] args) {
-    new ArrayStat().stat(new int[] {1, 3, 3, 2});
+    new CountMissingAndRepeatingNumbers().stat(new int[] {1, 3, 3, 2});
   }
 
   public void stat(int[] A) {
