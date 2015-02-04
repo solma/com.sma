@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 public class ClosestNumbersFromDifferentLists {
   public static void main(String[] args) {
     // sorted lists
-    int[][] lists = { {3, 5, 8, 10}, {2, 4, 9}, {5, 6, 7, 11}};
+    int[][] lists = { {8, 9, 10}, {1, 2, 3}, {5, 6, 7, 11}};
     kWayMerging(lists);
   }
 
@@ -25,14 +25,14 @@ public class ClosestNumbersFromDifferentLists {
       sum += lists[i].length;
     }
 
-    int[] res = new int[sum];
+    int[] merged = new int[sum];
     int cnt = 0;
 
     int[] minWindow = new int[2];
     minWindow[1] = Integer.MAX_VALUE;
     boolean oobArray = false;
 
-    while (cnt < res.length) {
+    while (cnt < merged.length) {
       Element max = pq.max.peek();
       Element min = pq.poll(); // idx of list with smallest number
       System.out.println(cnt + " : " + max + " " + min);
@@ -42,7 +42,7 @@ public class ClosestNumbersFromDifferentLists {
       }
 
       int i = min.key;
-      res[cnt++] = lists[i][pos[i]];
+      merged[cnt++] = lists[i][pos[i]];
       pos[i]++;
       if (pos[i] < lists[i].length) {
         pq.add(new Element(i, lists[i][pos[i]]));
@@ -50,7 +50,7 @@ public class ClosestNumbersFromDifferentLists {
         oobArray = true;
       }
     }
-    System.out.println(Arrays.toString(res));
+    System.out.println(Arrays.toString(merged));
     System.out.println(Arrays.toString(minWindow));
   }
 }
