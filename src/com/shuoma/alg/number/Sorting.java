@@ -41,7 +41,7 @@ public class Sorting {
   }
 
   static void testSortAlgorithms() {
-    SortingAlg[] algs = {SortingAlg.RADIXSORT};
+    SortingAlg[] algs = {SortingAlg.QUICKSORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
       for (int i = 0; i < 10000; i++) {
@@ -173,9 +173,9 @@ public class Sorting {
   }
 
   public static int[] patienceSort(int[] a) {
-    List<Pile<Integer>> piles = new ArrayList<>();
+    List<Pile> piles = new ArrayList<>();
     for (int ele : a) {
-      Pile<Integer> newPile = new Pile();
+      Pile newPile = new Pile();
       newPile.push(ele);
       int insertionIdx = Collections.binarySearch(piles, newPile);
       if (insertionIdx < 0) insertionIdx = ~insertionIdx;
@@ -185,10 +185,10 @@ public class Sorting {
 
     //System.out.println(piles);
     // merge
-    PriorityQueue<Pile<Integer>> pq = new PriorityQueue<>(piles);
+    PriorityQueue<Pile> pq = new PriorityQueue<>(piles);
     for (int i = 0; i < a.length; i++) {
       // poll minPile then offer so the minPile will update
-      Pile<Integer> minPile = pq.poll();
+      Pile minPile = pq.poll();
       a[i] = minPile.pop();
       if (!minPile.isEmpty()) pq.offer(minPile);
     }
@@ -202,15 +202,12 @@ public class Sorting {
   static void quickSort(int[] a, int low, int high) {
     // in place
     if (low >= high) return; // tricky line
-    int cut = partition(a, low, high);
+    int cut = partition(a, low, high, a[low + (high - low) / 2]);
     quickSort(a, low, cut - 1);
     quickSort(a, cut + 1, high);
   }
 
-  public static int partition(int[] a, int low, int high) {
-    int med = low + (high - low) / 2;
-    int pivot = a[med];
-
+  public static int partition(int[] a, int low, int high, int pivot) {
     int smallerIdx = low, largerIdx = high + 1;
     for (int i = smallerIdx; i < largerIdx;) {
       if (a[i] < pivot) ArrayUtil.swap(a, i++, smallerIdx++);
@@ -278,12 +275,11 @@ public class Sorting {
     return cnt;
   }
 
-  private static class Pile<Integer> extends Stack<Integer> implements Comparable <Pile<Integer>> {
+  private static class Pile extends Stack<Integer> implements Comparable<Pile> {
     @Override
-    public int compareTo(Pile<Integer> o) {
-      return ((int) peek()) - ((int) o.peek());
+    public int compareTo(Pile o) {
+      return peek() - o.peek();
     }
   }
 }
-
 

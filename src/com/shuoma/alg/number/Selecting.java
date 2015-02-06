@@ -59,7 +59,7 @@ public class Selecting {
   void quickSelect(int[] a, int l, int r, int K) {
     // this is actually partial sorting
     if (l >= r) return;
-    int cut = Sorting.partition(a, l, r);
+    int cut = Sorting.partition(a, l, r, a[l + (r - l) / 2]);
     // System.out.println(cut);
     if (cut == K - 1) return;
     if (cut > K - 1)

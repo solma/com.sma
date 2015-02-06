@@ -38,9 +38,9 @@ public class StringMatching {
     switch (method) {
       case "kmp":
         next = new int[t.length()];
-        next[0] = -1;
         int i = 0,
         j = -1;
+        next[i] = j;
         while (i < t.length() - 1) {
           System.out.print("i=" + i + " " + t.charAt(i) + " j=" + j + " ");
           if (j >= 0) System.out.print(t.charAt(j));
