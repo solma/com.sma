@@ -178,6 +178,27 @@ public class ArrayUtil {
     return min;
   }
 
+  /**
+   * Given array a and an index, partial sort a such that all numbers
+   * smaller than a[pivotIdx] is on the left and all larger numbers on right.
+   * return the index of a[pivotIdx]
+   */
+  public static int partition(int[] a, int l, int r, int pivotIdx) {
+    int pivot = a[pivotIdx];
+    for (int i = l; i <= r; ) {
+      if (a[i] == pivot) {
+        i++;
+        continue;
+      }
+      if (a[i] < pivot) {
+        swap(a, i++, l++);
+        continue;
+      }
+      swap(a, i, r--);
+    }
+    return r;
+  }
+
   public static int[] negateSign(int[] a) {
     for (int i = 0; i < a.length; i++) {
       a[i] *= -1;

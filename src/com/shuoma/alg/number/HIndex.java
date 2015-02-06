@@ -12,13 +12,13 @@ import java.util.List;
 public class HIndex {
   public static void main(String[] args) {
     List<int[]> citations = new LinkedList<>();
-    citations.add(new int[] {3, 2, 5}); //2       //2 3 5   3 - 1 = 2
-    citations.add(new int[]{4,2,3,5}); //3     //2 3 4 5
-    citations.add(new int[] {5, 2, 4, 6}); //3     //2 3 4 5
+    citations.add(new int[] {3, 2, 5}); //2
+    citations.add(new int[]{4,2,3,5}); //3
+    citations.add(new int[] {5, 2, 4, 6}); //3
     citations.add(new int[] {8, 6, 7, 5}); //4
     citations.add(new int[] {9, 7, 6, 8}); //4
     citations.add(new int[] {10, 7, 9, 8}); //4
-    citations.add(new int[]{3, 13, 2, 3, 33}); //2
+    citations.add(new int[]{3, 13, 2, 3, 33}); //3
     for (int[] profile : citations) {
       System.out.println((new HIndex(profile)).hIndex());
     }
@@ -30,13 +30,17 @@ public class HIndex {
     this.citations = arr;
   }
 
-  /* find the last number in array
-     such that given its index in the sorted array,
-     citations[idx] <= citations.length - idx */
+  /*
+     O(n)
+     1) find the number X in array such that X is the smallest number
+     that given its index in the sorted array, X > citations.length - idx
+     and Y is the largest number satisfies the criteria
+     return Math.max(citations.length - idx, Y);
+  */
   int hIndex() {
-    int l = 0, r = citations.length - 1, partition = l;
+    int l = 0, r = citations.length - 1;
     while (l < r) {
-      partition = partition(l, r);
+      int partition = partition(l, r);
       //System.out.println(partition + Arrays.toString(citations));
       if (citations[partition] <= citations.length - partition) {
         l = partition + 1;
@@ -44,8 +48,7 @@ public class HIndex {
       }
       r = partition;
     }
-    int noOfLarger = citations.length - partition;
-    return citations[partition] <= noOfLarger ? citations[partition] : noOfLarger;
+    return Math.max(citations.length - r, l > 0 ? citations[l - 1] : 0);
   }
 
   int partition(int l, int r) {
