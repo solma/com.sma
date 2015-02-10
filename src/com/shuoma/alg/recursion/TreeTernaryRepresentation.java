@@ -1,7 +1,7 @@
 package com.shuoma.alg.recursion;
 
-import com.shuoma.ds.tree.BST;
-import com.shuoma.ds.tree.BSTNode;
+import com.shuoma.ds.graph.tree.BST;
+import com.shuoma.ds.graph.tree.BSTNode;
 
 /**
 // Given a string of nested ternary operations, such as a?b?c:d:e, it denote the tree like following:

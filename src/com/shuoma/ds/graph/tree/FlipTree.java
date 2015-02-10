@@ -1,4 +1,4 @@
-package com.shuoma.ds.tree;
+package com.shuoma.ds.graph.tree;
 
 // ref:http://www.mitbbs.com/article_t/JobHunting/32695977.html
 

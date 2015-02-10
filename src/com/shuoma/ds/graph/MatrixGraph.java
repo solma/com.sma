@@ -1,9 +1,9 @@
 package com.shuoma.ds.graph;
 
-import com.shuoma.alg.graph.BFS;
-import com.shuoma.alg.graph.DFS;
-import com.shuoma.alg.graph.Dijkstra;
-import com.shuoma.alg.graph.Kruskal;
+import com.shuoma.alg.graph.basic.BFS;
+import com.shuoma.alg.graph.basic.DFS;
+import com.shuoma.alg.graph.basic.shortestpath.Dijkstra;
+import com.shuoma.alg.graph.tree.mst.Kruskal;
 
 import java.util.ArrayList;
 import java.util.HashMap;

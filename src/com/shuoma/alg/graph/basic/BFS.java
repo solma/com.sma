@@ -1,4 +1,4 @@
-package com.shuoma.alg.graph;
+package com.shuoma.alg.graph.basic;
 
 import com.shuoma.ds.graph.Edge;
 import com.shuoma.ds.graph.Graph;

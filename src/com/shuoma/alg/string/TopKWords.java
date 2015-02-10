@@ -1,7 +1,7 @@
 package com.shuoma.alg.string;
 
-import com.shuoma.ds.tree.Trie;
-import com.shuoma.ds.tree.TrieNode;
+import com.shuoma.ds.graph.tree.Trie;
+import com.shuoma.ds.graph.tree.TrieNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

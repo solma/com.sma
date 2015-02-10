@@ -1,6 +1,6 @@
 package com.shuoma.alg.recursion;
 
-import com.shuoma.ds.tree.TreeNode;
+import com.shuoma.ds.graph.tree.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;

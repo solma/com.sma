@@ -1,6 +1,6 @@
 package com.shuoma.alg.string;
 
-import com.shuoma.ds.tree.Trie;
+import com.shuoma.ds.graph.tree.Trie;
 
 public class PrefixProblems {
 

@@ -1,4 +1,4 @@
-package com.shuoma.ds.tree;
+package com.shuoma.ds.graph.tree;
 
 import java.util.Arrays;
 

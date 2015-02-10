@@ -1,7 +1,7 @@
-package com.shuoma.ds.tree;
+package com.shuoma.ds.graph.tree;
 
-import com.shuoma.ds.tree.BST.BinarySearchTree.Implementation;
-import com.shuoma.ds.tree.BST.BinarySearchTree.TraversalOrder;
+import com.shuoma.ds.graph.tree.BST.BinarySearchTree.Implementation;
+import com.shuoma.ds.graph.tree.BST.BinarySearchTree.TraversalOrder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,8 @@ public class BST {
     // bst.mirror();
     //bst.printTreeByColumn();
 
-    System.out.println("dis btw: " + bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25")).dis);
+    System.out.println(
+        "dis btw: " + bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25")).dis);
 
     bst.printPrettyTree();
     bst.printTreeInLevels();

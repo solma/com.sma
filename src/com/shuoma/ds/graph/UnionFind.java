@@ -3,7 +3,7 @@ package com.shuoma.ds.graph;
 import java.util.LinkedList;
 import java.util.List;
 
-public class UnionFind<T> {
+public class UnionFind {
   public static class Element<T> {
     int groupId;
     T val;
@@ -19,15 +19,17 @@ public class UnionFind<T> {
     }
   }
 
-  public static class Group {
+  public static class Group implements Comparable<Group> {
     List<Element> elements;
     int groupId;
     boolean merged;
+    int rank;
 
     public Group(Element e) {
       this.elements = new LinkedList<>();
       elements.add(e);
       this.groupId = e.groupId;
+      this.rank = e.groupId;
     }
 
     public void add(Group g) {
@@ -43,23 +45,28 @@ public class UnionFind<T> {
     }
 
     @Override
+    public int compareTo(Group g) {
+      return rank - g.rank;
+    }
+
+    @Override
     public String toString() {
       return elements.toString();
     }
   }
 
   public static void main(String[] args) {
-    String[] vals = new String[]{"a", "b", "c", "d"};
+    String[] values = new String[]{"a", "b", "c", "d"};
     List<Element> elements = new LinkedList<>();
     int groupId = 0;
-    for (String val : vals) {
+    for (String val : values) {
       elements.add(new Element(groupId++, val));
     }
 
-    UnionFind<String> ins = new UnionFind<String>(elements);
+    UnionFind ins = new UnionFind(elements);
     ins.union(elements.get(0), elements.get(3));
-    ins.union(elements.get(1), elements.get(2));
-    ins.union(elements.get(0), elements.get(1));
+    ins.union(elements.get(0), elements.get(2));
+    ins.union(elements.get(2), elements.get(3));
     System.out.println(ins);
   }
 
@@ -81,12 +88,15 @@ public class UnionFind<T> {
     return group.groupId;
   }
 
-  public void union(Element e1, Element e2) {
+  /** Return true if e1 and e2 belong to different groups and merge the two groups. */
+  public boolean union(Element e1, Element e2) {
     Group g1 = groups.get(find(e1));
     Group g2 = groups.get(find(e2));
 
+    if (g1.groupId == g2.groupId) return false;
+
     Group larger, smaller;
-    if (g1.size() > g2.size()) {
+    if (g1.compareTo(g2) >= 0) {
       larger = g1;
       smaller = g2;
     } else {
@@ -95,6 +105,7 @@ public class UnionFind<T> {
     }
 
     larger.add(smaller);
+    return true;
   }
 
   @Override

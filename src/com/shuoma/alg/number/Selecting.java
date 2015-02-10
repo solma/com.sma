@@ -1,7 +1,7 @@
 package com.shuoma.alg.number;
 
 import com.shuoma.ds.misc.MaxHeap;
-import com.shuoma.ds.tree.TournamentTree;
+import com.shuoma.ds.graph.tree.TournamentTree;
 import com.shuoma.util.RandomUtil;
 
 import java.util.Arrays;

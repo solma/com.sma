@@ -1,10 +1,10 @@
-package com.shuoma.alg.graph;
+package com.shuoma.alg.graph.tree.mst;
 
 import com.shuoma.ds.graph.Edge;
 import com.shuoma.ds.graph.Graph;
 import com.shuoma.ds.graph.Node;
-import com.shuoma.ds.tree.Tree;
-import com.shuoma.ds.tree.TreeNode;
+import com.shuoma.ds.graph.tree.Tree;
+import com.shuoma.ds.graph.tree.TreeNode;
 
 import java.util.PriorityQueue;
 
