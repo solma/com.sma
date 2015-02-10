@@ -5,9 +5,11 @@ import com.shuoma.ds.tree.BST.BinarySearchTree.TraversalOrder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class BST {
@@ -16,20 +18,21 @@ public class BST {
      *                    5
      *                   / \
      *                  3   22
-     *                 /    / \
-     *                1    7   25
-     *                    / \
-     *                   6   20
-     *                      /
-     *                     10
-     *                       \
-     *                       13
+     *                 /   / \
+     *                1   7   25
+     *                   / \
+     *                  6   20
+     *                     /
+     *                    10
+     *                      \
+     *                      13
      */
 
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
     BinarySearchTree bst = new BinarySearchTree(nodes);
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
     // bst.mirror();
+    //bst.printTreeByColumn();
     bst.printPrettyTree();
     bst.printTreeInLevels();
     bst.delete("7");
@@ -38,7 +41,8 @@ public class BST {
     bst.printTreeInorderNonRecursiveWithoutStack();
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
 
-    if (true) return;
+//    if (true)
+//      return;
 
     // bst.printTreeInLevels();
     Implementation impl = Implementation.ITERATIVE;
@@ -53,23 +57,23 @@ public class BST {
 
     // System.out.print(bst.firstCommonAncestor(new Node("20"), new Node("22") ));
 
-    // bst.printPrettyTree();
+    // bst.printPrettyTreeOld();
     System.out.println(bst.successorInorder(5));
 
     // test subtree()
-    nodes =new int[]{22, 7, 20 ,6};
+    nodes = new int[] {22, 7, 20, 6};
     BinarySearchTree bst1 = new BinarySearchTree(nodes);
-    // bst1.printPrettyTree();
+    // bst1.printPrettyTreeOld();
 
     // System.out.print(bst.subtree(bst1));
 
     // test merge()
-    nodes =new int[]{8, 13, 9, 2};
+    nodes = new int[] {8, 13, 9, 2};
     BinarySearchTree bst2 = new BinarySearchTree(nodes);
-    // bst2.printPrettyTree();
+    bst2.printPrettyTree();
 
     BinarySearchTree merged = bst.merge(bst2);
-    // merged.printPrettyTree();
+    merged.printPrettyTree();
 
     merged.root = merged.flattenRecursiveInorder(merged.root)[0];
     // merged.flattenRecursivePreorder(merged.root)[0];
@@ -84,9 +88,11 @@ public class BST {
   public static class BinarySearchTree {
     private BSTNode root;
 
+
     public enum TraversalOrder {
       PREORDER, INORDER, POSTORDER;
     }
+
 
     public enum Implementation {
       RECURSION, ITERATIVE;
@@ -127,7 +133,8 @@ public class BST {
      * the size of the left and right subtrees.
      */
     public int countTree(int N) {
-      if (N <= 1) return 1;
+      if (N <= 1)
+        return 1;
       int sum = 0;
       for (int i = 1; i <= N; i++) {
         sum += countTree(i - 1) * countTree(N - i);
@@ -146,11 +153,14 @@ public class BST {
 
     /** Cannot directly call find() since we need to remember parent */
     private BSTNode delete(BSTNode cur, String id) {
-      if (cur == null) return null;
+      if (cur == null)
+        return null;
       int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
       if (compare == 0) {
-        if (cur.left == null) return cur.right;
-        if (cur.right == null) return cur.left;
+        if (cur.left == null)
+          return cur.right;
+        if (cur.right == null)
+          return cur.left;
         // get Min of right tree
         BSTNode successor = cur.right, parent = cur;
         while (successor.left != null) {
@@ -161,8 +171,10 @@ public class BST {
         cur.value = successor.value;
         cur.id = successor.id;
         // remove successor from right tree
-        if (parent.left == successor) parent.left = successor.right;
-        else parent.right = successor.right;
+        if (parent.left == successor)
+          parent.left = successor.right;
+        else
+          parent.right = successor.right;
         // alternative approach :
         //cur.right = delete(cur.right, successor.id);
       } else {
@@ -183,7 +195,8 @@ public class BST {
     }
 
     private BSTNode find(BSTNode cur, String id) {
-      if (cur == null) return null;
+      if (cur == null)
+        return null;
       int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
       if (compare == 0)
         return cur;
@@ -207,7 +220,8 @@ public class BST {
         cur.left = null;
         cur.right = next[0];
         next[1].right = firstOfRightSubtree; // connecting left and right subtrees
-        if (firstAndLast[1].equals(cur)) firstAndLast[1] = next[1]; // update last
+        if (firstAndLast[1].equals(cur))
+          firstAndLast[1] = next[1]; // update last
         // firstAndLast[0]=cur; //update first
       }
 
@@ -245,9 +259,12 @@ public class BST {
 
     /** the recursion implementation of basic BST operations. */
     protected BSTNode insert(BSTNode cur, String key) {
-      if (cur == null) return new BSTNode(key);
-      if (cur.value >= Integer.parseInt(key)) cur.left = insert(cur.left, key);
-      else cur.right = insert(cur.right, key);
+      if (cur == null)
+        return new BSTNode(key);
+      if (cur.value >= Integer.parseInt(key))
+        cur.left = insert(cur.left, key);
+      else
+        cur.right = insert(cur.right, key);
       return cur;
     }
 
@@ -261,41 +278,50 @@ public class BST {
 
     // top-down
     private boolean isBST(BSTNode node, double max, double min) {
-      if (node == null) return true;
-      if (node.value > max || node.value < min) return false;
+      if (node == null)
+        return true;
+      if (node.value > max || node.value < min)
+        return false;
       return isBST(node.left, node.value - 1, min) && isBST(node.right, max, node.value + 1);
     }
 
     // bottom-up
     private double[] isBST(BSTNode node) {
-      if (node == null) return new double[] {Integer.MAX_VALUE, Integer.MIN_VALUE};
+      if (node == null)
+        return new double[] {Integer.MAX_VALUE, Integer.MIN_VALUE};
 
       double[] range = {node.value, node.value};
       double[] rangeLeft = isBST(node.left);
-      if (rangeLeft == null || node.value <= rangeLeft[1]) return null;
+      if (rangeLeft == null || node.value <= rangeLeft[1])
+        return null;
       range[0] = Math.min(range[0], rangeLeft[0]);
       range[1] = Math.max(range[1], rangeLeft[1]);
 
       double[] rangeRight = isBST(node.right);
-      if (rangeRight == null || node.value >= rangeRight[0]) return null;
+      if (rangeRight == null || node.value >= rangeRight[0])
+        return null;
       range[0] = Math.min(range[0], rangeRight[0]);
       range[1] = Math.max(range[1], rangeRight[1]);
       return range;
     }
 
     public BSTNode leastCommonAncestor(BSTNode n1, BSTNode n2) {
-      if (n1 == null) return n2;
-      if (n2 == null) return n1;
+      if (n1 == null)
+        return n2;
+      if (n2 == null)
+        return n1;
       // System.out.println(n1+" "+n2);
       return leastCommonAncestor(root, n1, n2);
     }
 
     private BSTNode leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
-      if (cur == null || cur.value == n1.value || cur.value == n2.value) return cur;
+      if (cur == null || cur.value == n1.value || cur.value == n2.value)
+        return cur;
       BSTNode l = leastCommonAncestor(cur.left, n1, n2);
       BSTNode r = leastCommonAncestor(cur.right, n1, n2);
       // System.out.println(cur+" "+l+" "+r);
-      if (l != null && r != null) return cur;
+      if (l != null && r != null)
+        return cur;
       return l == null ? r : l;
     }
 
@@ -341,7 +367,8 @@ public class BST {
     }
 
     private int maxDepth(BSTNode cur, int depth) {
-      if (cur == null) return depth;
+      if (cur == null)
+        return depth;
       int leftDepth = maxDepth(cur.left, depth + 1);
       int rightDepth = maxDepth(cur.right, depth + 1);
       return leftDepth >= rightDepth ? leftDepth : rightDepth;
@@ -361,7 +388,8 @@ public class BST {
     }
 
     private void maxDepthDifference(BSTNode cur, int curDepth, int[] depthPair) {
-      if (cur == null) return;
+      if (cur == null)
+        return;
       if (cur.right == null && cur.left == null) {
         depthPair[0] = Math.min(depthPair[0], curDepth);
         depthPair[1] = Math.max(depthPair[1], curDepth);
@@ -379,7 +407,8 @@ public class BST {
     }
 
     private double minValue(BSTNode cur, double value) {
-      if (cur == null) return value;
+      if (cur == null)
+        return value;
       if (cur.value < value) {
         value = cur.value;
       }
@@ -434,6 +463,33 @@ public class BST {
       System.out.println();
     }
 
+    public void printTreeByColumn() {
+      Map<Integer, List<String>> columns = new HashMap<>();
+      printTreeByColumn(root, columns, 0);
+      List<Integer> sortedColumnIdx = new ArrayList(columns.keySet());
+      Collections.sort(sortedColumnIdx);
+      for (int idx : sortedColumnIdx) {
+        System.out.println(columns.get(idx));
+      }
+    }
+
+    private void printTreeByColumn(BSTNode cur, Map<Integer, List<String>> columns, int columnIdx) {
+      if (cur == null) {
+        return;
+      }
+
+      printTreeByColumn(cur.left, columns, columnIdx - 1);
+
+      List<String> column = columns.get(columnIdx);
+      if (column == null) {
+        column = new LinkedList<>();
+      }
+      column.add(cur.id);
+      columns.put(columnIdx, column);
+
+      printTreeByColumn(cur.right, columns, columnIdx + 1);
+    }
+
     private void printTreeInorder(BSTNode cur) {
       if (cur == null) {
         return;
@@ -444,7 +500,7 @@ public class BST {
     }
 
     private void printTreeInorderNonRecursive(BSTNode cur) {
-      Stack<BSTNode> stck = new Stack<BSTNode>();
+      Stack<BSTNode> stck = new Stack<>();
 
       while (!stck.empty() || cur != null) {
         if (cur != null) {
@@ -462,26 +518,27 @@ public class BST {
       printTreeInorderNonRecursiveWithoutStack(root.left, root);
     }
 
-    private void printTreeInorderNonRecursiveWithoutStack (BSTNode current, BSTNode parent) {
+    private void printTreeInorderNonRecursiveWithoutStack(BSTNode current, BSTNode parent) {
       while (current != null) {
-          if (parent != null) {
-              parent.left = current.right;
-              current.right = parent;
-          }
-          if (current.left != null) {
-              parent = current;
-              current = current.left;
-          } else {
-              System.out.println(current.value);
-              current = current.right;
-              parent = null;
-          }
+        if (parent != null) {
+          parent.left = current.right;
+          current.right = parent;
+        }
+        if (current.left != null) {
+          parent = current;
+          current = current.left;
+        } else {
+          System.out.println(current.value);
+          current = current.right;
+          parent = null;
+        }
       }
-  }
+    }
 
     private void printTreePostorderNonRecursive(BSTNode cur) {
-      Stack<BSTNode> stck = new Stack<BSTNode>();
-      if (cur == null) return;
+      Stack<BSTNode> stck = new Stack<>();
+      if (cur == null)
+        return;
       /*
        * We will need current pointer to the node we are currently traversing and the pointer to the
        * node we traversed previously.
@@ -521,13 +578,15 @@ public class BST {
     }
 
     private void printTreePreorderNonRecursive(BSTNode cur) {
-      Stack<BSTNode> stck = new Stack<BSTNode>();
+      Stack<BSTNode> stck = new Stack<>();
       stck.push(cur);
       while (!stck.empty()) {
         BSTNode top = stck.pop();
         System.out.println(top);
-        if (top.right != null) stck.push(top.right);
-        if (top.left != null) stck.push(top.left);
+        if (top.right != null)
+          stck.push(top.right);
+        if (top.left != null)
+          stck.push(top.left);
       }
     }
 
@@ -569,18 +628,21 @@ public class BST {
     }
 
     private void printTreeInLevels(BSTNode root) {
-      if (root == null) return;
-      LinkedList<BSTNode> currentLvl = new LinkedList<BSTNode>();
-      LinkedList<BSTNode> nextLvl = new LinkedList<BSTNode>();
+      if (root == null)
+        return;
+      LinkedList<BSTNode> currentLvl;
+      LinkedList<BSTNode> nextLvl = new LinkedList<>();
       nextLvl.add(root);
       while (!nextLvl.isEmpty()) {
         currentLvl = nextLvl;
-        nextLvl = new LinkedList<BSTNode>();
+        nextLvl = new LinkedList<>();
         while (!currentLvl.isEmpty()) {
           BSTNode cur = currentLvl.pop();
           System.out.print(cur + "\t");
-          if (cur.left != null) nextLvl.add(cur.left);
-          if (cur.right != null) nextLvl.add(cur.right);
+          if (cur.left != null)
+            nextLvl.add(cur.left);
+          if (cur.right != null)
+            nextLvl.add(cur.right);
         }
         System.out.println();
       }
@@ -590,7 +652,8 @@ public class BST {
      * printPaths
      */
     public void printPaths() {
-      if (root == null) return;
+      if (root == null)
+        return;
       HashMap<String, ArrayList<String>> allPaths = new HashMap<String, ArrayList<String>>();
       allPaths.put("", new ArrayList<String>()); // empty parent path for root
       printPaths(root, "", allPaths);
@@ -599,7 +662,7 @@ public class BST {
     private void printPaths(BSTNode cur, String parentKey, HashMap<String, ArrayList<String>> allPaths) {
       if (cur != null) {
         ArrayList<String> path = allPaths.get(parentKey);
-        ArrayList<String> newPath = new ArrayList<String>();
+        ArrayList<String> newPath = new ArrayList<>();
         for (String key : path)
           newPath.add(key);
         newPath.add(cur.id);
@@ -634,7 +697,8 @@ public class BST {
     }
 
     public BSTNode search(BSTNode cur, String key) {
-      if (cur == null) return cur;
+      if (cur == null)
+        return cur;
       if (cur.id.compareTo(key) > 0)
         return search(cur.left, key);
       else {
@@ -653,7 +717,8 @@ public class BST {
     }
 
     private int size(BSTNode cur, int num) {
-      if (cur == null) return num;
+      if (cur == null)
+        return num;
       return size(cur.left, num) + 1 + size(cur.right, num);
     }
 
@@ -671,9 +736,44 @@ public class BST {
     }
 
     public void printPrettyTree() {
+      HashMap<Integer, List<TreeBoardCell>> columns = new HashMap<>();
+      int[] colIdxRange = new int[] {0, 0};
+      int[] rowIdxRange = new int[] {0, 0};
+      printPrettyTree(root, columns, 0, 0, colIdxRange, rowIdxRange);
+      TreeBoard tb = new TreeBoard(columns, colIdxRange, rowIdxRange[1] + 1);
+      System.out.println(tb.toString());
+    }
+
+    private void printPrettyTree(BSTNode cur, HashMap<Integer, List<TreeBoardCell>> columns, int curCol, int curRow, int[] colIdxRange, int[] rowIdxRange) {
+      if (cur.left != null) {
+        upsert(columns, curRow + 1, curCol - 1, "/");
+        printPrettyTree(cur.left, columns, curCol - 2, curRow + 2, colIdxRange, rowIdxRange);
+      }
+
+      colIdxRange[0] = Math.min(colIdxRange[0], curCol);
+      colIdxRange[1] = Math.max(colIdxRange[1], curCol);
+      rowIdxRange[1] = Math.max(rowIdxRange[1], curRow);
+      upsert(columns, curRow, curCol, cur.id);
+
+      if (cur.right != null) {
+        upsert(columns, curRow + 1, curCol + 1, "\\");
+        printPrettyTree(cur.right, columns, curCol + 2, curRow + 2, colIdxRange, rowIdxRange);
+      }
+    }
+
+    private void upsert(HashMap<Integer, List<TreeBoardCell>> columns, int curRow, int curCol, String val) {
+      List<TreeBoardCell> column = columns.get(curCol);
+      if (column == null) {
+        column = new LinkedList<>();
+      }
+      column.add(new TreeBoardCell(curRow, curCol, val));
+      columns.put(curCol, column);
+    }
+
+    public void printPrettyTreeOld() {
       // System.out.println(String.format("%-3d%5d", 12, 3));
 
-      HashMap<BSTNode, Integer> spaceAhead = new HashMap<BSTNode, Integer>();
+      HashMap<BSTNode, Integer> spaceAhead = new HashMap<>();
       int[] cumSum = new int[] {0};
       BSTNode root = this.root;
       if (root == null) {
@@ -692,17 +792,19 @@ public class BST {
       // populate the char array by travesing the tree by level;
       int row = 0;
       // stores the row position of nodes
-      HashMap<BSTNode, Integer> rows = new HashMap<BSTNode, Integer>();
+      HashMap<BSTNode, Integer> rows = new HashMap<>();
       rows.put(root, 0); // root is at 0th row
       while (root != null) {
         BSTNode nextLvl = null, prev = null;
         for (; root != null; root = root.next) {
-          if (nextLvl == null) nextLvl = root.left != null ? root.left : root.right;
+          if (nextLvl == null)
+            nextLvl = root.left != null ? root.left : root.right;
           int space = spaceAhead.get(root);
           row = rows.get(root);
           putNumberInLine(prettyTree, row, space, root.id);
           if (root.left != null) {
-            if (prev != null) prev.next = root.left;
+            if (prev != null)
+              prev.next = root.left;
             prev = root.left;
             // generating the slashes
             int r = row + 1;
@@ -711,7 +813,8 @@ public class BST {
             rows.put(root.left, r);
           }
           if (root.right != null) {
-            if (prev != null) prev.next = root.right;
+            if (prev != null)
+              prev.next = root.right;
             prev = root.right;
             // generating the slashes
             int r = row + 1;
@@ -735,13 +838,16 @@ public class BST {
     }
 
     public boolean subtree(BinarySearchTree s) {
-      if (s == null) return true;
+      if (s == null)
+        return true;
       return subtree(root, s.root);
     }
 
     private boolean subtree(BSTNode t1, BSTNode t2) {
-      if (t2 == null) return true;
-      if (t1 == null) return false;
+      if (t2 == null)
+        return true;
+      if (t1 == null)
+        return false;
 
       if (t1.value == t2.value) { // current node of t1 matches t2's root
         // System.out.println(t1+" " + t2+" "+t1.right+" "+t2.right );
@@ -753,22 +859,27 @@ public class BST {
 
     // find the successor of a node in inorder travesal
     public BSTNode successorInorder(int value) {
-      if (root == null) return root;
+      if (root == null)
+        return root;
       return successorInorder(root, value, new int[] {0});
     }
 
     private BSTNode successorInorder(BSTNode cur, int value, int[] isFound) {
       // System.out.println(Arrays.toString(isFound)+" "+cur);
-      if (cur == null) return cur;
+      if (cur == null)
+        return cur;
       BSTNode left = successorInorder(cur.left, value, isFound);
-      if (left != null) return left;
-      if (isFound[0] == 1) return cur; // next Node;
-      if (cur.value == value) isFound[0] = 1;
+      if (left != null)
+        return left;
+      if (isFound[0] == 1)
+        return cur; // next Node;
+      if (cur.value == value)
+        isFound[0] = 1;
       return successorInorder(cur.right, value, isFound);
     }
 
     private BSTNode balanceTree(BSTNode root) {
-      ArrayList<BSTNode> nodes = new ArrayList<BSTNode>();
+      ArrayList<BSTNode> nodes = new ArrayList<>();
       while (root != null) {
         nodes.add(root);
         root = root.right;
@@ -778,7 +889,8 @@ public class BST {
 
     private BSTNode balanceTreeRecursive(List<BSTNode> nodes) {
       int n = nodes.size();
-      if (n == 0) return null;
+      if (n == 0)
+        return null;
       int mid = n / 2;
       BSTNode root = nodes.get(mid);
       root.left = balanceTreeRecursive(nodes.subList(0, mid));
@@ -788,7 +900,8 @@ public class BST {
 
     // traverse inorderly, return the total width of spaces of the tree
     private void calSpaceAhead(BSTNode root, HashMap<BSTNode, Integer> spaceAhead, int[] cumSum) {
-      if (root == null) return;
+      if (root == null)
+        return;
       calSpaceAhead(root.left, spaceAhead, cumSum);
       // System.out.println(root.value+" : "+cumSum[0]);
       spaceAhead.put(root, cumSum[0]);
@@ -801,8 +914,8 @@ public class BST {
     }
 
     private BinarySearchTree merge(BinarySearchTree t2) {
-      return new BinarySearchTree(balanceTree(merge(flattenRecursiveInorder(root)[0],
-          flattenRecursiveInorder(t2.root)[0])));
+      return new BinarySearchTree(balanceTree(
+          merge(flattenRecursiveInorder(root)[0], flattenRecursiveInorder(t2.root)[0])));
     }
 
     // merge sort
@@ -842,12 +955,57 @@ public class BST {
     }
   }
 
-  private static class DirectedBSTNode extends BSTNode{
+  private static class DirectedBSTNode extends BSTNode {
     private int direction;
     private int len;
 
     public DirectedBSTNode(BSTNode node) {
       super(node);
+    }
+  }
+
+  private static class TreeBoard {
+    TreeBoardCell[][] cells;
+
+    public TreeBoard(HashMap<Integer, List<TreeBoardCell>> columns, int[] columnIdxRange, int nRows) {
+      int nCol = columnIdxRange[1] - columnIdxRange[0] + 1;
+      cells = new TreeBoardCell[nRows][nCol];
+      System.out.println("col range : " + Arrays.toString(columnIdxRange));
+
+      for (List<TreeBoardCell> column : columns.values()) {
+        for (TreeBoardCell cell : column) {
+          cells[cell.rowIdx][cell.colIdx - columnIdxRange[0]] = cell;
+        }
+      }
+    }
+
+    @Override
+    public String toString(){
+      StringBuilder sb = new StringBuilder();
+      for (TreeBoardCell[] row : cells) {
+        for (TreeBoardCell cell : row) {
+          sb.append(cell == null ? " " : cell.toString());
+        }
+        sb.append("\n");
+      }
+      return sb.toString();
+    }
+  }
+
+  private static class TreeBoardCell {
+    int colIdx;
+    int rowIdx;
+    String val;
+
+    public TreeBoardCell(int rowIdx, int colIdx, String val) {
+      this.colIdx = colIdx;
+      this.rowIdx = rowIdx;
+      this.val = val;
+    }
+
+    @Override
+    public String toString(){
+      return val;
     }
   }
 }
