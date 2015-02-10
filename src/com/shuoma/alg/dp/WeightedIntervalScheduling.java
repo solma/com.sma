@@ -15,7 +15,7 @@ public class WeightedIntervalScheduling {
   }
 
   public static ArrayList<Interval> schedule(ArrayList<Interval> input) {
-    ArrayList<Interval> ret = new ArrayList<Interval>();
+    ArrayList<Interval> ret = new ArrayList<>();
     int n = input.size();
     if (n < 1) return ret;
     if (n < 2) return input;
@@ -63,7 +63,7 @@ public class WeightedIntervalScheduling {
   }
 
   public static ArrayList<Interval> generateRandomListOfIntervals(boolean withWeight) {
-    ArrayList<Interval> list = new ArrayList<Interval>();
+    ArrayList<Interval> list = new ArrayList<>();
     Random rand = new Random();
     int size = 3 + rand.nextInt(5);
     double start, end, weight;

@@ -17,6 +17,7 @@ public class Interval implements Comparable<Interval> {
     this.weight = weight;
   }
 
+  /** sort based on end time then by start time. */
   @Override
   public int compareTo(Interval o) {
     double endDiff = end - o.end;
@@ -38,7 +39,7 @@ public class Interval implements Comparable<Interval> {
   }
 
   /**
-   * @param list sorted interval list
+   * @param list interval list sorted by end time
    * @return the last interval whose end is no greater than the start of this interval
    */
   public int bisect(ArrayList<Interval> list) {

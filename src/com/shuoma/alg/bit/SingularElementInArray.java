@@ -31,13 +31,13 @@ public class SingularElementInArray {
         counters[1][i] = counters[0][i] | (counters[0][i - 1] & x);
       }
 
-      int allCountersNotEqualK = -1;
+      // when a number appears k times, all its bits are cleared from all previous counters
+      int kTimesCounter = -1;
       for (int i = 0; i < n; i++) {
-        allCountersNotEqualK &= counters[1][i];
+        kTimesCounter &= counters[1][i];
       }
-      allCountersNotEqualK = ~allCountersNotEqualK;
       for (int i = 0; i < n; i++) {
-        counters[1][i] &= allCountersNotEqualK;
+        counters[1][i] &= ~kTimesCounter;
       }
 
       counters[0] = Arrays.copyOf(counters[1], counters[1].length);
@@ -47,7 +47,7 @@ public class SingularElementInArray {
       bins[0][j + 1] = Integer.toBinaryString(x);
       for(int i = 1; i < bins.length - 1; i++)
         bins[i][j + 1] = Integer.toBinaryString(counters[0][i - 1]);
-      bins[bins.length - 1][j + 1] = String.valueOf(allCountersNotEqualK);
+      bins[bins.length - 1][j + 1] = String.valueOf(~kTimesCounter);
     }
 
     for(String[] row : bins) {

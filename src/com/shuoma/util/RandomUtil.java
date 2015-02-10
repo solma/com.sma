@@ -19,7 +19,7 @@ public class RandomUtil {
   public static int[] genRandomArray(int length, int maxNumber, boolean oneBased, boolean canBeNegative) {
     int[] ret = new int[length];
     for (int i = 0; i < length; i++) {
-      ret[i] = r.nextInt(maxNumber);
+      ret[i] = r.nextInt(maxNumber + 1);
     }
     if (oneBased) {
       for (int i = 0; i < length; i++) {
@@ -32,6 +32,15 @@ public class RandomUtil {
       }
     }
     return ret;
+  }
+
+  public static int[][] genRandomMatrix(int nRow, int nCol, int maxNumber, boolean oneBased, boolean canBeNegative) {
+    assert(nRow > 0 && nCol > 0);
+    int[][] board = new int[nRow][nCol];
+    for (int i = 0; i < nRow; i++) {
+      board[i] = genRandomArray(nCol, maxNumber, oneBased, canBeNegative);
+    }
+    return board;
   }
 
   public static int[] generateRandomRotateArray() {
