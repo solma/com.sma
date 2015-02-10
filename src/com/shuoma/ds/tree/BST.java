@@ -33,6 +33,9 @@ public class BST {
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
     // bst.mirror();
     //bst.printTreeByColumn();
+
+    System.out.println("dis btw: " + bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25")).dis);
+
     bst.printPrettyTree();
     bst.printTreeInLevels();
     bst.delete("7");
@@ -55,7 +58,7 @@ public class BST {
     // System.out.println(bst.countTree(7));
     // bst.printAllBinaryTreesPermutation(4);
 
-    // System.out.print(bst.firstCommonAncestor(new Node("20"), new Node("22") ));
+
 
     // bst.printPrettyTreeOld();
     System.out.println(bst.successorInorder(5));
@@ -305,24 +308,30 @@ public class BST {
       return range;
     }
 
-    public BSTNode leastCommonAncestor(BSTNode n1, BSTNode n2) {
+    public BSTNodeDisWrapper leastCommonAncestor(BSTNode n1, BSTNode n2) {
       if (n1 == null)
-        return n2;
+        return new BSTNodeDisWrapper(n2, 0);
       if (n2 == null)
-        return n1;
+        return new BSTNodeDisWrapper(n1, 0);
       // System.out.println(n1+" "+n2);
       return leastCommonAncestor(root, n1, n2);
     }
 
-    private BSTNode leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
-      if (cur == null || cur.value == n1.value || cur.value == n2.value)
-        return cur;
-      BSTNode l = leastCommonAncestor(cur.left, n1, n2);
-      BSTNode r = leastCommonAncestor(cur.right, n1, n2);
-      // System.out.println(cur+" "+l+" "+r);
+    private BSTNodeDisWrapper leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
+      if (cur == null) return null;
+      if (cur.value == n1.value || cur.value == n2.value) return new BSTNodeDisWrapper(cur, 0);
+
+      BSTNodeDisWrapper l = leastCommonAncestor(cur.left, n1, n2);
+      BSTNodeDisWrapper r = leastCommonAncestor(cur.right, n1, n2);
       if (l != null && r != null)
-        return cur;
-      return l == null ? r : l;
+        return new BSTNodeDisWrapper(cur, l.dis + r.dis + 2);
+
+      if (l != null) {
+        l.dis++;
+        return l;
+      }
+      if (r != null) r.dis++;
+      return r;
     }
 
     public int longestOnesidePath() {
@@ -739,34 +748,44 @@ public class BST {
       HashMap<Integer, List<TreeBoardCell>> columns = new HashMap<>();
       int[] colIdxRange = new int[] {0, 0};
       int[] rowIdxRange = new int[] {0, 0};
-      printPrettyTree(root, columns, 0, 0, colIdxRange, rowIdxRange);
+      printPrettyTree(null, root, columns, 0, 0, colIdxRange, rowIdxRange, 1);
       TreeBoard tb = new TreeBoard(columns, colIdxRange, rowIdxRange[1] + 1);
       System.out.println(tb.toString());
     }
 
-    private void printPrettyTree(BSTNode cur, HashMap<Integer, List<TreeBoardCell>> columns, int curCol, int curRow, int[] colIdxRange, int[] rowIdxRange) {
+    private void printPrettyTree(BSTNode parent, BSTNode cur, HashMap<Integer,
+        List<TreeBoardCell>> columns, int curCol, int curRow, int[] colIdxRange, int[] rowIdxRange,
+        int nLineBetweenLevels) {
       if (cur.left != null) {
-        upsert(columns, curRow + 1, curCol - 1, "/");
-        printPrettyTree(cur.left, columns, curCol - 2, curRow + 2, colIdxRange, rowIdxRange);
+        for (int i = 1; i <= nLineBetweenLevels; i++) {
+          upsert(columns, curRow + i, curCol - i, "/", false);
+        }
+        printPrettyTree(cur, cur.left, columns, curCol - nLineBetweenLevels - 1,
+            curRow + nLineBetweenLevels + 1, colIdxRange, rowIdxRange, nLineBetweenLevels);
       }
 
       colIdxRange[0] = Math.min(colIdxRange[0], curCol);
       colIdxRange[1] = Math.max(colIdxRange[1], curCol);
       rowIdxRange[1] = Math.max(rowIdxRange[1], curRow);
-      upsert(columns, curRow, curCol, cur.id);
+      boolean isRightChild = parent != null && parent.right == cur;
+      upsert(columns, curRow, isRightChild ? curCol - 1 : curCol, cur.id, isRightChild);
 
       if (cur.right != null) {
-        upsert(columns, curRow + 1, curCol + 1, "\\");
-        printPrettyTree(cur.right, columns, curCol + 2, curRow + 2, colIdxRange, rowIdxRange);
+        for (int i = 1; i <= nLineBetweenLevels; i++) {
+          upsert(columns, curRow + i, curCol + i, "\\", true);
+        }
+        printPrettyTree(cur, cur.right, columns, curCol + nLineBetweenLevels + 1,
+            curRow + nLineBetweenLevels + 1, colIdxRange, rowIdxRange, nLineBetweenLevels);
       }
     }
 
-    private void upsert(HashMap<Integer, List<TreeBoardCell>> columns, int curRow, int curCol, String val) {
+    private void upsert(HashMap<Integer, List<TreeBoardCell>> columns,
+        int curRow, int curCol, String val, boolean isRightChild) {
       List<TreeBoardCell> column = columns.get(curCol);
       if (column == null) {
         column = new LinkedList<>();
       }
-      column.add(new TreeBoardCell(curRow, curCol, val));
+      column.add(new TreeBoardCell(isRightChild, curRow, curCol, val));
       columns.put(curCol, column);
     }
 
@@ -955,6 +974,16 @@ public class BST {
     }
   }
 
+  private static class BSTNodeDisWrapper {
+    BSTNode node;
+    int dis;
+
+    public BSTNodeDisWrapper(BSTNode node, int dis) {
+      this.node = node;
+      this.dis = dis;
+    }
+  }
+
   private static class DirectedBSTNode extends BSTNode {
     private int direction;
     private int len;
@@ -965,16 +994,18 @@ public class BST {
   }
 
   private static class TreeBoard {
-    TreeBoardCell[][] cells;
+    List<List<TreeBoardCell>> cells;
 
     public TreeBoard(HashMap<Integer, List<TreeBoardCell>> columns, int[] columnIdxRange, int nRows) {
-      int nCol = columnIdxRange[1] - columnIdxRange[0] + 1;
-      cells = new TreeBoardCell[nRows][nCol];
-      System.out.println("col range : " + Arrays.toString(columnIdxRange));
+      cells = new LinkedList<>();
+      for (int i = 0; i < nRows; i++) cells.add(new LinkedList<TreeBoardCell>());
 
-      for (List<TreeBoardCell> column : columns.values()) {
-        for (TreeBoardCell cell : column) {
-          cells[cell.rowIdx][cell.colIdx - columnIdxRange[0]] = cell;
+      List<Integer> sortedColumnIdx = new ArrayList(columns.keySet());
+      Collections.sort(sortedColumnIdx);
+      for (int idx : sortedColumnIdx) {
+        for (TreeBoardCell cell : columns.get(idx)) {
+          cell.colIdx -= columnIdxRange[0];
+          cells.get(cell.rowIdx).add(cell);
         }
       }
     }
@@ -982,9 +1013,19 @@ public class BST {
     @Override
     public String toString(){
       StringBuilder sb = new StringBuilder();
-      for (TreeBoardCell[] row : cells) {
-        for (TreeBoardCell cell : row) {
-          sb.append(cell == null ? " " : cell.toString());
+      for (List<TreeBoardCell> row : cells) {
+        TreeBoardCell cur, prev = null;
+        for (int i = 0; i < row.size(); i++) {
+          cur = row.get(i);
+          int diffSpaces;
+          if (prev != null) {
+            diffSpaces = cur.colIdx - (prev.colIdx + prev.val.length());
+          } else {
+            diffSpaces = cur.colIdx;
+          }
+          for (int j = 0; j < diffSpaces; j++) sb.append(" ");
+          sb.append(cur.toString());
+          prev = cur;
         }
         sb.append("\n");
       }
@@ -993,11 +1034,13 @@ public class BST {
   }
 
   private static class TreeBoardCell {
+    boolean isRightChild;
     int colIdx;
     int rowIdx;
     String val;
 
-    public TreeBoardCell(int rowIdx, int colIdx, String val) {
+    public TreeBoardCell(boolean isRightChild, int rowIdx, int colIdx, String val) {
+      this.isRightChild = isRightChild;
       this.colIdx = colIdx;
       this.rowIdx = rowIdx;
       this.val = val;
