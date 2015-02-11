@@ -89,6 +89,15 @@ public class Graph<N extends Node, E extends Edge<N>> {
     }
   }
 
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (N node : edgeMap.keySet()) {
+      sb.append(node + "->" + edgeMap.get(node).values() + "\n");
+    }
+    return sb.toString();
+  }
+
   private void initializeNodeAndEdgeMap(List<E> inputEdges) {
     for (E edge : inputEdges) {
       edges.add(edge);

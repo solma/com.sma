@@ -20,7 +20,6 @@ public class Edge<N extends Node> {
   }
 
   public N getOppositeNode(N end) {
-    assert (end.equals(from) || end.equals(to));
     if (end.equals(from)) return to;
     return from;
   }

@@ -16,4 +16,9 @@ public class WeightedEdge<N extends Node> extends Edge<N> {
   public int getWeight() {
     return weight;
   }
+
+  @Override
+  public String toString() {
+    return getStartNode() + "->" + getEndNode() + ":" + getWeight();
+  }
 }
