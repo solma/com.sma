@@ -9,6 +9,16 @@ public class PathNode extends Node implements Comparable<PathNode> {
   private double distance;
   private List<PathNode> prevNodes;
 
+  public PathNode(Node node) {
+    this(node, Integer.MAX_VALUE);
+  }
+
+  public PathNode(Node node, double distance) {
+    super(node);
+    this.distance = distance;
+    prevNodes = new LinkedList<>();
+  }
+
   public PathNode(String id, double value, double distance) {
     super(id, value);
     this.distance = distance;
@@ -17,6 +27,10 @@ public class PathNode extends Node implements Comparable<PathNode> {
 
   public void addPrevNode(PathNode prev) {
     prevNodes.add(prev);
+  }
+
+  public void clearPrevNodes() {
+    prevNodes.clear();
   }
 
   public double getDistance() {

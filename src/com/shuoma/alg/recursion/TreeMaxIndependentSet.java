@@ -5,9 +5,7 @@ import com.shuoma.ds.graph.tree.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Given a tree, find its max independent set.
- */
+/** Given a tree, find its max independent set. */
 public class TreeMaxIndependentSet {
   public static void main(String[] args) {
     int n = 14;

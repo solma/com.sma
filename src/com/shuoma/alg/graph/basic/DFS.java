@@ -3,6 +3,8 @@ package com.shuoma.alg.graph.basic;
 import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Graph;
 import com.shuoma.ds.graph.basic.Node;
+import com.shuoma.ds.graph.basic.PathNode;
+import com.shuoma.ds.graph.basic.VisitStatus;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -17,36 +19,36 @@ public class DFS {
    * @param g
    * @param end: target node; if null, then traverse
    */
-  public Node find(Graph g, Node start, Node end, int depthLimit) {
+  public PathNode find(Graph g, PathNode start, PathNode end, int depthLimit) {
     if (verbose) {
       System.out.println("**** DFS Searching Illustration ****");
       if (depthLimit != Integer.MAX_VALUE) System.out.println("Depth Limit: " + depthLimit);
     }
     if (start == null || start.equals(end)) return start;
-    Stack<Node> stack = new Stack<>();
-    start.visitStatus = Node.STATUS.VISITED;
+    Stack<PathNode> stack = new Stack<>();
+    start.setVisitStatus(VisitStatus.VISITED);
     stack.push(start);
 
     int lvl = 0;
     while (stack.size() > 0) {
       if (lvl > depthLimit) return null;
-      Node cur = stack.pop();
+      PathNode cur = stack.pop();
       if (verbose) {
         System.out.println("level " + lvl + " : " + cur);
       }
-      cur.visitStatus = Node.STATUS.EXPANED;
-      for (Edge e : cur.getAdjacentEdges()) {
-        if (e.status == Edge.STATUS.UNVISITED) {
-          Node oppo = e.getOppositeNode(cur);
-          if (oppo.visitStatus == Node.STATUS.UNVISITED) {
-            e.status = Edge.STATUS.VISITED;
-            oppo.visitStatus = Node.STATUS.VISITED;
-            oppo.prevs.add(cur);
+      cur.setVisitStatus(VisitStatus.EXPANDED);
+      for (Edge<PathNode> e : cur.getAdjacentEdges()) {
+        if (e.getVisitStatus() == VisitStatus.UNVISITED) {
+          PathNode oppo = e.getOppositeNode(cur);
+          if (oppo.getVisitStatus() == VisitStatus.UNVISITED) {
+            e.setVisitStatus(VisitStatus.VISITED);
+            oppo.setVisitStatus(VisitStatus.VISITED);
+            oppo.addPrevNode(cur);
 
             if (oppo.equals(end)) return oppo;
             stack.add(oppo);
-          } else if (oppo.visitStatus == Node.STATUS.VISITED) {
-            e.status = Edge.STATUS.CROSSED;
+          } else if (oppo.getVisitStatus() == VisitStatus.VISITED) {
+            e.setVisitStatus(VisitStatus.CROSSED);
           }
         }
       }
@@ -56,11 +58,11 @@ public class DFS {
     return null;
   }
 
-  public Node find(Graph g, Node start, Node end) {
+  public PathNode find(Graph g, PathNode start, PathNode end) {
     return find(g, start, end, Integer.MAX_VALUE);
   }
 
-  public void traverse(Graph g, Node start) {
+  public void traverse(Graph g, PathNode start) {
     find(g, start, null);
   }
 }

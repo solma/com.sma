@@ -1,6 +1,6 @@
 package com.shuoma.ds.graph.basic;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /** Generic node. */
@@ -13,7 +13,8 @@ public class Node {
 
   public Node(String id) {
     this.id = id;
-    adjacentEdges = new ArrayList<>();
+    adjacentEdges = new LinkedList<>();
+    adjacentNodes = new LinkedList<>();
     resetVisitStatus();
   }
 

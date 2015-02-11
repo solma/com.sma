@@ -6,6 +6,7 @@ import com.shuoma.ds.graph.basic.Node;
 import com.shuoma.ds.graph.basic.PathNode;
 import com.shuoma.ds.graph.basic.VisitStatus;
 import com.shuoma.ds.graph.tree.Tree;
+import com.shuoma.ds.graph.tree.TreeNode;
 import com.shuoma.ds.graph.tree.WeightedEdge;
 
 import java.util.LinkedList;
@@ -20,34 +21,33 @@ public class Kruskal extends MinimumSpanningTreeFactory {
       System.out.println("**** Kruskal Building Illustration ****");
     }
 
-    PathNode start = new LinkedList<>(g.getAllNodes()).get(0);
+    PathNode start = (PathNode) new LinkedList<>(g.getAllNodes()).get(0);
     if (start == null) return null;
-    PriorityQueue<Node> pq = new PriorityQueue<>();
-    start.dis = 0;
-    start.visitStatus = Node.STATUS.VISITED;
+    PriorityQueue<PathNode> pq = new PriorityQueue<>();
+    start.setVisitStatus(VisitStatus.VISITED);
     pq.add(start);
 
     Tree tree = null;
 
     int lvl = 0;
     while (pq.size() > 0) {
-      Node cur = pq.poll();
+      PathNode cur = pq.poll();
       cur.setVisitStatus(VisitStatus.EXPANDED);
 
       if (lvl == 0)
         tree = new Tree(new TreeNode(cur));
       else {
-        TreeNode father = tree.treeNodes.get(cur.prevs.get(0).getId());
+        TreeNode father = tree.treeNodes.get(cur.getPrevNodes().get(0).getId());
         TreeNode child = new TreeNode(cur);
-        father.children.add(child);
+        father.addChild(child);
         tree.treeNodes.put(child.getId(), child);
         if (verbose) {
-          System.out.println("edge " + lvl + " :  father:" + father.value + ",  child:"
-              + child.value);
+          System.out.println("edge " + lvl + " :  father:" + father.getValue() + ",  child:"
+              + child.getValue());
         }
       }
 
-      for (Edge e : cur.getAdjacentEdges()) {
+      for (Edge<PathNode> e : cur.getAdjacentEdges()) {
         if (e.getVisitStatus() == VisitStatus.UNVISITED) {
           PathNode oppo = e.getOppositeNode(cur);
           if (oppo.getVisitStatus() == VisitStatus.UNVISITED) {

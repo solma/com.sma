@@ -29,8 +29,6 @@ public class MatrixGraph extends Graph {
     public MatrixNode(int row, int col, double v) {
       super(row + ID_DELIMITER + col, v, Integer.MAX_VALUE);
     }
-
-
   }
 
   class MatrixEdge extends Edge {
@@ -112,9 +110,9 @@ public class MatrixGraph extends Graph {
     // bfs
     BFS bfs = new BFS();
     graph.resetVisitStatus();
-    graph.printPath(bfs.find(graph, start, end));
+    graph.printPath(bfs.find(graph, new PathNode(start, 0), new PathNode(end)));
 
-    ArrayList<Node> path = new ArrayList<Node>();
+    ArrayList<Node> path = new ArrayList<>();
     // graph.printPath( graph.buildAllPaths(start, end, path) );
 
     // dfs
@@ -132,7 +130,7 @@ public class MatrixGraph extends Graph {
     // dijkstra
     Dijkstra dijkstra = new Dijkstra();
     graph.resetVisitStatus();
-    graph.printPath(dijkstra.find(graph, start, end));
+    graph.printPath(dijkstra.find(graph, new PathNode(start, 0), new PathNode(end)));
 
 
     // Kruskal

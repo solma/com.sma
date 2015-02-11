@@ -30,10 +30,10 @@ public class Prim extends MinimumSpanningTreeFactory {
 
     Set<N> addedNodes = new HashSet<>();
     int n = graph.getAllNodes().size();
-    int edgeCnt;
 
     List<WeightedEdge> treeEdges = new LinkedList<>();
     for (WeightedEdge<N> edge : edges) {
+      if (treeEdges.size() == n - 1) break;
       N from = edge.getStartNode(), to = edge.getEndNode();
       if (!addedNodes.contains(from) || addedNodes.contains(to)) {
         treeEdges.add(edge);
@@ -42,6 +42,7 @@ public class Prim extends MinimumSpanningTreeFactory {
       }
     }
 
+    
     return null;
   }
 }

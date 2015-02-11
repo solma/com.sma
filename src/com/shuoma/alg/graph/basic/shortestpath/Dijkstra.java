@@ -3,12 +3,15 @@ package com.shuoma.alg.graph.basic.shortestpath;
 import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Graph;
 import com.shuoma.ds.graph.basic.Node;
+import com.shuoma.ds.graph.basic.PathNode;
+import com.shuoma.ds.graph.basic.VisitStatus;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
-  public ArrayList<Node> path = new ArrayList<>();
+  public List<Node> path = new ArrayList<>();
   public static final boolean verbose = true;
 
   /**
@@ -17,42 +20,41 @@ public class Dijkstra {
    * @param g
    * @param end: target node; if null, then traverse
    */
-  public ArrayList<ArrayList<Node>> find(Graph g, Node start, Node end) {
+  public List<List<Node>> find(Graph g, PathNode start, PathNode end) {
     if (verbose) {
       System.out.println("**** Dijkstra Searching Illustration ****");
     }
 
     if (start == null || end == null) return new ArrayList<>();
 
-    PriorityQueue<Node> pq = new PriorityQueue<>();
-    start.dis = 0;
-    start.visitStatus = Node.STATUS.VISITED;
+    PriorityQueue<PathNode> pq = new PriorityQueue<>();
+    start.setVisitStatus(VisitStatus.VISITED);
     pq.add(start);
 
     int lvl = 0;
     while (pq.size() > 0) {
-      Node cur = pq.poll();
+      PathNode cur = pq.poll();
       if (cur.equals(end)) break;
 
-      cur.visitStatus = Node.STATUS.EXPANED;
+      cur.setVisitStatus(VisitStatus.EXPANDED);
       if (verbose) {
-        System.out.println("level " + lvl + " :  pos:" + cur + " , value:" + cur.value + ",  dis:"
-            + cur.dis);
+        System.out.println("level " + lvl + " :  pos:" + cur + " , value:" + cur.getValue() + ",  dis:"
+            + cur.getDistance());
       }
-      for (Edge e : cur.getAdjacentEdges()) {
-        if (e.status == Edge.STATUS.UNVISITED) {
-          e.status = Edge.STATUS.VISITED;
-          Node oppo = e.getOppositeNode(cur);
+      for (Edge<PathNode> e : cur.getAdjacentEdges()) {
+        if (e.getVisitStatus() == VisitStatus.UNVISITED) {
+          e.setVisitStatus(VisitStatus.VISITED);
+          PathNode oppo = e.getOppositeNode(cur);
 
-          double newDist = oppo.value + cur.dis;
-          if (newDist <= oppo.dis) {
-            if (newDist < oppo.dis) {
+          double newDist = oppo.getValue() + cur.getDistance();
+          if (newDist <= oppo.getDistance()) {
+            if (newDist < oppo.getDistance()) {
               pq.remove(oppo);
-              oppo.dis = newDist;
+              oppo.setDistance(newDist);
               pq.add(oppo);
-              oppo.prevs.clear();// remove old prevs
+              oppo.clearPrevNodes();
             }
-            oppo.prevs.add(cur);
+            oppo.addPrevNode(cur);
           }
 
         }
@@ -65,7 +67,7 @@ public class Dijkstra {
     return g.buildAllPaths(start, end, path);
   }
 
-  public void traverse(Graph g, Node start) {
+  public void traverse(Graph g, PathNode start) {
     find(g, start, null);
   }
 }
