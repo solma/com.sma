@@ -2,9 +2,9 @@ package com.shuoma.ds.graph.tree;
 
 // ref:http://www.mitbbs.com/article_t/JobHunting/32695977.html
 
-// Given a binary tree where all the right nodes are either empty or leaf
-// nodes, flip it upside down
-// and turn it into a tree with left leaf nodes.
+// Given a binary tree where all the right nodeMap are either empty or leaf
+// nodeMap, flip it upside down
+// and turn it into a tree with left leaf nodeMap.
 // * In the original tree, if a node has a right child, it also must have a
 // left child.
 

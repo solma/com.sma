@@ -4,10 +4,14 @@ import com.shuoma.alg.graph.basic.BFS;
 import com.shuoma.alg.graph.basic.DFS;
 import com.shuoma.alg.graph.basic.shortestpath.Dijkstra;
 import com.shuoma.alg.graph.tree.mst.Kruskal;
+import com.shuoma.ds.graph.basic.Edge;
+import com.shuoma.ds.graph.basic.Graph;
+import com.shuoma.ds.graph.basic.Node;
+import com.shuoma.ds.graph.basic.PathNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Map;
 
 /**
  * Matrix as a graph where each element in the matrix is regarded a node
@@ -19,42 +23,27 @@ public class MatrixGraph extends Graph {
   // {-1, 0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}
   public static final int[][] NEIGHBOR_ELEMENTS = { {-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-  class MatrixNode extends Node {
-    public static final String ID_DELIMETER = "-";
+  class MatrixNode extends PathNode {
+    public static final String ID_DELIMITER = "-";
 
     public MatrixNode(int row, int col, double v) {
-      id = row + ID_DELIMETER + col;
-      adjacentList = new ArrayList<>();
-      value = v;
-      dis = Double.MAX_VALUE;
-      reset();
+      super(row + ID_DELIMITER + col, v, Integer.MAX_VALUE);
     }
 
-    @Override
-    public void reset() {
-      status = STATUS.UNVISITED;
-      for (Edge e : adjacentList)
-        e.status = Edge.STATUS.UNVISITED;
-      prevs = new ArrayList<>();
-      dis = Double.MAX_VALUE;
-    }
 
-    @Override
-    public String toString() {
-      return id;
-    }
   }
 
   class MatrixEdge extends Edge {
     public MatrixEdge(Node f, Node t) {
-      from = f;
-      to = t;
-      reset();
+      super(f, t);
+      resetVisitStatus();
     }
 
     public boolean equals(Edge other) {
-      if ((from.equals(other.from) && to.equals(other.to))
-          || (from.equals(other.to) && to.equals(other.from))) {
+      Node from = getStartNode(), to = getEndNode();
+      Node otherFrom = other.getStartNode(), otherTo = other.getEndNode();
+      if ((from.equals(otherFrom) && to.equals(otherTo))
+          || (from.equals(otherTo) && to.equals(otherFrom))) {
         return true;
       }
       return false;
@@ -62,14 +51,12 @@ public class MatrixGraph extends Graph {
 
     @Override
     public String toString() {
-      return "(" + from + "," + to + ")";
+      return "(" + getStartNode() + "," + getEndNode() + ")";
     }
   }
 
-
-
   public Node getNode(int row, int col) {
-    return nodes.get(row + MatrixNode.ID_DELIMETER + col);
+    return getNode(row + MatrixNode.ID_DELIMITER + col);
   }
 
   /**
@@ -84,39 +71,29 @@ public class MatrixGraph extends Graph {
     if (nrow == 0) throw new IllegalArgumentException();
     int ncol = board[0].length;
 
-    // add nodes;
-    nodes = new HashMap<String, Node>();
+    // add nodeMap;
+    Map<String, Node> nodeMap = new HashMap<String, Node>();
     for (int i = 0; i < nrow; i++) {
       for (int j = 0; j < ncol; j++) {
         MatrixNode node = new MatrixNode(i, j, board[i][j]);
-        nodes.put(node.id, node);
+        nodeMap.put(node.getId(), node);
       }
     }
 
     // add edges;
-    for (Node node : nodes.values()) {
-      String[] rowAndCol = node.id.split(MatrixNode.ID_DELIMETER);
+    for (Node node : nodeMap.values()) {
+      String[] rowAndCol = node.getId().split(MatrixNode.ID_DELIMITER);
       int row = Integer.parseInt(rowAndCol[0]);
       int col = Integer.parseInt(rowAndCol[1]);
       for (int i = 0; i < NEIGHBOR_ELEMENTS.length; i++) {
         String adjacentNodeID =
-            (row + NEIGHBOR_ELEMENTS[i][0]) + MatrixNode.ID_DELIMETER
+            (row + NEIGHBOR_ELEMENTS[i][0]) + MatrixNode.ID_DELIMITER
                 + (col + NEIGHBOR_ELEMENTS[i][1]);
-        if (nodes.containsKey(adjacentNodeID)) {
-          node.adjacentList.add(new MatrixEdge(node, nodes.get(adjacentNodeID)));
+        if (nodeMap.containsKey(adjacentNodeID)) {
+          node.getAdjacentEdges().add(new MatrixEdge(node, nodeMap.get(adjacentNodeID)));
         }
       }
     }
-  }
-
-  public ArrayList<Edge> getEdgeList() {
-    HashSet<Edge> edges = new HashSet<Edge>();
-    for (Node node : nodes.values()) {
-      for (Edge edge : node.adjacentList) {
-        edges.add(edge);
-      }
-    }
-    return new ArrayList<Edge>(edges);
   }
 
   public static void main(String[] args) {
@@ -134,7 +111,7 @@ public class MatrixGraph extends Graph {
 
     // bfs
     BFS bfs = new BFS();
-    graph.reset();
+    graph.resetVisitStatus();
     graph.printPath(bfs.find(graph, start, end));
 
     ArrayList<Node> path = new ArrayList<Node>();
@@ -142,25 +119,25 @@ public class MatrixGraph extends Graph {
 
     // dfs
     DFS dfs = new DFS();
-    graph.reset();
+    graph.resetVisitStatus();
     // dfs.find(graph, start, end );
     // graph.printPath( graph.buildPath(start, end) );
 
     // iddfs
     /*
-     * for(int depth=1;depth<graph.nodes.size();depth++){ graph.reset(); if(dfs.find(graph, start,
+     * for(int depth=1;depth<graph.nodeMap.size();depth++){ graph.resetVisitStatus(); if(dfs.find(graph, start,
      * end,depth)!=null){ graph.printPath( graph.buildPath(start, end) ); break; } }
      */
 
     // dijkstra
     Dijkstra dijkstra = new Dijkstra();
-    graph.reset();
+    graph.resetVisitStatus();
     graph.printPath(dijkstra.find(graph, start, end));
 
 
     // Kruskal
     Kruskal kruskal = new Kruskal();
-    graph.reset();
+    graph.resetVisitStatus();
     // Tree tree=kruskal.buildMST(graph, start);
     // graph.printPath(tree.traverse(TRAVERSAL_ORDER.PREORDER), true);
   }

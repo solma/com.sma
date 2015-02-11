@@ -1,24 +1,30 @@
 package com.shuoma.alg.graph.tree.mst;
 
-import com.shuoma.ds.graph.Edge;
-import com.shuoma.ds.graph.Graph;
-import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.basic.Edge;
+import com.shuoma.ds.graph.basic.Graph;
+import com.shuoma.ds.graph.basic.Node;
+import com.shuoma.ds.graph.basic.PathNode;
+import com.shuoma.ds.graph.basic.VisitStatus;
 import com.shuoma.ds.graph.tree.Tree;
-import com.shuoma.ds.graph.tree.TreeNode;
+import com.shuoma.ds.graph.tree.WeightedEdge;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
-public class Kruskal {
+public class Kruskal extends MinimumSpanningTreeFactory {
   public static final boolean verbose = true;
 
-  public Tree buildMST(Graph g, Node start) {
+  @Override
+  public <N extends Node> Tree build(Graph<N, WeightedEdge<N>> g) {
     if (verbose) {
       System.out.println("**** Kruskal Building Illustration ****");
     }
+
+    PathNode start = new LinkedList<>(g.getAllNodes()).get(0);
     if (start == null) return null;
     PriorityQueue<Node> pq = new PriorityQueue<>();
     start.dis = 0;
-    start.status = Node.STATUS.VISITED;
+    start.visitStatus = Node.STATUS.VISITED;
     pq.add(start);
 
     Tree tree = null;
@@ -26,32 +32,32 @@ public class Kruskal {
     int lvl = 0;
     while (pq.size() > 0) {
       Node cur = pq.poll();
-      cur.status = Node.STATUS.EXPANED;
+      cur.setVisitStatus(VisitStatus.EXPANDED);
 
       if (lvl == 0)
         tree = new Tree(new TreeNode(cur));
       else {
-        TreeNode father = tree.treeNodes.get(cur.prevs.get(0).id);
+        TreeNode father = tree.treeNodes.get(cur.prevs.get(0).getId());
         TreeNode child = new TreeNode(cur);
         father.children.add(child);
-        tree.treeNodes.put(child.id, child);
+        tree.treeNodes.put(child.getId(), child);
         if (verbose) {
           System.out.println("edge " + lvl + " :  father:" + father.value + ",  child:"
               + child.value);
         }
       }
 
-      for (Edge e : cur.adjacentList) {
-        if (e.status == Edge.STATUS.UNVISITED) {
-          Node oppo = e.opposite(cur);
-          if (oppo.status == Node.STATUS.UNVISITED) {
-            oppo.status = Node.STATUS.VISITED;
-            oppo.prevs.add(cur);
+      for (Edge e : cur.getAdjacentEdges()) {
+        if (e.getVisitStatus() == VisitStatus.UNVISITED) {
+          PathNode oppo = e.getOppositeNode(cur);
+          if (oppo.getVisitStatus() == VisitStatus.UNVISITED) {
+            oppo.setVisitStatus(VisitStatus.VISITED);
+            oppo.addPrevNode(cur);
 
-            double newDist = oppo.value;
-            if (oppo.dis > newDist) {
+            double newDist = oppo.getValue();
+            if (oppo.getDistance() > newDist) {
               pq.remove(oppo);
-              oppo.dis = newDist;
+              oppo.setDistance(newDist);
               pq.add(oppo);
             }
 

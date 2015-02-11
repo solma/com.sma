@@ -87,14 +87,14 @@ class StateNode {
 
   public int[] pos;
   public int emptyIdx;
-  // public STATUS status;
+  // public STATUS visitStatus;
   public StateNode prev;
 
 
   public StateNode(int[] pos, int emptyIdx) {
     this.pos = pos;
     this.emptyIdx = emptyIdx;
-    // this.status=STATUS.UNVISITED;
+    // this.visitStatus=STATUS.UNVISITED;
   }
 
   public StateNode(int[] pos, int emptyIdx, StateNode prev) {

@@ -15,20 +15,20 @@ public class TreeMaxIndependentSet {
     for(int i = 1; i < nodes.length; i++)
       nodes[i] = new TreeNode(i);
 
-    nodes[1].children.add(nodes[2]);
-    nodes[1].children.add(nodes[3]);
-    nodes[1].children.add(nodes[4]);
-    nodes[3].children.add(nodes[5]);
-    nodes[3].children.add(nodes[6]);
-    nodes[3].children.add(nodes[7]);
-    nodes[6].children.add(nodes[8]);
-    nodes[6].children.add(nodes[9]);
-    nodes[7].children.add(nodes[10]);
-    nodes[7].children.add(nodes[11]);
-    nodes[10].children.add(nodes[12]);
-    nodes[10].children.add(nodes[13]);
+    nodes[1].addChild(nodes[2]);
+    nodes[1].addChild(nodes[3]);
+    nodes[1].addChild(nodes[4]);
+    nodes[3].addChild(nodes[5]);
+    nodes[3].addChild(nodes[6]);
+    nodes[3].addChild(nodes[7]);
+    nodes[6].addChild(nodes[8]);
+    nodes[6].addChild(nodes[9]);
+    nodes[7].addChild(nodes[10]);
+    nodes[7].addChild(nodes[11]);
+    nodes[10].addChild(nodes[12]);
+    nodes[10].addChild(nodes[13]);
 
-    //System.out.println(nodes[1].value);
+    //System.out.println(nodeMap[1].value);
     System.out.println(maxIndependentSet(nodes[1]));
   }
 
@@ -41,14 +41,14 @@ public class TreeMaxIndependentSet {
   static double maxIndependentSet(TreeNode cur, boolean selected) {
     if (cur == null)
       return 0;
-    String key = cur.value + "" + selected;
+    String key = cur.getValue() + "" + selected;
     if (memory.containsKey(key))
       return memory.get(key);
 
     double sum;
     if (selected) {
-      sum = cur.value;
-      for (TreeNode child : cur.children) {
+      sum = cur.getValue();
+      for (TreeNode child : cur.getChildren()) {
         sum += maxIndependentSet(child, false);
       }
       memory.put(key, sum);
@@ -56,7 +56,7 @@ public class TreeMaxIndependentSet {
     }
 
     sum = 0;
-    for (TreeNode child : cur.children) {
+    for (TreeNode child : cur.getChildren()) {
       sum += maxIndependentSet(child);
     }
     memory.put(key, sum);

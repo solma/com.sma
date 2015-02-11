@@ -61,7 +61,7 @@ public class Trie {
     TrieNode cur = root;
     while (cur.children.size() == 1) {
       cur = cur.children.values().iterator().next();
-      longestPrefix += cur.id;
+      longestPrefix += cur.getId();
     }
     return longestPrefix;
   }
@@ -81,7 +81,7 @@ public class Trie {
         return "";
       }
       cur = cur.children.get(c);
-      longestPrefix += cur.id;
+      longestPrefix += cur.getId();
     }
     return longestPrefix;
   }

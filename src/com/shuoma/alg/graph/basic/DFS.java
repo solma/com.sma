@@ -1,14 +1,14 @@
 package com.shuoma.alg.graph.basic;
 
-import com.shuoma.ds.graph.Edge;
-import com.shuoma.ds.graph.Graph;
-import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.basic.Edge;
+import com.shuoma.ds.graph.basic.Graph;
+import com.shuoma.ds.graph.basic.Node;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class DFS {
-  public ArrayList<Node> path = new ArrayList<Node>();
+  public ArrayList<Node> path = new ArrayList<>();
   public static final boolean verbose = true;
 
   /**
@@ -23,8 +23,8 @@ public class DFS {
       if (depthLimit != Integer.MAX_VALUE) System.out.println("Depth Limit: " + depthLimit);
     }
     if (start == null || start.equals(end)) return start;
-    Stack<Node> stack = new Stack<Node>();
-    start.status = Node.STATUS.VISITED;
+    Stack<Node> stack = new Stack<>();
+    start.visitStatus = Node.STATUS.VISITED;
     stack.push(start);
 
     int lvl = 0;
@@ -34,18 +34,18 @@ public class DFS {
       if (verbose) {
         System.out.println("level " + lvl + " : " + cur);
       }
-      cur.status = Node.STATUS.EXPANED;
-      for (Edge e : cur.adjacentList) {
+      cur.visitStatus = Node.STATUS.EXPANED;
+      for (Edge e : cur.getAdjacentEdges()) {
         if (e.status == Edge.STATUS.UNVISITED) {
-          Node oppo = e.opposite(cur);
-          if (oppo.status == Node.STATUS.UNVISITED) {
+          Node oppo = e.getOppositeNode(cur);
+          if (oppo.visitStatus == Node.STATUS.UNVISITED) {
             e.status = Edge.STATUS.VISITED;
-            oppo.status = Node.STATUS.VISITED;
+            oppo.visitStatus = Node.STATUS.VISITED;
             oppo.prevs.add(cur);
 
             if (oppo.equals(end)) return oppo;
             stack.add(oppo);
-          } else if (oppo.status == Node.STATUS.VISITED) {
+          } else if (oppo.visitStatus == Node.STATUS.VISITED) {
             e.status = Edge.STATUS.CROSSED;
           }
         }

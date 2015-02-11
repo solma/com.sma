@@ -1,14 +1,14 @@
 package com.shuoma.alg.graph.basic;
 
-import com.shuoma.ds.graph.Edge;
-import com.shuoma.ds.graph.Graph;
-import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.basic.Edge;
+import com.shuoma.ds.graph.basic.Graph;
+import com.shuoma.ds.graph.basic.Node;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class BFS {
-  public ArrayList<Node> path = new ArrayList<Node>();
+  public ArrayList<Node> path = new ArrayList<>();
   public static final boolean verbose = true;
 
   /**
@@ -21,10 +21,10 @@ public class BFS {
     if (verbose) {
       System.out.println("**** BFS Searching Illustration ****");
     }
-    if (start == null || end == null) return new ArrayList<ArrayList<Node>>();
+    if (start == null || end == null) return new ArrayList<>();
 
-    LinkedList<Node> curLvl = new LinkedList<Node>();
-    start.status = Node.STATUS.VISITED;
+    LinkedList<Node> curLvl = new LinkedList<>();
+    start.visitStatus = Node.STATUS.VISITED;
     start.dis = 0;
     curLvl.add(start);
 
@@ -33,19 +33,19 @@ public class BFS {
       if (verbose) {
         System.out.println("level " + lvl + " : " + curLvl);
       }
-      LinkedList<Node> nextLvl = new LinkedList<Node>();
+      LinkedList<Node> nextLvl = new LinkedList<>();
       while (curLvl.size() > 0) {
         Node cur = curLvl.poll();
         if (cur.equals(end)) break;
 
-        cur.status = Node.STATUS.EXPANED;
-        for (Edge e : cur.adjacentList) {
+        cur.visitStatus = Node.STATUS.EXPANED;
+        for (Edge e : cur.getAdjacentEdges()) {
           if (e.status == Edge.STATUS.UNVISITED) {
-            Node oppo = e.opposite(cur);
+            Node oppo = e.getOppositeNode(cur);
 
-            // if(oppo.status==Node.STATUS.UNVISITED){
-            // e.status=STATUS.VISITED;
-            // oppo.status=Node.STATUS.VISITED;
+            // if(oppo.visitStatus==Node.STATUS.UNVISITED){
+            // e.visitStatus=STATUS.VISITED;
+            // oppo.visitStatus=Node.STATUS.VISITED;
             // nextLvl.add(oppo);
             // }else
             if (oppo.dis < Integer.MAX_VALUE) {
@@ -73,7 +73,7 @@ public class BFS {
       lvl++;
     }
 
-    ArrayList<Node> path = new ArrayList<Node>();
+    ArrayList<Node> path = new ArrayList<>();
     path.add(end);
     return g.buildAllPaths(start, end, path);
   }

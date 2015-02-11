@@ -1,6 +1,6 @@
 package com.shuoma.ds.graph.tree;
 
-import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.basic.Node;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public class TrieNode extends Node {
 
 
   public TrieNode(char c, String path) {
-    id = String.valueOf(c);
+    super(String.valueOf(c));
     this.path = path;
     children = new HashMap<Character, TrieNode>();
   }

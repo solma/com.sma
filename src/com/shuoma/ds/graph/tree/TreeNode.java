@@ -1,30 +1,34 @@
 package com.shuoma.ds.graph.tree;
 
-import com.shuoma.ds.graph.Node;
+import com.shuoma.ds.graph.basic.Node;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TreeNode extends Node {
-  public ArrayList<TreeNode> children;
-
-  public TreeNode(int i) {
-    this(new Node(i));
-  }
+  private List<TreeNode> children;
 
   public TreeNode(Node n) {
-    id = n.id;
-    status = n.status;
-    value = n.value;
-    dis = n.dis;
-
-    children = new ArrayList<>();
-    /*
-     * for(Edge e:n.adjacentList){ children.add(new TreeNode(e.opposite(n)) ); }
-     */
+    super(n);
+    aliasAdjcentNodes(n.getAdjacentNodes());
   }
 
-  @Override
-  public String toString() {
-    return id;
+  public TreeNode(int i) {
+    this(new Node(String.valueOf(i), i));
+  }
+
+  public void addChild(TreeNode child) {
+    children.add(child);
+  }
+
+  public void aliasAdjcentNodes(List<Node> adjecentNodes) {
+    children = new ArrayList<>(adjecentNodes.size());
+    for (Node node : adjecentNodes) {
+      children.add((TreeNode)node);
+    }
+  }
+
+  public List<TreeNode> getChildren() {
+    return children;
   }
 }

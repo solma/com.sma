@@ -1,8 +1,5 @@
 package com.shuoma.ds.graph.tree;
 
-import com.shuoma.ds.graph.tree.BST.BinarySearchTree.Implementation;
-import com.shuoma.ds.graph.tree.BST.BinarySearchTree.TraversalOrder;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,10 +46,6 @@ public class BST {
 //      return;
 
     // bst.printTreeInLevels();
-    Implementation impl = Implementation.ITERATIVE;
-    bst.printTree(TraversalOrder.POSTORDER, impl);
-    bst.printTree(TraversalOrder.PREORDER, impl);
-    bst.printTree(TraversalOrder.INORDER, impl);
     bst.printPrettyTree();
     // bst.printPaths();
 
@@ -91,16 +84,6 @@ public class BST {
 
   public static class BinarySearchTree {
     private BSTNode root;
-
-
-    public enum TraversalOrder {
-      PREORDER, INORDER, POSTORDER;
-    }
-
-
-    public enum Implementation {
-      RECURSION, ITERATIVE;
-    }
 
     public BinarySearchTree(int[] keys) {
       insert(keys);
@@ -446,29 +429,30 @@ public class BST {
       return cur;
     }
 
-    /*
-     * Preorder print
-     */
-    public void printTree(TraversalOrder order, Implementation impl) {
-      switch (order) {
-        case PREORDER:
-          if (impl == Implementation.RECURSION)
-            printTreePreorder(root);
-          else
-            printTreePreorderNonRecursive(root);
+    public void printTree(TraversalMethod method) {
+      switch (method) {
+        case INORDER_ITERATIVE_WITH_STACK:
+          printTreeInorderNonRecursive(root);
           break;
-        case POSTORDER:
-          if (impl == Implementation.RECURSION)
+        case INORDER_ITERATIVE_WITHOUT_STACK:
+          printTreeInorderNonRecursiveWithoutStack();
+          break;
+        case INORDER_RECUSRIVE:
+          printTreeInorder(root);
+        case PREORDER_ITERATIVE_WITH_STACK:
+          printTreePreorderNonRecursive(root);
+          break;
+        case PREORDER_RECUSRIVE:
+            printTreePreorder(root);
+          break;
+        case POSTORDER_ITERATIVE_WITH_STACK:
+          printTreePostorderNonRecursive(root);
+          break;
+        case POSTORDER_RECUSRIVE:
             printTreePostorder(root);
-          else
-            printTreePostorderNonRecursive(root);
           break;
         default:
-          if (impl == Implementation.RECURSION)
-            printTreeInorder(root);
-          else
-            printTreeInorderNonRecursive(root);
-          break;
+          throw new IllegalArgumentException(method + " does not exists");
       }
       System.out.println();
     }
@@ -811,7 +795,7 @@ public class BST {
 
       // populate the char array by travesing the tree by level;
       int row = 0;
-      // stores the row position of nodes
+      // stores the row position of nodeMap
       HashMap<BSTNode, Integer> rows = new HashMap<>();
       rows.put(root, 0); // root is at 0th row
       while (root != null) {

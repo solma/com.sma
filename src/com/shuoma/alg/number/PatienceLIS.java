@@ -21,7 +21,7 @@ public class PatienceLIS {
       System.out.println("x:" + node + " i:" + i + " piles:" + pileTops);
     }
 
-    // extract LIS from nodes
+    // extract LIS from nodeMap
     List<E> result = new ArrayList<E>();
     for (Node<E> node = pileTops.size() == 0 ? null : pileTops.get(pileTops.size() - 1); node != null; node =
         node.prev)

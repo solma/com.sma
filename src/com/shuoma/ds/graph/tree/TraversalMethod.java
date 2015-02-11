@@ -1,0 +1,15 @@
+package com.shuoma.ds.graph.tree;
+
+/** Traversal method of tree. */
+public enum TraversalMethod {
+
+  INORDER_ITERATIVE_WITH_STACK,
+  INORDER_ITERATIVE_WITHOUT_STACK,
+  INORDER_RECUSRIVE,
+  PREORDER_ITERATIVE_WITH_STACK,
+  PREORDER_RECUSRIVE,
+  POSTORDER_ITERATIVE_WITH_STACK,
+  POSTORDER_RECUSRIVE,
+  ;
+
+}
