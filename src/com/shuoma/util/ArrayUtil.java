@@ -245,7 +245,10 @@ public class ArrayUtil {
   }
 
   public static int[] reverse(int[] array) {
-    int l = 0, r = array.length - 1;
+    return reverse(array, 0, array.length - 1);
+  }
+
+  public static int[] reverse(int[] array, int l, int r) {
     while (l < r) {
       swap(array, l++, r--);
     }
