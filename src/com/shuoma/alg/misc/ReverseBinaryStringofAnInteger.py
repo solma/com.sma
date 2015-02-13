@@ -10,3 +10,5 @@ def rev(n):
     print bin(n)
     n = (n << 16) | (n >> 16)
     print bin(n)
+
+rev(10)
