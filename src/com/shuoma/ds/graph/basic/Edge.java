@@ -1,6 +1,6 @@
 package com.shuoma.ds.graph.basic;
 
-/** Generic edge. */
+/** Generic undirected edge. */
 public class Edge<N extends Node> {
   private N from;
   private N to;

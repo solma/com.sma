@@ -27,6 +27,20 @@ public class Node {
     this(node.getId(), node.getValue());
   }
 
+  public void addAdjecentEdge(Edge edge) {
+    if (!adjacentEdges.contains(edge)) {
+      adjacentEdges.add(edge);
+    }
+    Node oppo = edge.getOppositeNode(this);
+    adjacentNodes.add(oppo);
+    oppo.addAdjecentEdge(edge);
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    return ((Node)other).getId().equals(id);
+  }
+
   public List<Edge> getAdjacentEdges() {
     return adjacentEdges;
   }

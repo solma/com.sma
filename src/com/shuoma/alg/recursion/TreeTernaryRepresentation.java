@@ -15,7 +15,7 @@ public class TreeTernaryRepresentation {
     public static void main(String[] args) {
         BST.BinarySearchTree tree = new BST.BinarySearchTree(fromTernaryString("a?b?:d:e"));
         tree.printPrettyTreeOld();
-        tree.printTreeInLevels();
+        tree.printTreeByRows();
     }
 
     static BSTNode fromTernaryString(String s) {

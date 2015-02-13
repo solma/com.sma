@@ -1,28 +1,29 @@
 package com.shuoma.alg.number;
 
-import com.shuoma.alg.recursion.Combination;
-import com.shuoma.util.RandomUtil;
-
-import java.util.Arrays;
-
-// given a number n remove k digits such that the resulting number is minimized
+// given a number n remove1 k digits such that the resulting number is minimized
 // source: wechat
 
 public class RemoveToProduceSmallestNumber {
-  public static void main(String[] args) {
-    int[] res = new int[2];
-    for (int i = 0; i < 1000; i++) {
-      int n = 123 + RandomUtil.r.nextInt(100000), k = 1 + RandomUtil.r.nextInt(3);
-      //int n = 69611, k = 3;
-      res[0] = remove(n, k);
-      res[1] = removeBase(n, k);
-      if (res[0] != res[1]) {
-        System.out.println(n + ":" + k + "   " + Arrays.toString(res));
+
+  int remove(int n, int k) {
+    StringBuilder sb = new StringBuilder(String.valueOf(n));
+
+    int nRemovedDigits = 0;
+    while (nRemovedDigits < k) {
+      int i;
+      for (i = 0; i < sb.length() - 1; i++) {
+        if (sb.charAt(i) > sb.charAt(i + 1)) {
+          break;
+        }
       }
+      sb.deleteCharAt(i);
+      nRemovedDigits++;
     }
+    return sb.length() == 0 ? 0 : Integer.parseInt(sb.toString());
   }
 
-  static int remove(int n, int k) {
+
+  int remove1(int n, int k) {
     // put n into an array
     char[] nArray = String.valueOf(n).toCharArray();
 
@@ -56,13 +57,5 @@ public class RemoveToProduceSmallestNumber {
     return Integer.parseInt((new String(nArray).substring(0, nArray.length - k)));
   }
 
-  static int removeBase(int n, int k) {
-    String s = String.valueOf(n);
-    if (k >= s.length()) return 0;
-    int min = n;
-    for (String com : Combination.combinationsOfSizeN(s, s.length() - k)) {
-      min = Math.min(Integer.parseInt(com), min);
-    }
-    return min;
-  }
+
 }

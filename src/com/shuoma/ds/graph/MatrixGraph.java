@@ -3,7 +3,7 @@ package com.shuoma.ds.graph;
 import com.shuoma.alg.graph.basic.BFS;
 import com.shuoma.alg.graph.basic.DFS;
 import com.shuoma.alg.graph.basic.shortestpath.Dijkstra;
-import com.shuoma.alg.graph.tree.mst.Kruskal;
+import com.shuoma.alg.graph.tree.mst.Prim;
 import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Graph;
 import com.shuoma.ds.graph.basic.Node;
@@ -134,7 +134,7 @@ public class MatrixGraph extends Graph {
 
 
     // Kruskal
-    Kruskal kruskal = new Kruskal();
+    Prim prim = new Prim();
     graph.resetVisitStatus();
     // Tree tree=kruskal.buildMST(graph, start);
     // graph.printPath(tree.traverse(TRAVERSAL_ORDER.PREORDER), true);

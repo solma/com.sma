@@ -27,35 +27,41 @@ public class BST {
 
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
     BinarySearchTree bst = new BinarySearchTree(nodes);
+
+//    bst.printTreeByRows();
+//    bst.printTreeByColumn();
+//    bst.printTreeInorderNonRecursiveWithoutStack();
+
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
     // bst.mirror();
-    //bst.printTreeByColumn();
 
-    System.out.println(
-        "dis btw: " + bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25")).dis);
+    // ancestor test
+    BSTNodeDisWrapper ancestor = bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25"));
+    //System.out.println("dis btw: " + ancestor.dis);
 
     bst.printPrettyTree();
-    bst.printTreeInLevels();
+    int x = 7;
+    System.out.println(x + "th number in the tree (inorder) is: " + bst.getRank(x).toString());
+    x = 25;
+    System.out.println(x + " is " + bst.rank("x") + "th number in the tree (inorder).");
     bst.delete("7");
-    bst.printTreeInLevels();
     bst.printPrettyTree();
-    bst.printTreeInorderNonRecursiveWithoutStack();
+    x = 7;
+    System.out.println(x + "th number in the tree (inorder) is: " + bst.getRank(x).toString());
+    x = 25;
+    System.out.println(x + " is " + bst.rank("x") + "th number in the tree (inorder).");
+
+
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
 
 //    if (true)
 //      return;
 
-    // bst.printTreeInLevels();
-    bst.printPrettyTree();
-    // bst.printPaths();
-
     // System.out.println(bst.countTree(7));
     // bst.printAllBinaryTreesPermutation(4);
 
-
-
-    // bst.printPrettyTreeOld();
-    System.out.println(bst.successorInorder(5));
+    x = 3;
+    System.out.println(x + " 's successor is: " + bst.successorInorder(x));
 
     // test subtree()
     nodes = new int[] {22, 7, 20, 6};
@@ -84,6 +90,9 @@ public class BST {
 
   public static class BinarySearchTree {
     private BSTNode root;
+
+    public BinarySearchTree() {
+    }
 
     public BinarySearchTree(int[] keys) {
       insert(keys);
@@ -148,6 +157,7 @@ public class BST {
           return cur.right;
         if (cur.right == null)
           return cur.left;
+
         // get Min of right tree
         BSTNode successor = cur.right, parent = cur;
         while (successor.left != null) {
@@ -157,6 +167,9 @@ public class BST {
         // replace cur by successor
         cur.value = successor.value;
         cur.id = successor.id;
+        // size minus 1
+        cur.size--;
+
         // remove successor from right tree
         if (parent.left == successor)
           parent.left = successor.right;
@@ -169,6 +182,7 @@ public class BST {
           cur.right = delete(cur.right, id);
         else
           cur.left = delete(cur.left, id);
+        cur.size--;
       }
       return cur;
     }
@@ -239,25 +253,55 @@ public class BST {
       return root;
     }
 
+    /** Get the nth node in preorder. */
+    public BSTNode getRank(int n) {
+      return getRank(root, n);
+    }
+
+    private BSTNode getRank(BSTNode cur, int n) {
+      if (cur == null) return null;
+
+      int leftSize = cur.left == null ? 0 : cur.left.size;
+
+      if (n == leftSize + 1) {
+        return cur;
+      }
+
+      if (n <= leftSize) {
+        return getRank(cur.left, n);
+      }
+
+      return getRank(cur.right, n - leftSize - 1);
+    }
+
+    public void insert(int key) {
+      insert(new int[]{key});
+    }
+
     public void insert(int[] keys) {
       for (int key : keys)
         root = insert(root, String.valueOf(key));
     }
 
-    /** the recursion implementation of basic BST operations. */
+    /** recursive insertion. */
     protected BSTNode insert(BSTNode cur, String key) {
-      if (cur == null)
-        return new BSTNode(key);
-      if (cur.value >= Integer.parseInt(key))
+      if (cur == null) {
+        BSTNode leaf = new BSTNode(key);
+        leaf.size = 1;
+        return leaf;
+      }
+
+      if (cur.value >= Integer.parseInt(key)) {
         cur.left = insert(cur.left, key);
-      else
+      }
+      else {
         cur.right = insert(cur.right, key);
+      }
+      cur.size++;
       return cur;
     }
 
-    /**
-     * test if a tree is a bst
-     */
+    /** check if a tree is a bst. */
     public boolean isBST() {
       return isBST(root) == null ? false : true;
       // return isBST(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
@@ -484,6 +528,32 @@ public class BST {
       printTreeByColumn(cur.right, columns, columnIdx + 1);
     }
 
+    public void printTreeByRows() {
+      printTreeByRows(root);
+      System.out.println();
+    }
+
+    private void printTreeByRows(BSTNode root) {
+      if (root == null)
+        return;
+      LinkedList<BSTNode> currentLvl;
+      LinkedList<BSTNode> nextLvl = new LinkedList<>();
+      nextLvl.add(root);
+      while (!nextLvl.isEmpty()) {
+        currentLvl = nextLvl;
+        nextLvl = new LinkedList<>();
+        while (!currentLvl.isEmpty()) {
+          BSTNode cur = currentLvl.pop();
+          System.out.print(cur + "\t");
+          if (cur.left != null)
+            nextLvl.add(cur.left);
+          if (cur.right != null)
+            nextLvl.add(cur.right);
+        }
+        System.out.println();
+      }
+    }
+
     private void printTreeInorder(BSTNode cur) {
       if (cur == null) {
         return;
@@ -616,35 +686,9 @@ public class BST {
       System.out.println(cur);
     }
 
-    public void printTreeInLevels() {
-      printTreeInLevels(root);
-      System.out.println();
-    }
 
-    private void printTreeInLevels(BSTNode root) {
-      if (root == null)
-        return;
-      LinkedList<BSTNode> currentLvl;
-      LinkedList<BSTNode> nextLvl = new LinkedList<>();
-      nextLvl.add(root);
-      while (!nextLvl.isEmpty()) {
-        currentLvl = nextLvl;
-        nextLvl = new LinkedList<>();
-        while (!currentLvl.isEmpty()) {
-          BSTNode cur = currentLvl.pop();
-          System.out.print(cur + "\t");
-          if (cur.left != null)
-            nextLvl.add(cur.left);
-          if (cur.right != null)
-            nextLvl.add(cur.right);
-        }
-        System.out.println();
-      }
-    }
 
-    /*
-     * printPaths
-     */
+    /** printPaths */
     public void printPaths() {
       if (root == null)
         return;
@@ -672,9 +716,29 @@ public class BST {
       }
     }
 
-    /*
-     * test if two trees are identical
-     */
+    /** Return the number of nodes in the tree whose key is no greater than the given key. */
+    public int rank(String key) {
+      return rank(root, key);
+    }
+
+    private int rank(BSTNode cur, String key) {
+      if (cur == null) return 0;
+
+      int comp = Integer.parseInt(cur.id) - Integer.parseInt(key);
+
+      if(comp > 0) {
+        return rank(cur.left, key);
+      }
+
+      int leftSize = cur.left == null ? 0 : cur.left.size;
+
+      if (comp == 0) {
+        return leftSize;
+      }
+      return leftSize + 1 + rank(cur.right, key);
+    }
+
+    /** check if two trees are identical. */
     public boolean sameTree(BSTNode otherTreeRoot) {
       return sameTree(root, otherTreeRoot);
     }
@@ -724,7 +788,7 @@ public class BST {
     public void printAllBinaryTreesPermutation(int n) {
       ArrayList<BSTNode> trees = buildAllBinaryTreesPermutation(1, n);
       for (BSTNode t : trees) {
-        printTreeInLevels(t);
+        printTreeByRows(t);
         System.out.println();
       }
     }
@@ -869,16 +933,20 @@ public class BST {
     }
 
     private BSTNode successorInorder(BSTNode cur, int value, int[] isFound) {
-      // System.out.println(Arrays.toString(isFound)+" "+cur);
       if (cur == null)
         return cur;
+      // first search in left subtree
       BSTNode left = successorInorder(cur.left, value, isFound);
       if (left != null)
         return left;
+
+      // if already found the value, return cur
       if (isFound[0] == 1)
         return cur; // next Node;
       if (cur.value == value)
         isFound[0] = 1;
+
+      // continue search in right subtree
       return successorInorder(cur.right, value, isFound);
     }
 

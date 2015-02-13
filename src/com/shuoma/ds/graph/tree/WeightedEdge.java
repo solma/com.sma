@@ -3,7 +3,7 @@ package com.shuoma.ds.graph.tree;
 import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Node;
 
-/** Edge with a weight. */
+/** Undirected weighted edge. */
 public class WeightedEdge<N extends Node> extends Edge<N> {
 
   private int weight;

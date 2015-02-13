@@ -1,71 +1,59 @@
 package com.shuoma.alg.graph.tree.mst;
 
-import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Graph;
 import com.shuoma.ds.graph.basic.Node;
-import com.shuoma.ds.graph.basic.PathNode;
-import com.shuoma.ds.graph.basic.VisitStatus;
 import com.shuoma.ds.graph.tree.Tree;
-import com.shuoma.ds.graph.tree.TreeNode;
 import com.shuoma.ds.graph.tree.WeightedEdge;
+import com.shuoma.util.RandomUtil;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
+import java.util.List;
+import java.util.Set;
 
 public class Kruskal extends MinimumSpanningTreeFactory {
-  public static final boolean verbose = true;
+
+  public static void main(String[] args) {
+    Graph randomWeightedGraph = RandomUtil.genRandomUndirectedWeightedGraph(7, 10, 10);
+    System.out.println(randomWeightedGraph.toString());
+    getInstance().build(randomWeightedGraph);
+  }
+
+  private static Kruskal factory = new Kruskal();
+
+  public static Kruskal getInstance() {
+    return factory;
+  }
 
   @Override
-  public <N extends Node> Tree build(Graph<N, WeightedEdge<N>> g) {
-    if (verbose) {
-      System.out.println("**** Kruskal Building Illustration ****");
+  public <N extends Node> Tree build(Graph<N, WeightedEdge<N>> graph) {
+    List<WeightedEdge<N>> edges = new LinkedList<>(graph.getAllEdges());
+    Collections.sort(edges, new Comparator<WeightedEdge<N>>() {
+      @Override public int compare(WeightedEdge<N> e1, WeightedEdge<N> e2) {
+        return e1.getWeight() - e2.getWeight();
+      }
+    });
+
+    Set<N> addedNodes = new HashSet<>();
+    int n = graph.getAllNodes().size();
+
+    List<WeightedEdge> treeEdges = new LinkedList<>();
+    for (WeightedEdge<N> edge : edges) {
+      if (treeEdges.size() == n - 1) break;
+      N from = edge.getStartNode(), to = edge.getEndNode();
+      if (!(addedNodes.contains(from) && addedNodes.contains(to))) {
+        treeEdges.add(edge);
+        addedNodes.add(from);
+        addedNodes.add(to);
+      }
     }
 
-    PathNode start = (PathNode) new LinkedList<>(g.getAllNodes()).get(0);
-    if (start == null) return null;
-    PriorityQueue<PathNode> pq = new PriorityQueue<>();
-    start.setVisitStatus(VisitStatus.VISITED);
-    pq.add(start);
-
-    Tree tree = null;
-
-    int lvl = 0;
-    while (pq.size() > 0) {
-      PathNode cur = pq.poll();
-      cur.setVisitStatus(VisitStatus.EXPANDED);
-
-      if (lvl == 0)
-        tree = new Tree(new TreeNode(cur));
-      else {
-        TreeNode father = tree.treeNodes.get(cur.getPrevNodes().get(0).getId());
-        TreeNode child = new TreeNode(cur);
-        father.addChild(child);
-        tree.treeNodes.put(child.getId(), child);
-        if (verbose) {
-          System.out.println("edge " + lvl + " :  father:" + father.getValue() + ",  child:"
-              + child.getValue());
-        }
-      }
-
-      for (Edge<PathNode> e : cur.getAdjacentEdges()) {
-        if (e.getVisitStatus() == VisitStatus.UNVISITED) {
-          PathNode oppo = e.getOppositeNode(cur);
-          if (oppo.getVisitStatus() == VisitStatus.UNVISITED) {
-            oppo.setVisitStatus(VisitStatus.VISITED);
-            oppo.addPrevNode(cur);
-
-            double newDist = oppo.getValue();
-            if (oppo.getDistance() > newDist) {
-              pq.remove(oppo);
-              oppo.setDistance(newDist);
-              pq.add(oppo);
-            }
-
-          }
-        }
-      }
-      lvl++;
+    for(WeightedEdge edge : treeEdges) {
+      System.out.println(edge);
     }
-    return tree;
+
+    return null;
   }
 }

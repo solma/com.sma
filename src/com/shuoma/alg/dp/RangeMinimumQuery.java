@@ -163,19 +163,19 @@ public class RangeMinimumQuery {
     double min;
     ArrayInterval left, right;
 
-    public ArrayInterval(double start, double end) {
+    public ArrayInterval(int start, int end) {
       super(start, end);
     }
 
-    public ArrayInterval(double start, double end, double min) {
+    public ArrayInterval(int start, int end, double min) {
       this(start, end);
       this.min = min;
       left = right = null;
     }
 
     public ArrayInterval(
-        double start,
-        double end,
+        int start,
+        int end,
         double min,
         ArrayInterval left,
         ArrayInterval right) {

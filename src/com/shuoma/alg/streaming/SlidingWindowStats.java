@@ -3,17 +3,12 @@ package com.shuoma.alg.streaming;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-/**
- * Given a stream, compute the stats, e.g. average, min of a sliding window.
- */
+/** Given a stream, compute the stats, e.g. average, min of a sliding window. */
 public class SlidingWindowStats {
-  /**
-   * Window size.
-   */
+
+  /** Window size. */
   int K;
-  /**
-   * Array that simulates a stream.
-   */
+  /** Array that simulates a stream. */
   int[] stream;
 
   /**
@@ -25,9 +20,7 @@ public class SlidingWindowStats {
     this.stream = stream;
   }
 
-  /**
-   * Get the average of the sliding window.
-   */
+  /** Get the average of the sliding window. */
   double[] average() {
     double sum = 0;
     double[] avg = new double[stream.length - K + 1];
@@ -44,9 +37,7 @@ public class SlidingWindowStats {
     return avg;
   }
 
-  /**
-   * Get the max of the sliding window.
-   */
+  /** Get the max of the sliding window. */
   int[] max() {
     int[] max = new int[stream.length - K + 1];
     Deque<Integer> queue = new ArrayDeque<>();

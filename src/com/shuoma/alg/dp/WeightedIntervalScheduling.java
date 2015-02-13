@@ -66,7 +66,7 @@ public class WeightedIntervalScheduling {
     ArrayList<Interval> list = new ArrayList<>();
     Random rand = new Random();
     int size = 3 + rand.nextInt(5);
-    double start, end, weight;
+    int start, end, weight;
     for (int i = 0; i < size; i++) {
       start = rand.nextInt(10);
       end = start + (rand.nextInt(10) + 1);

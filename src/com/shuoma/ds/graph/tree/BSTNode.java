@@ -7,6 +7,8 @@ public class BSTNode {
   public BSTNode right;
   BSTNode next;
   public double value;
+  /** size of the its subtree. */
+  public int size;
 
   public BSTNode(BSTNode copy) {
     this.id = copy.id;

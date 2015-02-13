@@ -7,33 +7,33 @@ package com.shuoma.ds.graph.tree;
 // and turn it into a tree with left leaf nodeMap.
 // * In the original tree, if a node has a right child, it also must have a
 // left child.
+/**
+*  1   1
+* / \ /\
+* 2 3 2 3
+* /
+* 4
+* / \
+* 5 6
 
-// * 1 1
-// * / \ /\
-// * 2 3 2 3
-// * /
-// * 4
-// * / \
-// * 5 6
-
-// Will be translated into:
-// * 1 1
-// * / /
-// * 2---3 2---3
-// * /
-// * 4
-// * /
-// * 5---6
-// *
-// Finally:
-// * 5 2
-// * / \ / \
-// * 6 4 3 1
-// * \
-// * 2
-// * / \
-// * 3 1
-
+Will be translated into:
+* 1 1
+* / /
+* 2---3 2---3
+* /
+* 4
+* /
+* 5---6
+*
+Finally:
+* 5 2
+* / \ / \
+* 6 4 3 1
+* \
+* 2
+* / \
+* 3 1
+******/
 
 public class FlipTree {
 
