@@ -8,6 +8,11 @@ public class MathUtil {
     return res;
   }
 
+  public static int gcd(int n, int m) {
+    if (m == 0) return n;
+    return m > n ? gcd(m, n) : gcd(m, n % m);
+  }
+
   public static long greatestCommonDivisor(long a, long b) {
     return b == 0 ? a : greatestCommonDivisor(b, a%b);
   }
