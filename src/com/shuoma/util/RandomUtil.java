@@ -52,16 +52,23 @@ public class RandomUtil {
     return genRandomArray(length, maxValue, false, true);
   }
 
-  public static List<Interval> genRandomIntervalList(int n, int maxValue) {
+  public static List<Interval> genRandomListOfWeightedIntervals(int n, int maxRange, int maxWeight) {
     int size = 5 + r.nextInt(n);
     List<Interval> intervals = new ArrayList<>(size);
 
     for (int i =0; i < size; i++) {
-      int[] interval = genRandomKNumbers(2, maxValue);
+      int[] interval = genRandomKNumbers(2, maxRange);
       intervals.add(
-          new Interval(Math.min(interval[0], interval[1]), Math.max(interval[0], interval[1])));
+          new Interval(
+              Math.min(interval[0], interval[1]),
+              Math.max(interval[0], interval[1]),
+              r.nextInt(maxWeight)));
     }
     return intervals;
+  }
+
+  public static List<Interval> genRandomListOfIntervals(int n, int maxRange) {
+    return genRandomListOfWeightedIntervals(n, maxRange, 0);
   }
 
   /** Generate random K different numbers from 0~N. */

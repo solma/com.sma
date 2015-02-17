@@ -60,7 +60,7 @@ public class Interval implements Comparable<Interval> {
 
   @Override
   public String toString() {
-    return toString(true);
+    return weight > 0 ? toString(false) : toString(true);
   }
 
   private String toString(boolean rangeOnly) {

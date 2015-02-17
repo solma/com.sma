@@ -1,21 +1,22 @@
 package com.shuoma.alg.dp;
 
 import com.shuoma.ds.misc.Interval;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
+import java.util.List;
 
 public class WeightedIntervalScheduling {
 
   public static void main(String[] args) {
-    ArrayList<Interval> list = generateRandomListOfIntervals(true);
+    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10);
     schedule(list);
   }
 
-  public static ArrayList<Interval> schedule(ArrayList<Interval> input) {
-    ArrayList<Interval> ret = new ArrayList<>();
+  public static List<Interval> schedule(List<Interval> input) {
+    List<Interval> ret = new ArrayList<>();
     int n = input.size();
     if (n < 1) return ret;
     if (n < 2) return input;
@@ -60,23 +61,5 @@ public class WeightedIntervalScheduling {
     }
     System.out.println("ret: \n" + ret);
     return ret;
-  }
-
-  public static ArrayList<Interval> generateRandomListOfIntervals(boolean withWeight) {
-    ArrayList<Interval> list = new ArrayList<>();
-    Random rand = new Random();
-    int size = 3 + rand.nextInt(5);
-    int start, end, weight;
-    for (int i = 0; i < size; i++) {
-      start = rand.nextInt(10);
-      end = start + (rand.nextInt(10) + 1);
-      if (withWeight) {
-        weight = rand.nextInt(10);
-        list.add(new Interval(start, end, weight));
-      } else {
-        list.add(new Interval(start, end));
-      }
-    }
-    return list;
   }
 }

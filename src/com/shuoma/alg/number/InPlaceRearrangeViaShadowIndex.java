@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 // elements-of-programming-interviews P6.13
 
-/*
+/**
  * The input is a sequence x1,x2,...,xn of integers in an arbitrary order, and another sequence
  * a1,a2,..,an of distinct integers from 1 to n (namely a1,a2,...,an is a permutation of 1, 2,...,
  * n). Both sequences are given as arrays. Design an 0(n logn) algorithm to order the first sequence
@@ -17,8 +17,6 @@ import java.util.Arrays;
  * should be x = 9, 5, 17, 1. The algorithm should be in-place, so you cannot use an additional
  * array.
  */
-
-
 public class InPlaceRearrangeViaShadowIndex {
 
   public static void permuteConstantSpace(int[] perm, int[] A) {
@@ -101,7 +99,7 @@ public class InPlaceRearrangeViaShadowIndex {
       //int[] index = ArrayUtil.getNaturalArray(size);
       //RandomUtil.shuffle(index);
       int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
-      
+
       //{0, 2, 4, 6, 1, 3, 5, 7}
       int[] index = {1, 3, 5, 4, 6, 0, 7, 2};
 

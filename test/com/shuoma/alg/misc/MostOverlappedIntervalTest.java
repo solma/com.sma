@@ -16,7 +16,7 @@ public class MostOverlappedIntervalTest extends TestCase {
 
     int n = 10, maxValue = 50;
     for (int i = 0; i < 100; i++) {
-      List<Interval> intervals = RandomUtil.genRandomIntervalList(n, maxValue);
+      List<Interval> intervals = RandomUtil.genRandomListOfIntervals(n, maxValue);
       int[][] res = new int[2][3];
       res[0] = mostOverlappedDummy(intervals);
       res[1] = ins.mostOverlapped(intervals);

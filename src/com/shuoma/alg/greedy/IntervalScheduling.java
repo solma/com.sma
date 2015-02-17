@@ -1,10 +1,11 @@
 package com.shuoma.alg.greedy;
 
-import com.shuoma.alg.dp.WeightedIntervalScheduling;
 import com.shuoma.ds.misc.Interval;
+import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class IntervalScheduling {
 
@@ -12,13 +13,13 @@ public class IntervalScheduling {
    * @param args
    */
   public static void main(String[] args) {
-    ArrayList<Interval> list = WeightedIntervalScheduling.generateRandomListOfIntervals(false);
+    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10);
     schedule(list);
 
   }
 
-  public static ArrayList<Interval> schedule(ArrayList<Interval> input) {
-    ArrayList<Interval> ret = new ArrayList<Interval>();
+  public static List<Interval> schedule(List<Interval> input) {
+    List<Interval> ret = new ArrayList<>();
     int n = input.size();
     if (n < 1) return ret;
     if (n < 2) return input;
