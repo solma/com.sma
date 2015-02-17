@@ -6,6 +6,7 @@ import com.shuoma.util.RandomUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class WeightedIntervalScheduling {
@@ -20,7 +21,11 @@ public class WeightedIntervalScheduling {
     int n = input.size();
     if (n < 1) return ret;
     if (n < 2) return input;
-    Collections.sort(input);
+    Collections.sort(input, new Comparator<Interval>() {
+      @Override public int compare(Interval o1, Interval o2) {
+        return o1.end == o2.end ? (o1.start - o2.start) : (o1.end - o2.end);
+      }
+    });
     System.out.println("input: \n" + input);
 
     int[] lastCompatiblePredecessor = new int[n];

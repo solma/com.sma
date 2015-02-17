@@ -2,7 +2,7 @@ package com.shuoma.ds.misc;
 
 import java.util.List;
 
-public class Interval implements Comparable<Interval> {
+public class Interval {
   public int start;
   public int end;
   public double weight;
@@ -37,40 +37,13 @@ public class Interval implements Comparable<Interval> {
     return start <= other.end && end >= other.start;
   }
 
-  /** sort based on end time then by start time. */
-  @Override
-  public int compareTo(Interval o) {
-    double endDiff = end - o.end;
-    double startDiff = start - o.start;
-    if (endDiff > 0)
-      return 1;
-    else {
-      if (endDiff < 0)
-        return -1;
-      else {
-        if (startDiff > 0)
-          return 1;
-        else {
-          if (startDiff < 0) return -1;
-          return 0;
-        }
-      }
-    }
-  }
-
   @Override
   public String toString() {
     return weight > 0 ? toString(false) : toString(true);
   }
 
   private String toString(boolean rangeOnly) {
-    String ret;
-    if (start - (int) start == .0 && end - (int) end == .0)
-      ret = (int) start + "~" + (int) end;
-    else
-      ret = start + "~" + end;
-
-    if (!rangeOnly) ret = "(" + ret + " : " + weight + ")";
-    return ret;
+    String ret = start + "~" + end;
+    return rangeOnly ? ret : ("(" + ret + " : " + weight + ")");
   }
 }
