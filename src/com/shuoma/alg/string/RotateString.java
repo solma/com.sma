@@ -2,13 +2,11 @@ package com.shuoma.alg.string;
 
 import com.shuoma.util.MathUtil;
 
-/**
- * Rotate left shift a string.
- */
+/** Rotate left shift a string. */
 public class RotateString {
 
   public static void main(String[] args) {
-    System.out.println(rotate("abcdefg", 5));
+    System.out.println(rotate("abcdefg", 6));
   }
 
   static String rotate(String s, int m) {
