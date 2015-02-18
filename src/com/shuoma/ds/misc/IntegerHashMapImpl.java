@@ -2,7 +2,7 @@ package com.shuoma.ds.misc;
 
 import java.util.Arrays;
 
-public class MyHashMap {
+public class IntegerHashMapImpl {
   private static final int TABLE_SIZE = 128;
 
   HashEntry[] table = new HashEntry[TABLE_SIZE]; // size is ususally power of 2
@@ -30,7 +30,7 @@ public class MyHashMap {
   }
 
   public static void main(String[] args) {
-    MyHashMap map = new MyHashMap();
+    IntegerHashMapImpl map = new IntegerHashMapImpl();
     map.put(1, 90);
     map.put(2, 91);
     map.put(129, 92);

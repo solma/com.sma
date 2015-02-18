@@ -208,15 +208,15 @@ public class Sorting {
   }
 
   public static int partition(int[] a, int low, int high, int pivot) {
-    int smallerIdx = low, largerIdx = high + 1;
-    for (int i = smallerIdx; i < largerIdx;) {
+    int smallerIdx = low, largerIdx = high;
+    for (int i = smallerIdx; i <= largerIdx;) {
       if (a[i] < pivot) ArrayUtil.swap(a, i++, smallerIdx++);
       else {
         if (a[i] == pivot) i++;
-        else ArrayUtil.swap(a, i, --largerIdx);
+        else ArrayUtil.swap(a, i, largerIdx--);
       }
     }
-    return largerIdx - 1;
+    return largerIdx;
   }
 
   public static int[] radixSort(int[] a) {
