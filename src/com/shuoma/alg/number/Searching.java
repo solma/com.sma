@@ -12,7 +12,13 @@ public class Searching {
   }
 
   public static enum SearchingAlgorithm {
-    BIN_FIRST_SORTED, BIN_FIRST_SORTED_1, BIN_LAST_SORTED, LINEAR_FIRST, LINEAR_LAST, BIN_ROTATED
+    BIN_FIRST_SORTED,
+    BIN_FIRST_SORTED_1,
+    BIN_LAST_SORTED,
+    BIN_ROTATED,
+    LINEAR_FIRST,
+    LINEAR_LAST,
+    ;
   }
 
   static void testRotateArray() {

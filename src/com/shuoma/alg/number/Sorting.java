@@ -14,80 +14,20 @@ import java.util.Stack;
 
 public class Sorting {
 
-  public static void main(String[] args) {
-    testSortAlgorithms();
+  public static enum SortingAlg {
+    BUBBLESORT,
+    COUNTSORT,
+    HEAPSORT,
+    INSERTIONSORT,
+    MERGESORT,
+    PATIENCESORT,
+    QUICKSORT,
+    RADIXSORT,
+    STACKSORT,
+    ;
   }
 
-  public enum SortingAlg {
-    BUBBLESORT("BubbleSort"),
-    COUNTSORT("CountSort"),
-    HEAPSORT("HeapSort"),
-    INSERTIONSORT("InsertionSort"),
-    MERGESORT("MergeSort"),
-    PATIENCESORT("PatienceSort"),
-    QUICKSORT("QuickSort"),
-    RADIXSORT("RadixSort");
-
-    String name;
-
-    SortingAlg(String name) {
-      this.name = name;
-    }
-
-    @Override
-    public String toString() {
-      return name;
-    }
-  }
-
-  static void testSortAlgorithms() {
-    SortingAlg[] algs = {SortingAlg.QUICKSORT};
-    // algs=SortingAlg.values();
-    for (SortingAlg alg : algs) {
-      for (int i = 0; i < 10000; i++) {
-        int[] a = RandomUtil.genRandomArrayWithMinSize(100);
-        int[] cpy = Arrays.copyOf(a, a.length);
-        switch (alg) {
-          case BUBBLESORT:
-            bubbleSort(cpy);
-            break;
-          case COUNTSORT:
-            cpy = countSort(cpy);
-            break;
-          case HEAPSORT:
-            heapSort(cpy);
-            break;
-          case INSERTIONSORT:
-            cpy = insertionSort(cpy);
-            break;
-          case MERGESORT:
-            cpy = mergeSort(cpy);
-            break;
-          case PATIENCESORT:
-            cpy = patienceSort(cpy);
-            break;
-          case QUICKSORT:
-            quickSort(cpy);
-            break;
-          case RADIXSORT:
-            cpy = radixSort(cpy);
-            break;
-          default:
-            break;
-        }
-        int[] sortBase = Arrays.copyOf(a, a.length);
-        Arrays.sort(sortBase);
-        if (!Arrays.equals(sortBase, cpy)) {
-          System.out.println(alg);
-          System.out.println(Arrays.toString(a));
-          System.out.println(Arrays.toString(cpy));
-          System.out.println();
-        }
-      }
-    }
-  }
-
-  public static int[] bubbleSort(int[] a) {
+  int[] bubbleSort(int[] a) {
     // in place
     int tmp;
     for (int i = 0; i < a.length; i++)
@@ -98,7 +38,7 @@ public class Sorting {
     return a;
   }
 
-  public static int[] countSort(int[] a) {
+  int[] countSort(int[] a) {
     // add RandomUtil.MAX_RANDOM_VALUE to offset negative numbers
     for (int i = 0; i < a.length; i++) a[i] += RandomUtil.MAX_RANDOM_VALUE;
     // not in place
@@ -114,7 +54,7 @@ public class Sorting {
     return b;
   }
 
-  public static void heapSort(int[] a) {
+  void heapSort(int[] a) {
     int n = a.length;
     if (n < 2) return;
 
@@ -126,7 +66,7 @@ public class Sorting {
     }
   }
 
-  public static int[] insertionSort(int[] a) {
+  int[] insertionSort(int[] a) {
     // not in place
     int[] b = new int[a.length];
     Arrays.fill(b, Integer.MAX_VALUE);
@@ -142,18 +82,18 @@ public class Sorting {
     return b;
   }
 
-  public static int[] mergeSort(int[] a) {
+  int[] mergeSort(int[] a) {
     return mergeSort(a, 0, a.length - 1);
   }
 
-  public static int[] mergeSort(int[] a, int low, int high) {
+  int[] mergeSort(int[] a, int low, int high) {
     if (low > high) return null;
     if (low == high) return new int[]{a[low]};
     int mid = low + (high - low) / 2;
     return merge(mergeSort(a, low, mid), mergeSort(a, mid + 1, high));
   }
 
-  static int[] merge(int[] a, int[] b) {
+  int[] merge(int[] a, int[] b) {
     if (a == null) return b;
     if (b == null) return a;
     int[] r = new int[a.length + b.length];
@@ -172,7 +112,7 @@ public class Sorting {
     return r;
   }
 
-  public static int[] patienceSort(int[] a) {
+  int[] patienceSort(int[] a) {
     List<Pile> piles = new ArrayList<>();
     for (int ele : a) {
       Pile newPile = new Pile();
@@ -195,31 +135,19 @@ public class Sorting {
     return a;
   }
 
-  public static void quickSort(int[] a) {
+  void quickSort(int[] a) {
     quickSort(a, 0, a.length - 1);
   }
 
-  static void quickSort(int[] a, int low, int high) {
+  void quickSort(int[] a, int low, int high) {
     // in place
     if (low >= high) return; // tricky line
-    int cut = partition(a, low, high, a[low + (high - low) / 2]);
+    int cut = ArrayUtil.partition(a, low, high, a[low + (high - low) / 2]);
     quickSort(a, low, cut - 1);
     quickSort(a, cut + 1, high);
   }
 
-  public static int partition(int[] a, int low, int high, int pivot) {
-    int smallerIdx = low, largerIdx = high;
-    for (int i = smallerIdx; i <= largerIdx;) {
-      if (a[i] < pivot) ArrayUtil.swap(a, i++, smallerIdx++);
-      else {
-        if (a[i] == pivot) i++;
-        else ArrayUtil.swap(a, i, largerIdx--);
-      }
-    }
-    return largerIdx;
-  }
-
-  public static int[] radixSort(int[] a) {
+  int[] radixSort(int[] a) {
     if (a.length == 0) return null;
     List<Integer>[] lists = new LinkedList[3];
     for(int i = 0; i<lists.length; i++) lists[i] = new LinkedList<>();
@@ -242,7 +170,7 @@ public class Sorting {
     return res;
   }
 
-  public static int[] radixSort(int[] a, int radix) {
+  int[] radixSort(int[] a, int radix) {
     LinkedList<Integer>[] counter = new LinkedList[radix];
     for (int i = 0; i < counter.length; i++) counter[i] = new LinkedList<>();
     int mod = 10;
@@ -266,7 +194,7 @@ public class Sorting {
     return a;
   }
 
-  static int getDigitLength(int n, int radix) {
+  int getDigitLength(int n, int radix) {
     int cnt = 0;
     while (n > 0) {
       cnt++;
@@ -275,7 +203,44 @@ public class Sorting {
     return cnt;
   }
 
-  private static class Pile extends Stack<Integer> implements Comparable<Pile> {
+  /** Sorting using three stacks only. */
+  int[] stackSort(int[] a) {
+    int n = a.length;
+
+    List<Stack<Integer>> threeStacks = new ArrayList<>(3);
+    for (int i = 0; i < 3; i++) threeStacks.add(new Stack<Integer>());
+
+    for (int ai : a) threeStacks.get(0).push(ai);
+    stackSort(threeStacks, n, 0, 2);
+
+    for (int i = 0; i < n; i++) {
+      a[i] = threeStacks.get(2).pop();
+    }
+    return a;
+  }
+
+  void stackSort(List<Stack<Integer>> threeStacks, int n, int from, int to) {
+    if (n == 0) return;
+    // move n-1 numbers from S0 to S2.
+    stackSort(threeStacks, n - 1, 0, 2);
+    // insert nth number to S2
+    stackSortInsertion(threeStacks, 1, 0, 2);
+  }
+
+  void stackSortInsertion(List<Stack<Integer>> threeStacks, int bridge, int from, int to) {
+    Stack<Integer> toStack = threeStacks.get(to);
+    Stack<Integer> bridgeStack = threeStacks.get(bridge);
+    int number = threeStacks.get(from).pop();
+    while (!toStack.isEmpty() && toStack.peek() < number) {
+      bridgeStack.push(toStack.pop());
+    }
+    toStack.push(number);
+    while (!bridgeStack.empty()) {
+      toStack.push(bridgeStack.pop());
+    }
+  }
+
+  static class Pile extends Stack<Integer> implements Comparable<Pile> {
     @Override
     public int compareTo(Pile o) {
       return peek() - o.peek();

@@ -2,6 +2,7 @@ package com.shuoma.alg.number;
 
 import com.shuoma.ds.misc.MaxHeap;
 import com.shuoma.ds.graph.tree.TournamentTree;
+import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.RandomUtil;
 
 import java.util.Arrays;
@@ -59,7 +60,7 @@ public class Selecting {
   void quickSelect(int[] a, int l, int r, int K) {
     // this is actually partial sorting
     if (l >= r) return;
-    int cut = Sorting.partition(a, l, r, a[l + (r - l) / 2]);
+    int cut = ArrayUtil.partition(a, l, r, a[l + (r - l) / 2]);
     // System.out.println(cut);
     if (cut == K - 1) return;
     if (cut > K - 1)
