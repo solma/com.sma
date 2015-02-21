@@ -126,8 +126,13 @@ public class RandomUtil {
   }
 
   public static int[] shuffle(int[] arr) {
-    for(int i = 0; i < arr.length; i++) {
-      int swap = i + r.nextInt(arr.length - i);
+    return shuffle(arr, 0, arr.length - 1);
+  }
+
+  public static int[] shuffle(int[] arr, int start, int end) {
+    int n = end - start + 1;
+    for(int i = start; i <= end; i++) {
+      int swap = i + r.nextInt(n - (i - start));
       ArrayUtil.swap(arr, i, swap);
     }
     return arr;

@@ -1,8 +1,5 @@
 package com.shuoma.alg.bit;
 
-import com.shuoma.util.ArrayUtil;
-import com.shuoma.util.RandomUtil;
-
 import java.util.Arrays;
 
 /**
@@ -10,19 +7,51 @@ import java.util.Arrays;
  * find the element.
  */
 public class SingularElementInArray {
-  public static void main(String[] args) {
-    int k = 5;
-    int[] singularArray = generateArrayWithSingularElement(k);
-    System.out.println(singularElement(singularArray, k));
+
+  int singularElement(int[] A, int k) {
+    //nTimes is the times that all other numbers repeat themselves
+    int[] setTimes = new int[k - 1];
+    int[] setTimesTemp = Arrays.copyOf(setTimes, setTimes.length);
+
+    for (int a : A) {
+      for (int i = 0; i < setTimes.length; i++) {
+        // for case if a bit is not set in a
+        // if any bit is not set in "a" and it has been set i times (i<=nTimes) before,
+        // then after a, it remains to be set i times.
+        setTimesTemp[i] = (~a & setTimes[i]);
+
+        //for case if a bit is set in a
+        int orTerm;
+        if (i > 0) {
+          // if any bit is set in "a" and it has been set i-1 times (i>0) before,
+          // then after a, it has been set i times.
+          orTerm = a & setTimes[i - 1];
+        } else {
+          orTerm = a;
+          // if any bit is not present in any of setTimes[j], then it means that
+          // it has been set nTimes; now with the bit is set in a,
+          // the bit is considered set only one time (nTimes->1)
+          for (int j = 0; j < setTimes.length; j++) {
+            orTerm &= ~setTimes[j];
+          }
+        }
+        setTimesTemp[i] |= orTerm;
+      }
+
+      //update setTimes
+      System.arraycopy(setTimesTemp, 0, setTimes, 0, setTimes.length);
+    }
+    return setTimes[0];
   }
 
-  static int singularElement(int[] a, int k) {
+  int singularElement1(int[] a, int k) {
     int n = k - 1;
     int[][] counters = new int[2][n];
 
     String[][] bins = new String[k + 1][a.length + 1];
     bins[0][0] = "number x";
-    for (int i = 1; i < bins.length; i++) bins[i][0] = i + " times";
+    for (int i = 1; i < bins.length; i++)
+      bins[i][0] = i + " times";
 
     for (int j = 0; j < a.length; j++) {
       int x = a[j];
@@ -45,12 +74,12 @@ public class SingularElementInArray {
 
       // populate internal table
       bins[0][j + 1] = Integer.toBinaryString(x);
-      for(int i = 1; i < bins.length - 1; i++)
+      for (int i = 1; i < bins.length - 1; i++)
         bins[i][j + 1] = Integer.toBinaryString(counters[0][i - 1]);
       bins[bins.length - 1][j + 1] = String.valueOf(~kTimesCounter);
     }
 
-    for(String[] row : bins) {
+    for (String[] row : bins) {
       for (int i = 0; i < row.length; i++) {
         int width = i == 0 ? 10 : 5;
         System.out.print(String.format("%" + width + "s ", row[i]));
@@ -59,18 +88,5 @@ public class SingularElementInArray {
     }
 
     return counters[0][0];
-  }
-
-  static int[] generateArrayWithSingularElement(int k) {
-    int[] naturalArray = ArrayUtil.getNaturalArray(10);
-    naturalArray = RandomUtil.shuffle(naturalArray);
-    System.out.println("singular element: " + naturalArray[0]);
-
-    int[] result = new int[(naturalArray.length - 1) * k + 1];
-    for (int i = 0; i < k; i++)
-      System.arraycopy(naturalArray, 1, result, (naturalArray.length - 1) * i, naturalArray.length - 1);
-    result[result.length - 1] = naturalArray[0];
-    result = RandomUtil.shuffle(result);
-    return result;
   }
 }
