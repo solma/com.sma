@@ -68,7 +68,7 @@ public class RandomUtil {
   }
 
   public static List<Interval> genRandomListOfIntervals(int n, int maxRange) {
-    return genRandomListOfWeightedIntervals(n, maxRange, 0);
+    return genRandomListOfWeightedIntervals(n, maxRange, 1);
   }
 
   /** Generate random K different numbers from 0~N. */

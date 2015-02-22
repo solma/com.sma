@@ -10,7 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 
 /**
  Given string S and P, they have same characters but different order, You can perform following two
@@ -30,10 +29,7 @@ public class StringWithSameLengthTransformation {
     if (s.equals(p)) return new LinkedList<>();
 
     Map<String, Collection<String>> predecessors = new HashMap<>();
-
-    Set<String> dummyHead = new HashSet<>();
-    dummyHead.add(null);
-    predecessors.put(s, dummyHead);
+    CollectionsUtil.upsert(predecessors, s, null, new HashSet<String>());
 
     Map<String, Integer> dis = new HashMap<>();
     dis.put(s, 0);

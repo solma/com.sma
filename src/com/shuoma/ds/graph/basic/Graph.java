@@ -51,15 +51,19 @@ public class Graph<N extends Node, E extends Edge<N>> {
     return nodeMap.get(id);
   }
 
-  public List<List<PathNode>> buildAllPaths(PathNode start, PathNode cur, List<PathNode> path) {
+  public List<List<PathNode>> buildAllPaths(PathNode cur) {
     List<List<PathNode>> allPaths = new LinkedList<>();
-    if (cur.equals(start)) {
-      allPaths.add(new LinkedList<>(path));
-    }
-    for (PathNode prev : cur.getPrevNodes()) {
-      path.add(0, prev);
-      allPaths.addAll(buildAllPaths(start, prev, path));
-      path.remove(0);
+    if (cur.getPrevNodes().isEmpty()) {
+      LinkedList<PathNode> path = new LinkedList<>();
+      path.add(cur);
+      allPaths.add(path);
+    } else {
+      for (PathNode prev : cur.getPrevNodes()) {
+        for (List<PathNode> path : buildAllPaths(prev)) {
+          path.add(cur);
+          allPaths.add(path);
+        }
+      }
     }
     return allPaths;
   }

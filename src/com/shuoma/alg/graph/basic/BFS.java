@@ -75,9 +75,7 @@ public class BFS {
       lvl++;
     }
 
-    ArrayList<Node> path = new ArrayList<>();
-    path.add(end);
-    return g.buildAllPaths(start, end, path);
+    return g.buildAllPaths(end);
   }
 
   public void traverse(Graph g, PathNode start) {

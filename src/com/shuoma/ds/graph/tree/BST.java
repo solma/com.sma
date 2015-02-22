@@ -41,15 +41,15 @@ public class BST {
 
     bst.printPrettyTree();
     int x = 7;
-    System.out.println(x + "th number in the tree (inorder) is: " + bst.getRank(x).toString());
+    System.out.println(x + "th number in the tree (inorder) is: " + bst.get(x).toString());
     x = 25;
-    System.out.println(x + " is " + bst.rank("x") + "th number in the tree (inorder).");
+    System.out.println(x + " is " + bst.rankOf(String.valueOf(x)) + "th number in the tree (inorder).");
     bst.delete("7");
     bst.printPrettyTree();
     x = 7;
-    System.out.println(x + "th number in the tree (inorder) is: " + bst.getRank(x).toString());
+    System.out.println(x + "th number in the tree (inorder) is: " + bst.get(x).toString());
     x = 25;
-    System.out.println(x + " is " + bst.rank("x") + "th number in the tree (inorder).");
+    System.out.println(x + " is " + bst.rankOf(String.valueOf(x)) + "th number in the tree (inorder).");
 
 
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
@@ -254,11 +254,11 @@ public class BST {
     }
 
     /** Get the nth node in preorder. */
-    public BSTNode getRank(int n) {
-      return getRank(root, n);
+    public BSTNode get(int n) {
+      return get(root, n);
     }
 
-    private BSTNode getRank(BSTNode cur, int n) {
+    private BSTNode get(BSTNode cur, int n) {
       if (cur == null) return null;
 
       int leftSize = cur.left == null ? 0 : cur.left.size;
@@ -268,10 +268,10 @@ public class BST {
       }
 
       if (n <= leftSize) {
-        return getRank(cur.left, n);
+        return get(cur.left, n);
       }
 
-      return getRank(cur.right, n - leftSize - 1);
+      return get(cur.right, n - leftSize - 1);
     }
 
     public void insert(int key) {
@@ -717,17 +717,17 @@ public class BST {
     }
 
     /** Return the number of nodes in the tree whose key is no greater than the given key. */
-    public int rank(String key) {
-      return rank(root, key);
+    public int rankOf(String key) {
+      return rankOf(root, key);
     }
 
-    private int rank(BSTNode cur, String key) {
+    private int rankOf(BSTNode cur, String key) {
       if (cur == null) return 0;
 
       int comp = Integer.parseInt(cur.id) - Integer.parseInt(key);
 
       if(comp > 0) {
-        return rank(cur.left, key);
+        return rankOf(cur.left, key);
       }
 
       int leftSize = cur.left == null ? 0 : cur.left.size;
@@ -735,7 +735,7 @@ public class BST {
       if (comp == 0) {
         return leftSize;
       }
-      return leftSize + 1 + rank(cur.right, key);
+      return leftSize + 1 + rankOf(cur.right, key);
     }
 
     /** check if two trees are identical. */
