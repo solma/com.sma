@@ -1,4 +1,4 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg.math;
 
 /**
  * Implement the card game 24
