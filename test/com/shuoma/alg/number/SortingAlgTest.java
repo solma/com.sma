@@ -13,10 +13,10 @@ public class SortingAlgTest extends TestCase {
   public void testSortAlgorithms() {
     Sorting ins = new Sorting();
 
-    SortingAlg[] algs = {SortingAlg.STACKSORT};
+    SortingAlg[] algs = {SortingAlg.RADIXSORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
-      for (int i = 0; i < 10000; i++) {
+      for (int i = 0; i < 1000000; i++) {
         int[] a = RandomUtil.genRandomArrayWithMinSize(100);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {

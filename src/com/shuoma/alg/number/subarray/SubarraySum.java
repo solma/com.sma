@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.number.subarray;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.shuoma.alg.dp;
+package com.shuoma.alg.number.subarray;
 
 import com.shuoma.util.RandomUtil;
 

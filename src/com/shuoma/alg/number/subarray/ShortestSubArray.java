@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.number.subarray;
 
 // source:
 // http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODIzNDQ3Mw==&appmsgid=10000220&itemidx=1&sign=6ba8275053d9c400e9535f392b4cbaa7

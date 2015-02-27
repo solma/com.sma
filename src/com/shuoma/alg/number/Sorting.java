@@ -173,19 +173,18 @@ public class Sorting {
   int[] radixSort(int[] a, int radix) {
     LinkedList<Integer>[] counter = new LinkedList[radix];
     for (int i = 0; i < counter.length; i++) counter[i] = new LinkedList<>();
-    int mod = 10;
     int dev = 1;
     int maxDigitSymbols = getDigitLength((int) ArrayUtil.max(ArrayUtil.intToDoubleArray(a)), radix);
-    for (int i = 0; i < maxDigitSymbols; i++, dev *= 10, mod *= 10) {
+    for (int i = 0; i < maxDigitSymbols; i++, dev *= radix) {
         for(int j = 0; j < a.length; j++) {
-            int bucket = (a[j] % mod) / dev;
+            int bucket = (a[j] / dev) % radix;
             counter[bucket].add(a[j]);
         }
         //System.out.println(Arrays.toString(counter));
 
         int pos = 0;
         for(int j = 0; j < counter.length; j++) {
-            Integer value = null;
+            Integer value;
             while ((value = counter[j].poll()) != null) {
                 a[pos++] = value;
             }

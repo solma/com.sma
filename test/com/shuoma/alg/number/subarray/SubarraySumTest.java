@@ -1,4 +1,4 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg.number.subarray;
 
 import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;
