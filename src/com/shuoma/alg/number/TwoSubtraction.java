@@ -6,10 +6,10 @@ import java.util.Arrays;
  * Given a sorted array, find two elements i and j, num[i] - num[j] = target.
  * Space:O(1), Time: O(N)
  */
-public class TwoDifference {
-  
+public class TwoSubtraction {
+
   public static void main(String[] args){
-    TwoDifference finder = new TwoDifference();
+    TwoSubtraction finder = new TwoSubtraction();
     int[] num = new int[]{1,3,4,7,10,12};
     int[] pair = finder.twoDifference(4, num);
     System.out.println(Arrays.toString(pair));  //{3,1}

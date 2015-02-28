@@ -40,7 +40,7 @@ public class HIndex {
   int hIndex() {
     int l = 0, r = citations.length - 1;
     while (l < r) {
-      int partition = partition(l, r);
+      int partition = ArrayUtil.partition(citations, l, r, l);
       //System.out.println(partition + Arrays.toString(citations));
       if (citations[partition] <= citations.length - partition) {
         l = partition + 1;
@@ -49,21 +49,5 @@ public class HIndex {
       r = partition;
     }
     return Math.max(citations.length - r, l > 0 ? citations[l - 1] : 0);
-  }
-
-  int partition(int l, int r) {
-    int pivot = citations[l];
-    for (int i = l; i <= r; ) {
-      if (citations[i] == pivot) {
-        i++;
-        continue;
-      }
-      if (citations[i] < pivot) {
-        ArrayUtil.swap(citations, i++, l++);
-        continue;
-      }
-      ArrayUtil.swap(citations, i, r--);
-    }
-    return r;
   }
 }
