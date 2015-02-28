@@ -20,14 +20,8 @@ public class HIndex {
     citations.add(new int[] {10, 7, 9, 8}); //4
     citations.add(new int[]{3, 13, 2, 3, 33}); //3
     for (int[] profile : citations) {
-      System.out.println((new HIndex(profile)).hIndex());
+      System.out.println((new HIndex()).hIndex(profile));
     }
-  }
-
-  private int[] citations;
-
-  HIndex(int[] arr) {
-    this.citations = arr;
   }
 
   /*
@@ -37,7 +31,7 @@ public class HIndex {
      and Y is the largest number satisfies the criteria
      return Math.max(citations.length - idx, Y);
   */
-  int hIndex() {
+  int hIndex(int[] citations) {
     int l = 0, r = citations.length - 1;
     while (l < r) {
       int partition = ArrayUtil.partition(citations, l, r, l);
