@@ -142,6 +142,15 @@ public class ArrayUtil {
     return res;
   }
 
+  public static boolean inBoundary(int[][] matrix, int row, int col) {
+    int m = matrix.length;
+    int n = matrix[0].length;
+    if (row >= m || row < 0 || col >=n || col < 0) {
+      return false;
+    }
+    return true;
+  }
+
   public static double[] intToDoubleArray(int[] arr) {
     if (arr == null)
       return null;
@@ -268,8 +277,8 @@ public class ArrayUtil {
     int n = a.length;
     if (i == j || i < 0 || j < 0 || i >= n || j >= n)
       return;
-    int tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+    a[i] = a[i] ^ a[j];
+    a[j] = a[i] ^ a[j];
+    a[i] = a[i] ^ a[j];
   }
 }

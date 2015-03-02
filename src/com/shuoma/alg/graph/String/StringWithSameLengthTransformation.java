@@ -1,4 +1,4 @@
-package com.shuoma.alg.graph;
+package com.shuoma.alg.graph.String;
 
 import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.CollectionsUtil;

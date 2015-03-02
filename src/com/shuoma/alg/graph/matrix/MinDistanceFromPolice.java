@@ -1,4 +1,4 @@
-package com.shuoma.alg.graph;
+package com.shuoma.alg.graph.matrix;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -15,21 +15,21 @@ public class MinDistanceFromPolice {
             {0,1,0,1,0,0,0,0},
             {1,0,0,1,0,0,1,0}
         };
-        
+
         new MinDistanceFromPolice().minDis(roads);
     }
 
     class Cell{
         int i;
-        int j;  
+        int j;
         int dis;
-        
+
         public Cell(int i, int j, int dis) {
             this.i = i;
             this.j = j;
             this.dis = dis;
         }
-        
+
         @Override
         public String toString() {
             return "i=" + i + " j=" + j + " d=" + dis;
@@ -59,7 +59,7 @@ public class MinDistanceFromPolice {
             roads[top.i][top.j] = top.dis;
             //System.out.println(top);
             for(int[] dir : dirs) {
-                tryNext(roads, toBeVisited, top, dir);   
+                tryNext(roads, toBeVisited, top, dir);
             }
         }
 
@@ -68,13 +68,13 @@ public class MinDistanceFromPolice {
                 if (roads[i][j] == Integer.MAX_VALUE) roads[i][j] = -1;
             }
         }
-        
+
 
         for (int i = 0; i < roads.length; i++) {
             System.out.println(Arrays.toString(roads[i]));
         }
     }
-    
+
     void tryNext(int[][] roads, LinkedList<Cell> toBeVisited, Cell cur, int[] dir) {
         int i = cur.i + dir[0], j = cur.j + dir[1];
         if (i >=0 && i < roads.length && j >= 0 && j < roads[0].length && roads[i][j] == Integer.MAX_VALUE) {

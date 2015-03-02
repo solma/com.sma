@@ -1,4 +1,4 @@
-package com.shuoma.alg.graph;
+package com.shuoma.alg.graph.matrix;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -12,9 +12,9 @@ import java.util.List;
 public class RainFlows {
     public static void main(String[] args) {
         int[][] elevations = {
-            {3, 2, 1}, 
+            {3, 2, 1},
             {4, 5, 1},
-            {5, 6, 1}, 
+            {5, 6, 1},
             {6, 6, 6}
         };
         int[][] res = new RainFlows().highGrounds(elevations);
