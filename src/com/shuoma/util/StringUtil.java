@@ -1,7 +1,8 @@
 package com.shuoma.util;
 
 public class StringUtil {
-  /*
+
+  /**
    * @start: index of the starting field (inclusive)
    * @end: index of the ending field (exclusive)
    */
@@ -17,5 +18,29 @@ public class StringUtil {
           ex.printStackTrace();
           return null;
       }
+  }
+
+  /** To padded binary string. */
+  public static String toPaddedBinString(long n, int wordLength) {
+    String rawBin = "";
+    switch (wordLength) {
+      case 32:
+        rawBin = Integer.toBinaryString((int) n);
+        break;
+      case 64:
+        rawBin = Long.toBinaryString(n);
+        break;
+      default:
+        break;
+    }
+    StringBuilder bin = new StringBuilder(rawBin);
+    for (int i = 0; i < wordLength - rawBin.length(); i++) {
+      bin.insert(0, '0');
+    }
+    return bin.toString();
+  }
+
+  public static String toPaddedBinString(long n) {
+    return toPaddedBinString(n, 64);
   }
 }
