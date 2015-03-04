@@ -26,19 +26,20 @@ class NBitMap:
         a_idx: index into the nbmap, e_idx: index into the element of the nbmap
         """
         a_idx, e_idx = get_index(key, self.n)
-        # print a_idx, e_idx
+        #print a_idx, e_idx
         if a_idx > self.len:
             print "Set error: Outbound"
             return
 
-        for i in range(self.n):
-            self.nbmap[a_idx] |= (state >> i & 1) << (e_idx * self.n + i)
+        offset = e_idx * self.n
+        self.nbmap[a_idx] &= ~((2 ** self.n - 1) << offset)
+        self.nbmap[a_idx] |= state << offset
 
     def get_value(self, key):
         """
         """
         a_idx, e_idx = get_index(key, self.n)
-        # print self.nbmap[a_idx]
+        #print self.nbmap[a_idx]
         return self.nbmap[a_idx] >> (e_idx * self.n) & (2 ** self.n - 1)
 
     def count_distinct(self):
@@ -52,8 +53,9 @@ class NBitMap:
         # test
 
 nbm = NBitMap(8)
-nbm.set_value(100, 90)
-print nbm.get_value(100)
+key = 10
+nbm.set_value(key, 92)
+print nbm.get_value(key)
 
 
 
