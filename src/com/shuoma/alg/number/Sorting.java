@@ -15,15 +15,15 @@ import java.util.Stack;
 public class Sorting {
 
   public static enum SortingAlg {
-    BUBBLESORT,
-    COUNTSORT,
-    HEAPSORT,
-    INSERTIONSORT,
-    MERGESORT,
-    PATIENCESORT,
-    QUICKSORT,
-    RADIXSORT,
-    STACKSORT,
+    BUBBLE_SORT,
+    COUNT_SORT,
+    HEAP_SORT,
+    INSERTION_SORT,
+    MERGE_SORT,
+    PATIENCE_SORT,
+    QUICK_SORT,
+    RADIX_SORT,
+    STACK_SORT,
     ;
   }
 

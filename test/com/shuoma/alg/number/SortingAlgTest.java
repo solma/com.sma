@@ -13,38 +13,38 @@ public class SortingAlgTest extends TestCase {
   public void testSortAlgorithms() {
     Sorting ins = new Sorting();
 
-    SortingAlg[] algs = {SortingAlg.RADIXSORT};
+    SortingAlg[] algs = {SortingAlg.RADIX_SORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
       for (int i = 0; i < 1000000; i++) {
         int[] a = RandomUtil.genRandomArrayWithMinSize(100);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {
-          case BUBBLESORT:
+          case BUBBLE_SORT:
             ins.bubbleSort(cpy);
             break;
-          case COUNTSORT:
+          case COUNT_SORT:
             cpy = ins.countSort(cpy);
             break;
-          case HEAPSORT:
+          case HEAP_SORT:
             ins.heapSort(cpy);
             break;
-          case INSERTIONSORT:
+          case INSERTION_SORT:
             cpy = ins.insertionSort(cpy);
             break;
-          case MERGESORT:
+          case MERGE_SORT:
             cpy = ins.mergeSort(cpy);
             break;
-          case PATIENCESORT:
+          case PATIENCE_SORT:
             cpy = ins.patienceSort(cpy);
             break;
-          case QUICKSORT:
+          case QUICK_SORT:
             ins.quickSort(cpy);
             break;
-          case RADIXSORT:
+          case RADIX_SORT:
             cpy = ins.radixSort(cpy);
             break;
-          case STACKSORT:
+          case STACK_SORT:
             cpy = ins.stackSort(cpy);
             break;
           default:

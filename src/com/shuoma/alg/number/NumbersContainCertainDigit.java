@@ -15,7 +15,8 @@ public class NumbersContainCertainDigit {
   int count(int n, char k) {
     char[] nry = String.valueOf(n).toCharArray();
     int nl = nry.length;
-    if (nl == 0) return 0;
+    if (nl == 0)
+      return 0;
     int cnt;
     if (nl > 1 && nry[nl - 2] == k)
       cnt = nry[nl - 1] - 1;
@@ -31,12 +32,47 @@ public class NumbersContainCertainDigit {
     return cnt;
   }
 
+  int count2s(int N) {
+    int countOf2s = 0, digit = 0;
+    int j = N, seenDigits = 0, position = 0, pow10_pos = 1;
+
+    /* maintaining this value instead of calling pow() is an 6x perf
+     * gain (48s -> 8s) pow10_posMinus1. maintaining this value
+     * instead of calling Numof2s is an 2x perf gain (8s -> 4s).
+     * overall > 10x speedup */
+    while (j > 0) {
+      digit = j % 10;
+      int pow10_posMinus1 = pow10_pos / 10;
+      countOf2s +=
+          digit * position * pow10_posMinus1; //10->1, 100->20, 1000->300..., 10^n->n*(10^n-1)
+
+      /* we do this if digit <, >, or = 2
+       * Digit < 2 implies there are no 2s contributed by this digit.
+       * Digit == 2 implies there are 2 * (numof2s contributed by the previous position) + (numof2s contributed by the presence of this 2) */
+      if (digit == 2) {
+        countOf2s += seenDigits + 1;
+      }
+
+      /* Digit > 2 implies there are digit * (num of 2s by the prev. position) + 10^position */
+      else if (digit > 2) {
+        countOf2s += pow10_pos;
+      }
+      seenDigits += pow10_pos * digit;
+      pow10_pos *= 10;
+      position++;
+      j /= 10;
+    }
+    return (countOf2s);
+  }
+
+  // list all satisfying numbers
   List<Integer> find(int n, char k) {
     char[] ary = String.valueOf(n).toCharArray();
     int len = ary.length;
 
     List<Integer> numbers = new LinkedList<>();
-    if (len == 0) return numbers;
+    if (len == 0)
+      return numbers;
 
     int digit = k - '0';
 

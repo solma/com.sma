@@ -9,7 +9,7 @@ public class PrimeSieve {
   // Given n, return the primes from 1 to n.
   public static ArrayList<Integer> generateAllPrimes(int n) {
     // is_prime[i] represents (2i + 3) is prime or not.
-    ArrayList<Integer> primes = new ArrayList<Integer>(); // stores the primes from 1 to n.
+    ArrayList<Integer> primes = new ArrayList<>(); // stores the primes from 1 to n.
     primes.add(2);
     int size = (int) Math.sqrt(n) + 1;
     boolean isPrime[] = new boolean[size];
@@ -39,7 +39,7 @@ public class PrimeSieve {
         }
       }
     }
-    ArrayList<Integer> primes = new ArrayList<Integer>();
+    ArrayList<Integer> primes = new ArrayList<>();
     for(int i = 2; i < isPrime.length; i++) {
       if (isPrime[i])
         primes.add(i);
