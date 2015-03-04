@@ -51,9 +51,9 @@ class NBitMap:
 
         # test
 
-# nbm=NBitMap(8)
-#nbm.set_value(100,90)
-#print nbm.get_value(100)
+nbm = NBitMap(8)
+nbm.set_value(100, 90)
+print nbm.get_value(100)
 
 
 
