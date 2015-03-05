@@ -1,7 +1,5 @@
 package com.shuoma.util;
 
-
-
 public class BitUtil {
 
   /** Set ith bit to 0. */
@@ -30,6 +28,12 @@ public class BitUtil {
     return 0 == (n & (n - 1));
   }
 
+  /** Max number. */
+  public static long maxWithoutComparisonOperator(long n, long m) {
+    long diff = n - m;
+    return n - (diff >> 63 & 1) * diff;
+  }
+
   /** Get the smallest number that is larger and has the same number of 1's as n. */
   public static long nextNumberWithSameNumberOfOnes(long n) {
     if (isPowerOfTwo(n)) {
@@ -41,7 +45,7 @@ public class BitUtil {
   /** Reverse its bit representation. */
   public static long reverse(long n) {
     // int trailingZeros = Long.toBinaryString(value).length();
-    n = ((n & 0x5555555555555555L) << 1) | ((n & 0xAAAAAAAAAAAAAAAAL) >> 1);
+    n = swapOddAnEvenBits(n);
     n = ((n & 0x3333333333333333L) << 2) | ((n & 0xCCCCCCCCCCCCCCCCL) >> 2);
     n = ((n & 0x0F0F0F0F0F0F0F0FL) << 4) | ((n & 0xF0F0F0F0F0F0F0F0L) >> 4);
     n = ((n & 0x00FF00FF00FF00FFL) << 8) | ((n & 0xFF00FF00FF00FF00L) >> 8);
@@ -53,7 +57,7 @@ public class BitUtil {
 
   /** Set minTh ~ maxTh bit to given value. */
   public static long set(long n, int maxTh, int minTh, int val) {
-    n &= ~(((int)Math.pow(2, maxTh - minTh + 1) - 1) << minTh);
+    n &= ~(((int) Math.pow(2, maxTh - minTh + 1) - 1) << minTh);
     n |= val << minTh;
     return n;
   }
@@ -69,5 +73,10 @@ public class BitUtil {
       return n;
     }
     return flipBit(flipBit(n, ith), jth);
+  }
+
+  /** Swap odd and even position bits. */
+  public static long swapOddAnEvenBits(long n) {
+    return ((n & 0x5555555555555555L) << 1) | ((n & 0xAAAAAAAAAAAAAAAAL) >> 1);
   }
 }

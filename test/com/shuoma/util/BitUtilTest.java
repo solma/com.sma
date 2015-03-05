@@ -5,9 +5,11 @@ import static com.shuoma.util.BitUtil.flipBit;
 import static com.shuoma.util.BitUtil.getBit;
 import static com.shuoma.util.BitUtil.isPowerOfFour;
 import static com.shuoma.util.BitUtil.isPowerOfTwo;
+import static com.shuoma.util.BitUtil.maxWithoutComparisonOperator;
 import static com.shuoma.util.BitUtil.reverse;
 import static com.shuoma.util.BitUtil.set;
 import static com.shuoma.util.BitUtil.setBit;
+import static com.shuoma.util.BitUtil.swapOddAnEvenBits;
 import static com.shuoma.util.BitUtil.swapTwoBits;
 
 import junit.framework.TestCase;
@@ -28,6 +30,12 @@ public class BitUtilTest extends TestCase {
   }
 
   @Test
+  public void testGetBit() throws Exception {
+    assertEquals(1, getBit(0xF1L, 0));
+    assertEquals(0, getBit(0xF1L, 1));
+  }
+
+  @Test
   public void testIsPowerOfFour() throws Exception {
     assertEquals(false, isPowerOfFour(32));
     assertEquals(true, isPowerOfFour(16));
@@ -35,16 +43,15 @@ public class BitUtilTest extends TestCase {
   }
 
   @Test
-  public void testGetBit() throws Exception {
-    assertEquals(1, getBit(0xF1L, 0));
-    assertEquals(0, getBit(0xF1L, 1));
-  }
-
-  @Test
   public void testIsPowerOfTwo() throws Exception {
     assertEquals(true, isPowerOfTwo(32));
     assertEquals(true, isPowerOfTwo(1));
     assertEquals(false, isPowerOfTwo(3));
+  }
+
+  @Test
+  public void testMaxWithoutComparisonOperator() throws Exception {
+    assertEquals(0xFFFF, maxWithoutComparisonOperator(0xFFFF, 0xFFFE));
   }
 
   @Test
@@ -68,5 +75,11 @@ public class BitUtilTest extends TestCase {
   public void testSwapTwoBits() throws Exception {
     assertEquals(0xF2, swapTwoBits(0xF1L, 0, 1));
     assertEquals(0xF1, swapTwoBits(0xF2L, 0, 1));
+  }
+
+  @Test
+  public void testSwapOddAnEvenBits() throws Exception {
+    assertEquals(0xAAAA, swapOddAnEvenBits(0x5555));
+    assertEquals(0xCCCC, swapOddAnEvenBits(0xCCCC));
   }
 }
