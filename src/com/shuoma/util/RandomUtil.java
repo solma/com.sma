@@ -7,9 +7,11 @@ import com.shuoma.ds.misc.Interval;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class RandomUtil {
 
@@ -57,7 +59,7 @@ public class RandomUtil {
     List<Interval> intervals = new ArrayList<>(size);
 
     for (int i =0; i < size; i++) {
-      int[] interval = genRandomKNumbers(2, maxRange);
+      int[] interval = genRandomKNumbers(2, 0, maxRange);
       intervals.add(
           new Interval(
               Math.min(interval[0], interval[1]),
@@ -71,10 +73,17 @@ public class RandomUtil {
     return genRandomListOfWeightedIntervals(n, maxRange, 1);
   }
 
-  /** Generate random K different numbers from 0~N. */
-  public static int[] genRandomKNumbers(int k, int n) {
-    int[] array = shuffle(ArrayUtil.getNaturalArray(n));
-    return Arrays.copyOf(array, k);
+  /** Generate random K different numbers within range. */
+  public static int[] genRandomKNumbers(int k, int min, int max) {
+    int[] res = new int[k];
+    Set<Integer> exists = new HashSet<>();
+    for (int i = 0; i < k ; i++) {
+      do {
+        res[i] = r.nextInt(max - min) + min;
+      } while (exists.contains(res[i]));
+      exists.add(res[i]);
+    }
+    return res;
   }
 
   public static int[][] genRandomMatrix(int nRow, int nCol, int maxNumber, boolean oneBased, boolean canBeNegative) {
@@ -103,7 +112,7 @@ public class RandomUtil {
 
     List<WeightedEdge<Node>> edges = new LinkedList<>();
     for (int i = 0; i < nEdges; i++) {
-      int[] twoDifferentRandomNumbers = genRandomKNumbers(2, nNodes);
+      int[] twoDifferentRandomNumbers = genRandomKNumbers(2, 0, nNodes);
       Node from = nodes[twoDifferentRandomNumbers[0]];
       Node to = nodes[twoDifferentRandomNumbers[1]];
       edges.add(new WeightedEdge<>(from, to, r.nextInt(maxWeight) + 1));

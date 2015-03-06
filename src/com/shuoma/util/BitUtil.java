@@ -1,6 +1,21 @@
 package com.shuoma.util;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class BitUtil {
+
+  /** Addition implementation using bit and comparison operators only. */
+  public static long add(long x, long y) {
+    long a, b;
+    do {
+      a = x & y;
+      b = x ^ y;
+      x = a << 1;
+      y = b;
+    } while(a > 0);
+    return b;
+  }
 
   /** Set ith bit to 0. */
   public static long clearBit(long n, int ith) {
@@ -10,6 +25,51 @@ public class BitUtil {
   /** Set ith bit to least significant bit to 0. */
   public static long clearBits(long n, int ith) {
     return n & (-1L << (ith + 1));
+  }
+
+  /** Set the lowest set bit to 0. */
+  public static long clearLowestSetBit(long n) {
+    return n & (n - 1);
+  }
+
+  /** Extract the lowest set bit. */
+  public static long extractLowestSetBit(long n) {
+    return n & ~(n - 1);
+  }
+
+  /** Division implementation using bit and comparison operators only. */
+  public static long divide(long x, long y) {
+    int sign = 0;
+    if (x < 0) {
+      x = add(~x, 1);
+      sign ^= 1;
+    }
+    if (y < 0) {
+      y = add(~y, 1);
+      sign ^= 1;
+    }
+
+    List<Long> exponents = new LinkedList<>();
+    long multiplier = 1, product;
+    while ((product = multiply(y, multiplier)) <= x) {
+      exponents.add(product);
+      multiplier <<= 1;
+    }
+
+    long quotient = 0;
+    if (y != 0) {
+      for (int exponentIdx = exponents.size() - 1; exponentIdx >=0; exponentIdx--) {
+        long exponent = exponents.get(exponentIdx);
+        if (x >= exponent) {
+          x = minus(x, exponent);
+          quotient += 1 << exponentIdx;
+        }
+      }
+    }
+    if (sign > 0) {
+      quotient = add(~quotient, 1);
+    }
+    return quotient;
   }
 
   /** Flip ith bit. */
@@ -37,6 +97,32 @@ public class BitUtil {
   public static long maxWithoutComparisonOperator(long n, long m) {
     long diff = n - m;
     return n - (diff >> 63 & 1) * diff;
+  }
+
+  /** Subtraction implementation using bit and comparison operators only. */
+  public static long minus(long x, long y) {
+    return add(x, add(~y, 1));
+  }
+
+  /** Multiplication implementation using bit and comparison operators only. */
+  public static long multiply(long x, long y) {
+    if (x == 0 || y == 0) return 0;
+    boolean negative = x < 0 ^ y < 0;
+    if (x < 0) {
+      x = add(~x, 1);
+    }
+    if (y < 0) {
+      y = add(~y, 1);
+    }
+    long m = 1, product = 0;
+    while (x >= m && y > 0) {
+      if ((x & m) > 0) {
+        product = add(y, product);
+      }
+      y <<= 1;
+      m <<= 1;
+    }
+    return negative ? add(~product, 1) : product;
   }
 
   /** Get the smallest number that is larger and has the same number of 1's as n. */

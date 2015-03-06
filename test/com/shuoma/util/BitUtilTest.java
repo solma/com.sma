@@ -1,12 +1,18 @@
 package com.shuoma.util;
 
+import static com.shuoma.util.BitUtil.add;
 import static com.shuoma.util.BitUtil.clearBit;
 import static com.shuoma.util.BitUtil.clearBits;
+import static com.shuoma.util.BitUtil.clearLowestSetBit;
+import static com.shuoma.util.BitUtil.divide;
+import static com.shuoma.util.BitUtil.extractLowestSetBit;
 import static com.shuoma.util.BitUtil.flipBit;
 import static com.shuoma.util.BitUtil.getBit;
 import static com.shuoma.util.BitUtil.isPowerOfFour;
 import static com.shuoma.util.BitUtil.isPowerOfTwo;
 import static com.shuoma.util.BitUtil.maxWithoutComparisonOperator;
+import static com.shuoma.util.BitUtil.minus;
+import static com.shuoma.util.BitUtil.multiply;
 import static com.shuoma.util.BitUtil.nextNumberWithSameNumberOfOnes;
 import static com.shuoma.util.BitUtil.prevNumberWithSameNumberOfOnes;
 import static com.shuoma.util.BitUtil.reverseBits;
@@ -18,7 +24,19 @@ import static com.shuoma.util.BitUtil.swapTwoBits;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class BitUtilTest extends TestCase {
+
+  @Test
+  public void testAdd() throws Exception {
+    for (int i = 0; i < 100; i++) {
+      int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
+      if (pair[0] + pair[1] != add(pair[0], pair[1])) {
+        System.out.println(Arrays.toString(pair) + "+");
+      }
+    }
+  }
 
   @Test
   public void testClearBit() throws Exception {
@@ -30,6 +48,26 @@ public class BitUtilTest extends TestCase {
   public void testClearBits() throws Exception {
     assertEquals(0x5550, clearBits(0x5555, 3));
     assertEquals(0x5540, clearBits(0x5555, 4));
+  }
+
+  @Test
+  public void testClearLowestSetBit() throws Exception {
+    assertEquals(0xAAA8, clearLowestSetBit(0xAAAA));
+  }
+
+  @Test
+  public void testDivide() throws Exception {
+    for (int i = 0; i < 100; i++) {
+      int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
+      if (pair[0] / pair[1] != divide(pair[0], pair[1])) {
+        System.out.println(Arrays.toString(pair) + "/");
+      }
+    }
+  }
+
+  @Test
+  public void testExtractLowestSetBit() throws Exception {
+    assertEquals(0x2, extractLowestSetBit(0xAAAA));
   }
 
   @Test
@@ -61,6 +99,26 @@ public class BitUtilTest extends TestCase {
   @Test
   public void testMaxWithoutComparisonOperator() throws Exception {
     assertEquals(0xFFFF, maxWithoutComparisonOperator(0xFFFF, 0xFFFE));
+  }
+
+  @Test
+  public void testMinus() throws Exception {
+    for (int i = 0; i < 100; i++) {
+      int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
+      if (pair[0] - pair[1] != minus(pair[0], pair[1])) {
+        System.out.println(Arrays.toString(pair) + "-");
+      }
+    }
+  }
+
+  @Test
+  public void testMultiply() throws Exception {
+    for (int i = 0; i < 100; i++) {
+      int[] pair = RandomUtil.genRandomKNumbers(2, -20000, 20000);
+      if (pair[0] * pair[1] != multiply(pair[0], pair[1])) {
+        System.out.println(Arrays.toString(pair) + "*");
+      }
+    }
   }
 
   @Test

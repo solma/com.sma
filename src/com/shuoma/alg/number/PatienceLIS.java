@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 // http://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf
 public class PatienceLIS {
   public static <E extends Comparable<? super E>> List<E> lis(List<E> n) {
-    List<Node<E>> pileTops = new ArrayList<Node<E>>();
+    List<Node<E>> pileTops = new ArrayList<>();
     // sort into piles
     for (E x : n) {
-      Node<E> node = new Node<E>(x);
+      Node<E> node = new Node<>(x);
       int i = Collections.binarySearch(pileTops, node);
-      if (i < 0) i = ~i; // get the insertion point
-      if (i > 0) node.prev = pileTops.get(i - 1);
+      if (i < 0)
+        i = ~i; // get the insertion point
+      if (i > 0)
+        node.prev = pileTops.get(i - 1);
       if (i != pileTops.size())
         pileTops.set(i, node);
       else
@@ -22,9 +25,9 @@ public class PatienceLIS {
     }
 
     // extract LIS from nodeMap
-    List<E> result = new ArrayList<E>();
-    for (Node<E> node = pileTops.size() == 0 ? null : pileTops.get(pileTops.size() - 1); node != null; node =
-        node.prev)
+    List<E> result = new ArrayList<>();
+    for (Node<E> node = pileTops.size() == 0 ? null : pileTops.get(pileTops.size() - 1);
+         node != null; node = node.prev)
       result.add(0, node.value);
     return result;
   }
@@ -37,13 +40,11 @@ public class PatienceLIS {
       this.value = value;
     }
 
-    @Override
-    public int compareTo(Node<E> y) {
+    @Override public int compareTo(Node<E> y) {
       return value.compareTo(y.value);
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       return value.toString() + ((prev == null) ? "" : (" -> " + prev.toString()));
     }
   }
