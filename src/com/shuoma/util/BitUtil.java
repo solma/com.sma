@@ -5,16 +5,31 @@ import java.util.List;
 
 public class BitUtil {
 
+  public static void main (String[] args) {
+    System.out.println(add(-1, -3));
+  }
+
   /** Addition implementation using bit and comparison operators only. */
   public static long add(long x, long y) {
-    long a, b;
+    long carry, sum;
     do {
-      a = x & y;
-      b = x ^ y;
-      x = a << 1;
-      y = b;
-    } while(a > 0);
-    return b;
+      carry = x & y;
+      sum = x ^ y;
+      x = carry << 1;
+      y = sum;
+    } while (carry != 0);
+    return sum;
+  }
+
+  /** Addition implementation using bit and comparison operators only. */
+  public static long addAlterImpl(long x, long y) {
+    long carry = 0, sum = 0;
+    for (int i = 0; i < 64; i++) {
+      int xBit = getBit(x, i), yBit = getBit(y, i);
+      sum |= (xBit ^ yBit ^ carry) << i;
+      carry = (xBit & yBit) | (xBit & carry) | (yBit & carry);
+    }
+    return sum;
   }
 
   /** Set ith bit to 0. */
@@ -58,7 +73,7 @@ public class BitUtil {
 
     long quotient = 0;
     if (y != 0) {
-      for (int exponentIdx = exponents.size() - 1; exponentIdx >=0; exponentIdx--) {
+      for (int exponentIdx = exponents.size() - 1; exponentIdx >= 0; exponentIdx--) {
         long exponent = exponents.get(exponentIdx);
         if (x >= exponent) {
           x = minus(x, exponent);
@@ -106,7 +121,8 @@ public class BitUtil {
 
   /** Multiplication implementation using bit and comparison operators only. */
   public static long multiply(long x, long y) {
-    if (x == 0 || y == 0) return 0;
+    if (x == 0 || y == 0)
+      return 0;
     boolean negative = x < 0 ^ y < 0;
     if (x < 0) {
       x = add(~x, 1);
@@ -114,13 +130,13 @@ public class BitUtil {
     if (y < 0) {
       y = add(~y, 1);
     }
-    long m = 1, product = 0;
-    while (x >= m && y > 0) {
-      if ((x & m) > 0) {
+    long bit = 1, product = 0;
+    while (x >= bit && y > 0) {
+      if ((x & bit) > 0) {
         product = add(y, product);
       }
       y <<= 1;
-      m <<= 1;
+      bit <<= 1;
     }
     return negative ? add(~product, 1) : product;
   }

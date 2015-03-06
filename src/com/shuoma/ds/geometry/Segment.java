@@ -1,47 +1,12 @@
 package com.shuoma.ds.geometry;
 
-
 public class Segment {
 
-  public static void main(String[] args) throws Exception{
-    testGetDistance();
-    //testGetOrientation();
-    //testIsIntersect();
-  }
-
-  public static void testGetDistance() throws Exception {
-    Segment seg = new Segment(new Point(1, 1), new Point(1, -1));
-    System.out.println(seg.getDistance(new Point(2, 2)));
-  }
-
-  public static void testGetOrientation() throws Exception {
-    Segment seg = new Segment(new Point(1, 1), new Point(1, -1));
-    System.out.println(seg.getOrientation(new Point(0, 0)));
-    System.out.println(seg.getOrientation(new Point(2, 0)));
-    System.out.println(seg.getOrientation(new Point(2, 0)));
-  }
-
-  public static void testIsIntersect() throws Exception {
-    Segment seg1 = new Segment(new Point(0, 0), new Point(2, 0));
-    Segment seg2 = new Segment(new Point(1, 1), new Point(1, -1));
-    Segment seg3 = new Segment(new Point(3, 0), new Point(7, 0));
-    System.out.println(seg1.isIntersect(seg2));
-    System.out.println(seg1.isIntersect(seg3));
-  }
-
-  public enum Orientation {
-    CLOCKWISE("CLOCKWISE"), COUNTERCLOCKWISE("COUNTERCLOCKWISE"), COLLINEAR("COLLINEAR");
-
-    String orientation;
-
-    Orientation(String orientation) {
-      this.orientation = orientation;
-    }
-
-    @Override
-    public String toString() {
-      return orientation;
-    }
+  public static enum Orientation {
+    CLOCKWISE,
+    COUNTERCLOCKWISE,
+    COLLINEAR,
+    ;
   }
 
   Point s, e;
@@ -55,7 +20,6 @@ public class Segment {
     }
   }
 
-
   // http://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
   // http://geomalgorithms.com/a02-_lines.html
   public double getDistance(Point p) {
@@ -66,7 +30,7 @@ public class Segment {
     // We find projection of point p onto the line.
     // It falls where t = [(p-s) . (e-s)] / l2
     double tVector = Point.dot(Point.minus(p, s), Point.minus(e, s)) / l2;
-    System.out.println("t = " + tVector);
+    // System.out.println("t = " + tVector);
     if (tVector < 0.0) return Point.distance(p, s);       // Beyond the 's' end of the segment
     else if (tVector > 1.0) return Point.distance(p, e);  // Beyond the 'e' end of the segment
     Point projection = Point.add(s, Point.multiply(tVector, Point.minus(e, s)));  // Projection falls on the segment
@@ -103,14 +67,14 @@ public class Segment {
     return false;
   }
 
+  public double length() {
+    return Point.distance(s, e);
+  }
+
   public boolean onSegment(Point p) {
     if (p.x <= Math.max(s.x, e.x) && p.x >= Math.min(s.x, e.x) &&
         p.y <= Math.max(s.y, e.y) && p.y >= Math.min(s.y, e.y))
        return true;
     return false;
-  }
-
-  public double length() {
-    return Point.distance(s, e);
   }
 }

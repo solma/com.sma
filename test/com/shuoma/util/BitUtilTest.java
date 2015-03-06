@@ -1,6 +1,7 @@
 package com.shuoma.util;
 
 import static com.shuoma.util.BitUtil.add;
+import static com.shuoma.util.BitUtil.addAlterImpl;
 import static com.shuoma.util.BitUtil.clearBit;
 import static com.shuoma.util.BitUtil.clearBits;
 import static com.shuoma.util.BitUtil.clearLowestSetBit;
@@ -32,8 +33,12 @@ public class BitUtilTest extends TestCase {
   public void testAdd() throws Exception {
     for (int i = 0; i < 100; i++) {
       int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
-      if (pair[0] + pair[1] != add(pair[0], pair[1])) {
-        System.out.println(Arrays.toString(pair) + "+");
+      long[] res = new long[3];
+      res[0] = pair[0] + pair[1];
+      res[1] = add(pair[0], pair[1]);
+      res[2] = addAlterImpl(pair[0], pair[1]);
+      if (res[0] != res[1] || res[0] != res[2]) {
+        System.out.println(Arrays.toString(pair) + " + " + Arrays.toString(res));
       }
     }
   }
@@ -60,7 +65,7 @@ public class BitUtilTest extends TestCase {
     for (int i = 0; i < 100; i++) {
       int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
       if (pair[0] / pair[1] != divide(pair[0], pair[1])) {
-        System.out.println(Arrays.toString(pair) + "/");
+        System.out.println(Arrays.toString(pair) + " / ");
       }
     }
   }
@@ -105,8 +110,11 @@ public class BitUtilTest extends TestCase {
   public void testMinus() throws Exception {
     for (int i = 0; i < 100; i++) {
       int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
-      if (pair[0] - pair[1] != minus(pair[0], pair[1])) {
-        System.out.println(Arrays.toString(pair) + "-");
+      long[] res = new long[2];
+      res[0] = pair[0] - pair[1];
+      res[1] = minus(pair[0], pair[1]);
+      if (res[0] != res[1]) {
+        System.out.println(Arrays.toString(pair) + " - " + Arrays.toString(res));
       }
     }
   }
@@ -116,7 +124,7 @@ public class BitUtilTest extends TestCase {
     for (int i = 0; i < 100; i++) {
       int[] pair = RandomUtil.genRandomKNumbers(2, -20000, 20000);
       if (pair[0] * pair[1] != multiply(pair[0], pair[1])) {
-        System.out.println(Arrays.toString(pair) + "*");
+        System.out.println(Arrays.toString(pair) + " * ");
       }
     }
   }
