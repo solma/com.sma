@@ -144,6 +144,7 @@ public class BitUtilTest extends TestCase {
 
   @Test
   public void testReverse() throws Exception {
+    assertEquals(0x800000000000L, reverseBits(65536));
     assertEquals(0x5100000000000000L, reverseBits(0x8AL));
     assertEquals(0x8a00000000000000L, reverseBits(0x51L));
   }

@@ -6,7 +6,7 @@ import java.util.List;
 public class BitUtil {
 
   public static void main (String[] args) {
-    System.out.println(add(-1, -3));
+    System.out.println(reverseBits(65536L));
   }
 
   /** Addition implementation using bit and comparison operators only. */
@@ -131,10 +131,8 @@ public class BitUtil {
       y = add(~y, 1);
     }
     long bit = 1, product = 0;
-    while (x >= bit && y > 0) {
-      if ((x & bit) > 0) {
-        product = add(y, product);
-      }
+    while (x >= bit) {
+      product = add((x & bit) == 0 ? 0 : y, product);
       y <<= 1;
       bit <<= 1;
     }
@@ -155,11 +153,11 @@ public class BitUtil {
   public static long reverseBits(long n) {
     // int trailingZeros = Long.toBinaryString(value).length();
     n = swapOddAnEvenBits(n);
-    n = ((n & 0x3333333333333333L) << 2) | ((n & 0xCCCCCCCCCCCCCCCCL) >> 2);
-    n = ((n & 0x0F0F0F0F0F0F0F0FL) << 4) | ((n & 0xF0F0F0F0F0F0F0F0L) >> 4);
-    n = ((n & 0x00FF00FF00FF00FFL) << 8) | ((n & 0xFF00FF00FF00FF00L) >> 8);
-    n = ((n & 0x0000FFFF0000FFFFL) << 16) | ((n & 0xFFFF0000FFFF0000L) >> 16);
-    n = (n << 32) | (n >> 32);
+    n = ((n & 0x3333333333333333L) << 2) | ((n & 0xCCCCCCCCCCCCCCCCL) >>> 2);
+    n = ((n & 0x0F0F0F0F0F0F0F0FL) << 4) | ((n & 0xF0F0F0F0F0F0F0F0L) >>> 4);
+    n = ((n & 0x00FF00FF00FF00FFL) << 8) | ((n & 0xFF00FF00FF00FF00L) >>> 8);
+    n = ((n & 0x0000FFFF0000FFFFL) << 16) | ((n & 0xFFFF0000FFFF0000L) >>> 16);
+    n = (n << 32) | (n >>> 32);
     // value = value >> (64 - trailingZeros);
     return n;
   }
@@ -186,7 +184,7 @@ public class BitUtil {
 
   /** Swap odd and even position bits. */
   public static long swapOddAnEvenBits(long n) {
-    return ((n & 0x5555555555555555L) << 1) | ((n & 0xAAAAAAAAAAAAAAAAL) >> 1);
+    return ((n & 0x5555555555555555L) << 1) | ((n & 0xAAAAAAAAAAAAAAAAL) >>> 1);
   }
 
   static long numberWithSameNumberOfOnes(long n, boolean isLarger) {
