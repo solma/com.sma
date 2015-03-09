@@ -52,10 +52,17 @@ public class BST {
     System.out.println(x + " is " + bst.rankOf(String.valueOf(x)) + "th number in the tree (inorder).");
 
 
+    nodes =new int[] {5, 6, 4, 2, 1, 3};
+    bst = new BinarySearchTree(nodes);
+    bst.printPrettyTree();
+    bst.flip();
+    bst.printPrettyTree();
+
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
 
-//    if (true)
-//      return;
+    if (true) {
+      return;
+    }
 
     // System.out.println(bst.countTree(7));
     // bst.printAllBinaryTreesPermutation(4);
@@ -249,6 +256,26 @@ public class BST {
       return firstAndLast;
     }
 
+
+    /**
+     * Given a binary tree where all the right node are either null or a leaf,
+     * flip it upside down and turn it into a tree with left leaf node being root.
+     * In the original tree, if a node has a right child, it also must have a left child.
+     */
+    public BSTNode flip() {
+      return root = flip(root);
+    }
+
+    private BSTNode flip(BSTNode cur) {
+      if (cur == null || cur.left == null) return cur;
+      BSTNode left = cur.left;
+      BSTNode newRoot = flip(left);
+      left.right = cur;
+      left.left = cur.right;
+      cur.left = cur.right = null;
+      return newRoot;
+    }
+
     public BSTNode getRoot() {
       return root;
     }
@@ -396,7 +423,7 @@ public class BST {
         longestOnesidePath(new DirectedBSTNode(cur.right), cur, -1, maxLen);
     }
 
-    /*
+    /**
      * maxDepth function
      */
     public int maxDepth() {
@@ -411,8 +438,8 @@ public class BST {
       return leftDepth >= rightDepth ? leftDepth : rightDepth;
     }
 
-    /*
-     *
+    /**
+     * max leaf depth difference
      */
     public int maxDepthDifference() {
       if (root == null)
@@ -517,14 +544,12 @@ public class BST {
       }
 
       printTreeByColumn(cur.left, columns, columnIdx - 1);
-
       List<String> column = columns.get(columnIdx);
       if (column == null) {
         column = new LinkedList<>();
       }
       column.add(cur.id);
       columns.put(columnIdx, column);
-
       printTreeByColumn(cur.right, columns, columnIdx + 1);
     }
 
@@ -685,8 +710,6 @@ public class BST {
       printTreePostorder(cur.right);
       System.out.println(cur);
     }
-
-
 
     /** printPaths */
     public void printPaths() {
