@@ -16,6 +16,9 @@ public class Rectangle {
     this.topLeft = new Point(topLeft[0], topLeft[1]);
   }
 
+  /**
+   * Check if a rectangle is overlapped with another rectangle.
+   */
   public boolean isOverlapped(Rectangle other) {
     return bottomRight.x >= other.topLeft.x && bottomRight.y <= other.topLeft.y
         && topLeft.x <= other.bottomRight.x && topLeft.y >= other.bottomRight.y;

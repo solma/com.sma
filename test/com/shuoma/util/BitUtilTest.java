@@ -15,6 +15,7 @@ import static com.shuoma.util.BitUtil.maxWithoutComparisonOperator;
 import static com.shuoma.util.BitUtil.minus;
 import static com.shuoma.util.BitUtil.multiply;
 import static com.shuoma.util.BitUtil.nextNumberWithSameNumberOfOnes;
+import static com.shuoma.util.BitUtil.numberOfOnes;
 import static com.shuoma.util.BitUtil.prevNumberWithSameNumberOfOnes;
 import static com.shuoma.util.BitUtil.reverseBits;
 import static com.shuoma.util.BitUtil.setBit;
@@ -133,6 +134,11 @@ public class BitUtilTest extends TestCase {
   public void testNextNumberWithSameNumberOfOnes() throws Exception {
     assertEquals(0x31, nextNumberWithSameNumberOfOnes(0x2C));
     assertEquals(0xF000000000000000L, nextNumberWithSameNumberOfOnes(0xF000000000000000L));
+  }
+
+  @Test
+  public void testNumberOfOnes() throws Exception {
+    assertEquals(3, numberOfOnes(0xB));
   }
 
   @Test

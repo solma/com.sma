@@ -28,9 +28,18 @@ public class BST {
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
     BinarySearchTree bst = new BinarySearchTree(nodes);
 
-//    bst.printTreeByRows();
-//    bst.printTreeByColumn();
-//    bst.printTreeInorderNonRecursiveWithoutStack();
+    bst.printPrettyTree();
+    System.out.println();
+    bst.printTreeByRows();
+    System.out.println();
+    bst.printTreeByColumn();
+    System.out.println();
+
+    bst.printTreeInorderNonRecursiveWithoutStack();
+    System.out.println();
+    if (true) {
+      return;
+    }
 
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
     // bst.mirror();
@@ -39,7 +48,7 @@ public class BST {
     BSTNodeDisWrapper ancestor = bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25"));
     //System.out.println("dis btw: " + ancestor.dis);
 
-    bst.printPrettyTree();
+
     int x = 7;
     System.out.println(x + "th number in the tree (inorder) is: " + bst.get(x).toString());
     x = 25;
@@ -59,10 +68,6 @@ public class BST {
     bst.printPrettyTree();
 
     // System.out.println("longest one side path length is : " + bst.longestOnesidePath() );
-
-    if (true) {
-      return;
-    }
 
     // System.out.println(bst.countTree(7));
     // bst.printAllBinaryTreesPermutation(4);
@@ -555,7 +560,6 @@ public class BST {
 
     public void printTreeByRows() {
       printTreeByRows(root);
-      System.out.println();
     }
 
     private void printTreeByRows(BSTNode root) {
@@ -603,6 +607,9 @@ public class BST {
       }
     }
 
+    /**
+     * Be aware that this method change the pointers of tree nodes.
+     */
     public void printTreeInorderNonRecursiveWithoutStack() {
       printTreeInorderNonRecursiveWithoutStack(root.left, root);
     }

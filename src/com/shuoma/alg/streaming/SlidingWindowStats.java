@@ -26,8 +26,9 @@ public class SlidingWindowStats {
     double[] avg = new double[stream.length - K + 1];
     for (int i = 0; i < stream.length; i++) {
       sum += stream[i];
-      if (i >= K)
+      if (i >= K) {
         sum -= stream[i - K];
+      }
 
       // compute avg
       if (i >= K - 1) {

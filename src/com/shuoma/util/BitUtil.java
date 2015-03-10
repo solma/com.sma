@@ -130,11 +130,11 @@ public class BitUtil {
     if (y < 0) {
       y = add(~y, 1);
     }
-    long bit = 1, product = 0;
-    while (x >= bit) {
-      product = add((x & bit) == 0 ? 0 : y, product);
+    long product = 0;
+    while (x > 0) {
+      product = add((x & 1) == 0 ? 0 : y, product);
       y <<= 1;
-      bit <<= 1;
+      x >>= 1;
     }
     return negative ? add(~product, 1) : product;
   }
@@ -142,6 +142,15 @@ public class BitUtil {
   /** Get the smallest number that is larger and has the same number of 1's as n. */
   public static long nextNumberWithSameNumberOfOnes(long n) {
     return numberWithSameNumberOfOnes(n, true);
+  }
+
+  /** Get the number of set bits in n. */
+  public static int numberOfOnes(int n) {
+    int cnt = 0;
+    for (int i = 0; i < 32; i++) {
+      cnt += getBit(n, i);
+    }
+    return cnt;
   }
 
   /** Get the largest number that is smaller and has the same number of 1's as n. */

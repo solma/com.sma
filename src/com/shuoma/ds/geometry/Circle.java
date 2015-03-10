@@ -15,6 +15,9 @@ public class Circle {
     this.r = radius;
   }
 
+  /**
+   * Check if a circle is intersected with a segment.
+   */
   public boolean isIntersect(Segment seg) {
     double d1 = Point.distance(c, seg.s), d2 = Point.distance(c, seg.e);
     double d = seg.getDistance(c);
