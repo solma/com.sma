@@ -11,7 +11,7 @@ public class LongestIncreasingSubArrayTest extends TestCase {
   @Test
   public void testLongestIncreasingSubarray() throws Exception {
     LongestIncreasingSubArray ins = new LongestIncreasingSubArray();
-    for (int i = 0; i < 1000000; i++) {
+    for (int i = 0; i < 10000; i++) {
       int[] a = RandomUtil.genRandomArray(100, 100, true, false);
       int[] res = new int[2];
       res[1] = ins.longestIncreasingSubarray(a);

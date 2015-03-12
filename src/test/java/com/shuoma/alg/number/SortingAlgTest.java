@@ -16,7 +16,7 @@ public class SortingAlgTest extends TestCase {
     SortingAlg[] algs = {SortingAlg.RADIX_SORT};
     // algs=SortingAlg.values();
     for (SortingAlg alg : algs) {
-      for (int i = 0; i < 1000000; i++) {
+      for (int i = 0; i < 10000; i++) {
         int[] a = RandomUtil.genRandomArrayWithMinSize(100);
         int[] cpy = Arrays.copyOf(a, a.length);
         switch (alg) {

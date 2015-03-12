@@ -1,6 +1,6 @@
 package com.shuoma.ds.geometry;
 
-import static org.junit.Assert.assertEquals;
+import com.google.common.base.Preconditions;
 
 public class Rectangle {
   Point bottomRight, topLeft;
@@ -11,7 +11,7 @@ public class Rectangle {
   }
 
   public Rectangle(int[] topLeft, int[] bottomRight) {
-    assertEquals(true, topLeft[0] <= bottomRight[0] && topLeft[1] >= bottomRight[1]);
+    Preconditions.checkArgument(true, topLeft[0] <= bottomRight[0] && topLeft[1] >= bottomRight[1]);
     this.bottomRight = new Point(bottomRight[0], bottomRight[1]);
     this.topLeft = new Point(topLeft[0], topLeft[1]);
   }
