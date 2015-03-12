@@ -8,7 +8,7 @@ public class StringMatching {
   }
 
   void main() {
-    // TODO Aho�CCorasick algorithm
+    // TODO AhoCorasick algorithm
 
     /*
      * Scanner sc = new Scanner(System.in); String s = sc.nextLine();
