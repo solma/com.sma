@@ -1,6 +1,7 @@
 package com.shuoma.ds.graph.tree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Trie {
   public TrieNode root;
@@ -34,12 +35,12 @@ public class Trie {
    *
    * @return for each node return the path to the node
    */
-  public ArrayList<TrieNode> levelTravesal() {
-    ArrayList<TrieNode> allNodes = new ArrayList<TrieNode>();
-    ArrayList<TrieNode> curLvl = new ArrayList<TrieNode>(), nxtLvl;
+  public List<TrieNode> levelTravesal() {
+    List<TrieNode> allNodes = new ArrayList<>();
+    List<TrieNode> curLvl = new ArrayList<>(), nxtLvl;
     curLvl.add(root);
     while (!curLvl.isEmpty()) {
-      nxtLvl = new ArrayList<TrieNode>();
+      nxtLvl = new ArrayList<>();
       while (!curLvl.isEmpty()) {
         TrieNode first = curLvl.remove(0);
         allNodes.add(first);
