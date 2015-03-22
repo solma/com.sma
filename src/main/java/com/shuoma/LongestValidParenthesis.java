@@ -2,13 +2,13 @@ package com.shuoma;
 
 
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
-import static com.shuoma.annotation.Tag.Source.Leetcode;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(ds = Stack, source = Leetcode)
+@Tag(ds = Stack, source = LeetCode)
 public class LongestValidParenthesis {
 
   public String longestValidParentheses(String s) {

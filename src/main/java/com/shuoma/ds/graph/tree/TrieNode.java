@@ -14,7 +14,7 @@ public class TrieNode extends Node {
   public TrieNode(char c, String path) {
     super(String.valueOf(c));
     this.path = path;
-    children = new HashMap<Character, TrieNode>();
+    children = new HashMap<>();
   }
 
   public void increaseCnt() {

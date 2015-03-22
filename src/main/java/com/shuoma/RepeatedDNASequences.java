@@ -1,9 +1,15 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import com.shuoma.annotation.Tag;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Tag(alg = BitOperation, source = LeetCode)
 public class RepeatedDNASequences {
 
   public static void main(String[] args) {

@@ -17,6 +17,7 @@ public @interface Tag {
 
   public enum Algorithm {
     BinarySearch,
+    BitOperation,
     DivideConquer,
     DynamicProgramming,
     Greedy,
@@ -27,15 +28,18 @@ public @interface Tag {
 
   public enum DataStructure {
     BinarySearchTree,
+    HashTable,
     LinkedList,
     PriorityQueue,
     Queue,
     Stack,
+    Trie,
     NA,
   }
 
   public enum Source {
-    Leetcode,
+    ElementsOfProgrammingInterviews,
+    LeetCode,
     NA,
   }
 
