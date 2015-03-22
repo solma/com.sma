@@ -10,13 +10,8 @@ import java.util.Stack;
 
 @Tag(ds = Stack, source = Leetcode)
 public class LongestValidParenthesis {
-  public static void main(String[] args) {
-    LongestValidParenthesis ins = new LongestValidParenthesis();
-    System.out.println(ins.longestValidParentheses1(")()())"));
-    System.out.println(ins.longestValidParenthese(")()())"));
-  }
 
-  public String longestValidParenthese(String s) {
+  public String longestValidParentheses(String s) {
     int n = s.length();
     Stack<Integer> stck = new Stack<>();
     boolean[] keep = new boolean[n];
@@ -61,31 +56,4 @@ public class LongestValidParenthesis {
     }
     return max;
   }
-
-  //O(n^2) TLE
-  public int longestValidParentheses(String s) {
-    int n = s.length();
-    boolean[][] valid = new boolean[n + 1][n + 1];//inclusive-start-exclusive-end
-    int maxLen = 0;
-    for (int len = 2; len <= n; len++) {
-      for (int i = 0; i < n + 1 - len; i++) {
-        int j = i + len;
-        if (s.charAt(i) == '(' && s.charAt(j - 1) == ')' && (len == 2 || valid[i + 1][j - 1])) {
-          valid[i][j] = true;
-          maxLen = Math.max(maxLen, len);
-        } else {
-          for (int k = i + 1; k < j - 2; k++) {
-            if (valid[i][k + 1] && valid[k + 1][j]) {
-              valid[i][j] = true;
-              maxLen = Math.max(maxLen, len);
-              break;
-            }
-          }
-        }
-      }
-    }
-    return maxLen;
-  }
-
-
 }
