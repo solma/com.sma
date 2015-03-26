@@ -4,12 +4,12 @@ public class MultiplyStrings {
     public static void main(String[] args){
         new MultiplyStrings().main();
     }
-    
+
     public void main(){
         System.out.println(multiply("0", "0"));
-        System.out.println(multiply1("23891201012", "1238123178"));        
+        System.out.println(multiply1("23891201012", "1238123178"));
     }
-    
+
     //second pass
     public String multiply(String num1, String num2) {
         int n1=num1.length();
@@ -34,7 +34,7 @@ public class MultiplyStrings {
         for(;i>=0;i--) ret.append(product[i]);
         return ret.toString();
     }
-    
+
     //first pass
     public String multiply1(String num1, String num2) {
         int n=num1.length(),m=num2.length();
@@ -50,14 +50,14 @@ public class MultiplyStrings {
             }
             num[i+m]+=carry;
         }
-        
+
         int i=num.length-1;
-        while(i>0&&num[i]==0) i--; //trick: remove leading 0's
+        while(i>0&&num[i]==0) i--; //tricks: remove leading 0's
         StringBuilder sb=new StringBuilder();
         while(i>=0){
-            sb.append( (char)('0'+num[i--]) ); 
+            sb.append( (char)('0'+num[i--]) );
         }
         return sb.toString();
-        
+
     }
 }

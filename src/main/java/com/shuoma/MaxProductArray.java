@@ -1,21 +1,15 @@
 package com.shuoma;
-import java.util.Arrays;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, source = LeetCode, tricks = ForwardAndBackwardScan)
 public class MaxProductArray {
-  public static void main(String[] args) {
-    for (int i = 0; i < 1; i++) {
-      //int[] A = RandomUtil.genRandomArray(10, 10, false, true);
-      int[] A = {3, -2, 5};
-      int[][] res = new int[2][3];
-      res[0] = maxProductSimple(A);
-      res[1] = maxProductDP(A);
-      if (res[0][2] != res[1][2]){
-        System.out.println(Arrays.toString(A));
-        System.out.println(Arrays.toString(res[0]));
-        System.out.println(Arrays.toString(res[1]));
-      }
-    }
-  }
 
   // return range and the product
   static int[] maxProductSimple(int[] A) {

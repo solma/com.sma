@@ -15,7 +15,7 @@ public class ThreeSum {
 
 		ArrayList<Integer> tempArr = null;
 		for (int i = 0; i < num.length; i++) {
-			if (num[i] > 0) break; //trick, terminates early
+			if (num[i] > 0) break; //tricks, terminates early
 			int j = i + 1;
 			int k = num.length - 1;
 			while (j < k) {
@@ -35,7 +35,7 @@ public class ThreeSum {
 		}
 
 		return new ArrayList<ArrayList<Integer>>(lstSoln);
- 
+
     }
-    
+
 }

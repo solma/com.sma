@@ -1,6 +1,15 @@
 package com.shuoma;
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.Stack;
 
+@Tag(dl = D2, dss = BinaryTree, source = LeetCode)
 public class BSTIterator {
 
   Stack<TreeNode> stck;

@@ -1,4 +1,12 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = DynamicProgramming, dss = Subarray, source = LeetCode)
 public class ClimbingStairs {
   //second pass
   public int climbStairs(int n) {
@@ -29,5 +37,4 @@ public class ClimbingStairs {
     }
     return cur;
   }
-
 }

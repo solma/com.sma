@@ -9,13 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(alg = BitOperation, source = LeetCode)
+@Tag(algs = BitOperation, source = LeetCode)
 public class RepeatedDNASequences {
-
-  public static void main(String[] args) {
-    String s = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";
-    System.out.println(new RepeatedDNASequences().findRepeatedDnaSequencesBest(s));
-  }
 
   // https://oj.leetcode.com/discuss/24478/i-did-it-in-10-lines-of-c
   List<String> findRepeatedDnaSequencesBest(String s) {

@@ -1,8 +1,13 @@
 package com.shuoma.ds.graph.tree;
 
+import static com.shuoma.annotation.Tag.DataStructure.Trie;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Tag(dss = Trie)
 public class Trie {
   public TrieNode root;
 

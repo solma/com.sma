@@ -1,4 +1,14 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(dss = Subarray, source = LeetCode, tricks = ForwardAndBackwardScan)
 public class Candy {
   public int candy(int[] ratings) {
     int n = ratings.length;
@@ -31,14 +41,10 @@ public class Candy {
     int sum = 0;
     for (int i = 0; i < n; ++i) {
       sum += Math.max(left[i], right[i]);
-      System.out.print(Math.max(left[i], right[i]) + "\t");
+      //System.out.print(Math.max(left[i], right[i]) + "\t");
     }
     System.out.println();
 
     return sum;
-  }
-
-  public static void main(String[] args) {
-    System.out.println(new Candy().candy(new int[] {1, 2, 3, 3, 2}));
   }
 }

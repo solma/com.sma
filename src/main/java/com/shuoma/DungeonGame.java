@@ -1,5 +1,13 @@
 package com.shuoma;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, source = LeetCode)
 public class DungeonGame {
   public static void main(String[] args) {
     int[][] dungeon = {

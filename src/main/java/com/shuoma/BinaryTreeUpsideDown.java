@@ -14,7 +14,13 @@ package com.shuoma;
 //    / \
 //   3   1
 
+import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
 
+import com.shuoma.annotation.Tag;
+
+@Tag(dl = D2, dss = BinaryTree, source = LeetCode)
 public class BinaryTreeUpsideDown {
   public TreeNode reverseRecursively(TreeNode root) {
     TreeNode left = root.left;

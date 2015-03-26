@@ -1,9 +1,15 @@
 package com.shuoma;
 //pay attention to special case of divisorLong: negatives, 0, 1
 
+import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.*;
 import java.lang.Math;
 
+@Tag(algs = BitOperation, source = LeetCode)
 public class DivideTwoIntegers {
   public static void main(String[] args) {
     int dividendLong = Integer.parseInt(args[0]), divisorLong = Integer.parseInt(args[1]);

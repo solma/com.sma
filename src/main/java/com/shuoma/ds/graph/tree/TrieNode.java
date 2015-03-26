@@ -1,9 +1,13 @@
 package com.shuoma.ds.graph.tree;
 
+import static com.shuoma.annotation.Tag.DataStructure.Trie;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.ds.graph.basic.Node;
 
 import java.util.HashMap;
 
+@Tag(dss = Trie)
 public class TrieNode extends Node {
   public HashMap<Character, TrieNode> children;
 

@@ -1,13 +1,27 @@
 package com.shuoma;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, source = LeetCode)
 public class BestTimeToBuyandSellStockIV {
 
+  /**
+   * @param k number of transactions
+   * @param prices
+   * @return max profit
+   */
   public int maxProfit(int k, int[] prices) {
     int n = prices.length;
-    if (n < 1) return 0;
-    if (k >= n/2) {
+    if (n < 1)
+      return 0;
+    if (k >= n / 2) {
       int sum = 0;
-      for (int i = 1; i <n; i++) {
+      for (int i = 1; i < n; i++) {
         sum += Math.max(0, prices[i] - prices[i - 1]);
       }
       return sum;

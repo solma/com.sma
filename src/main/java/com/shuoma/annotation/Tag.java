@@ -9,35 +9,52 @@ import java.lang.annotation.Target;
 @Retention(SOURCE)
 public @interface Tag {
 
-  Algorithm alg() default Algorithm.NA;
-  DataStructure ds() default DataStructure.NA;
+  Algorithm[] algs() default Algorithm.NA;
+  DataStructure[] dss() default DataStructure.NA;
+  Difficulty dl() default Difficulty.D1;
   Source source() default Source.NA;
-  Trick trick() default Trick.NA;
-
+  Trick[] tricks() default Trick.NA;
 
   public enum Algorithm {
     BinarySearch,
     BitOperation,
+    BreadthFirstSearch,
+    DepthFirstSearch,
     DivideConquer,
     DynamicProgramming,
     Greedy,
     Recursion,
+    Sorting,
     Streaming,
     NA,
   }
 
   public enum DataStructure {
     BinarySearchTree,
+    BinaryTree,
+    DirectedGraph,
     HashTable,
     LinkedList,
+    MatrixGraph,
     PriorityQueue,
     Queue,
     Stack,
+    String,
+    Subarray,
     Trie,
+    UndirectedGraph,
     NA,
   }
 
+  /** Larger number indicates more difficulty  */
+  public enum Difficulty {
+    D1,
+    D2,
+    D3,
+  }
+
   public enum Source {
+    CrackingTheCodeInterview,
     ElementsOfProgrammingInterviews,
     LeetCode,
     NA,
