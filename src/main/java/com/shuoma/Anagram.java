@@ -1,9 +1,7 @@
 package com.shuoma;
 
-import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.Algorithm.Sorting;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;

@@ -15,7 +15,7 @@ public @interface Tag {
   Source source() default Source.NA;
   Trick[] tricks() default Trick.NA;
 
-  public enum Algorithm {
+  enum Algorithm {
     Arithmetic,
     BinarySearch,
     BitOperation,
@@ -30,12 +30,13 @@ public @interface Tag {
     NA,
   }
 
-  public enum DataStructure {
+  enum DataStructure {
     Array,
     BinarySearchTree,
     BinaryTree,
     DirectedGraph,
     HashTable,
+    Interval,
     LinkedList,
     MatrixGraph,
     PriorityQueue,
@@ -49,20 +50,20 @@ public @interface Tag {
   }
 
   /** Larger number indicates more difficulty  */
-  public enum Difficulty {
+  enum Difficulty {
     D1,
     D2,
     D3,
   }
 
-  public enum Source {
+  enum Source {
     CrackingTheCodeInterview,
     ElementsOfProgrammingInterviews,
     LeetCode,
     NA,
   }
 
-  public enum Trick {
+  enum Trick {
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceHash,
