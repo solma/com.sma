@@ -3,11 +3,11 @@ package com.shuoma;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
-import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
+import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = Subarray, source = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(dl = D2, dss = Subarray, source = LeetCode, tricks = FromTwoEndsToMiddle)
 public class ContainerWithMostWater {
   public int maxArea(int[] height) {
     int i = 0;

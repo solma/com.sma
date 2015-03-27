@@ -1,8 +1,11 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(source = LeetCode)
 public class FactorialTrailingZeros {
-  public static void main(String[] args) {
-    System.out.println(trailingZeroes(100));
-  }
 
   public static int trailingZeroes(int n) {
     int cnt = 0;

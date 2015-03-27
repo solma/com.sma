@@ -16,6 +16,7 @@ public @interface Tag {
   Trick[] tricks() default Trick.NA;
 
   public enum Algorithm {
+    Arithmetic,
     BinarySearch,
     BitOperation,
     BreadthFirstSearch,
@@ -30,6 +31,7 @@ public @interface Tag {
   }
 
   public enum DataStructure {
+    Array,
     BinarySearchTree,
     BinaryTree,
     DirectedGraph,
@@ -61,8 +63,10 @@ public @interface Tag {
   }
 
   public enum Trick {
-    TwoPointer,
     ForwardAndBackwardScan,
+    FromTwoEndsToMiddle,
+    InplaceHash,
+    TwoPointer,
     NA,
   }
 }

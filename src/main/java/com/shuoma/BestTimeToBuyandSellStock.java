@@ -1,12 +1,11 @@
 package com.shuoma;
 
-import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Subarray, source = LeetCode)
+@Tag(dss = Array, source = LeetCode)
 public class BestTimeToBuyandSellStock {
   public int maxProfit(int[] prices) {
     if (prices.length == 0)

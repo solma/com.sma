@@ -1,4 +1,13 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.InplaceHash;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(dl = D2, dss = Array, source = LeetCode, tricks = InplaceHash)
 public class FirstMissingPositive {
   public static void main(String[] args) {
     new FirstMissingPositive().firstMissingPositive(new int[] {2, 1});

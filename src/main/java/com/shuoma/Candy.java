@@ -1,6 +1,7 @@
 package com.shuoma;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
@@ -8,7 +9,7 @@ import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Subarray, source = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(dss = Array, source = LeetCode, tricks = ForwardAndBackwardScan)
 public class Candy {
   public int candy(int[] ratings) {
     int n = ratings.length;
