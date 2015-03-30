@@ -3,12 +3,17 @@ package com.shuoma;
 //For example, Given s = “eceba”,
 //T is “ece” which its length is 3.
 
-public class LongestSubstringWithAtMostTwoDistinctCharacters {
-  public static void main(String[] args) {
-    System.out.println(longestSubstring("abcbbbbcccbdddadacb"));
-  }
+import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
 
-  public static String longestSubstring(String s) {
+import com.shuoma.annotation.Tag;
+
+@Tag(dl = D2, dss = {HashTable, String}, source = LeetCode)
+public class LongestSubstringWithAtMostTwoDistinctCharacters {
+
+  public String longestSubstring(String s) {
     int maxSoFar = 1, maxEndHere = 1, prevCharLen = 1;
     char prevChar = s.charAt(0), prevPrevChar = ' ';
     int[] res = {0, 1};

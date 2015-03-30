@@ -9,16 +9,8 @@ import com.shuoma.annotation.Tag;
 
 @Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, source = LeetCode)
 public class DungeonGame {
-  public static void main(String[] args) {
-    int[][] dungeon = {
-        {-2, -3, 3},
-        {-5, -10, 1},
-        {10, 30, -5}
-    };
-    System.out.println(calculateMinimumHP(dungeon));
-  }
 
-  public static int calculateMinimumHP(int[][] dungeon) {
+  int calculateMinimumHP(int[][] dungeon) {
     int n = dungeon.length;
     assert (n > 0);
     int m = dungeon[0].length;

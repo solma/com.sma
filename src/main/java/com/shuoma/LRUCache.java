@@ -1,6 +1,16 @@
 package com.shuoma;
-import java.util.*;
 
+import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
+import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
+
+import com.shuoma.annotation.Tag;
+
+import java.util.HashMap;
+
+@Tag(dl = D3, dss = {LinkedList, HashTable}, source = LeetCode, tricks = ForwardAndBackwardScan)
 public class LRUCache {
 
   public static void main(String[] args) {
@@ -31,6 +41,7 @@ public class LRUCache {
     int key;
     int value;
   }
+
 
   private Node head = null;
   private HashMap<Integer, Node> map = new HashMap<>();
