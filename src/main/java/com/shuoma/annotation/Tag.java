@@ -20,13 +20,16 @@ public @interface Tag {
     BinarySearch,
     BitOperation,
     BreadthFirstSearch,
+    BottomUp,
     DepthFirstSearch,
     DivideConquer,
     DynamicProgramming,
+    Geometry,
     Greedy,
     Recursion,
     Sorting,
     Streaming,
+    TopDown,
     NA,
   }
 
@@ -66,7 +69,7 @@ public @interface Tag {
   enum Trick {
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
-    InplaceHash,
+    InplaceSwap,
     TwoPointer,
     NA,
   }

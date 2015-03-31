@@ -1,13 +1,21 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 import static com.shuoma.util.MathUtil.gcd;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
+@Tag(dl = D3, dss = Array, source = LeetCode, tricks = InplaceSwap)
 /** Rotate right. */
 public class RotateArray {
 
   public static void main(String[] args) {
-    int[] a = new int[]{1, 2, 3, 4, 5, 6};
+    int[] a = new int[] {1, 2, 3, 4, 5, 6};
     new RotateArray().rotate(a, 11);
     System.out.println(Arrays.toString(a));
   }
@@ -20,7 +28,8 @@ public class RotateArray {
 
   void rotateLeft(int[] nums, int k) {
     int n = nums.length;
-    if (k == 0 || n == 1) return;
+    if (k == 0 || n == 1)
+      return;
     int noOfCycles = gcd(k, n);
     int cycleSize = n / noOfCycles;
 

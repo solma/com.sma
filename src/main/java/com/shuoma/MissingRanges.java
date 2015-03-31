@@ -1,19 +1,29 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.LinkedList;
 import java.util.List;
 
 //Given a sorted integer array where the range of elements are [0, 99] inclusive, return its missing ranges.
 //For example, given [0, 1, 3, 50, 75], return [“2”, “4->49”, “51->74”, “76->99”]
 
+@Tag(dl = D2, dss = {Array, HashTable}, source = LeetCode)
 public class MissingRanges {
   public static void main(String[] args) {
-    System.out.println(missingRanges(new int[]{0, 1, 3, 50, 75}, new int[]{0, 99}));
+    System.out.println(missingRanges(new int[] {0, 1, 3, 50, 75}, new int[] {0, 99}));
   }
 
   public static List<List<Integer>> missingRanges(int[] array, int[] boundary) {
     int n = array.length;
     List<List<Integer>> res = new LinkedList<>();
-    if (n == 0) return res;
+    if (n == 0)
+      return res;
     int prev = array[0];
     List<Integer> range;
     if (boundary[0] < prev) {

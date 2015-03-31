@@ -1,7 +1,14 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = BitOperation, source = LeetCode)
 public class ReverseBits {
 
-  public static void main (String[] args) {
+  public static void main(String[] args) {
     System.out.println(reverseBits(65536));
   }
 

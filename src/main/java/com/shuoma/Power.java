@@ -1,5 +1,5 @@
 package com.shuoma;
-//not completed
+
 public class Power {
   public static void main(String[] args) {
     new Power().main();
@@ -16,8 +16,9 @@ public class Power {
     for (int i = 0; i < m; i++) {
       ret *= x;
     }
-    if (n < 0)
+    if (n < 0) {
       ret = 1 / ret;
+    }
     return ret;
   }
 

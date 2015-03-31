@@ -1,32 +1,42 @@
 package com.shuoma;
 //TLE use NQueens Solution
 
-import java.util.*;
+import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Tag(algs = Recursion, source = LeetCode)
 public class NQueensII {
     public static void main(String[] args){
         new NQueensII().main();
     }
-    
+
     public void main(){
        long curTime=System.currentTimeMillis();
-       totalNQueens(13);        
+       totalNQueens(13);
        System.out.print((System.currentTimeMillis()-curTime));
     }
-    
+
     public int totalNQueens(int n) {
-        ArrayList<ArrayList<Integer>> perms=new ArrayList<ArrayList<Integer>>();
-        permutate(n, perms,  new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());        
-        HashSet<Integer> diffs=new HashSet<Integer>();
-        
+        List<ArrayList<Integer>> perms=new ArrayList<>();
+        permutate(n, perms,  new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
+        Set<Integer> diffs=new HashSet<>();
+
         int num=0;
            System.out.println(perms.size());
         return perms.size();
     }
-    
+
     //permutate with pruning
-    public void permutate(int n, ArrayList<ArrayList<Integer>> perms, ArrayList<Integer> cur, ArrayList<Integer> diagonal,ArrayList<Integer> rDiagonal ){
+    public void permutate(int n, List<ArrayList<Integer>> perms, List<Integer> cur, List<Integer> diagonal, List<Integer> rDiagonal ){
         if(cur.size()==n){
-            perms.add(new ArrayList<Integer>(cur));
+            perms.add(new ArrayList<>(cur));
             return;
         }
         int[] diffs=new int[2];
@@ -42,7 +52,6 @@ public class NQueensII {
                     diagonal.remove(cur.size()-1);
                     rDiagonal.remove(cur.size()-1);
                     cur.remove(cur.size()-1);
-                    
                 }
             }
         }
