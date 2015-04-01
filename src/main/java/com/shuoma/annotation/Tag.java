@@ -17,6 +17,7 @@ public @interface Tag {
 
   enum Algorithm {
     Arithmetic,
+    Backtracking,
     BinarySearch,
     BitOperation,
     BreadthFirstSearch,
@@ -27,6 +28,7 @@ public @interface Tag {
     Geometry,
     Greedy,
     Recursion,
+    RegularExpression,
     Sorting,
     Streaming,
     TopDown,

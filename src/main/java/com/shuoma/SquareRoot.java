@@ -1,4 +1,11 @@
 package com.shuoma;
+
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = Arithmetic, source = LeetCode)
 public class SquareRoot {
   public static void main(String[] args) {
     SquareRoot ins = new SquareRoot();
@@ -16,11 +23,11 @@ public class SquareRoot {
     final float threehalfs = 1.5F;
 
     x2 = c * 0.5F;
-    y  = c;
-    i  = (long) y;                       // evil floating point bit level hacking
-    i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
-    y  = i;
-    y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+    y = c;
+    i = (long) y;                       // evil floating point bit level hacking
+    i = 0x5f3759df - (i >> 1);               // what the fuck?
+    y = i;
+    y = y * (threehalfs - (x2 * y * y));   // 1st iteration
     //      y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
 
     return y;

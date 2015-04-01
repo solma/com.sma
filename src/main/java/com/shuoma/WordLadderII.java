@@ -1,7 +1,15 @@
 package com.shuoma;
+import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
+import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.*;
 
-
+@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, source = LeetCode)
 public class WordLadderII {
   public static void main(String[] args) {
     new WordLadderII().main();
