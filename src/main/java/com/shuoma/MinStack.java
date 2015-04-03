@@ -1,21 +1,23 @@
 package com.shuoma;
 
+import static com.shuoma.annotation.Tag.DataStructure.Stack;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-@Tag(dss = Tag.DataStructure.Stack, source = LeetCode)
+@Tag(dss = Stack, source = LeetCode)
 public class MinStack {
   public static class MinEle {
     int val;
     int cnt;
 
-    public MinEle(int val, int cnt) {
+    public MinEle(int val) {
       this.val = val;
-      this.cnt = cnt;
+      this.cnt = 1;
     }
 
     public void incr() {
@@ -37,7 +39,7 @@ public class MinStack {
 
 
   Stack<Integer> stack;
-  ArrayList<MinEle> mins;
+  List<MinEle> mins;
 
   public MinStack() {
     stack = new Stack<>();
@@ -47,7 +49,7 @@ public class MinStack {
   public void push(int x) {
     stack.push(x);
     if (mins.isEmpty() || mins.get(0).getVal() > x) {
-      mins.add(0, new MinEle(x, 1));
+      mins.add(0, new MinEle(x));
     } else {
       mins.get(0).incr();
     }
@@ -56,7 +58,7 @@ public class MinStack {
   public void pop() {
     if (stack.isEmpty())
       return;
-    int top = stack.pop();
+    stack.pop();
     mins.get(0).decr();
     if (mins.get(0).getCnt() == 0)
       mins.remove(0);
@@ -76,9 +78,9 @@ public class MinStack {
 
   public static void main(String[] args) {
     MinStack ms = new MinStack();
+    ms.push(3);
+    ms.push(1);
     ms.push(5);
-    //ms.push(1);
-    //ms.push(3);
     System.out.println(ms.getMin());
     ms.pop();
     System.out.println(ms.getMin());

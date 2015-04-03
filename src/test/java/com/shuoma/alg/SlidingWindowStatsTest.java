@@ -1,4 +1,4 @@
-package com.shuoma.alg.streaming;
+package com.shuoma.alg;
 
 import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;

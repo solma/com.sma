@@ -1,4 +1,10 @@
-package com.shuoma.alg.math;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -7,6 +13,7 @@ import java.util.Map;
 import java.util.Stack;
 
 /** Linear equation solver. */
+@Tag(dl = D2, dss = {Stack, String})
 public class LinearEquationSolver {
 
   private static final char CONSTANT_CHAR = '.';

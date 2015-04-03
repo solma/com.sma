@@ -1,9 +1,15 @@
-package com.shuoma.alg.streaming;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.Streaming;
+import static com.shuoma.annotation.Tag.DataStructure.Queue;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 /** Given a stream, compute the stats, e.g. average, min of a sliding window. */
+@Tag(algs = Streaming, dss = Queue)
 public class SlidingWindowStats {
 
   /** Window size. */

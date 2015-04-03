@@ -49,6 +49,7 @@ public @interface Tag {
     Stack,
     String,
     Subarray,
+    TournamentTree,
     Trie,
     UndirectedGraph,
     NA,
@@ -63,7 +64,9 @@ public @interface Tag {
 
   enum Source {
     CrackingTheCodeInterview,
+    CSDN,
     ElementsOfProgrammingInterviews,
+    JulyEdu,
     LeetCode,
     NA,
   }

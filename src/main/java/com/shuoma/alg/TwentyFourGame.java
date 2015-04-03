@@ -1,17 +1,23 @@
-package com.shuoma.alg.math;
+package com.shuoma.alg;
 
 /**
  * Implement the card game 24
- *
- * @author solma
- *
  */
+import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@Tag(algs = Recursion, dl = D2, dss = {Stack, String})
 public class TwentyFourGame {
   public static void main(String[] args) {
     new TwentyFourGame().main();
@@ -22,13 +28,13 @@ public class TwentyFourGame {
     public Hand prev;
 
     public Hand(int[] array) {
-      cards = new HashMap<Double, Integer>();
+      cards = new HashMap<>();
       for (int o : array)
         add(o);
     }
 
     public Hand(Hand other) {
-      cards = new HashMap<Double, Integer>(other.cards);
+      cards = new HashMap<>(other.cards);
     }
 
     public ArrayList<Double> toList() {
@@ -73,9 +79,9 @@ public class TwentyFourGame {
       }
     }
 
-    public ArrayList<Hand> getNeighborHands() {
+    public List<Hand> getNeighborHands() {
       // compute all neighboring hands
-      HashSet<Hand> neighbors = new HashSet<Hand>();
+      Set<Hand> neighbors = new HashSet<>();
       char[] operators = {'+', '-', '*', '/'};
 
       ArrayList<Double> li = toList();
@@ -132,7 +138,7 @@ public class TwentyFourGame {
         if (d == (int) d)
           sb.append((int) d);
         else
-          sb.append(String.format("%.2f", d));
+          sb.append(java.lang.String.format("%.2f", d));
         sb.append(":" + cards.get(d) + " ");
       }
       return sb.toString();
@@ -146,11 +152,11 @@ public class TwentyFourGame {
     Hand hand = new Hand(randArray);
     System.out.println("hand is=" + hand);
 
-    HashSet<Hand> visited = new HashSet<Hand>();
+    Set<Hand> visited = new HashSet<>();
     solve(hand, visited);
   }
 
-  public void solve(Hand hand, HashSet<Hand> visited) {
+  public void solve(Hand hand, Set<Hand> visited) {
     // System.out.println("cur hand is "+hand);
     visited.add(hand);
 

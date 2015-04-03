@@ -246,7 +246,10 @@ public class ArrayUtil {
   }
 
   public static char[] reverse(char[] array) {
-    int l = 0, r = array.length - 1;
+    return reverse(array, 0, array.length - 1);
+  }
+
+  public static char[] reverse(char[] array, int l, int r) {
     while (l < r) {
       swap(array, l++, r--);
     }

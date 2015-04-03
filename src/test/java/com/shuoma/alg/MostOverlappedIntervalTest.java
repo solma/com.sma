@@ -1,4 +1,4 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg;
 
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
@@ -10,8 +10,7 @@ import java.util.List;
 
 public class MostOverlappedIntervalTest extends TestCase {
 
-  @Test
-  public void testMostOverlapped() throws Exception {
+  @Test public void testMostOverlapped() throws Exception {
     MostOverlappedInterval ins = new MostOverlappedInterval();
 
     int n = 10, maxValue = 50;
@@ -34,7 +33,8 @@ public class MostOverlappedIntervalTest extends TestCase {
       int cnt = 0;
       Interval interval = intervals.get(i);
       for (int j = 0; j < intervals.size(); j++) {
-        if (i == j) continue;
+        if (i == j)
+          continue;
         if (interval.overlap(intervals.get(j))) {
           cnt++;
         }

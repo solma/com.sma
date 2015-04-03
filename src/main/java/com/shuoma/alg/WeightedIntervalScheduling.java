@@ -1,5 +1,10 @@
-package com.shuoma.alg.dp;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
 
@@ -9,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array)
 public class WeightedIntervalScheduling {
 
   public static void main(String[] args) {

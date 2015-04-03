@@ -1,6 +1,12 @@
-package com.shuoma.alg.misc;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
+import static com.shuoma.annotation.Tag.DataStructure.Interval;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.ds.graph.tree.BST.BinarySearchTree;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
 
 import java.util.Collections;
@@ -9,6 +15,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 /** Give a set of intervals, find the one with most overlapped intervals. */
+@Tag(algs = BinarySearch, dl = D3, dss = {Interval, PriorityQueue})
 public class MostOverlappedInterval {
 
   int[] mostOverlapped(List<Interval> intervals) {

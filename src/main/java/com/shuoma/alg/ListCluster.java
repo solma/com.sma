@@ -1,4 +1,10 @@
-package com.shuoma.alg.greedy;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.Greedy;
+import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +21,8 @@ import java.util.Map;
 // For example: the original list is: ABCDEFGHIJK, the result is:   D E F J G H C
 // cluster 1: C D E F G H ;   cluster2: J
  */
+
+@Tag(algs = Greedy, dl = D3, dss = HashTable)
 public class ListCluster<T> {
   public static void main(String[] args) {
     ListCluster ins = new ListCluster();
@@ -59,9 +67,9 @@ public class ListCluster<T> {
       List<T> cluster = new LinkedList<>();
       clusters.add(cluster);
       cluster.add(ele);
-      
+
       for (Map<T, T> neighbor : neighbors) {
-        T cur = ele;  
+        T cur = ele;
         while(neighbor.containsKey(cur)) {
           T next = neighbor.get(cur);
           if (!visited.containsKey(next) || visited.get(next)) break;

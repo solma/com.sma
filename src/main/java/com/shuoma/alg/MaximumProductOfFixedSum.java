@@ -1,10 +1,17 @@
-package com.shuoma.alg.dp;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+
+import com.shuoma.annotation.Tag;
 
 /**
  * Given an integer n, find a1...am, a decomposition of n
  * (i.e. a1+...+am=n and  a1~am are positive integers)
  * where a1*a2*...*am is the largest
  */
+
+@Tag(algs = DynamicProgramming, dss = Array)
 public class MaximumProductOfFixedSum {
 
   public static void main(String[] args) {

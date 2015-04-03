@@ -1,12 +1,21 @@
-package com.shuoma.alg.dp;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.DataStructure.TournamentTree;
+import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Source.JulyEdu;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
+@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, TournamentTree}, source = JulyEdu)
 public class RangeMinimumQuery {
 
   public enum Solution {
@@ -17,10 +26,11 @@ public class RangeMinimumQuery {
       name = n;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       return name;
-    };
+    }
+
+    ;
   }
 
   public static void main(String[] args) {
@@ -93,12 +103,13 @@ public class RangeMinimumQuery {
         for (int logNLen = 0; logNLen < logNSize; logNLen++) {
           for (int i = 0; i < rdmArray.length; i++) {
             int len = 1 << logNLen;
-            mins[i][logNLen] =
-                len == 1 ? rdmArray[i] : Math.min(mins[i][logNLen - 1],
+            mins[i][logNLen] = len == 1 ?
+                rdmArray[i] :
+                Math.min(mins[i][logNLen - 1],
                     mins[Math.min(rdmArray.length - 1, i + (len >> 1))][logNLen - 1]);
             if (DEBUG)
-              System.out.println("i=" + i + " logNLen=" + logNLen + " len=" + len + " "
-                  + mins[i][logNLen]);
+              System.out.println(
+                  "i=" + i + " logNLen=" + logNLen + " len=" + len + " " + mins[i][logNLen]);
           }
         }
 
@@ -107,35 +118,34 @@ public class RangeMinimumQuery {
           Interval itvl = intervals[i];
           int logNLen =
               (int) Math.max(0, Math.ceil(Math.log(itvl.end - itvl.start + 1) / Math.log(2)) - 1);
-          ans[i] =
-              Math.min(mins[(int) itvl.start][logNLen],
-                  mins[Math.max(0, (int) itvl.end + 1 - (1 << logNLen))][logNLen]);
+          ans[i] = Math.min(mins[(int) itvl.start][logNLen],
+              mins[Math.max(0, (int) itvl.end + 1 - (1 << logNLen))][logNLen]);
         }
         return ans;
 
       case TREE_BASED:
         // build up tournament tree O(n) space and time; O(logn) to answer a single query
-        ArrayList<ArrayList<ArrayInterval>> tTree = new ArrayList<ArrayList<ArrayInterval>>();
+        List<List<ArrayInterval>> tTree = new ArrayList<>();
 
         // add leaf level
-        ArrayList<ArrayInterval> leafLvl = new ArrayList<ArrayInterval>();
+        List<ArrayInterval> leafLvl = new ArrayList<>();
         for (int i = 0; i < rdmArray.length; i++) {
           leafLvl.add(new ArrayInterval(i, i, rdmArray[i]));
         }
         tTree.add(leafLvl);
 
         // build tree from bottom to top
-        ArrayList<ArrayInterval> nextLvL,
-        curLvl;
+        List<ArrayInterval> nextLvL, curLvl;
         curLvl = leafLvl;
         do {
-          nextLvL = new ArrayList<ArrayInterval>();
-          for (int i = 0; i < curLvl.size();) {
+          nextLvL = new ArrayList<>();
+          for (int i = 0; i < curLvl.size(); ) {
             ArrayInterval cur = curLvl.get(i);
             if (i + 1 < curLvl.size()) {
               ArrayInterval nxt = curLvl.get(i + 1);
-              nextLvL.add(new ArrayInterval(Math.min(cur.start, nxt.start), Math.max(cur.end,
-                  nxt.end), Math.min(cur.min, nxt.min), cur, nxt));
+              nextLvL.add(
+                  new ArrayInterval(Math.min(cur.start, nxt.start), Math.max(cur.end, nxt.end),
+                      Math.min(cur.min, nxt.min), cur, nxt));
               i += 2;
             } else {
               nextLvL.add(cur);
@@ -148,7 +158,8 @@ public class RangeMinimumQuery {
 
         // query the tree
         ArrayInterval root = curLvl.get(0);
-        if (DEBUG) System.out.println("root=" + root);
+        if (DEBUG)
+          System.out.println("root=" + root);
         ans = new int[intervals.length];
         for (int i = 0; i < ans.length; i++) {
           ans[i] = (int) root.getMin(intervals[i]);
@@ -173,20 +184,17 @@ public class RangeMinimumQuery {
       left = right = null;
     }
 
-    public ArrayInterval(
-        int start,
-        int end,
-        double min,
-        ArrayInterval left,
-        ArrayInterval right) {
+    public ArrayInterval(int start, int end, double min, ArrayInterval left, ArrayInterval right) {
       this(start, end, min);
       this.left = left;
       this.right = right;
     }
 
     public double getMin(Interval interval) {
-      if (!isOverlapping(interval)) return Integer.MAX_VALUE;
-      if (isIn(interval)) return min;
+      if (!isOverlapping(interval))
+        return Integer.MAX_VALUE;
+      if (isIn(interval))
+        return min;
 
       return Math.min(left == null ? Integer.MAX_VALUE : left.getMin(interval),
           right == null ? Integer.MAX_VALUE : right.getMin(interval));
@@ -200,8 +208,7 @@ public class RangeMinimumQuery {
       return start >= interval.start && end <= interval.end;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       return start + "~" + end + ":" + min;
     }
   }

@@ -1,5 +1,9 @@
-package com.shuoma.alg.greedy;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.Greedy;
+import static com.shuoma.annotation.Tag.DataStructure.Interval;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
 
@@ -8,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Tag(algs = Greedy, dss = Interval)
 public class IntervalScheduling {
 
   /**
