@@ -1,8 +1,13 @@
-package com.shuoma.alg.bit;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+
+import com.shuoma.annotation.Tag;
 
 /**
  * Given an array of [1...n] with one number missing, find the missing number.
  */
+@Tag(algs = BitOperation)
 public class MissingElement {
 
   public static void main(String[] args) {

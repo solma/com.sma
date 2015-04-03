@@ -1,5 +1,6 @@
-package com.shuoma.alg.bit;
+package com.shuoma.alg;
 
+import com.shuoma.alg.SingularElementInArray;
 import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;
