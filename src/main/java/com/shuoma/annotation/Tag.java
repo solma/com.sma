@@ -66,12 +66,14 @@ public @interface Tag {
     CrackingTheCodeInterview,
     CSDN,
     ElementsOfProgrammingInterviews,
+    Interview,
     JulyEdu,
     LeetCode,
     NA,
   }
 
   enum Trick {
+    AccumulativeSum,
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceSwap,

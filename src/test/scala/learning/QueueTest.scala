@@ -1,4 +1,4 @@
-package learning
+package lang
 
 import com.shuoma.learning.Queue
 import org.scalatest.FunSuite;

@@ -30,7 +30,7 @@ public class MaxHeap {
 
   public int removeTop() {
     int ret = data[0];
-    data[0] = 0;
+    data[0] = 0; // set this element to zero
     size--;
     heapify(0, size);
     return ret;

@@ -1,6 +1,6 @@
 package com.shuoma.alg.number;
 
-import com.shuoma.alg.recursion.Combination;
+import com.shuoma.alg.Combination;
 import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
