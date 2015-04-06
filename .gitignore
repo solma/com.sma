@@ -1,0 +1,16 @@
+# binary files
+*.class
+*.pyc
+libs/
+bin/
+target/
+
+# media files
+*.png
+
+# IDE related
+.idea/
+*.iml
+.DS_Store
+.classpath
+.project
