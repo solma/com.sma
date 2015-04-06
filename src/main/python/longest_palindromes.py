@@ -123,8 +123,8 @@ def bfLongestPalindromes(s):
                 start_idx = i
                 end_idx = j
                 max_len = j - i + 1
-                #print s[i:j],
-                #print
+                # print s[i:j],
+                # print
     return s[start_idx:end_idx]
 
 
@@ -138,7 +138,8 @@ def dpLongestPalindromes(s):
         for i in range(0, len(s) - length + 1):
             j = i + length - 1
             # print i,j,s[i],s[j], dp[i+1][j-1]
-            if i == j or (s[i] == s[j] and ((i + 1 <= j - 1 and dp[i + 1][j - 1] == True) or i + 1 > j - 1)):  #
+            if i == j or (s[i] == s[j] and (
+                (i + 1 <= j - 1 and dp[i + 1][j - 1] == True) or i + 1 > j - 1)):  #
                 dp[i][j] = True
                 if length > max_length:
                     start_idx = i
@@ -151,4 +152,4 @@ if __name__ == "__main__":
     ss = "acaacb"
     print fastLongestPalindromes(s)
 # print dpLongestPalindromes(s)
-#print bfLongestPalindromes(s)
+# print bfLongestPalindromes(s)

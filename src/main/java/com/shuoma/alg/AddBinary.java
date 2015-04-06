@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitOperation, source = LeetCode)
+@Tag(algs = BitManipulation, source = LeetCode)
 public class AddBinary {
 
   //pass2

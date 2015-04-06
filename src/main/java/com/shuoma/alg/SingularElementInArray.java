@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.BitOperation;
+import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
 
 import com.shuoma.annotation.Tag;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Given an array in which each element appears K times and only one element appears once,
  * find the element.
  */
-@Tag(algs = BitOperation)
+@Tag(algs = BitManipulation)
 public class SingularElementInArray {
 
   int singularElement(int[] A, int k) {

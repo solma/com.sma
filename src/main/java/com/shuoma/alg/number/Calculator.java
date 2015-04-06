@@ -1,9 +1,15 @@
 package com.shuoma.alg.number;
 
+import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.util.MathUtil;
 
 import java.util.Stack;
 
+@Tag(dl = D2, dss = {Stack, String})
 public class Calculator {
 
   public static void main(String[] args) {
@@ -17,7 +23,7 @@ public class Calculator {
   }
 
   public static double evaluate(String rpnExpr) {
-    Stack<Double> numStck = new Stack<Double>();
+    Stack<Double> numStck = new Stack<>();
     for (int i = 0; i < rpnExpr.length(); i++) {
       char c = rpnExpr.charAt(i);
       if (MathUtil.isNumber(c)) {
@@ -32,7 +38,7 @@ public class Calculator {
 
   public String toRPN(String expression) {
     StringBuilder output = new StringBuilder();
-    Stack<Character> operatorStck = new Stack<Character>();
+    Stack<Character> operatorStck = new Stack<>();
 
     for (int i = 0; i < expression.length(); i++) {
       char c = expression.charAt(i);

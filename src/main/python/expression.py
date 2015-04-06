@@ -28,7 +28,7 @@ def eval(expr):
     """
     stack = []
     for c in expr:
-        if ord(c) >= ord('0') and ord(c) <= ord('9'):  # digit
+        if ord('0') <= ord(c) <= ord('9'):  # digit
             stack.append(c)
         else:
             stack.append(calc(int(stack.pop()), int(stack.pop()), c))

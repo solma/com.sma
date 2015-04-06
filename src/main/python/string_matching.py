@@ -33,14 +33,14 @@ def match(s, t, m):
                 return i
             j += 1
         else:
-            if m == "kmp":  #kmp
+            if m == "kmp":  # kmp
                 i += j - next[j]
                 j = max(next[j], 0)
             else:
-                if m == "bf":  #brutal force
-                    i += 1  #when t does not have a "pattern", i can increase more aggressively, i.e. max(1,j)
+                if m == "bf":  # brutal force
+                    i += 1  # when t does not have a "pattern", i can increase more aggressively, i.e. max(1,j)
                     j = 0
-                else:  #sunday
+                else:  # sunday
                     i += next[ord(s[min(i + len(t), len(s) - 1)]) - ord('a')]
                     j = 0
 
@@ -48,10 +48,10 @@ def match(s, t, m):
     return -1
 
 # print next('ababc')
-#match('abbba', 'bba', 'bf')
+# match('abbba', 'bba', 'bf')
 mode = "sunday"
 match('abbcbba', 'bba', mode)
-#print calNext('participate in parachute')
-#print calNext('ababcababababcabab+',mode)
+# print calNext('participate in parachute')
+# print calNext('ababcababababcabab+',mode)
 
 

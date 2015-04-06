@@ -40,7 +40,6 @@ class LinkedList:
                     cur = cur[-1]
             print "no " + key + " is found."
 
-
     def _print(self):
         cur = self.head
         if cur:

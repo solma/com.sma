@@ -11,6 +11,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 //dynamic programming+dfs on dp results
@@ -23,18 +24,17 @@ import java.util.Set;
 @Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, source = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
-    Set<String> dict = new HashSet<String>();
+    Set<String> dict = new HashSet<>();
     Collections.addAll(dict, "leet", "code", "le", "et", "co", "de");
 
-    for (String s : wordBreak(args[0], dict)) {
+    String inputString = "leetcode";
+    for (String s : wordBreak(inputString, dict)) {
       System.out.println(s);
     }
   }
 
-
-
-  public static ArrayList<String> wordBreak(String s, Set<String> dict) {
-    ArrayList<ArrayList<Integer>> dp = new ArrayList<ArrayList<Integer>>();
+  public static List<String> wordBreak(String s, Set<String> dict) {
+    List<List<Integer>> dp = new ArrayList<>();
     for (int i = 0; i < s.length() + 1; i++) {
       dp.add(new ArrayList<Integer>());
     }
@@ -49,17 +49,17 @@ public class WordBreakII {
       }
     }
 
-    for (ArrayList<Integer> prev : dp) {
+    for (List<Integer> prev : dp) {
       System.out.println(prev);
     }
 
-    ArrayList<String> results = new ArrayList<String>();
+    List<String> results = new ArrayList<>();
     StringBuilder re = new StringBuilder();
-    helper(results, re, s, dict, dp, s.length());
+    helper(results, re, s, dp, s.length());
     return results;
   }
 
-  public static void helper(ArrayList<String> results, StringBuilder re, String s, Set<String> dict, ArrayList<ArrayList<Integer>> dp, int cur) {
+  public static void helper(List<String> results, StringBuilder re, String s, List<List<Integer>> dp, int cur) {
     if (cur == 0) {
       results.add(re.toString());
       return;
@@ -68,7 +68,7 @@ public class WordBreakII {
       if (cur < s.length())
         re.insert(0, " ");
       re.insert(0, s.substring(p, cur));
-      helper(results, re, s, dict, dp, p);
+      helper(results, re, s, dp, p);
       re.delete(0, cur - p);
       if (cur < s.length())
         re.deleteCharAt(0);

@@ -19,7 +19,7 @@ public @interface Tag {
     Arithmetic,
     Backtracking,
     BinarySearch,
-    BitOperation,
+    BitManipulation,
     BreadthFirstSearch,
     BottomUp,
     DepthFirstSearch,
