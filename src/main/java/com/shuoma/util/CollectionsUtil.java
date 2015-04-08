@@ -8,6 +8,19 @@ import java.util.Map;
 
 public class CollectionsUtil {
 
+  /**
+   * Increase counter.get(key) by increase. If value decrease to zero, it is removed from map.
+   */
+  public static <K> void increaseMapCounter(Map<K, Integer> counter, K key, int increase) {
+    if (!counter.containsKey(key)) {
+      counter.put(key, 0);
+    }
+    counter.put(key, counter.get(key) + increase);
+    if (counter.get(key) == 0) {
+      counter.remove(key);
+    }
+  }
+
   /** Print Map, sorted by Key. */
   public static <K extends Comparable<K>, V> void printMap(Map<K, V> map) {
     List<K> keys = new ArrayList<>(map.keySet());

@@ -5,9 +5,19 @@ import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Source.JulyEdu;
 
-import com.shuoma.annotation.Tag;
+import com.google.common.collect.ImmutableList;
 
-import java.util.Arrays;
+import com.shuoma.annotation.Tag;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.MutableTriple;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Given a list of candidates (M males and F females), each of which has
@@ -18,26 +28,28 @@ import java.util.Arrays;
 @Tag(algs = DynamicProgramming, dl = D3, dss = Array, source = JulyEdu)
 public class HireWho {
 
-  int hireWhoDp(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {
+  List<List<Integer>> hireWhoDp(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {
     int n = ability.length;
-    //int[] hired = new int[n];
-    int[][][][] dp = new int[n + 1][budget + 1][nM + 1][nF + 1];
+    Map<Triple<Integer, Integer, Integer>, Pair<Triple<Integer, Integer, Integer>, Integer>> backtracking =
+        new HashMap<>();
+    int[][][] dp = new int[budget + 1][nM + 1][nF + 1];
     for (int i = 1; i <= n; i++) {
-      for (int b = 0; b <= budget; b++) {
-        for (int m = 0; m <= nM; m++) {
-          for (int f = 0; f <= nF; f++) {
-            dp[i][b][m][f] = dp[i - 1][b][m][f]; // important inheritance
+      for (int b = budget; b >= 0; b--) {
+        for (int m = nM; m >= 0; m--) {
+          for (int f = nF; f >= 0; f--) {
             if (b >= cost[i - 1]) {
-              if (male[i - 1]) {
-                if(m > 0) {
-                  dp[i][b][m][f] = Math.max(dp[i][b][m][f], dp[i - 1][b - cost[i - 1]][m - 1][f] + ability[i - 1]);
-                }
-              } else {
-                if (!male[i - 1]){
-                  if (f > 0) {
-                    dp[i][b][m][f] = Math.max(dp[i][b][m][f], dp[i - 1][b - cost[i - 1]][m][f - 1] + ability[i - 1]);
-                  }
-                }
+              if (male[i - 1] && m > 0 && dp[b - cost[i - 1]][m - 1][f] + ability[i - 1] > dp[b][m][f]) {
+                dp[b][m][f] = dp[b - cost[i - 1]][m - 1][f] + ability[i - 1];
+                backtracking.put(new MutableTriple<>(b, m, f),
+                    new MutablePair<Triple<Integer, Integer, Integer>, Integer>(
+                        new MutableTriple<>(b - cost[i - 1], m - 1, f), i - 1));
+                continue;
+              }
+              if (!male[i - 1] && f > 0 && dp[b - cost[i - 1]][m][f - 1] + ability[i - 1] > dp[b][m][f]) {
+                dp[b][m][f] = dp[b - cost[i - 1]][m][f - 1] + ability[i - 1];
+                backtracking.put(new MutableTriple<>(b, m, f),
+                    new MutablePair<Triple<Integer, Integer, Integer>, Integer>(
+                        new MutableTriple<>(b - cost[i - 1], m, f - 1), i - 1));
               }
             }
           }
@@ -45,17 +57,33 @@ public class HireWho {
       }
     }
 
-    return dp[n][budget][nM][nF];
-    //return hired;
+    return buildResult(dp[budget][nM][nF], getHiredCandidates(backtracking, new MutableTriple<>(budget, nM, nF)));
   }
 
-  int hireWhoRecursion(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {
+  private List<Integer> getHiredCandidates(Map<Triple<Integer, Integer, Integer>,
+      Pair<Triple<Integer, Integer, Integer>, Integer>> backtracking, Triple<Integer, Integer, Integer> cur) {
+    List<Integer> ret = new LinkedList<>();
+    if (cur.getLeft() == 0) { //budget==0
+      return ret;
+    }
+    ret.addAll(getHiredCandidates(backtracking, backtracking.get(cur).getLeft()));
+    ret.add(backtracking.get(cur).getRight());
+    return ret;
+  }
+
+  List<List<Integer>> hireWhoRecursion(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {
     int[] maxAbility = new int[] {0};
-    boolean[] hired = new boolean[ability.length];
+    boolean[] hire = new boolean[ability.length];
     boolean[] isHire = new boolean[ability.length];
-    recursion(ability, cost, male, nM, nF, budget, maxAbility, isHire, 0, hired);
-    System.out.println(Arrays.toString(isHire));
-    return maxAbility[0];
+    recursion(ability, cost, male, nM, nF, budget, maxAbility, isHire, 0, hire);
+    List<Integer> hiredCandidates = new ArrayList<>(nM + nF);
+    for (int i = 0; i < isHire.length; i++) {
+      if (isHire[i]) {
+        hiredCandidates.add(i);
+      }
+    }
+
+    return buildResult(maxAbility[0], hiredCandidates);
   }
 
   private void recursion(int[] ability, int[] cost, boolean[] male, int nM, int nF, int budget, int[] maxAbility, boolean[] isHire, int sum, boolean[] hired) {
@@ -81,5 +109,12 @@ public class HireWho {
         hired[i] = false;
       }
     }
+  }
+
+  private List<List<Integer>> buildResult(int maxAbility, List<Integer> hiredPersons) {
+    List<List<Integer>> res = new ArrayList<>(2);
+    res.add(ImmutableList.of(maxAbility));
+    res.add(hiredPersons);
+    return res;
   }
 }
