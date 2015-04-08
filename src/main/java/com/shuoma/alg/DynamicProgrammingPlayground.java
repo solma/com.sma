@@ -1,11 +1,16 @@
-package algorithm;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class DynamicProgramming {
+@Tag(algs = DynamicProgramming)
+public class DynamicProgrammingPlayground {
   public static void main(String[] args) {
-    new DynamicProgramming().main();
+    new DynamicProgrammingPlayground().main();
   }
 
   int nRow = 6, nCol = 8;

@@ -1,4 +1,10 @@
-package algorithm;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.Trick.TwoPointer;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,6 +15,7 @@ import java.util.PriorityQueue;
  * reduce step of picking K largest numbers from N numbers where N is huge. The map step is to split
  * N into ceil(N/K) arrays and produce top K for each array.
  */
+@Tag(dss = {Array, PriorityQueue}, tricks = TwoPointer)
 public class KWayMerging {
   public static void main(String[] args) {
     //kLargestNumbersFromSizeKLists();
@@ -17,7 +24,7 @@ public class KWayMerging {
 
   public static void kWayMerging() {
     // sorted lists
-    int[][] lists = { {3, 5, 8, 10}, {2, 4, 9}, {1, 6, 7, 11}};
+    int[][] lists = {{3, 5, 8, 10}, {2, 4, 9}, {1, 6, 7, 11}};
 
     int n = lists.length;
     int[] pos = new int[n];
@@ -59,18 +66,19 @@ public class KWayMerging {
   }
 
   public static void kLargestNumbersFromSizeKLists() {
-    int[][] lists = { {3, 5, 8}, {9, 2, 4}, {7, 6, 1}};
+    int[][] lists = {{3, 5, 8}, {9, 2, 4}, {7, 6, 1}};
     int n = lists.length;
     int k = lists[0].length;
     int[] pos = new int[n];
-    PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
 
     int cnt = 0;
     while (cnt < n * k) {
       for (int i = 0; i < n; i++) {
         if (pos[i] < k) {
           if (pq.size() == 0 || lists[i][pos[i]] > pq.peek()) {
-            if (pq.size() == k) pq.poll();
+            if (pq.size() == k)
+              pq.poll();
             pq.add(lists[i][pos[i]]);
           }
           pos[i]++;
@@ -92,13 +100,11 @@ class Elem implements Comparable<Elem> {
     this.value = value;
   }
 
-  @Override
-  public int compareTo(Elem other) {
+  @Override public int compareTo(Elem other) {
     return value - other.value;
   }
 
-  @Override
-  public String toString(){
+  @Override public String toString() {
     return "" + value;
   }
 }
@@ -109,8 +115,8 @@ class MinMaxPriorityQueue {
   PriorityQueue<Elem> min;
 
   public MinMaxPriorityQueue() {
-    max = new PriorityQueue<Elem>(10, Collections.reverseOrder());
-    min = new PriorityQueue<Elem>();
+    max = new PriorityQueue<>(10, Collections.reverseOrder());
+    min = new PriorityQueue<>();
   }
 
   public void add(Elem e) {

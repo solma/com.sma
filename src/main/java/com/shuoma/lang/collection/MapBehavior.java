@@ -22,8 +22,7 @@ public class MapBehavior {
     counter2.put(1, 10);
     counter2.put(2, 10);
 
-    System.out.println(counter1);
-    System.out.println(counter2);
+    System.out.println("two maps are equal : " + counter1.equals(counter2));
   }
 
   void mapCopy() {
