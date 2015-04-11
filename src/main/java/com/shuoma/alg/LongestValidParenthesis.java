@@ -1,41 +1,15 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.Stack;
-
-@Tag(dss = Stack, source = LeetCode)
+@Tag(algs = DynamicProgramming, source = LeetCode)
 public class LongestValidParenthesis {
 
-  public String longestValidParentheses(String s) {
-    int n = s.length();
-    Stack<Integer> stck = new Stack<>();
-    boolean[] keep = new boolean[n];
-    for (int i = 0; i < n; i++) {
-      char c = s.charAt(i);
-      if (c == '(') {
-        stck.push(i);
-      } else {
-        if (stck.isEmpty()) {
-          continue;
-        }
-        keep[i] = keep[stck.peek()] = true;
-        stck.pop();
-      }
-    }
-
-    StringBuilder res = new StringBuilder();
-    for (int i = 0; i < n; i++) {
-      res.append(keep[i] ? s.charAt(i) : "");
-    }
-    return res.toString();
-  }
-
   //O(n)
-  public int longestValidParentheses1(String s) {
+  public int longestValidParentheses(String s) {
     int n = s.length();
     int[] dp = new int[n];
     int max = 0;
@@ -44,11 +18,8 @@ public class LongestValidParenthesis {
         int j = i + 1 + dp[i + 1];  //longest valid parenthesis starting from i+1
         if (j < n && s.charAt(j) == ')') {
           dp[i] = dp[i + 1] + 2;
-          int k = 0;
-          if (j + 1 < n) {  //add longest valid parenthesis starting from j+1
-            k = dp[j + 1];
-          }
-          dp[i] += k;
+          //add longest valid parenthesis starting from j+1
+          dp[i] += j + 1 < n ? dp[j + 1] : 0;
         }
         max = Math.max(max, dp[i]);
       }

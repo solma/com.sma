@@ -1,4 +1,5 @@
 package com.shuoma.alg;
+
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.String;
@@ -7,7 +8,16 @@ import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
 
 @Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, source = LeetCode)
 public class WordLadderII {
@@ -82,8 +92,8 @@ public class WordLadderII {
   }
 
 
-  public ArrayList<ArrayList<String>> ladderLength(String start, String end, HashSet<String> dict) {
-    ArrayList<ArrayList<String>> res = new ArrayList<>();
+  public List<List<String>> ladderLength(String start, String end, HashSet<String> dict) {
+    List<List<String>> res = new ArrayList<>();
     if (start == null || end == null)
       return res;
 
@@ -95,7 +105,7 @@ public class WordLadderII {
       return res;
     }
 
-    HashMap<String, ArrayList<String>> prev = new HashMap<>();
+    Map<String, List<String>> prev = new HashMap<>();
     prev.put(end, new ArrayList<String>());
     prev.put(start, new ArrayList<String>());
     for (String s : dict) {
@@ -104,10 +114,10 @@ public class WordLadderII {
 
     Queue<String> queue = new LinkedList<>();
     queue.offer(start);
-    HashMap<String, Integer> dis = new HashMap<>();
+    Map<String, Integer> dis = new HashMap<>();
     dis.put(start, 0);
 
-    ArrayList<String> lastLevel = new ArrayList<>();
+    List<String> lastLevel = new ArrayList<>();
     while (!queue.isEmpty()) {
       int level = 1;// queue.size();
       lastLevel.clear();
@@ -161,10 +171,10 @@ public class WordLadderII {
     return res;
   }
 
-  public void buildpath(String start, String end, HashMap<String, ArrayList<String>> prev, ArrayList<String> path, ArrayList<ArrayList<String>> res) {
-    ArrayList<String> pre = prev.get(end);
+  public void buildpath(String start, String end, Map<String, List<String>> prev, List<String> path, List<List<String>> res) {
+    List<String> pre = prev.get(end);
     if (end.equals(start)) {
-      ArrayList<String> cpy = new ArrayList<>(path);
+      List<String> cpy = new ArrayList<>(path);
       Collections.reverse(cpy);
       res.add(cpy);
       return;
@@ -255,17 +265,17 @@ public class WordLadderII {
     if (!visited.containsKey(end)) {
       return new LinkedList<>();
     }
-    return buildPath(visited.get(end), startNode);
+    return buildPath(visited.get(end));
   }
 
-  List<List<String>> buildPath(WordNode cur, WordNode startNode) {
+  List<List<String>> buildPath(WordNode cur) {
     List<List<String>> paths = new LinkedList<>();
     if (cur == null) {
       paths.add(new LinkedList<String>());
       return paths;
     }
     for (WordNode prev : cur.prev) {
-      for(List<String> path : buildPath(prev, startNode)) {
+      for(List<String> path : buildPath(prev)) {
         path.add(cur.word);
         paths.add(path);
       }

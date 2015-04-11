@@ -92,7 +92,6 @@ public class HireWho {
     }
     if (nM == 0 && nF == 0 && maxAbility[0] < sum) {
       System.arraycopy(hired, 0, isHire, 0, hired.length);
-      // isHire = Arrays.copyOf(isHire, isHire.length); // not working?
       //System.out.println(sum + " " + maxAbility[0] + " " + Arrays.toString(isHire));
       maxAbility[0] = sum;
     }

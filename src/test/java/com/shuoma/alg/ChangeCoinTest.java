@@ -13,7 +13,7 @@ public class ChangeCoinTest extends TestCase {
     int n = 20;
     int[] denominations = new int[] {1, 2, 5, 10};
     Set[] res = new Set[2];
-    res[0] = ins.changeRecursion(n, denominations);
+    res[0] = ins.bottomUpRecursionWithMemory(n, denominations);
     res[1] = ins.changeCntDp(n, denominations);
     assertEquals(res[0], res[1]);
   }

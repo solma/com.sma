@@ -69,6 +69,7 @@ public @interface Tag {
     Interview,
     JulyEdu,
     LeetCode,
+    Topcoder,
     NA,
   }
 
@@ -77,6 +78,7 @@ public @interface Tag {
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceSwap,
+    MultipleSourceBFS,
     TwoPointer,
     NA,
   }

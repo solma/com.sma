@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @Tag(algs = DynamicProgramming, dl = D3, dss = Subarray)
 public class LongestIncreasingSubsequence {
@@ -52,8 +53,10 @@ public class LongestIncreasingSubsequence {
     for (int i : num) {
       Node n = new Node(i);
       int insertionIdx = Collections.binarySearch(pileTops, n);
-      if (insertionIdx < 0) insertionIdx = ~insertionIdx;
-      if (insertionIdx > 0) n.prev = pileTops.get(insertionIdx - 1);
+      if (insertionIdx < 0)
+        insertionIdx = ~insertionIdx;
+      if (insertionIdx > 0)
+        n.prev = pileTops.get(insertionIdx - 1);
       if (insertionIdx < pileTops.size())
         pileTops.set(insertionIdx, n);
       else
@@ -75,8 +78,7 @@ public class LongestIncreasingSubsequence {
       this.val = value;
     }
 
-    @Override
-    public int compareTo(Node o) {
+    @Override public int compareTo(Node o) {
       return val - o.val;
     }
   }
@@ -85,7 +87,8 @@ public class LongestIncreasingSubsequence {
   // this can only be used to get the length but not the actual sequence
   int[] queueBasedLengthOnly(int[] num) {
     int n = num.length;
-    if (n == 0) return null;
+    if (n == 0)
+      return null;
     ArrayList<Integer> queue = new ArrayList<Integer>();
     for (int i = 0; i < n; i++) {
       if (queue.isEmpty() || queue.get(queue.size() - 1) < num[i])
@@ -113,7 +116,7 @@ public class LongestIncreasingSubsequence {
 
   int[] dpWithBinarySearch(int[] nums) {
 
-    HashMap<Integer, LIS> lisOfAllLength = new HashMap<Integer, LIS>();
+    Map<Integer, LIS> lisOfAllLength = new HashMap<>();
     LIS zeroLIS = new LIS(0, 0);
     zeroLIS.add(new ArrayList<Integer>());
     lisOfAllLength.put(0, zeroLIS);
@@ -136,9 +139,9 @@ public class LongestIncreasingSubsequence {
           lisOfAllLength.put(curLen, new LIS(curLen, nums[i]));
         }
         LIS curLIS = lisOfAllLength.get(curLen);
-        for (ArrayList<Integer> path : lisOfAllLength.get(l).paths) {
+        for (List<Integer> path : lisOfAllLength.get(l).paths) {
           if (path.size() == 0 || path.get(path.size() - 1) < nums[i]) {
-            ArrayList<Integer> seq = new ArrayList<Integer>(path);
+            List<Integer> seq = new ArrayList<>(path);
             seq.add(nums[i]);
             curLIS.add(seq);
           }
@@ -146,10 +149,10 @@ public class LongestIncreasingSubsequence {
         curLIS.min = nums[i];
       }
       // System.out.println("i=" + i + " l=" + l + ", maxLis=" + maxLis);
-      for (Integer len : lisOfAllLength.keySet()) {
-        // System.out.println("len=" + len + " :" + "  min=" + lisOfAllLength.get(len).min +
-        // "   lis=" + lisOfAllLength.get(len).paths);
-      }
+//      for (Integer len : lisOfAllLength.keySet()) {
+//         System.out.println("len=" + len + " :" + "  min=" + lisOfAllLength.get(len).min +
+//         "   lis=" + lisOfAllLength.get(len).paths);
+//      }
     }
 
     int[] ret = new int[maxLis];
@@ -163,15 +166,15 @@ public class LongestIncreasingSubsequence {
   class LIS {
     int len;
     int min;
-    ArrayList<ArrayList<Integer>> paths;
+    List<List<Integer>> paths;
 
     public LIS(int length, int minEndValue) {
       this.len = length;
       this.min = minEndValue;
-      paths = new ArrayList<ArrayList<Integer>>();
+      paths = new ArrayList<>();
     }
 
-    public void add(ArrayList<Integer> path) {
+    public void add(List<Integer> path) {
       paths.add(path);
     }
   }
@@ -181,28 +184,29 @@ public class LongestIncreasingSubsequence {
     int[] optimal = new int[values.length];
     int[] seq = new int[values.length];
 
-    for(int i = 0; i < optimal.length; i ++) {
-        optimal[i] = 1;
-        seq[i] = i;
+    for (int i = 0; i < optimal.length; i++) {
+      optimal[i] = 1;
+      seq[i] = i;
     }
 
-    for(int i = 1; i < optimal.length; i ++) {
-        for(int j = 0; j < i; j ++ ) {
-            if(values[j] < values[i])
-                if(optimal[j] + 1 > optimal[i]) {
-                    optimal[i] = optimal[j] + 1;
-                    seq[i] = j;
-                    if(optimal[i] > optimal[max]) max = i;
-                }
-        }
+    for (int i = 1; i < optimal.length; i++) {
+      for (int j = 0; j < i; j++) {
+        if (values[j] < values[i])
+          if (optimal[j] + 1 > optimal[i]) {
+            optimal[i] = optimal[j] + 1;
+            seq[i] = j;
+            if (optimal[i] > optimal[max])
+              max = i;
+          }
+      }
     }
 
     //backtrace the result
     int[] result = new int[optimal[max]];
     int current = max;
-    for(int i = result.length - 1; i >= 0; i-- ){
-        result[i] = values[current];
-        current = seq[current];
+    for (int i = result.length - 1; i >= 0; i--) {
+      result[i] = values[current];
+      current = seq[current];
     }
     return result;
   }

@@ -65,14 +65,13 @@ public class ChangeCoin {
     return ret;
   }
 
-  Set<Map<Integer, Integer>> changeRecursion(final int n, final int[] denominations) {
+  Set<Map<Integer, Integer>> bottomUpRecursionWithMemory(final int n, final int[] denominations) {
     Map<Integer, Set<Map<Integer, Integer>>> memory = new HashMap<>();
-    changeRecursion(n, denominations, memory);
+    bottomUpRecursionWithMemory(n, denominations, memory);
     return memory.get(n);
   }
 
-  private Set<Map<Integer, Integer>> changeRecursion(final int n, final int[] denominations,
-      Map<Integer, Set<Map<Integer, Integer>>> memory) {
+  private Set<Map<Integer, Integer>> bottomUpRecursionWithMemory(final int n, final int[] denominations, Map<Integer, Set<Map<Integer, Integer>>> memory) {
     if (n < 0) {
       return null;
     }
@@ -87,7 +86,8 @@ public class ChangeCoin {
     }
 
     for (int val : denominations) {
-      Set<Map<Integer, Integer>> recursionReturn = changeRecursion(n - val, denominations, memory);
+      Set<Map<Integer, Integer>> recursionReturn = bottomUpRecursionWithMemory(n - val,
+          denominations, memory);
       if (recursionReturn == null) {
         continue;
       }

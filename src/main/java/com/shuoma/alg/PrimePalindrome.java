@@ -1,5 +1,11 @@
-package com.shuoma.alg.number;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
+import static com.shuoma.annotation.Tag.DataStructure.String;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(algs = Arithmetic, dss = String)
 public class PrimePalindrome {
   public static void main(String[] args) {
     int N = 1000;
@@ -22,7 +28,7 @@ public class PrimePalindrome {
   }
 
   public static boolean isPalindrome(int num) {
-    String s = String.valueOf(num);
+    String s = java.lang.String.valueOf(num);
     int l = 0, r = s.length() - 1;
     while (l < r) {
       if (s.charAt(l) != s.charAt(r))

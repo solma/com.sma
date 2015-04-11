@@ -14,17 +14,20 @@ import java.util.Set;
 @Tag(algs = {Backtracking, Recursion})
 public class NaturalNumberDecomposition {
 
-  public Set<Map<Integer, Integer>> bottomUpRecursion(int n){
+  public Set<Map<Integer, Integer>> bottomUpRecursionWithMemory(int n){
     Map<Integer, Set<Map<Integer, Integer>>> allDecomposes = new HashMap<>();
-    bottomUpRecursion(n, allDecomposes);
+    bottomUpRecursionWithMemory(n, allDecomposes);
     return allDecomposes.get(n);
   }
 
-  void bottomUpRecursion(int n, Map<Integer, Set<Map<Integer, Integer>>> allDecomposes) {
-    Set<Map<Integer, Integer>> setForN = new HashSet<>();
+  void bottomUpRecursionWithMemory(int n, Map<Integer, Set<Map<Integer, Integer>>> allDecomposes) {
+    if (allDecomposes.containsKey(n)) {
+      return;
+    }
 
+    Set<Map<Integer, Integer>> setForN = new HashSet<>();
     if (n > 0) {
-      bottomUpRecursion(n - 1, allDecomposes);
+      bottomUpRecursionWithMemory(n - 1, allDecomposes);
       for (int i = 0; i <= n - 1; i++) {
         for (Map<Integer, Integer> decomposition : allDecomposes.get(i)) {
           Map<Integer, Integer> cpy = new HashMap<>(decomposition);
@@ -39,22 +42,35 @@ public class NaturalNumberDecomposition {
   }
 
   public Set<Map<Integer, Integer>> topDownRecursion(int n) {
-    return topDownRecursion(n, 1, new HashMap<Integer, Integer>(), 0);
+    Map<Integer, Set<Map<Integer, Integer>>> allDecomposes = new HashMap<>();
+    topDownRecursion(n, 1, new HashMap<Integer, Integer>(), allDecomposes);
+    //CollectionsUtil.printMap(allDecomposes);
+    return allDecomposes.get(n);
   }
 
-  Set<Map<Integer, Integer>> topDownRecursion(int target, int s, Map<Integer, Integer> cur, int lvl) {
-    Set<Map<Integer, Integer>> ret = new HashSet<>();
+  Set<Map<Integer, Integer>> topDownRecursion(int whole, int part, Map<Integer, Integer> cur,
+      Map<Integer, Set<Map<Integer, Integer>>> allDecomposes) {
 
-    if (target == 0) {
+    if (allDecomposes.containsKey(whole)) {
+      //return allDecomposes.get(whole);
+    }
+
+    Set<Map<Integer, Integer>> ret = new HashSet<>();
+    if (whole == 0) {
+      // cannot collect allDecomposes
+      // ret is no covariant of whole
+      // cur contains numbers larger than whole
       ret.add(new HashMap<>(cur));
       return ret;
     }
 
-    for (; s <= target; s++) {
-      CollectionsUtil.increaseMapCounter(cur, s, 1);
-      ret.addAll(topDownRecursion(target - s, s, cur, lvl + 1));
-      CollectionsUtil.increaseMapCounter(cur, s, -1);
+    for (; part <= whole; part++) {
+      CollectionsUtil.increaseMapCounter(cur, part, 1);
+      ret.addAll(topDownRecursion(whole - part, part, cur, allDecomposes));
+      CollectionsUtil.increaseMapCounter(cur, part, -1);
     }
+
+    allDecomposes.put(whole, ret);
     return ret;
   }
 }

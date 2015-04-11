@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
-import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
@@ -14,14 +14,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//dynamic programming+dfs on dp results
-//1.dp for each position in s, find matching substring and record it in dp
-//eg. leetcode dict: leet, code, le, et, co, de
+// dynamic programming+dfs on dp results
+// 1.dp for each position in s, find matching substring and record it in dp
+//   eg. leetcode dict: leet, code, le, et, co, de
 //        0 0 4 4  leet exists in dict, put 0 in position 5, le exists in dict, put 0 in position 3 etc.
-//2.dfs search for all possible segmentations in dp results. note that we want to start searching from end of the dp list. it is more efficient. if (dp.get(s.length())==0) we do not need to search. no segmentation is available
+// 2.dfs search for all possible segmentations in dp results. note that we want to start searching
+//   from end of the dp list. it is more efficient. if (dp.get(s.length())==0)
+//   we do not need to search. no segmentation is available
 
 
-@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, source = LeetCode)
+@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, source = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
     Set<String> dict = new HashSet<>();
