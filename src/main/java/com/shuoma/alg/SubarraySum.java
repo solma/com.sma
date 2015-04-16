@@ -1,10 +1,15 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
 /**
  * Given an array find an sub array with sum closest to K.
  */
+@Tag(dss = Subarray)
 public class SubarraySum {
 
   int[] a;
@@ -31,11 +36,9 @@ public class SubarraySum {
     int i;
     for (i = 0; i < a.length; i++) {
       sum += a[i];
-
       if (sum < K) {
         continue;
       }
-
       cur[1] = i;
       res = Arrays.copyOf(cur, 3);
       if (sum == K) {

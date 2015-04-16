@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = String, source = LeetCode)
+@Tag(algs = DynamicProgramming, dss = String, source = LeetCode)
 public class PalindromePartitionII {
   public static void main(String[] args) {
     //"aoecddceoaaeqeeqe"
@@ -32,11 +32,7 @@ public class PalindromePartitionII {
       for (int j = i; j < n; j++) {
         if (s.charAt(i) == s.charAt(j) && (i + 1 >= j - 1 || parlin[i + 1][j - 1])) {
           parlin[i][j] = true;
-          if (j == n - 1)
-            dp[i] = 0;
-          else
-            dp[i] = Math.min(dp[i], dp[j + 1] + 1);
-
+          dp[i] = j == n - 1 ? 0 : Math.min(dp[i], dp[j + 1] + 1);
         }
         //need this line when change parlin to 1-d
         //else parlin[j] = false;

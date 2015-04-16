@@ -1,5 +1,9 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.util.RandomUtil;
 
 import java.util.Arrays;
@@ -13,7 +17,7 @@ import java.util.Arrays;
  * given [1 0 1]，reverse 0，return 3
  * given [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return 4.
  */
-
+@Tag(algs = DynamicProgramming, dss = Subarray)
 public class LongestContinuousSubarrayWithChange {
 
   public static void main(String[] args) {
@@ -23,7 +27,7 @@ public class LongestContinuousSubarrayWithChange {
       int[] ary = RandomUtil.genRandomArray(7, 2, false, false);
       int[] res = new int[3];
       res[0] = maxConsecutive(ary);
-      res[1] = maxConsecutive1(ary);
+      res[1] = maxConsecutiveDp(ary);
       res[2] = maxConsecutiveBase(ary);
       if (res[0] != res[2] || res[1] != res[2]) {
         System.out.println(Arrays.toString(ary));
@@ -59,7 +63,7 @@ public class LongestContinuousSubarrayWithChange {
   /**
    * dynamic programming: complex logic but correct solution
    */
-  static int maxConsecutive1(int[] ary) {
+  static int maxConsecutiveDp(int[] ary) {
     int[] reverse = new int[ary.length];
     int[] noReverse = new int[ary.length];
     // when noReverse gets the max, records which element is reversed

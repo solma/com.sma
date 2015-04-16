@@ -15,7 +15,7 @@ public class PrimeSieveTest {
   public void generateAllPrimesTest() {
     PrimeSieve ins = new PrimeSieve();
     for (int i = 0; i < 10; i++) {
-      int n = RandomUtil.r.nextInt(100) + 1;
+      int n = RandomUtil.r.nextInt(1000) + 1;
       List[] primeLists = new List[2];
       primeLists[0] = generateAllPrimesBase(n);
       primeLists[1] = ins.generateAllPrimes(n);

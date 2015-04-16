@@ -1,5 +1,6 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
 
+import com.shuoma.alg.LongestIncreasingSubArray;
 import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;
 import org.junit.Test;

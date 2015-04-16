@@ -7,7 +7,8 @@ import com.shuoma.annotation.Tag;
 import java.util.LinkedList;
 import java.util.List;
 
-// More bit operation hacks https://graphics.stanford.edu/~seander/bithacks.html
+// More bit operation hacks
+// https://graphics.stanford.edu/~seander/bithacks.html
 @Tag(algs = BitManipulation)
 public class BitUtil {
 

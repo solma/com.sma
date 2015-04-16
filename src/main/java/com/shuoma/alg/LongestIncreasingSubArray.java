@@ -1,6 +1,13 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
+
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+
+import com.shuoma.annotation.Tag;
 
 /** Find longest increasing subarray for specified array. */
+@Tag(algs = DynamicProgramming, dss = Subarray)
 public class LongestIncreasingSubArray {
 
   int longestIncreasingSubarray(final int[] a) {

@@ -1,10 +1,15 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+
+import com.shuoma.annotation.Tag;
 
 // source:
 // http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODIzNDQ3Mw==&appmsgid=10000220&itemidx=1&sign=6ba8275053d9c400e9535f392b4cbaa7
 // given a array of postivie numbers, find the shortest subarray such that the sum of the element in
 // the subarray is greater than S
-
+@Tag(algs = DynamicProgramming, dss = Subarray)
 public class ShortestSubArray {
   public static void main(String[] args) {
     new ShortestSubArray().shortestSubArray(new int[] {5, 1, 3, 5, 10, 7, 4, 9, 2, 8}, 18);

@@ -9,7 +9,8 @@ import java.util.Map;
 public class CollectionsUtil {
 
   /**
-   * Increase counter.get(key) by increase. If value decrease to zero, it is removed from map.
+   * Increase counter.get(key) by increase.
+   * If value decrease to zero, it is removed from map.
    */
   public static <K> void increaseMapCounter(Map<K, Integer> counter, K key, int increase) {
     if (!counter.containsKey(key)) {
@@ -18,6 +19,13 @@ public class CollectionsUtil {
     counter.put(key, counter.get(key) + increase);
     if (counter.get(key) == 0) {
       counter.remove(key);
+    }
+  }
+
+  /** Merge two map counters. */
+  public static <K> void mergeMapCounters(Map<K, Integer> counter1, Map<K, Integer> counter2) {
+    for (K key : counter2.keySet()) {
+      increaseMapCounter(counter1, key, counter2.get(key));
     }
   }
 
@@ -42,5 +50,13 @@ public class CollectionsUtil {
     }
     collection.add(value);
     map.put(key, collection);
+  }
+
+  public static List<Integer> toValue(int[] arr, List<Integer> indexs) {
+    List<Integer> values = new ArrayList<>(indexs.size());
+    for (int i = 0; i < indexs.size(); i++) {
+      values.add(arr[indexs.get(i)]);
+    }
+    return values;
   }
 }

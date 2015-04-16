@@ -1,11 +1,17 @@
-package com.shuoma.alg.number.subarray;
+package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+
+import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.RandomUtil;
 
 /**
- * // Given a matrix, each cell having only 0's or 1's, find the largest sub matrix with equal number of 0's and 1's in it.
+ * Given a matrix, each cell having only 0's or 1's, find the largest sub matrix with equal number of 0's and 1's in it.
  */
+@Tag(algs = DynamicProgramming, dss = {MatrixGraph, Subarray})
 public class MaxRectangleWithEqualZerosAndOnes {
   public static void main(String[] args) {
     int[][] board = RandomUtil.genRandomMatrix(6, 7, 1, false, false);

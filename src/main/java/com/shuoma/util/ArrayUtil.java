@@ -267,6 +267,14 @@ public class ArrayUtil {
     return array;
   }
 
+  public static int sum(int[] arr) {
+    int sum = 0;
+    for (int n : arr) {
+      sum += n;
+    }
+    return sum;
+  }
+
   public static void swap(char[] array, int i, int j) {
     if (i == j)
       return;
@@ -283,5 +291,13 @@ public class ArrayUtil {
     a[i] = a[i] ^ a[j];
     a[j] = a[i] ^ a[j];
     a[i] = a[i] ^ a[j];
+  }
+
+  public static int[] toValue(int[] arr, int[] indexs) {
+    int[] values = new int[indexs.length];
+    for (int i = 0; i < indexs.length; i++) {
+      values[i] = arr[indexs[i]];
+    }
+    return  values;
   }
 }

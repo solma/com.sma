@@ -13,7 +13,7 @@ public class NumbersContainCertainDigitTest extends TestCase {
     NumbersContainCertainDigit ins = new NumbersContainCertainDigit();
     int n = 232;
     char k = '7';
-    System.out.println(ins.find(n, k).size() + "\n" + findDummy(n, k).size());
+    assertEquals(findDummy(n, k).size(), ins.find(n, k).size());
   }
 
   List<Integer> findDummy(int n, char k) {

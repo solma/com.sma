@@ -30,8 +30,9 @@ public class PrimeSieve {
         primes.add(p);
         // Sieving from p^2, whose index is 2i^2 + 6i + 3
         // index increase by p since even numbers are skipped
-        for (int j = ((i * i) << 1) + 6 * i + 3; j <= indexMax; j += p) {
-          isPrime[j] = false;
+        //for (int j = ((i * i) << 1) + 6 * i + 3; j <= indexMax; j += p) {
+        for (int j = p * p; j <= n; j += 2 * p) {
+          isPrime[(j - 3) >> 1] = false;
         }
       }
     }
