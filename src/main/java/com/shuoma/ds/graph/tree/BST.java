@@ -179,8 +179,6 @@ public class BST {
         // replace cur by successor
         cur.value = successor.value;
         cur.id = successor.id;
-        // size minus 1
-        cur.size--;
 
         // remove successor from right tree
         if (parent.left == successor)
@@ -194,8 +192,8 @@ public class BST {
           cur.right = delete(cur.right, id);
         else
           cur.left = delete(cur.left, id);
-        cur.size--;
       }
+      cur.size--;
       return cur;
     }
 

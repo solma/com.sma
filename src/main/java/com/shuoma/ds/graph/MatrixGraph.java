@@ -1,9 +1,9 @@
 package com.shuoma.ds.graph;
 
-import com.shuoma.alg.graph.basic.BFS;
-import com.shuoma.alg.graph.basic.DFS;
-import com.shuoma.alg.graph.basic.shortestpath.Dijkstra;
-import com.shuoma.alg.graph.tree.mst.Prim;
+import com.shuoma.alg.BFS;
+import com.shuoma.alg.DFS;
+import com.shuoma.alg.Dijkstra;
+import com.shuoma.alg.Prim;
 import com.shuoma.ds.graph.basic.Edge;
 import com.shuoma.ds.graph.basic.Graph;
 import com.shuoma.ds.graph.basic.Node;

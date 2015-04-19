@@ -10,12 +10,12 @@ public class BitwiseAndOfNumberRange {
 
   //http://math.stackexchange.com/questions/1073532/how-to-find-bitwise-and-of-all-numbers-for-a-given-range
   public int rangeBitwiseAnd(int m, int n) {
-    int x = m ^ n;
-    int s = x >> 1;
-    while (s > 0) {
-      x |= s;
-      s >>= 1;
+    int xor = m ^ n;
+    int cnt = 0;
+    while (xor > 0) {
+      xor >>= 1;
+      cnt++;
     }
-    return m & n & ~x;
+    return m & n & ~((1 << cnt) - 1);
   }
 }

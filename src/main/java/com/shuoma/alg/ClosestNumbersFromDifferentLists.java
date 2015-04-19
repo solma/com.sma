@@ -9,42 +9,38 @@ import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.MinMaxPriorityQueue;
 
 import java.util.Arrays;
-import java.util.PriorityQueue;
 
 /**
- * Given n arrays with size K, produce K largest numbers among all arrays. Consider this is the
- * reduce step of picking K largest numbers from N numbers where N is huge. The map step is to split
- * N into ceil(N/K) arrays and produce top K for each array.
+ * Given n sorted list, pick n numbers one number from each list
+ * such that the difference between the largest and smallest number is minimized.
  */
 @Tag(dss = {Array, PriorityQueue}, tricks = TwoOrMorePointers)
-public class KWayMerging {
+public class ClosestNumbersFromDifferentLists {
   public static void main(String[] args) {
-    //kLargestNumbersFromSizeKLists();
-    kWayMerging();
+    // sorted lists
+    int[][] lists = { {8, 9, 10}, {1, 2, 3}, {5, 6, 7, 11}};
+    kWayMerging(lists);
   }
 
-  public static void kWayMerging() {
-    // sorted lists
-    int[][] lists = {{3, 5, 8, 10}, {2, 4, 9}, {1, 6, 7, 11}};
-
+  public static void kWayMerging(int[][] lists) {
     int n = lists.length;
     int[] pos = new int[n];
 
     MinMaxPriorityQueue pq = new MinMaxPriorityQueue();
     int sum = 0;
     for (int i = 0; i < n; i++) {
-      pq.add(new MinMaxPriorityQueue.Element(i, lists[i][0]));
+      pq.add(new Element(i, lists[i][0]));
       sum += lists[i].length;
     }
 
-    int[] res = new int[sum];
+    int[] merged = new int[sum];
     int cnt = 0;
 
     int[] minWindow = new int[2];
     minWindow[1] = Integer.MAX_VALUE;
     boolean oobArray = false;
 
-    while (cnt < res.length) {
+    while (cnt < merged.length) {
       Element max = pq.max.peek();
       Element min = pq.poll(); // idx of list with smallest number
       System.out.println(cnt + " : " + max + " " + min);
@@ -54,7 +50,7 @@ public class KWayMerging {
       }
 
       int i = min.key;
-      res[cnt++] = lists[i][pos[i]];
+      merged[cnt++] = lists[i][pos[i]];
       pos[i]++;
       if (pos[i] < lists[i].length) {
         pq.add(new Element(i, lists[i][pos[i]]));
@@ -62,31 +58,7 @@ public class KWayMerging {
         oobArray = true;
       }
     }
-    System.out.println(Arrays.toString(res));
+    System.out.println(Arrays.toString(merged));
     System.out.println(Arrays.toString(minWindow));
-  }
-
-  public static void kLargestNumbersFromSizeKLists() {
-    int[][] lists = {{3, 5, 8}, {9, 2, 4}, {7, 6, 1}};
-    int n = lists.length;
-    int k = lists[0].length;
-    int[] pos = new int[n];
-    PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-    int cnt = 0;
-    while (cnt < n * k) {
-      for (int i = 0; i < n; i++) {
-        if (pos[i] < k) {
-          if (pq.size() == 0 || lists[i][pos[i]] > pq.peek()) {
-            if (pq.size() == k)
-              pq.poll();
-            pq.add(lists[i][pos[i]]);
-          }
-          pos[i]++;
-          cnt++;
-        }
-      }
-    }
-    System.out.println(pq);
   }
 }

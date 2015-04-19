@@ -29,6 +29,7 @@ public @interface Tag {
     Greedy,
     Recursion,
     RegularExpression,
+    Searching,
     Sorting,
     Streaming,
     TopDown,
@@ -44,6 +45,7 @@ public @interface Tag {
     Interval,
     LinkedList,
     MatrixGraph,
+    MinimumSpanningTree,
     PriorityQueue,
     Queue,
     Stack,
@@ -79,7 +81,7 @@ public @interface Tag {
     FromTwoEndsToMiddle,
     InplaceSwap,
     MultipleSourceBFS,
-    TwoPointer,
+    TwoOrMorePointers,
     NA,
   }
 }
