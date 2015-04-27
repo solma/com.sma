@@ -122,7 +122,7 @@ public class RandomUtil {
 
 
 
-  public static int[] leftShift(int[] a, int start) {
+  public static int[] leftShift(final int[] a, int start) {
     int n = a.length;
     int[] ret = new int[n];
     for (int i = start; i < n; i++) {
@@ -134,15 +134,17 @@ public class RandomUtil {
     return ret;
   }
 
-  public static int[] shuffle(int[] arr) {
+  public static int[] shuffle(final int[] arr) {
     return shuffle(arr, 0, arr.length - 1);
   }
 
-  public static int[] shuffle(int[] arr, int start, int end) {
+  public static int[] shuffle(final int[] arr, int start, int end) {
     int n = end - start + 1;
+    int[] ret = new int[n];
+    System.arraycopy(arr, start, ret, 0, n);
     for(int i = start; i <= end; i++) {
       int swap = i + r.nextInt(n - (i - start));
-      ArrayUtil.swap(arr, i, swap);
+      ArrayUtil.swap(ret, i - start, swap - start);
     }
     return arr;
   }

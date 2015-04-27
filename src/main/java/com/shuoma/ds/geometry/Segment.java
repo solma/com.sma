@@ -2,7 +2,7 @@ package com.shuoma.ds.geometry;
 
 public class Segment {
 
-  public static enum Orientation {
+  public enum Orientation {
     CLOCKWISE,
     COUNTERCLOCKWISE,
     COLLINEAR,
@@ -23,17 +23,16 @@ public class Segment {
   // http://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
   // http://geomalgorithms.com/a02-_lines.html
   public double getDistance(Point p) {
-    double l2 = Math.pow(length(), 2);  // i.e. |s-e|^2 -  avoid a sqrt
+    double l2 = Math.pow(length(), 2);  // i.e. |s-e|^2 -  avoid a newtonMethod
     if (l2 == 0.0) return Point.distance(s, p);   // s == e case
 
     // Consider the line extending the segment, parameterized as s + t (e - s).
     // We find projection of point p onto the line.
     // It falls where t = [(p-s) . (e-s)] / l2
-    double tVector = Point.dot(Point.minus(p, s), Point.minus(e, s)) / l2;
-    // System.out.println("t = " + tVector);
-    if (tVector < 0.0) return Point.distance(p, s);       // Beyond the 's' end of the segment
-    else if (tVector > 1.0) return Point.distance(p, e);  // Beyond the 'e' end of the segment
-    Point projection = Point.add(s, Point.multiply(tVector, Point.minus(e, s)));  // Projection falls on the segment
+    double normalizedScalarProjection = Point.dot(Point.minus(p, s), Point.minus(e, s)) / l2;
+    if (normalizedScalarProjection < 0.0) return Point.distance(p, s);       // Beyond the 's' end of the segment
+    else if (normalizedScalarProjection > 1.0) return Point.distance(p, e);  // Beyond the 'e' end of the segment
+    Point projection = Point.add(s, Point.multiply(normalizedScalarProjection, Point.minus(e, s)));  // Projection falls on the segment
     return Point.distance(p, projection);
   }
 
@@ -41,6 +40,7 @@ public class Segment {
   // // http://www.dcs.gla.ac.uk/~pat/52233/slides/Geometry1x1.pdf
   // http://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect
   public Orientation getOrientation (Point p) {
+    // res is cross product
     double res = (e.y - s.y) * (p.x - e.x) - (e.x - s.x) * (p.y - e.y);
     if (res == 0) return Orientation.COLLINEAR;
     else return res > 0 ? Orientation.CLOCKWISE : Orientation.COUNTERCLOCKWISE;

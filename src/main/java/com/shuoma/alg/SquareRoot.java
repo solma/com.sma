@@ -1,18 +1,19 @@
 package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.Geometry;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, source = LeetCode)
+@Tag(algs = {Arithmetic, Geometry}, source = LeetCode)
 public class SquareRoot {
   public static void main(String[] args) {
     SquareRoot ins = new SquareRoot();
     int c = 150;
-    //System.out.println(ins.sqrt(Integer.parseInt(args[0])));
+    //System.out.println(ins.newtonMethod(Integer.parseInt(args[0])));
     System.out.println(ins.quakeIIISolution(c));
-    System.out.println(ins.sqrt(c));
+    System.out.println(ins.newtonMethod(c));
   }
 
   // not work yet
@@ -34,7 +35,7 @@ public class SquareRoot {
   }
 
   //second pass
-  public double sqrt(int c) {
+  public double newtonMethod(int c) {
     if (c < 0)
       return -1;
     if (c == 0)
@@ -47,7 +48,7 @@ public class SquareRoot {
   }
 
   //first pass
-  public int sqrtFirstPass(int c) {
+  public int sqrt(int c) {
     double seed = c, delta = 0.00001, fx = seed * seed - c;
     //Newton's Method
     while (fx > delta) {

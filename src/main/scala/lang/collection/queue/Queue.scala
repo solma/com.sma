@@ -1,4 +1,4 @@
-package com.shuoma.learning;
+package lang.collection.queue
 
 trait Queue[T] {
   def head: T

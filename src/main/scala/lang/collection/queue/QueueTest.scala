@@ -1,10 +1,8 @@
-package lang
-
-import com.shuoma.learning.Queue
+package lang.collection.queue
 
 import scala.reflect.runtime.universe._
 
-object Test {
+object QueueTest {
   def main(args: Array[String]): Unit = {
     val q = Queue(1, 2, 3)
     //if (q.isInstanceOf[Queue[Float]]) {

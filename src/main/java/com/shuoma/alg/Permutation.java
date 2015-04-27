@@ -65,8 +65,9 @@ public class Permutation {
   public static String iThPermutation(String input, long ith) {
     int n = input.length();
     Map<Integer, Character> map = new HashMap<>();
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
       map.put(i + 1, input.charAt(i));
+    }
 
     int[] inversion = new int[n];
     for (int div = 1; ith > 0; div++) {
