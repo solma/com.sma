@@ -14,7 +14,7 @@ import java.util.Arrays;
 // elements-of-programming-interviews P6.13
 
 /**
- * The input is a sequence x1,x2,...,xn of integers in an arbitrary order, and another sequence
+ * The intervals is a sequence x1,x2,...,xn of integers in an arbitrary order, and another sequence
  * a1,a2,..,an of distinct integers from 1 to n (namely a1,a2,...,an is a permutation of 1, 2,...,
  * n). Both sequences are given as arrays. Design an 0(n logn) algorithm to order the first sequence
  * according to the order imposed by the permutation. In other words, for each i, Xi should appear

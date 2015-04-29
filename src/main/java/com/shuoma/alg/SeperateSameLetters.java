@@ -18,7 +18,7 @@ public class SeperateSameLetters {
     new SeperateSameLetters().main("abc", "145");
   }
 
-  // input guarantee that a solution exists
+  // intervals guarantee that a solution exists
   public void main(String characters, String numbers) {
     char[] symbols = characters.toCharArray();
     char[] nums = numbers.toCharArray();

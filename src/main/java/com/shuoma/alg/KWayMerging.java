@@ -78,8 +78,9 @@ public class KWayMerging {
       for (int i = 0; i < n; i++) {
         if (pos[i] < k) {
           if (pq.size() == 0 || lists[i][pos[i]] > pq.peek()) {
-            if (pq.size() == k)
+            if (pq.size() == k) {
               pq.poll();
+            }
             pq.add(lists[i][pos[i]]);
           }
           pos[i]++;

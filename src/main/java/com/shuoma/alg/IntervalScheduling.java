@@ -34,7 +34,7 @@ public class IntervalScheduling {
         return o1.end == o2.end ? (o1.start - o2.start) : (o1.end - o2.end);
       }
     });
-    System.out.println("input: \n" + input);
+    System.out.println("intervals: \n" + input);
     Interval prev = input.get(0);
     ret.add(prev);
     for (int i = 1; i < n; i++) {

@@ -83,7 +83,7 @@ public class Permutation {
     return sb.toString();
   }
 
-  // find the permutation of input that is closes to target
+  // find the permutation of intervals that is closes to target
   public static long nearestPermutation(String input, int target) {
     char[] nums = input.toCharArray();
     Arrays.sort(nums);

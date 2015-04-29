@@ -42,7 +42,7 @@ public class MostOverlappedInterval {
       while (!overlappedIntervals.isEmpty() && overlappedIntervals.peek().end < start) {
         Interval top = overlappedIntervals.poll();
         // count number of overlapped intervals for top
-        // bst.size() - bst.get(): number of popped out intervals whose end
+        // bst.size() - bst.get(): number of popped out intervals whose end smaller than top.start
         int count = overlappedIntervals.size() + (bst.size() - bst.rankOf(String.valueOf(top.start)));
         bst.insert(top.end);
         if (count > result[0]) {

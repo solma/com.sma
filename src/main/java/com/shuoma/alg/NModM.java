@@ -19,7 +19,7 @@ public class NModM {
       while ((line = in.readLine()) != null) {
         String[] lineArray = line.split(",");
         if (lineArray.length > 0) {
-          // Process line of input Here
+          // Process line of intervals Here
           int N = Integer.parseInt(lineArray[0]);
           int M = Integer.parseInt(lineArray[1]);
           System.out.println(N - N / M * M);

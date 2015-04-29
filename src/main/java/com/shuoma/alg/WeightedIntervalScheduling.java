@@ -3,6 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.alg.Interval.IntervalEndPoint;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
@@ -12,33 +13,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 @Tag(algs = DynamicProgramming, dl = D3, dss = Array)
 public class WeightedIntervalScheduling {
 
-  public static void main(String[] args) {
-    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10);
-    schedule(list);
+  final List<Interval> intervals;
+
+  public WeightedIntervalScheduling(List<Interval> intervals) {
+    this.intervals = intervals;
   }
 
-  public static List<Interval> schedule(List<Interval> input) {
+  public static void main(String[] args) {
+    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 5, 10);
+    new WeightedIntervalScheduling(list).schedule();
+  }
+
+  public List<Interval> schedule() {
     List<Interval> ret = new ArrayList<>();
-    int n = input.size();
+    int n = intervals.size();
     if (n < 1) return ret;
-    if (n < 2) return input;
-    Collections.sort(input, new Comparator<Interval>() {
+    if (n < 2) return intervals;
+    Collections.sort(intervals, new Comparator<Interval>() {
       @Override public int compare(Interval o1, Interval o2) {
         return o1.end == o2.end ? (o1.start - o2.start) : (o1.end - o2.end);
       }
     });
-    System.out.println("input: \n" + input);
+    //System.out.println("intervals: \n" + intervals);
 
-    int[] lastCompatiblePredecessor = new int[n];
-    for (int i = 0; i < n; i++) {
-      lastCompatiblePredecessor[i] = input.get(i).bisect(input);
-    }
-    System.out.println("last compatible array: " + Arrays.toString(lastCompatiblePredecessor));
+    int[] lastCompatiblePredecessor = computeLastCompatibleInterval();
+    System.out.println(Arrays.equals(lastCompatiblePredecessor, computeLastCompatibleInterval1()));
+    //System.out.println("last compatible array: " + Arrays.toString(lastCompatiblePredecessor));
 
     /**
      * DP part
@@ -46,7 +52,7 @@ public class WeightedIntervalScheduling {
     double[] dpRes = new double[n];
     boolean[] dpDecision = new boolean[n];
     for (int i = 0; i < n; i++) {
-      Interval cur = input.get(i);
+      Interval cur = intervals.get(i);
       int lastCompatible = lastCompatiblePredecessor[i];
 
       if (i > 0) dpRes[i] = dpRes[i - 1];// not using cur
@@ -57,14 +63,14 @@ public class WeightedIntervalScheduling {
         dpRes[i] = sum;
         dpDecision[i] = true;
       }
-      System.out.println("i=" + i + " cur interval: " + cur + " last compatibl=" + lastCompatible
+      System.out.println("i=" + i + " cur interval: " + cur + " last compatible=" + lastCompatible
           + " new sum=" + dpRes[i]);
     }
     System.out.println("dp decision array: " + Arrays.toString(dpDecision));
 
     for (int i = n - 1; i >= 0;) {
       if (dpDecision[i]) {
-        ret.add(0, input.get(i));
+        ret.add(0, intervals.get(i));
         i = lastCompatiblePredecessor[i];
       } else {
         i--;
@@ -72,5 +78,41 @@ public class WeightedIntervalScheduling {
     }
     System.out.println("ret: \n" + ret);
     return ret;
+  }
+
+  int[] computeLastCompatibleInterval() {
+    int n = intervals.size();
+    int[] lastCompatiblePredecessor = new int[n];
+    for (int i = 0; i < n; i++) {
+      lastCompatiblePredecessor[i] = intervals.get(i).bisect(intervals);
+    }
+    return lastCompatiblePredecessor;
+  }
+
+  int[] computeLastCompatibleInterval1() {
+    int n = intervals.size();
+    List<IntervalEndPoint> allPoints = new LinkedList<>();
+    for (int i = 0; i < n; i++) {
+      Interval interval = intervals.get(i);
+      allPoints.add(new IntervalEndPoint(interval.start, 1, i));
+      allPoints.add(new IntervalEndPoint(interval.end, 0, i));
+    }
+    Collections.sort(allPoints, new Comparator<IntervalEndPoint>() {
+      @Override public int compare(IntervalEndPoint o1, IntervalEndPoint o2) {
+        return o1.val == o2.val ? (o1.isStart - o2.isStart) : (o1.val - o2.val);
+      }
+    });
+
+    int[] lastCompatiblePredecessor = new int[n];
+    int lastClosedInterval = -1;
+    for (int i = 0; i < allPoints.size(); i++) {
+      IntervalEndPoint p = allPoints.get(i);
+      if (p.isStart == 1) {
+        lastCompatiblePredecessor[p.intervalIdx] = lastClosedInterval;
+      } else {
+        lastClosedInterval = p.intervalIdx;
+      }
+    }
+    return lastCompatiblePredecessor;
   }
 }

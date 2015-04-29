@@ -10,9 +10,9 @@ import com.shuoma.annotation.Tag;
 public class SquareRoot {
   public static void main(String[] args) {
     SquareRoot ins = new SquareRoot();
-    int c = 150;
+    double c = 10e20;
     //System.out.println(ins.newtonMethod(Integer.parseInt(args[0])));
-    System.out.println(ins.quakeIIISolution(c));
+    //System.out.println(ins.quakeIIISolution(c));
     System.out.println(ins.newtonMethod(c));
   }
 
@@ -35,14 +35,14 @@ public class SquareRoot {
   }
 
   //second pass
-  public double newtonMethod(int c) {
+  public double newtonMethod(double c) {
     if (c < 0)
       return -1;
     if (c == 0)
       return 0;
     double x = c / 2.0;
-    while (Math.abs(x * x - c) > 0.0000000001) {
-      x = (x * x + c) / (x * 2);
+    while (Math.abs(x * x - c) / x > 0.00001) {
+      x = (x + c / x) / 2;
     }
     return x;
   }
