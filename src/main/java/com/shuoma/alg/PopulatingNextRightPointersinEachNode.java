@@ -15,8 +15,9 @@ public class PopulatingNextRightPointersinEachNode {
       TreeLinkNode nextLev = null;
       TreeLinkNode prev = null;
       for (; root != null; root = root.next) {
-        if (nextLev == null)
+        if (nextLev == null) {
           nextLev = root.left != null ? root.left : root.right;
+        }
         if (root.left != null) {
           if (prev != null)
             prev.next = root.left;

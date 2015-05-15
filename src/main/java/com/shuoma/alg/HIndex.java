@@ -18,13 +18,13 @@ import java.util.List;
 public class HIndex {
   public static void main(String[] args) {
     List<int[]> citations = new LinkedList<>();
-    citations.add(new int[] {3, 2, 5}); //2
-    citations.add(new int[]{4,2,3,5}); //3
     citations.add(new int[] {5, 2, 4, 6}); //3
+    citations.add(new int[] {3, 2, 5}); //2
+    citations.add(new int[] {4, 2, 3, 5}); //3
     citations.add(new int[] {8, 6, 7, 5}); //4
     citations.add(new int[] {9, 7, 6, 8}); //4
     citations.add(new int[] {10, 7, 9, 8}); //4
-    citations.add(new int[]{3, 13, 2, 3, 33}); //3
+    citations.add(new int[] {3, 13, 2, 3, 33}); //3
     for (int[] profile : citations) {
       System.out.println((new HIndex()).hIndex(profile));
     }
@@ -39,15 +39,17 @@ public class HIndex {
   */
   int hIndex(int[] citations) {
     int l = 0, r = citations.length - 1;
-    while (l < r) {
+    int lastPausible = -1;
+    while (l <= r) {
       int partition = ArrayUtil.partition(citations, l, r, l);
-      //System.out.println(partition + Arrays.toString(citations));
       if (citations[partition] <= citations.length - partition) {
+        lastPausible = partition;
         l = partition + 1;
-        continue;
+      } else {
+        r = partition - 1;
       }
-      r = partition;
+      //System.out.println(partition + " " + Arrays.toString(citations) + " " + l + " " + r);
     }
-    return Math.max(citations.length - r, l > 0 ? citations[l - 1] : 0);
+    return Math.max(citations.length - (lastPausible + 1), lastPausible >= 0 ? citations[lastPausible] : 0);
   }
 }

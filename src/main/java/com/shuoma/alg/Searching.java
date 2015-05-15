@@ -40,7 +40,7 @@ public class Searching {
   }
 
   static void testSearchAlgorithms() {
-    SearchingAlgorithm[] algs = {SearchingAlgorithm.BIN_FIRST_SORTED_1};
+    SearchingAlgorithm[] algs = {SearchingAlgorithm.BIN_FIRST_SORTED};
     for (SearchingAlgorithm sortAlgorithmChoice : algs) {
       for (int i = 0; i < 10000; i++) {
         // generate array
@@ -97,7 +97,7 @@ public class Searching {
   public static int binarySearchFirstAppear(int[] a, int key) {
     // return the first appearance
     int low = -1, high = a.length, mid;
-    while (low + 1 != high) {
+    while (low + 1 < high) {
       mid = low + (high - low) / 2;
       if (a[mid] < key) low = mid;
       else high = mid;

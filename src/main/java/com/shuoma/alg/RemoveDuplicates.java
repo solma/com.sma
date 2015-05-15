@@ -5,7 +5,6 @@ import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
 import static com.shuoma.annotation.Tag.Source.CrackingTheCodeInterview;
 
 import com.shuoma.annotation.Tag;
-import com.shuoma.ds.linkedlist.*;
 
 // delete duplicates in the linked list without extra space
 @Tag(dss = LinkedList, source = CrackingTheCodeInterview)
