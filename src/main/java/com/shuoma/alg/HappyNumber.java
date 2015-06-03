@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
+import static com.shuoma.annotation.Tag.Algorithm.ArithmeticSum;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 import static com.shuoma.annotation.Tag.Source.LeetCode;
 
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Arithmetic, dss = HashTable, source = LeetCode)
+@Tag(algs = ArithmeticSum, dss = HashTable, source = LeetCode)
 public class HappyNumber {
 
   public static void main(String[] args) {

@@ -9,42 +9,22 @@ public class HouseRobberTest {
   @Test public void test() {
     HouseRobber ins = new HouseRobber();
 
-    int[] properties = new int[] {10, 3, 2, 5, 7, 8};
-    assertEquals(19, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(23, ins.rob(properties));
+    int[][] houseSets =
+        new int[][] {{10, 3, 2, 5, 7, 8}, {10, 9, 8, 9, 1}, {11, 15}, {7, 7, 7, 7, 7, 7, 7},
+            {1, 2, 3, 4, 5, 1, 2, 3, 4, 5},
+            {94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95, 265,
+                35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 72},
+            {1, 1, 1, 2}, {2, 2, 4, 3, 2, 5}};
+    int[][] results =
+        new int[][] {{19, 23}, {19, 19}, {15, 15}, {21, 28}, {16, 17}, {2926, 2982}, {3, 3},
+            {10, 11}};
 
-    properties = new int[] {10, 9, 8, 9, 1};
-    assertEquals(19, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(19, ins.rob(properties));
-
-    properties = new int[] {11, 15};
-    assertEquals(15, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(15, ins.rob(properties));
-
-    properties = new int[] {7, 7, 7, 7, 7, 7, 7};
-    assertEquals(21, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(28, ins.rob(properties));
-
-    properties = new int[] {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
-    assertEquals(16, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(17, ins.rob(properties));
-
-    properties =
-        new int[] {94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95,
-            265, 35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 72};
-    assertEquals(2926, ins.robCircleSpaceEfficientDp(properties));
-    assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
-    assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
-    assertEquals(2982, ins.rob(properties));
+    for (int i = 0; i < houseSets.length; i++) {
+      int[] properties = houseSets[i];
+      assertEquals(results[i][0], ins.robCircleSpaceEfficientDp(properties));
+      //assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
+      //assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));
+      assertEquals(results[i][1], ins.rob(properties));
+    }
   }
 }

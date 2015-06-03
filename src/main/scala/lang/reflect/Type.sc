@@ -11,6 +11,6 @@ getTypeTag(Array(1, 2, 3))
 getTypeTag[Int](returnArrayWithClassTag[Int]("s"))
 val a = Array(1, 2, 3)
 println(a.toList)
-
 val li =  List('c','a','b')
 li.zipWithIndex.sortBy(_._1)
+Array.concat(Array(Array(1, 2), Array(7, 8)): _*).mkString(",")

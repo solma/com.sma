@@ -5,18 +5,6 @@ import static com.shuoma.annotation.Tag.Source.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) {
- * val = x;
- * next = null;
- * }
- * }
- */
-
 @Tag(dss = LinkedList, source = LeetCode)
 public class RemoveDuplicatesfromSortedList {
   //second pass

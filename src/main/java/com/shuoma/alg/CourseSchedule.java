@@ -20,7 +20,7 @@ import java.util.Queue;
 public class CourseSchedule {
 
   public int[] findOrder(int numCourses, int[][] prerequisites) {
-    return topologicalSortingDfs(numCourses, prerequisites);
+    return topologicalSortingBfs(numCourses, prerequisites);
   }
 
   int[] topologicalSortingBfs(int numCourses, int[][] prerequisites) {

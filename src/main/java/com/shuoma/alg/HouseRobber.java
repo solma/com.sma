@@ -30,11 +30,18 @@ public class HouseRobber {
 
   /** If houses form a circle. */
   public int robCircle(int[] num) {
+    int n = num.length;
+    if (n == 0) return 0;
+    if (n == 1) return num[0];
     return Math.max(rob(num, 0, num.length - 2), rob(num, 1, num.length - 1));
   }
 
   public int robCircleStandardDp(int[] num) {
     int n = num.length;
+
+    if (n == 0) return 0;
+    if (n == 1) return num[0];
+
     // include i
     int[] maxIncludeCur = new int[n];
     boolean[] firstInIncludeCur = new boolean[n];
@@ -78,9 +85,9 @@ public class HouseRobber {
     // initialize for i = 0
     int maxAtCurIfCurNotIn = 0;
     boolean isFirstInForMaxIfCurNotIn = false;
+
     int maxAtCur = num[0];
     boolean isFirstInForMax = true;
-
     for (int i = 1; i < n; i++) {
       int maxPrevIfPrevNotIn = maxAtCurIfCurNotIn;
       boolean isFirstInForMaxPrevNotIn = isFirstInForMaxIfCurNotIn;
@@ -93,11 +100,13 @@ public class HouseRobber {
       if (i == n - 1 && isFirstInForMaxPrevNotIn) {// special case
         maxAtCur = Math.max(maxAtCur, maxPrevIfPrevNotIn - num[0] + Math.max(num[0], num[n - 1]));
       } else {
-        if (maxPrevIfPrevNotIn + num[i] > maxAtCur) {
+        if (maxPrevIfPrevNotIn + num[i] >= maxAtCur) {
           maxAtCur = maxPrevIfPrevNotIn + num[i];
           isFirstInForMax = isFirstInForMaxPrevNotIn;
         }
       }
+//      System.out.println(maxAtCurIfCurNotIn + " " + maxAtCur + " " + maxPrevIfPrevNotIn
+//          + " " + isFirstInForMaxPrevNotIn + " " + isFirstInForMax);
     }
     return maxAtCur;
   }

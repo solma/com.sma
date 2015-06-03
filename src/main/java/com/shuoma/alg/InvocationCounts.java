@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.Streaming;
+import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 
 import com.shuoma.annotation.Tag;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /** Count number of invocations of certain method in a period. */
-@Tag(algs = Streaming, dss = HashTable)
+@Tag(algs = SlidingWindow, dss = HashTable)
 public class InvocationCounts {
 
   class Timer {

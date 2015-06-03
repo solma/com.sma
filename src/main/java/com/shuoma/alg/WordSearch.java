@@ -31,7 +31,6 @@ public class WordSearch {
     boolean[][] visited = new boolean[board.length][board[0].length];
     for (int i = 0; i < board.length; i++)
       for (int j = 0; j < board[0].length; j++) {
-
         //if(DFS(board, i, j, word, 0, visited)) return true;
         if (board[i][j] == word.charAt(0) && BFS(board, i, j, word, visited))
           return true;
@@ -69,13 +68,13 @@ public class WordSearch {
 
   public boolean BFS(char[][] b, int i, int j, String word, boolean[][] v) {
     int m = b.length, n = b[0].length;
-    Queue<Node> curLvl = new LinkedList<Node>();
+    Queue<Node> curLvl = new LinkedList<>();
     curLvl.offer(new Node(i, j));
     v[i][j] = true;
     int idx = 1;
 
     while (!curLvl.isEmpty()) {
-      Queue<Node> nextLvl = new LinkedList<Node>();
+      Queue<Node> nextLvl = new LinkedList<>();
       while (!curLvl.isEmpty()) {
         Node cur = curLvl.poll();
         int x = cur.i, y = cur.j;

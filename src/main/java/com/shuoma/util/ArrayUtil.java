@@ -220,6 +220,7 @@ public class ArrayUtil {
       }
       swap(a, i, r--);
     }
+    //System.out.println(Arrays.toString(a) + " " + pivot + " " + (r - l + 1));
     return r;
   }
 

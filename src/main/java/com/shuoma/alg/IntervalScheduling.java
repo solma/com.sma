@@ -15,13 +15,9 @@ import java.util.List;
 @Tag(algs = Greedy, dss = Interval)
 public class IntervalScheduling {
 
-  /**
-   * @param args
-   */
   public static void main(String[] args) {
     List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10);
     schedule(list);
-
   }
 
   public static List<Interval> schedule(List<Interval> input) {

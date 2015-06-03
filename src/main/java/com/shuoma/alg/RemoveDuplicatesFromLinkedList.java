@@ -1,6 +1,5 @@
 package com.shuoma.alg;
 
-
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
 import static com.shuoma.annotation.Tag.Source.CrackingTheCodeInterview;
 
@@ -8,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 // delete duplicates in the linked list without extra space
 @Tag(dss = LinkedList, source = CrackingTheCodeInterview)
-public class RemoveDuplicates {
+public class RemoveDuplicatesFromLinkedList {
   public static void main(String[] args) {
     com.shuoma.ds.linkedlist.ListNode
         n = com.shuoma.ds.linkedlist.ListNode.buildList(new int[] {2, 0, 2, 1, 1, 1});

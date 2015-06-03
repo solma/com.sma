@@ -17,6 +17,7 @@ public @interface Tag {
 
   enum Algorithm {
     Arithmetic,
+    ArithmeticSum,
     Backtracking,
     BinarySearch,
     BitManipulation,
@@ -30,8 +31,8 @@ public @interface Tag {
     Recursion,
     RegularExpression,
     Searching,
+    SlidingWindow,
     Sorting,
-    Streaming,
     TopDown,
     NA,
   }
@@ -68,6 +69,7 @@ public @interface Tag {
     CrackingTheCodeInterview,
     CSDN,
     ElementsOfProgrammingInterviews,
+    GoogleCodeChallengeFoobar,
     Interview,
     JulyEdu,
     LeetCode,

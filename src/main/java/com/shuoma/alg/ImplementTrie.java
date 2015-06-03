@@ -23,9 +23,9 @@ class TrieNode {
 }
 
 @Tag(dss = {HashTable, Trie}, source = LeetCode)
-public class Trie {
+public class ImplementTrie {
   public static void main(String[] args) {
-    Trie ins = new Trie();
+    ImplementTrie ins = new ImplementTrie();
     ins.insert("ab");
     System.out.println(ins.search("a"));
     System.out.println(ins.startsWith("a"));
@@ -33,7 +33,7 @@ public class Trie {
 
   private TrieNode root;
 
-  public Trie() {
+  public ImplementTrie() {
     root = new TrieNode();
   }
 
