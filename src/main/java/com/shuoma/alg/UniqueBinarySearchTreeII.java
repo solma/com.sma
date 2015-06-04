@@ -2,14 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = BinarySearchTree, source = LeetCode)
+@Tag(algs = Recursion, dss = BinarySearchTree, reference = LeetCode)
 public class UniqueBinarySearchTreeII {
   public List<TreeNode> generateTrees(int n) {
     return generateTrees(1, n);

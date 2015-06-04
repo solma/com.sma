@@ -2,13 +2,13 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = Recursion, dss = String, source = LeetCode)
+@Tag(algs = Recursion, dss = String, reference = LeetCode)
 public class SubsetsII {
   public static void main(String[] args) {
     for (List<Integer> s : new SubsetsII().subsetsWithDup(new int[] {2, 1, 2}))

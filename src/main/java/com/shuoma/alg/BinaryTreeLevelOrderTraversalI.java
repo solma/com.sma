@@ -3,7 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static com.shuoma.annotation.Tag.DataStructure.Queue;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(dl = D2, dss = {BinaryTree, Queue}, source = LeetCode)
+@Tag(dl = D2, dss = {BinaryTree, Queue}, reference = LeetCode)
 public class BinaryTreeLevelOrderTraversalI {
   public List<List<Integer>> levelOrderBottom(TreeNode root) {
     List<List<Integer>> ret = new ArrayList<>();

@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = LinkedList, source = LeetCode)
+@Tag(dss = LinkedList, reference = LeetCode)
 public class RotateList {
   public ListNode rotateRight(ListNode head, int n) {
     if (head == null || n == 0)

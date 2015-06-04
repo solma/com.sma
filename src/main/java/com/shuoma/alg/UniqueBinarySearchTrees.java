@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = BinarySearchTree, source = LeetCode)
+@Tag(algs = Recursion, dss = BinarySearchTree, reference = LeetCode)
 public class UniqueBinarySearchTrees {
   public int numTrees(int n) {
     int sum = 0;

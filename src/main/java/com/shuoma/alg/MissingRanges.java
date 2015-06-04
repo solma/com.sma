@@ -3,7 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -13,7 +13,7 @@ import java.util.List;
 //Given a sorted integer array where the range of elements are [0, 99] inclusive, return its missing ranges.
 //For example, given [0, 1, 3, 50, 75], return [“2”, “4->49”, “51->74”, “76->99”]
 
-@Tag(dl = D2, dss = {Array, HashTable}, source = LeetCode)
+@Tag(dl = D2, dss = {Array, HashTable}, reference = LeetCode)
 public class MissingRanges {
   public static void main(String[] args) {
     System.out.println(missingRanges(new int[] {0, 1, 3, 50, 75}, new int[] {0, 99}));

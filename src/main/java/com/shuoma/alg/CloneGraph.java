@@ -3,7 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.UndirectedGraph;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-@Tag(algs = BreadthFirstSearch, dl = D3, dss = UndirectedGraph, source = LeetCode)
+@Tag(algs = BreadthFirstSearch, dl = D3, dss = UndirectedGraph, reference = LeetCode)
 public class CloneGraph {
 
   public static void main(String[] args) {

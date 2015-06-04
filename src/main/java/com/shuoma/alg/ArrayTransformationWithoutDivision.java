@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-// source: weixin daizhiguizhong
+// reference: weixin daizhiguizhong
 // B[i]=A[0]*A[1]*...A[i-1]*A[i+1]*...A[n]
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;

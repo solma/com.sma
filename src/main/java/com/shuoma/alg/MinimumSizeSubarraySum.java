@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Subarray, source = LeetCode)
+@Tag(dss = Subarray, reference = LeetCode)
 public class MinimumSizeSubarraySum {
 
   public int minSubArrayLen(int s, int[] nums) {

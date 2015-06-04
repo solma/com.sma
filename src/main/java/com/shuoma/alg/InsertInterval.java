@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Interval;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Tag(dss = Interval, source = LeetCode)
+@Tag(dss = Interval, reference = LeetCode)
 public class InsertInterval {
   //second pass
   public List<Interval> insert(List<Interval> intervals, Interval newInterval) {

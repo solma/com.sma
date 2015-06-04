@@ -2,14 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = Array, source = LeetCode)
+@Tag(algs = Recursion, dss = Array, reference = LeetCode)
 public class CombinationSumIII {
 
   public static void main(String[] args) {

@@ -52,12 +52,11 @@ public class SlidingWindowStats {
     for (int i = 0; i < stream.length; i++) {
       if (i >= K) {
         max[i - K] = stream[queue.peekFirst()];
-        while (!queue.isEmpty() && queue.peekFirst() <= i - K)
-          queue.pollFirst();
+        while (!queue.isEmpty() && queue.peekFirst() <= i - K) {queue.pollFirst();}
       }
-      while (!queue.isEmpty() && stream[i] >= stream[queue.peekLast()])
-        queue.pollLast();
+      while (!queue.isEmpty() && stream[i] >= stream[queue.peekLast()]) {queue.pollLast();}
       queue.add(i);
+      //System.out.println(stream[i] + " : " +queue);
     }
     max[stream.length - K] = stream[queue.peekFirst()];
     return max;

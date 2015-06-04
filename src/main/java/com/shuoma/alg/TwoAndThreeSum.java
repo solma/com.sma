@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 //Given an array, find a set of array members whose sum equals to a given number.
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.Arrays;
 import java.util.HashMap;
 
-@Tag(dss = Array, source = LeetCode, tricks = FromTwoEndsToMiddle)
+@Tag(dss = Array, reference = LeetCode, tricks = FromTwoEndsToMiddle)
 public class TwoAndThreeSum {
   public static void main(String[] args) {
     new TwoAndThreeSum().main();

@@ -3,7 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.JulyEdu;
+import static com.shuoma.annotation.Tag.Reference.JulyEdu;
 
 import com.google.common.collect.ImmutableList;
 
@@ -25,7 +25,7 @@ import java.util.Map;
  * hire X males and Y female within the budget and maximizes the total ability
  */
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array, source = JulyEdu)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array, reference = JulyEdu)
 public class HireWho {
 
   List<List<Integer>> hireWhoDp(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {

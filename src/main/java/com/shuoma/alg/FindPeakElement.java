@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BinarySearch, dl = D3, dss = Subarray, source = LeetCode)
+@Tag(algs = BinarySearch, dl = D3, dss = Subarray, reference = LeetCode)
 public class FindPeakElement {
   public int findPeakElement(int[] a) {
     int n = a.length;

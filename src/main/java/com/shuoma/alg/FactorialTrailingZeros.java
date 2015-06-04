@@ -1,10 +1,10 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(source = LeetCode)
+@Tag(reference = LeetCode)
 public class FactorialTrailingZeros {
 
   public static int trailingZeroes(int n) {

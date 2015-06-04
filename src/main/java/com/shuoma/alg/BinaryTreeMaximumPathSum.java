@@ -3,7 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -17,7 +17,7 @@ import com.shuoma.annotation.Tag;
  * }
  */
 
-@Tag(algs = Recursion, dl = D2, dss = BinaryTree, source = LeetCode)
+@Tag(algs = Recursion, dl = D2, dss = BinaryTree, reference = LeetCode)
 public class BinaryTreeMaximumPathSum {
 
   public int maxPathSum(TreeNode root) {

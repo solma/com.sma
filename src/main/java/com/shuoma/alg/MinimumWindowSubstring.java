@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D3, dss = {HashTable, String}, source = LeetCode)
+@Tag(dl = D3, dss = {HashTable, String}, reference = LeetCode)
 public class MinimumWindowSubstring {
   public static void main(String[] args) {
     System.out.println(new MinimumWindowSubstring().minWindow("ADOBECODEBANC", "ABC"));

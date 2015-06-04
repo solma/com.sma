@@ -48,7 +48,7 @@ public class RecursiveClassLoader extends ClassLoader {
 
   /**
    * Finds the class dynamically, contrary to Class.forname which can use cached copies. This means
-   * it forces a reload of the class data. Source: http://stackoverflow.com/questions/3971534/
+   * it forces a reload of the class data. Reference: http://stackoverflow.com/questions/3971534/
    */
   @Override
   protected Class<?> findClass(String className) throws ClassNotFoundException {

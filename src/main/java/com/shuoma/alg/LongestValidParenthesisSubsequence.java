@@ -1,13 +1,13 @@
-package com.shuoma;
+package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
-import static com.shuoma.annotation.Tag.Source.Interview;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = Stack, source = Interview)
+@Tag(dss = Stack, reference = Interview)
 public class LongestValidParenthesisSubsequence {
   public String longestValidParentheses(String s) {
     int n = s.length();

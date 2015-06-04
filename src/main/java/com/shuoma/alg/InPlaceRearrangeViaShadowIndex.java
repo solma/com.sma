@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
 import com.shuoma.util.RandomUtil;
 
-// source: http://www.careercup.com/question?id=4669539153346560
+// reference: http://www.careercup.com/question?id=4669539153346560
 import java.util.Arrays;
 
 // elements-of-programming-interviews P6.13

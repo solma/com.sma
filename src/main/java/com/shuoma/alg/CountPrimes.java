@@ -3,13 +3,13 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(algs = {Arithmetic, Greedy}, dss = Array, source = LeetCode)
+@Tag(algs = {Arithmetic, Greedy}, dss = Array, reference = LeetCode)
 public class CountPrimes {
   public static void main(String[] args) {
     //499979

@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, dss = Array, source = LeetCode)
+@Tag(algs = Arithmetic, dss = Array, reference = LeetCode)
 public class ZigZagConversion {
 
   //second pass

@@ -2,14 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
 //each element can only be used once
-@Tag(algs = Recursion, dl = D3, source = LeetCode)
+@Tag(algs = Recursion, dl = D3, reference = LeetCode)
 public class CombinationSumII {
   public static void main(String[] args) {
     new CombinationSumII().main();

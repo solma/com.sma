@@ -12,7 +12,7 @@ public @interface Tag {
   Algorithm[] algs() default Algorithm.NA;
   DataStructure[] dss() default DataStructure.NA;
   Difficulty dl() default Difficulty.D1;
-  Source source() default Source.NA;
+  Reference reference() default Reference.NA;
   Trick[] tricks() default Trick.NA;
 
   enum Algorithm {
@@ -65,7 +65,7 @@ public @interface Tag {
     D3,
   }
 
-  enum Source {
+  enum Reference {
     CrackingTheCodeInterview,
     CSDN,
     ElementsOfProgrammingInterviews,
@@ -73,6 +73,7 @@ public @interface Tag {
     Interview,
     JulyEdu,
     LeetCode,
+    StackOverview,
     Topcoder,
     NA,
   }

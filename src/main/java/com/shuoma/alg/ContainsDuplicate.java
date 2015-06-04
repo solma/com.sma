@@ -3,14 +3,14 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(algs = SlidingWindow, dss = {Array, HashTable}, source = LeetCode)
+@Tag(algs = SlidingWindow, dss = {Array, HashTable}, reference = LeetCode)
 public class ContainsDuplicate {
   public boolean containsNearbyDuplicate(int[] nums, int k) {
     Map<Integer, Integer> lastIndex = new HashMap<>();

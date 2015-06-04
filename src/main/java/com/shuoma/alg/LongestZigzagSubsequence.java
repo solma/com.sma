@@ -15,14 +15,14 @@ package com.shuoma.alg;
  */
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.Topcoder;
+import static com.shuoma.annotation.Tag.Reference.Topcoder;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
-@Tag(algs = DynamicProgramming, dss = Array, source = Topcoder)
+@Tag(algs = DynamicProgramming, dss = Array, reference = Topcoder)
 public class LongestZigzagSubsequence {
 
   public int longestZigZagSubsequence(int[] num) {

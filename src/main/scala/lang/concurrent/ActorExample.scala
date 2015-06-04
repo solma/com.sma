@@ -7,7 +7,7 @@ import akka.routing.RoundRobinPool
 
 /**
  * Actor Example
- * source: http://zhuanlan.zhihu.com/guagua/20009659
+ * reference: http://zhuanlan.zhihu.com/guagua/20009659
  */
 object Sum {
   def main(args: Array[String]): Unit = {

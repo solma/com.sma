@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = BitManipulation, source = LeetCode)
+@Tag(algs = BitManipulation, reference = LeetCode)
 public class RepeatedDNASequences {
 
   // https://oj.leetcode.com/discuss/24478/i-did-it-in-10-lines-of-c

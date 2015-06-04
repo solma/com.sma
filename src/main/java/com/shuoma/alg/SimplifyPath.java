@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = Stack, source = LeetCode)
+@Tag(dss = Stack, reference = LeetCode)
 public class SimplifyPath {
 
   public String simplifyPath(String path) {

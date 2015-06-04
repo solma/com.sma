@@ -2,12 +2,12 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Sorting;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
 
-@Tag(algs = Sorting, dss = Array, source = LeetCode)
+@Tag(algs = Sorting, dss = Array, reference = LeetCode)
 public class KthLargestElementInAnArray {
 
   public static void main(String[] args) {

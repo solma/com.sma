@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, source = LeetCode, tricks = InplaceSwap)
+@Tag(dss = Array, reference = LeetCode, tricks = InplaceSwap)
 public class RemoveElement {
   public static void main(String[] args) {
     new RemoveElement().main();

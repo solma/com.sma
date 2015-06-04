@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 // find all numbers whose appearance takes at least 1/m of the population
-// source: wechat
+// reference: wechat
 
 @Tag(dss = HashTable)
 public class ModeNumber {

@@ -2,14 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 import static com.shuoma.annotation.Tag.DataStructure.Trie;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(dss = {HashTable, Trie}, source = LeetCode) public class AddAndSearchWord {
+@Tag(dss = {HashTable, Trie}, reference = LeetCode) public class AddAndSearchWord {
 
   public static class WordDictionary {
 

@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
 import static com.shuoma.annotation.Tag.Algorithm.DepthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
 import static com.shuoma.annotation.Tag.DataStructure.Queue;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = {MatrixGraph, Queue}, source = LeetCode)
+@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = {MatrixGraph, Queue}, reference = LeetCode)
 // no cycle <=> has a topological sorting
 public class CourseSchedule {
 

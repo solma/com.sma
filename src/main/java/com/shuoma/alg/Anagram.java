@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Sorting;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Sorting, dss = String, source = LeetCode)
+@Tag(algs = Sorting, dss = String, reference = LeetCode)
 public class Anagram {
 
   // pass2:

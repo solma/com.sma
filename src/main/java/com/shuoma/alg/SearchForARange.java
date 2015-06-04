@@ -2,13 +2,13 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = BinarySearch, dss = Array, source = LeetCode)
+@Tag(algs = BinarySearch, dss = Array, reference = LeetCode)
 public class SearchForARange {
   //second pass
   public int[] searchRange(int[] A, int target) {

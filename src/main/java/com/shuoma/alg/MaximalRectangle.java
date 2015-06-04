@@ -3,13 +3,13 @@ package com.shuoma.alg;
 //ref: http://wansishuang.appspot.com/?p=38002
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(algs = DynamicProgramming, dss = Stack, source = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Stack, reference = LeetCode)
 public class MaximalRectangle {
 
   //second pass

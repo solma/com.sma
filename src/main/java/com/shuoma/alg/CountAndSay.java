@@ -1,10 +1,10 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Tag.DataStructure.String, source = LeetCode)
+@Tag(dss = Tag.DataStructure.String, reference = LeetCode)
 public class CountAndSay {
   public static void main(String[] args) {
     new CountAndSay().main();

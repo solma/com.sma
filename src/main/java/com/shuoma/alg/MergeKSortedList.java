@@ -2,13 +2,13 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dl = D2, dss = LinkedList, source = LeetCode)
+@Tag(dl = D2, dss = LinkedList, reference = LeetCode)
 public class MergeKSortedList {
   public ListNode mergeKLists(ArrayList<ListNode> lists) {
     // Start typing your Java solution below

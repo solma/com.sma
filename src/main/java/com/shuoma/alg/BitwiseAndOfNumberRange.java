@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitManipulation, source = LeetCode)
+@Tag(algs = BitManipulation, reference = LeetCode)
 public class BitwiseAndOfNumberRange {
 
   //http://math.stackexchange.com/questions/1073532/how-to-find-bitwise-and-of-all-numbers-for-a-given-range

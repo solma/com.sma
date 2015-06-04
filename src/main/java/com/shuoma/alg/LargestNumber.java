@@ -1,5 +1,5 @@
 package com.shuoma.alg;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(dss = Tag.DataStructure.LinkedList, source = LeetCode)
+@Tag(dss = Tag.DataStructure.LinkedList, reference = LeetCode)
 public class LargestNumber {
   public static void main(String[] args) {
     System.out.println(largestNumber(new int[]{0, 0}));

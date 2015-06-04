@@ -18,7 +18,7 @@ import java.util.Arrays;
 // printed. Also print the sequence of keyboard hits.
 
 
-// source : http://4remembrance.blogspot.com/2013/01/longest-text-producible-in-editor.html
+// reference : http://4remembrance.blogspot.com/2013/01/longest-text-producible-in-editor.html
 
 @Tag(algs = DynamicProgramming, dss = String)
 public class LongestTestProducibleInEditor {

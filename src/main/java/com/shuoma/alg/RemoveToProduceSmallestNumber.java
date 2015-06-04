@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 // given a number n remove1 k digits such that the resulting number is minimized
-// source: wechat
+// reference: wechat
 
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;

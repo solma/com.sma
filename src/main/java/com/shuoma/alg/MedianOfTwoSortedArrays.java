@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DivideConquer;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DivideConquer, dl = D3, dss = Array, source = LeetCode)
+@Tag(algs = DivideConquer, dl = D3, dss = Array, reference = LeetCode)
 public class MedianOfTwoSortedArrays {
 
   double findMedianSortedArrays(int A[], int B[]) {

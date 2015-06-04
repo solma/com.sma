@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = LinkedList, source = LeetCode)
+@Tag(dss = LinkedList, reference = LeetCode)
 public class RemoveNthNodeFromEndofList {
   //second pass
   public ListNode removeNthFromEnd(ListNode head, int n) {

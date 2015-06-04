@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, source = LeetCode)
+@Tag(dss = Array, reference = LeetCode)
 public class BestTimeToBuyandSellStockII {
   public int maxProfit(int[] prices) {
     if (prices.length == 0)

@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D3, dss = Stack, source = LeetCode)
+@Tag(dl = D3, dss = Stack, reference = LeetCode)
 public class LargestRectangleInHistogram {
 
   //second pass

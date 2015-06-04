@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Greedy, dl = D2, dss = Array, source = LeetCode)
+@Tag(algs = Greedy, dl = D2, dss = Array, reference = LeetCode)
 public class JumpGameII {
   public static void main(String[] args) {
     //3,3,0,2,4,1,1,2,0,1

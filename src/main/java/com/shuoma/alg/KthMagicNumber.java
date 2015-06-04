@@ -1,15 +1,15 @@
 package com.shuoma.alg;
 
-// source: crack the interview
+// reference: crack the interview
 // kth number in the form of 3^i*5^j*7^k
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
-import static com.shuoma.annotation.Tag.Source.CrackingTheCodeInterview;
+import static com.shuoma.annotation.Tag.Reference.CrackingTheCodeInterview;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dss = Stack, source = CrackingTheCodeInterview)
+@Tag(dss = Stack, reference = CrackingTheCodeInterview)
 public class KthMagicNumber {
 
   public static void main(String[] args) {

@@ -31,10 +31,13 @@ public class SlidingWindowStatsTest extends TestCase {
 
   @Test
   public void testMax() throws Exception {
-    for (int i = 0; i < 20; i++) {
-      int[] ary = RandomUtil.genRandomArray(100, 10, true, false);
+    for (int i = 0; i < 1; i++) {
+      int[] ary = RandomUtil.genRandomArray(10, 10, true, false);
       SlidingWindowStats ins = new SlidingWindowStats(3, ary);
-      assertTrue(Arrays.equals(ins.max(), maxDummy(ins)));
+      int[] res = ins.max();
+      System.out.println("array = " + Arrays.toString(ary));
+      System.out.println("max = " + Arrays.toString(res));
+      assertTrue(Arrays.equals(res, maxDummy(ins)));
     }
   }
 

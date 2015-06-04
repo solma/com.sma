@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
-import static com.shuoma.annotation.Tag.Source.JulyEdu;
+import static com.shuoma.annotation.Tag.Reference.JulyEdu;
 
 import com.shuoma.annotation.Tag;
 
@@ -28,7 +28,7 @@ import java.util.Set;
  should output in one line.
 */
 
-@Tag(algs = SlidingWindow, dss = HashTable, source = JulyEdu)
+@Tag(algs = SlidingWindow, dss = HashTable, reference = JulyEdu)
 public class PackageReordering {
 
   List<List<Integer>> reorder(int[] packages) {

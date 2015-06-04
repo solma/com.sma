@@ -3,12 +3,12 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, source = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, reference = LeetCode, tricks = ForwardAndBackwardScan)
 public class MaxProductArray {
 
   // return range and the product

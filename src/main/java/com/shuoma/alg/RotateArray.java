@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 import static com.shuoma.util.MathUtil.gcd;
 
@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D3, dss = Array, source = LeetCode, tricks = InplaceSwap)
+@Tag(dl = D3, dss = Array, reference = LeetCode, tricks = InplaceSwap)
 /** Rotate right. */
 public class RotateArray {
 

@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -17,7 +17,7 @@ import com.shuoma.annotation.Tag;
  * }
  */
 
-@Tag(dss = LinkedList, source = LeetCode)
+@Tag(dss = LinkedList, reference = LeetCode)
 public class InsertionSortList {
   public ListNode insertionSortList(ListNode head) {
     ListNode cur = head;

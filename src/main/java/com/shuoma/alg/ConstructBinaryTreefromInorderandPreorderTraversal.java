@@ -2,13 +2,13 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D2, dss = BinaryTree, source = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
 public class ConstructBinaryTreefromInorderandPreorderTraversal {
   //second pass
   public TreeNode buildTree(int[] preorder, int[] inorder) {

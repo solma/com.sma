@@ -2,7 +2,7 @@ package com.shuoma.alg;
 //TLE use NQueens Solution
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Tag(algs = Recursion, source = LeetCode)
+@Tag(algs = Recursion, reference = LeetCode)
 public class NQueensII {
     public static void main(String[] args){
         new NQueensII().main();

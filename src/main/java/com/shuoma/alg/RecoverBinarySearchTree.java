@@ -1,14 +1,14 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dl = D2, dss = BinarySearchTree, source = LeetCode)
+@Tag(dl = D2, dss = BinarySearchTree, reference = LeetCode)
 public class RecoverBinarySearchTree {
   public static void main(String[] args) {
     new RecoverBinarySearchTree().main();

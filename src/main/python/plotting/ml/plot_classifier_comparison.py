@@ -23,7 +23,7 @@ set.
 print(__doc__)
 
 
-# Code source: Gael Varoqueux
+# Code reference: Gael Varoqueux
 #              Andreas Mueller
 # Modified for Documentation merge by Jaques Grobler
 # License: BSD 3 clause

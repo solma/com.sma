@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = Recursion, source = LeetCode)
+@Tag(algs = Recursion, reference = LeetCode)
 public class NQueens {
   public static void main(String[] args) {
     new NQueens().main(Integer.parseInt(args[0]));

@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = BinarySearchTree, source = LeetCode)
+@Tag(dss = BinarySearchTree, reference = LeetCode)
 public class SameTree {
   //second pass
   public boolean isSameTree(TreeNode p, TreeNode q) {

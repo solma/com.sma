@@ -55,7 +55,7 @@ public class MinDistanceFromPolice {
     }
 
     int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-    // multiple source bfs
+    // multiple reference bfs
     while (!toBeVisited.isEmpty()) {
       Cell top = toBeVisited.poll();
       roads[top.i][top.j] = top.dis;

@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = String, source = LeetCode)
+@Tag(algs = DynamicProgramming, dss = String, reference = LeetCode)
 public class DistinctSubsequences {
 
   public int numDistinct(String S, String T) {

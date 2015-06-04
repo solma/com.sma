@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 
 import com.shuoma.annotation.Tag;
 
-// source:
+// reference:
 // http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODIzNDQ3Mw==&appmsgid=10000220&itemidx=1&sign=6ba8275053d9c400e9535f392b4cbaa7
 // given a array of postivie numbers, find the shortest subarray such that the sum of the element in
 // the subarray is greater than S

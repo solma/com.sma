@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.CSDN;
+import static com.shuoma.annotation.Tag.Reference.CSDN;
 
 import com.shuoma.annotation.Tag;
 
@@ -20,7 +20,7 @@ import java.util.Stack;
  * http://www.geeksforgeeks.org/the-celebrity-problem/
  */
 
-@Tag(dl = D2, dss = Array, source = CSDN)
+@Tag(dl = D2, dss = Array, reference = CSDN)
 public class CelebrityProblem {
 
   static int size = 4;

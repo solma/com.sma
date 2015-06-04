@@ -1,14 +1,14 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dss = Array, source = LeetCode)
+@Tag(dss = Array, reference = LeetCode)
 public class GasStation {
   public int canCompleteCircuit(int[] gas, int[] cost) {
     int min = 0, total = 0, len = gas.length, index = -1;

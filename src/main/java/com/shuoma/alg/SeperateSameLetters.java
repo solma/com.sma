@@ -6,13 +6,13 @@ package com.shuoma.alg;
  */
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.Interview;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.PriorityQueue;
 
-@Tag(algs = Greedy, dss = {String, Tag.DataStructure.PriorityQueue}, source = Interview)
+@Tag(algs = Greedy, dss = {String, Tag.DataStructure.PriorityQueue}, reference = Interview)
 public class SeperateSameLetters {
   public static void main(String[] args) {
     new SeperateSameLetters().main("abc", "145");

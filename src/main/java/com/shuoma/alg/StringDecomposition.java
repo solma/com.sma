@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-// source: Elements of Programming Interviews
+// reference: Elements of Programming Interviews
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.String;

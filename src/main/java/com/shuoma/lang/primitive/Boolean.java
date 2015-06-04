@@ -1,12 +1,9 @@
 package com.shuoma.lang.primitive;
 
-public class Primitive {
+public class Boolean {
   public static void main(String[] args) {
-    new Primitive().main();
-  }
-
-  void main() {
-    booleanXor();
+    Boolean ins = new Boolean();
+    ins.booleanXor();
   }
 
   void booleanXor() {

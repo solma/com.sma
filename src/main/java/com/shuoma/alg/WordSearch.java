@@ -4,14 +4,14 @@ import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
 import static com.shuoma.annotation.Tag.Algorithm.DepthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dl = D3, dss = Array, source = LeetCode)
+@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dl = D3, dss = Array, reference = LeetCode)
 public class WordSearch {
   public static void main(String[] args) {
     new WordSearch().main();

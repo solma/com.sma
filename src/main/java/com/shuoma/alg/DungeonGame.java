@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, source = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, reference = LeetCode)
 public class DungeonGame {
 
   int calculateMinimumHP(int[][] dungeon) {

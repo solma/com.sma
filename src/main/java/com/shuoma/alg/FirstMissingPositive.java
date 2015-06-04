@@ -2,12 +2,12 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = Array, source = LeetCode, tricks = InplaceSwap)
+@Tag(dl = D2, dss = Array, reference = LeetCode, tricks = InplaceSwap)
 public class FirstMissingPositive {
   public static void main(String[] args) {
     new FirstMissingPositive().firstMissingPositive(new int[] {2, 1});

@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-// source: http://www.careercup.com/question?id=5687257423937536
+// reference: http://www.careercup.com/question?id=5687257423937536
 
 /**
  * Car parking problem. An array given represents actual order of cars need to be parked. Like for

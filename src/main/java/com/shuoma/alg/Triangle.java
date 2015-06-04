@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BottomUp;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = BottomUp, source = LeetCode)
+@Tag(algs = BottomUp, reference = LeetCode)
 public class Triangle {
   public static void main(String[] args) {
     new Triangle().main();

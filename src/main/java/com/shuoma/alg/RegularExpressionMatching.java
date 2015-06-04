@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = String, source = LeetCode)
+@Tag(algs = Recursion, dss = String, reference = LeetCode)
 public class RegularExpressionMatching {
   public boolean isMatch(String s, String p) {
     if (s == null)

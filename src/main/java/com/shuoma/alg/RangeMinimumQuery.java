@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.DataStructure.TournamentTree;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.JulyEdu;
+import static com.shuoma.annotation.Tag.Reference.JulyEdu;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, TournamentTree}, source = JulyEdu)
+@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, TournamentTree}, reference = JulyEdu)
 public class RangeMinimumQuery {
 
   public enum Solution {

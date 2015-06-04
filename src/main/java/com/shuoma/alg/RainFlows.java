@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DepthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * // lower position, assume the upside and left-side of the matrix is the Pacific Ocean, and downside and right-side
  * // is the Atlantic Ocean. Find out the positions whose rain can both flow into the two ocean.
  */
-@Tag(algs = DepthFirstSearch, dss = MatrixGraph, source = LeetCode)
+@Tag(algs = DepthFirstSearch, dss = MatrixGraph, reference = LeetCode)
 public class RainFlows {
     public static void main(String[] args) {
         int[][] elevations = {

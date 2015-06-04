@@ -3,11 +3,11 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, source = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, reference = LeetCode)
 public class EditDistance {
   public static void main(String[] args) {
     System.out.println(new EditDistance().minDistance("ab", "bc"));

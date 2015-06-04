@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, source = LeetCode)
+@Tag(algs = Recursion, reference = LeetCode)
 public class NumTrees {
   public int numTrees(int n) {
     if (n == 0 || n == 1)

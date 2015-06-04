@@ -2,14 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static com.shuoma.annotation.Tag.DataStructure.Queue;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dss = {BinaryTree, Queue}, source = LeetCode)
+@Tag(dss = {BinaryTree, Queue}, reference = LeetCode)
 public class BinaryTreeLevelOrderTraversal {
   public List<ArrayList<Integer>> levelOrder(TreeNode root) {
     List<ArrayList<Integer>> ret = new ArrayList<>();

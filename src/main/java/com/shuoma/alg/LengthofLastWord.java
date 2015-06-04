@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.String;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = String, source = LeetCode)
+@Tag(dss = String, reference = LeetCode)
 public class LengthofLastWord {
   public int lengthOfLastWord(String s) {
     int end = s.length() - 1;

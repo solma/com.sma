@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -23,7 +23,7 @@ import java.util.Set;
 //   we do not need to search. no segmentation is available
 
 
-@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, source = LeetCode)
+@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, reference = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
     Set<String> dict = new HashSet<>();

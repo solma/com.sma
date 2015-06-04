@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitManipulation, dss = Array, source = LeetCode)
+@Tag(algs = BitManipulation, dss = Array, reference = LeetCode)
 public class SingleNumberII {
   public int singleNumber(int[] A) {
     int ones = 0, twos = 0;

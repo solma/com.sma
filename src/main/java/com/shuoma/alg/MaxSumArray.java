@@ -7,11 +7,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Subarray;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Subarray, source = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Subarray, reference = LeetCode)
 public class MaxSumArray {
   //second pass
   public int maxSubArray(int[] A) {

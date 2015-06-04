@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, source = LeetCode)
+@Tag(algs = Arithmetic, reference = LeetCode)
 public class ReverseInteger {
   //second pass
   public int reverse(int x) {

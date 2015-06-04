@@ -4,14 +4,14 @@ import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, source = LeetCode)
+@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, reference = LeetCode)
 public class WordBreak {
   public static void main(String[] args) {
     new WordBreak().main();

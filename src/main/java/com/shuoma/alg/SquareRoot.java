@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Geometry;
-import static com.shuoma.annotation.Tag.Source.LeetCode;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = {Arithmetic, Geometry}, source = LeetCode)
+@Tag(algs = {Arithmetic, Geometry}, reference = LeetCode)
 public class SquareRoot {
   public static void main(String[] args) {
     SquareRoot ins = new SquareRoot();
