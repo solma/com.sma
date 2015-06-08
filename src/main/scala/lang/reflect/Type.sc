@@ -14,3 +14,7 @@ println(a.toList)
 val li =  List('c','a','b')
 li.zipWithIndex.sortBy(_._1)
 Array.concat(Array(Array(1, 2), Array(7, 8)): _*).mkString(",")
+
+
+def f[T](v: T)(implicit ev: ClassTag[T]) = ev.toString
+f("s": Any)

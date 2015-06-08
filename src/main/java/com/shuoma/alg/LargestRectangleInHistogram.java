@@ -37,7 +37,7 @@ public class LargestRectangleInHistogram {
   }
 
   //first pass
-  // public int largestRectangleArea(int[] height) {
+  // public int largestSquareArea(int[] height) {
   // Stack<ArrayList<Integer>> stc=new Stack<ArrayList<Integer>>();//first integer is height, second is index
   // int ret=0;
   // for(int i=0;i<height.length;i++){

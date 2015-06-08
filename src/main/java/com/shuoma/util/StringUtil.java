@@ -20,6 +20,15 @@ public class StringUtil {
       }
   }
 
+  public static char[][] toCharMatrix(String[] strs) {
+    assert(strs.length > 0);
+    char[][] matrix = new char[strs.length][];
+    for (int i = 0; i < matrix.length; i++) {
+      matrix[i] = strs[i].toCharArray();
+    }
+    return matrix;
+  }
+
   /** To padded binary string. */
   public static String toPaddedBinString(long n, int wordLength) {
     String rawBin = "";
