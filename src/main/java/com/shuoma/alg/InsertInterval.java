@@ -31,6 +31,7 @@ public class InsertInterval {
     }
     intervals.add(i, newInterval);
 
+    // merge intervals if necessary
     Interval open = intervals.get(0);
     for (int j = 1; j < intervals.size(); j++) {
       Interval next = intervals.get(j);
@@ -47,7 +48,7 @@ public class InsertInterval {
   }
 
   //fist pass
-  public ArrayList<Interval> insertFirstPass(ArrayList<Interval> intervals, Interval newInterval) {
+  public ArrayList<Interval> insert1(ArrayList<Interval> intervals, Interval newInterval) {
     int i;
     for (i = 0; i < intervals.size(); i++) {
       if (intervals.get(i).start >= newInterval.start)

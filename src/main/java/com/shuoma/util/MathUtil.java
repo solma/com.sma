@@ -2,6 +2,22 @@ package com.shuoma.util;
 
 public class MathUtil {
 
+  public static double evaluateOperator(double a, double b, char theta) {
+    switch (theta) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '*':
+        return a * b;
+      case '/':
+        return a / b;
+      case '^':
+        return Math.pow(a, b);
+    }
+    return 0;
+  }
+
   public static long factorial (int n) {
     long res = 1;
     for (; n > 1; n--) res *= n;
@@ -52,29 +68,5 @@ public class MathUtil {
       default:
         return false;
     }
-  }
-
-  public static boolean isNumber(char c) {
-    int diff = c - '0';
-    if (diff >= 0 && diff <= 9)
-      return true;
-    else
-      return false;
-  }
-
-  public static double operator(double a, double b, char theta) {
-    switch (theta) {
-      case '+':
-        return a + b;
-      case '-':
-        return a - b;
-      case '*':
-        return a * b;
-      case '/':
-        return a / b;
-      case '^':
-        return Math.pow(a, b);
-    }
-    return 0;
   }
 }

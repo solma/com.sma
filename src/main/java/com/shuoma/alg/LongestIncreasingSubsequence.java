@@ -89,7 +89,7 @@ public class LongestIncreasingSubsequence {
     int n = num.length;
     if (n == 0)
       return null;
-    ArrayList<Integer> queue = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<>();
     for (int i = 0; i < n; i++) {
       if (queue.isEmpty() || queue.get(queue.size() - 1) < num[i])
         queue.add(num[i]);
