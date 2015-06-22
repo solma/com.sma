@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = Subarray, reference = LeetCode, tricks = FromTwoEndsToMiddle)
+@Tag(dl = D2, dss = Subarray, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class ContainerWithMostWater {
   public int maxArea(int[] height) {
     int i = 0;

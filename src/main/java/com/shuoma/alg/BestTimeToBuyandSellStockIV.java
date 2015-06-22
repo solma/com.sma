@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode)
 public class BestTimeToBuyandSellStockIV {
 
   /**

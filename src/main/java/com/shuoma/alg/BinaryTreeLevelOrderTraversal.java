@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dss = {BinaryTree, Queue}, reference = LeetCode)
+@Tag(dss = {BinaryTree, Queue}, references = LeetCode)
 public class BinaryTreeLevelOrderTraversal {
   public List<ArrayList<Integer>> levelOrder(TreeNode root) {
     List<ArrayList<Integer>> ret = new ArrayList<>();

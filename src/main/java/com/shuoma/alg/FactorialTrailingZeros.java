@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(reference = LeetCode)
+@Tag(references = LeetCode)
 public class FactorialTrailingZeros {
 
   public static int trailingZeroes(int n) {

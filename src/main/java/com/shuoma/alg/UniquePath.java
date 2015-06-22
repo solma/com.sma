@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, reference = LeetCode)
+@Tag(algs = Arithmetic, references = LeetCode)
 public class UniquePath {
   public static void main(String[] args) {
     UniquePath ins = new UniquePath();

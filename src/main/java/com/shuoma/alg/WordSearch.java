@@ -11,7 +11,7 @@ import com.shuoma.annotation.Tag;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dl = D3, dss = Array, reference = LeetCode)
+@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dl = D3, dss = Array, references = LeetCode)
 public class WordSearch {
   public static void main(String[] args) {
     new WordSearch().main();

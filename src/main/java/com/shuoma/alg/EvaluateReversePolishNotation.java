@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D2, dss = Stack, reference = LeetCode)
+@Tag(dl = D2, dss = Stack, references = LeetCode)
 public class EvaluateReversePolishNotation {
   public static void main(String[] args) {
     new EvaluateReversePolishNotation().main();

@@ -8,7 +8,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D3, dss = String, reference = LeetCode)
+@Tag(dl = D3, dss = String, references = LeetCode)
 public class OneEditDistance {
   public static void main(String[] args) {
     System.out.println(isOneEditDistance("aee", "ass"));

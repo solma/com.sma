@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.Arrays;
 import java.util.HashMap;
 
-@Tag(dss = Array, reference = LeetCode, tricks = FromTwoEndsToMiddle)
+@Tag(dss = Array, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class TwoAndThreeSum {
   public static void main(String[] args) {
     new TwoAndThreeSum().main();

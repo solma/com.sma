@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = String, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = String, references = LeetCode)
 public class InterleavingString {
   public boolean isInterleave(String s1, String s2, String s3) {
     int m = s1.length();

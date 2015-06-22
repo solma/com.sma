@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dss = Stack, reference = CrackingTheCodeInterview)
+@Tag(dss = Stack, references = CrackingTheCodeInterview)
 public class KthMagicNumber {
 
   public static void main(String[] args) {

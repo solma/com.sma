@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, reference = LeetCode)
+@Tag(algs = DynamicProgramming, references = LeetCode)
 public class LongestValidParenthesis {
 
   //O(n)

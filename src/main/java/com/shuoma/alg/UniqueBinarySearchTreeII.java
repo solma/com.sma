@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = BinarySearchTree, reference = LeetCode)
+@Tag(algs = Recursion, dss = BinarySearchTree, references = LeetCode)
 public class UniqueBinarySearchTreeII {
   public List<TreeNode> generateTrees(int n) {
     return generateTrees(1, n);

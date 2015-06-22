@@ -12,7 +12,7 @@ public @interface Tag {
   Algorithm[] algs() default Algorithm.NA;
   DataStructure[] dss() default DataStructure.NA;
   Difficulty dl() default Difficulty.D1;
-  Reference reference() default Reference.NA;
+  Reference[] references() default Reference.NA;
   Trick[] tricks() default Trick.NA;
 
   enum Algorithm {

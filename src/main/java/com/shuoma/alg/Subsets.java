@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class Subsets {
   public List<List<Integer>> subsets(int[] S) {
     List<List<Integer>> res = new ArrayList<>();

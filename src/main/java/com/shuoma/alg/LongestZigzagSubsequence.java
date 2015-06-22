@@ -22,7 +22,7 @@ import com.shuoma.annotation.Tag;
 import java.util.Deque;
 import java.util.LinkedList;
 
-@Tag(algs = DynamicProgramming, dss = Array, reference = Topcoder)
+@Tag(algs = DynamicProgramming, dss = Array, references = Topcoder)
 public class LongestZigzagSubsequence {
 
   public int longestZigZagSubsequence(int[] num) {

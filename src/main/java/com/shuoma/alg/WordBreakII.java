@@ -23,7 +23,7 @@ import java.util.Set;
 //   we do not need to search. no segmentation is available
 
 
-@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, reference = LeetCode)
+@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, references = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
     Set<String> dict = new HashSet<>();

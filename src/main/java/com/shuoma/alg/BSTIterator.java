@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class BSTIterator {
 
   Stack<TreeNode> stck;

@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = BinaryTree, reference = LeetCode)
+@Tag(algs = Recursion, dss = BinaryTree, references = LeetCode)
 public class SymmetricTree {
   //second pass
   public boolean isSymmetric(TreeNode root) {

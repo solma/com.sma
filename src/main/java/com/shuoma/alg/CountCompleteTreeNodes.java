@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = BinaryTree, reference = LeetCode)
+@Tag(dss = BinaryTree, references = LeetCode)
 public class CountCompleteTreeNodes {
   public static void main(String[] args) {
     new CountCompleteTreeNodes().main();

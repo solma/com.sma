@@ -8,7 +8,7 @@ import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, reference = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode, tricks = ForwardAndBackwardScan)
 public class MaxProductArray {
 
   // return range and the product

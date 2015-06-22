@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class GasStation {
   public int canCompleteCircuit(int[] gas, int[] cost) {
     int min = 0, total = 0, len = gas.length, index = -1;

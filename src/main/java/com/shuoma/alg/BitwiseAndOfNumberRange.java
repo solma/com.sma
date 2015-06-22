@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitManipulation, reference = LeetCode)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class BitwiseAndOfNumberRange {
 
   //http://math.stackexchange.com/questions/1073532/how-to-find-bitwise-and-of-all-numbers-for-a-given-range

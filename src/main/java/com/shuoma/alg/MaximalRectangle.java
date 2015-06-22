@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(algs = DynamicProgramming, dss = Stack, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Stack, references = LeetCode)
 public class MaximalRectangle {
 
   //second pass

@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitManipulation, reference = LeetCode)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class ReverseBits {
 
   public static void main(String[] args) {

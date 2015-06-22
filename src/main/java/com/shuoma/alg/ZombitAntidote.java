@@ -20,7 +20,7 @@ import java.util.List;
  * The number of meetings will be at least 1 and will be no larger than 100.
  * The list of meetings will not necessarily be ordered in any particular fashion.
  */
-@Tag(algs = Greedy, dss = Interval, reference = GoogleCodeChallengeFoobar)
+@Tag(algs = Greedy, dss = Interval, references = GoogleCodeChallengeFoobar)
 public class ZombitAntidote {
   public static void main(String[] args) {
     System.out.println(answer(new int[][] {{0, 1}, {1, 2}, {2, 3}, {4, 5}, {3, 5}}));

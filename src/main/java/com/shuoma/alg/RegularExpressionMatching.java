@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class RegularExpressionMatching {
   public boolean isMatch(String s, String p) {
     if (s == null)

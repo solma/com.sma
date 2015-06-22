@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Array, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Array, references = LeetCode)
 public class MinimumPathSum {
   public static void main(String[] args) {
     int[][] grid = new int[][] {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};

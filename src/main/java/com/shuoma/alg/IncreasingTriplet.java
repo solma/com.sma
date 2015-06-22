@@ -10,7 +10,7 @@ import com.shuoma.util.RandomUtil;
 /**
  * Given an array find index triplet <i, j, k> such that i < j < k and a[i] <= a[j] <= a[k]
  */
-@Tag(algs = DynamicProgramming, dss = Array, reference = Interview)
+@Tag(algs = DynamicProgramming, dss = Array, references = Interview)
 public class IncreasingTriplet {
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++) {

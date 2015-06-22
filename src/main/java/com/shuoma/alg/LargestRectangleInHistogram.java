@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D3, dss = Stack, reference = LeetCode)
+@Tag(dl = D3, dss = Stack, references = LeetCode)
 public class LargestRectangleInHistogram {
 
   //second pass

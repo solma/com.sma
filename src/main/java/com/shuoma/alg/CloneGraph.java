@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-@Tag(algs = BreadthFirstSearch, dl = D3, dss = UndirectedGraph, reference = LeetCode)
+@Tag(algs = BreadthFirstSearch, dl = D3, dss = UndirectedGraph, references = LeetCode)
 public class CloneGraph {
 
   public static void main(String[] args) {

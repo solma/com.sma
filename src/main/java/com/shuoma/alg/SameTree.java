@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = BinarySearchTree, reference = LeetCode)
+@Tag(dss = BinarySearchTree, references = LeetCode)
 public class SameTree {
   //second pass
   public boolean isSameTree(TreeNode p, TreeNode q) {

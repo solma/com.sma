@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Geometry, reference = LeetCode)
+@Tag(algs = Geometry, references = LeetCode)
 public class RectangleArea {
 
   public static void main(String[] args) {

@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(algs = SlidingWindow, dss = {Array, HashTable}, reference = LeetCode)
+@Tag(algs = SlidingWindow, dss = {Array, HashTable}, references = LeetCode)
 public class ContainsDuplicate {
   public boolean containsNearbyDuplicate(int[] nums, int k) {
     Map<Integer, Integer> lastIndex = new HashMap<>();

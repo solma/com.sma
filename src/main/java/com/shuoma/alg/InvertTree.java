@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Tag(dss = BinaryTree, reference = LeetCode)
+@Tag(dss = BinaryTree, references = LeetCode)
 public class InvertTree {
 
   // iterative

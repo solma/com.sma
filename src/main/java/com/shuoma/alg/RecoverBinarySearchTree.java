@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dl = D2, dss = BinarySearchTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinarySearchTree, references = LeetCode)
 public class RecoverBinarySearchTree {
   public static void main(String[] args) {
     new RecoverBinarySearchTree().main();

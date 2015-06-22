@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Greedy, dl = D2, dss = Array, reference = LeetCode)
+@Tag(algs = Greedy, dl = D2, dss = Array, references = LeetCode)
 public class JumpGameII {
   public static void main(String[] args) {
     //3,3,0,2,4,1,1,2,0,1

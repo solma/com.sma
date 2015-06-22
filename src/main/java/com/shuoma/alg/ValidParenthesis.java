@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = {Stack, String}, reference = LeetCode)
+@Tag(dss = {Stack, String}, references = LeetCode)
 public class ValidParenthesis {
   public boolean isValid(String s) {
     if (s == null)

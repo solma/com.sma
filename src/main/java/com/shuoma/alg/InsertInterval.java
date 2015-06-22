@@ -4,13 +4,14 @@ import static com.shuoma.annotation.Tag.DataStructure.Interval;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.misc.Interval;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Tag(dss = Interval, reference = LeetCode)
+@Tag(dss = Interval, references = LeetCode)
 public class InsertInterval {
   //second pass
   public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
@@ -78,7 +79,6 @@ public class InsertInterval {
     res.add(openInt);
 
     return res;
-
   }
 
   public class CustomComparator implements Comparator<Interval> {

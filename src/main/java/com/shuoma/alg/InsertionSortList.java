@@ -17,7 +17,7 @@ import com.shuoma.annotation.Tag;
  * }
  */
 
-@Tag(dss = LinkedList, reference = LeetCode)
+@Tag(dss = LinkedList, references = LeetCode)
 public class InsertionSortList {
   public ListNode insertionSortList(ListNode head) {
     ListNode cur = head;

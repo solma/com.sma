@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class ValidSudoku {
   public boolean isValidSudoku(char[][] board) {
     boolean[][] row = new boolean[9][9];//if num n is on row i then row[i][num]=true

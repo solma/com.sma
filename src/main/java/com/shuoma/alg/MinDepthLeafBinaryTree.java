@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = BinaryTree, reference = LeetCode)
+@Tag(dss = BinaryTree, references = LeetCode)
 public class MinDepthLeafBinaryTree {
   //second pass
   public int minDepth(TreeNode root) {

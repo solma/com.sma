@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(algs = {Arithmetic, Greedy}, dss = Array, reference = LeetCode)
+@Tag(algs = {Arithmetic, Greedy}, dss = Array, references = LeetCode)
 public class CountPrimes {
   public static void main(String[] args) {
     //499979

@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(dss = {HashTable, Trie}, reference = LeetCode) public class AddAndSearchWord {
+@Tag(dss = {HashTable, Trie}, references = LeetCode) public class AddAndSearchWord {
 
   public static class WordDictionary {
 

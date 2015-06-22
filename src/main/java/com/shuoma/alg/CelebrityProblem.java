@@ -20,7 +20,7 @@ import java.util.Stack;
  * http://www.geeksforgeeks.org/the-celebrity-problem/
  */
 
-@Tag(dl = D2, dss = Array, reference = CSDN)
+@Tag(dl = D2, dss = Array, references = CSDN)
 public class CelebrityProblem {
 
   static int size = 4;

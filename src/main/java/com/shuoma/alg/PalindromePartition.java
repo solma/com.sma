@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class PalindromePartition {
   public static void main(String[] args) {
     new PalindromePartition().main();

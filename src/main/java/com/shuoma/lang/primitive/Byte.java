@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Reference.StackOverview;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(reference = StackOverview)
+@Tag(references = StackOverview)
 //http://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java
 // primitives are signed in Java
 public class Byte {

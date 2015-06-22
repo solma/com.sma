@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array, references = LeetCode)
 public class DecodeWays {
 
   public int numDecodings(String s) {

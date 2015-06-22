@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = LinkedList, reference = LeetCode)
+@Tag(dss = LinkedList, references = LeetCode)
 public class RemoveDuplicatesfromSortedList {
   //second pass
   public ListNode deleteDuplicates(ListNode head) {

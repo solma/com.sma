@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(dl = D2, dss = LinkedList, reference = LeetCode)
+@Tag(dl = D2, dss = LinkedList, references = LeetCode)
 public class CopyListwithRandomPointer {
 
   public RandomListNode copyRandomList(RandomListNode head) {

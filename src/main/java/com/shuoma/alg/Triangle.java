@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = BottomUp, reference = LeetCode)
+@Tag(algs = BottomUp, references = LeetCode)
 public class Triangle {
   public static void main(String[] args) {
     new Triangle().main();

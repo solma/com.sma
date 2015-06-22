@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class ConstructBinaryTreefromInorderandPostorderTraversal {
   //second pass
   public TreeNode buildTree(int[] inorder, int[] postorder) {

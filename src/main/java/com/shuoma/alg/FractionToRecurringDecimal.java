@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(algs = Arithmetic, dl = D2, dss = HashTable, reference = LeetCode)
+@Tag(algs = Arithmetic, dl = D2, dss = HashTable, references = LeetCode)
 public class FractionToRecurringDecimal {
 
   public String fractionToDecimal(int numerator, int denominator) {

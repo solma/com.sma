@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = String, reference = LeetCode)
+@Tag(dl = D2, dss = String, references = LeetCode)
 public class RomanIntegerConvertion {
   public static void main(String[] args) {
     new RomanIntegerConvertion().main();

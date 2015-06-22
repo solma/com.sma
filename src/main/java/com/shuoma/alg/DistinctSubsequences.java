@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = String, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = String, references = LeetCode)
 public class DistinctSubsequences {
 
   public int numDistinct(String S, String T) {

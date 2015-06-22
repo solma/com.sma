@@ -20,7 +20,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class BinaryTreeUpsideDown {
   public TreeNode reverseRecursively(TreeNode root) {
     TreeNode left = root.left;

@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = LinkedList, reference = LeetCode)
+@Tag(dl = D2, dss = LinkedList, references = LeetCode)
 public class ReverseNodesinKGroup {
   public class ListNode {
     int val;

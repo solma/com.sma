@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashSet;
 import java.util.Set;
 
-@Tag(dl = D2, dss = HashTable, reference = LeetCode)
+@Tag(dl = D2, dss = HashTable, references = LeetCode)
 public class LongestConsecutiveSequence {
   public static void main(String[] args) {
     new LongestConsecutiveSequence().main();

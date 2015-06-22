@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-@Tag(dss = Stack, reference = LeetCode)
+@Tag(dss = Stack, references = LeetCode)
 public class MinStack {
   public static class MinEle {
     int val;

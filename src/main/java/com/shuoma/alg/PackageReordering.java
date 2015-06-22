@@ -28,7 +28,7 @@ import java.util.Set;
  should output in one line.
 */
 
-@Tag(algs = SlidingWindow, dss = HashTable, reference = JulyEdu)
+@Tag(algs = SlidingWindow, dss = HashTable, references = JulyEdu)
 public class PackageReordering {
 
   List<List<Integer>> reorder(int[] packages) {

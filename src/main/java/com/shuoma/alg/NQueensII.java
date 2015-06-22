@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Tag(algs = Recursion, reference = LeetCode)
+@Tag(algs = Recursion, references = LeetCode)
 public class NQueensII {
     public static void main(String[] args){
         new NQueensII().main();

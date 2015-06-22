@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = Stack, reference = LeetCode)
+@Tag(dss = Stack, references = LeetCode)
 public class SimplifyPath {
 
   public String simplifyPath(String path) {

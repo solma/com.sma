@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class SpiralMatrix {
   public static void main(String[] args) {
     new SpiralMatrix().main();

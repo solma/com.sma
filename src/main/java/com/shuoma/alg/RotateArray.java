@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D3, dss = Array, reference = LeetCode, tricks = InplaceSwap)
+@Tag(dl = D3, dss = Array, references = LeetCode, tricks = InplaceSwap)
 /** Rotate right. */
 public class RotateArray {
 

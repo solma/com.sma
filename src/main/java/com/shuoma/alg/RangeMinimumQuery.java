@@ -2,11 +2,13 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.TournamentTree;
+import static com.shuoma.annotation.Tag.DataStructure.SegmentTree;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.JulyEdu;
+import static com.shuoma.annotation.Tag.Reference.LintCode;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.graph.tree.SegmentTreeNode;
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
 
@@ -15,11 +17,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, TournamentTree}, reference = JulyEdu)
+@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, SegmentTree}, references = {JulyEdu, LintCode})
 public class RangeMinimumQuery {
 
   public enum Solution {
-    BASIC_DP("O(n^2), O(1)"), SPACE_EFFICIENT_DP("O(nlogn), O(1)"), TREE_BASED("O(n), O(logn)");
+    BASIC_DP("O(n^2),   O(1)"), SPACE_EFFICIENT_DP("O(nlogn), O(1)"), TREE_BASED("O(n),  O(logn)");
     private String name;
 
     Solution(String n) {
@@ -37,24 +39,9 @@ public class RangeMinimumQuery {
     new RangeMinimumQuery().main();
   }
 
-  public void test() {
-    int[] rdmArray =
-        {376, 47, 628, 540, 952, 142, 784, -454, 258, -316, -772, -886, 112, 901, 369, -484, 936,
-            978};
-    Interval[] queries = new Interval[1];
-    queries[0] = new Interval(5, 5);
-    System.out.println(Arrays.toString(getMinimum(queries, rdmArray, Solution.TREE_BASED)));
-
-  }
-
   boolean DEBUG = false;
 
   public void main() {
-    if (DEBUG) {
-      test();
-      return;
-    }
-
     int[] rdmArray = RandomUtil.genRandomArrayWithMinSize(10);
     Random rand = new Random();
     int noOfQueries = rand.nextInt(10) + 10;
@@ -78,13 +65,14 @@ public class RangeMinimumQuery {
     int[][] mins;
     int[] ans;
 
+    int n = rdmArray.length;
     switch (alg) {
 
       case BASIC_DP:
         // O(n^2) space and time to preprocess; O(1) to answer a single query
-        mins = new int[rdmArray.length][rdmArray.length];
-        for (int i = 0; i < rdmArray.length; i++) {
-          for (int j = i; j < rdmArray.length; j++) {
+        mins = new int[n][n];
+        for (int i = 0; i < n; i++) {
+          for (int j = i; j < n; j++) {
             mins[i][j] = j == i ? rdmArray[i] : Math.min(mins[i][j - 1], rdmArray[j]);
           }
         }
@@ -92,21 +80,19 @@ public class RangeMinimumQuery {
         ans = new int[intervals.length];
         for (int i = 0; i < ans.length; i++) {
           Interval itvl = intervals[i];
-          ans[i] = mins[(int) itvl.start][(int) itvl.end];
+          ans[i] = mins[itvl.start][itvl.end];
         }
         return ans;
 
       case SPACE_EFFICIENT_DP:
         // O(nlogn) space and time to preprocess; O(1) to answer a single query
-        int logNSize = (int) Math.ceil(Math.log(rdmArray.length) / Math.log(2));
-        mins = new int[rdmArray.length][logNSize];
+        int logNSize = (int) Math.ceil(Math.log(n) / Math.log(2));
+        mins = new int[n][logNSize];
         for (int logNLen = 0; logNLen < logNSize; logNLen++) {
-          for (int i = 0; i < rdmArray.length; i++) {
+          for (int i = 0; i < n; i++) {
             int len = 1 << logNLen;
-            mins[i][logNLen] = len == 1 ?
-                rdmArray[i] :
-                Math.min(mins[i][logNLen - 1],
-                    mins[Math.min(rdmArray.length - 1, i + (len >> 1))][logNLen - 1]);
+            mins[i][logNLen] = len == 1 ? rdmArray[i] :
+                Math.min(mins[i][logNLen - 1], mins[Math.min(n - 1, i + (len >> 1))][logNLen - 1]);
             if (DEBUG)
               System.out.println(
                   "i=" + i + " logNLen=" + logNLen + " len=" + len + " " + mins[i][logNLen]);
@@ -118,48 +104,19 @@ public class RangeMinimumQuery {
           Interval itvl = intervals[i];
           int logNLen =
               (int) Math.max(0, Math.ceil(Math.log(itvl.end - itvl.start + 1) / Math.log(2)) - 1);
-          ans[i] = Math.min(mins[(int) itvl.start][logNLen],
-              mins[Math.max(0, (int) itvl.end + 1 - (1 << logNLen))][logNLen]);
+          ans[i] = Math.min(mins[itvl.start][logNLen],
+              mins[Math.max(0, itvl.end + 1 - (1 << logNLen))][logNLen]);
         }
         return ans;
 
       case TREE_BASED:
-        // build up tournament tree O(n) space and time; O(logn) to answer a single query
-        List<List<ArrayInterval>> tTree = new ArrayList<>();
+        // segment tree based  O(n) space and time; O(logn) to answer a single query
+        //MinSegmentTreeNode root = MinSegmentTreeNode.buildByLevel(rdmArray);
+        MinSegmentTreeNode root = MinSegmentTreeNode.buildRecursively(rdmArray);
 
-        // add leaf level
-        List<ArrayInterval> leafLvl = new ArrayList<>();
-        for (int i = 0; i < rdmArray.length; i++) {
-          leafLvl.add(new ArrayInterval(i, i, rdmArray[i]));
-        }
-        tTree.add(leafLvl);
-
-        // build tree from bottom to top
-        List<ArrayInterval> nextLvL, curLvl;
-        curLvl = leafLvl;
-        do {
-          nextLvL = new ArrayList<>();
-          for (int i = 0; i < curLvl.size(); ) {
-            ArrayInterval cur = curLvl.get(i);
-            if (i + 1 < curLvl.size()) {
-              ArrayInterval nxt = curLvl.get(i + 1);
-              nextLvL.add(
-                  new ArrayInterval(Math.min(cur.start, nxt.start), Math.max(cur.end, nxt.end),
-                      Math.min(cur.min, nxt.min), cur, nxt));
-              i += 2;
-            } else {
-              nextLvL.add(cur);
-              i++;
-            }
-          }
-          curLvl = nextLvL;
-        } while (curLvl.size() > 1);
-
-
-        // query the tree
-        ArrayInterval root = curLvl.get(0);
-        if (DEBUG)
+        if (DEBUG) {
           System.out.println("root=" + root);
+        }
         ans = new int[intervals.length];
         for (int i = 0; i < ans.length; i++) {
           ans[i] = (int) root.getMin(intervals[i]);
@@ -170,46 +127,89 @@ public class RangeMinimumQuery {
     }
   }
 
-  class ArrayInterval extends Interval {
-    double min;
-    ArrayInterval left, right;
+  public static class MinSegmentTreeNode extends SegmentTreeNode {
 
-    public ArrayInterval(int start, int end) {
-      super(start, end);
+    MinSegmentTreeNode left, right;
+
+    public static MinSegmentTreeNode buildRecursively(int[] nums) {
+      // build a MinSegmentTree given an array numbers
+      return buildRecursively(0, nums.length - 1, nums);
     }
 
-    public ArrayInterval(int start, int end, double min) {
-      this(start, end);
-      this.min = min;
-      left = right = null;
+    static MinSegmentTreeNode buildRecursively(int sIdx, int eIdx, int[] nums) {
+      if (sIdx > eIdx) return null;
+      if (sIdx == eIdx) return new MinSegmentTreeNode(sIdx, eIdx, nums[sIdx]);
+      int mid = (sIdx + eIdx) / 2;
+      MinSegmentTreeNode left = buildRecursively(sIdx, mid, nums), right = buildRecursively(mid + 1,
+          eIdx, nums);
+      double leftMin = left == null ? Integer.MAX_VALUE : left.value;
+      double rightMin = right == null ? Integer.MAX_VALUE : right.value;
+      MinSegmentTreeNode cur = new MinSegmentTreeNode(sIdx, eIdx, Math.min(leftMin, rightMin),
+          left, right);
+      return cur;
     }
 
-    public ArrayInterval(int start, int end, double min, ArrayInterval left, ArrayInterval right) {
-      this(start, end, min);
+    public static MinSegmentTreeNode buildByLevel(int[] nums) {
+      List<List<MinSegmentTreeNode>> tTree = new ArrayList<>();
+
+      // add leaf level
+      int n = nums.length;
+      List<MinSegmentTreeNode> leafLvl = new ArrayList<>();
+      for (int i = 0; i < n; i++) {
+        leafLvl.add(new MinSegmentTreeNode(i, i, nums[i]));
+      }
+      tTree.add(leafLvl);
+
+      // build tree from bottom to top
+      List<MinSegmentTreeNode> nextLvL, curLvl;
+      curLvl = leafLvl;
+      do {
+        nextLvL = new ArrayList<>();
+        for (int i = 0; i < curLvl.size(); ) {
+          MinSegmentTreeNode cur = curLvl.get(i);
+          if (i + 1 < curLvl.size()) {
+            MinSegmentTreeNode nxt = curLvl.get(i + 1);
+            nextLvL.add(
+                new MinSegmentTreeNode(Math.min(cur.start, nxt.start), Math.max(cur.end, nxt.end),
+                    Math.min(cur.value, nxt.value), cur, nxt));
+            i += 2;
+          } else {
+            nextLvL.add(cur);
+            i++;
+          }
+        }
+        curLvl = nextLvL;
+      } while (curLvl.size() > 1);
+
+      return curLvl.get(0);
+    }
+
+    public MinSegmentTreeNode(int start, int end, double min) {
+      super(start, end, min);
+    }
+
+    public MinSegmentTreeNode(int start, int end, double min,
+        MinSegmentTreeNode left, MinSegmentTreeNode right) {
+      super(start, end, min);
       this.left = left;
       this.right = right;
     }
 
     public double getMin(Interval interval) {
-      if (!isOverlapping(interval))
+      if (!overlap(interval)) {
         return Integer.MAX_VALUE;
-      if (isIn(interval))
-        return min;
+      }
+      if (interval.include(this)) {
+        return value;
+      }
 
       return Math.min(left == null ? Integer.MAX_VALUE : left.getMin(interval),
           right == null ? Integer.MAX_VALUE : right.getMin(interval));
     }
 
-    public boolean isOverlapping(Interval interval) {
-      return end >= interval.start && start <= interval.end;
-    }
-
-    public boolean isIn(Interval interval) {
-      return start >= interval.start && end <= interval.end;
-    }
-
-    @Override public String toString() {
-      return start + "~" + end + ":" + min;
+    @Override
+    public String toString() {
+      return toString(true);
     }
   }
 }

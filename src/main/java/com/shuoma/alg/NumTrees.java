@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, reference = LeetCode)
+@Tag(algs = Recursion, references = LeetCode)
 public class NumTrees {
   public int numTrees(int n) {
     if (n == 0 || n == 1)

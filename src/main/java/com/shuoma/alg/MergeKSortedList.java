@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dl = D2, dss = LinkedList, reference = LeetCode)
+@Tag(dl = D2, dss = LinkedList, references = LeetCode)
 public class MergeKSortedList {
   public ListNode mergeKLists(ArrayList<ListNode> lists) {
     // Start typing your Java solution below

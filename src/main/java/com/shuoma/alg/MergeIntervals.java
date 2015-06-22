@@ -5,13 +5,13 @@ import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
-
+import com.shuoma.ds.misc.Interval;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Tag(dl = D3, dss = Interval, reference = LeetCode)
+@Tag(dl = D3, dss = Interval, references = LeetCode)
 public class MergeIntervals {
 
   //second pass
@@ -54,7 +54,7 @@ public class MergeIntervals {
     Collections.sort(intervals, new CustomComparator());
 
     Interval openInt = intervals.get(0);
-    ArrayList<Interval> res = new ArrayList<Interval>();
+    ArrayList<Interval> res = new ArrayList<>();
 
     for (int i = 1; i < n; i++) {
       Interval cur = intervals.get(i);

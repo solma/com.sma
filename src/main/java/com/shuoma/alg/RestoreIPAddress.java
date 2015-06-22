@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class RestoreIPAddress {
   public static void main(String[] args) {
     new RestoreIPAddress().main();

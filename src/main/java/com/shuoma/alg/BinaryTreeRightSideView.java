@@ -10,7 +10,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(dss = {BinaryTree, Queue}, reference = LeetCode)
+@Tag(dss = {BinaryTree, Queue}, references = LeetCode)
 public class BinaryTreeRightSideView {
 
   public List<Integer> rightSideView(TreeNode root) {

@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class ExcelSheetColumnTitle {
 
   public String convertToTitle(int n) {

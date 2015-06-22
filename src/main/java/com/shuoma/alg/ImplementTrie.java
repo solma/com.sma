@@ -22,7 +22,7 @@ class TrieNode {
   }
 }
 
-@Tag(dss = {HashTable, Trie}, reference = LeetCode)
+@Tag(dss = {HashTable, Trie}, references = LeetCode)
 public class ImplementTrie {
   public static void main(String[] args) {
     ImplementTrie ins = new ImplementTrie();

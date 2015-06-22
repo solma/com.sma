@@ -25,7 +25,7 @@ import java.util.Map;
  * hire X males and Y female within the budget and maximizes the total ability
  */
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array, reference = JulyEdu)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array, references = JulyEdu)
 public class HireWho {
 
   List<List<Integer>> hireWhoDp(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {

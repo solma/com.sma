@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = String, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = String, references = LeetCode)
 public class LongestPalindromicSubstring {
 
   //second pass

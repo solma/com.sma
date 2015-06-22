@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = Array, reference = LeetCode, tricks = InplaceSwap)
+@Tag(dl = D2, dss = Array, references = LeetCode, tricks = InplaceSwap)
 public class RotateImage {
   //get the relation straight first on the paper
   public void rotate(int[][] matrix) {

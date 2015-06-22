@@ -7,11 +7,10 @@ import static com.shuoma.annotation.Tag.Reference.LintCode;
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.graph.tree.SegmentTreeNode;
 
-@Tag(dl = D2, dss = {SegmentTree}, reference = LintCode)
+@Tag(dl = D2, dss = {SegmentTree}, references = LintCode)
 public class SegmentTreeQuery {
   /**
-   *@param root, start, end: The root of segment tree and
-   *                         an segment / interval
+   *@param root, start, end: The root of segment tree and an segment / interval
    *@return: The maximum number in the interval [start, end]
    */
   public int query(SegmentTreeNode root, int start, int end) {
@@ -21,7 +20,7 @@ public class SegmentTreeQuery {
 
     // equal
     if (root.start == start && root.end == end) {
-      return root.max;
+      return (int) root.value;
     }
 
     // contain

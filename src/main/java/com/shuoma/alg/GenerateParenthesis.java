@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class GenerateParenthesis {
   public static void main(String[] args) {
     new GenerateParenthesis().main();

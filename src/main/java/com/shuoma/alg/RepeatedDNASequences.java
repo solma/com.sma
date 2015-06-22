@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = BitManipulation, reference = LeetCode)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class RepeatedDNASequences {
 
   // https://oj.leetcode.com/discuss/24478/i-did-it-in-10-lines-of-c

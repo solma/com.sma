@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = BinarySearchTree, reference = LeetCode)
+@Tag(algs = Recursion, dss = BinarySearchTree, references = LeetCode)
 public class UniqueBinarySearchTrees {
   public int numTrees(int n) {
     int sum = 0;

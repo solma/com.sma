@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.*;
 import java.lang.Math;
 
-@Tag(algs = BitManipulation, reference = LeetCode)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class DivideTwoIntegers {
   public static void main(String[] args) {
     int dividendLong = Integer.parseInt(args[0]), divisorLong = Integer.parseInt(args[1]);

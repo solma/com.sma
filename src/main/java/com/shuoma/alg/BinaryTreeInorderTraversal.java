@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(dss = BinaryTree, reference = LeetCode)
+@Tag(dss = BinaryTree, references = LeetCode)
 public class BinaryTreeInorderTraversal {
 
   public ArrayList<Integer> inorderTraversal(TreeNode root) {

@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dss = String, reference = LeetCode)
+@Tag(dss = String, references = LeetCode)
 public class LongestCommonPrefix {
   public static void main(String[] args) {
     System.out
@@ -46,14 +46,14 @@ public class LongestCommonPrefix {
 }
 
 
-class StringSortByLength implements Comparable {
+class StringSortByLength implements Comparable<StringSortByLength> {
   String s;
 
   public StringSortByLength(String s) {
     this.s = s;
   }
 
-  public int compareTo(Object other) {
-    return s.length() - ((StringSortByLength) other).s.length();
+  public int compareTo(StringSortByLength that) {
+    return s.length() - that.s.length();
   }
 }

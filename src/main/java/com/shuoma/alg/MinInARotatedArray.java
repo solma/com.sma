@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BinarySearch, dss = Array, reference = LeetCode)
+@Tag(algs = BinarySearch, dss = Array, references = LeetCode)
 public class MinInARotatedArray {
   public static void main(String[] args) {
     System.out.println(new MinInARotatedArray().main());

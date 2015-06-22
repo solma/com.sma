@@ -3,7 +3,6 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
-import static com.shuoma.alg.Interval.IntervalEndPoint;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
@@ -57,7 +56,7 @@ public class WeightedIntervalScheduling {
 
       if (i > 0) dpRes[i] = dpRes[i - 1];// not using cur
       // using cur
-      double sum = cur.weight;
+      double sum = cur.value;
       if (lastCompatible != -1) sum += dpRes[lastCompatible];
       if (sum > dpRes[i]) {
         dpRes[i] = sum;
@@ -80,11 +79,23 @@ public class WeightedIntervalScheduling {
     return ret;
   }
 
+  int bisect(Interval cur, List<Interval> list) {
+    int l = -1, r = list.size();
+    while (l + 1 != r) {
+      int m = l + (r - l) / 2;
+      if (list.get(m).end > cur.start)
+        r = m;
+      else
+        l = m;
+    }
+    return l;
+  }
+
   int[] computeLastCompatibleInterval() {
     int n = intervals.size();
     int[] lastCompatiblePredecessor = new int[n];
     for (int i = 0; i < n; i++) {
-      lastCompatiblePredecessor[i] = intervals.get(i).bisect(intervals);
+      lastCompatiblePredecessor[i] = bisect(intervals.get(i), intervals);
     }
     return lastCompatiblePredecessor;
   }
@@ -114,5 +125,17 @@ public class WeightedIntervalScheduling {
       }
     }
     return lastCompatiblePredecessor;
+  }
+
+  public static class IntervalEndPoint {
+    int val;
+    int isStart;
+    int intervalIdx;
+
+    public IntervalEndPoint(int val, int isStart, int intervalIdx) {
+      this.val = val;
+      this.isStart = isStart;
+      this.intervalIdx = intervalIdx;
+    }
   }
 }

@@ -23,7 +23,7 @@ class Point {
   }
 }
 
-@Tag(dl = D2, dss = HashTable, reference = LeetCode)
+@Tag(dl = D2, dss = HashTable, references = LeetCode)
 public class MaxPointsOnALine {
   public static void main(String[] args) {
     new MaxPointsOnALine().main();

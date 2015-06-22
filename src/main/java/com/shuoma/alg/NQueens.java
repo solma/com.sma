@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = Recursion, reference = LeetCode)
+@Tag(algs = Recursion, references = LeetCode)
 public class NQueens {
   public static void main(String[] args) {
     new NQueens().main(Integer.parseInt(args[0]));

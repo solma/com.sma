@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class SubsetsII {
   public static void main(String[] args) {
     for (List<Integer> s : new SubsetsII().subsetsWithDup(new int[] {2, 1, 2}))

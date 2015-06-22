@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, references = LeetCode)
 public class EditDistance {
   public static void main(String[] args) {
     System.out.println(new EditDistance().minDistance("ab", "bc"));

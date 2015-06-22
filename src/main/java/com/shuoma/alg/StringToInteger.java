@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = String, reference = LeetCode)
+@Tag(dss = String, references = LeetCode)
 public class StringToInteger {
   public static void main(String[] args) {
     new StringToInteger().main();

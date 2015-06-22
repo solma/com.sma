@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {Array, String}, reference = LeetCode)
+@Tag(dl = D2, dss = {Array, String}, references = LeetCode)
 public class MultiplyStrings {
   public static void main(String[] args) {
     new MultiplyStrings().main();

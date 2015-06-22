@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.*;
 //each element can be used multiple times
 
-@Tag(algs = Recursion, dl = D2, reference = LeetCode)
+@Tag(algs = Recursion, dl = D2, references = LeetCode)
 public class CombinationSum {
   public static void main(String[] args) {
     new CombinationSum().main();

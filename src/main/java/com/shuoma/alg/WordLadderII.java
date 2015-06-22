@@ -19,7 +19,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
-@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, reference = LeetCode)
+@Tag(algs = {Backtracking, Recursion}, dl = D3, dss = String, references = LeetCode)
 public class WordLadderII {
   public static void main(String[] args) {
     new WordLadderII().main();

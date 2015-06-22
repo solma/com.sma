@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = RegularExpression, dss = String, reference = LeetCode)
+@Tag(algs = RegularExpression, dss = String, references = LeetCode)
 public class ValidNumber {
   public static void main(String[] args) {
     new ValidNumber().main();

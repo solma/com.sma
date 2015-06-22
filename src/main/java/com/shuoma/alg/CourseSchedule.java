@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = {MatrixGraph, Queue}, reference = LeetCode)
+@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = {MatrixGraph, Queue}, references = LeetCode)
 // no cycle <=> has a topological sorting
 public class CourseSchedule {
 

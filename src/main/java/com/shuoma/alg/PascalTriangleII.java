@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = TopDown, dss = String, reference = LeetCode)
+@Tag(algs = TopDown, dss = String, references = LeetCode)
 public class PascalTriangleII {
   public static void main(String[] args) {
     new PascalTriangleII().getRow(30);

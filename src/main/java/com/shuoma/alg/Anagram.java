@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Sorting, dss = String, reference = LeetCode)
+@Tag(algs = Sorting, dss = String, references = LeetCode)
 public class Anagram {
 
   // pass2:

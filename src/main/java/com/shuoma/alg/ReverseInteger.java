@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, reference = LeetCode)
+@Tag(algs = Arithmetic, references = LeetCode)
 public class ReverseInteger {
   //second pass
   public int reverse(int x) {

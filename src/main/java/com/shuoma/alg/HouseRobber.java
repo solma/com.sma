@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Array, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Array, references = LeetCode)
 public class HouseRobber {
 
   public int rob(int[] num) {

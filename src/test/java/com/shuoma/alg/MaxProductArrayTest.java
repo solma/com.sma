@@ -1,6 +1,8 @@
 package com.shuoma.alg;
 
-import com.shuoma.alg.MaxProductArray;
+import static com.shuoma.alg.MaxProductArray.maxProductDP;
+import static com.shuoma.alg.MaxProductArray.maxProductSimple;
+
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -15,8 +17,8 @@ public class MaxProductArrayTest extends TestCase {
       //int[] A = RandomUtil.genRandomArray(10, 10, false, true);
       int[] A = {3, -2, 5};
       int[][] res = new int[2][3];
-      res[0] = ins.maxProductSimple(A);
-      res[1] = ins.maxProductDP(A);
+      res[0] = maxProductSimple(A);
+      res[1] = maxProductDP(A);
       assertEquals(res[0][2], res[1][2]);
       if (res[0][2] != res[1][2]){
         System.out.println(Arrays.toString(A));

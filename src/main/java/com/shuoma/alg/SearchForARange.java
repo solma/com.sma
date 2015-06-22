@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = BinarySearch, dss = Array, reference = LeetCode)
+@Tag(algs = BinarySearch, dss = Array, references = LeetCode)
 public class SearchForARange {
   //second pass
   public int[] searchRange(int[] A, int target) {

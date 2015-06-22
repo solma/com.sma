@@ -17,7 +17,7 @@ import com.shuoma.annotation.Tag;
  * }
  */
 
-@Tag(algs = Recursion, dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(algs = Recursion, dl = D2, dss = BinaryTree, references = LeetCode)
 public class BinaryTreeMaximumPathSum {
 
   public int maxPathSum(TreeNode root) {

@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DivideConquer, dl = D3, dss = Array, reference = LeetCode)
+@Tag(algs = DivideConquer, dl = D3, dss = Array, references = LeetCode)
 public class MedianOfTwoSortedArrays {
 
   double findMedianSortedArrays(int A[], int B[]) {

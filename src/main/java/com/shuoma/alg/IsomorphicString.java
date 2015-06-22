@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(dss = {String, HashTable}, reference = LeetCode)
+@Tag(dss = {String, HashTable}, references = LeetCode)
 public class IsomorphicString {
 
   public boolean isIsomorphic(String s, String t) {

@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(dss = {HashTable, String}, reference = LeetCode)
+@Tag(dss = {HashTable, String}, references = LeetCode)
 public class SubstringwithConcatenationofAllWords {
   public List<Integer> findSubstring(String S, String[] L) {
     int len = L[0].length();

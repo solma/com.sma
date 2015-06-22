@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Subarray, reference = LeetCode)
+@Tag(dss = Subarray, references = LeetCode)
 public class MinimumSizeSubarraySum {
 
   public int minSubArrayLen(int s, int[] nums) {

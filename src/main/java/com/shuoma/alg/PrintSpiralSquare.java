@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class PrintSpiralSquare {
   public static void main(String[] args) {
     new PrintSpiralSquare().main();

@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
  * Given a number n, arrange alphabet into rows each of which has n letters (except the last row)
  * Output the key strokes (direction keys) needed to move current letter C to destination letter D.
  */
-@Tag(dss = {Array, String}, reference = Interview)
+@Tag(dss = {Array, String}, references = Interview)
 public class KeyStrokePath {
 
   String getPath(char cur, char des, int n) {

@@ -19,7 +19,7 @@ import java.util.List;
  * TreeNode(int x) { val = x; }
  * }
  */
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class ConvertSortedListtoBinarySearchTree {
   //second pass
   public TreeNode sortedListToBST(ListNode head) {

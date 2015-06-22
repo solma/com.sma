@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode, tricks = InplaceSwap)
+@Tag(dss = Array, references = LeetCode, tricks = InplaceSwap)
 public class RemoveElement {
   public static void main(String[] args) {
     new RemoveElement().main();

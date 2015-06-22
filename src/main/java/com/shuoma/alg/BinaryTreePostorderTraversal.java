@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dss = BinaryTree, reference = LeetCode)
+@Tag(dss = BinaryTree, references = LeetCode)
 public class BinaryTreePostorderTraversal {
   public List<Integer> postorderTraversal(TreeNode root) {
     List<Integer> ret = new ArrayList<>();

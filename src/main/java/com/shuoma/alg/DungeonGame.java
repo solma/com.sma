@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, references = LeetCode)
 public class DungeonGame {
 
   int calculateMinimumHP(int[][] dungeon) {

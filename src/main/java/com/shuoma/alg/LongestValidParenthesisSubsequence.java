@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = Stack, reference = Interview)
+@Tag(dss = Stack, references = Interview)
 public class LongestValidParenthesisSubsequence {
   public String longestValidParentheses(String s) {
     int n = s.length();

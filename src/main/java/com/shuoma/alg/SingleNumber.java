@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BitManipulation, dss = Array, reference = LeetCode)
+@Tag(algs = BitManipulation, dss = Array, references = LeetCode)
 public class SingleNumber {
   public int singleNumber(int[] A) {
     if (A.length == 0)

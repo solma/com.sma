@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = Array, reference = LeetCode, tricks = InplaceSwap)
+@Tag(dl = D2, dss = Array, references = LeetCode, tricks = InplaceSwap)
 public class FirstMissingPositive {
   public static void main(String[] args) {
     new FirstMissingPositive().firstMissingPositive(new int[] {2, 1});

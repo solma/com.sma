@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, dss = Array, reference = LeetCode)
+@Tag(algs = Arithmetic, dss = Array, references = LeetCode)
 public class ZigZagConversion {
 
   //second pass

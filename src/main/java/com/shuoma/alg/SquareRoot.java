@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = {Arithmetic, Geometry}, reference = LeetCode)
+@Tag(algs = {Arithmetic, Geometry}, references = LeetCode)
 public class SquareRoot {
   public static void main(String[] args) {
     SquareRoot ins = new SquareRoot();

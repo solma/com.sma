@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D2, dss = HashTable, reference = LeetCode)
+@Tag(dl = D2, dss = HashTable, references = LeetCode)
 public class MaximumGap {
 
   int maximumGap(int[] num) {

@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class GrayCode {
   public static void main(String[] args) {
     GrayCode ins = new GrayCode();

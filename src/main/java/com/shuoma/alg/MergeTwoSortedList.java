@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = LinkedList, reference = LeetCode)
+@Tag(dss = LinkedList, references = LeetCode)
 public class MergeTwoSortedList {
   public static void main(String[] args) {
     new MergeTwoSortedList().main();

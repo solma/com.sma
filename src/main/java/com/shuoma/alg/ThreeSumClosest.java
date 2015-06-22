@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(dss = Array, reference = LeetCode, tricks = FromTwoEndsToMiddle)
+@Tag(dss = Array, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class ThreeSumClosest {
   public static void main(String[] args) {
     ThreeSumClosest ins = new ThreeSumClosest();

@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class BinaryTreeZigzagLevelOrderTraversal {
 
   //second pass

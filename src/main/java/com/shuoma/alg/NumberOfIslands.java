@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = MatrixGraph, reference = LeetCode)
+@Tag(algs = {BreadthFirstSearch, DepthFirstSearch}, dss = MatrixGraph, references = LeetCode)
 public class NumberOfIslands {
   public int numIslands(char[][] grid) {
     int m = grid.length;

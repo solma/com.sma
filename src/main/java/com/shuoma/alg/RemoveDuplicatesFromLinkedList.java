@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.CrackingTheCodeInterview;
 import com.shuoma.annotation.Tag;
 
 // delete duplicates in the linked list without extra space
-@Tag(dss = LinkedList, reference = CrackingTheCodeInterview)
+@Tag(dss = LinkedList, references = CrackingTheCodeInterview)
 public class RemoveDuplicatesFromLinkedList {
   public static void main(String[] args) {
     com.shuoma.ds.linkedlist.ListNode

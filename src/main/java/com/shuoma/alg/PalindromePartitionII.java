@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = String, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = String, references = LeetCode)
 public class PalindromePartitionII {
   public static void main(String[] args) {
     //"aoecddceoaaeqeeqe"

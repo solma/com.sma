@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Subarray, reference = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode)
 public class ClimbingStairs {
   //second pass
   public int climbStairs(int n) {

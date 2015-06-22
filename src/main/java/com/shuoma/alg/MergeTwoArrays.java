@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode)
+@Tag(dss = Array, references = LeetCode)
 public class MergeTwoArrays {
   public void merge(int A[], int m, int B[], int n) {
     int i = 0, j = 0, k = 0;

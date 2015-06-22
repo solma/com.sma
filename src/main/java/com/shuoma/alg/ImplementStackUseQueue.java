@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Tag(dss = {Stack, Queue}, reference = LeetCode)
+@Tag(dss = {Stack, Queue}, references = LeetCode)
 public class ImplementStackUseQueue {
   public static void main(String[] args) {
     MyStack ms = new MyStack();

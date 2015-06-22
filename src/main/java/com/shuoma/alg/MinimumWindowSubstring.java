@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D3, dss = {HashTable, String}, reference = LeetCode)
+@Tag(dl = D3, dss = {HashTable, String}, references = LeetCode)
 public class MinimumWindowSubstring {
   public static void main(String[] args) {
     System.out.println(new MinimumWindowSubstring().minWindow("ADOBECODEBANC", "ABC"));

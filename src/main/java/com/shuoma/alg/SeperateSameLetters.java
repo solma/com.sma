@@ -12,7 +12,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.PriorityQueue;
 
-@Tag(algs = Greedy, dss = {String, Tag.DataStructure.PriorityQueue}, reference = Interview)
+@Tag(algs = Greedy, dss = {String, Tag.DataStructure.PriorityQueue}, references = Interview)
 public class SeperateSameLetters {
   public static void main(String[] args) {
     new SeperateSameLetters().main("abc", "145");

@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BinarySearch, dl = D3, dss = Subarray, reference = LeetCode)
+@Tag(algs = BinarySearch, dl = D3, dss = Subarray, references = LeetCode)
 public class FindPeakElement {
   public int findPeakElement(int[] a) {
     int n = a.length;

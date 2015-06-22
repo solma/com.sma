@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = ArithmeticSum, dss = HashTable, reference = LeetCode)
+@Tag(algs = ArithmeticSum, dss = HashTable, references = LeetCode)
 public class HappyNumber {
 
   public static void main(String[] args) {

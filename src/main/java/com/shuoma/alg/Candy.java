@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(dss = Array, references = LeetCode, tricks = ForwardAndBackwardScan)
 public class Candy {
   public int candy(int[] ratings) {
     int n = ratings.length;

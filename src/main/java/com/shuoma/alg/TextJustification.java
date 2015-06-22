@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(dl = D2, dss = String, reference = LeetCode)
+@Tag(dl = D2, dss = String, references = LeetCode)
 public class TextJustification {
 
   public static void main(String[] args) {

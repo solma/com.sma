@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BinarySearch, dss = Array, reference = LeetCode)
+@Tag(algs = BinarySearch, dss = Array, references = LeetCode)
 public class SearchInsertionPosition {
   //second pass
   public int searchInsert(int[] A, int target) {

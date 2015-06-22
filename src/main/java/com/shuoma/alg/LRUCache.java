@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.HashMap;
 
-@Tag(dl = D3, dss = {LinkedList, HashTable}, reference = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(dl = D3, dss = {LinkedList, HashTable}, references = LeetCode, tricks = ForwardAndBackwardScan)
 public class LRUCache {
 
   public static void main(String[] args) {

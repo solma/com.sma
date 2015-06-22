@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = Recursion, dss = String, reference = LeetCode)
+@Tag(algs = Recursion, dss = String, references = LeetCode)
 public class PermutationsII {
   public static void main(String[] args) {
     new PermutationsII().main();

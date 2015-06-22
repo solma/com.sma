@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-@Tag(dl = D2, dss = {Stack, String}, reference = LeetCode) public class Calculator {
+@Tag(dl = D2, dss = {Stack, String}, references = LeetCode) public class Calculator {
 
   public static void main(String[] args) {
     String expr = "(-22 + 1 - 3) + 2";

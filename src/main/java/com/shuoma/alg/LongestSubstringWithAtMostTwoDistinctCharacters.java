@@ -10,7 +10,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {HashTable, String}, reference = LeetCode)
+@Tag(dl = D2, dss = {HashTable, String}, references = LeetCode)
 public class LongestSubstringWithAtMostTwoDistinctCharacters {
 
   public String longestSubstring(String s) {

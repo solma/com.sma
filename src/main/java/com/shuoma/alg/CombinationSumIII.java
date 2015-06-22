@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = Array, reference = LeetCode)
+@Tag(algs = Recursion, dss = Array, references = LeetCode)
 public class CombinationSumIII {
 
   public static void main(String[] args) {

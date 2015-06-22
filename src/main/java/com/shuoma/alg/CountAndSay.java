@@ -4,7 +4,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Tag.DataStructure.String, reference = LeetCode)
+@Tag(dss = Tag.DataStructure.String, references = LeetCode)
 public class CountAndSay {
   public static void main(String[] args) {
     new CountAndSay().main();

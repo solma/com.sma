@@ -15,7 +15,7 @@ import java.util.List;
  * // lower position, assume the upside and left-side of the matrix is the Pacific Ocean, and downside and right-side
  * // is the Atlantic Ocean. Find out the positions whose rain can both flow into the two ocean.
  */
-@Tag(algs = DepthFirstSearch, dss = MatrixGraph, reference = LeetCode)
+@Tag(algs = DepthFirstSearch, dss = MatrixGraph, references = LeetCode)
 public class RainFlows {
     public static void main(String[] args) {
         int[][] elevations = {

@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = String, reference = LeetCode)
+@Tag(dss = String, references = LeetCode)
 public class ImplementstrStr {
   public static void main(String[] args) {
     System.out.println(strStr(args[0], args[1]));

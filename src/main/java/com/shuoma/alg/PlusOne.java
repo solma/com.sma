@@ -5,7 +5,7 @@ import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, reference = LeetCode)
+@Tag(algs = Arithmetic, references = LeetCode)
 public class PlusOne {
   public int[] plusOne(int[] digits) {
     int n = digits.length;

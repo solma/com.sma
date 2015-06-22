@@ -17,7 +17,7 @@ import java.util.Arrays;
  * TreeNode(int x) { val = x; }
  * }
  */
-@Tag(dl = D2, dss = BinaryTree, reference = LeetCode)
+@Tag(dl = D2, dss = BinaryTree, references = LeetCode)
 public class ConvertSortedArraytoBinarySearchTree {
   //second pass
   public TreeNode sortedArrayToBST(int[] num) {

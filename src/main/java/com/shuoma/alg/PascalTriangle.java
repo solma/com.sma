@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = TopDown, dss = String, reference = LeetCode)
+@Tag(algs = TopDown, dss = String, references = LeetCode)
 public class PascalTriangle {
   //second pass
   public List<List<Integer>> generate(int numRows) {

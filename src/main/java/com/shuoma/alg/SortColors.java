@@ -7,7 +7,7 @@ import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Sorting, dss = Array, reference = LeetCode, tricks = InplaceSwap)
+@Tag(algs = Sorting, dss = Array, references = LeetCode, tricks = InplaceSwap)
 public class SortColors {
   public static void main(String[] args) {
     new SortColors().sortColors(new int[] {2});

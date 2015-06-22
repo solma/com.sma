@@ -6,7 +6,7 @@ import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, reference = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(dss = Array, references = LeetCode, tricks = ForwardAndBackwardScan)
 public class TrappingRainWater {
   public static void main(String[] args) {
     //4,2,0,3,2,4,3,4
