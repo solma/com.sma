@@ -1,6 +1,9 @@
 package com.shuoma.lang.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ArrayBehavior {
   public static void main(String[] args) {
@@ -8,8 +11,18 @@ public class ArrayBehavior {
   }
 
   void main() {
-    //copyArray();
+    copyArray();
     passInArray();
+  }
+
+  void arrayOfCollections() {
+    List<String>[] ali = new List[3];
+    ali[0] = new LinkedList<>();
+    ali[0].add("0th linkedlist");
+    /** won't compile */
+    // ali[0].add(3);
+    ali[1] = new ArrayList<>();
+    ali[1].add("1st arraylist");
   }
 
   void copyArray() {

@@ -1,8 +1,11 @@
 package com.shuoma.ds.graph.tree;
 
+import static com.shuoma.ds.graph.tree.TrieNode.buildTree;
+import static com.shuoma.ds.graph.tree.TrieNode.longestPrefix;
+import static com.shuoma.ds.graph.tree.TrieNode.shortestPrefix;
+
 import junit.framework.TestCase;
 import org.junit.Test;
-
 
 public class TrieTest extends TestCase {
 
@@ -13,9 +16,9 @@ public class TrieTest extends TestCase {
     String[] dict =
         new String[] {"google", "goamazon", "gomicrosoft", "gohere", "gomoto", "gomotot"};
 
-    Trie trie = new Trie(dict);
-    assertEquals("go", trie.longestPrefix());
-    assertEquals("gomotot", trie.longestPrefix("gomotot"));
-    assertEquals("c", trie.shortestPrefix("ct"));
+    TrieNode root = buildTree(dict);
+    assertEquals("go", longestPrefix(root));
+    assertEquals("gomotot", longestPrefix(root, "gomotot"));
+    assertEquals("c", shortestPrefix(root, "ct"));
   }
 }

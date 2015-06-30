@@ -1,5 +1,6 @@
 package com.shuoma.util;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ArrayUtil {
@@ -102,6 +103,26 @@ public class ArrayUtil {
     System.arraycopy(a, 0, c, 0, a.length);
     System.arraycopy(b, 0, c, a.length, b.length);
     return c;
+  }
+
+  public static Comparator<double[]> comparatorDoubleArray(final int k) {
+    return new Comparator<double[]>() {
+      @Override public int compare(double[] a1, double[] a2) {
+        double diff = a1[k] - a2[k];
+        if (diff == 0.0) return 0;
+        return diff > 0 ? 1: -1;
+      }
+    };
+  }
+
+  public static Comparator<int[]> comparatorIntArray(final int k) {
+    return new Comparator<int[]>() {
+      @Override public int compare(int[] a1, int[] a2) {
+        double diff = a1[k] - a2[k];
+        if (diff == 0.0) return 0;
+        return diff > 0 ? 1: -1;
+      }
+    };
   }
 
   public static double[] doubleListToDoubleArray(List<Double> values) {

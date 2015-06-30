@@ -2,9 +2,9 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.HashTable;
 import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.ds.graph.tree.TrieNode.buildTree;
 
 import com.shuoma.annotation.Tag;
-import com.shuoma.ds.graph.tree.Trie;
 import com.shuoma.ds.graph.tree.TrieNode;
 
 import java.util.ArrayList;
@@ -31,11 +31,11 @@ public class TopKWords {
   }
 
   public void countByTrie(String[] words, int k) {
-    Trie trie = new Trie(words);
+    TrieNode root = buildTree(words);
 
     List<WordCnt> all = new ArrayList<>();
     // Traverse the tries
-    for (TrieNode node : trie.levelTravesal()) {
+    for (TrieNode node : levelTraversal(root)) {
       all.add(new WordCnt(node.path, node.cnt));
     }
 
@@ -74,6 +74,23 @@ public class TopKWords {
     return topK;
   }
 
+  List<TrieNode> levelTraversal(TrieNode root) {
+    List<TrieNode> allNodes = new ArrayList<>();
+    List<TrieNode> curLvl = new ArrayList<>(), nxtLvl;
+    curLvl.add(root);
+    while (!curLvl.isEmpty()) {
+      nxtLvl = new ArrayList<>();
+      while (!curLvl.isEmpty()) {
+        TrieNode first = curLvl.remove(0);
+        allNodes.add(first);
+        for (TrieNode child : first.children.values()) {
+          nxtLvl.add(child);
+        }
+      }
+      curLvl = nxtLvl;
+    }
+    return allNodes;
+  }
 
 
   class WordCnt implements Comparable<WordCnt> {

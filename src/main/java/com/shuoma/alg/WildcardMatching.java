@@ -49,8 +49,9 @@ public class WildcardMatching {
           if (matches[i])
             match = i;
         }
-        if (match < 0)
+        if (match < 0) {
           return false;
+        }
         firstMatch = match;
       }
 //      System.out.println(

@@ -47,6 +47,7 @@ public @interface Tag {
     LinkedList,
     MatrixGraph,
     MinimumSpanningTree,
+    Palindrome,
     PriorityQueue,
     Queue,
     SegmentTree,
@@ -77,6 +78,7 @@ public @interface Tag {
     LintCode,
     StackOverview,
     Topcoder,
+    WeChat,
     NA,
   }
 

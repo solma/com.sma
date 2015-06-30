@@ -5,6 +5,7 @@ import java.util.List;
 
 // http://tutorials.jenkov.com/java-generics/wildcards.html
 public class Wildcard {
+
   public static void main(String[] args) {
     new Wildcard().main();
   }

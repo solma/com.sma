@@ -9,21 +9,22 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-class TrieNode {
-
-  Map<Character, TrieNode> children = new HashMap<>();
-  boolean isWord;
-  char value;
-
-  public TrieNode() {}
-
-  public TrieNode(char value) {
-    this.value = value;
-  }
-}
-
 @Tag(dss = {HashTable, Trie}, references = LeetCode)
 public class ImplementTrie {
+
+  class TrieNode {
+
+    Map<Character, TrieNode> children = new HashMap<>();
+    boolean isWord;
+    char value;
+
+    public TrieNode() {}
+
+    public TrieNode(char value) {
+      this.value = value;
+    }
+  }
+
   public static void main(String[] args) {
     ImplementTrie ins = new ImplementTrie();
     ins.insert("ab");

@@ -31,8 +31,6 @@ public class RangeMinimumQuery {
     @Override public String toString() {
       return name;
     }
-
-    ;
   }
 
   public static void main(String[] args) {

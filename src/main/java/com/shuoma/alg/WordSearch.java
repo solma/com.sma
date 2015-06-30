@@ -140,7 +140,7 @@ public class WordSearch {
     return false;
   }
 
-  public boolean existRecursion(char[][] board, String word, int[][] dirs, int i, int j, int idx, boolean[][] visited) {
+  boolean existRecursion(char[][] board, String word, int[][] dirs, int i, int j, int idx, boolean[][] visited) {
     if (idx == word.length())
       return true;
     for (int k = 0; k < dirs.length; k++) {

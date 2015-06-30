@@ -35,38 +35,25 @@ public class MathUtil {
   /**
    * @param newChar
    * @param stackTop
-   * @return newChar >= stackTop
+   * @return newChar <= stackTop
    */
-  public static boolean higherOrEqualPriority(char newChar, char stackTop) {
+  public static boolean lowerOrEqualPriority(char newChar, char stackTop) {
     switch (newChar) {
+      case '=':
+        return true;
       case '+':
       case '-':
-        if (stackTop == '+' || stackTop == '-' || stackTop == '=')
-          return true;
-        else
-          return false;
+        return !(stackTop == '=' || stackTop == '(');
       case '*':
       case '/':
-        if (stackTop == '(' || stackTop == 's' || stackTop == 'c' || stackTop == 'l'
-            || stackTop == '^')
-          return false;
-        else
-          return true;
-      case '=':
-        if (stackTop == '=')
-          return true;
-        else
-          return false;
+        return !(stackTop == '+' || stackTop == '-' || stackTop == '=' || stackTop == '(');
       case 's':
       case 'c':
       case 'l':
       case '^':
-        if (stackTop == '(')
-          return false;
-        else
-          return true;
+        return stackTop == 's' || stackTop == 'c' || stackTop == 'l' || stackTop == '^';
       default:
-        return false;
+        throw new IllegalArgumentException("No such character");
     }
   }
 }
