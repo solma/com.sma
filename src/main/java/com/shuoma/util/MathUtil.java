@@ -37,6 +37,7 @@ public class MathUtil {
    * @param stackTop
    * @return newChar <= stackTop
    */
+  // https://en.wikipedia.org/wiki/Shunting-yard_algorithm
   public static boolean lowerOrEqualPriority(char newChar, char stackTop) {
     switch (newChar) {
       case '=':
@@ -51,7 +52,7 @@ public class MathUtil {
       case 'c':
       case 'l':
       case '^':
-        return stackTop == 's' || stackTop == 'c' || stackTop == 'l' || stackTop == '^';
+        return stackTop == 's' || stackTop == 'c' || stackTop == 'l';
       default:
         throw new IllegalArgumentException("No such character");
     }

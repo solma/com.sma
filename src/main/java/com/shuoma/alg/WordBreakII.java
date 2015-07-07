@@ -41,12 +41,28 @@ public class WordBreakII {
       dp.add(new ArrayList<Integer>());
     }
 
-    for (int i = 1; i <= s.length(); i++) {
+    for (String e : dict) {
+      System.out.print(e + "\t");
+    }
+
+    boolean outloopIsDict = true;
+    if (outloopIsDict) {
       for (String e : dict) {
-        int en = e.length();
-        if (((i > en && dp.get(i - en).size() > 0) || (i == en)) && s.substring(i - en, i)
-            .equals(e)) {
-          dp.get(i).add(i - en);
+        for (int i = 1; i <= s.length(); i++) {
+          int en = e.length();
+          if (((i > en && !dp.get(i - en).isEmpty()) || (i == en)) && s.substring(i - en, i).equals(e)) {
+            dp.get(i).add(i - en);
+          }
+        }
+      }
+    } else {
+      for (int i = 1; i <= s.length(); i++) {
+        for (String e : dict) {
+          int en = e.length();
+          if (((i > en && !dp.get(i - en).isEmpty()) || (i == en)) && s.substring(i - en, i)
+              .equals(e)) {
+            dp.get(i).add(i - en);
+          }
         }
       }
     }

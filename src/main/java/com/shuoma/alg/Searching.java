@@ -102,7 +102,7 @@ public class Searching {
       if (a[mid] < key) low = mid;
       else high = mid;
     }
-    if (high >= a.length || a[high] != key) return high = -1; // this is the tricky line
+    if (high >= a.length || a[high] != key) return -1; // this is the tricky line
     return high;
   }
 

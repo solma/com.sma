@@ -14,7 +14,7 @@ import java.util.Stack;
 @Tag(dl = D2, dss = {Stack})
 public class CompleteCalculator {
   public static void main(String[] args) {
-    String expr = "22 - (1 + 3 * -2)";
+    String expr = "-22 + 1 - 3 * -2";
     System.out.println(new CompleteCalculator().calculate(expr));
   }
 
@@ -34,6 +34,7 @@ public class CompleteCalculator {
       } else {
         numStck.push(Double.parseDouble(ele));
       }
+      //System.out.println(numStck);
     }
     return numStck.pop();
   }

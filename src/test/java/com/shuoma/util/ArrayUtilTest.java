@@ -21,8 +21,8 @@ public class ArrayUtilTest extends TestCase {
       assertEquals(pivot, b[idx]);
     }
 
-    int[] num = new int[] {4, 3, 2, 5};
-    ArrayUtil.partition(num, 0, 3, 1);
+    int[] num = new int[] {4};
+    ArrayUtil.partition(num, 0, 0, 0);
 //    System.out.println(Arrays.toString(num));
   }
 }

@@ -4,6 +4,7 @@ import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 
 import com.shuoma.annotation.Tag;
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -31,32 +32,35 @@ public class DynamicProgrammingPlayground {
     for (int j = 0; j < nCol; j++)
       matrix[0][j] = j;
     // for (int i = 0; i < nRow; i++) matrix[i][0] = i;
-    for (int i = 1; i < nRow; i++)
-      for (int j = 1; j < nCol; j++)
+    for (int j = 1; j < nCol; j++)
+      for (int i = 1; i < nRow; i++)
         matrix[i][j] = matrix[i - 1][j - 1] + matrix[i - 1][j];
   }
 
   // matrix[i][j] = matrix[i-1][j-1] + matrix[i-1][j]
   public void dp1With1DArray(int[][] matrix) {
-    for (int j = 0; j < nCol; j++)
+    for (int j = 0; j < nCol; j++) {
       matrix[0][j] = j;
+    }
     // for (int i = 0; i < nRow; i++) matrix[i][0] = i;
     for (int i = 1; i < nRow; i++)
-      for (int j = nCol - 1; j > 0; j--)
-        matrix[0][j] = matrix[0][j - 1] + matrix[0][j];
+      for (int j = nCol - 1; j > 0; j--) {
+        matrix[0][j] += matrix[0][j - 1];
+      }
   }
 
   public void reset(int[][] matrix) {
-    for (int i = 0; i < nRow; i++)
-      for (int j = 0; j < nCol; j++)
-        matrix[i][j] = 0;
+    for (int i = 0; i < nRow; i++) {
+      Arrays.fill(matrix[i], 0);
+    }
     System.out.println();
   }
 
   public void print(int[][] matrix) {
     for (int i = 0; i < nRow; i++) {
-      for (int j = 0; j < nCol; j++)
+      for (int j = 0; j < nCol; j++) {
         System.out.printf("%5d", matrix[i][j]);
+      }
       System.out.println();
     }
   }

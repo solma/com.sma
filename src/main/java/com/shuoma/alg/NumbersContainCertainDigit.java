@@ -1,73 +1,60 @@
 package com.shuoma.alg;
 
-/** find all positive integers smaller than n that contains digit K (0~9). */
-
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(algs = Arithmetic)
+@Tag(algs = Arithmetic, references = {LeetCode})
 public class NumbersContainCertainDigit {
 
-  public static void main(String[] args) {
-    new NumbersContainCertainDigit().find(212, '7');
-  }
-
-  // only count numbers
-  int count(int n, char k) {
+  // count appearance of digit K in numbers <= n
+  int countAppearances(int n, char k) {
+    if (n <= 0) return 0;
     char[] nry = String.valueOf(n).toCharArray();
     int nl = nry.length;
-    if (nl == 0)
-      return 0;
-    int cnt;
-    if (nl > 1 && nry[nl - 2] == k)
-      cnt = nry[nl - 1] - 1;
-    else
-      cnt = nry[nl - 1] > k ? 1 : 0;
-
-    int base = 1, baseCnt = 1;
-    for (int i = nl - 2; i >= 0; i--) {
-      cnt += (nry[i] - '0') * baseCnt;
-      base *= 10;
-      baseCnt = baseCnt * 9 + base;
+    int cnt = 0;
+    for (int i = 0; i < nl; i++) {
+      int idx = nl - 1 - i;
+      if (idx > 0) {
+        //9->1, 99->20, 999->300, ..., 10^n-1->n*(10^n-1)
+        cnt += (nry[i] - '0') * (idx * Math.pow(10, idx - 1));
+        if (nry[i] >= k) {
+          if (nry[i] == k) {
+            cnt += Integer.valueOf(String.valueOf(nry, i + 1, nl - i - 1)) + 1;
+          } else {
+            cnt += Math.pow(10, idx);
+          }
+        }
+      } else {
+        cnt += nry[i] >= k ? 1 : 0;
+      }
     }
     return cnt;
   }
 
-  int count2s(int N) {
-    int countOf2s = 0, digit = 0;
-    int j = N, seenDigits = 0, position = 0, pow10_pos = 1;
+  // only count number of numbers that contains digit K
+  int countNumbers(int n, char k) {
+    if (n <= 0) return 0;
+    char[] nry = String.valueOf(n).toCharArray();
+    int nl = nry.length;
+    int cnt = nry[nl - 1] >= k ? 1 : 0;
 
-    /* maintaining this value instead of calling pow() is an 6x perf
-     * gain (48s -> 8s) pow10_posMinus1. maintaining this value
-     * instead of calling Numof2s is an 2x perf gain (8s -> 4s).
-     * overall > 10x speedup */
-    while (j > 0) {
-      digit = j % 10;
-      int pow10_posMinus1 = pow10_pos / 10;
-      countOf2s +=
-          digit * position * pow10_posMinus1; //10->1, 100->20, 1000->300..., 10^n->n*(10^n-1)
-
-      /* we do this if digit <, >, or = 2
-       * Digit < 2 implies there are no 2s contributed by this digit.
-       * Digit == 2 implies there are 2 * (numof2s contributed by the previous position) + (numof2s contributed by the presence of this 2) */
-      if (digit == 2) {
-        countOf2s += seenDigits + 1;
+    int base = 10, baseCnt = 1;
+    for (int i = nl - 2; i >= 0; i--) {
+      if (nry[i] >= k) {
+        if (nry[i] > k) cnt += base - baseCnt;
+        else cnt = Integer.valueOf(String.valueOf(nry, i + 1, nl - i - 1)) + 1;
       }
-
-      /* Digit > 2 implies there are digit * (num of 2s by the prev. position) + 10^position */
-      else if (digit > 2) {
-        countOf2s += pow10_pos;
-      }
-      seenDigits += pow10_pos * digit;
-      pow10_pos *= 10;
-      position++;
-      j /= 10;
+      cnt += (nry[i] - '0') * baseCnt;
+      //System.out.println(nry[i] + " " + cnt);
+      baseCnt = baseCnt * 9 + base;
+      base *= 10;
     }
-    return (countOf2s);
+    return cnt;
   }
 
   // list all satisfying numbers

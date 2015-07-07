@@ -30,16 +30,13 @@ public class BasicCalculatorII {
         curVal = curVal * 10 + (s.charAt(i) - '0');
         i++;
       }
-      if (sign == '+') {
+      if (sign == '+' || sign == '-') {
         res += preVal;  // update res
-        preVal = curVal;
-      } else if (sign == '-') {
-        res += preVal;  // update res
-        preVal = -curVal;
+        preVal = curVal * (sign == '+' ? 1 : -1);
       } else if (sign == '*') {
-        preVal = preVal * curVal; // not update res, combine preVal & curVal and keep loop
+        preVal *= curVal; // not update res, combine preVal & curVal and keep loop
       } else if (sign == '/') {
-        preVal = preVal / curVal; // not update res, combine preVal & curVal and keep loop
+        preVal /= curVal; // not update res, combine preVal & curVal and keep loop
       }
       if (i < length) { // getting new sign
         sign = s.charAt(i);

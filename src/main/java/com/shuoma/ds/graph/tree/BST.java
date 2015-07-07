@@ -314,7 +314,7 @@ public class BST {
     }
 
     /** recursive insertion. */
-    protected BSTNode insert(BSTNode cur, String key) {
+    private BSTNode insert(BSTNode cur, String key) {
       if (cur == null) {
         BSTNode leaf = new BSTNode(key);
         leaf.size = 1;
