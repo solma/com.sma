@@ -5,22 +5,10 @@ import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.linkedlist.ListNode;
 
 @Tag(dl = D2, dss = LinkedList, references = LeetCode)
 public class ReverseNodesinKGroup {
-  public class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-      val = x;
-      next = null;
-    }
-
-    public String toString() {
-      return String.valueOf(val);
-    }
-  }
 
   public static void main(String[] args) {
     new ReverseNodesinKGroup().main();

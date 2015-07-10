@@ -5,11 +5,12 @@ import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.linkedlist.ListNode;
 
 @Tag(dl = D2, dss = LinkedList, references = LeetCode)
-public class RemoveDuplicatesfromSortedListII {
+public class RemoveDuplicatesFromSortedListII {
   public static void main(String[] args) {
-    new RemoveDuplicatesfromSortedListII().main();
+    new RemoveDuplicatesFromSortedListII().main();
   }
 
   public void main() {
@@ -17,12 +18,11 @@ public class RemoveDuplicatesfromSortedListII {
     System.out.println(deleteDuplicates(ListNode.buildList(array)));
   }
 
-
   //second pass
   public ListNode deleteDuplicates(ListNode head) {
     ListNode prev = new ListNode(0);
     prev.next = head;
-    head = prev;
+    ListNode pseudoHead = prev;
 
 
     while (prev.next != null) {
@@ -30,42 +30,13 @@ public class RemoveDuplicatesfromSortedListII {
       while (cur.next != null && cur.next.val == cur.val) {
         cur = cur.next;
       }
-      if (cur != prev.next) {
+      if (cur != prev.next) { // if cur is a duplicate element
         prev.next = cur.next;
       } else {
         prev = cur;
       }
     }
-    return head.next;
-
-
-    //in-place
-    //        if(head==null) return null;
-    //        ListNode prevprev=new ListNode(-1), prev=head, cur=head.next;
-    //        prevprev.next=prev;
-    //
-    //        ListNode superHead=prevprev;
-    //        boolean dup=false;
-    //        while(cur!=null){
-    //            if(cur.val==prev.val){
-    //               dup=true;
-    //               prev.next=cur.next; //delete cur
-    //               cur=cur.next;
-    //            }else{
-    //              if(dup){
-    //                  prevprev.next=cur;//delete prev
-    //              }else{
-    //                  prevprev.next=prev;
-    //                  prevprev=prev;
-    //              }
-    //               prev=cur;
-    //                cur=cur.next;
-    //              dup=false;
-    //            }
-    //        }
-    //        if(dup) prevprev.next=null;
-    //
-    //        return superHead.next;
+    return pseudoHead.next;
   }
 
   //first pass

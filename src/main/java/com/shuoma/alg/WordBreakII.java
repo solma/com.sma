@@ -6,11 +6,11 @@ import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
+import com.google.common.collect.ImmutableSet;
+
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,10 +26,10 @@ import java.util.Set;
 @Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = String, references = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
-    Set<String> dict = new HashSet<>();
-    Collections.addAll(dict, "leet", "code", "le", "et", "co", "de");
+    //"leet", "code", "le", "et", "co", "de"
+    Set<String> dict = ImmutableSet.of("b", "a");
+    String inputString = "ab";
 
-    String inputString = "leetcode";
     for (String s : wordBreak(inputString, dict)) {
       System.out.println(s);
     }

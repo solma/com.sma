@@ -21,7 +21,22 @@ import java.util.Set;
 @Tag(algs = {Backtracking, DynamicProgramming})
 public class ChangeCoin {
 
-  Set<Map<Integer, Integer>> changeCntDp(final int n, final int[] denominations) {
+  int changeCntDp(final int n, final int[] denominations) {
+    int m = denominations.length;
+    long[] cnt = new long[n + 1];
+    cnt[0] = 1;
+
+    for (int j = 1; j <= m; j++) {
+      for (int i = 0; i <= n; i++) {
+        if (i >= denominations[j - 1]) {
+          cnt[i] += cnt[i - denominations[j - 1]];
+        }
+      }
+    }
+    return (int) cnt[n];
+  }
+
+  Set<Map<Integer, Integer>> changeWaysDp(final int n, final int[] denominations) {
     int m = denominations.length;
     long[] cnt = new long[n + 1];
     cnt[0] = 1;

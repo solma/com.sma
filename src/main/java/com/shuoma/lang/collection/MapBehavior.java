@@ -10,7 +10,7 @@ public class MapBehavior {
 
   void main() {
     //mapCopy();
-    mapEqual();
+    //mapEqual();
   }
 
   void mapEqual() {

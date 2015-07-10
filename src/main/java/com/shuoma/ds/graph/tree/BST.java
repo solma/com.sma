@@ -28,18 +28,18 @@ public class BST {
     int[] nodes = {5, 22, 3, 1, 7, 20, 6, 10, 25, 13};
     BinarySearchTree bst = new BinarySearchTree(nodes);
 
+    bst.printTreeInorderMorris();
+    System.out.println();
+    if (true) {
+      return;
+    }
+
     bst.printPrettyTree();
     System.out.println();
     bst.printTreeByRows();
     System.out.println();
     bst.printTreeByColumn();
     System.out.println();
-
-    bst.printTreeInorderNonRecursiveWithoutStack();
-    System.out.println();
-    if (true) {
-      return;
-    }
 
     // System.out.println(bst.size()+" , "+bst.maxDepth()+" , "+bst.minValue()+" , "+bst.maxDepthDifference());
     // bst.mirror();
@@ -506,21 +506,21 @@ public class BST {
     public void printTree(TraversalMethod method) {
       switch (method) {
         case INORDER_ITERATIVE_WITH_STACK:
-          printTreeInorderNonRecursive(root);
+          printTreeInorderIterative(root);
           break;
         case INORDER_ITERATIVE_WITHOUT_STACK:
-          printTreeInorderNonRecursiveWithoutStack();
+          printTreeInorderMorris();
           break;
         case INORDER_RECUSRIVE:
           printTreeInorder(root);
         case PREORDER_ITERATIVE_WITH_STACK:
-          printTreePreorderNonRecursive(root);
+          printTreePreorderIterative(root);
           break;
         case PREORDER_RECUSRIVE:
             printTreePreorder(root);
           break;
         case POSTORDER_ITERATIVE_WITH_STACK:
-          printTreePostorderNonRecursive(root);
+          printTreePostorderIterative(root);
           break;
         case POSTORDER_RECUSRIVE:
             printTreePostorder(root);
@@ -590,7 +590,7 @@ public class BST {
       printTreeInorder(cur.right);
     }
 
-    private void printTreeInorderNonRecursive(BSTNode cur) {
+    private void printTreeInorderIterative(BSTNode cur) {
       Stack<BSTNode> stck = new Stack<>();
 
       while (!stck.empty() || cur != null) {
@@ -606,30 +606,38 @@ public class BST {
     }
 
     /**
-     * Be aware that this method change the pointers of tree nodes.
+     * Morris Traversal is an implementation of threaded binary tree.
+     * reference: http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html
      */
-    public void printTreeInorderNonRecursiveWithoutStack() {
-      printTreeInorderNonRecursiveWithoutStack(root.left, root);
+    public void printTreeInorderMorris() {
+      printTreeInorderMorris(root);
     }
 
-    private void printTreeInorderNonRecursiveWithoutStack(BSTNode current, BSTNode parent) {
-      while (current != null) {
-        if (parent != null) {
-          parent.left = current.right;
-          current.right = parent;
-        }
-        if (current.left != null) {
-          parent = current;
-          current = current.left;
+    private void printTreeInorderMorris(BSTNode cur) {
+      BSTNode prev;
+      while (cur != null) {
+        if (cur.left == null) {
+          System.out.println(cur.value);
+          cur = cur.right;
         } else {
-          System.out.println(current.value);
-          current = current.right;
-          parent = null;
+          prev = cur.left;
+          while (prev.right != null && prev.right != cur) {
+            prev = prev.right;
+          }
+
+          if (prev.right == null) {
+            prev.right = cur;
+            cur = cur.left;
+          }else {
+            prev.right = null;
+            System.out.println(cur.value);
+            cur = cur.right;
+          }
         }
       }
     }
 
-    private void printTreePostorderNonRecursive(BSTNode cur) {
+    private void printTreePostorderIterative(BSTNode cur) {
       Stack<BSTNode> stck = new Stack<>();
       if (cur == null)
         return;
@@ -671,7 +679,7 @@ public class BST {
       return;
     }
 
-    private void printTreePreorderNonRecursive(BSTNode cur) {
+    private void printTreePreorderIterative(BSTNode cur) {
       Stack<BSTNode> stck = new Stack<>();
       stck.push(cur);
       while (!stck.empty()) {

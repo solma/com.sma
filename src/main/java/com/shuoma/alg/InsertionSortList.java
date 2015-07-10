@@ -4,18 +4,7 @@ import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
-
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) {
- * val = x;
- * next = null;
- * }
- * }
- */
+import com.shuoma.ds.linkedlist.ListNode;
 
 @Tag(dss = LinkedList, references = LeetCode)
 public class InsertionSortList {

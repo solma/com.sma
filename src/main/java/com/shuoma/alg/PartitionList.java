@@ -1,15 +1,7 @@
 package com.shuoma.alg;
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+
+import com.shuoma.ds.linkedlist.ListNode;
+
 public class PartitionList {
     public static void main(String[] args){
         new PartitionList().main();
@@ -30,16 +22,6 @@ public class PartitionList {
             System.out.println(n.val);
             n=n.next;
         }
-    }
-
-    public class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-          next = null;
-      }
-      public String toString(){ return String.valueOf(val);}
     }
 
     //second pass

@@ -20,19 +20,19 @@ public class ListOperation {
 
   /**
    *
-   * @param li, e.g. 1->2->3->4->5
+   * @param head, e.g. 1->2->3->4->5
    * @return 2->4 and li becomes 1->3->5
    */
-  public static ListNode splitAlternatively(ListNode li) {
-    ListNode cur = li, p2Head = null;
+  public static ListNode splitAlternatively(ListNode head) {
+    ListNode cur = head, l2Head = null;
     while (cur != null) {
       ListNode p2 = cur.next;
-      if (p2Head == null) p2Head = p2;
+      if (l2Head == null) l2Head = p2;
       if (p2 != null) cur.next = p2.next;
       cur = cur.next;
       if (cur != null) p2.next = cur.next;
     }
-    return p2Head;
+    return l2Head;
   }
 
   /**
@@ -61,7 +61,6 @@ public class ListOperation {
   }
 
   /**
-   *
    * @param l1
    * @param l2
    * @return l1 (adding l2 list to l1) e.g. l1: 5->3, l2: 2->4->1, return l1: 5->2->3->4->1

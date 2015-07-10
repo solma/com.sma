@@ -1,7 +1,6 @@
 package com.shuoma.alg;
-/**
- * Definition for singly-linked list.
-*/
+
+import com.shuoma.ds.linkedlist.ListNode;
 
 public class AddTwoNumbers {
     public static void main(String [] args){

@@ -14,9 +14,9 @@ public class NaturalNumberDecompositionTest extends TestCase {
     Set[] res = new Set[2];
     res[0] = ins.bottomUpRecursionWithMemory(n);
     res[1] = ins.topDownRecursion(n);
-//    for (Set s : res) {
-//      System.out.println(s);
-//    }
+    for (Set s : res) {
+      System.out.println(s);
+    }
     assertEquals(res[0], res[1]);
   }
 }

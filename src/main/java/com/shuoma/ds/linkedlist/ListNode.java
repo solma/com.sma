@@ -1,5 +1,10 @@
 package com.shuoma.ds.linkedlist;
 
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+@Tag(references = LeetCode)
 public class ListNode {
   public int val;
   public ListNode next;

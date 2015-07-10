@@ -10,26 +10,25 @@ import java.util.ArrayList;
 @Tag(dss = BinaryTree, references = LeetCode)
 public class PopulatingNextRightPointersinEachNode {
   //constant space
-  public void connect(TreeLinkNode root) {
-    while (root != null) {
-      TreeLinkNode nextLev = null;
-      TreeLinkNode prev = null;
-      for (; root != null; root = root.next) {
+  public void connect(TreeLinkNode cur) {
+    while (cur != null) {
+      TreeLinkNode nextLev = null, prev = null;
+      for (; cur != null; cur = cur.next) {
         if (nextLev == null) {
-          nextLev = root.left != null ? root.left : root.right;
+          nextLev = cur.left != null ? cur.left : cur.right;
         }
-        if (root.left != null) {
+        if (cur.left != null) {
           if (prev != null)
-            prev.next = root.left;
-          prev = root.left;
+            prev.next = cur.left;
+          prev = cur.left;
         }
-        if (root.right != null) {
+        if (cur.right != null) {
           if (prev != null)
-            prev.next = root.right;
-          prev = root.right;
+            prev.next = cur.right;
+          prev = cur.right;
         }
       }
-      root = nextLev;
+      cur = nextLev;
     }
   }
 

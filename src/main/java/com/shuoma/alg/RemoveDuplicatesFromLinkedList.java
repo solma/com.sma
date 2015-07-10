@@ -4,38 +4,38 @@ import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
 import static com.shuoma.annotation.Tag.Reference.CrackingTheCodeInterview;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.linkedlist.ListNode;
 
 // delete duplicates in the linked list without extra space
 @Tag(dss = LinkedList, references = CrackingTheCodeInterview)
 public class RemoveDuplicatesFromLinkedList {
   public static void main(String[] args) {
-    com.shuoma.ds.linkedlist.ListNode
-        n = com.shuoma.ds.linkedlist.ListNode.buildList(new int[] {2, 0, 2, 1, 1, 1});
+    ListNode n = ListNode.buildList(new int[] {2, 0, 2, 1, 1, 1});
     removeDuplicates(n);
     printList(n);
   }
 
-  static void printList(com.shuoma.ds.linkedlist.ListNode head) {
+  static void printList(ListNode head) {
     while (head != null) {
       System.out.println(head.val);
       head = head.next;
     }
   }
 
-  static void removeDuplicates(com.shuoma.ds.linkedlist.ListNode head) {
-    com.shuoma.ds.linkedlist.ListNode curHead = head;
-    while (curHead != null) {
-      com.shuoma.ds.linkedlist.ListNode prev = curHead, cur = curHead.next;
-      while (cur != null) {
-        if (curHead.val == cur.val) {
-          prev.next = cur.next; // delete duplicate
+  static void removeDuplicates(ListNode head) {
+    ListNode cur = head;
+    while (cur != null) {
+      ListNode prev = cur, comp = cur.next;
+      while (comp != null) {
+        if (cur.val == comp.val) {
+          prev.next = comp.next; // delete duplicate
         }
         else {
-          prev = cur;
+          prev = comp;
         }
-        cur = cur.next;// advance cur
+        comp = comp.next;// advance cur
       }
-      curHead = curHead.next;
+      cur = cur.next;
     }
   }
 }

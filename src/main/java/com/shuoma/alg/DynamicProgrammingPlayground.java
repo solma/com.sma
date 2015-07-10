@@ -14,38 +14,46 @@ public class DynamicProgrammingPlayground {
     new DynamicProgrammingPlayground().main();
   }
 
-  int nRow = 6, nCol = 8;
+  int nRow = 3, nCol = 4;
+
+  int offset = 2;
 
   public void main() {
     int[][] matrix = new int[nRow][nCol];
-    dp1(matrix);
+    colMajor(matrix);
     print(matrix);
     reset(matrix);
 
-    dp1With1DArray(matrix);
+    rowMajor1D(matrix);
     print(matrix);
     Deque<Integer> deque = new LinkedList<>();
   }
 
   // matrix[i][j] = matrix[i-1][j-1] + matrix[i-1][j]
-  public void dp1(int[][] matrix) {
+  public void colMajor(int[][] matrix) {
     for (int j = 0; j < nCol; j++)
       matrix[0][j] = j;
     // for (int i = 0; i < nRow; i++) matrix[i][0] = i;
     for (int j = 1; j < nCol; j++)
-      for (int i = 1; i < nRow; i++)
-        matrix[i][j] = matrix[i - 1][j - 1] + matrix[i - 1][j];
+      for (int i = 1; i < nRow; i++) {
+        matrix[i][j] = matrix[i - 1][j];
+        if (j >= offset) {
+          matrix[i][j] += matrix[i - 1][j - offset];
+        }
+      }
   }
 
   // matrix[i][j] = matrix[i-1][j-1] + matrix[i-1][j]
-  public void dp1With1DArray(int[][] matrix) {
+  public void rowMajor1D(int[][] matrix) {
     for (int j = 0; j < nCol; j++) {
       matrix[0][j] = j;
     }
     // for (int i = 0; i < nRow; i++) matrix[i][0] = i;
     for (int i = 1; i < nRow; i++)
       for (int j = nCol - 1; j > 0; j--) {
-        matrix[0][j] += matrix[0][j - 1];
+        if (j >= offset) {
+          matrix[0][j] += matrix[0][j - offset];
+        }
       }
   }
 

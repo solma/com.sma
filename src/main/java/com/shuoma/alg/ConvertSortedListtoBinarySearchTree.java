@@ -5,6 +5,7 @@ import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.linkedlist.ListNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +27,7 @@ public class ConvertSortedListtoBinarySearchTree {
     if (head == null)
       return null;
 
-    ArrayList<Integer> array = new ArrayList<Integer>();
+    ArrayList<Integer> array = new ArrayList<>();
     ListNode cur = head;
     while (cur != null) {
       array.add(cur.val);
