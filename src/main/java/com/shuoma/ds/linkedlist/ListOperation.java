@@ -7,12 +7,11 @@ public class ListOperation {
     ListNode l2 = ListNode.buildList(new int[] {4, 5});
 
     // test split
-    // System.out.println(splitAlternatively(l1));
-    // System.out.println(l1);
+     System.out.println(splitAlternatively(l1));
+     System.out.println(l1);
 
     // test join
-    // joinAlternatively(l1, l2);
-    // System.out.println(l1);
+    System.out.println(joinAlternatively(l2, l1));
 
     // test swap
     System.out.println(swapAlternatively(l1));

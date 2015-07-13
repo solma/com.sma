@@ -45,7 +45,7 @@ public class BST {
     // bst.mirror();
 
     // ancestor test
-    BSTNodeDisWrapper ancestor = bst.leastCommonAncestor(new BSTNode("3"), new BSTNode("25"));
+    BSTNodeDisWrapper ancestor = bst.lowestCommonAncestor(new BSTNode("3"), new BSTNode("25"));
     //System.out.println("dis btw: " + ancestor.dis);
 
 
@@ -366,21 +366,21 @@ public class BST {
       return range;
     }
 
-    public BSTNodeDisWrapper leastCommonAncestor(BSTNode n1, BSTNode n2) {
+    public BSTNodeDisWrapper lowestCommonAncestor(BSTNode n1, BSTNode n2) {
       if (n1 == null)
         return new BSTNodeDisWrapper(n2, 0);
       if (n2 == null)
         return new BSTNodeDisWrapper(n1, 0);
       // System.out.println(n1+" "+n2);
-      return leastCommonAncestor(root, n1, n2);
+      return lowestCommonAncestor(root, n1, n2);
     }
 
-    private BSTNodeDisWrapper leastCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
+    private BSTNodeDisWrapper lowestCommonAncestor(BSTNode cur, BSTNode n1, BSTNode n2) {
       if (cur == null) return null;
       if (cur.value == n1.value || cur.value == n2.value) return new BSTNodeDisWrapper(cur, 0);
 
-      BSTNodeDisWrapper l = leastCommonAncestor(cur.left, n1, n2);
-      BSTNodeDisWrapper r = leastCommonAncestor(cur.right, n1, n2);
+      BSTNodeDisWrapper l = lowestCommonAncestor(cur.left, n1, n2);
+      BSTNodeDisWrapper r = lowestCommonAncestor(cur.right, n1, n2);
       if (l != null && r != null)
         return new BSTNodeDisWrapper(cur, l.dis + r.dis + 2);
 
