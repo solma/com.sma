@@ -8,9 +8,9 @@ import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
 @Tag(dl = D2, dss = LinkedList, references = LeetCode)
-public class RemoveDuplicatesFromSortedListII {
+public class RemoveDuplicatesfromSortedListII {
   public static void main(String[] args) {
-    new RemoveDuplicatesFromSortedListII().main();
+    new RemoveDuplicatesfromSortedListII().main();
   }
 
   public void main() {
