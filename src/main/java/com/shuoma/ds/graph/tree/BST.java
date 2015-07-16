@@ -30,6 +30,7 @@ public class BST {
 
     bst.printTreeInorderMorris();
     System.out.println();
+    //System.out.println(bst.findAll("5"));
     if (true) {
       return;
     }
@@ -181,12 +182,12 @@ public class BST {
         cur.id = successor.id;
 
         // remove successor from right tree
-        if (parent.left == successor)
-          parent.left = successor.right;
-        else
-          parent.right = successor.right;
+        cur.right = delete(cur.right, successor.id);
         // alternative approach :
-        //cur.right = delete(cur.right, successor.id);
+        //        if (parent.left == successor)
+        //          parent.left = successor.right;
+        //        else
+        //          parent.right = successor.right;
       } else {
         if (compare > 0)
           cur.right = delete(cur.right, id);
@@ -213,6 +214,27 @@ public class BST {
         return cur;
       else
         return compare > 0 ? find(cur.right, id) : find(cur.left, id);
+    }
+
+    /** According to insert, when equal insert to the left. */
+    public List<BSTNode> findAll(String key) {
+      return findAll(root, key);
+    }
+
+    private List<BSTNode> findAll(BSTNode cur, String id) {
+      List<BSTNode> ret = new LinkedList<>();
+      if (cur == null) {
+        return ret;
+      }
+      int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
+      if (compare > 0) {
+        return findAll(cur.right, id);
+      }
+      ret.addAll(findAll(cur.left, id));
+      if (compare == 0) {
+        ret.add(cur);
+      }
+      return ret;
     }
 
     private BSTNode[] flattenRecursivePreorder(BSTNode cur) {
@@ -620,6 +642,7 @@ public class BST {
           System.out.println(cur.value);
           cur = cur.right;
         } else {
+          // find predecessor
           prev = cur.left;
           while (prev.right != null && prev.right != cur) {
             prev = prev.right;
@@ -628,7 +651,7 @@ public class BST {
           if (prev.right == null) {
             prev.right = cur;
             cur = cur.left;
-          }else {
+          } else {
             prev.right = null;
             System.out.println(cur.value);
             cur = cur.right;

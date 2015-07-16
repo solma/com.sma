@@ -41,6 +41,7 @@ public @interface Tag {
     Array,
     BinarySearchTree,
     BinaryTree,
+    Calculator,
     DirectedGraph,
     HashTable,
     Interval,

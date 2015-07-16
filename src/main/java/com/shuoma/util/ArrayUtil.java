@@ -254,11 +254,12 @@ public class ArrayUtil {
     assert  (sRow >= 0 && sRow <= board.length && eRow >= 0 && eRow <= board.length && sCol >= 0
         && sCol <= board[0].length && eCol >= 0 && eCol <= board[0].length);
     for (int i = sRow; i <= eRow; i++) {
-      for (int j = sCol; j <= eCol; j++) {
+      for (int j = sCol; j <= Math.min(eCol, board[i].length - 1); j++) {
         System.out.print(String.format("%" + printWidth + "d", board[i][j]));
       }
       System.out.println();
     }
+    System.out.println();
   }
 
   public static int[] negateSign(int[] a) {

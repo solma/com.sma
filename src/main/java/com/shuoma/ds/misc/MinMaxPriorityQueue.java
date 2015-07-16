@@ -17,7 +17,7 @@ public class MinMaxPriorityQueue {
     max.add(e);
   }
 
-  // poll using Min
+  /** poll using Min */
   public Element poll() {
     Element e = min.poll();
     max.remove(e);
@@ -25,11 +25,11 @@ public class MinMaxPriorityQueue {
   }
 
   public static class Element implements Comparable<Element> {
-    public int key;
+    public int idxOfOriginList;
     public int value;
 
-    public Element(int key, int value) {
-      this.key = key;
+    public Element(int idxOfOriginList, int value) {
+      this.idxOfOriginList = idxOfOriginList;
       this.value = value;
     }
 

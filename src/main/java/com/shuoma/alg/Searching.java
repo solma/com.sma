@@ -110,7 +110,7 @@ public class Searching {
     // return the first appearance
     int low = 0, high = a.length - 1, mid;
     while (low <= high) {
-      mid = low + ((high - low) >> 1);
+      mid = low + ((high - low) >>> 1);
       if (a[mid] == key) {
         while (mid >= 0 && a[mid] == key) mid--;
         return ++mid;

@@ -50,7 +50,7 @@ public class RandomUtil {
   }
 
   public static int[] genRandomArrayWithMinSize(int minSize ,int maxValue) {
-    int length = r.nextInt(10) + minSize; // at least two elements
+    int length = r.nextInt(7) + minSize; // at least minSize elements
     return genRandomArray(length, maxValue, false, true);
   }
 

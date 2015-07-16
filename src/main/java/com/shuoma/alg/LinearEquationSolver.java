@@ -1,5 +1,6 @@
 package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.DataStructure.Calculator;
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.Stack;
 
 /** Linear equation solver. */
-@Tag(dl = D2, dss = {Stack, String})
+@Tag(dl = D2, dss = {Calculator, Stack, String})
 public class LinearEquationSolver {
 
   private static final char CONSTANT_CHAR = '.';
@@ -23,7 +24,7 @@ public class LinearEquationSolver {
     ins.solve(ins.provideSubstitution());
   }
 
-  private Map<Character, Double> coefficients;
+  private Map<Character, Double> coefficients = new HashMap<>();
   private String expression;
 
   public LinearEquationSolver(String expression) {
@@ -68,6 +69,7 @@ public class LinearEquationSolver {
         firstRightTerm = true;
         continue;
       }
+      // flip sign for right side terms
       if (isRightSide) {
         if (firstRightTerm) {
           firstRightTerm = false;
@@ -75,6 +77,7 @@ public class LinearEquationSolver {
             terms.add("-");
           }
         }
+        // flip sign
         if (term.equals("+") || term.equals("-")) {
           term = term.equals("+") ? "-" : "+";
         }
@@ -85,10 +88,10 @@ public class LinearEquationSolver {
     return terms;
   }
 
-  void parseTerm(Map<Character, Double> coefficients, String term, boolean isAddition) {
+  void reduceTerm(Map<Character, Double> coefficients, String term, boolean isAddition) {
     double coefficient;
     int n = term.length();
-    char c = term.charAt(n - 1);
+    char c = term.charAt(n - 1); // last char is the variable name
 
     int sign = isAddition ? 1 : -1;
     if (c >= 'a' && c <= 'z') {
@@ -108,45 +111,26 @@ public class LinearEquationSolver {
     coefficients.put(c, coefficients.get(c) + sign * coefficient);
   }
 
-  void reduce(Map<Character, Double> outParenthesisStack,
-      Map<Character, Double> inParenthesisStack, boolean isAddition) {
-    int sign = isAddition ? 1 : -1;
-    for (Character c : outParenthesisStack.keySet()) {
-      double base = 0;
-      if (inParenthesisStack.containsKey(c)) {
-        base += inParenthesisStack.get(c);
-      }
-      inParenthesisStack.put(c, sign * base + outParenthesisStack.get(c));
-    }
-  }
-
   void simplify(List<String> terms) {
     Stack<Boolean> operators = new Stack<>();
-    Stack<Map<Character, Double>> coefficientsStack = new Stack<>();
-    Map<Character, Double> tempCoefficients = new HashMap<>();
-    boolean isAddition = true; // default if no sign then first term is positive
+    operators.push(true);
+    operators.push(true);
     for (String term : terms) {
       switch (term) {
         case "+" :
-          isAddition = true;
+        case "(" :
+          operators.push(operators.peek());
           break;
         case "-" :
-          isAddition = false;
-          break;
-        case "(" :
-          coefficientsStack.push(tempCoefficients);
-          operators.push(isAddition);
-          tempCoefficients = new HashMap<>();
-          isAddition = true; // reinitialize
+          operators.push(!operators.peek());
           break;
         case ")" :
-          reduce(coefficientsStack.pop(), tempCoefficients, operators.pop());
+          operators.pop();
           break;
         default:
-          parseTerm(tempCoefficients, term, isAddition);
+          reduceTerm(coefficients, term, operators.pop());
           break;
       }
     }
-    coefficients = tempCoefficients;
   }
 }
