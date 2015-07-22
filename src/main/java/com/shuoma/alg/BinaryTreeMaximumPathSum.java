@@ -7,16 +7,6 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-/**
- * Definition for binary tree
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
- */
-
 @Tag(algs = Recursion, dl = D2, dss = BinaryTree, references = LeetCode)
 public class BinaryTreeMaximumPathSum {
 

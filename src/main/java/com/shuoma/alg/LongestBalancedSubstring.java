@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Trick.AccumulativeSum;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 
 import com.shuoma.annotation.Tag;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Given a string of 0's and 1's find the longest substring that contains equal number 0's and 1's
  */
-@Tag(dss = {Array, HashTable}, tricks = AccumulativeSum)
+@Tag(dss = {Array, Hash}, tricks = AccumulativeSum)
 public class LongestBalancedSubstring {
   public static void main(String[] args) {
     System.out.println(longestBalancedSubstring(args[0]));

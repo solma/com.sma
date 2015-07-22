@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 public class HouseRobberTest {
 
   @Test public void test() {
@@ -25,7 +23,7 @@ public class HouseRobberTest {
 
     for (int i = 0; i < houseSets.length; i++) {
       int[] properties = houseSets[i];
-      System.out.println("\n" + Arrays.toString(properties));
+      //System.out.println("\n" + Arrays.toString(properties));
       //assertEquals(results[i][0], ins.robCircleSpaceEfficientDp(properties));
       //assertEquals(ins.robCircleSpaceEfficientDp(properties), ins.robCircleStandardDp(properties));
       //assertEquals(ins.robCircle(properties), ins.robCircleStandardDp(properties));

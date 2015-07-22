@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 // http://blog.csdn.net/liangbopirates/article/details/9421399
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 
 import com.shuoma.annotation.Tag;
@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray)
+@Tag(algs = DynamicProgramming, dl = D3, dss = MonotonicSequence)
 public class LongestIncreasingSubsequence {
   public static void main(String[] args) {
     new LongestIncreasingSubsequence().main();

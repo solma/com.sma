@@ -34,9 +34,9 @@ public class SlidingWindowStatsTest extends TestCase {
     for (int i = 0; i < 1; i++) {
       int[] ary = RandomUtil.genRandomArray(10, 10, true, false);
       SlidingWindowStats ins = new SlidingWindowStats(3, ary);
-      int[] res = ins.max();
-      System.out.println("array = " + Arrays.toString(ary));
-      System.out.println("max = " + Arrays.toString(res));
+      int[] res = ins.maxSlidingWindow(ins.stream, ins.K);
+      //System.out.println("array = " + Arrays.toString(ary));
+      //System.out.println("max = " + Arrays.toString(res));
       assertTrue(Arrays.equals(res, maxDummy(ins)));
     }
   }

@@ -4,6 +4,7 @@ import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Interval;
 import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 import static com.shuoma.ds.graph.tree.BST.BinarySearchTree;
 
 import com.shuoma.annotation.Tag;
@@ -14,9 +15,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-/** Give a set of intervals, find the one with most overlapped intervals. */
-@Tag(algs = BinarySearch, dl = D3, dss = {Interval, PriorityQueue})
+/**
+ * Give a set of intervals, find the one with most overlapped intervals.
+ * O(nlogn) time
+ */
+@Tag(algs = BinarySearch, dl = D3, dss = {Interval, PriorityQueue}, references = Interview)
 public class MostOverlappedInterval {
+
+  /*
+  use sweep line, sort the interval by start, then scan with a PriorityQueue (sort by end)
+  hold the unfinished interval, when scan to a interval, pop intervals in queue
+  which end < interval.start, the overlapped interval is heap.size() after pop().
+  This can't handle intervals fully contains others, so need keep a sorted list of end of poped
+  intervals. when pop a new interval, find how many interval end > current.start,
+  and plus the heap.size(). Both heap and sorted list(binary search tree) in O(lgN),
+  so entire O(NlgN).
+   */
 
   int[] mostOverlapped(List<Interval> intervals) {
     Collections.sort(intervals, new Comparator<Interval>() {

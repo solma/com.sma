@@ -106,13 +106,14 @@ public class Searching {
     return high;
   }
 
+  // this is not O(nlogn) worst case is O(n)
   public static int binarySearchFirstAppear1(int[] a, int key) {
     // return the first appearance
     int low = 0, high = a.length - 1, mid;
     while (low <= high) {
       mid = low + ((high - low) >>> 1);
       if (a[mid] == key) {
-        while (mid >= 0 && a[mid] == key) mid--;
+        while (mid >= 0 && a[mid] == key) mid--; // linear backup
         return ++mid;
       }
       else {

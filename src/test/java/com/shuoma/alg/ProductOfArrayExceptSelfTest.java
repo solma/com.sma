@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class ArrayTransformationWithoutDivisionTest extends TestCase {
+public class ProductOfArrayExceptSelfTest extends TestCase {
 
   public void testTransform() throws Exception {
-    ArrayTransformationWithoutDivision ins = new ArrayTransformationWithoutDivision();
+    ProductOfArrayExceptSelf ins = new ProductOfArrayExceptSelf();
     int[] A = new int[] {1, 5, 2, 4, 3, 6};
     int[] B = transformDummy(A);
     int[] C = ins.transform(A);

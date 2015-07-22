@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class MaxDistanceTest {
+public class MaxDistanceITest {
 
   @Test
   public void testMaxDistance() throws Exception {
-    MaxDistance ins = new MaxDistance();
+    MaxDistanceI ins = new MaxDistanceI();
     for (int i = 0; i < 100; i++) {
       int[] nums = RandomUtil.genRandomArray(6, 10, true, false);
       //int[] nums = {8, 5, 6, 1, 11, 9};
@@ -26,7 +26,7 @@ public class MaxDistanceTest {
     }
   }
 
-  public int[] dummyMaxDistance(int[] nums){
+  int[] dummyMaxDistance(int[] nums){
     int[] ret = new int[3];
     ret[0] = Integer.MIN_VALUE;
     for(int i = nums.length - 1; i >= 0; i--){

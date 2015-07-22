@@ -2,14 +2,15 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.DataStructure.Queue;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 /** Given a stream, compute the stats, e.g. average, min of a sliding window. */
-@Tag(algs = SlidingWindow, dss = Queue)
+@Tag(algs = SlidingWindow, dss = Queue, references = LeetCode)
 public class SlidingWindowStats {
 
   /** Window size. */
@@ -45,20 +46,24 @@ public class SlidingWindowStats {
   }
 
   /** Get the max of the sliding window. */
-  int[] max() {
-    int[] max = new int[stream.length - K + 1];
-    Deque<Integer> queue = new ArrayDeque<>();
+  int[] maxSlidingWindow(int[] nums, int k) {
+    if (nums == null || k == 0) return new int[0];
+    int n = nums.length;
+    if (n < k) return new int[0];
 
-    for (int i = 0; i < stream.length; i++) {
-      if (i >= K) {
-        max[i - K] = stream[queue.peekFirst()];
-        while (!queue.isEmpty() && queue.peekFirst() <= i - K) {queue.pollFirst();}
-      }
-      while (!queue.isEmpty() && stream[i] >= stream[queue.peekLast()]) {queue.pollLast();}
+    int[] ret = new int[n - k + 1];
+    // decreasing queue
+    Deque<Integer> queue = new LinkedList<>();
+    for (int i = 0; i < n; i++) {
+      // remove expired elements
+      while(!queue.isEmpty() && queue.peek() < i - k + 1) queue.poll();
+      // remove all smaller numbers and append the current element
+      while (!queue.isEmpty() && nums[queue.getLast()] < nums[i]) queue.removeLast();
       queue.add(i);
-      //System.out.println(stream[i] + " : " +queue);
+      if (i >= k - 1) {
+        ret[i - k + 1] = nums[queue.peek()];
+      }
     }
-    max[stream.length - K] = stream[queue.peekFirst()];
-    return max;
+    return ret;
   }
 }

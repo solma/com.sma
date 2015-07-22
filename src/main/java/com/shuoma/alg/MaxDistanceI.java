@@ -12,7 +12,7 @@ import com.shuoma.annotation.Tag;
  */
 
 @Tag(algs = DynamicProgramming, dss = Subarray, references = Interview)
-public class MaxDistance {
+public class MaxDistanceI {
 
   int[] maxDistance(int[] nums){
     if (nums == null || nums.length < 1) return null;

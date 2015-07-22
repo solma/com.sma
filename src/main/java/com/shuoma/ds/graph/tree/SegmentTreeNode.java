@@ -17,7 +17,7 @@ public class SegmentTreeNode extends Interval {
       return cur;
     }
 
-    int mid = (start + end) / 2;
+    int mid = (start + end) >>> 1;
     cur.left = build(start, mid);
     cur.right = build(mid + 1, end);
     return cur;

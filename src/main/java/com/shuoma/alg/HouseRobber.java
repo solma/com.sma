@@ -53,8 +53,8 @@ public class HouseRobber {
       return 0;
     }
     int ret = 0;
-    int[][] decisionR1 = new int[n][3];
-    int[][] decisionR2 = new int[n][3];
+    int[][] decisionR1 = new int[n][3]; // value
+    int[][] decisionR2 = new int[n][3]; // flag for including the first house
     for (int i = start; i <= end; i++) {
       if (i == end && i > 0 && decisionR2[i - 1][2] == 1) {
         decisionR1[i][1] = rob1(num, 1, i - 2) + num[i];

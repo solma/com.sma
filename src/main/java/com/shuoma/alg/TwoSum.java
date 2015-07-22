@@ -1,6 +1,14 @@
 package com.shuoma.alg;
+import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
+import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.*;
 
+@Tag(dss = Array, references = LeetCode, tricks = {FromTwoEndsToMiddle, TwoOrMorePointers})
 public class TwoSum {
   public static void main(String[] args) {
     new TwoSum().twoSum(new int[] {5, 75, 25}, 100);
@@ -25,7 +33,7 @@ public class TwoSum {
       else {
         if (nums.get(l).val + nums.get(r).val < target)
           l++;
-        else {
+        else { // equal case
           ret[0] = nums.get(l).idx;
           ret[1] = nums.get(r).idx;
           if (ret[0] > ret[1]) {

@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(algs = Arithmetic, dl = D2, dss = HashTable, references = LeetCode)
+@Tag(algs = Arithmetic, dl = D2, dss = Hash, references = LeetCode)
 public class FractionToRecurringDecimal {
 
   public String fractionToDecimal(int numerator, int denominator) {

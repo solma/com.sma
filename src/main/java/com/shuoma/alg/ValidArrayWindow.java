@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 
 import com.shuoma.annotation.Tag;
 
@@ -12,7 +12,7 @@ import java.util.Map;
  *  Given an array, check if two elements in array satisfy that
  *  Math.abs(a[i] - a[j]) <= L and Math.abs(i - j) <= K
  */
-@Tag(dss = {Array, HashTable})
+@Tag(dss = {Array, Hash})
 public class ValidArrayWindow {
 
   /** This only check if such window exists; cannot locate the exact window. */

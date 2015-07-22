@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
@@ -10,7 +10,7 @@ import com.shuoma.util.RandomUtil;
 /**
  * Given an array find index triplet <i, j, k> such that i < j < k and a[i] <= a[j] <= a[k]
  */
-@Tag(algs = DynamicProgramming, dss = Array, references = Interview)
+@Tag(algs = DynamicProgramming, dss = MonotonicSequence, references = Interview)
 public class IncreasingTriplet {
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++) {

@@ -18,7 +18,7 @@ public class SegmentTreeQuery {
       return Integer.MIN_VALUE;
     }
 
-    // equal
+    // contained
     if (root.start == start && root.end == end) {
       return (int) root.value;
     }

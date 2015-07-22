@@ -3,10 +3,10 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
-
+import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = BinarySearch, dss = Array, references = LeetCode)
+@Tag(algs = BinarySearch, dss = Array, references = LeetCode, tricks = TwoOrMorePointers)
 public class Search2DMatrix {
   //second pass
   public boolean searchMatrix(int[][] matrix, int target) {

@@ -73,7 +73,7 @@ public class ListOperation {
       p1.next = p2;
       p1 = p1Next;
       ListNode p2Next = p2.next;
-      if (p1 != null) p2.next = p1;
+      if (p1 != null) p2.next = p1; //tricky line, when l1 reaches the end stop link l2 to l1
       p2 = p2Next;
     }
     return l1;

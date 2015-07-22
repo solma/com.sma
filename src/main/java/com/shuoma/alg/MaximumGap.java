@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dl = D2, dss = HashTable, references = LeetCode)
+@Tag(dl = D2, dss = Hash, references = LeetCode)
 public class MaximumGap {
 
   int maximumGap(int[] num) {

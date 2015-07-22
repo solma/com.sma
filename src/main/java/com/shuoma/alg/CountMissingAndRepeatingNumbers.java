@@ -6,13 +6,13 @@ package com.shuoma.alg;
  */
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dss = {Array, HashTable})
+@Tag(dss = {Array, Hash})
 public class CountMissingAndRepeatingNumbers {
   public static void main(String[] args) {
     new CountMissingAndRepeatingNumbers().stat(new int[] {1, 3, 3, 2});

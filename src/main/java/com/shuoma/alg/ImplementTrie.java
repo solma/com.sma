@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.DataStructure.Trie;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(dss = {HashTable, Trie}, references = LeetCode)
+@Tag(dss = {Hash, Trie}, references = LeetCode)
 public class ImplementTrie {
 
   class TrieNode {

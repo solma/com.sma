@@ -1,14 +1,17 @@
 package com.shuoma.alg;
 
-// given a number n remove1 k digits such that the resulting number is minimized
-// reference: wechat
-
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
+import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
+import static com.shuoma.annotation.Tag.Reference.Interview;
+import static com.shuoma.annotation.Tag.Reference.WeChat;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = {Arithmetic, Greedy})
+/**
+ * Given a number n remove1 k digits such that the resulting number is minimized
+ */
+@Tag(algs = {Arithmetic, Greedy}, dss = {MonotonicSequence}, references = {Interview, WeChat})
 public class RemoveToProduceSmallestNumber {
 
   int remove(int n, int k) {

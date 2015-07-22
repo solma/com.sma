@@ -38,8 +38,8 @@ public class MinWindowContainsElementFromEachList {
     boolean oobArray = false;
 
     while (cnt < res.length) {
-      Element max = pq.max.peek();
-      Element min = pq.poll();
+      Element max = pq.peekMax();
+      Element min = pq.pollMin();
       System.out.println(cnt + " : " + max + " " + min);
       if (!oobArray && max.value - min.value < minWindow[1] - minWindow[0]) {
         minWindow[0] = min.value;

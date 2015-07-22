@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Reference.WeChat;
 import static com.shuoma.util.CollectionsUtil.increaseMapCounter;
@@ -17,7 +17,7 @@ import java.util.Map;
 // find all numbers whose appearance takes at least 1/m of the population
 // reference: wechat
 
-@Tag(dss = {Array, HashTable}, references = {LeetCode, WeChat})
+@Tag(dss = {Array, Hash}, references = {LeetCode, WeChat})
 public class ModeNumber {
   public static void main(String[] args) {
     System.out.println(new ModeNumber().modeNumber(new int[] {1, 3, 2, 2, 3, 2, 3, 1}, 3));

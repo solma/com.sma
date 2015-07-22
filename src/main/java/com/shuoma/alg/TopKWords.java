@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.ds.graph.tree.TrieNode.buildTree;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-@Tag(dss = {HashTable, String, Tag.DataStructure.PriorityQueue})
+@Tag(dss = {Hash, String, Tag.DataStructure.PriorityQueue})
 public class TopKWords {
 
   public static void main(String[] args) {

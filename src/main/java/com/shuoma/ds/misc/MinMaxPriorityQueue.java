@@ -17,11 +17,14 @@ public class MinMaxPriorityQueue {
     max.add(e);
   }
 
-  /** poll using Min */
-  public Element poll() {
+  public Element pollMin() {
     Element e = min.poll();
     max.remove(e);
     return e;
+  }
+
+  public Element peekMax() {
+    return max.peek();
   }
 
   public static class Element implements Comparable<Element> {

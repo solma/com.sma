@@ -10,17 +10,14 @@ import static com.shuoma.annotation.Tag.Reference.LintCode;
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.graph.tree.SegmentTreeNode;
 import com.shuoma.ds.misc.Interval;
-import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 @Tag(algs = DynamicProgramming, dl = D3, dss = {Array, SegmentTree}, references = {JulyEdu, LintCode})
 public class RangeMinimumQuery {
 
-  public enum Solution {
+  public static enum Solution {
     BASIC_DP("O(n^2),   O(1)"), SPACE_EFFICIENT_DP("O(nlogn), O(1)"), TREE_BASED("O(n),  O(logn)");
     private String name;
 
@@ -33,35 +30,11 @@ public class RangeMinimumQuery {
     }
   }
 
-  public static void main(String[] args) {
-    new RangeMinimumQuery().main();
-  }
-
-  boolean DEBUG = false;
-
-  public void main() {
-    int[] rdmArray = RandomUtil.genRandomArrayWithMinSize(10);
-    Random rand = new Random();
-    int noOfQueries = rand.nextInt(10) + 10;
-    Interval[] queries = new Interval[noOfQueries];
-
-
-    for (int i = 0; i < noOfQueries; i++) {
-      int start = rand.nextInt(rdmArray.length);
-      queries[i] = new Interval(start, start + rand.nextInt(rdmArray.length - start));
-    }
-
-
-    System.out.println("Arrays=" + Arrays.toString(rdmArray));
-    System.out.println("Ranges=" + Arrays.toString(queries));
-    for (Solution alg : Solution.values()) {
-      System.out.println(alg + " : " + Arrays.toString(getMinimum(queries, rdmArray, alg)));
-    }
-  }
+  public static boolean DEBUG = false;
 
   public int[] getMinimum(Interval[] intervals, int[] rdmArray, Solution alg) {
     int[][] mins;
-    int[] ans;
+    int[][] ans = new int[3][];
 
     int n = rdmArray.length;
     switch (alg) {
@@ -75,12 +48,12 @@ public class RangeMinimumQuery {
           }
         }
 
-        ans = new int[intervals.length];
-        for (int i = 0; i < ans.length; i++) {
+        ans[0] = new int[intervals.length];
+        for (int i = 0; i < intervals.length; i++) {
           Interval itvl = intervals[i];
-          ans[i] = mins[itvl.start][itvl.end];
+          ans[0][i] = mins[itvl.start][itvl.end];
         }
-        return ans;
+        return ans[0];
 
       case SPACE_EFFICIENT_DP:
         // O(nlogn) space and time to preprocess; O(1) to answer a single query
@@ -97,15 +70,15 @@ public class RangeMinimumQuery {
           }
         }
 
-        ans = new int[intervals.length];
-        for (int i = 0; i < ans.length; i++) {
+        ans[1] = new int[intervals.length];
+        for (int i = 0; i < intervals.length; i++) {
           Interval itvl = intervals[i];
           int logNLen =
               (int) Math.max(0, Math.ceil(Math.log(itvl.end - itvl.start + 1) / Math.log(2)) - 1);
-          ans[i] = Math.min(mins[itvl.start][logNLen],
+          ans[1][i] = Math.min(mins[itvl.start][logNLen],
               mins[Math.max(0, itvl.end + 1 - (1 << logNLen))][logNLen]);
         }
-        return ans;
+        return ans[1];
 
       case TREE_BASED:
         // segment tree based  O(n) space and time; O(logn) to answer a single query
@@ -115,11 +88,11 @@ public class RangeMinimumQuery {
         if (DEBUG) {
           System.out.println("root=" + root);
         }
-        ans = new int[intervals.length];
-        for (int i = 0; i < ans.length; i++) {
-          ans[i] = (int) root.getMin(intervals[i]);
+        ans[2] = new int[intervals.length];
+        for (int i = 0; i < intervals.length; i++) {
+          ans[2][i] = (int) root.getMin(intervals[i]);
         }
-        return ans;
+        return ans[2];
       default:
         return null;
     }
@@ -194,15 +167,24 @@ public class RangeMinimumQuery {
     }
 
     public double getMin(Interval interval) {
-      if (!overlap(interval)) {
-        return Integer.MAX_VALUE;
-      }
-      if (interval.include(this)) {
+      // equal
+      if (start == interval.start && end == interval.end) {
         return value;
       }
 
-      return Math.min(left == null ? Integer.MAX_VALUE : left.getMin(interval),
-          right == null ? Integer.MAX_VALUE : right.getMin(interval));
+      // contained
+      if (include(interval)) {
+        return Math.min(left == null ? Integer.MAX_VALUE : left.getMin(interval),
+            right == null ? Integer.MAX_VALUE : right.getMin(interval));
+      }
+
+      // overlap
+      if (overlap(interval)) {
+        return getMin(new Interval(Math.max(start, interval.start), Math.min(end, interval.end)));
+      }
+
+      // disjoint
+      return Integer.MAX_VALUE;
     }
 
     @Override

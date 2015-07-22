@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-@Tag(algs = SlidingWindow, dss = {Array, HashTable}, references = LeetCode)
+@Tag(algs = SlidingWindow, dss = {Array, Hash}, references = LeetCode)
 public class ContainsDuplicate {
   public boolean containsNearbyDuplicate(int[] nums, int k) {
     Map<Integer, Integer> lastIndex = new HashMap<>();

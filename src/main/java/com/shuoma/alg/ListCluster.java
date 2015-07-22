@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
-import static com.shuoma.annotation.Tag.DataStructure.HashTable;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 
 import com.shuoma.annotation.Tag;
@@ -22,7 +22,7 @@ import java.util.Map;
 // cluster 1: C D E F G H ;   cluster2: J
  */
 
-@Tag(algs = Greedy, dl = D3, dss = HashTable)
+@Tag(algs = Greedy, dl = D3, dss = Hash)
 public class ListCluster<T> {
   public static void main(String[] args) {
     ListCluster ins = new ListCluster();

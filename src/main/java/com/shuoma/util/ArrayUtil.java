@@ -1,5 +1,6 @@
 package com.shuoma.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -190,6 +191,14 @@ public class ArrayUtil {
     int[] ret = new int[values.size()];
     for (int i = 0; i < ret.length; i++)
       ret[i] = values.get(i);
+    return ret;
+  }
+
+  public static List<Integer> intArrayToIntegerList(int[] values) {
+    if (values == null)
+      return null;
+    List<Integer> ret = new ArrayList<>(values.length);
+    for (int i : values) ret.add(i);
     return ret;
   }
 
