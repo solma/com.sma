@@ -1,6 +1,7 @@
 package com.shuoma.alg;
 
-import static com.shuoma.alg.RangeMinimumQuery.Solution;
+import static com.shuoma.alg.RangeMinimumQuery.Algorithm;
+
 import com.shuoma.ds.misc.Interval;
 import com.shuoma.util.RandomUtil;
 import org.junit.Test;
@@ -26,10 +27,18 @@ public class RangeMinimumQueryTest {
         queries[i] = new Interval(start, start + rand.nextInt(rdmArray.length - start));
       }
 
-      System.out.println("Arrays=" + Arrays.toString(rdmArray));
-      System.out.println("Ranges=" + Arrays.toString(queries));
-      for (Solution alg : Solution.values()) {
-        System.out.println(alg + " : " + Arrays.toString(rmq.getMinimum(queries, rdmArray, alg)));
+      int[][] res = new int[3][];
+      Algorithm[] algs = Algorithm.values();
+      for (int i = 0; i < algs.length; i++) {
+        res[i] = rmq.getMinimum(queries, rdmArray, algs[i]);
+      }
+
+      if (!Arrays.equals(res[0], res[1]) || !Arrays.equals(res[0], res[2])) {
+        System.out.println("Arrays=" + Arrays.toString(rdmArray));
+        System.out.println("Ranges=" + Arrays.toString(queries));
+        for (int i = 0; i < algs.length; i++) {
+          System.out.println(algs[i] + " : " + Arrays.toString(res[i]));
+        }
       }
     }
   }

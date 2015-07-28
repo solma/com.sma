@@ -1,7 +1,6 @@
 package com.shuoma.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -251,7 +250,7 @@ public class ArrayUtil {
       }
       swap(a, i, r--);
     }
-    System.out.println(Arrays.toString(a) + " " + pivot + " " + (r - l + 1));
+    //System.out.println(Arrays.toString(a) + " " + pivot + " " + (r - l + 1));
     return r;
   }
 

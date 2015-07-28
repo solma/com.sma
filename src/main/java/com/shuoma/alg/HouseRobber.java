@@ -6,8 +6,6 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.Arrays;
-
 @Tag(algs = DynamicProgramming, dss = Array, references = LeetCode)
 public class HouseRobber {
 
@@ -79,7 +77,7 @@ public class HouseRobber {
         decisionR1[i][0] = decisionR1[i][1]; // or [i][2]
         decisionR2[i][0] = 0;
       }
-      System.out.println(num[i] + " " + Arrays.toString(decisionR1[i]) + " " + Arrays.toString(decisionR2[i]));
+      //System.out.println(num[i] + " " + Arrays.toString(decisionR1[i]) + " " + Arrays.toString(decisionR2[i]));
       ret = Math.max(ret, decisionR1[i][0]);
     }
     return ret;

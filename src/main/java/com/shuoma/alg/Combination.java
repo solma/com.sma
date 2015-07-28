@@ -1,42 +1,86 @@
 package com.shuoma.alg;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Tag(algs = Recursion, dss = Tag.DataStructure.String)
 public class Combination {
   public static void main(String[] args) {
-     String s1="1233";
-     allCombinationsI(s1, new ArrayList<String>());
-     System.out.println(allCombinations(s1));
-     System.out.println(combinationsOfSizeN(s1, 2));
+    String s1 = "123";
+    allCombinationsIteration(s1, new ArrayList<String>());
+    System.out.println(allCombinationsRecursionNOrderBottomUp(s1));
+    System.out.println(combinationsOfSizeNRecursionNOrderTopDown(s1, 2));
   }
 
-  public static List<String> allCombinations(String input) {
-    return allCombinations(input, new StringBuilder(), 0);
+  /** F(n) = F(n-1) + F(n-2) + ... + F(1) */
+  public static List<String> allCombinationsRecursionNOrderBottomUp(String input) {
+    return allCombinationsRecursionNOrderBottomUp(input, new StringBuilder(), 0);
   }
 
-  static List<String> allCombinations(String input, StringBuilder com, int sIdx) {
+  static List<String> allCombinationsRecursionNOrderBottomUp(String input, StringBuilder com, int sIdx) {
     List<String> ret = new ArrayList<>();
     for (int i = sIdx; i < input.length(); i++) {
       com.append(input.charAt(i));
       ret.add(com.toString());
-      for (String s : allCombinations(input, com, i + 1))
+      for (String s : allCombinationsRecursionNOrderBottomUp(input, com, i + 1))
         ret.add(s);
       com.deleteCharAt(com.length() - 1);
     }
     return ret;
   }
 
-  public static List<String> combinationsOfSizeN(String input, int size) {
-    return combinationsOfSizeN(input, size, new StringBuilder(), 0);
+  /** F(n) = 2 * F(n-1) * */
+  public static List<List<String>> allCombinationsRecursionFirstOrderBottomUp(List<String> input) {
+    return allCombinationsRecursionFirstOrderBottomUp(input, 0);
   }
 
-  static List<String> combinationsOfSizeN(String input, int n, StringBuilder sb, int startIdx) {
+  private static List<List<String>> allCombinationsRecursionFirstOrderBottomUp(List<String> input, int idx) {
+    List<List<String>> ret = new LinkedList<>();
+    if (idx == input.size()) {
+      ret.add(new LinkedList<String>());
+      return ret;
+    }
+    for (List<String> comb : allCombinationsRecursionFirstOrderBottomUp(input, idx + 1)) {
+      ret.add(comb);
+      List<String> cpy = new ArrayList<>(comb);
+      cpy.add(input.get(idx));
+      ret.add(cpy);
+    }
+    return ret;
+  }
+
+  /** By iteration. */
+  public static void allCombinationsIteration(String input, ArrayList<String> res) {
+    if (isNullOrEmpty(input)) {
+     return;
+    }
+    char[] array = input.toCharArray();
+    String[] copy = new String[1];
+    copy[0] = String.valueOf(array[array.length - 1]);
+    res.add(copy[0]);
+    for (int i = array.length - 2; i >= 0; i--) {
+      for (int j = 0; j < copy.length; j++)
+        res.add(String.valueOf(array[i]) + copy[j]);
+      res.add(String.valueOf(array[i]));
+      copy = res.toArray(new String[1]);
+    }
+    for (int i = 0; i < res.size(); i++)
+      System.out.println((i + 1) + ". " + res.get(i));
+    System.out.println();
+  }
+
+  /** F(n) = F(n-1) + F(n-2) + ... + F(1) */
+  public static List<String> combinationsOfSizeNRecursionNOrderTopDown(String input, int size) {
+    return combinationsOfSizeNRecursionNOrderTopDown(input, size, new StringBuilder(), 0);
+  }
+
+  private static List<String> combinationsOfSizeNRecursionNOrderTopDown(String input, int n, StringBuilder sb, int startIdx) {
     List<String> ret = new ArrayList<>();
     char[] array = input.toCharArray();
     int len = array.length;
@@ -46,47 +90,9 @@ public class Combination {
     }
     for (int i = startIdx; i < len; i++) {
       sb.append(array[i]);
-      ret.addAll(combinationsOfSizeN(input, n, sb, i + 1));
+      ret.addAll(combinationsOfSizeNRecursionNOrderTopDown(input, n, sb, i + 1));
       sb.deleteCharAt(sb.length() - 1);
     }
     return ret;
-  }
-
-  /** By iteration. */
-  static void allCombinationsI(String input, ArrayList<String> res) {
-    if (input != null && input.length() > 0) {
-      char[] array = input.toCharArray();
-      String[] copy = new String[1];
-      copy[0] = String.valueOf(array[array.length - 1]);
-      res.add(copy[0]);
-      for (int i = array.length - 2; i >= 0; i--) {
-        for (int j = 0; j < copy.length; j++)
-          res.add(String.valueOf(array[i]) + copy[j]);
-        res.add(String.valueOf(array[i]));
-        copy = res.toArray(new String[1]);
-      }
-      for (int i = 0; i < res.size(); i++)
-        System.out.println((i + 1) + ". " + res.get(i));
-      System.out.println();
-    }
-  }
-
-  static List<String> myInuitiveAlgrithm(String input) {
-    List<String> res = new ArrayList<>();
-    if (input != null && input.length() > 0) {
-      char[] array = input.toCharArray();
-      String[] copy = new String[1];
-      copy[0] = String.valueOf(array[0]);
-      for (int i = 1; i < array.length; i++) {
-        for (int j = 0; j < copy.length; j++) {
-          for (int idx = 0; idx <= i; idx++)
-            res.add(copy[j].substring(0, idx) + String.valueOf(array[i])
-                + copy[j].substring(idx, i));
-          res.remove(copy[j]);
-        }
-        copy = res.toArray(new String[1]);
-      }
-    }
-    return res;
   }
 }

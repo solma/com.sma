@@ -30,8 +30,9 @@ public class SelectingTest {
               break;
           }
           Arrays.sort(a);
-          if (a[K - 1] != cpy[K - 1])
-            System.out.println(Arrays.toString(cpy) + " " + K + " " + a[K - 1] + " " + cpy[K - 1]);
+          if (a[K - 1] != cpy[K - 1]) {
+            //System.out.println(Arrays.toString(cpy) + " " + K + " " + a[K - 1] + " " + cpy[K - 1]);
+          }
         }
       }
     }

@@ -39,6 +39,7 @@ public @interface Tag {
 
   enum DataStructure {
     Array,
+    BTree,
     BinarySearchTree,
     BinaryTree,
     Calculator,

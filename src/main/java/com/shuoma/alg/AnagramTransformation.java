@@ -2,6 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
@@ -20,12 +21,12 @@ import java.util.Queue;
  operations on S, 1. swap two consecutive characters, 2. swap first and last characters.
  Write code to find the min operation needed to change S into P.
  */
-@Tag(algs = BreadthFirstSearch, dss = String)
-public class StringWithSameLengthTransformation {
+@Tag(algs = BreadthFirstSearch, dss = String, references = Interview)
+public class AnagramTransformation {
 
   public static void main(String[] args) {
-    StringWithSameLengthTransformation ins = new StringWithSameLengthTransformation();
-    for (List<String> transformation : ins.transform("ASAP", "APAS")) {
+    AnagramTransformation ins = new AnagramTransformation();
+    for (List<String> transformation : ins.transform("NEILA", "ALIEN")) {
       System.out.println(transformation);
     }
   }
@@ -57,12 +58,9 @@ public class StringWithSameLengthTransformation {
           continue;
         }
 
-        if (!dis.containsKey(next) || dis.get(next) > dis.get(cur) + 1) {
-          predecessors.put(next, new HashSet<String>());
-          dis.put(next, dis.get(cur) + 1);
-        }
-        CollectionsUtil.upsert(predecessors, next, cur, new HashSet<String>());
+        dis.put(next, dis.get(cur) + 1);
         bfs.offer(next);
+        CollectionsUtil.upsert(predecessors, next, cur, new HashSet<String>());
       }
     }
     return new LinkedList<>();

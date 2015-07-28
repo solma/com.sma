@@ -17,11 +17,11 @@ import java.util.List;
 @Tag(algs = DynamicProgramming, dl = D3, dss = {Array, SegmentTree}, references = {JulyEdu, LintCode})
 public class RangeMinimumQuery {
 
-  public static enum Solution {
+  public enum Algorithm {
     BASIC_DP("O(n^2),   O(1)"), SPACE_EFFICIENT_DP("O(nlogn), O(1)"), TREE_BASED("O(n),  O(logn)");
     private String name;
 
-    Solution(String n) {
+    Algorithm(String n) {
       name = n;
     }
 
@@ -32,7 +32,7 @@ public class RangeMinimumQuery {
 
   public static boolean DEBUG = false;
 
-  public int[] getMinimum(Interval[] intervals, int[] rdmArray, Solution alg) {
+  public int[] getMinimum(Interval[] intervals, int[] rdmArray, Algorithm alg) {
     int[][] mins;
     int[][] ans = new int[3][];
 

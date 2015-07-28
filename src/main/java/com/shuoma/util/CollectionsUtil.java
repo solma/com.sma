@@ -59,4 +59,16 @@ public class CollectionsUtil {
     }
     return values;
   }
+
+  public static List<Integer> stringListToIntList(List<String> strings) {
+    List<Integer> nums = new ArrayList<>(strings.size());
+    for (String s : strings) nums.add(Integer.parseInt(s));
+    return nums;
+  }
+
+  public static List<String> intListToStringList(List<Integer> nums) {
+    List<String> strings = new ArrayList<>();
+    for (int n : nums) strings.add(String.valueOf(n));
+    return strings;
+  }
 }

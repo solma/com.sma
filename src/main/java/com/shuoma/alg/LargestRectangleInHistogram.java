@@ -1,5 +1,6 @@
 package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.DataStructure.Stack;
@@ -7,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D3, dss = Stack, references = LeetCode)
+@Tag(dl = D3, dss = {MonotonicSequence, Stack}, references = LeetCode)
 public class LargestRectangleInHistogram {
 
   //second pass

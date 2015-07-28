@@ -30,7 +30,7 @@ public class RemoveToProduceSmallestNumberTest extends TestCase {
     String s = String.valueOf(n);
     if (k >= s.length()) return 0;
     int min = n;
-    for (String com : Combination.combinationsOfSizeN(s, s.length() - k)) {
+    for (String com : Combination.combinationsOfSizeNRecursionNOrderTopDown(s, s.length() - k)) {
       min = Math.min(Integer.parseInt(com), min);
     }
     return min;

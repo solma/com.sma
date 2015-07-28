@@ -1,4 +1,4 @@
-package basic;
+package com.shuoma.lang.system;
 
 import com.google.common.io.Resources;
 
@@ -13,6 +13,11 @@ public class ResourcePath {
   }
 
   public void main() {
+    //getResource();
+    System.out.println(Runtime.getRuntime().availableProcessors());
+  }
+
+  void getResource() {
     Properties properties = new Properties();
     //"/Users/solma/workspace/ups-dev/config/luna-config-template.properties"
     //"../ups-dev/config/luna-config-template.properties"

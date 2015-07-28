@@ -231,9 +231,9 @@ public class Sorting {
     stackSortInsertion(threeStacks, 1, 0, 2);
   }
 
-  void stackSortInsertion(List<Stack<Integer>> threeStacks, int bridge, int from, int to) {
+  void stackSortInsertion(List<Stack<Integer>> threeStacks, int staging, int from, int to) {
     Stack<Integer> toStack = threeStacks.get(to);
-    Stack<Integer> bridgeStack = threeStacks.get(bridge);
+    Stack<Integer> bridgeStack = threeStacks.get(staging);
     int number = threeStacks.get(from).pop();
     while (!toStack.isEmpty() && toStack.peek() < number) {
       bridgeStack.push(toStack.pop());

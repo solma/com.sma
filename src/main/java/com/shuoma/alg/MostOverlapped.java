@@ -2,6 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Interval;
+import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.Interview;
@@ -10,17 +11,45 @@ import static com.shuoma.ds.graph.tree.BST.BinarySearchTree;
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
 /**
- * Give a set of intervals, find the one with most overlapped intervals.
- * O(nlogn) time
+ * Give a set of intervals:
+ * (1) find the interval that overlap most intervals. O(nlogn) time
+ * (2) find the time period in which most intervals overlap. O(nlogn) time
  */
-@Tag(algs = BinarySearch, dl = D3, dss = {Interval, PriorityQueue}, references = Interview)
-public class MostOverlappedInterval {
+@Tag(algs = BinarySearch, dl = D3, dss = {Interval, MonotonicSequence, PriorityQueue}, references = Interview)
+public class MostOverlapped {
+
+  int[] mostOverlappedTimePeriod(List<Interval> intervals) {
+    List<EndPoint> points = new ArrayList<>(intervals.size() * 2);
+    for (Interval itvl : intervals) {
+      points.add(new EndPoint(itvl.start, true, itvl));
+      points.add(new EndPoint(itvl.end, false, itvl));
+    }
+    Collections.sort(points);
+    System.out.println(points);
+
+    int[] result = new int[3];
+    int cnt = 0;
+    for (EndPoint p : points) {
+      if (p.isStart) {
+        cnt++;
+        if (cnt > result[0]) {
+          result[0] = cnt;
+          result[1] = p.interval.start;
+          result[2] = p.interval.end;
+        }
+      } else {
+        cnt--;
+      }
+    }
+    return result;
+  }
 
   /*
   use sweep line, sort the interval by start, then scan with a PriorityQueue (sort by end)
@@ -31,8 +60,7 @@ public class MostOverlappedInterval {
   and plus the heap.size(). Both heap and sorted list(binary search tree) in O(lgN),
   so entire O(NlgN).
    */
-
-  int[] mostOverlapped(List<Interval> intervals) {
+  int[] mostOverlappedInterval(List<Interval> intervals) {
     Collections.sort(intervals, new Comparator<Interval>() {
       @Override public int compare(Interval o1, Interval o2) {
         return o1.start == o2.start ? (o1.end - o2.end) : (o1.start - o2.start);
@@ -64,13 +92,34 @@ public class MostOverlappedInterval {
           result[1] = top.start;
           result[2] = top.end;
         }
-
       }
+
       if (i < n) {
         overlappedIntervals.add(intervals.get(i));
       }
     }
-
     return result;
+  }
+
+  class EndPoint implements Comparable<EndPoint> {
+    int time;
+    boolean isStart;
+    Interval interval;
+
+    public EndPoint(int time, boolean isStart, Interval interval) {
+      this.time = time;
+      this.isStart = isStart;
+      this.interval = interval;
+    }
+
+    @Override
+    public int compareTo(EndPoint that) {
+      return time - that.time + (!isStart ? 1 : -1);
+    }
+
+    @Override
+    public String toString() {
+      return time + " " + isStart;
+    }
   }
 }

@@ -5,13 +5,12 @@ import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
-import com.shuoma.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
+/**
  *  Having a int array A[], generate another int array B[], B[i] is the count of elements
  *  in A[i+1] ~ A[n-1] which is smaller than A[i]. Time complexity: O(nlgn)
  */
@@ -19,19 +18,19 @@ import java.util.List;
 @Tag(dss = {Array, BinarySearchTree})
 public class CountingInversion {
   public static void main(String[] args) {
-    for (int i = 0; i < 10; i++) {
-      //int [] arr = {3, 4, 0, 2, 1};
-      int[] arr = RandomUtil.shuffle(ArrayUtil.getNaturalArray(RandomUtil.r.nextInt(30) + 15));
+    for (int i = 0; i < 1; i++) {
+      int [] arr = {3, 4, 0, 2, 1};
+//      int[] arr = RandomUtil.shuffle(ArrayUtil.getNaturalArray(RandomUtil.r.nextInt(30) + 15));
       //System.out.println(Arrays.toString(arr));
       int[][] res = new int[2][arr.length];
       res[0] = countInversion(arr);
-      res[1] = countInversionBase(arr);
-      if (!Arrays.equals(res[0], res[1])) {
+      res[1] = dummyCountInversion(arr);
+      //if (!Arrays.equals(res[0], res[1])) {
         System.out.println(Arrays.toString(arr));
         System.out.println(Arrays.toString(res[0]));
         System.out.println(Arrays.toString(res[1]));
         System.out.println();
-      }
+      //}
     }
   }
 
@@ -40,7 +39,7 @@ public class CountingInversion {
     return ArrayUtil.integerListToIntArray(bst.result);
   }
 
-  public static int[] countInversionBase(int[] arr) {
+  public static int[] dummyCountInversion(int[] arr) {
     int[] res = new int[arr.length];
     for (int i = 0; i < arr.length; i++) {
       for (int j = i + 1; j < arr.length; j++) {
@@ -56,6 +55,7 @@ public class CountingInversion {
 
     public BSTWithSize(int[] keys) {
       result = new ArrayList<>();
+      // build it reversely
       for (int i : ArrayUtil.reverse(Arrays.copyOf(keys, keys.length))) {
         root = insert(root, i, 0);
       }

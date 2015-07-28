@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Recursion, dss = String)
+@Tag(algs = Recursion, dss = Tag.DataStructure.String)
 public class Permutation {
 
   public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class Permutation {
   }
 
   static List<String> firstKPermutationsByRecursion(String input, StringBuilder perm, int K) {
-    // firt K permutatins in alphabetical order
+    // first K permutations in alphabetical order
     ArrayList<String> ret = new ArrayList<>();
     for (int i = 0; i < input.length(); i++) {
       if (perm.toString().contains(input.substring(i, i + 1))) continue;
@@ -70,9 +70,9 @@ public class Permutation {
     }
 
     int[] inversion = new int[n];
-    for (int div = 1; ith > 0; div++) {
-      inversion[div - 1] += ith % div;
-      ith /= div;
+    for (int divisor = 1; ith > 0; divisor++) {
+      inversion[divisor - 1] += ith % divisor;
+      ith /= divisor;
     }
     //System.out.println("inversion = " + Arrays.toString(inversion));
     int[] res = recover(ArrayUtil.reverse(inversion));
@@ -95,7 +95,7 @@ public class Permutation {
 
     // between smallest and largest, binary search
     long l = 0, r = MathUtil.factorial(nums.length) - 1;
-    long curPermutation, cloestPermutation = smallest, diff = target;
+    long curPermutation, closestPermutation = smallest, diff = target;
     while (l <= r) {
       long m = l + ((r - l) >> 1);
       curPermutation = Integer.parseInt(iThPermutation(input, m));
@@ -109,12 +109,12 @@ public class Permutation {
         long curDiff = Math.abs(curPermutation - target);
         if (curDiff < diff) {
           diff = curDiff;
-          cloestPermutation = curPermutation;
+          closestPermutation = curPermutation;
         }
       }
       if (m == l && m == r) break;
     }
-    return cloestPermutation;
+    return closestPermutation;
   }
 
   public static String nextPermutation(String curPermutation) {
@@ -243,5 +243,24 @@ public class Permutation {
       root = delete(root, node);
     }
     return b;
+  }
+
+  static List<String> myInuitiveAlgrithm(String input) {
+    List<String> res = new ArrayList<>();
+    if (isNullOrEmpty(input)) {
+      return res;
+    }
+    char[] array = input.toCharArray();
+    String[] copy = new String[1];
+    copy[0] = String.valueOf(array[0]);
+    for (int i = 1; i < array.length; i++) {
+      for (int j = 0; j < copy.length; j++) {
+        for (int idx = 0; idx <= i; idx++)
+          res.add(copy[j].substring(0, idx) + String.valueOf(array[i]) + copy[j].substring(idx, i));
+        res.remove(copy[j]);
+      }
+      copy = res.toArray(new String[1]);
+    }
+    return res;
   }
 }
