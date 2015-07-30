@@ -355,32 +355,33 @@ public class BST {
 
     /** check if a tree is a bst. */
     public boolean isBST() {
-      return isBST(root) == null ? false : true;
-      // return isBST(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
+      //return isBSTBottomUp(root) != null;
+      return isBSTTopDown(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
     }
 
     // top-down
-    private boolean isBST(BSTNode node, double max, double min) {
+    private boolean isBSTTopDown(BSTNode node, double max, double min) {
       if (node == null)
         return true;
       if (node.value > max || node.value < min)
         return false;
-      return isBST(node.left, node.value - 1, min) && isBST(node.right, max, node.value + 1);
+      return isBSTTopDown(node.left, node.value - 1, min) && isBSTTopDown(node.right, max,
+          node.value + 1);
     }
 
     // bottom-up
-    private double[] isBST(BSTNode node) {
+    private double[] isBSTBottomUp(BSTNode node) {
       if (node == null)
         return new double[] {Integer.MAX_VALUE, Integer.MIN_VALUE};
 
       double[] range = {node.value, node.value};
-      double[] rangeLeft = isBST(node.left);
+      double[] rangeLeft = isBSTBottomUp(node.left);
       if (rangeLeft == null || node.value <= rangeLeft[1])
         return null;
       range[0] = Math.min(range[0], rangeLeft[0]);
       range[1] = Math.max(range[1], rangeLeft[1]);
 
-      double[] rangeRight = isBST(node.right);
+      double[] rangeRight = isBSTBottomUp(node.right);
       if (rangeRight == null || node.value >= rangeRight[0])
         return null;
       range[0] = Math.min(range[0], rangeRight[0]);
@@ -775,7 +776,7 @@ public class BST {
       }
     }
 
-    /** Return the number of nodes in the tree whose key is no greater than the given key. */
+    /** Return the number of nodes in the tree whose key is smaller than the given key. */
     public int rankOf(String key) {
       return rankOf(root, key);
     }
@@ -826,8 +827,8 @@ public class BST {
       }
     }
 
-    /*
-     * size function
+    /**
+     * size of tree
      */
     public int size() {
       return size(root, 0);
@@ -839,7 +840,7 @@ public class BST {
       return size(cur.left, num) + 1 + size(cur.right, num);
     }
 
-    /*
+    /**
      * """ For the key values 1...numKeys, how many structurally unique binary search trees are
      * possible that store those keys? print all these trees in the inorder Strategy: consider that
      * each value could be the root. Recursively find the size of the left and right subtrees. """
