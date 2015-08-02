@@ -2,7 +2,8 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
 import static com.shuoma.annotation.Tag.DataStructure.MatrixGraph;
-import static com.shuoma.annotation.Tag.Trick.MultipleSourceBFS;
+import static com.shuoma.annotation.Tag.Reference.Interview;
+import static com.shuoma.annotation.Tag.Trick.BFSWithMultipleSource;
 
 import com.shuoma.annotation.Tag;
 
@@ -10,11 +11,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * // Given a N*N matrix grid, have N^2 house, if the value in house is 1 means the house it locked, you can't pass, if
- * // the value is 0 means the house it opened, if the value is 2, means there is a police in the house.
- * // Write code to get a matrix minDistance[][] is the min Manhattan distance any police can get this house.
+ * Given a N*N matrix grid, have N^2 house, if the value in house is 1 means the house it locked, you can't pass, if
+ * the value is 0 means the house it opened, if the value is 2, means there is a police in the house.
+ * Write code to get a matrix minDistance[][] is the min Manhattan distance any police can get this house.
  */
-@Tag(algs = BreadthFirstSearch, dss = MatrixGraph, tricks = MultipleSourceBFS)
+@Tag(algs = BreadthFirstSearch, dss = MatrixGraph, tricks = BFSWithMultipleSource, references = Interview)
 public class MinDistanceFromPolice {
   public static void main(String[] args) {
     int[][] roads = {{1, 0, 0, 2, 0, 0, 1, 2}, {0, 1, 0, 1, 0, 0, 0, 0}, {1, 0, 0, 1, 0, 0, 1, 0}};
@@ -40,12 +41,12 @@ public class MinDistanceFromPolice {
 
 
   void minDis(int[][] roads) {
-    LinkedList<Cell> toBeVisited = new LinkedList<>();
+    LinkedList<Cell> q = new LinkedList<>();
 
     for (int i = 0; i < roads.length; i++) {
       for (int j = 0; j < roads[0].length; j++) {
         if (roads[i][j] == 2) {
-          toBeVisited.offer(new Cell(i, j, 0));
+          q.offer(new Cell(i, j, 0));
         } else if (roads[i][j] == 1) {
           roads[i][j] = -1;
         } else {
@@ -55,15 +56,22 @@ public class MinDistanceFromPolice {
     }
 
     int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    int cnt = 0;
     // multiple reference bfs
-    while (!toBeVisited.isEmpty()) {
-      Cell top = toBeVisited.poll();
-      roads[top.i][top.j] = top.dis;
-      //System.out.println(top);
+    while (!q.isEmpty()) {
+      Cell cur = q.poll();
+      //roads[cur.i][cur.j] = cur.dis;
       for (int[] dir : dirs) {
-        tryNext(roads, toBeVisited, top, dir);
+        int i = cur.i + dir[0], j = cur.j + dir[1];
+        if (i >= 0 && i < roads.length && j >= 0 && j < roads[0].length
+            && roads[i][j] == Integer.MAX_VALUE) {
+          roads[i][j] = cur.dis + 1; // set visit before adding to queue
+          q.add(new Cell(i, j, cur.dis + 1));
+          cnt++;
+        }
       }
     }
+    System.out.println("cnt: " + cnt);
 
     for (int i = 0; i < roads.length; i++) {
       for (int j = 0; j < roads[0].length; j++) {
@@ -74,14 +82,6 @@ public class MinDistanceFromPolice {
 
     for (int i = 0; i < roads.length; i++) {
       System.out.println(Arrays.toString(roads[i]));
-    }
-  }
-
-  void tryNext(int[][] roads, LinkedList<Cell> toBeVisited, Cell cur, int[] dir) {
-    int i = cur.i + dir[0], j = cur.j + dir[1];
-    if (i >= 0 && i < roads.length && j >= 0 && j < roads[0].length
-        && roads[i][j] == Integer.MAX_VALUE) {
-      toBeVisited.add(new Cell(i, j, cur.dis + 1));
     }
   }
 }

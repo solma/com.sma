@@ -87,10 +87,11 @@ public @interface Tag {
 
   enum Trick {
     AccumulativeSum,
+    BFSWithMultipleSource,
+    BFSWithHigherDimension,
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceSwap,
-    MultipleSourceBFS,
     TwoOrMorePointers,
     NA,
   }

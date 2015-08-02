@@ -57,10 +57,8 @@ public class LongestIncreasingSubsequence {
         insertionIdx = ~insertionIdx;
       if (insertionIdx > 0)
         n.prev = pileTops.get(insertionIdx - 1);
-      if (insertionIdx < pileTops.size())
-        pileTops.set(insertionIdx, n);
-      else
-        pileTops.add(n);
+      if (insertionIdx < pileTops.size()) pileTops.set(insertionIdx, n);
+      else pileTops.add(n);
     }
 
     List<Integer> res = new LinkedList<>();

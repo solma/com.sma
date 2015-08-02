@@ -70,7 +70,7 @@ public class MatrixGraph extends Graph {
     int ncol = board[0].length;
 
     // add nodeMap;
-    Map<String, Node> nodeMap = new HashMap<String, Node>();
+    Map<String, Node> nodeMap = new HashMap<>();
     for (int i = 0; i < nrow; i++) {
       for (int j = 0; j < ncol; j++) {
         MatrixNode node = new MatrixNode(i, j, board[i][j]);

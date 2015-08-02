@@ -225,7 +225,7 @@ public class Sorting {
 
   void stackSort(List<Stack<Integer>> threeStacks, int n, int from, int to) {
     if (n == 0) return;
-    // move n-1 numbers from S0 to S2.
+    // move top n-1 numbers from S0 to S2.
     stackSort(threeStacks, n - 1, 0, 2);
     // insert nth number to S2
     stackSortInsertion(threeStacks, 1, 0, 2);
