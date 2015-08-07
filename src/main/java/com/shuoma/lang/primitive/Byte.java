@@ -13,7 +13,7 @@ public class Byte {
     // byte b = 0xA1;
     // byte b = 0b10000001;
     System.out.println((byte)-1);
-    System.out.println((byte)200);
+    System.out.println((byte)255);
 
     // unsign a byte
     int ub = ((byte) -1 & 0xFF);

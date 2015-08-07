@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
-import static com.shuoma.annotation.Tag.DataStructure.Queue;
+import static com.shuoma.annotation.Tag.DataStructure.QueueT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
@@ -10,7 +10,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /** Given a stream, compute the stats, e.g. average, min of a sliding window. */
-@Tag(algs = SlidingWindow, dss = Queue, references = LeetCode)
+@Tag(algs = SlidingWindow, dss = QueueT, references = LeetCode)
 public class SlidingWindowStats {
 
   /** Window size. */

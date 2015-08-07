@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D2, dss = Stack, references = LeetCode)
+@Tag(dl = D2, dss = StackT, references = LeetCode)
 public class EvaluateReversePolishNotation {
   public static void main(String[] args) {
     new EvaluateReversePolishNotation().main();

@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Queue;
+import static com.shuoma.annotation.Tag.DataStructure.QueueT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = {Tag.DataStructure.Stack, Queue}, references = LeetCode)
+@Tag(dss = {Tag.DataStructure.StackT, QueueT}, references = LeetCode)
 public class ImplementQueueUsingStack {
 
 }

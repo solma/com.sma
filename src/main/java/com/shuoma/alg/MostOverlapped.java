@@ -3,12 +3,15 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.BinarySearch;
 import static com.shuoma.annotation.Tag.DataStructure.Interval;
 import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
-import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.Interview;
-import static com.shuoma.ds.graph.tree.BST.BinarySearchTree;
+import static com.shuoma.ds.graph.tree.BST.insert;
+import static com.shuoma.ds.graph.tree.BST.rankOf;
+import static com.shuoma.ds.graph.tree.BST.size;
 
 import com.shuoma.annotation.Tag;
+import com.shuoma.ds.graph.tree.BSTNode;
 import com.shuoma.ds.misc.Interval;
 
 import java.util.ArrayList;
@@ -22,9 +25,10 @@ import java.util.PriorityQueue;
  * (1) find the interval that overlap most intervals. O(nlogn) time
  * (2) find the time period in which most intervals overlap. O(nlogn) time
  */
-@Tag(algs = BinarySearch, dl = D3, dss = {Interval, MonotonicSequence, PriorityQueue}, references = Interview)
+@Tag(algs = BinarySearch, dl = D3, dss = {Interval, MonotonicSequence, PriorityQueueT}, references = Interview)
 public class MostOverlapped {
 
+  // time period does not have to be an interval in the list
   int[] mostOverlappedTimePeriod(List<Interval> intervals) {
     List<EndPoint> points = new ArrayList<>(intervals.size() * 2);
     for (Interval itvl : intervals) {
@@ -75,7 +79,7 @@ public class MostOverlapped {
     });
 
 
-    BinarySearchTree bst = new BinarySearchTree();
+    BSTNode bst = null;
     int[] result = new int[3];
     for (int i = 0; i <= n; i++) {
       double start = i == n ? Integer.MAX_VALUE : intervals.get(i).start;
@@ -85,8 +89,8 @@ public class MostOverlapped {
         Interval top = overlappedIntervals.poll();
         // count number of overlapped intervals for top
         // bst.size() - bst.get(): number of popped out intervals whose end smaller than top.start
-        int count = overlappedIntervals.size() + (bst.size() - bst.rankOf(String.valueOf(top.start)));
-        bst.insert(top.end);
+        int count = overlappedIntervals.size() + (size(bst) - rankOf(bst, String.valueOf(top.start)));
+        bst = insert(top.end);
         if (count > result[0]) {
           result[0] = count;
           result[1] = top.start;

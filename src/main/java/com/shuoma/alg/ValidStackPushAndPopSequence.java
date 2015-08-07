@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 
 import com.shuoma.annotation.Tag;
 
@@ -17,7 +17,7 @@ import java.util.Stack;
  * 7 2 9 3 8   no
  *
  */
-@Tag(dss = Stack)
+@Tag(dss = StackT)
 public class ValidStackPushAndPopSequence {
 
   boolean isPossible(final int[] pushes, final int[] pops) {

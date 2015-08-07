@@ -1,14 +1,14 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.PriorityQueue;
 
-@Tag(dss = {Array, PriorityQueue}, tricks = TwoOrMorePointers)
+@Tag(dss = {Array, PriorityQueueT}, tricks = TwoOrMorePointers)
 public class KLargestNumbersFromLists {
 
   public Integer[] kLargestNumbersFromLists(int[][] lists, int k) {

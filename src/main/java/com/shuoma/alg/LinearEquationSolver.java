@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Calculator;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 
@@ -14,13 +14,13 @@ import java.util.Map;
 import java.util.Stack;
 
 /** Linear equation solver. */
-@Tag(dl = D2, dss = {Calculator, Stack, String})
+@Tag(dl = D2, dss = {Calculator, StackT, String})
 public class LinearEquationSolver {
 
   private static final char CONSTANT_CHAR = '.';
 
   public static void main(String[] args) {
-    LinearEquationSolver ins = new LinearEquationSolver("3a + ( 2c - 3 ) = 5b + ( a - c ) + 10");
+    LinearEquationSolver ins = new LinearEquationSolver("3a + ( 2c - 3 ) = 5b - ( a - c ) + 10");
     ins.solve(ins.provideSubstitution());
   }
 

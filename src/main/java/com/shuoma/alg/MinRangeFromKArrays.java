@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
  * arrays
  */
 
-@Tag(dss = Tag.DataStructure.PriorityQueue, tricks = TwoOrMorePointers)
+@Tag(dss = Tag.DataStructure.PriorityQueueT, tricks = TwoOrMorePointers)
 public class MinRangeFromKArrays {
   public static void main(String[] args) {
     new MinRangeFromKArrays().minRange();

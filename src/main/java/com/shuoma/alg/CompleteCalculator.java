@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Calculator;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.util.MathUtil.evaluateOperator;
 import static com.shuoma.util.MathUtil.lowerOrEqualPriority;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-@Tag(dl = D2, dss = {Calculator, Stack})
+@Tag(dl = D2, dss = {Calculator, StackT})
 public class CompleteCalculator {
   public static void main(String[] args) {
     String expr = "-22 + 1 - 3 * -2";

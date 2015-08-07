@@ -2,9 +2,10 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
+import static com.shuoma.ds.graph.tree.BST.printPrettyTreeOld;
+import static com.shuoma.ds.graph.tree.BST.printTreeByRows;
 
 import com.shuoma.annotation.Tag;
-import com.shuoma.ds.graph.tree.BST;
 import com.shuoma.ds.graph.tree.BSTNode;
 
 /**
@@ -19,9 +20,9 @@ import com.shuoma.ds.graph.tree.BSTNode;
 @Tag(algs = Recursion, dss = BinaryTree)
 public class TreeTernaryRepresentation {
     public static void main(String[] args) {
-        BST.BinarySearchTree tree = new BST.BinarySearchTree(fromTernaryString("a?b?:d:e"));
-        tree.printPrettyTreeOld();
-        tree.printTreeByRows();
+        BSTNode tree = fromTernaryString("a?b?:d:e");
+        printPrettyTreeOld(tree);
+        printTreeByRows(tree);
     }
 
     static BSTNode fromTernaryString(String s) {

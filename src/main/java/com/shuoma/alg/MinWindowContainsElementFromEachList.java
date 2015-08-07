@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 import static com.shuoma.ds.misc.MinMaxPriorityQueue.Element;
 
@@ -10,7 +10,7 @@ import com.shuoma.ds.misc.MinMaxPriorityQueue;
 
 import java.util.Arrays;
 
-@Tag(dss = {Array, PriorityQueue}, tricks = TwoOrMorePointers)
+@Tag(dss = {Array, PriorityQueueT}, tricks = TwoOrMorePointers)
 public class MinWindowContainsElementFromEachList {
   public static void main(String[] args) {
     // sorted lists

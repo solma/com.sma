@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Queue;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.QueueT;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
@@ -10,7 +10,7 @@ import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Tag(dss = {Stack, Queue}, references = LeetCode)
+@Tag(dss = {StackT, QueueT}, references = LeetCode)
 public class ImplementStackUseQueue {
   public static void main(String[] args) {
     MyStack2 ms = new MyStack2();

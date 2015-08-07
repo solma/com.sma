@@ -45,6 +45,14 @@ public class RandomUtil {
     return ret;
   }
 
+  public static byte[] genRandomBinaryByteArray(int length) {
+    byte[] ret = new byte[length];
+    for (int i = 0; i < length; i++) {
+      ret[i] = (byte) (r.nextInt(2) > 0 ? 1 : -1);
+    }
+    return ret;
+  }
+
   public static int[] genRandomArrayWithMinSize(int minSize) {
     return genRandomArrayWithMinSize(minSize, MAX_RANDOM_VALUE);
   }

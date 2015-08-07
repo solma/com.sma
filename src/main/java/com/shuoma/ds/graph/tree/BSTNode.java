@@ -6,7 +6,8 @@ public class BSTNode {
   public BSTNode left;
   public BSTNode right;
   BSTNode next;
-  public double value;
+  /** value for customized semantics */
+  public int value;
   /** size of the its subtree. */
   public int size;
 
@@ -26,10 +27,10 @@ public class BSTNode {
   }
 
   public BSTNode(String key) {
-    this(key, Integer.parseInt(key));
+    this(key, 0);
   }
 
   @Override public String toString() {
-    return "(" + id + "," + value + ")";
+    return "(" + id + ", " + value + ")";
   }
 }

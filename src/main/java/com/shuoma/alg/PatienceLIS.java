@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Sorting;
 import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
-import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 
 import com.shuoma.annotation.Tag;
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 // http://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf
-@Tag(algs = Sorting, dss = {LinkedList, PriorityQueue}, tricks = TwoOrMorePointers)
+@Tag(algs = Sorting, dss = {LinkedList, PriorityQueueT}, tricks = TwoOrMorePointers)
 public class PatienceLIS {
   public static <E extends Comparable<? super E>> List<E> lis(List<E> n) {
     List<Node<E>> pileTops = new ArrayList<>();

@@ -2,7 +2,7 @@ package com.shuoma.alg;
 //ref: http://yyeclipse.blogspot.com/2012/11/solving-maximal-rectangle-problem-based.html
 //ref: http://wansishuang.appspot.com/?p=38002
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.util.StringUtil.toCharMatrix;
 
@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(algs = DynamicProgramming, dss = Stack, references = LeetCode)
+@Tag(algs = DynamicProgramming, dss = StackT, references = LeetCode)
 public class MaximalSquare {
 
   public static void main(String[] args) {

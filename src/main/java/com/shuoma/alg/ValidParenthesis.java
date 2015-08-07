@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dss = {Stack, String}, references = LeetCode)
+@Tag(dss = {StackT, String}, references = LeetCode)
 public class ValidParenthesis {
   public boolean isValid(String s) {
     if (s == null)

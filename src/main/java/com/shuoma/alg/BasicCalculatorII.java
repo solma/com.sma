@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Calculator;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {Calculator, Stack}, references = LeetCode)
+@Tag(dl = D2, dss = {Calculator, StackT}, references = LeetCode)
 public class BasicCalculatorII {
 
   public static void main(String[] args) {

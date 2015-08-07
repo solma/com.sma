@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
-import static com.shuoma.annotation.Tag.DataStructure.PriorityQueue;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.graph.basic.Edge;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(algs = BreadthFirstSearch, dss = PriorityQueue)
+@Tag(algs = BreadthFirstSearch, dss = PriorityQueueT)
 public class BFS {
   public List<Node> path = new ArrayList<>();
   public static final boolean verbose = true;

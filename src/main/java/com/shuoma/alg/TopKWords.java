@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-@Tag(dss = {Hash, String, Tag.DataStructure.PriorityQueue})
+@Tag(dss = {Hash, String, Tag.DataStructure.PriorityQueueT})
 public class TopKWords {
 
   public static void main(String[] args) {

@@ -57,9 +57,10 @@ public class MaxPointsOnALine {
             continue;
           }
           slope = Double.MAX_VALUE;
-        } else
+        } else {
           slope = (points[j].y - points[i].y + 0.0) / (points[j].x - points[i].x)
               + 0.0;//problem of -0.0
+        }
         if (!slopeCnt.containsKey(slope))
           slopeCnt.put(slope, 0);
         slopeCnt.put(slope, slopeCnt.get(slope) + 1);

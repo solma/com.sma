@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Calculator;
-import static com.shuoma.annotation.Tag.DataStructure.Stack;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
 import static com.shuoma.annotation.Tag.DataStructure.String;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
@@ -10,15 +10,15 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D2, dss = {Calculator, Stack, String}, references = LeetCode)
+@Tag(dl = D2, dss = {Calculator, StackT, String}, references = LeetCode)
 public class BasicCalculatorI {
 
   public static void main(String[] args) {
-    String expr = "2 - (-22 + 1 - 3)";
+    String expr = "1 - (2 - 3 ) + 5";
     System.out.println(new BasicCalculatorI().calculate(expr));
   }
 
-  public int calculate(String s) {
+  int calculate(String s) {
     s = s.trim().replaceAll("\\s+", "");
     Stack<Integer> signStck = new Stack<>();
     signStck.push(1);  // initialize to avoid empty stack after first number

@@ -3,15 +3,19 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
 // Given a LinkedList of Objects in order, the list of object is processed by some program and give out a Object[].
@@ -22,64 +26,64 @@ import java.util.Map;
 // cluster 1: C D E F G H ;   cluster2: J
  */
 
-@Tag(algs = Greedy, dl = D3, dss = Hash)
+@Tag(algs = Greedy, dl = D3, dss = Hash,  references = Interview)
 public class ListCluster<T> {
   public static void main(String[] args) {
     ListCluster ins = new ListCluster();
 
-    Character[] output = new Character[]{'D', 'E', 'F', 'J', 'G', 'H', 'C'};
+    Character[] output = new Character[]{'F', 'D', 'E', 'J', 'G', 'H', 'C'};
     Character[] ordering = new Character[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
 
-    Collection<List<Character>> clusters = ins.findClusters(ordering, output);
-    for(List<Character> cluster : clusters){
+    Collection<Set<Character>> clusters = ins.findClusters(ordering, output);
+    for(Set<Character> cluster : clusters){
       System.out.println(cluster);
     }
-
   }
 
-  Collection<List<T>> findClusters(T[] ordering, T[] output) {
+  Collection<Set<T>> findClusters(T[] ordering, T[] output) {
 
     List<Map<T, T>> neighbors = new ArrayList<>(2);
     neighbors.add(new HashMap<T, T>());
     neighbors.add(new HashMap<T, T>());
 
     T prev = null;
-    for(T ele : ordering) {
-      if (prev != null){
-        neighbors.get(0).put(ele, prev); //0 : predecessor
-        neighbors.get(1).put(prev, ele); //1 : successor
+    for(int i = 0; i < ordering.length; i++) {
+      T cur = ordering[i];
+      if (prev != null) {
+        neighbors.get(0).put(cur, prev); //0 : predecessor
       }
-      prev = ele;
+      if (i < ordering.length - 1) {
+        neighbors.get(1).put(cur, ordering[i + 1]); //1 : successor
+      }
+      prev = cur;
     }
     System.out.println(neighbors);
 
-    Map<T, Boolean> visited = new HashMap<>();
-    for(T ele : output) {
-      visited.put(ele, false);
-    }
+    Set<T> visited = new HashSet<>();
+    Set<T> needsToVisit = new HashSet<>(Arrays.asList(output));
 
-    Collection<List<T>> clusters = new LinkedList<>();
+    Collection<Set<T>> clusters = new LinkedList<>();
 
     for(T ele : output) {
-      if (visited.get(ele)) continue;
+      if (visited.contains(ele)) continue;
 
-      visited.put(ele, true);
-      List<T> cluster = new LinkedList<>();
+      Set<T> cluster = new HashSet<>();
       clusters.add(cluster);
-      cluster.add(ele);
 
       for (Map<T, T> neighbor : neighbors) {
         T cur = ele;
-        while(neighbor.containsKey(cur)) {
-          T next = neighbor.get(cur);
-          if (!visited.containsKey(next) || visited.get(next)) break;
-          cur = next;
+        while(true) {
           cluster.add(cur);
-          visited.put(cur, true);
+          visited.add(cur);
+          if (!neighbor.containsKey(cur)
+              || !needsToVisit.contains(neighbor.get(cur))
+              || visited.contains(neighbor.get(cur))) {
+            break;
+          }
+          cur = neighbor.get(cur);
         }
       }
     }
-
     return clusters;
   }
 }
