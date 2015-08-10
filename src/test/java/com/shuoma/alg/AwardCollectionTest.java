@@ -20,10 +20,10 @@ public class AwardCollectionTest {
     assertEquals(114, ins.twoPersons(table1));
 
     int[][] table2 = new int[][] {
-        {1, 2},
+        {1, 9},
         {8, 7},
     };
-    assertEquals(16, ins.onePerson(table2));
-    assertEquals(18, ins.twoPersons(table2));
+    assertEquals(17, ins.onePerson(table2));
+    assertEquals(25, ins.twoPersons(table2));
   }
 }

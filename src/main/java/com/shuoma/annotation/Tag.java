@@ -33,6 +33,7 @@ public @interface Tag {
     RegularExpression,
     Searching,
     SlidingWindow,
+    Streaming,
     Sorting,
     TopDown,
     NA,

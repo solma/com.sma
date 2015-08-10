@@ -19,16 +19,16 @@ public class SearchInRotatedArray {
       if (A[M] == key)
         return M;
 
-      // the left half is sorted
       if (A[L] < A[M]) {
+        // the left half is sorted
         if (A[L] <= key && key < A[M])
           R = M - 1;
         else
           L = M + 1;
       }
-      // the right half is sorted
       else {
         if (A[L] > A[M]) {
+          // the right half is sorted
           if (A[M] < key && key <= A[R])
             L = M + 1;
           else

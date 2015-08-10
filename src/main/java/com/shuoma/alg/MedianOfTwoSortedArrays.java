@@ -19,7 +19,7 @@ public class MedianOfTwoSortedArrays {
     }
   }
 
-  // find kth number of two sorted array
+  // find kth (1-base index) number of two sorted array
   int findKth(int[] A, int A_start, int[] B, int B_start, int k) {
     if (A_start >= A.length)
       return B[B_start + k - 1];

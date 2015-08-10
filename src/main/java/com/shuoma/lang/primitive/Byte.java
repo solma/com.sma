@@ -12,8 +12,9 @@ public class Byte {
     // not compilable since hex or binary literals are int by default
     // byte b = 0xA1;
     // byte b = 0b10000001;
-    System.out.println((byte)-1);
-    System.out.println((byte)255);
+
+    System.out.println("-1 is " + (byte)-1 + " in byte");
+    System.out.println("255 is " + (byte)255 + " in byte");
 
     // unsign a byte
     int ub = ((byte) -1 & 0xFF);

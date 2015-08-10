@@ -1,0 +1,111 @@
+package com.shuoma.alg;
+
+import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
+import static com.shuoma.annotation.Tag.Algorithm.Streaming;
+import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
+import static com.shuoma.annotation.Tag.DataStructure.QueueT;
+import static com.shuoma.annotation.Tag.Reference.Interview;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
+
+import com.shuoma.annotation.Tag;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.PriorityQueue;
+
+/** Given a stream, compute the stats, e.g. average, min of a sliding window. */
+@Tag(algs = {SlidingWindow, Streaming}, dss = {QueueT, PriorityQueueT}, references = {LeetCode, Interview})
+public class StreamingStats {
+
+  /** Window size. */
+  int K;
+  /** Array that simulates a stream. */
+  int[] stream;
+
+  /**
+   * @param k      Window size.
+   * @param stream Array that simulates a stream.
+   */
+  public StreamingStats(int k, int[] stream) {
+    this.K = k;
+    this.stream = stream;
+  }
+
+  /** Get the average of the sliding window. */
+  double[] getAverage() {
+    double sum = 0;
+    double[] avg = new double[stream.length - K + 1];
+    List<Integer> window = new LinkedList<>();
+    for (int i = 0; i < stream.length; i++) {
+      sum += stream[i];
+      window.add(stream[i]);
+      if (i >= K) {
+        sum -= window.remove(0);
+      }
+
+      // compute avg
+      if (i >= K - 1) {
+        avg[i - K + 1] = (int) (sum / K * 100) / 100.0;
+      }
+    }
+    return avg;
+  }
+
+  /** Get the max of the sliding window. */
+  int[] getMax(int[] nums, int k) {
+    if (nums == null || k == 0) return new int[0];
+    int n = nums.length;
+    if (n < k) return new int[0];
+
+    int[] ret = new int[n - k + 1];
+    // decreasing queue
+    List<Integer> window = new LinkedList<>();
+    for (int i = 0; i < n; i++) {
+      // remove expired elements
+      while(!window.isEmpty() && window.get(0) < i - k + 1) window.remove(0);
+      // remove all smaller numbers and append the current element
+      while (!window.isEmpty() && nums[window.get(window.size() - 1)] < nums[i]) {
+        window.remove(window.size() - 1);
+      }
+      window.add(i);
+      if (i >= k - 1) {
+        ret[i - k + 1] = nums[window.get(0)];
+      }
+    }
+    return ret;
+  }
+
+  /**
+   * Get median of the stream (compute median one time when a new element arrives)
+   * @param nums
+   * @return
+   */
+  int[] getMedian(int[] nums) {
+    int n = nums.length;
+    assert (n >= 2);
+    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(20, Collections.reverseOrder());
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    maxHeap.add(Math.min(nums[0], nums[1]));
+    minHeap.add(Math.max(nums[0], nums[1]));
+
+    int[] medians = new int[n - 1];
+    medians[0] = (maxHeap.peek() + minHeap.peek()) / 2;
+
+    for (int i = 2; i < n; i++) {
+      if (nums[i] < maxHeap.peek()) maxHeap.offer(nums[i]);
+      else minHeap.offer(nums[i]);
+
+      if (minHeap.size() < maxHeap.size() - 1) {
+        minHeap.offer(maxHeap.poll());
+      }
+      if(maxHeap.size() < minHeap.size() - 1) {
+        maxHeap.offer(minHeap.poll());
+      }
+      // get the median
+      medians[i - 1] = minHeap.size() == maxHeap.size() ? (maxHeap.peek() + minHeap.peek()) / 2
+          : (maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek());
+    }
+    return medians;
+  }
+}

@@ -127,12 +127,17 @@ public class BST {
    * the size of the left and right subtrees.
    */
   public static int countTree(int N) {
-    if (N <= 1)
-      return 1;
+    return countTree(N, new HashMap<Integer, Integer>());
+  }
+
+  static int countTree(int N, Map<Integer, Integer> memory) {
+    if (N <= 1) return 1;
+    if (memory.containsKey(N)) return memory.get(N);
     int sum = 0;
     for (int i = 1; i <= N; i++) {
       sum += countTree(i - 1) * countTree(N - i);
     }
+    memory.put(N, sum);
     return sum;
   }
 

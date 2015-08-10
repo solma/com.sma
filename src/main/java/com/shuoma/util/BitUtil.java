@@ -13,7 +13,8 @@ import java.util.List;
 public class BitUtil {
 
   public static void main (String[] args) {
-    System.out.println(reverseBits(65536L));
+    //System.out.println(reverseBits(65536L));
+    System.out.println(add(3L, 1L));
   }
 
   /** Addition implementation using bit and comparison operators only. */
@@ -22,6 +23,7 @@ public class BitUtil {
     do {
       carry = x & y;
       sum = x ^ y;
+      System.out.println("carry: " + carry + " sum:" + sum);
       x = carry << 1;
       y = sum;
     } while (carry != 0);
@@ -185,8 +187,9 @@ public class BitUtil {
 
   /** Set minTh ~ maxTh bit to given value. */
   public static long setBits(long n, int maxTh, int minTh, int val) {
+    // clear bits from minTh ~ maxTh
     n &= ~(((int) Math.pow(2, maxTh - minTh + 1) - 1) << minTh);
-    n |= val << minTh;
+    n |= val << minTh; // set bits
     return n;
   }
 

@@ -14,7 +14,7 @@ import java.util.Stack;
 public class BasicCalculatorI {
 
   public static void main(String[] args) {
-    String expr = "1 - (2 - 3 ) + 5";
+    String expr = "1 - (2 + 3 - ( 2 + 1) ) + 5";
     System.out.println(new BasicCalculatorI().calculate(expr));
   }
 
@@ -42,7 +42,7 @@ public class BasicCalculatorI {
       } else if (c == ')') {
         signStck.pop();
       }
-      System.out.println("i = " + i + " res = " + res + " " + signStck);
+      System.out.println("i = " + i + " c = " + c + " res = " + res + " " + signStck);
     }
     return res;
   }

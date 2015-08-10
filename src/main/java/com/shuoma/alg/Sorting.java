@@ -52,9 +52,9 @@ public class Sorting {
     for (int i = 0; i < a.length; i++) c[a[i]]++;
     for (int i = 1; i < c.length; i++) c[i] += c[i - 1];
     int[] b = new int[a.length];
-    for (int i = 0; i < a.length; i++) {
-      b[c[a[i]] - 1] = a[i] - RandomUtil.MAX_RANDOM_VALUE;
-      c[a[i]]--;
+    for (int num: a) {
+      b[c[num] - 1] = num - RandomUtil.MAX_RANDOM_VALUE;
+      c[num]--;
     }
     return b;
   }

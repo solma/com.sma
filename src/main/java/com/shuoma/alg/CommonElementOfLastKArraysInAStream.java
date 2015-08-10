@@ -1,6 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
+import static com.shuoma.annotation.Tag.Algorithm.Streaming;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.Reference.Interview;
@@ -18,7 +19,7 @@ import java.util.Set;
 /**
  * Find common elements in N sorted arrays with no extra space
  */
-@Tag(algs = SlidingWindow, dss = {Array, Hash}, references = Interview)
+@Tag(algs = {SlidingWindow, Streaming}, dss = {Array, Hash}, references = Interview)
 public class CommonElementOfLastKArraysInAStream {
   public static void main(String[] args) {
     int[][] a = {

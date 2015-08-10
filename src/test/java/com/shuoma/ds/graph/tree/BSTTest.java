@@ -1,5 +1,6 @@
 package com.shuoma.ds.graph.tree;
 
+import static com.shuoma.ds.graph.tree.BST.countTree;
 import static com.shuoma.ds.graph.tree.BST.delete;
 import static com.shuoma.ds.graph.tree.BST.insert;
 import static com.shuoma.ds.graph.tree.BST.lowestCommonAncestor;
@@ -88,5 +89,9 @@ public class BSTTest {
     //prettyPrint(root);
     BSTNode afterDeletion = insert(new int[]{5, 3, 1, 22, 10, 20, 13});
     assertTrue(sameTree(root, afterDeletion));
+  }
+
+  @Test public void testCountTree() throws Exception {
+    assertEquals(5, countTree(3));
   }
 }
