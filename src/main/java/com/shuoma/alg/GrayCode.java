@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
@@ -9,7 +9,7 @@ import com.shuoma.annotation.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = String, references = LeetCode)
+@Tag(algs = Recursion, dss = StringT, references = LeetCode)
 public class GrayCode {
   public static void main(String[] args) {
     GrayCode ins = new GrayCode();

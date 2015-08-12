@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Calculator;
 import static com.shuoma.annotation.Tag.DataStructure.StackT;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -10,7 +10,7 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Stack;
 
-@Tag(dl = D2, dss = {Calculator, StackT, String}, references = LeetCode)
+@Tag(dl = D2, dss = {Calculator, StackT, StringT}, references = LeetCode)
 public class BasicCalculatorI {
 
   public static void main(String[] args) {

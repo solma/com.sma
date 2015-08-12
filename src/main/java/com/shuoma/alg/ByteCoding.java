@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
@@ -16,7 +16,7 @@ Otherwise it will be very trivial.
  *
  */
 
-@Tag(dss = String)
+@Tag(dss = StringT)
 public class ByteCoding{
     public static void main(String[] args){
        new ByteCoding().main();

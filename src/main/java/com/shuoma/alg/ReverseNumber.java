@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
@@ -16,7 +16,7 @@ import java.util.Set;
  * It remains unchanged after rotating 180 degree followed by reversing
  * e.g. 96196 ---rotating 180 degree --> 69169 --reversing --> 96196。
  */
-@Tag(algs = Recursion, dss = String)
+@Tag(algs = Recursion, dss = StringT)
 public class ReverseNumber {
   public static void main(String[] args) {
     List<Integer> res = new ArrayList<>(findAll(5));

@@ -19,7 +19,7 @@ import java.util.Map;
 
     // Adds a word into the data structure.
     public void addWord(String word) {
-      insert(root, word);
+      insertIterative(root, word);
     }
 
     // Returns if the word is in the data structure. A word could
@@ -28,19 +28,30 @@ import java.util.Map;
       return search(root, word, 0);
     }
 
-    private void insert(TrieNode root, String word) {
+    void insertIterative(TrieNode root, String word) {
       TrieNode node = root;
       for (int ind = 0; ind < word.length(); ind++) {
         final char c = word.charAt(ind);
-        if (!node.next.containsKey(c)) {
-          node.next.put(c, new TrieNode());
+        if (!node.children.containsKey(c)) {
+          node.children.put(c, new TrieNode());
         }
-        node = node.next.get(c);
+        node = node.children.get(c);
       }
       node.isWordEnd = true;
     }
 
-    private boolean search(TrieNode node, String word, int len) {
+    void insertRecursive(TrieNode cur, String word) {
+      if (cur == null || word == null) return;
+      char firstChar = word.charAt(0);
+      if (!cur.children.containsKey(firstChar)) {
+        TrieNode child = new TrieNode();
+        if (word.length() == 1) child.isWordEnd = true;
+        cur.children.put(firstChar, child);
+      }
+      insertRecursive(cur.children.get(firstChar), word.substring(1));
+    }
+
+    boolean search(TrieNode node, String word, int len) {
       if (node == null) {
         return false;
       }
@@ -49,25 +60,24 @@ import java.util.Map;
       }
       final char c = word.charAt(len);
       if (isWildcard(c)) {
-        for (TrieNode next : node.next.values()) {
+        for (TrieNode next : node.children.values()) {
           if (search(next, word, len + 1)) {
             return true;
           }
         }
         return false;
       } else {
-        return search(node.next.get(c), word, len + 1);
+        return search(node.children.get(c), word, len + 1);
       }
     }
 
     private boolean isWildcard(char c) {
       return c == WILDCARD;
     }
-
-    private static class TrieNode {
-
-      private final Map<Character, TrieNode> next = new HashMap<>();
-      private boolean isWordEnd;
-    }
   }
+}
+
+class TrieNode {
+  final Map<Character, TrieNode> children = new HashMap<>();
+  boolean isWordEnd;
 }

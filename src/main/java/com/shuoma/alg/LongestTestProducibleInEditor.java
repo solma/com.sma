@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 // reference : http://4remembrance.blogspot.com/2013/01/longest-text-producible-in-editor.html
 
-@Tag(algs = DynamicProgramming, dss = String)
+@Tag(algs = DynamicProgramming, dss = StringT)
 public class LongestTestProducibleInEditor {
   public static void main(String[] args) {
     System.out.println(longestText(80));

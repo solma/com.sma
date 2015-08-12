@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Palindrome;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = {Palindrome, String}, references = LeetCode)
+@Tag(dss = {Palindrome, StringT}, references = LeetCode)
 public class ShortestPalindrome {
 
   public String shortestPalindrome(String s) {

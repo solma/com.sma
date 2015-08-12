@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Hash;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(dss = {Hash, String}, references = LeetCode)
+@Tag(dss = {Hash, StringT}, references = LeetCode)
 public class SubstringwithConcatenationofAllWords {
   public List<Integer> findSubstring(String S, String[] L) {
     int len = L[0].length();

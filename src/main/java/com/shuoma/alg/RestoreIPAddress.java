@@ -1,15 +1,14 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 
-@Tag(algs = Recursion, dss = String, references = LeetCode)
-public class RestoreIPAddress {
+@Tag(algs = Recursion, dss = StringT, references = LeetCode) public class RestoreIPAddress {
   public static void main(String[] args) {
     new RestoreIPAddress().main();
   }
@@ -29,7 +28,7 @@ public class RestoreIPAddress {
   }
 
   public ArrayList<String> restore(String s, int startIdx, ArrayList<String> ip, int n) {
-    ArrayList<String> allIPs = new ArrayList<String>();
+    ArrayList<String> allIPs = new ArrayList<>();
     if (ip.size() == 4) {
       if (n == s.length()) {
         //System.out.println(ip);
@@ -56,7 +55,6 @@ public class RestoreIPAddress {
       }
     }
     return allIPs;
-
   }
 
   //first pass

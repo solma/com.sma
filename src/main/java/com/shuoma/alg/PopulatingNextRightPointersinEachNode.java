@@ -43,7 +43,7 @@ public class PopulatingNextRightPointersinEachNode {
     ArrayList<TreeLinkNode> nextLayer;
     while (!curLayer.isEmpty()) {
       pre = null;
-      nextLayer = new ArrayList<TreeLinkNode>();
+      nextLayer = new ArrayList<>();
       while (!curLayer.isEmpty()) {
         TreeLinkNode cur = curLayer.remove(0);
         if (pre != null)

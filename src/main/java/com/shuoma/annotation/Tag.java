@@ -36,6 +36,7 @@ public @interface Tag {
     Streaming,
     Sorting,
     TopDown,
+    TopologicalSorting,
     NA,
   }
 
@@ -57,7 +58,7 @@ public @interface Tag {
     QueueT,
     SegmentTree,
     StackT,
-    String,
+    StringT,
     Subarray,
     ThreadT,
     TournamentTree,

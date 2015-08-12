@@ -34,15 +34,6 @@ public class LRUCache {
     System.out.println();
   }
 
-  //implement bidirectional linkedlist
-  class Node {
-    Node prev;
-    Node next;
-    int key;
-    int value;
-  }
-
-
   private Node head = null;
   private HashMap<Integer, Node> map = new HashMap<>();
   private int capacity = 0;
@@ -56,7 +47,7 @@ public class LRUCache {
       Node n = map.get(key);
       // refresh the list
       detach(n);
-      attach(n);
+      prepend(n);
       return n.value;
     } else {
       return -1;
@@ -74,13 +65,11 @@ public class LRUCache {
       n.value = value;
       // refresh the list
       detach(n);
-      attach(n);
+      prepend(n);
     } else {
       // add a new node
-      Node n = new Node();
-      n.key = key;
-      n.value = value;
-      attach(n);
+      Node n = new Node(key, value);
+      prepend(n);
       map.put(key, n);
       if (map.size() > capacity) {
         // remove the last node
@@ -92,7 +81,7 @@ public class LRUCache {
   }
 
   // attach the given node to the beginning of the list
-  private void attach(Node n) {
+  private void prepend(Node n) {
     if (head != null) {
       n.prev = head.prev;
       head.prev.next = n;
@@ -108,40 +97,23 @@ public class LRUCache {
 
   // detach the given node from the list
   private void detach(Node n) {
-    if (n == head)
+    if (n == head) {
       head = n.next;
+    }
     n.prev.next = n.next;
     n.next.prev = n.prev;
   }
+}
 
+//implement bidirectional linkedlist
+class Node {
+  Node prev;
+  Node next;
+  int key;
+  int value;
 
-
-  // TLE
-  //    private HashMap<Integer, Integer> values;
-  //    private ArrayList<Integer> cache;
-  //    private int SIZE;
-
-    /*public LRUCache(int capacity) {
-        cache=new ArrayList<Integer>();
-        SIZE=capacity;
-        values=new HashMap<Integer, Integer>();
-    }
-
-    public int get(int key) {
-        if(cache.contains(key)) return values.get(key);
-        else return -1;
-    }
-
-    public void set(int key, int value) {
-
-        if(!cache.contains(key)){
-            if(cache.size()==SIZE){
-                values.remove(cache.remove(0));
-            }
-        }else{
-            cache.remove((Integer)key);
-        }
-        cache.add(key);
-        values.put(key,value);
-    }*/
+  public Node(int key, int value) {
+    this.key = key;
+    this.value = value;
+  }
 }

@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(algs = Backtracking, dss = String) public class StringMatching {
+@Tag(algs = Backtracking, dss = StringT) public class StringMatching {
   public static void main(String[] args) {
     new StringMatching().main();
   }

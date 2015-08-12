@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
@@ -21,7 +21,7 @@ import java.util.Queue;
  operations on S, 1. swap two consecutive characters, 2. swap first and last characters.
  Write code to find the min operation needed to change S into P.
  */
-@Tag(algs = BreadthFirstSearch, dss = String, references = Interview)
+@Tag(algs = BreadthFirstSearch, dss = StringT, references = Interview)
 public class AnagramTransformation {
 
   public static void main(String[] args) {

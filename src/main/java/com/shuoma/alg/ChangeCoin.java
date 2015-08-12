@@ -21,19 +21,21 @@ import java.util.Set;
 @Tag(algs = {Backtracking, DynamicProgramming})
 public class ChangeCoin {
 
-  int changeCntDp(final int n, final int[] denominations) {
+  //dp[i][j] = f(dp[i][j-denom[k])], dp[i-1][j])
+  int changeCntDp(final int N, final int[] denominations) {
     int m = denominations.length;
-    long[] cnt = new long[n + 1];
+    long[] cnt = new long[N + 1];
     cnt[0] = 1;
 
     for (int j = 1; j <= m; j++) {
-      for (int i = 0; i <= n; i++) {
+      //for (int i = N; i >= 0; i--) // not work requires dp[i][j] = f(dp[i-1][j-denom[k])], dp[i-1][j])
+      for (int i = 0; i <= N; i++) { // allow repetition for same denomination, similar to knapsack
         if (i >= denominations[j - 1]) {
           cnt[i] += cnt[i - denominations[j - 1]];
         }
       }
     }
-    return (int) cnt[n];
+    return (int) cnt[N];
   }
 
   Set<Map<Integer, Integer>> changeWaysDp(final int n, final int[] denominations) {

@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(dss = String, references = LeetCode)
+@Tag(dss = StringT, references = LeetCode)
 public class LongestCommonPrefix {
   public static void main(String[] args) {
     System.out

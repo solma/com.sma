@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = String, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = StringT, references = LeetCode)
 public class InterleavingString {
   public boolean isInterleave(String s1, String s2, String s3) {
     int m = s1.length();

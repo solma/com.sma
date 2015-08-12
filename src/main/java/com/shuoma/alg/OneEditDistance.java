@@ -2,13 +2,13 @@ package com.shuoma.alg;
 // Given two strings S and T, determine if they are both one edit distance apart.
 // O(n) time, O(1) space
 
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D3, dss = String, references = LeetCode)
+@Tag(dl = D3, dss = StringT, references = LeetCode)
 public class OneEditDistance {
   public static void main(String[] args) {
     System.out.println(isOneEditDistance("aee", "ass"));

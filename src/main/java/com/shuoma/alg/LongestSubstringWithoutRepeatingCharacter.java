@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Hash;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {Hash, String}, references = LeetCode)
+@Tag(dl = D2, dss = {Hash, StringT}, references = LeetCode)
 public class LongestSubstringWithoutRepeatingCharacter {
 
   //second pass

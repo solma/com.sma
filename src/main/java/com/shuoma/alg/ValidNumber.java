@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.RegularExpression;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = RegularExpression, dss = String, references = LeetCode)
+@Tag(algs = RegularExpression, dss = StringT, references = LeetCode)
 public class ValidNumber {
   public static void main(String[] args) {
     new ValidNumber().main();

@@ -3,7 +3,7 @@ package com.shuoma.alg;
 // reference: Elements of Programming Interviews
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Tag(algs = {Backtracking, Recursion}, dss = String)
+@Tag(algs = {Backtracking, Recursion}, dss = StringT)
 public class StringDecomposition {
   public static void main(String[] args) {
     new StringDecomposition().main();

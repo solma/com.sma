@@ -1,14 +1,14 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.TopDown;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.*;
 
-@Tag(algs = TopDown, dss = String, references = LeetCode)
+@Tag(algs = TopDown, dss = StringT, references = LeetCode)
 public class PascalTriangleII {
   public static void main(String[] args) {
     new PascalTriangleII().getRow(30);

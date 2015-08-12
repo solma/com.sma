@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dss = String, references = LeetCode)
+@Tag(algs = Recursion, dss = StringT, references = LeetCode)
 public class RegularExpressionMatching {
   public boolean isMatch(String s, String p) {
     if (s == null)

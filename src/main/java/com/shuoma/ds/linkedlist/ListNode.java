@@ -7,7 +7,7 @@ import com.shuoma.annotation.Tag;
 @Tag(references = LeetCode)
 public class ListNode {
   public int val;
-  public ListNode next;
+  public ListNode next, prev;
 
   public ListNode(int x) {
     val = x;

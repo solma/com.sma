@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
@@ -13,7 +13,7 @@ import com.shuoma.annotation.Tag;
  Decoder side: Any time above pattern is detected, it will output n number of c. If x is the last character,
  output x.
  */
-@Tag(dss = String, references = Interview)
+@Tag(dss = StringT, references = Interview)
 public class StringAbbreviation {
 
   public static void main(String[] args) {

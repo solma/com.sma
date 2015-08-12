@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Trick.AccumulativeSum;
 
 import com.shuoma.annotation.Tag;
@@ -14,7 +14,7 @@ import java.util.Map;
  * replaced by the third letter, e.g. ab -> c. Return the shortest string that can be
  * obtained via this operation.
  */
-@Tag(algs = Recursion, dss = String, tricks = AccumulativeSum)
+@Tag(algs = Recursion, dss = StringT, tricks = AccumulativeSum)
 public class ReduceOperation {
   public static void main(String[] args) {
     String input = "cbcabacbbbabc"; //abcba

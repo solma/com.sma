@@ -19,11 +19,11 @@ public class Knapsack {
     Map<Integer, Integer> prev = new HashMap<>();
     int capacityStart, capacityEnd, step;
     for (int i = 1; i <= n; i++) {
-      if (noLimitForEachItem) {
+      if (noLimitForEachItem) { //dp[i][j] = f(dp[i][j-weight[k])], dp[i-1][j])
         capacityStart = 0;
         capacityEnd = capacity + 1;
         step = 1;
-      } else {
+      } else { //dp[i][j] = f(dp[i-1][j-weight[k])], dp[i-1][j])
         capacityStart = capacity;
         capacityEnd = -1;
         step = -1;
@@ -61,11 +61,6 @@ public class Knapsack {
         }
       }
     }
-
-//    for (int[] row : maxValue) {
-//      System.out.println(Arrays.toString(row));
-//    }
-
     return maxValue[n][capacity];
   }
 }

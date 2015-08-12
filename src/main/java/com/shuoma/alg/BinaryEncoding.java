@@ -2,7 +2,7 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.DivideConquer;
 import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 
 import com.shuoma.annotation.Tag;
@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
 /**
  * Encode symbols in bits based on their frequency
  */
-@Tag(algs = DivideConquer, dl = D3, dss = {PriorityQueueT, String})
+@Tag(algs = DivideConquer, dl = D3, dss = {PriorityQueueT, StringT})
 public class BinaryEncoding {
   public class Symbol implements Comparable<Symbol> {
     public String sym;

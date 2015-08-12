@@ -28,7 +28,7 @@ public class KnapsackTest {
 
       int[] res = new int[3];
       res[0] = packDummy(W, weights, values);
-      res[1] = ins.itemMajorOrder(W, weights, values, true);
+      res[1] = ins.itemMajorOrder(W, weights, values, false);
       res[2] = ins.capacityMajorOrder(W, weights, values);
       if (res[0] != res[1] || res[0] != res[2]) {
         System.out.println("capacity: " + W);

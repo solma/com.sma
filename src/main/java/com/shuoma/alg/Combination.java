@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Tag(algs = Recursion, dss = Tag.DataStructure.String)
+@Tag(algs = Recursion, dss = Tag.DataStructure.StringT)
 public class Combination {
   public static void main(String[] args) {
     String s1 = "123";

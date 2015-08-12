@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Trick.InplaceSwap;
 
@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 import com.shuoma.util.MathUtil;
 
 /** Rotate left shift a string. */
-@Tag(dl = D3, dss = String, tricks = InplaceSwap)
+@Tag(dl = D3, dss = StringT, tricks = InplaceSwap)
 public class RotateString {
 
   public static void main(String[] args) {

@@ -167,12 +167,12 @@ public class RangeMinimumQuery {
     }
 
     public double getMin(Interval interval) {
-      // equal
-      if (start == interval.start && end == interval.end) {
+      // contained by query
+      if (start >= interval.start && end <= interval.end) {
         return value;
       }
 
-      // contained
+      // contain query
       if (include(interval)) {
         return Math.min(left == null ? Integer.MAX_VALUE : left.getMin(interval),
             right == null ? Integer.MAX_VALUE : right.getMin(interval));

@@ -1,13 +1,13 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {Array, String}, references = LeetCode)
+@Tag(dl = D2, dss = {Array, StringT}, references = LeetCode)
 public class MultiplyStrings {
   public static void main(String[] args) {
     new MultiplyStrings().main();

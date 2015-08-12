@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
@@ -20,7 +20,7 @@ import java.util.TreeSet;
  * (without duplication).
  */
 // TODO: algorithm is incorrect
-@Tag(algs = Greedy, dl = D3, dss = String, references = Interview)
+@Tag(algs = Greedy, dl = D3, dss = StringT, references = Interview)
 public class LongestPalindrome {
   public static void main(String[] args) {
     Set<String> dict = ImmutableSet.of("cbca", "xxyy", "yyxx", "hhijk", "kji", "acee", "fee", "ca");

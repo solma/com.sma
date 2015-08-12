@@ -22,7 +22,7 @@ public class ImplementStackUseQueue {
   }
 }
 
-// Opt 1. expensive push (out queue is always empty after push)
+// Opt 1. expensive push (in queue is always empty after push)
 // Opt 2. expensive pop/peek (out queue is always empty after pop)
 class MyStack1 {
   Queue<Integer> in = new LinkedList<>();

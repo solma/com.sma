@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Recursion, dss = Tag.DataStructure.String)
+@Tag(algs = Recursion, dss = Tag.DataStructure.StringT)
 public class Permutation {
 
   public static void main(String[] args) {

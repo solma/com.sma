@@ -1,11 +1,11 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Arithmetic, dss = String)
+@Tag(algs = Arithmetic, dss = StringT)
 public class PrimePalindrome {
   public static void main(String[] args) {
     int N = 1000;

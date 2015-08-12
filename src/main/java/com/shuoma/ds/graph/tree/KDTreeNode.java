@@ -22,9 +22,9 @@ public class KDTreeNode {
     int mid = sIdx + (eIdx - sIdx + 1) / 2;
     KDTreeNode cur = new KDTreeNode(points[mid]);
     if (sIdx < eIdx) {
-      int n = points[0].length;
-      cur.left = buildTree(points, sIdx, mid - 1, (k + 1) % n);
-      cur.right = buildTree(points, mid + 1, eIdx, (k + 1) % n);
+      int dimension = points[0].length;
+      cur.left = buildTree(points, sIdx, mid - 1, (k + 1) % dimension);
+      cur.right = buildTree(points, mid + 1, eIdx, (k + 1) % dimension);
     }
     return cur;
   }

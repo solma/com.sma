@@ -5,7 +5,7 @@ package com.shuoma.alg;
  */
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.StackT;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 
 import com.shuoma.annotation.Tag;
@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Tag(algs = Recursion, dl = D2, dss = {StackT, String})
+@Tag(algs = Recursion, dl = D2, dss = {StackT, StringT})
 public class TwentyFourGame {
   public static void main(String[] args) {
     new TwentyFourGame().main();

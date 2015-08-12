@@ -5,14 +5,14 @@ package com.shuoma.alg;
  * characters in one line such that for any x, no two occurrences of x are next to each other.
  */
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
-import static com.shuoma.annotation.Tag.DataStructure.String;
+import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.PriorityQueue;
 
-@Tag(algs = Greedy, dss = {String, Tag.DataStructure.PriorityQueueT}, references = Interview)
+@Tag(algs = Greedy, dss = {StringT, Tag.DataStructure.PriorityQueueT}, references = Interview)
 public class SeperateSameLetters {
   public static void main(String[] args) {
     new SeperateSameLetters().main("abc", "145");
