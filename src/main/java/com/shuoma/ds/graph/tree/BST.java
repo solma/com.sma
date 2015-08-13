@@ -518,24 +518,24 @@ public class BST {
   public static void printTree(BSTNode root, TraversalMethod method) {
     switch (method) {
       case INORDER_ITERATIVE_WITH_STACK:
-        printTreeInorderIterative(root);
+        printTreeInorderI(root);
         break;
       case INORDER_ITERATIVE_WITHOUT_STACK:
         printTreeInorderMorris(root);
         break;
       case INORDER_RECUSRIVE:
-        printTreeInorder(root);
+        printTreeInorderR(root);
       case PREORDER_ITERATIVE_WITH_STACK:
-        printTreePreorderIterative(root);
+        printTreePreorderI(root);
         break;
       case PREORDER_RECUSRIVE:
-        printTreePreorder(root);
+        printTreePreorderR(root);
         break;
       case POSTORDER_ITERATIVE_WITH_STACK:
-        printTreePostorderIterative(root);
+        printTreePostorderI(root);
         break;
       case POSTORDER_RECUSRIVE:
-        printTreePostorder(root);
+        printTreePostorderR(root);
         break;
       default:
         throw new IllegalArgumentException(method + " does not exists");
@@ -589,16 +589,16 @@ public class BST {
     }
   }
 
-  public static void printTreeInorder(BSTNode cur) {
+  public static void printTreeInorderR(BSTNode cur) {
     if (cur == null) {
       return;
     }
-    printTreeInorder(cur.left);
+    printTreeInorderR(cur.left);
     System.out.println(cur);
-    printTreeInorder(cur.right);
+    printTreeInorderR(cur.right);
   }
 
-  public static void printTreeInorderIterative(BSTNode cur) {
+  public static void printTreeInorderI(BSTNode cur) {
     Stack<BSTNode> stck = new Stack<>();
 
     while (!stck.empty() || cur != null) {
@@ -642,7 +642,7 @@ public class BST {
     }
   }
 
-  public static void printTreePostorderIterative(BSTNode cur) {
+  public static void printTreePostorderI(BSTNode cur) {
     Stack<BSTNode> stck = new Stack<>();
     if (cur == null)
       return;
@@ -684,16 +684,16 @@ public class BST {
     return;
   }
 
-  public static void printTreePreorder(BSTNode cur) {
+  public static void printTreePreorderR(BSTNode cur) {
     if (cur == null) {
       return;
     }
     System.out.println(cur);
-    printTreePreorder(cur.left);
-    printTreePreorder(cur.right);
+    printTreePreorderR(cur.left);
+    printTreePreorderR(cur.right);
   }
 
-  public static void printTreePreorderIterative(BSTNode cur) {
+  public static void printTreePreorderI(BSTNode cur) {
     Stack<BSTNode> stck = new Stack<>();
     stck.push(cur);
     while (!stck.empty()) {
@@ -709,23 +709,23 @@ public class BST {
   public static void printTreeDFS(BSTNode root, String order) {
     switch (order) {
       case "pre":
-        printTreePreorder(root);
+        printTreePreorderR(root);
         break;
       case "post":
-        printTreePostorder(root);
+        printTreePostorderR(root);
         break;
       default:
-        printTreeInorder(root);
+        printTreeInorderR(root);
     }
     System.out.println();
   }
 
-  public static void printTreePostorder(BSTNode cur) {
+  public static void printTreePostorderR(BSTNode cur) {
     if (cur == null) {
       return;
     }
-    printTreePostorder(cur.left);
-    printTreePostorder(cur.right);
+    printTreePostorderR(cur.left);
+    printTreePostorderR(cur.right);
     System.out.println(cur);
   }
 

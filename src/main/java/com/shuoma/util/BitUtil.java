@@ -23,7 +23,7 @@ public class BitUtil {
     do {
       carry = x & y;
       sum = x ^ y;
-      System.out.println("carry: " + carry + " sum:" + sum);
+      //System.out.println("carry: " + carry + " sum:" + sum);
       x = carry << 1;
       y = sum;
     } while (carry != 0);
@@ -61,16 +61,15 @@ public class BitUtil {
     return n & ~(n - 1);
   }
 
-  /** Division implementation using bit and comparison operators only. */
+  /** Division implementation using bit and comparison operators only.
+   * Return the quotient only. */
   public static long divide(long x, long y) {
-    int sign = 0;
+    boolean negative = x < 0 ^ y < 0;
     if (x < 0) {
       x = add(~x, 1);
-      sign ^= 1;
     }
     if (y < 0) {
       y = add(~y, 1);
-      sign ^= 1;
     }
 
     List<Long> exponents = new LinkedList<>();
@@ -90,7 +89,7 @@ public class BitUtil {
         }
       }
     }
-    if (sign > 0) {
+    if (negative) {
       quotient = add(~quotient, 1);
     }
     return quotient;

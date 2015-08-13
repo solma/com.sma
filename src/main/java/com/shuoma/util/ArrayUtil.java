@@ -292,6 +292,15 @@ public class ArrayUtil {
     return reverse(array, 0, array.length - 1);
   }
 
+  // reverse in K-group
+  public static int[] reverse(int[] array, int K) {
+    for (int i = 0; i < array.length; ) {
+      reverse(array, i, Math.min(i + K - 1, array.length - 1));
+      i += K;
+    }
+    return array;
+  }
+
   public static int[] reverse(int[] array, int l, int r) {
     while (l < r) {
       swap(array, l++, r--);

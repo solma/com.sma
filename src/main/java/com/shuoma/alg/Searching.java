@@ -67,14 +67,14 @@ public class Searching {
       while (l < r && array[l] == array[r]) r--;
       if (l >= r) break;
 
-      int mid = l + (r - l) / 2;
-      if (array[mid] > array[mid + 1])
-        return mid + 1;
-        // or A[mid] >= A[low] (= is necessary for dups, e.g. [3,3,3,1])
-      else if (array[mid] > array[r])
-        l = mid + 1;
+      int m = l + (r - l) / 2;
+      if (array[m] > array[m + 1])
+        return m + 1;
+      else if (array[m] >= array[l]) //(= is necessary for dups, e.g. [3,3,3,1])
+      //else if (array[mid] > array[r])
+        l = m + 1;
       else
-        r = mid;
+        r = m;
     }
     return 0;
   }

@@ -1,6 +1,6 @@
 package com.shuoma.ds.math;
 
-import com.shuoma.util.MathUtil;
+import static com.shuoma.util.MathUtil.greatestCommonDivisor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class Fraction {
   }
 
   private Fraction proper() {
-    long gcd = MathUtil.greatestCommonDivisor(numerator, denominator);
+    long gcd = greatestCommonDivisor(numerator, denominator);
     //System.out.println(numerator + " " + denominator + " " + gcd);
     numerator /= gcd;
     denominator /= gcd;
@@ -44,10 +44,11 @@ public class Fraction {
     long r = n % d;
     if (r > 0) {
       sb.append(".");
-      Map<Long, Integer> fractionalPart = new HashMap<Long, Integer>();
+      Map<Long, Integer> fractionalPart = new HashMap<>();
       while (r > 0) {
         if (fractionalPart.containsKey(r)) {
           sb.insert(fractionalPart.get(r), ".");
+          //sb.append(")");
           break;
         }
         fractionalPart.put(r, sb.length());
@@ -65,6 +66,6 @@ public class Fraction {
   }
 
   public static void main(String[] args) {
-    System.out.println(new Fraction(Integer.parseInt(args[0]), Integer.parseInt(args[1])).toDecimal());
+    System.out.println(new Fraction(2, 15).toDecimal());
   }
 }

@@ -45,8 +45,12 @@ public class Shape {
   /** Return true if two rectangles overlap
    * 1st element is bottom right, 2nd element is top left */
   static boolean rectanglesOverlap(double[][] rec1, double[][] rec2) {
-    return rec1[0][0] >= rec2[1][0] && rec1[0][1] <= rec2[1][1]
-        && rec1[1][0] <= rec2[0][0] && rec1[1][1] >= rec2[0][1];
+
+    return ! (rec1[1][1] < rec2[0][1] || rec2[1][1] < rec1[0][1]
+        || rec1[0][0] < rec2[1][0] || rec2[0][0] < rec1[1][0]);
+// or
+//    return rec1[0][0] >= rec2[1][0] && rec1[0][1] <= rec2[1][1]
+//        && rec1[1][0] <= rec2[0][0] && rec1[1][1] >= rec2[0][1];
   }
 
   /** Return the orientation of points of polygon. */
