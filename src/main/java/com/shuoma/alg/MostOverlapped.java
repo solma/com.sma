@@ -36,7 +36,7 @@ public class MostOverlapped {
       points.add(new EndPoint(itvl.end, false, itvl));
     }
     Collections.sort(points);
-    System.out.println(points);
+    //System.out.println(points);
 
     int[] result = new int[3];
     int cnt = 0;

@@ -1,7 +1,8 @@
 package com.shuoma.alg;
 
+import static com.shuoma.ds.misc.Interval.buildIntervalList;
+
 import com.shuoma.ds.misc.Interval;
-import com.shuoma.util.RandomUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -14,8 +15,10 @@ public class MostOverlappedTest extends TestCase {
     MostOverlapped ins = new MostOverlapped();
 
     int n = 10, maxValue = 50;
-    for (int i = 0; i < 100; i++) {
-      List<Interval> intervals = RandomUtil.genRandomListOfIntervals(n, maxValue);
+    for (int i = 0; i < 1; i++) {
+      //List<Interval> intervals = genRandomListOfIntervals(n, maxValue);
+      List<Interval> intervals = buildIntervalList(
+          new int[][] {{0, 1}, {0, 5}, {15, 32}, {21, 33}, {22, 48}, {29, 32}, {35, 46}, {44, 49}});
       int[][] res = new int[2][3];
       res[0] = dummyMostOverlapped(intervals);
       res[1] = ins.mostOverlappedInterval(intervals);

@@ -1,5 +1,8 @@
 package com.shuoma.ds.misc;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Interval {
   public int start;
   public int end;
@@ -13,6 +16,12 @@ public class Interval {
   public Interval(int start, int end, double value) {
     this(start, end);
     this.value = value;
+  }
+
+  public static List<Interval> buildIntervalList(int[][] intervals) {
+    List<Interval> li = new LinkedList<>();
+    for (int[] inv : intervals) li.add(new Interval(inv[0], inv[1]));
+    return li;
   }
 
   public boolean include(Interval that) {
