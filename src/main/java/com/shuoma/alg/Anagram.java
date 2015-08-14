@@ -15,7 +15,6 @@ import java.util.Map;
 @Tag(algs = Sorting, dss = StringT, references = LeetCode)
 public class Anagram {
 
-  // pass2:
   public List<String> anagrams(String[] strs) {
     Map<String, ArrayList<String>> anagramSignatures = new HashMap<>();
     for (String str : strs) {
