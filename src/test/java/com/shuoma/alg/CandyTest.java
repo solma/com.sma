@@ -1,6 +1,5 @@
 package com.shuoma.alg;
 
-import com.shuoma.alg.Candy;
 import junit.framework.TestCase;
 import org.junit.Test;
 

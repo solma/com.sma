@@ -21,7 +21,6 @@ public class BFS {
 
   /**
    * return all paths; and null if not find
-   *
    * @param g
    * @param end: target node; if null, then traverse
    */
