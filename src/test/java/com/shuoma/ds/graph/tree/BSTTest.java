@@ -4,8 +4,9 @@ import static com.shuoma.ds.graph.tree.BST.countTree;
 import static com.shuoma.ds.graph.tree.BST.delete;
 import static com.shuoma.ds.graph.tree.BST.insert;
 import static com.shuoma.ds.graph.tree.BST.lowestCommonAncestor;
+import static com.shuoma.ds.graph.tree.BST.maxDistanceBtwLeaves;
 import static com.shuoma.ds.graph.tree.BST.pathBetweenTwoNodes;
-import static com.shuoma.ds.graph.tree.BST.pathFromChildToAncestor;
+import static com.shuoma.ds.graph.tree.BST.pathFromChildToAncestorR;
 import static com.shuoma.ds.graph.tree.BST.sameTree;
 import static java.util.Collections.reverse;
 import static org.junit.Assert.assertEquals;
@@ -45,7 +46,7 @@ public class BSTTest {
 
     for (int i = 0; i < children.length; i++) {
       reverse(paths[i]);
-      assertEquals(paths[i], pathFromChildToAncestor(ancestors[i], children[i]));
+      assertEquals(paths[i], pathFromChildToAncestorR(ancestors[i], children[i]));
     }
   }
 
@@ -93,5 +94,11 @@ public class BSTTest {
 
   @Test public void testCountTree() throws Exception {
     assertEquals(5, countTree(3));
+  }
+
+  @Test
+  public void testMaxDistanceBtwLeaves() throws Exception {
+    BSTNode root = insert(nodes);
+    assertEquals(7, maxDistanceBtwLeaves(root));
   }
 }

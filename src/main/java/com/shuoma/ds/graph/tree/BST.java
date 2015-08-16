@@ -431,7 +431,7 @@ public class BST {
   }
 
   /**
-   * max distance difference between two leaves
+   * max distance between two leaves
    */
   public static int maxDistanceBtwLeaves(BSTNode root) {
     if (root == null) return 0;
@@ -487,27 +487,27 @@ public class BST {
 
   public static List<String> pathBetweenTwoNodes(BSTNode root, String node1Id, String node2Id) {
     BSTNode lca = lowestCommonAncestor(root, node1Id, node2Id);
-    List<String> path1 = pathFromChildToAncestor(lca, node1Id);
-    List<String> path2 = pathFromChildToAncestor(lca, node2Id);
+    List<String> path1 = pathFromChildToAncestorR(lca, node1Id);
+    List<String> path2 = pathFromChildToAncestorR(lca, node2Id);
     reverse(path2);
     path2.remove(0);
     path1.addAll(path2);
     return path1;
   }
 
-  public static List<String> pathFromChildToAncestor(BSTNode ancestor, String childId) {
+  public static List<String> pathFromChildToAncestorR(BSTNode ancestor, String childId) {
     List<String> path = new LinkedList<>();
     if (ancestor == null) return path;
     if (ancestor.id.equals(childId)) {
       path.add(childId);
       return path;
     }
-    List<String> leftPath = pathFromChildToAncestor(ancestor.left, childId);
+    List<String> leftPath = pathFromChildToAncestorR(ancestor.left, childId);
     if (!leftPath.isEmpty()) {
       leftPath.add(ancestor.id);
       return leftPath;
     }
-    List<String> rightPath = pathFromChildToAncestor(ancestor.right, childId);
+    List<String> rightPath = pathFromChildToAncestorR(ancestor.right, childId);
     if (!rightPath.isEmpty()) {
       rightPath.add(ancestor.id);
       return rightPath;

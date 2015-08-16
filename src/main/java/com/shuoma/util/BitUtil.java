@@ -1,6 +1,7 @@
 package com.shuoma.util;
 
 import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 // More bit operation hacks
 // https://graphics.stanford.edu/~seander/bithacks.html
-@Tag(algs = BitManipulation)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class BitUtil {
 
   public static void main (String[] args) {
