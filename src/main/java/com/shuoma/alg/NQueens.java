@@ -53,8 +53,8 @@ public class NQueens {
           .contains(col + cols.size()))
         continue;
       cols.add(col);
-      diags.add(col - cols.size() + 1);
-      counterDiags.add(col + cols.size() - 1);
+      diags.add(col - cols.size());
+      counterDiags.add(col + cols.size());
       rets.addAll(solveNQueens(n, cols, diags, counterDiags));
       cols.remove(cols.size() - 1);
       diags.remove(diags.size() - 1);

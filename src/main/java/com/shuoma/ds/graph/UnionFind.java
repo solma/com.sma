@@ -1,62 +1,17 @@
 package com.shuoma.ds.graph;
 
+import static com.shuoma.annotation.Tag.DataStructure.UnionFind;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.LinkedList;
 import java.util.List;
 
+@Tag(dss = UnionFind)
 public class UnionFind {
-  public static class Element<T> {
-    int groupId;
-    T val;
-
-    public Element(int groupId, T val) {
-      this.groupId = groupId;
-      this.val = val;
-    }
-
-    @Override
-    public String toString() {
-      return val.toString();
-    }
-  }
-
-  public static class Group implements Comparable<Group> {
-    List<Element> elements;
-    int groupId;
-    boolean merged;
-    int rank;
-
-    public Group(Element e) {
-      this.elements = new LinkedList<>();
-      elements.add(e);
-      this.groupId = e.groupId;
-      this.rank = e.groupId;
-    }
-
-    public void add(Group g) {
-      elements.addAll(g.elements);
-      g.merged = true;
-      for (Element e : g.elements){
-        e.groupId = groupId;
-      }
-    }
-
-    public int size() {
-      return elements.size();
-    }
-
-    @Override
-    public int compareTo(Group g) {
-      return rank - g.rank;
-    }
-
-    @Override
-    public String toString() {
-      return elements.toString();
-    }
-  }
 
   public static void main(String[] args) {
-    String[] values = new String[]{"a", "b", "c", "d"};
+    String[] values = new String[] {"a", "b", "c", "d"};
     List<Element> elements = new LinkedList<>();
     int groupId = 0;
     for (String val : values) {
@@ -72,7 +27,7 @@ public class UnionFind {
 
   List<Group> groups;
 
-  public UnionFind (List<Element> elements) {
+  public UnionFind(List<Element> elements) {
     groups = new LinkedList<>();
     for (Element e : elements) {
       groups.add(new Group(e));
@@ -93,7 +48,8 @@ public class UnionFind {
     Group g1 = groups.get(find(e1));
     Group g2 = groups.get(find(e2));
 
-    if (g1.groupId == g2.groupId) return false;
+    if (g1.groupId == g2.groupId)
+      return false;
 
     Group larger, smaller;
     if (g1.compareTo(g2) >= 0) {
@@ -108,12 +64,61 @@ public class UnionFind {
     return true;
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder();
     for (Group group : groups)
       if (!group.merged)
         sb.append(group.toString() + "\n");
     return sb.toString();
+  }
+}
+
+
+class Element<T> {
+  int groupId;
+  T val;
+
+  public Element(int groupId, T val) {
+    this.groupId = groupId;
+    this.val = val;
+  }
+
+  @Override public String toString() {
+    return val.toString();
+  }
+}
+
+
+class Group implements Comparable<Group> {
+  List<Element> elements;
+  int groupId;
+  boolean merged;
+  int rank;
+
+  public Group(Element e) {
+    this.elements = new LinkedList<>();
+    elements.add(e);
+    this.groupId = e.groupId;
+    this.rank = e.groupId;
+  }
+
+  public void add(Group g) {
+    elements.addAll(g.elements);
+    g.merged = true;
+    for (Element e : g.elements) {
+      e.groupId = groupId;
+    }
+  }
+
+  public int size() {
+    return elements.size();
+  }
+
+  @Override public int compareTo(Group g) {
+    return rank - g.rank;
+  }
+
+  @Override public String toString() {
+    return elements.toString();
   }
 }

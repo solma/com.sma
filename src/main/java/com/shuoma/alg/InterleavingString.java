@@ -22,7 +22,8 @@ public class InterleavingString {
 
     for (int i = 0; i < n + 1; i++)
       for (int j = 0; j < m + 1; j++) {
-        if (dp[i][j] || (i - 1 >= 0 && dp[i - 1][j] && s2.charAt(i - 1) == s3.charAt(i + j - 1))
+        if (dp[i][j]
+            || (i - 1 >= 0 && dp[i - 1][j] && s2.charAt(i - 1) == s3.charAt(i + j - 1))
             || (j - 1 >= 0 && dp[i][j - 1] && s1.charAt(j - 1) == s3.charAt(i + j - 1)))
           dp[i][j] = true;
         else

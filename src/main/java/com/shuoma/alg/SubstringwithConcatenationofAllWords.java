@@ -17,20 +17,20 @@ public class SubstringwithConcatenationofAllWords {
     int len = L[0].length();
     int count = L.length;
 
-    Map<String, Integer> words = new HashMap<>();
+    Map<String, Integer> wordCounters = new HashMap<>();
     for (String s : L) {
-      if (words.containsKey(s)) {
-        words.put(s, 1 + words.get(s));
+      if (wordCounters.containsKey(s)) {
+        wordCounters.put(s, 1 + wordCounters.get(s));
       } else {
-        words.put(s, 1);
+        wordCounters.put(s, 1);
       }
     }
     List<Integer> rv = new ArrayList<>();
 
     int slen = S.length();
 
-    for (int i = 0; i <= slen - count * len; ) {//the first character of matching
-      Map<String, Integer> targets = new HashMap<>(words);
+    for (int i = 0; i <= slen - count * len; i++) {//the first character of matching
+      Map<String, Integer> targets = new HashMap<>(wordCounters);
       int forward = i;
       while (true) {
         String sub = S.substring(forward, forward + len);
@@ -49,7 +49,6 @@ public class SubstringwithConcatenationofAllWords {
           break;
         }
       }
-      i++;
     }
     return rv;
   }

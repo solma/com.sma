@@ -11,7 +11,7 @@ import com.shuoma.annotation.Tag;
  * Find common elements in N sorted arrays with no extra space
  */
 @Tag(algs = Greedy, dss = {Array, MonotonicSequence}, references = Interview)
-public class CommonElementOfNSortedArray {
+public class CommonElementOfSortedArrays {
   public static void main(String[] args) {
     int[][] a = {
         {10, 160, 200, 500, 500,},
@@ -21,7 +21,7 @@ public class CommonElementOfNSortedArray {
         {3, 150, 155, 160, 301}
     };
 
-    new CommonElementOfNSortedArray().commonElementOfSortedArrays(a);
+    new CommonElementOfSortedArrays().commonElementOfSortedArrays(a);
   }
 
   void commonElementOfSortedArrays(int[][] sortedArrays) {

@@ -4,16 +4,6 @@ import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 
 import com.shuoma.annotation.Tag;
 
-/**
- * Definition for binary tree
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
- */
-
 @Tag(dss = BinaryTree)
 public class BalancedBinaryTree {
 
@@ -26,15 +16,12 @@ public class BalancedBinaryTree {
       return 0;
 
     int leftHeight = height(root.left);
-    if (leftHeight == -1)
-      return -1;
+    if (leftHeight == -1) { return -1; }
 
     int rightHeight = height(root.right);
-    if (rightHeight == -1)
-      return -1;
+    if (rightHeight == -1) { return -1; }
 
-    if (Math.abs(leftHeight - rightHeight) > 1)
-      return -1;
+    if (Math.abs(leftHeight - rightHeight) > 1) { return -1; }
 
     return 1 + Math.max(leftHeight, rightHeight);
   }

@@ -19,6 +19,7 @@ public class DecodeWays {
 
     dp[0] = 1;
     for (int i = 1; i <= len; i++) {
+      // depends on current char is 0, it may equals to zero or dp[i-1]
       dp[i] += s.charAt(i - 1) == '0' ? 0 : dp[i - 1];
       if (i > 1) {
         int code = Integer.parseInt(s.substring(i - 2, i));

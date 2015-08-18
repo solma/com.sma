@@ -20,16 +20,15 @@ public class SimplifyPath {
         continue;
       } else {
         if (s.equals("..")) {
-          if (stc.size() > 0)
-            stc.pop();
+          if (stc.size() > 0) { stc.pop(); }
         } else {
           stc.push(s);
         }
       }
     }
     StringBuilder sb = new StringBuilder();
-    if (stc.isEmpty())
-      return "/"; //pay attention to this line
+    //pay attention to this line
+    if (stc.isEmpty()) { return "/"; }
     while (!stc.isEmpty()) {
       sb.insert(0, stc.pop());
       sb.insert(0, "/");

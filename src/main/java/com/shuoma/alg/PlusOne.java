@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
@@ -13,9 +13,10 @@ public class PlusOne {
     int carry = 1;
     for (int i = n - 1; i >= 0; i--) {
       res[i] = digits[i] + carry;
-      carry = res[i] / 10;
+      carry = res[i] > 9 ? 1 : 0;
       res[i] %= 10;
     }
+
     if (carry > 0) {
       int[] ret = new int[n + 1];
       ret[0] = carry;
@@ -24,6 +25,5 @@ public class PlusOne {
       return ret;
     }
     return res;
-
   }
 }

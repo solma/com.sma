@@ -12,8 +12,7 @@ public class NextPermutation {
   //pass 2
   public void nextPermutation(int[] num) {
     int n = num.length;
-    if (n == 0 || n == 1)
-      return;
+    if (n == 0 || n == 1) { return; }
 
     int i;
     //scan backward find the first i such that num[i]<num[i+1]
@@ -21,7 +20,7 @@ public class NextPermutation {
       if (num[i] < num[i + 1])
         break;
     }
-    //last one
+    //this is last permutation
     if (i == -1) {
       reverse(num, 0, n - 1);
       return;

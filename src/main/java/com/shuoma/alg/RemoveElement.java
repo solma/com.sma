@@ -27,15 +27,4 @@ public class RemoveElement {
     }
     return cnt;
   }
-
-  // public int removeElement(int[] A, int elem) {
-  // int n=A.length;
-  // int storeIdx=0;
-  // for(int i=0;i<n;i++){
-  // if(A[i]!=elem){
-  // A[storeIdx++]=A[i];
-  // }
-  // }
-  // return storeIdx;
-  // }
 }

@@ -124,6 +124,7 @@ public class Sorting {
       newPile.push(ele);
       int insertionIdx = Collections.binarySearch(piles, newPile);
       if (insertionIdx < 0) insertionIdx = ~insertionIdx;
+
       if (insertionIdx != piles.size()) piles.get(insertionIdx).push(ele);
       else piles.add(newPile);
     }

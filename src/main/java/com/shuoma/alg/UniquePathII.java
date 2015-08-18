@@ -6,8 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode)
-public class UniquePathII {
+@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode) public class UniquePathII {
   public static void main(String[] args) {
     UniquePathII ins = new UniquePathII();
     int n = 10;
@@ -18,20 +17,22 @@ public class UniquePathII {
 
   //DP
   public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-    int n = obstacleGrid.length;
-    int m = obstacleGrid[0].length;
-    int[] dp = new int[m + 1];
+    int m = obstacleGrid.length, n = obstacleGrid[0].length;
+    if (obstacleGrid[0][0] == 1) { return 0; }
+    int[] dp = new int[n];
+    dp[0] = 1;
 
-    if (obstacleGrid[0][0] != 1)
-      dp[1] = 1;
-
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-        dp[j + 1] = obstacleGrid[i][j] == 1 ? 0 : dp[j + 1] + dp[j];
-      }
+    for (int j = 1; j < n; j++) {
+      dp[j] = obstacleGrid[0][j] == 1 ? 0 : dp[j - 1];
     }
 
-    return dp[m];
+    for (int i = 1; i < m; i++) {
+      dp[0] = obstacleGrid[i][0] == 1 ? 0 : dp[0];
+      for (int j = 1; j < n; j++) {
+        dp[j] = obstacleGrid[i][j] == 1 ? 0 : dp[j - 1] + dp[j];
+      }
+    }
+    return dp[n - 1];
   }
 
 

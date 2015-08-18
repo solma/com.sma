@@ -6,26 +6,27 @@ import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Tag(dss = Array, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class ThreeSum {
   public static void main(String[] args) {
     ThreeSum ins = new ThreeSum();
-    for (ArrayList<Integer> li : ins.threeSum(new int[] {-25, -10, -7, -3, 0, 2, 4, 8, 10})) {
+    for (List<Integer> li : ins.threeSum(new int[] {-25, -10, -7, -3, 0, 2, 4, 8, 10})) {
       System.out.println(li);
     }
   }
 
-
-  public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+  public List<List<Integer>> threeSum(int[] num) {
     Arrays.sort(num);
-    HashSet<ArrayList<Integer>> lstSoln = new HashSet<ArrayList<Integer>>();
+    Set<List<Integer>> lstSoln = new HashSet<>();
 
-    ArrayList<Integer> tempArr = null;
     for (int i = 0; i < num.length; i++) {
-      if (num[i] > 0)
-        break; //tricks, terminates early
+      if (num[i] > 0) { break; }//tricks, terminates early
       int j = i + 1;
       int k = num.length - 1;
       while (j < k) {
@@ -35,17 +36,13 @@ public class ThreeSum {
         } else if (sum3 > 0) {
           k--;
         } else {
-          tempArr = new ArrayList<Integer>();
-          Collections.addAll(tempArr, num[i], num[j], num[k]);
-          lstSoln.add(tempArr);
+          lstSoln.add(Arrays.asList(num[i], num[j], num[k]));
           j++;
           k--;
         }
       }
     }
 
-    return new ArrayList<ArrayList<Integer>>(lstSoln);
-
+    return new ArrayList<>(lstSoln);
   }
-
 }

@@ -1,12 +1,11 @@
 package com.shuoma.alg;
 
-import com.shuoma.alg.RomanIntegerConvertion;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class RomanIntegerConvertionTest extends TestCase {
+public class RomanIntegerConversionTest extends TestCase {
 
-  RomanIntegerConvertion ins = new RomanIntegerConvertion();
+  RomanIntegerConversion ins = new RomanIntegerConversion();
 
   @Test
   public void testRomanToInt() throws Exception {

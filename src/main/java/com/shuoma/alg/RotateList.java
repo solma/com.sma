@@ -1,12 +1,12 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
+import static com.shuoma.annotation.Tag.DataStructure.LinkedListT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
-@Tag(dss = LinkedList, references = LeetCode)
+@Tag(dss = LinkedListT, references = LeetCode)
 public class RotateList {
   public ListNode rotateRight(ListNode head, int n) {
     if (head == null || n == 0)
@@ -18,6 +18,7 @@ public class RotateList {
       tmp = tmp.next;
       len++;
     }
+
     n = len - n % len;
     tmp.next = head;//loop the linkedlist
     while (n > 0) {
@@ -27,7 +28,6 @@ public class RotateList {
     head = tmp.next;
     tmp.next = null;
     return head;
-
   }
 
 

@@ -16,8 +16,7 @@ public class BasicCalculatorII {
   }
 
   public int calculate(String s) {
-    if (s == null)
-      return 0;
+    if (s == null) { return 0; }
     s = s.trim().replaceAll("\\s+", "");
     int length = s.length();
 

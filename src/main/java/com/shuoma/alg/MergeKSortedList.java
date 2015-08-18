@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.LinkedList;
+import static com.shuoma.annotation.Tag.DataStructure.LinkedListT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
@@ -9,11 +9,9 @@ import com.shuoma.ds.linkedlist.ListNode;
 
 import java.util.ArrayList;
 
-@Tag(dl = D2, dss = LinkedList, references = LeetCode)
+@Tag(dl = D2, dss = LinkedListT, references = LeetCode)
 public class MergeKSortedList {
   public ListNode mergeKLists(ArrayList<ListNode> lists) {
-    // Start typing your Java solution below
-    // DO NOT write main() function
     int ls = lists.size();
     if (ls == 0)
       return null;
@@ -27,8 +25,6 @@ public class MergeKSortedList {
   }
 
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    // Start typing your Java solution below
-    // DO NOT write main() function
     ListNode head = l2, l2Prev = null;
     while (l1 != null && l2 != null) {
       if (l1.val >= l2.val) {

@@ -1,7 +1,8 @@
 package com.shuoma.annotation;
 
-import static java.lang.annotation.RetentionPolicy.SOURCE;
 import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -29,8 +30,10 @@ public @interface Tag {
     DynamicProgramming,
     Geometry,
     Greedy,
+    RandomT,
     Recursion,
     RegularExpression,
+    RejectingMethod,
     Searching,
     SlidingWindow,
     Streaming,
@@ -49,7 +52,7 @@ public @interface Tag {
     DirectedGraph,
     Hash,
     Interval,
-    LinkedList,
+    LinkedListT,
     MatrixGraph,
     MinimumSpanningTree,
     MonotonicSequence,
@@ -60,10 +63,12 @@ public @interface Tag {
     StackT,
     StringT,
     Subarray,
+    Substring,
     ThreadT,
     TournamentTree,
     Trie,
     UndirectedGraph,
+    UnionFind,
     NA,
   }
 
@@ -93,6 +98,7 @@ public @interface Tag {
     AccumulativeSum,
     BFSWithMultipleSource,
     BFSWithHigherDimension,
+    CheckAtEveryIndex,
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceSwap,

@@ -19,14 +19,12 @@ public class StringToInteger {
   }
 
   public int atoi(String str) {
-    if (str == null || str.length() == 0)
-      return 0;
+    if (str == null || str.length() == 0) { return 0; }
     //str=str.replaceAll("\\s+", "");
     str = str.trim();                 //catch, strip leading and trailing spaces
     int sign = 1;
     if (str.charAt(0) == '-' || str.charAt(0) == '+') {  //catch
-      if (str.charAt(0) == '-')
-        sign = -1;
+      if (str.charAt(0) == '-') { sign = -1; }
       str = str.substring(1);
     }
 
@@ -41,16 +39,13 @@ public class StringToInteger {
     sLen = str.length();
     while (i < sLen) {
       c = str.charAt(i) - '0';
-      if (c < 0 || c > 9)
-        return 0;
+      if (c < 0 || c > 9) { return 0; }
       ret += c * Math.pow(10, sLen - i - 1);
       i++;
     }
     ret *= sign;
-    if (ret > Integer.MAX_VALUE)
-      ret = Integer.MAX_VALUE; //catch
-    if (ret < Integer.MIN_VALUE)
-      ret = Integer.MIN_VALUE;
+    if (ret > Integer.MAX_VALUE) { ret = Integer.MAX_VALUE; }//catch
+    if (ret < Integer.MIN_VALUE) { ret = Integer.MIN_VALUE; }
     return (int) ret;
   }
 }

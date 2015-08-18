@@ -4,13 +4,14 @@ package com.shuoma.alg;
 //T is “ece” which its length is 3.
 
 import static com.shuoma.annotation.Tag.DataStructure.Hash;
-import static com.shuoma.annotation.Tag.DataStructure.StringT;
+import static com.shuoma.annotation.Tag.DataStructure.Substring;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.CheckAtEveryIndex;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = {Hash, StringT}, references = LeetCode)
+@Tag(dl = D2, dss = {Hash, Substring}, references = LeetCode, tricks = CheckAtEveryIndex)
 public class LongestSubstringWithAtMostTwoDistinctCharacters {
 
   public String longestSubstring(String s) {
@@ -23,14 +24,13 @@ public class LongestSubstringWithAtMostTwoDistinctCharacters {
         maxEndHere++;
         prevCharLen++;
       } else {
-        if (c == prevPrevChar)
-          maxEndHere++;
-        else
-          maxEndHere = prevCharLen + 1;
+        if (c == prevPrevChar) { maxEndHere++; }
+        else { maxEndHere = prevCharLen + 1; } // end with c
         prevPrevChar = prevChar;
         prevChar = c;
         prevCharLen = 1;
       }
+
       if (maxSoFar < maxEndHere) {
         maxSoFar = maxEndHere;
         res[1] = i + 1;

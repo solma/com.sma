@@ -2,6 +2,7 @@ package com.shuoma.alg;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = Recursion, dss = Tag.DataStructure.StringT)
+@Tag(algs = Recursion, references = LeetCode)
 public class Permutation {
 
   public static void main(String[] args) {
@@ -53,7 +54,7 @@ public class Permutation {
       perm.append(input.charAt(i));
       if (perm.length() == input.length()) ret.add(perm.toString());
       for (String s : firstKPermutationsByRecursion(input, perm, K)) {
-        if (ret.size() >= K) break;
+        if (ret.size() >= K) { break; }
         ret.add(s);
       }
       perm.deleteCharAt(perm.length() - 1);
@@ -71,7 +72,7 @@ public class Permutation {
 
     int[] inversion = new int[n];
     for (int divisor = 1; ith > 0; divisor++) {
-      inversion[divisor - 1] += ith % divisor;
+      inversion[divisor - 1] = (int) ith % divisor;
       ith /= divisor;
     }
     //System.out.println("inversion = " + Arrays.toString(inversion));

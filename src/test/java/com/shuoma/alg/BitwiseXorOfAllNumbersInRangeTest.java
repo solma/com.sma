@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import com.shuoma.util.RandomUtil;
 import org.junit.Test;
 
-public class BitwiseXorOfNumberRangeTest {
+public class BitwiseXorOfAllNumbersInRangeTest {
 
   @Test
   public void testGetXor() throws Exception {
-    BitwiseXorOfNumberRange ins = new BitwiseXorOfNumberRange();
+    BitwiseXorOfAllNumbersInRange ins = new BitwiseXorOfAllNumbersInRange();
     for (int i = 0; i < 10; i++) {
       int m = RandomUtil.r.nextInt(Integer.MAX_VALUE);
       int n = m + RandomUtil.r.nextInt(Integer.MAX_VALUE - m);

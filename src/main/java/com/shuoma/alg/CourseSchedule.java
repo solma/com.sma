@@ -41,13 +41,13 @@ public class CourseSchedule {
   }
 
   int[] topologicalSortingBfs(int numCourses, int[][] prerequisites) {
-    int[] indegree = new int[numCourses];
-    List<List<Integer>> edges = buildEdges(numCourses, prerequisites, indegree);
+    int[] inDegree = new int[numCourses];
+    List<List<Integer>> edges = buildEdges(numCourses, prerequisites, inDegree);
 
     int count = numCourses;
     Queue<Integer> zeroInDegreeQueue = new LinkedList<>();
     for (int i = 0; i < numCourses; i++) {
-      if (indegree[i] == 0) {
+      if (inDegree[i] == 0) {
         zeroInDegreeQueue.offer(i);
       }
     }
@@ -59,7 +59,7 @@ public class CourseSchedule {
       int current = zeroInDegreeQueue.poll();
       ret[idx++] = current;
       for (int i : edges.get(current)) {
-        if (--indegree[i] == 0) {
+        if (--inDegree[i] == 0) {
           zeroInDegreeQueue.offer(i);
         }
       }

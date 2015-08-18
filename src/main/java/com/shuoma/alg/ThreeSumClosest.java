@@ -6,33 +6,33 @@ import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Tag(dss = Array, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class ThreeSumClosest {
   public static void main(String[] args) {
     ThreeSumClosest ins = new ThreeSumClosest();
-    for (ArrayList<Integer> triplet : ins
+    for (List<Integer> triplet : ins
         .threeSumClosest(new int[] {-25, -10, -7, -3, 2, 2, 8, 10, 11}, 13))
       System.out.println(triplet);
   }
 
   //O(n^2)
-  public List<ArrayList<Integer>> threeSumClosest(int[] num, int target) {
-    List<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
+  public List<List<Integer>> threeSumClosest(int[] num, int target) {
+    List<List<Integer>> ret = new ArrayList<>();
 
-    if (num.length < 3) { // if less than three items then return 0
-      return ret;
-    }
+    // if less than three items then return 0
+    if (num.length < 3) { return ret; }
 
     Arrays.sort(num);
     int closetSum = num[0] + num[1] + num[2];
     for (int i = 0; i < num.length; ++i) {
-      if (i > 0 && num[i] == num[i - 1])
-        continue;
+      if (i > 0 && num[i] == num[i - 1]) { continue; }
       int l = i + 1, r = num.length - 1;
 
-      //O(n)
+      //Two close sum O(n)
       while (l < r) {
         int sum = num[i] + num[l] + num[r];
         if (Math.abs(sum - target) <= Math.abs(closetSum - target)) {
@@ -40,9 +40,7 @@ public class ThreeSumClosest {
             ret.clear();
             closetSum = sum;
           }
-          ArrayList<Integer> triplets = new ArrayList<Integer>();
-          Collections.addAll(triplets, num[i], num[l], num[r]);
-          ret.add(triplets);
+          ret.add(Arrays.asList(num[i], num[l], num[r]));
         }
         //                if (sum == target) {
         //                    return closetSum;

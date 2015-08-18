@@ -7,7 +7,8 @@ import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
-@Tag(algs = Backtracking, dss = StringT) public class StringMatching {
+@Tag(algs = Backtracking, dss = StringT)
+public class StringMatching {
   public static void main(String[] args) {
     new StringMatching().main();
   }
@@ -15,15 +16,8 @@ import java.util.Arrays;
   void main() {
     // TODO AhoCorasick algorithm
 
-    /*
-     * Scanner sc = new Scanner(System.in); String s = sc.nextLine();
-     * System.out.println(reverseString(s)); System.out.println(reverseString1(s));
-     * System.out.println(reverseWord(s)); System.out.println(fib(10)); int a = s.charAt(0);
-     * System.out.println(a); sc.close();
-     */
+    System.out.println(Arrays.toString(next("ababc", "kmp")));
 
-
-    // print next('ababc')
     // match('abbba', 'bba', 'bf')
     String mode = "kmp";
     // int idx=match("ababcababababcabab", "baba", "kmp");
@@ -48,39 +42,29 @@ import java.util.Arrays;
         next[i] = j;
         while (i < t.length() - 1) {
           System.out.print("i=" + i + " " + t.charAt(i) + " j=" + j + " ");
-          if (j >= 0)
-            System.out.print(t.charAt(j));
-          System.out.println(" " + t.substring(0, i + 1) + " " + Arrays
-              .toString(Arrays.copyOfRange(next, 0, i + 1)));
+          if (j >= 0) { System.out.print(t.charAt(j)); }
+          System.out.println(" " + t.substring(0, i + 1) + " " + Arrays.toString(
+              Arrays.copyOfRange(next, 0, i + 1)));
 
-          if (j == -1 || t.charAt(i) == t.charAt(j)) {
-            i += 1;
-            j += 1;
-            next[i] = j;
-          } else
-            j = next[j];
+          if (j == -1 || t.charAt(i) == t.charAt(j)) { next[++i] = ++j; }
+          else { j = next[j]; }
         }
         break;
       case "sunday":
         next = new int[26];
-        for (i = 0; i < next.length; i++)
-          next[i] = t.length();
-        for (i = 0; i < t.length(); i++) {
-          next[t.charAt(i) - 'a'] = t.length() - i;
-        }
+        for (i = 0; i < next.length; i++) { next[i] = t.length(); }
+        for (i = 0; i < t.length(); i++) { next[t.charAt(i) - 'a'] = t.length() - i; }
       default:
         break;
     }
-
 
     return next;
   }
 
   public int match(String s, String t, String method) {
     // preprocessing before match
-    int[] next = null;
-    if (method.equals("kmp") || method.equals("sunday"))
-      next = next(t, method);
+    int[] next = new int[t.length()];
+    if (method.equals("kmp") || method.equals("sunday")) { next = next(t, method); }
 
     int i, j;
     i = j = 0;
@@ -110,44 +94,5 @@ import java.util.Arrays;
     }
     System.out.println(s + " failed to match " + t);
     return -1;
-  }
-
-
-  int fib(int n) {
-    int prev = 1, prevv = 0, i = 0, ret = 0;
-    while (i++ < n - 1) {
-      ret = prev + prevv;
-      prevv = prev;
-      prev = ret;
-
-    }
-    return ret;
-    // return n<=1?n:fib(n-1)+fib(n-2);
-  }
-
-  String reverseString1(String s) {
-    char[] chr = s.toCharArray();
-    int last = chr.length - 1;
-    for (int i = 0; i < chr.length / 2; i++) {
-      char c = chr[i];
-      chr[i] = chr[last - i];
-      chr[last - i] = c;
-    }
-    return new String(chr);
-  }
-
-  String reverseString(String s) {
-    StringBuilder sb = new StringBuilder();
-    for (int i = s.length() - 1; i >= 0; i--)
-      sb.append(s.charAt(i));
-    return new String(sb);
-  }
-
-  String reverseWord(String s) {
-    StringBuilder sb = new StringBuilder();
-    String[] words = s.split(" ");
-    for (int i = words.length - 1; i >= 0; i--)
-      sb.append(words[i] + " ");
-    return new String(sb);
   }
 }

@@ -7,33 +7,23 @@ import com.shuoma.annotation.Tag;
 
 @Tag(algs = Arithmetic, references = LeetCode)
 public class ReverseInteger {
-  //second pass
   public int reverse(int x) {
-    StringBuilder sb = new StringBuilder(String.valueOf(x));
-    boolean neg = false;
-    if (sb.charAt(0) == '-') {
-      neg = true;
-      sb.deleteCharAt(0);
+    boolean flag = false;
+    if (x < 0) {
+      x = 0 - x;
+      flag = true;
     }
-    sb.reverse();
-    if (neg)
-      return -Integer.parseInt(sb.toString());
-    else
-      return Integer.parseInt(sb.toString());
-  }
 
-  //first pass
-  public int reverseFirstPass(int x) {
-    StringBuilder sb = new StringBuilder(String.valueOf(x));
-    boolean sign = false;
-    if (sb.charAt(0) == '-') {
-      sign = true;
-      sb.deleteCharAt(0);
+    long res = 0;
+    while (x > 0) {
+      int mod = x % 10;
+      res = res * 10 + mod;
+      x /= 10;
     }
-    sb.reverse();
-    int res = Integer.parseInt(sb.toString());
-    if (sign)
-      res *= -1;
-    return res;
+
+    if (flag) { res = 0 - res; }
+
+    if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) { return 0; }
+    return (int) res;
   }
 }

@@ -17,11 +17,9 @@ public class JumpGameII {
     System.out.println(ins.jumpDP(arr));
   }
 
-  //Greedy
   public int jump(int[] A) {
     int n = A.length;
-    if (n <= 1)
-      return 0;
+    if (n <= 1) { return 0; }
     int curIdx = 0;
     int jumps = 0;
     while (curIdx + A[curIdx] < n - 1) {
@@ -33,8 +31,7 @@ public class JumpGameII {
           maxStep = step + A[curIdx + step];
         }
       }
-      if (curIdx == nextIdx)
-        return -1;
+      if (curIdx == nextIdx) { return -1; }
       curIdx = nextIdx;
       jumps++;
     }

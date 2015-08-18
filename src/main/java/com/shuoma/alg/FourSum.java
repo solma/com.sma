@@ -6,7 +6,12 @@ import static com.shuoma.annotation.Tag.Trick.FromTwoEndsToMiddle;
 
 import com.shuoma.annotation.Tag;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Tag(dss = Array, references = LeetCode, tricks = FromTwoEndsToMiddle)
 public class FourSum {
@@ -18,8 +23,6 @@ public class FourSum {
   }
 
   public List<List<Integer>> fourSum(int[] num, int target) {
-    // Start typing your Java solution below
-    // DO NOT write main() function
     Arrays.sort(num);
     Set<List<Integer>> ret = new HashSet<>();
     for (int i = 0; i < num.length; i++) {
@@ -39,12 +42,9 @@ public class FourSum {
   public List<List<Integer>> threeSum(int[] num, int forbidden, int target) {
     Set<List<Integer>> lstSoln = new HashSet<>();
 
-    List<Integer> tempArr;
     for (int i = 0; i < num.length; i++) {
-      if (i == forbidden)
-        continue;
-      if (num[i] > target && target >= 0)
-        break;
+      if (i == forbidden) { continue; }
+      if (num[i] > target && target >= 0) { break; }
       int j = i + 1;
       int k = num.length - 1;
       while (j < k) {
@@ -54,18 +54,13 @@ public class FourSum {
         } else if (sum3 > target) {
           k--;
         } else {
-          if (j == forbidden || k == forbidden)
-            break;
-          tempArr = new ArrayList<>();
-          Collections.addAll(tempArr, num[i], num[j], num[k]);
-          lstSoln.add(tempArr);
+          if (j == forbidden || k == forbidden) { break; }
+          lstSoln.add(Arrays.asList(num[i], num[j], num[k]));
           j++;
           k--;
         }
       }
     }
     return new ArrayList<>(lstSoln);
-
   }
-
 }

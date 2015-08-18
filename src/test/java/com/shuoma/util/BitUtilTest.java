@@ -164,6 +164,7 @@ public class BitUtilTest extends TestCase {
   @Test
   public void testSetBits() throws Exception {
     assertEquals(0xF7, setBits(0xF1L, 2, 0, 7));
+    assertEquals(0x13, setBits(0x1FL, 3, 2, 0));
   }
 
   @Test

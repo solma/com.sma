@@ -11,18 +11,15 @@ import com.shuoma.annotation.Tag;
 public class WildcardMatching {
 
   public boolean isMatch(String s, String p) {
-    if (s == null || p == null)
-      return false;
+    if (s == null || p == null) { return false; }
 
     // calculate count for non-wildcard char
     int count = 0;
     for (char c : p.toCharArray()) {
-      if (c != '*')
-        ++count;
+      if (c != '*') { ++count; }
     }
     // the count should not be larger than that of s
-    if (count > s.length())
-      return false;
+    if (count > s.length()) { return false; }
 
     boolean[] matches = new boolean[s.length() + 1]; //Note the length is s.length()+1
     matches[0] = true;
@@ -37,8 +34,7 @@ public class WildcardMatching {
       // if '*', fill up the rest of row
       if (p.charAt(pid) == '*') {
         // fill up the rest of row with true, up to the first match in previous row
-        for (int i = s.length(); i > firstMatch; i--)
-          matches[i] = true;
+        for (int i = s.length(); i > firstMatch; i--) { matches[i] = true; }
       } else {
         // fill up backwards:
         // - set to true if match current char and previous diagnal also match
@@ -46,12 +42,9 @@ public class WildcardMatching {
         int match = -1;
         for (int i = s.length(); i > firstMatch; i--) {
           matches[i] = matches[i - 1] & (p.charAt(pid) == s.charAt(i - 1) || p.charAt(pid) == '?');
-          if (matches[i])
-            match = i;
+          if (matches[i]) { match = i; }
         }
-        if (match < 0) {
-          return false;
-        }
+        if (match < 0) { return false; }
         firstMatch = match;
       }
 //      System.out.println(
@@ -99,7 +92,6 @@ public class WildcardMatching {
       return false;
     }
   }
-
 }
 
 

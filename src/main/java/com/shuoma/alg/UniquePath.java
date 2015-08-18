@@ -29,6 +29,5 @@ public class UniquePath {
         ret /= i;
     }
     return (int) ret;
-
   }
 }

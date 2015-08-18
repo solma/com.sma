@@ -201,7 +201,7 @@ public class ArrayUtil {
     return ret;
   }
 
-  public static double[] maxAndMin(double[] values) {
+  public static double[] minAndMax(double[] values) {
     if (values.length == 0)
       return null;
     double max = values[0], min = values[0];

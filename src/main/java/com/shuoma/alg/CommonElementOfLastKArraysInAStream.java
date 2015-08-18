@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Find common elements in N sorted arrays with no extra space
+ * Find common elements in N sorted arrays (with no extra space ?)
  */
 @Tag(algs = {SlidingWindow, Streaming}, dss = {Array, Hash}, references = Interview)
 public class CommonElementOfLastKArraysInAStream {

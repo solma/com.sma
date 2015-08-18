@@ -10,33 +10,28 @@ import java.util.Stack;
 
 @Tag(dss = {StackT, StringT}, references = LeetCode)
 public class ValidParenthesis {
+
   public boolean isValid(String s) {
-    if (s == null)
-      return true;
+    if (s == null) { return true; }
     Stack<Character> stack = new Stack<>();
     char c;
     for (int i = 0; i < s.length(); i++) {
       c = s.charAt(i);
-      if (c == '(' || c == '{' || c == '[')
-        stack.push(c);
+      if (c == '(' || c == '{' || c == '[') { stack.push(c); }
       else {
-        if (!stack.isEmpty() && match(stack.peek(), c))
-          stack.pop(); //catch: stack is empty
-        else
-          return false;
+        //catch: stack is empty
+        if (!stack.isEmpty() && match(stack.peek(), c)) { stack.pop(); }
+        else { return false; }
       }
     }
-    if (stack.isEmpty())
-      return true;  //catch stack is empty
-    else
-      return false;
+    return stack.isEmpty();
   }
 
   public boolean match(char stack, char input) {
-    if ((stack == '{' && input == '}') || (stack == '(' && input == ')') || (stack == '['
-        && input == ']'))
+    if ((stack == '{' && input == '}')
+        || (stack == '(' && input == ')')
+        || (stack == '[' && input == ']'))
       return true;
-    else
-      return false;
+    return false;
   }
 }

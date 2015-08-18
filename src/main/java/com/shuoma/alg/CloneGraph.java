@@ -1,6 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BreadthFirstSearch;
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
 import static com.shuoma.annotation.Tag.DataStructure.UndirectedGraph;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-@Tag(algs = BreadthFirstSearch, dl = D3, dss = UndirectedGraph, references = LeetCode)
+@Tag(algs = BreadthFirstSearch, dl = D3, dss = {Hash, UndirectedGraph}, references = LeetCode)
 public class CloneGraph {
 
   public static void main(String[] args) {
@@ -27,9 +28,7 @@ public class CloneGraph {
   }
 
   public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-    if (node == null) {
-      return node;
-    }
+    if (node == null) { return node; }
 
     Queue<UndirectedGraphNode> curLvl = new LinkedList<>();
     curLvl.offer(node);
@@ -37,19 +36,14 @@ public class CloneGraph {
     cloned.put(node, new UndirectedGraphNode(node.label));
 
     while (!curLvl.isEmpty()) {
-      Queue<UndirectedGraphNode> nextLvl = new LinkedList<>();
-      while (!curLvl.isEmpty()) {
-        UndirectedGraphNode curNode = curLvl.poll();
-
-        for (UndirectedGraphNode neighbor : curNode.neighbors) {
-          if (!cloned.containsKey(neighbor)) {
-            cloned.put(neighbor, new UndirectedGraphNode(neighbor.label));
-            nextLvl.offer(neighbor);
-          }
-          cloned.get(curNode).neighbors.add(cloned.get(neighbor));
+      UndirectedGraphNode curNode = curLvl.poll();
+      for (UndirectedGraphNode neighbor : curNode.neighbors) {
+        if (!cloned.containsKey(neighbor)) {
+          cloned.put(neighbor, new UndirectedGraphNode(neighbor.label));
+          curLvl.offer(neighbor);
         }
+        cloned.get(curNode).neighbors.add(cloned.get(neighbor));
       }
-      curLvl = nextLvl;
     }
     return cloned.get(node);
   }

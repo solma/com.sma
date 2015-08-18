@@ -97,12 +97,12 @@ public class WordSearch {
         }
       }
       if (!nextLvl.isEmpty()) {
-        if (idx == word.length() - 1)
-          return true;
+        if (idx == word.length() - 1) { return true; }
         idx++;
         curLvl = nextLvl;
-      } else
+      } else {
         break;
+      }
     }
 
     //resetVisitStatus visit array to false;

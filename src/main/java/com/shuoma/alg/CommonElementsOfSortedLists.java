@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.annotation.Tag.DataStructure.LinkedListT;
 import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 
 import com.shuoma.annotation.Tag;
@@ -10,36 +10,30 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-@Tag(dss = Array, tricks = TwoOrMorePointers)
-public class IntersectionOfSortedLists {
+@Tag(dss = {LinkedListT}, tricks = TwoOrMorePointers)
+public class CommonElementsOfSortedLists {
 
   public static void main(String[] args) {
-    new IntersectionOfSortedLists().main();
+    new CommonElementsOfSortedLists().main();
   }
 
   Random rand = new Random();
 
   public void main() {
     for (int test = 1; test <= 100; test++) {
-
       int nOfList = rand.nextInt(3) + 2;
-
       List<List<Integer>> lists = new ArrayList<>();
       for (int i = 0; i < nOfList; i++) {
         List<Integer> li = new ArrayList<>();
         int sizeOfList = rand.nextInt(10) + 3;
-        for (int j = 0; j < sizeOfList; j++)
-          li.add(rand.nextInt(20));
+        for (int j = 0; j < sizeOfList; j++) { li.add(rand.nextInt(20)); }
         li.add(5);
         Collections.sort(li);
-
         lists.add(li);
       }
 
       System.out.println("Case " + test);
-      for (List<Integer> li : lists) {
-        System.out.println(li);
-      }
+      for (List<Integer> li : lists) { System.out.println(li); }
       // find the intersection of all lists
       System.out.println("Intersection set=" + intersect(lists) + "\n");
     }

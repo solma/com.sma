@@ -1,7 +1,11 @@
 package com.shuoma.ds.graph.tree;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
+import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static java.util.Collections.reverse;
+
+import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+@Tag(dss = {BinarySearchTree, BinaryTree})
 public class BST {
   public static void main(String[] args) {
     /**
@@ -349,6 +354,24 @@ public class BST {
     range[0] = Math.min(range[0], rangeRight[0]);
     range[1] = Math.max(range[1], rangeRight[1]);
     return range;
+  }
+
+  static boolean isBalanced(BSTNode root) {
+    return balanceHeight(root) != -1;
+  }
+
+  private static int balanceHeight(BSTNode root) {
+    if (root == null) { return 0; }
+
+    int leftHeight = balanceHeight(root.left);
+    if (leftHeight == -1) { return -1; }
+
+    int rightHeight = balanceHeight(root.right);
+    if (rightHeight == -1) { return -1; }
+
+    if (Math.abs(leftHeight - rightHeight) > 1) { return -1; }
+
+    return 1 + Math.max(leftHeight, rightHeight);
   }
 
   public static BSTNode lowestCommonAncestor(BSTNode cur, String n1Id, String n2Id) {

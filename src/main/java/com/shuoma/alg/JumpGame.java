@@ -11,8 +11,7 @@ public class JumpGame {
 
   public boolean canJump(int[] A) {
     int n = A.length;
-    if (n <= 1)
-      return true;
+    if (n <= 1) { return true; }
     int i = 0;
     while (i + A[i] < n - 1) {
       int m = 0;
@@ -23,8 +22,8 @@ public class JumpGame {
           m = j + A[i + j];
         }
       }
-      if (mj == 0)
-        return false;
+      if (mj == 0) { return false; }
+
       i += mj;
     }
     return true;

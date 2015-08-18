@@ -16,15 +16,15 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
   }
 
   public TreeNode buildTree(int[] inorder, int iLo, int iHi, int[] postorder, int pLo, int pHi) {
-    if (iLo > iHi)
-      return null;
+    if (iLo > iHi) { return null; }
 
     int i;
-    for (i = iLo; i <= iHi; i++)
+    // linear search
+    for (i = iLo; i <= iHi; i++) {
       if (inorder[i] == postorder[pHi])
         break;
-    if (i > iHi)
-      return null; //error
+    }
+    if (i > iHi) { return null; }
 
     int pM = pLo + (i - 1 - iLo);
     TreeNode tree = new TreeNode(postorder[pHi]);
@@ -36,17 +36,14 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 
   //first pass
   public TreeNode buildTreeFirstPass(int[] inorder, int[] postorder) {
-    if (inorder.length == 0)
-      return null;
-    if (inorder.length == 1)
-      return new TreeNode(inorder[0]);
+    if (inorder.length == 0) { return null; }
+    if (inorder.length == 1) { return new TreeNode(inorder[0]); }
 
     // the last item in postorder is root
     TreeNode root = new TreeNode(postorder[postorder.length - 1]);
 
     int i = inorder.length - 1;
-    for (; inorder[i] != root.val; i--)
-      ;
+    for (; inorder[i] != root.val; i--);
 
     // inorder.length == postorder.length
     if (i < inorder.length - 1) {

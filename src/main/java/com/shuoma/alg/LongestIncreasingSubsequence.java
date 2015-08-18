@@ -52,11 +52,13 @@ public class LongestIncreasingSubsequence {
     List<Node> pileTops = new LinkedList<>();
     for (int i : num) {
       Node n = new Node(i);
+      // find the first pile top that is larger than new number
       int insertionIdx = Collections.binarySearch(pileTops, n);
-      if (insertionIdx < 0)
-        insertionIdx = ~insertionIdx;
-      if (insertionIdx > 0)
-        n.prev = pileTops.get(insertionIdx - 1);
+      if (insertionIdx < 0) { insertionIdx = ~insertionIdx; }
+
+      // link n to prev pile top
+      if (insertionIdx > 0) { n.prev = pileTops.get(insertionIdx - 1); }
+
       if (insertionIdx < pileTops.size()) pileTops.set(insertionIdx, n);
       else pileTops.add(n);
     }

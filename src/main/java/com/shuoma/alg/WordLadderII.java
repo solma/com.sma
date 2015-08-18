@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 @Tag(algs = {Backtracking, Recursion}, dl = D3, dss = StringT, references = LeetCode)
@@ -24,20 +24,23 @@ public class WordLadderII {
 
   public void main() {
     HashSet<String> dict = new HashSet<>();
-    String[] words = {};
-    for (int i = 0; i < words.length; i++)
+    String[] words = {"hit", "hot", "dot", "dog", "lot", "log", "cog"};
+    for (int i = 0; i < words.length; i++) {
       dict.add(words[i]);
+    }
 
-    // String start= "hit", end="cog";
-    String start = "cet", end = "ism";
+    String start = "hit", end = "cog";
+    //String start = "cet", end = "ism";
 
-    //ladderLength findAllPaths
-    for (List<String> path : findAllPaths(start, end, dict))
+    List<List<String>> paths = findAllPaths(start, end, dict);
+    System.out.println("no of paths: " + paths.size());
+    for (List<String> path : paths) {
       System.out.println(path);
+    }
   }
 
   List<List<String>> findAllPaths(String start, String end, Set<String> dict) {
-    PriorityQueue<WordNode> queue = new PriorityQueue<>();
+    Queue<WordNode> queue = new LinkedList<>();
     Map<String, WordNode> visited = new HashMap<>();
     WordNode startNode = new WordNode(start, 0);
     startNode.addPrev(null);
@@ -55,33 +58,30 @@ public class WordLadderII {
           char replacementChar = (char) ('a' + j);
           if (replacementChar == topWord.charAt(i)) continue;
           String neighborWord = getNeighborWord(topWord, i, replacementChar);
-          if (!dict.contains(neighborWord))  continue;
+          if (!dict.contains(neighborWord)) continue;
 
-          if (visited.containsKey(neighborWord)) {
-            WordNode nw = visited.get(neighborWord);
-            if (nw.dis < top.dis + 1) {
-              continue;
-            }
-            if (nw.dis > top.dis + 1) {
-              nw.prev.clear();
-            }
-            // update the existing node
-            nw.dis = top.dis + 1;
+          if (!visited.containsKey(neighborWord)) {
+            WordNode nw = new WordNode(neighborWord, top.dis + 1);
             nw.addPrev(top);
-            queue.remove(nw);
             queue.offer(nw);
+            visited.put(nw.word, nw);
             continue;
           }
-          // not visited before
-          WordNode nw = new WordNode(neighborWord, top.dis + 1);
-          nw.addPrev(top);
-          queue.offer(nw);
-          visited.put(nw.word, nw);
+
+          // visited before
+          WordNode visitedNeighbor = visited.get(neighborWord);
+          if (visitedNeighbor.dis < top.dis + 1) {
+            continue;
+          }
+
+          // visitedNeighbor.dis = top.dis + 1
+          visitedNeighbor.addPrev(top);
+          // impossible visitedNeighbor.dis > top.dis + 1
         }
       }
     }
 
-    System.out.println(visited.size());
+    //System.out.println("visited size: " + visited.size());
 
     // there is no end;
     if (!visited.containsKey(end)) {
@@ -112,6 +112,7 @@ public class WordLadderII {
   }
 }
 
+
 class WordNode implements Comparable<WordNode> {
   int dis;
   String word;
@@ -129,5 +130,10 @@ class WordNode implements Comparable<WordNode> {
 
   @Override public int compareTo(WordNode other) {
     return dis - other.dis;
+  }
+
+  @Override
+  public String toString() {
+    return word + ":" + dis;
   }
 }

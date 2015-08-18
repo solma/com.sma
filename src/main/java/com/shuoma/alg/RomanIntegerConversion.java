@@ -1,15 +1,16 @@
 package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dl = D2, dss = StringT, references = LeetCode)
-public class RomanIntegerConvertion {
+@Tag(algs = Greedy, dl = D2, dss = StringT, references = LeetCode)
+public class RomanIntegerConversion {
   public static void main(String[] args) {
-    new RomanIntegerConvertion().main();
+    new RomanIntegerConversion().main();
   }
 
   public void main() {
@@ -109,7 +110,6 @@ public class RomanIntegerConvertion {
 
     }
     return sum;
-
   }
 
 

@@ -1,8 +1,9 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
+
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
@@ -21,7 +22,6 @@ public class RecoverBinarySearchTree {
     root.right = new TreeNode(9);
     root.right.left = new TreeNode(1);
     recoverTree(root);
-    System.out.println(t);
   }
 
   List<TreeNode> t;
@@ -31,6 +31,7 @@ public class RecoverBinarySearchTree {
     t = new ArrayList<>();
     previous = null;
     inorder(root);
+    System.out.println(t);
 
     //swap the value of the first and last node in the list
     int temp = t.get(0).val;
@@ -38,17 +39,14 @@ public class RecoverBinarySearchTree {
     t.get(t.size() - 1).val = temp;
   }
 
-  public void inorder(TreeNode root) {
-    if (root == null)
-      return;
-    inorder(root.left);
-    if (previous != null && previous.val > root.val) {
-      if (!t.contains(previous))
-        t.add(previous);
-      if (!t.contains(root))
-        t.add(root);
+  public void inorder(TreeNode cur) {
+    if (cur == null) { return; }
+    inorder(cur.left);
+    if (previous != null && previous.val > cur.val) {
+      if (!t.contains(previous)) { t.add(previous); }
+      if (!t.contains(cur)) { t.add(cur); }
     }
-    previous = root;
-    inorder(root.right);
+    previous = cur;
+    inorder(cur.right);
   }
 }
