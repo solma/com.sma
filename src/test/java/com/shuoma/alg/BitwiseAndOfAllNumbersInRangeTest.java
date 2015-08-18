@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import com.shuoma.util.RandomUtil;
 import org.junit.Test;
 
-public class BitwiseAndOfNumberRangeTest {
+public class BitwiseAndOfAllNumbersInRangeTest {
 
   @Test
   public void testRangeBitwiseAnd() throws Exception {
-    BitwiseAndOfNumberRange ins = new BitwiseAndOfNumberRange();
+    BitwiseAndOfAllNumbersInRange ins = new BitwiseAndOfAllNumbersInRange();
     for (int i = 0; i < 10; i++) {
       int m = RandomUtil.r.nextInt(Integer.MAX_VALUE);
       int n = m + RandomUtil.r.nextInt(Integer.MAX_VALUE - m);

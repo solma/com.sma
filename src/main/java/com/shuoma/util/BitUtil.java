@@ -65,6 +65,7 @@ public class BitUtil {
   /** Division implementation using bit and comparison operators only.
    * Return the quotient only. */
   public static long divide(long x, long y) {
+    assert (y != 0);
     boolean negative = x < 0 ^ y < 0;
     if (x < 0) {
       x = add(~x, 1);
@@ -81,19 +82,14 @@ public class BitUtil {
     }
 
     long quotient = 0;
-    if (y != 0) {
-      for (int exponentIdx = exponents.size() - 1; exponentIdx >= 0; exponentIdx--) {
-        long exponent = exponents.get(exponentIdx);
-        if (x >= exponent) {
-          x = minus(x, exponent);
-          quotient += 1 << exponentIdx;
-        }
-      }
+    for (int exponentIdx = exponents.size() - 1; exponentIdx >= 0; exponentIdx--) {
+      long exponent = exponents.get(exponentIdx);
+      if (x < exponent) continue;
+      x = minus(x, exponent);
+      quotient += 1 << exponentIdx;
     }
-    if (negative) {
-      quotient = add(~quotient, 1);
-    }
-    return quotient;
+
+    return negative ? add(~quotient, 1) : quotient;
   }
 
   /** Flip ith bit. */
@@ -109,7 +105,7 @@ public class BitUtil {
 
   /** Check if a number is power of four. */
   public static boolean isPowerOfFour(long n) {
-    return isPowerOfTwo(n) && 0 == (n & 0xAAAAAAAAAAAAAAAAL);
+    return isPowerOfTwo(n) && 0 == (n & 0xAAAAAAAAAAAAAAAAL); // all odd bits are zero
   }
 
   /** Check if a number is power of two. */
@@ -188,16 +184,14 @@ public class BitUtil {
   /** Set minTh ~ maxTh bit to given value. */
   public static long setBits(long n, int maxTh, int minTh, int val) {
     // clear bits from minTh ~ maxTh
-    n &= ~(((int) Math.pow(2, maxTh - minTh + 1) - 1) << minTh);
+    n &= ~((1 << (maxTh - minTh + 1)) - 1 << minTh);
     n |= val << minTh; // set bits
     return n;
   }
 
   /** Swap ith and jth bit. */
   public static long swapTwoBits(long n, int ith, int jth) {
-    if (getBit(n, ith) == getBit(n, jth)) {
-      return n;
-    }
+    if (getBit(n, ith) == getBit(n, jth)) { return n; }
     return flipBit(flipBit(n, ith), jth);
   }
 
@@ -206,9 +200,9 @@ public class BitUtil {
     return ((n & 0x5555555555555555L) << 1) | ((n & 0xAAAAAAAAAAAAAAAAL) >>> 1);
   }
 
-  static long numberWithSameNumberOfOnes(long n, boolean isLarger) {
+  static long numberWithSameNumberOfOnes(long n, boolean isNext) {
     int oneCnt = 0;
-    int skipBit = isLarger ? 0 : 1;
+    int skipBit = isNext ? 0 : 1;
     for (int i = 0; i < 63; i++) {
       int curBit = getBit(n, i);
       if (curBit == skipBit) {
@@ -216,10 +210,10 @@ public class BitUtil {
         continue;
       }
       if (getBit(n, i + 1) == skipBit) {
-        n = swapTwoBits(n, i, i + 1);
-        n = clearBits(n, i - 1);
+        n = swapTwoBits(n, i, i + 1); // swap 0 and 1
+        n = clearBits(n, i - 1); // clear lower bits
         int shiftOffset = 0;
-        if (!isLarger) {
+        if (!isNext) {
           shiftOffset = i - oneCnt;
         }
         n |= ((1 << oneCnt) - 1) << shiftOffset;

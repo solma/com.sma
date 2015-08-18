@@ -6,6 +6,9 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
+/**
+ Given an array of integers, every element appears twice except for one. Find that single one.
+ */
 @Tag(algs = BitManipulation, dss = Array, references = LeetCode)
 public class SingleNumber {
   public int singleNumber(int[] A) {

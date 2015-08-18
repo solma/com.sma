@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class SingularElementInArray {
 
   int singularElement(int[] A, int k) {
-    //nTimes is the times that all other numbers repeat themselves
+    //k is the times that all other numbers repeat themselves
     int[] setTimes = new int[k - 1];
     int[] setTimesTemp = Arrays.copyOf(setTimes, setTimes.length);
 
@@ -34,8 +34,8 @@ public class SingularElementInArray {
         } else {
           orTerm = a;
           // if any bit is not present in any of setTimes[j], then it means that
-          // it has been set nTimes; now with the bit is set in a,
-          // the bit is considered set only one time (nTimes->1)
+          // it has been set k times; now with the bit is set in a,
+          // the bit is considered set only once
           for (int j = 0; j < setTimes.length; j++) {
             orTerm &= ~setTimes[j];
           }

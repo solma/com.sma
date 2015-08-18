@@ -12,8 +12,6 @@ import java.util.ArrayList;
 @Tag(dl = D2, dss = LinkedList, references = LeetCode)
 public class MergeKSortedList {
   public ListNode mergeKLists(ArrayList<ListNode> lists) {
-    // Start typing your Java solution below
-    // DO NOT write main() function
     int ls = lists.size();
     if (ls == 0)
       return null;
@@ -27,8 +25,6 @@ public class MergeKSortedList {
   }
 
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    // Start typing your Java solution below
-    // DO NOT write main() function
     ListNode head = l2, l2Prev = null;
     while (l1 != null && l2 != null) {
       if (l1.val >= l2.val) {
