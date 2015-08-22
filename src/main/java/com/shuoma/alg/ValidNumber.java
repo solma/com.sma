@@ -19,6 +19,7 @@ public class ValidNumber {
 
   public boolean isNumber(String s) {
     //my first try:        return s.matches("[+-]*\\d*.?\\d*(e[+-])?\\d+");
-    return s.matches("^\\s*[+-]?(\\d+|\\d*\\.\\d+|\\d+\\.\\d*)([eE][+-]?\\d+)?\\s*$");
+    s = s.trim();
+    return s.matches("^[+-]?(\\d+|\\d*\\.\\d+|\\d+\\.\\d*)([eE][+-]?\\d+)?$");
   }
 }

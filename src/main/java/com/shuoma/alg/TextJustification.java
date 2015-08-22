@@ -10,6 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Tag(dl = D2, dss = StringT, references = LeetCode)
+/**
+ Given an array of words and a length L, format the text such that each line has exactly
+ L characters and is fully (left and right) justified. You should pack your words in
+ a greedy approach; that is, pack as many words as you can in each line.
+ Pad extra spaces ' ' when necessary so that each line has exactly L characters.
+ Extra spaces between words should be distributed as evenly as possible. If the number of spaces
+ on a line do not divide evenly between words, the empty slots on the left will be assigned more
+ spaces than the slots on the right.
+ For the last line of text, it should be left justified and no extra space is inserted between words.
+
+ For example,
+ words: ["This", "is", "an", "example", "of", "text", "justification."]
+ L: 16.
+
+ Return the formatted lines as:
+ [
+ "This    is    an",
+ "example  of text",
+ "justification.  "
+ ]
+ */
 public class TextJustification {
 
   public static void main(String[] args) {
@@ -21,61 +42,55 @@ public class TextJustification {
     // "text", "justification."};
     String[] words = {"a", "b", "c", "d", "e"};
     int L = 3; // 16
-    for (String line : fullJustify(words, L))
-      System.out.println(line);
+    for (String line : fullJustify(words, L)) { System.out.println(line); }
   }
 
   public List<String> fullJustify(String[] words, int L) {
-    ArrayList<String> res = new ArrayList<String>();
-    if (words == null || words.length == 0)
-      return res;
+    List<String> ret = new ArrayList<>();
+    if (words == null || words.length == 0) { return ret; }
 
-    int count = 0, last = 0;
+    int totalLenOfWordsInLine = 0, idxOfFirstWordInLine = 0;
     for (int i = 0; i < words.length; i++) {
-      if (count + words[i].length() + (i - last) > L) {
-        int spaceNum = 0;
-        int extraNum = 0;
-        if (i - last - 1 > 0) {
-          spaceNum = (L - count) / (i - last - 1);
-          extraNum = (L - count) % (i - last - 1);
-        }
-        StringBuilder str = new StringBuilder();
+      // words[i] cannot fit in this line
+      if (totalLenOfWordsInLine + words[i].length() + (i - idxOfFirstWordInLine) > L) {
+        int btwWordsSpaceNum = 0;
+        int endOfLineSpaceNum = 0;
 
-        for (int j = last; j < i; j++) {
-          str.append(words[j]);
+        int numOfWordsInLine = i - idxOfFirstWordInLine;
+        if (numOfWordsInLine - 1 > 0) {
+          btwWordsSpaceNum = (L - totalLenOfWordsInLine) / (numOfWordsInLine - 1);
+          endOfLineSpaceNum = (L - totalLenOfWordsInLine) % (numOfWordsInLine - 1);
+        }
+        StringBuilder line = new StringBuilder();
+
+        for (int j = idxOfFirstWordInLine; j < i; j++) {
+          line.append(words[j]);
           if (j < i - 1) {
-            for (int k = 0; k < spaceNum; k++) {
-              str.append(" ");
-            }
-            if (extraNum > 0) {
-              str.append(" ");
-            }
-            extraNum--;
+            for (int k = 0; k < btwWordsSpaceNum; k++) { line.append(" "); }
+            if (endOfLineSpaceNum > 0) { line.append(" "); }
+            endOfLineSpaceNum--;
           }
         }
-        for (int j = str.length(); j < L; j++) {
-          str.append(" ");
-        }
-        res.add(str.toString());
 
-        count = 0;
-        last = i;
+        // padding spaces to the end of the line
+        for (int j = line.length(); j < L; j++) { line.append(" "); }
+        ret.add(line.toString());
+
+        totalLenOfWordsInLine = 0;
+        idxOfFirstWordInLine = i;
       }
-      count += words[i].length();
+      totalLenOfWordsInLine += words[i].length();
     }
 
     //process last line
-    StringBuilder str = new StringBuilder();
-    for (int i = last; i < words.length; i++) {
-      str.append(words[i]);
-      if (str.length() < L)
-        str.append(" ");
+    StringBuilder lastLine = new StringBuilder();
+    for (int i = idxOfFirstWordInLine; i < words.length; i++) {
+      lastLine.append(words[i]);
+      if (lastLine.length() < L) { lastLine.append(" "); }
     }
-    for (int i = str.length(); i < L; i++) {
-      str.append(" ");
-    }
-    res.add(str.toString());
+    for (int i = lastLine.length(); i < L; i++) { lastLine.append(" "); }
+    ret.add(lastLine.toString());
 
-    return res;
+    return ret;
   }
 }

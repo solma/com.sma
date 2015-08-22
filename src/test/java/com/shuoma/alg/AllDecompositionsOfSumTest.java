@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import java.util.Set;
 
-public class NaturalNumberDecompositionTest extends TestCase {
+public class AllDecompositionsOfSumTest extends TestCase {
 
   @Test
   public void test() {
-    NaturalNumberDecomposition ins = new NaturalNumberDecomposition();
+    AllDecompositionsOfSum ins = new AllDecompositionsOfSum();
     int n = 4;
     Set[] res = new Set[2];
     res[0] = ins.bottomUpRecursionWithMemory(n);

@@ -1,5 +1,6 @@
 package com.shuoma.alg;
 
+import static com.shuoma.annotation.Tag.Algorithm.Arithmetic;
 import static com.shuoma.annotation.Tag.Algorithm.Backtracking;
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 
@@ -11,34 +12,38 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Tag(algs = {Backtracking, Recursion})
-public class NaturalNumberDecomposition {
+
+/**
+ * All possible combinations of a sum.
+ */
+@Tag(algs = {Arithmetic, Backtracking, Recursion})
+public class AllDecompositionsOfSum {
 
   public Set<Map<Integer, Integer>> bottomUpRecursionWithMemory(int n){
-    Map<Integer, Set<Map<Integer, Integer>>> allDecomposes = new HashMap<>();
-    bottomUpRecursionWithMemory(n, allDecomposes);
-    return allDecomposes.get(n);
+    Map<Integer, Set<Map<Integer, Integer>>> decompositionsMem = new HashMap<>();
+    bottomUpRecursionWithMemory(n, decompositionsMem);
+    return decompositionsMem.get(n);
   }
 
   void bottomUpRecursionWithMemory(int n, Map<Integer, Set<Map<Integer, Integer>>> allDecomposes) {
-    if (allDecomposes.containsKey(n)) {
+    if (allDecomposes.containsKey(n)) { return; }
+
+    Set<Map<Integer, Integer>> setForN = new HashSet<>();
+    allDecomposes.put(n, setForN);
+
+    if (n == 0) {
+      setForN.add(new HashMap<Integer, Integer>());
       return;
     }
 
-    Set<Map<Integer, Integer>> setForN = new HashSet<>();
-    if (n > 0) {
-      bottomUpRecursionWithMemory(n - 1, allDecomposes);
-      for (int i = 0; i <= n - 1; i++) {
-        for (Map<Integer, Integer> decomposition : allDecomposes.get(i)) {
-          Map<Integer, Integer> cpy = new HashMap<>(decomposition);
-          CollectionsUtil.increaseMapCounter(cpy, n - i, 1);
-          setForN.add(cpy);
-        }
+    bottomUpRecursionWithMemory(n - 1, allDecomposes);
+    for (int i = 0; i <= n - 1; i++) {
+      for (Map<Integer, Integer> decomposition : allDecomposes.get(i)) {
+        Map<Integer, Integer> cpy = new HashMap<>(decomposition);
+        CollectionsUtil.increaseMapCounter(cpy, n - i, 1);
+        setForN.add(cpy);
       }
-    } else { //n==0
-      setForN.add(new HashMap<Integer, Integer>());
     }
-    allDecomposes.put(n, setForN);
   }
 
   public Set<Map<Integer, Integer>> topDownRecursion(int n) {

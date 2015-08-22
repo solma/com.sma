@@ -15,7 +15,7 @@ public class Power {
     boolean nIsNeg = false;
     if (n < 0) {
       nIsNeg = true;
-      n *= -1;
+      n = 0 - n;
     }
 
     while (n > 0) {
