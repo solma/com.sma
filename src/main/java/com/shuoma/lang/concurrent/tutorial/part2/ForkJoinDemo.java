@@ -1,4 +1,4 @@
-package com.shuoma.lang.concurrent.tutorial;
+package com.shuoma.lang.concurrent.tutorial.part2;
 
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
