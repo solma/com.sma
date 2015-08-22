@@ -1,8 +1,13 @@
 package com.shuoma.ds.misc;
 
+import static com.shuoma.annotation.Tag.DataStructure.IntervalT;
+
+import com.shuoma.annotation.Tag;
+
 import java.util.LinkedList;
 import java.util.List;
 
+@Tag(dss = IntervalT)
 public class Interval {
   public int start;
   public int end;

@@ -10,16 +10,15 @@ import com.shuoma.annotation.Tag;
 public class PalindromePartitionII {
   public static void main(String[] args) {
     //"aoecddceoaaeqeeqe"
-    System.out.println(new PalindromePartitionII().minCut(args[0]));
+    System.out.println(new PalindromePartitionII().minCut("aoecddceoabceqeeqe"));
   }
 
   public int minCut(String s) {
     int n = s.length();
-    if (n == 1)
-      return 0;
+    if (n == 1) { return 0; }
 
     int[] dp = new int[n];
-    boolean[][] parlin = new boolean[n][n];
+    // dp[i]: min cut for s.substring(i)
     for (int i = 0; i < n; i++) {
       dp[i] = n - 1 - i;
     }
@@ -28,6 +27,7 @@ public class PalindromePartitionII {
     // for min palindrome parlin[i] = Min k>i (parlin(k)+1)
     //  ---|----|-------
     //  0  i    j   //i inclusive j inclusive for palindrome
+    boolean[][] parlin = new boolean[n][n];
     for (int i = n - 1; i >= 0; i--) {
       for (int j = i; j < n; j++) {
         if (s.charAt(i) == s.charAt(j) && (i + 1 >= j - 1 || parlin[i + 1][j - 1])) {

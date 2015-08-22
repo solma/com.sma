@@ -1,17 +1,18 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Interval;
+import static com.shuoma.annotation.Tag.DataStructure.IntervalT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Tag(dl = D3, dss = Interval, references = LeetCode)
+@Tag(dl = D3, dss = IntervalT, references = LeetCode)
 public class MergeIntervals {
 
   //second pass

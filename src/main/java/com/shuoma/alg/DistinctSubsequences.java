@@ -24,7 +24,7 @@ public class DistinctSubsequences {
   public int numDistinct(String S, String T) {
     int[] occurrence = new int[T.length() + 1];
     occurrence[0] = 1;
-    //o[i, j]=o[i-1, j]+(S[i]==T[j])*o[i-1, j-1];
+    //o[i, j]=o[i-1, j]+ (o[i-1, j-1] if S[i]==T[j]);
     for (int i = 0; i < S.length(); i++) { //i 0-base index
       for (int j = T.length(); j >= 1; j--)//j 1-base index
         if (S.charAt(i) == T.charAt(j - 1)) {

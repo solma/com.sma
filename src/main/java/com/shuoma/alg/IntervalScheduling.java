@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
-import static com.shuoma.annotation.Tag.DataStructure.Interval;
+import static com.shuoma.annotation.Tag.DataStructure.IntervalT;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.misc.Interval;
@@ -12,11 +12,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Tag(algs = Greedy, dss = Interval)
+@Tag(algs = Greedy, dss = IntervalT)
 public class IntervalScheduling {
 
   public static void main(String[] args) {
-    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10);
+    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 10, 10, false);
     schedule(list);
   }
 

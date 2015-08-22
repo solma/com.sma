@@ -62,23 +62,25 @@ public class RandomUtil {
     return genRandomArray(length, maxValue, false, true);
   }
 
-  public static List<Interval> genRandomListOfWeightedIntervals(int n, int maxRange, int maxWeight) {
+  public static List<Interval> genRandomListOfWeightedIntervals(int n, int maxRange, int maxWeight, boolean isDisjoint) {
     int size = 5 + r.nextInt(n);
     List<Interval> intervals = new ArrayList<>(size);
 
-    for (int i =0; i < size; i++) {
-      int[] interval = genRandomKNumbers(2, 0, maxRange);
-      intervals.add(
-          new Interval(
-              Math.min(interval[0], interval[1]),
-              Math.max(interval[0], interval[1]),
-              r.nextInt(maxWeight)));
+    int offset = 0;
+    for (int i = 0; i < size; i++) {
+      int[] interval = genRandomKNumbers(2, offset, offset + maxRange);
+      int start = Math.min(interval[0], interval[1]);
+      int end = Math.max(interval[0], interval[1]);
+      intervals.add(new Interval(start, end, r.nextInt(maxWeight)));
+      if (isDisjoint) {
+        offset = end;
+      }
     }
     return intervals;
   }
 
-  public static List<Interval> genRandomListOfIntervals(int n, int maxRange) {
-    return genRandomListOfWeightedIntervals(n, maxRange, 1);
+  public static List<Interval> genRandomListOfIntervals(int n, int maxRange, boolean isDisjoint) {
+    return genRandomListOfWeightedIntervals(n, maxRange, 1, isDisjoint);
   }
 
   /** Generate random K different numbers within range. */

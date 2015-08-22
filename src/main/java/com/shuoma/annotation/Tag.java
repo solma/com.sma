@@ -51,7 +51,7 @@ public @interface Tag {
     Calculator,
     DirectedGraph,
     Hash,
-    Interval,
+    IntervalT,
     LinkedListT,
     MatrixGraph,
     MinimumSpanningTree,

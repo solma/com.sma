@@ -1,7 +1,7 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
-import static com.shuoma.annotation.Tag.DataStructure.Interval;
+import static com.shuoma.annotation.Tag.DataStructure.IntervalT;
 import static com.shuoma.annotation.Tag.Reference.GoogleCodeChallengeFoobar;
 
 import com.shuoma.annotation.Tag;
@@ -20,7 +20,7 @@ import java.util.List;
  * The number of meetings will be at least 1 and will be no larger than 100.
  * The list of meetings will not necessarily be ordered in any particular fashion.
  */
-@Tag(algs = Greedy, dss = Interval, references = GoogleCodeChallengeFoobar)
+@Tag(algs = Greedy, dss = IntervalT, references = GoogleCodeChallengeFoobar)
 public class ZombitAntidote {
   public static void main(String[] args) {
     System.out.println(answer(new int[][] {{0, 1}, {1, 2}, {2, 3}, {4, 5}, {3, 5}}));

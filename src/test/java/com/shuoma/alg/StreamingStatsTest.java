@@ -33,12 +33,16 @@ public class StreamingStatsTest extends TestCase {
   @Test
   public void testMax() throws Exception {
     for (int i = 0; i < 1; i++) {
-      int[] ary = RandomUtil.genRandomArray(10, 10, true, false);
+      int[] ary = RandomUtil.genRandomArray(100, 10, true, false);
       StreamingStats ins = new StreamingStats(3, ary);
-      int[] res = ins.getMax(ins.stream, ins.K);
+      int[][] res = new int[3][];
+      res[0] = dummyMax(ins);
+      res[1] = ins.getMaxWithTreeMap(ins.stream, ins.K);
+      res[2] = ins.getMaxWithTreeMap(ins.stream, ins.K);
       //System.out.println("array = " + Arrays.toString(ary));
       //System.out.println("max = " + Arrays.toString(res));
-      assertTrue(Arrays.equals(res, dummyMax(ins)));
+      assertTrue(Arrays.equals(res[0], res[1]));
+      assertTrue(Arrays.equals(res[0], res[2]));
     }
   }
 

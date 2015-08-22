@@ -1,20 +1,21 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BottomUp;
+import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 import java.util.ArrayList;
+import java.util.List;
 
-@Tag(algs = BottomUp, references = LeetCode)
-public class Triangle {
+@Tag(algs = {BottomUp, DynamicProgramming}, references = LeetCode) public class Triangle {
   public static void main(String[] args) {
     new Triangle().main();
   }
 
   public void main() {
-    ArrayList<ArrayList<Integer>> triangle = new ArrayList<ArrayList<Integer>>();
+    List<List<Integer>> triangle = new ArrayList<>();
     int[][] arr = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
     for (int i = 0; i < arr.length; i++) {
       triangle.add(new ArrayList<Integer>());
@@ -25,25 +26,19 @@ public class Triangle {
   }
 
   //second pass
-  public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
+  public int minimumTotal(List<List<Integer>> triangle) {
     int ret = Integer.MAX_VALUE;
     int n = triangle.size();
-    if (n == 0)
-      return ret;
+    if (n == 0) { return ret; }
     if (n == 1) {
-      if (triangle.get(0).size() == 0)
-        return ret;
-      else
-        return triangle.get(0).get(0);
+      if (triangle.get(0).size() == 0) { return ret; } else { return triangle.get(0).get(0); }
     }
 
     for (int i = 1; i < triangle.size(); i++) {
-      ArrayList<Integer> row = triangle.get(i);
-      ArrayList<Integer> prevRow = triangle.get(i - 1);
+      List<Integer> row = triangle.get(i);
+      List<Integer> prevRow = triangle.get(i - 1);
       for (int j = 0; j < row.size(); j++) {
-        if (j == 0)
-          row.set(j, row.get(j) + prevRow.get(j));
-        else if (j == row.size() - 1)
+        if (j == 0) { row.set(j, row.get(j) + prevRow.get(j)); } else if (j == row.size() - 1)
           row.set(j, row.get(j) + prevRow.get(j - 1));
         else
           row.set(j, row.get(j) + Math.min(prevRow.get(j), prevRow.get(j - 1)));
@@ -59,16 +54,15 @@ public class Triangle {
 
 
   //dp
-  // public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
-  // for(int i = triangle.size() - 2; i >= 0; i--)
-  // {
-  // for(int j = 0; j < triangle.get(i).size(); j++)
-  // {
-  // triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));
-  // }
-  // }
-  // return triangle.get(0).get(0);
-  // }
+  public int minimumTotalDp(List<List<Integer>> triangle) {
+    for (int i = triangle.size() - 2; i >= 0; i--) {
+      for (int j = 0; j < triangle.get(i).size(); j++) {
+        triangle.get(i).set(j, triangle.get(i).get(j) + Math
+            .min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));
+      }
+    }
+    return triangle.get(0).get(0);
+  }
 
 
   //recursion

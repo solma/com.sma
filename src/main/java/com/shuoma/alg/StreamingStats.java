@@ -6,6 +6,7 @@ import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
 import static com.shuoma.annotation.Tag.DataStructure.QueueT;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.util.CollectionsUtil.increaseMapCounter;
 
 import com.shuoma.annotation.Tag;
 
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 /** Given a stream, compute the stats, e.g. average, min of a sliding window. */
 @Tag(algs = {SlidingWindow, Streaming}, dss = {QueueT, PriorityQueueT}, references = {LeetCode, Interview})
@@ -71,6 +73,28 @@ public class StreamingStats {
       window.add(i);
       if (i >= k - 1) {
         ret[i - k + 1] = nums[window.get(0)];
+      }
+    }
+    return ret;
+  }
+
+  /** Get the max of the sliding window. */
+  int[] getMaxWithTreeMap(int[] nums, int k) {
+    if (nums == null || k == 0) return new int[0];
+    int n = nums.length;
+    if (n < k) return new int[0];
+
+    int[] ret = new int[n - k + 1];
+    // use tree map key:value in nums, value:counter
+    TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+    for (int i = 0; i < n; i++) {
+      // insert new key
+      increaseMapCounter(treeMap, nums[i], 1);
+      if (i >= k - 1) {
+        if (i >= k) { //remove expired key
+          increaseMapCounter(treeMap, nums[i - k], -1);
+        }
+        ret[i - k + 1] = treeMap.lastKey();
       }
     }
     return ret;

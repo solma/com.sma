@@ -25,7 +25,7 @@ public class WeightedIntervalScheduling {
   }
 
   public static void main(String[] args) {
-    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 5, 10);
+    List<Interval> list = RandomUtil.genRandomListOfWeightedIntervals(10, 5, 10, false);
     new WeightedIntervalScheduling(list).schedule();
   }
 
