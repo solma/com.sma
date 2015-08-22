@@ -1,100 +1,82 @@
 package com.shuoma.lang.thread.tutorial.part3;
 // ProdCons2.java
 
-public class ProdCons2
-{
-   public static void main (String [] args)
-   {
-      Shared s = new Shared ();
-      new Producer (s).start ();
-      new Consumer (s).start ();
-   }
+
+public class ProdCons2 {
+  public static void main(String[] args) {
+    Shared s = new Shared();
+    new Producer(s).start();
+    new Consumer(s).start();
+  }
 }
 
-class Shared
-{
-   private char c = '\u0000';
-   private boolean writeable = true;
 
-   synchronized void setSharedChar (char c)
-   {
-      while (!writeable)
-         try
-         {
-            wait ();
-         }
-         catch (InterruptedException e) {}
+class Shared {
+  private char c = '\u0000';
+  private boolean writeable = true;
 
-      this.c = c;
-      writeable = false;
-      notify ();
-   }
+  synchronized void setSharedChar(char c) {
+    while (!writeable)
+      try {
+        wait();
+      } catch (InterruptedException e) {}
 
-   synchronized char getSharedChar ()
-   {
-      while (writeable)
-         try
-         {
-            wait ();
-         }
-         catch (InterruptedException e) { }
+    this.c = c;
+    writeable = false;
+    notify();
+  }
 
-      writeable = true;
-      notify ();
+  synchronized char getSharedChar() {
+    while (writeable)
+      try {
+        wait();
+      } catch (InterruptedException e) { }
 
-      return c;
-   }
+    writeable = true;
+    notify();
+
+    return c;
+  }
 }
 
-class Producer extends Thread
-{
-   private Shared s;
 
-   Producer (Shared s)
-   {
-      this.s = s;
-   }
+class Producer extends Thread {
+  private Shared s;
 
-   public void run ()
-   {
-      for (char ch = 'A'; ch <= 'Z'; ch++)
-      {
-           try
-           {
-              Thread.sleep ((int) (Math.random () * 4000));
-           }
-           catch (InterruptedException e) {}
+  Producer(Shared s) {
+    this.s = s;
+  }
 
-           s.setSharedChar (ch);
-           System.out.println (ch + " produced by producer.");
-      }
-   }
+  public void run() {
+    for (char ch = 'A'; ch <= 'Z'; ch++) {
+      try {
+        Thread.sleep((int) (Math.random() * 4000));
+      } catch (InterruptedException e) {}
+
+      s.setSharedChar(ch);
+      System.out.println(ch + " produced by producer.");
+    }
+  }
 }
 
-class Consumer extends Thread
-{
-   private Shared s;
 
-   Consumer (Shared s)
-   {
-      this.s = s;
-   }
+class Consumer extends Thread {
+  private Shared s;
 
-   public void run ()
-   {
-      char ch;
+  Consumer(Shared s) {
+    this.s = s;
+  }
 
-      do
-      {
-         try
-         {
-            Thread.sleep ((int) (Math.random () * 4000));
-         }
-         catch (InterruptedException e) {}
+  public void run() {
+    char ch;
 
-         ch = s.getSharedChar ();
-         System.out.println (ch + " consumed by consumer.");
-      }
-      while (ch != 'Z');
-   }
+    do {
+      try {
+        Thread.sleep((int) (Math.random() * 4000));
+      } catch (InterruptedException e) {}
+
+      ch = s.getSharedChar();
+      System.out.println(ch + " consumed by consumer.");
+    } while (ch != 'Z');
+  }
 }

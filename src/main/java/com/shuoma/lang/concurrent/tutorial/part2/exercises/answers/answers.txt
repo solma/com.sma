@@ -1,0 +1,44 @@
+1. Check out the DeadlockDemo directory for an application that replaces synchronized with Lock and ReentrantLock.
+
+2. Check out the com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.PreventDeadlockDemo directory for an application that's similar to the previous exercise's application but
+   uses Lock's tryLock() method to prevent the deadlock scenario from occurring.
+
+3. Check out the ConcurrentQueue directory for the ConcurrentQueue class.
+
+4. The atomic variable equivalent of int result = ++i; is AtomicInteger ai = new AtomicInteger(i); int result =
+   ai.incrementAndGet();. The atomic variable equivalent of int result = j--; is AtomicInteger aj = new AtomicInteger(j); int
+   result = aj.getAndDecrement();.
+
+5. You might want to use com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex to prevent a high-priority thread from starving threads of lower priority that are also
+   waiting to acquire a lock. Regardless of priority, threads attempting to acquire the lock are queued in first-in,
+   first-out order, and only the thread at the head of the queue can acquire the lock.
+
+6. Expression waiters.peek() != current || !locked.compareAndSet(false, true) accomplishes the following:
+
+   1) First determine if the current thread is at the head of the queue. If waiters.peek() != current evaluates to true, the
+      current thread is not at the head of the queue, and the while loop's body is entered (to cause the current thread to
+      wait by executing LockSupport.park(this)) without the rest of the expression being evaluated (because of short
+      circuiting). Only the thread at the head of the queue can acquire the lock.
+
+   2) The current thread is at the head of the queue and can attempt to acquire the lock. AtomicBoolean locked, which is
+      initialized to false, is used for this purpose. compareAndSet(false, true) compares locked's current value with false,
+      changing this value to true when the value equals false. When the change occurs, compareAndSet() returns true, causing
+      !locked.compareAndSet(false, true) to evaluate to false. Because waiters.peek() != current is also false at this point,
+      the while loop exits and the lock -- indicated by storing true in locked -- has been acquired.
+
+7. Check out the com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.UseFIFOMutex directory for an application that demonstrates com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex.
+
+8. Check out the FibForkJoin directory for an application that leverages Fibonacci to demonstrate a recursive task.
+
+9. Check out the com.shuoma.lang.concurrent.tutorial.com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.ForkJoinDemo directory for an application that also uses java.util.Arrays's void parallelSort(long[] a)
+   method to sort the array of long integers.
+
+10. The purpose of the java.util.concurrent.ThreadLocalRandom class is to provide a random number generator isolated to the
+   current thread. Use of ThreadLocalRandom rather than shared Random objects in concurrent programs often results in much
+   less thread contention and overhead.
+
+11. The following expression uses ThreadLocalRandom to return an integer between 0 (inclusive) and 50 (exclusive):
+
+    int result = ThreadLocalRandom.current().nextInt(50);
+
+    The ThreadLocalRandom current() class method returns the current thread's ThreadLocalRandom instance.

@@ -1,0 +1,222 @@
+1. Deadlock is a situation in which two or more competing threads acquire each other's lock, and neither thread can enter its
+   critical section because it doesn't have its lock. As a result, all threads are blocked while attempting to acquire locks
+   to their critical sections and cannot proceed.
+
+   The following application demonstrates deadlocK:
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+
+public class DeadlockDemo
+{
+   private Object lock1 = new Object();
+   private Object lock2 = new Object();
+
+   public void instanceMethod1()
+   {
+      synchronized(lock1)
+      {
+         synchronized(lock2)
+         {
+            System.out.println("first thread in instanceMethod1");
+            // critical section guarded first by
+            // lock1 and then by lock2
+         }
+      }
+   }
+
+   public void instanceMethod2()
+   {
+      synchronized(lock2)
+      {
+         synchronized(lock1)
+         {
+            System.out.println("second thread in instanceMethod2");
+            // critical section guarded first by
+            // lock2 and then by lock1
+         }
+      }
+   }
+
+   public static void main(String[] args)
+   {
+      final DeadlockDemo dld = new DeadlockDemo();
+      Runnable runnableA = new Runnable()
+                           {
+                              @Override
+                              public void run()
+                              {
+                                 while(true)
+                                 {
+                                    dld.instanceMethod1();
+                                    try
+                                    {
+                                       Thread.sleep(30);
+                                    }
+                                    catch (InterruptedException ie)
+                                    {
+                                       assert false;
+                                    }
+                                 }
+                              }
+                           };
+      ExecutorService executorA = Executors.newSingleThreadExecutor();
+      Runnable runnableB = new Runnable()
+                           {
+                              @Override
+                              public void run()
+                              {
+                                 while(true)
+                                 {
+                                    dld.instanceMethod2();
+                                    try
+                                    {
+                                       Thread.sleep(30);
+                                    }
+                                    catch (InterruptedException ie)
+                                    {
+                                       assert false;
+                                    }
+                                 }
+                              }
+                           };
+      ExecutorService executorB = Executors.newSingleThreadExecutor();
+      executorA.submit(runnableA);
+      executorB.submit(runnableB);
+   }
+}
+
+   This application creates a pair of executors that execute different runnables on separate threads. Each runnable invokes
+   an instance method, which must acquire a pair of locks before it can enter its critical section.
+
+   Suppose the thread that invokes instanceMethod1() successfully acquires lock1 and the thread that invokes
+   instanceMethod2() successfully acquires lock2. The first thread then attempts to acquire lock2, and is forced to wait
+   because the second thread holds lock2. Meanwhile, the second thread attempts to acquire lock1, and is forced to wait
+   because the first thread holds lock1. Neither thread can proceed and we have deadlock.
+
+   Rewrite this application to demonstrate deadlock in the context of the Lock interface and ReentrantLock class. You'll need
+   to replace both pairs of synchronized blocks.
+
+2. Modify the application that you created in the previous exercise to overcome deadlock. Hint: The Lock interface provides
+   everything you need.
+
+3. Create a ConcurrentQueue generic type, ConcurrentQueue<E>, that stores elements of type E in a circular queue. Introduce a
+   ConcurrentQueue(int capacity) constructor that initializes the queue to a specific capacity. Also, introduce void add(E
+   item) and E remove() methods that, respectively, add an item to the queue and remove an item from the queue (returning the
+   removed item). Each of add() and remove() should use the java.util.concurrent.locks.Lock interface to lock() and unlock()
+   their critical section. Also, when the queue is full, add() should await() on a lessThanFull
+   java.lang.concurrent.locks.Condition. When this Condition is signalled, add() can go ahead and add the item. When the
+   queue is empty, remove() should await() on a moreThanEmpty Condition. When this Condition is signalled, remove() can go
+   ahead and remove the item.
+
+   Use the following application to test ConcurrentQueue:
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+
+public class UseConcurrentQueue
+{
+   public static void main(String[] args)
+   {
+      final ConcurrentQueue<Integer> cq = new ConcurrentQueue<>(5);
+      Runnable r1 = new Runnable()
+                    {
+                       @Override
+                       public void run()
+                       {
+                          int counter = 0;
+                          while (true)
+                             try
+                             {
+                                cq.add(counter++);
+                             }
+                             catch (InterruptedException ie)
+                             {
+                             }
+                       }
+                    };
+      ExecutorService e1 = Executors.newSingleThreadExecutor();
+      Runnable r2 = new Runnable()
+                    {
+                       @Override
+                       public void run()
+                       {
+                          while (true)
+                            try
+                            {
+                               System.out.printf("counter = %d%n", cq.remove());
+                            }
+                            catch (InterruptedException ie)
+                            {
+                            }
+                       }
+                    };
+      ExecutorService e2 = Executors.newSingleThreadExecutor();
+      e1.submit(r1);
+      e2.submit(r2);
+   }
+}
+
+   You should observe output similar to the following:
+
+waiting on moreThanEmpty condition
+signalling moreThanEmpty
+signalling moreThanEmpty
+signalling moreThanEmpty
+signalling moreThanEmpty
+signalling moreThanEmpty
+waiting on lessThanFull condition
+signalling lessThanFull
+counter = 0
+signalling moreThanEmpty
+waiting on lessThanFull condition
+signalling lessThanFull
+counter = 1
+signalling moreThanEmpty
+waiting on lessThanFull condition
+signalling lessThanFull
+counter = 2
+signalling moreThanEmpty
+waiting on lessThanFull condition
+signalling lessThanFull
+counter = 3
+signalling moreThanEmpty
+waiting on lessThanFull condition
+signalling lessThanFull
+counter = 4
+...
+
+4. Convert the following expressions to their atomic variable equivalents:
+
+   int result = ++i;
+   int result = j--;
+
+5. The java.util.concurrent.locks.LockSupport class is a utility class that contains basic thread-blocking primitives for
+   creating locks and other synchronization classes. For example, this class is used by
+   java.util.concurrent.locks.AbstractQueuedSynchronizer, which is used by java.util.concurrent.locks.ReentrantLock.
+
+   LockSupport's Javadoc demonstrates LockSupport by presenting a com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex class, which is described as a
+   "first-in-first-out non-reentrant lock class". Why might you want to use com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex?
+
+6. com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex's lock() method evalutes expression waiters.peek() != current || !locked.compareAndSet(false, true) in its while
+   loop. Describe what this expression accomplishes.
+
+7. Write a small application that demonstrates com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.FIFOMutex. The application's output should illustrate the FIFO nature of this
+   lock.
+
+8. The Java documentation for the java.util.concurrent.RecursiveTask class presents a Fibonacci example that demonstrates a
+   recursive task, which returns a result. The task is divided into a pair of subtasks, the left subtask is forked by calling
+   ForkJoinTask's void fork() method, the right task is directly executed by calling the overriding V compute() method, and
+   both results are merged. Because the left task might still be processing, ForkJoinTask's V join() method is called on that
+   task, which returns the result once the task is finished.
+
+   Create a FibForkJoin application that demonstrates Fibonacci. Although there are more performant ways to calculate
+   Fibonacci numbers, this exercise gives you an opportunity to experience creating recursive tasks. In contrast, the article
+   only shows how to create recursive actions, which don't return results.
+
+9. Extend Listing 8's com.shuoma.lang.concurrent.tutorial.com.shuoma.lang.concurrent.tutorial.part2.exercises.answers.ForkJoinDemo application to also use java.util.Arrays's void parallelSort(long[] a) method to sort the
+   array of long integers.
+
+10. What is the purpose of the java.util.concurrent.ThreadLocalRandom class?
+
+11. Write an expression that uses ThreadLocalRandom to return an integer between 0 (inclusive) and 50 (exclusive).

@@ -1,68 +1,57 @@
 package com.shuoma.lang.thread.tutorial.part3;
 // WaitNotifyAllDemo.java
 
-public class WaitNotifyAllDemo
-{
-   public static void main (String [] args)
-   {
-      Object lock = new Object ();
 
-      MyThread mt1 = new MyThread (lock);
-      mt1.setName ("A");
+public class WaitNotifyAllDemo {
+  public static void main(String[] args) {
+    Object lock = new Object();
 
-      MyThread mt2 = new MyThread (lock);
-      mt2.setName ("B");
+    MyThread mt1 = new MyThread(lock);
+    mt1.setName("A");
 
-      MyThread mt3 = new MyThread (lock);
-      mt3.setName ("C");
+    MyThread mt2 = new MyThread(lock);
+    mt2.setName("B");
 
-      mt1.start ();
-      mt2.start ();
-      mt3.start ();
+    MyThread mt3 = new MyThread(lock);
+    mt3.setName("C");
 
-      System.out.println ("main thread sleeping");
+    mt1.start();
+    mt2.start();
+    mt3.start();
 
-      try
-      {
-         Thread.sleep (3000);
-      }
-      catch (InterruptedException e)
-      {
-      }
+    System.out.println("main thread sleeping");
 
-      System.out.println ("main thread awake");
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+    }
 
-      synchronized (lock)
-      {
-         lock.notifyAll ();
-      }
-   }
+    System.out.println("main thread awake");
+
+    synchronized (lock) {
+      lock.notifyAll();
+    }
+  }
 }
 
-class MyThread extends Thread
-{
-   private Object o;
 
-   MyThread (Object o)
-   {
-      this.o = o;
-   }
+class MyThread extends Thread {
+  private Object o;
 
-   public void run ()
-   {
-      synchronized (o)
-      {
-         try
-         {
-             System.out.println (getName () + " before wait");
+  MyThread(Object o) {
+    this.o = o;
+  }
 
-             o.wait ();
+  public void run() {
+    synchronized (o) {
+      try {
+        System.out.println(getName() + " before wait");
 
-             System.out.println (getName () + " after wait");
-         }
-         catch (InterruptedException e)
-         {
-         }
+        o.wait();
+
+        System.out.println(getName() + " after wait");
+      } catch (InterruptedException e) {
       }
-   }
+    }
+  }
 }
