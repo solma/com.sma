@@ -12,13 +12,12 @@ import java.util.Queue;
 public class InvertTree {
 
   // iterative
-  public TreeNode invertTree(TreeNode root) {
-    if (root == null) {
-      return null;
-    }
+  public TreeNode invertTreeI(TreeNode root) {
+    if (root == null) { return null; }
     // alternatively queue, does not matter
     Queue<TreeNode> queue = new LinkedList<>();
     queue.add(root);
+    // top-down
     while (!queue.isEmpty()) {
       TreeNode cur = queue.poll();
       TreeNode tmp = cur.left;
@@ -30,16 +29,13 @@ public class InvertTree {
     return root;
   }
 
-  // recurison
-  public TreeNode invertTreeRecursion(TreeNode root) {
-    if (root == null) {
-      return null;
-    }
-    TreeNode tmp = root.left;
-    root.left = root.right;
-    root.right = tmp;
-    invertTreeRecursion(root.left);
-    invertTreeRecursion(root.right);
+  // bottom up recursion
+  public TreeNode invertTreeR(TreeNode root) {
+    if (root == null) { return null; }
+    TreeNode leftInvert = invertTreeR(root.left);
+    TreeNode rightInvert = invertTreeR(root.right);
+    root.left = rightInvert;
+    root.right = leftInvert;
     return root;
   }
 }

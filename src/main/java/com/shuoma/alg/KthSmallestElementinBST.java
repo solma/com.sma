@@ -19,12 +19,8 @@ public class KthSmallestElementinBST {
 
   TreeNode kthSmallest(TreeNode cur, int k, Map<TreeNode, Integer> nodeSize) {
     int leftSize = cur.left == null ? 0 : nodeSize.get(cur.left);
-    if (leftSize == k - 1) {
-      return cur;
-    }
-    if (leftSize >= k) {
-      return kthSmallest(cur.left, k, nodeSize);
-    }
+    if (leftSize == k - 1) { return cur; }
+    if (leftSize >= k) { return kthSmallest(cur.left, k, nodeSize); }
     return kthSmallest(cur.right, k - leftSize - 1, nodeSize);
   }
 

@@ -38,6 +38,7 @@ public class ShortestAbbreviation {
       Set<String> prev = new HashSet<>(), aftr = new HashSet<>();
       for (String word : dict) {
         if (word.length() != n || word.charAt(i) != s.charAt(i)) continue;
+        // all words that share the same char at index i with s
         prev.add(word.substring(0, i));
         aftr.add(word.substring(i + 1));
       }

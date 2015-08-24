@@ -21,18 +21,18 @@ public class CountCompleteTreeNodes {
     System.out.println(countNodes(root));
   }
 
-  public int countNodes(TreeNode root) {
-    int height = getHeight(root);
+  public int countNodes(TreeNode cur) {
+    int height = getHeight(cur);
     if (height <= 1) return height;
 
-    int rightHeight = getHeight(root.right) - 1;
-    int leftHeight = getHeight(root.left) - 1;
+    int rightHeight = getHeight(cur.right) - 1;
+    int leftHeight = getHeight(cur.left) - 1;
     int result;
 
     if (rightHeight == leftHeight) {
-      result = (int) Math.pow(2, leftHeight + 1) - 1 + countNodes(root.right);
+      result = (int) Math.pow(2, leftHeight + 1) - 1 + countNodes(cur.right);
     } else {
-      result = (int) Math.pow(2, rightHeight + 1) - 1 + countNodes(root.left);
+      result = (int) Math.pow(2, rightHeight + 1) - 1 + countNodes(cur.left);
     }
 
     return result + 1;

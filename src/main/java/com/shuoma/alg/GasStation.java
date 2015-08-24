@@ -11,15 +11,15 @@ import java.util.List;
 @Tag(dss = Array, references = LeetCode)
 public class GasStation {
   public int canCompleteCircuit(int[] gas, int[] cost) {
-    int min = 0, total = 0, len = gas.length, index = -1;
+    int min = 0, credit = 0, len = gas.length, index = -1;
     for (int i = 0; i < len; i++) {
-      total += gas[i] - cost[i];
-      if (total < min) {
+      credit += gas[i] - cost[i];
+      if (credit < min) {
         index = i;
-        min = total;
+        min = credit;
       }
     }
-    return total >= 0 ? index + 1 : -1;
+    return credit >= 0 ? index + 1 : -1;
   }
 
   // TLE

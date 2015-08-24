@@ -64,7 +64,7 @@ public class MinDistanceFromPolice {
       for (int[] dir : dirs) {
         int i = cur.i + dir[0], j = cur.j + dir[1];
         if (i >= 0 && i < roads.length && j >= 0 && j < roads[0].length
-            && roads[i][j] == Integer.MAX_VALUE) {
+            && roads[i][j] > cur.dis + 1) {
           roads[i][j] = cur.dis + 1; // set visit before adding to queue
           q.add(new Cell(i, j, cur.dis + 1));
           cnt++;

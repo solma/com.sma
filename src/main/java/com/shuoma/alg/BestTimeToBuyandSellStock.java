@@ -2,10 +2,14 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.CheckAtEveryIndex;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(dss = Array, references = LeetCode)
+/**
+ * Allow one transaction
+ */
+@Tag(dss = Array, references = LeetCode, tricks = CheckAtEveryIndex)
 public class BestTimeToBuyandSellStock {
   public int maxProfit(int[] prices) {
     if (prices.length == 0)

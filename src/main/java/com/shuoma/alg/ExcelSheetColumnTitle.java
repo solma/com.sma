@@ -9,9 +9,7 @@ import com.shuoma.annotation.Tag;
 public class ExcelSheetColumnTitle {
 
   public String convertToTitle(int n) {
-    if (n <= 0) {
-      return null;
-    }
+    if (n <= 0) { return null; }
     StringBuilder res = new StringBuilder();
     while (n > 0) {
       n--;

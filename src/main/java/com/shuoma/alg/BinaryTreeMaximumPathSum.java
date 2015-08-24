@@ -2,33 +2,31 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Recursion;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
-import static com.shuoma.annotation.Tag.Difficulty.D2;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.CheckAtEveryIndex;
 
 import com.shuoma.annotation.Tag;
 
-@Tag(algs = Recursion, dl = D2, dss = BinaryTree, references = LeetCode)
+@Tag(algs = Recursion, dss = BinaryTree, references = LeetCode, tricks = CheckAtEveryIndex)
 public class BinaryTreeMaximumPathSum {
 
   public int maxPathSum(TreeNode root) {
-    if (root == null)
-      return 0;
+    if (root == null) { return 0; }
     int[] max = new int[] {Integer.MIN_VALUE};
     maxPathSum(root, max);
     return max[0];
   }
 
-  public int maxPathSum(TreeNode n, int[] max) {
-    if (n == null)
-      return 0;
+  public int maxPathSum(TreeNode cur, int[] max) {
+    if (cur == null) { return 0; }
 
-    int leftMax = Math.max(0, maxPathSum(n.left, max));
-    int rightMax = Math.max(0, maxPathSum(n.right, max));
+    int leftMax = Math.max(0, maxPathSum(cur.left, max));
+    int rightMax = Math.max(0, maxPathSum(cur.right, max));
 
-    if (n.val + leftMax + rightMax > max[0])
-      max[0] = n.val + leftMax + rightMax;
-    // return the max of the following:
-    // 1. the left path sum or 2. right path sum 3. the value it self
-    return Math.max(n.val + leftMax, n.val + rightMax);
+    // update max with a path including cur node
+    max[0] = Math.max(max[0], cur.val + leftMax + rightMax);
+
+    // return the max sum of any path ending with cur node
+    return Math.max(cur.val + leftMax, cur.val + rightMax);
   }
 }

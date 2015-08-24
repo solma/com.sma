@@ -17,7 +17,7 @@ import java.util.Set;
  * e.g. 96196 ---rotating 180 degree --> 69169 --reversing --> 96196。
  */
 @Tag(algs = Recursion, dss = StringT)
-public class ReverseNumber {
+public class MirrorNumber {
   public static void main(String[] args) {
     List<Integer> res = new ArrayList<>(findAll(5));
     Collections.sort(res);

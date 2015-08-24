@@ -5,6 +5,9 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
+/***
+ * Allow unlimited # of transactions
+ */
 @Tag(dss = Array, references = LeetCode)
 public class BestTimeToBuyandSellStockII {
   public int maxProfit(int[] prices) {

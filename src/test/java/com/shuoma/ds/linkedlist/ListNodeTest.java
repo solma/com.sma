@@ -1,6 +1,7 @@
 package com.shuoma.ds.linkedlist;
 
 import static com.shuoma.ds.linkedlist.ListNode.buildList;
+import static com.shuoma.ds.linkedlist.ListNode.interweave;
 import static com.shuoma.ds.linkedlist.ListNode.reverseInKGroupR;
 import static com.shuoma.ds.linkedlist.ListNode.reverseR;
 import static org.junit.Assert.assertTrue;
@@ -35,5 +36,17 @@ public class ListNodeTest {
         assertTrue(buildList(ArrayUtil.reverse(li, k)).equals(reverseInKGroup));
       }
     }
+  }
+
+  @Test
+  public void testInterweave() throws Exception {
+    int[][] lists = new int[][] {
+        {5, 1, 3, 7, 9},
+        {2, 6, 8},
+        {5, 2, 1, 6, 3, 8, 7, 9}
+    };
+    assertTrue(buildList(lists[2]).equals(
+        interweave(buildList(lists[0]), buildList(lists[1]))
+    ));
   }
 }

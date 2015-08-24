@@ -30,17 +30,17 @@ public class CloneGraph {
   public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
     if (node == null) { return node; }
 
-    Queue<UndirectedGraphNode> curLvl = new LinkedList<>();
-    curLvl.offer(node);
+    Queue<UndirectedGraphNode> queue = new LinkedList<>();
+    queue.offer(node);
     Map<UndirectedGraphNode, UndirectedGraphNode> cloned = new HashMap<>();
     cloned.put(node, new UndirectedGraphNode(node.label));
 
-    while (!curLvl.isEmpty()) {
-      UndirectedGraphNode curNode = curLvl.poll();
+    while (!queue.isEmpty()) {
+      UndirectedGraphNode curNode = queue.poll();
       for (UndirectedGraphNode neighbor : curNode.neighbors) {
         if (!cloned.containsKey(neighbor)) {
           cloned.put(neighbor, new UndirectedGraphNode(neighbor.label));
-          curLvl.offer(neighbor);
+          queue.offer(neighbor);
         }
         cloned.get(curNode).neighbors.add(cloned.get(neighbor));
       }

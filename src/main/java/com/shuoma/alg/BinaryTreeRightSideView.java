@@ -15,9 +15,7 @@ public class BinaryTreeRightSideView {
 
   public List<Integer> rightSideView(TreeNode root) {
     List<Integer> ret = new LinkedList<>();
-    if (root == null) {
-      return ret;
-    }
+    if (root == null) { return ret; }
 
     Deque<TreeNode> nextLevel = new LinkedList<>();
     nextLevel.add(root);

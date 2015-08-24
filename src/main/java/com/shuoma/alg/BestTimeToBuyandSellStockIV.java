@@ -7,6 +7,9 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
+/**
+ * Allow at most K transactions
+ */
 @Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode)
 public class BestTimeToBuyandSellStockIV {
 
@@ -17,8 +20,7 @@ public class BestTimeToBuyandSellStockIV {
    */
   public int maxProfit(int k, int[] prices) {
     int n = prices.length;
-    if (n < 1)
-      return 0;
+    if (n < 1) { return 0; }
     if (k >= n / 2) {
       int sum = 0;
       for (int i = 1; i < n; i++) {
@@ -27,6 +29,27 @@ public class BestTimeToBuyandSellStockIV {
       return sum;
     }
 
+    return dp1d(k, prices);
+  }
+
+  int dp1d(int k, int[] prices) {
+    int[] lastTransactionOnLastDay = new int[k + 1];
+    int[] maxProfit = new int[k + 1];
+
+    int n = prices.length;
+    for (int i = 1; i < n; i++) {
+      int diff = prices[i] - prices[i - 1];
+      for (int j = k; j >= 1; j--) {
+        lastTransactionOnLastDay[j] = Math.max(lastTransactionOnLastDay[j] + diff,
+            maxProfit[j - 1] + Math.max(0, diff));
+        maxProfit[j] = Math.max(maxProfit[j], lastTransactionOnLastDay[j]);
+      }
+    }
+    return maxProfit[k];
+  }
+
+  int dp2d(int k, int[] prices) {
+    int n = prices.length;
     int[][] lastTransactionOnLastDay = new int[n][k + 1];
     int[][] maxProfit = new int[n][k + 1];
 

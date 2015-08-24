@@ -2,18 +2,19 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedListT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.TwoOrMorePointers;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
-@Tag(dss = LinkedListT, references = LeetCode)
+@Tag(dss = LinkedListT, references = LeetCode, tricks = TwoOrMorePointers)
 public class ReorderList {
 
   public void reorderList(ListNode head) {
     if (head == null || head.next == null) { return; }
 
+    // fast and slow pointers to locate the median node
     ListNode l1 = head, l2 = head;
-
     while (l2 != null && l2.next != null) {
       l1 = l1.next;
       l2 = l2.next.next;

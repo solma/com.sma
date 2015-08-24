@@ -12,8 +12,7 @@ import java.util.Arrays;
 public class MaximumGap {
 
   int maximumGap(int[] num) {
-    if (num == null || num.length < 2)
-      return 0;
+    if (num == null || num.length < 2) { return 0; }
     int n = num.length;
 
     // first pass to get min and max
@@ -23,7 +22,7 @@ public class MaximumGap {
       max = Math.max(max, num[i]);
     }
 
-    // second pass: bucketisize and get the max and min in each bucket
+    // second pass: bucketize and get the max and min in each bucket
     int bucketGap = (int) Math.ceil((max - min + .0) / (n - 1));
     int[] maxB = new int[n];
     int[] minB = new int[n];
@@ -38,11 +37,10 @@ public class MaximumGap {
     //System.out.println(Arrays.toString(maxB));
     //System.out.println(Arrays.toString(minB));
 
-    // third pass: calcualte the maxGap
+    // third pass: calculate the maxGap
     int maxGap = 0, prev = min;
     for (int i = 0; i < n; i++) {
-      if (minB[i] == Integer.MAX_VALUE && maxB[i] == Integer.MIN_VALUE)
-        continue;
+      if (minB[i] == Integer.MAX_VALUE && maxB[i] == Integer.MIN_VALUE) { continue; }
       maxGap = Math.max(maxGap, minB[i] - prev);
       prev = maxB[i];
     }

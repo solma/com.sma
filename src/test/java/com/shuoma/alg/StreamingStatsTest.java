@@ -25,7 +25,7 @@ public class StreamingStatsTest extends TestCase {
       for (int j = 0; j < ins.K; j++) {
         sum += ins.stream[i - j];
       }
-      max[i - ins.K + 1] = (int)(sum / ins.K * 100) / 100.0;
+      max[i - ins.K + 1] = sum / ins.K;
     }
     return max;
   }

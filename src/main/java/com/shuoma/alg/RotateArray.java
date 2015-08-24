@@ -28,8 +28,7 @@ public class RotateArray {
 
   void rotateLeft(int[] nums, int k) {
     int n = nums.length;
-    if (k == 0 || n == 1)
-      return;
+    if (k == 0 || n == 1) { return; }
     int noOfCycles = gcd(k, n);
     int cycleSize = n / noOfCycles;
 

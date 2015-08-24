@@ -56,12 +56,10 @@ public class MinStack {
   }
 
   public void pop() {
-    if (stack.isEmpty())
-      return;
+    if (stack.isEmpty()) { return; }
     stack.pop();
     mins.get(0).decr();
-    if (mins.get(0).getCnt() == 0)
-      mins.remove(0);
+    if (mins.get(0).getCnt() == 0) { mins.remove(0); }
   }
 
   public int top() {

@@ -44,24 +44,24 @@ import java.util.PriorityQueue;
     // sort edges
     Collections.sort(edges, new Comparator<Edge>() {
       public int compare(Edge a, Edge b) {
-        if (a.x != b.x)
-          return Integer.compare(a.x, b.x);
-
-        if (a.isStart && b.isStart) {
-          return Integer.compare(b.height, a.height);
-        }
-
-        if (!a.isStart && !b.isStart) {
-          return Integer.compare(a.height, b.height);
-        }
-
-        return a.isStart ? -1 : 1;
+        if (a.x != b.x) { return a.x - b.x; }
+        if (a.isStart ^ b.isStart) return a.isStart ? -1 : 1;
+        // both start
+        if (a.isStart) { return b.height - a.height; }
+        // both end
+        return a.height - b.height;
       }
     });
 
     // process edges
     PriorityQueue<Integer> heightHeap = new PriorityQueue<>(10, Collections.reverseOrder());
 
+    /***
+     *   -----
+     *   |   |
+     * ---   ---
+     * |       |
+     */
     for (Edge edge : edges) {
       if (edge.isStart) {
         if (heightHeap.isEmpty() || edge.height > heightHeap.peek()) {
@@ -70,10 +70,12 @@ import java.util.PriorityQueue;
         heightHeap.add(edge.height);
       } else {
         heightHeap.remove(edge.height);
+        if (!heightHeap.isEmpty() && edge.height > heightHeap.peek()) {
+          result.add(new int[] {edge.x, heightHeap.peek()});
+          continue;
+        }
         if (heightHeap.isEmpty()) {
           result.add(new int[] {edge.x, 0});
-        } else if (edge.height > heightHeap.peek()) {
-          result.add(new int[] {edge.x, heightHeap.peek()});
         }
       }
     }
@@ -134,16 +136,16 @@ import java.util.PriorityQueue;
     }
     return ret;
   }
+}
 
-  class Edge {
-    int x;
-    int height;
-    boolean isStart;
+class Edge {
+  int x;
+  int height;
+  boolean isStart;
 
-    public Edge(int x, int height, boolean isStart) {
-      this.x = x;
-      this.height = height;
-      this.isStart = isStart;
-    }
+  public Edge(int x, int height, boolean isStart) {
+    this.x = x;
+    this.height = height;
+    this.isStart = isStart;
   }
 }

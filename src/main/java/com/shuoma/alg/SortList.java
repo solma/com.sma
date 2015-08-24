@@ -6,8 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
-@Tag(dss = LinkedListT, references = LeetCode)
-public class SortList {
+@Tag(dss = LinkedListT, references = LeetCode) public class SortList {
   public ListNode sortList(ListNode head) {
     //count # of nodeMap
     ListNode cur = head;
@@ -16,8 +15,7 @@ public class SortList {
       cur = cur.next;
       cnt++;
     }
-    if (cnt == 0 || cnt == 1)
-      return head;
+    if (cnt == 0 || cnt == 1) { return head; }
 
     //split
     int i = 0, middle = cnt / 2;
@@ -27,8 +25,7 @@ public class SortList {
       prev = half;
       half = half.next;
     }
-    if (prev != null)
-      prev.next = null;
+    if (prev != null) { prev.next = null; }
 
     //recursion
     ListNode sorted = sortList(head);
@@ -39,11 +36,8 @@ public class SortList {
     prev = null;
     while (cur != null && sortedSecondHalf != null) {
       if (cur.val >= sortedSecondHalf.val) {
-        if (prev == null) {
-          sorted = sortedSecondHalf;
-        } else {
-          prev.next = sortedSecondHalf;
-        }
+        if (prev == null) { sorted = sortedSecondHalf; }
+        else { prev.next = sortedSecondHalf; }
         prev = sortedSecondHalf;
         sortedSecondHalf = sortedSecondHalf.next;
         prev.next = cur;

@@ -6,8 +6,7 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
-@Tag(dss = LinkedListT, references = LeetCode)
-public class MergeTwoSortedList {
+@Tag(dss = LinkedListT, references = LeetCode) public class MergeTwoSortedList {
   public static void main(String[] args) {
     new MergeTwoSortedList().main();
   }
@@ -17,29 +16,27 @@ public class MergeTwoSortedList {
         ListNode.buildList(new int[] {1, 3, 8})));
   }
 
-  public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    if (l1 == null) { return l2; }
-    if (l2 == null) { return l1; }
+  public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    ListNode p1 = l1, p2 = l2;
 
-    ListNode cur = l1, prev = null;
-    while (cur != null && l2 != null) {
-      if (cur.val >= l2.val) { //insert l2 between prev and cur
-        if (prev == null) { l1 = l2; }
-        else { prev.next = l2; }
+    ListNode pseudoHead = new ListNode(0);
+    ListNode p = pseudoHead;
 
-        prev = l2;
-        l2 = l2.next; //advance l2
-
-        prev.next = cur;
+    while (p1 != null && p2 != null) {
+      if (p1.val <= p2.val) {
+        p.next = p1;
+        p1 = p1.next;
       } else {
-        prev = cur;
-        cur = cur.next;
+        p.next = p2;
+        p2 = p2.next;
       }
-    }
-    if (l2 != null && prev != null) {
-      prev.next = l2;
+
+      p = p.next;
     }
 
-    return l1;
+    if (p1 != null) { p.next = p1; }
+    if (p2 != null) { p.next = p2; }
+
+    return pseudoHead.next;
   }
 }

@@ -29,9 +29,7 @@ public class LargestNumber {
     };
     Collections.sort(li, Collections.reverseOrder(comp));
     StringBuilder sb = new StringBuilder();
-    for(int n : li) {
-      sb.append(String.valueOf(n));
-    }
+    for(int n : li) { sb.append(String.valueOf(n)); }
     try {
       return String.valueOf(Long.parseLong(sb.toString()));
     } catch (Exception ex) {

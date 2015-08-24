@@ -113,7 +113,7 @@ public class Searching {
     int r = n - 1;
 
     while (l <= r) {
-      int m = l + ((r - l) / 2);
+      int m = l + ((r - l) >> 1);
       if (array[m] == key) return m;
 
       if (array[l] < array[m]) {

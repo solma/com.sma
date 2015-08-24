@@ -56,19 +56,21 @@ public class ListNode {
   /**
    * @param l1
    * @param l2
-   * @return l1 (adding l2 list to l1) e.g. l1: 5->3, l2: 2->4->1, return l1: 5->2->3->4->1
+   * @return l1 (interleaving l2 list to l1) e.g. l1: 5->3->1, l2: 2->4, return l1: 5->2->3->4->1
+   * l1 should be not shorter than l2
    */
-  public static ListNode joinAlternatively(ListNode l1, ListNode l2) {
+  public static ListNode interweave(ListNode l1, ListNode l2) {
     if (l1 == null) return l2;
 
     ListNode p1 = l1, p2 = l2;
     while (p1 != null && p2 != null) {
-      ListNode p1Next = p1.next;
+      ListNode next = p1.next;
       p1.next = p2;
-      p1 = p1Next;
-      ListNode p2Next = p2.next;
-      if (p1 != null) p2.next = p1; //tricky line, when l1 reaches the end stop link l2 to l1
-      p2 = p2Next;
+      p1 = next;
+
+      next = p2.next;
+      if (p1 != null) { p2.next = p1; }
+      p2 = next;
     }
     return l1;
   }

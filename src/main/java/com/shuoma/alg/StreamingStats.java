@@ -42,14 +42,10 @@ public class StreamingStats {
     for (int i = 0; i < stream.length; i++) {
       sum += stream[i];
       window.add(stream[i]);
-      if (i >= K) {
-        sum -= window.remove(0);
-      }
+      if (i >= K) { sum -= window.remove(0); }
 
       // compute avg
-      if (i >= K - 1) {
-        avg[i - K + 1] = (int) (sum / K * 100) / 100.0;
-      }
+      if (i >= K - 1) { avg[i - K + 1] = sum / K; }
     }
     return avg;
   }
