@@ -19,6 +19,7 @@ public class LongestPalindromicSubstring {
       isPalindrome[i] = new boolean[n + 1];
       isPalindrome[i][i + 1] = true;
     }
+
     for (int len = 2; len <= n; len++) {
       for (int l = 0; l <= n - len; l++) {
         if ((len == 2 || isPalindrome[l + 1][l + len - 1])

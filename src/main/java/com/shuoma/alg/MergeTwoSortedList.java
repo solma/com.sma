@@ -2,11 +2,12 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.DataStructure.LinkedListT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
+import static com.shuoma.annotation.Tag.Trick.PseudoHead;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.linkedlist.ListNode;
 
-@Tag(dss = LinkedListT, references = LeetCode) public class MergeTwoSortedList {
+@Tag(dss = LinkedListT, references = LeetCode, tricks = PseudoHead) public class MergeTwoSortedList {
   public static void main(String[] args) {
     new MergeTwoSortedList().main();
   }

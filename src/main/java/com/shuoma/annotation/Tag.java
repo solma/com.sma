@@ -102,6 +102,7 @@ public @interface Tag {
     ForwardAndBackwardScan,
     FromTwoEndsToMiddle,
     InplaceSwap,
+    PseudoHead,
     TwoOrMorePointers,
     NA,
   }

@@ -19,23 +19,23 @@ public class MinimumWindowSubstring {
     int nT = T.length(), nS = S.length();
     if (nS < nT) { return ""; }
     for (int i = 0; i < nT; i++) {
-      needToFind[(int) T.charAt(i)]++;
+      needToFind[T.charAt(i)]++;
     }
     int end, cnt = 0, begin = 0, min = Integer.MAX_VALUE;
     int minL = 0, minR = -1;
     for (end = 0; end < nS; end++) {
-      if (needToFind[(int) S.charAt(end)] == 0) { continue; }
-      hasFound[(int) S.charAt(end)]++;
-      if (hasFound[(int) S.charAt(end)] <= needToFind[(int) S.charAt(end)]) {
+      if (needToFind[S.charAt(end)] == 0) { continue; }
+      hasFound[S.charAt(end)]++;
+      if (hasFound[S.charAt(end)] <= needToFind[S.charAt(end)]) {
         cnt++;
       }
 
       if (cnt == nT) {
         //System.out.println(S.charAt(end)+" "+needToFind[(int)S.charAt(end)]);
-        while (needToFind[(int) S.charAt(begin)] == 0
-            || hasFound[(int) S.charAt(begin)] > needToFind[(int) S.charAt(begin)]) {
-          if (hasFound[(int) S.charAt(begin)] > needToFind[(int) S.charAt(begin)]) {
-            hasFound[(int) S.charAt(begin)]--;
+        while (needToFind[S.charAt(begin)] == 0
+            || hasFound[S.charAt(begin)] > needToFind[S.charAt(begin)]) {
+          if (hasFound[S.charAt(begin)] > needToFind[S.charAt(begin)]) {
+            hasFound[S.charAt(begin)]--;
           }
           begin++;
         }

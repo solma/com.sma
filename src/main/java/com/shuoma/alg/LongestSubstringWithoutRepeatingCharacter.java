@@ -13,7 +13,6 @@ import java.util.Arrays;
 @Tag(dl = D2, dss = {Hash, Substring}, references = LeetCode, tricks = CheckAtEveryIndex)
 public class LongestSubstringWithoutRepeatingCharacter {
 
-  //second pass
   public int lengthOfLongestSubstring(String s) {
     int n = s.length();
     int[] lastPos = new int[256];

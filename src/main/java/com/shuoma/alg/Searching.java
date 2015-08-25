@@ -65,7 +65,7 @@ public class Searching {
     int r = array.length - 1;
     while (l < r) {
       while (l < r && array[l] == array[r]) r--;
-      if (l >= r) break;
+      if (l == r) break;
 
       int m = l + (r - l) / 2;
       if (array[m] > array[m + 1])

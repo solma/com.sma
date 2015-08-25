@@ -15,6 +15,6 @@ public class HIndexTest {
     assertEquals(4, ins.hIndex(new int[] {9, 7, 6, 8}));
     assertEquals(4, ins.hIndex(new int[] {10, 7, 6, 8}));
     assertEquals(3, ins.hIndex(new int[] {3, 13, 2, 3, 33}));
-    assertEquals(3, ins.hIndex(new int[] {1, 1, 3, 6, 62, 15, 3}));
+    assertEquals(3, ins.hIndex(new int[] {1, 1, 3, 6, 64, 15, 3}));
   }
 }
