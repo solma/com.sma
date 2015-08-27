@@ -2,6 +2,8 @@ package com.shuoma.alg;
 
 import com.shuoma.util.ArrayUtil;
 
+import java.util.Arrays;
+
 public class SetMatrixZeros {
 
   public static void main(String[] args) {
@@ -36,9 +38,7 @@ public class SetMatrixZeros {
 
     for (int i = 0; i < m; i++) {
       if (i == row || matrix[i][col] != 0) { continue; }
-      for (int j = 0; j < n; j++) {
-        matrix[i][j] = 0;
-      }
+      Arrays.fill(matrix[i], 0);
     }
 
     for (int j = 0; j < n; j++) {

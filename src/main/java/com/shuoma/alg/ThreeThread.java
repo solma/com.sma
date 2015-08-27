@@ -3,6 +3,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.Concurrent;
 import static com.shuoma.annotation.Tag.DataStructure.ThreadT;
 import static com.shuoma.annotation.Tag.Reference.CrackingTheCodeInterview;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 import com.shuoma.annotation.Tag;
 
@@ -14,7 +15,7 @@ import java.util.concurrent.Semaphore;
  * Implement a class with three methods, where 2nd method can only be called after 1st method
  * get called and 3rd method can only be called after 2nd method get called.
  */
-@Tag(algs = Concurrent, dss = {ThreadT}, references = CrackingTheCodeInterview)
+@Tag(algs = Concurrent, dss = {ThreadT}, references = {CrackingTheCodeInterview, Interview})
 public class ThreeThread {
 
   public static void main(String[] args) throws InterruptedException {
@@ -47,7 +48,6 @@ class Foo {
 
   public void second() throws InterruptedException {
     second.acquire();
-    second.release();
     Thread.sleep(2000);
     System.out.println("second is called");
     third.release();
@@ -57,7 +57,6 @@ class Foo {
     third.acquire();
     Thread.sleep(1000);
     System.out.println("third is called");
-    third.release();
   }
 }
 

@@ -2,11 +2,11 @@ package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.Searching;
 import static com.shuoma.annotation.Tag.DataStructure.Array;
+import static com.shuoma.util.ArrayUtil.partition;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.ds.graph.tree.TournamentTree;
 import com.shuoma.ds.misc.MaxHeap;
-import com.shuoma.util.ArrayUtil;
 
 /** Select Kth smallest number in an array. */
 @Tag(algs = Searching, dss = Array)
@@ -35,11 +35,11 @@ public class Selecting {
   }
 
   void quickSelect(int[] a, int l, int r, int K) {
-    if (l > r) return;
-    int cut = ArrayUtil.partition(a, l, r, l + ((r - l) >> 1));
+    if (l > r) { return; }
+    int cut = partition(a, l, r, l + ((r - l) >> 1));
     // System.out.println(cut);
     int offset = cut - l;
-    if (offset == K - 1) return;
+    if (offset == K - 1) { return; }
     if (offset > K - 1) quickSelect(a, l, cut - 1, K);
     else quickSelect(a, cut + 1, r, K - (offset + 1));
   }

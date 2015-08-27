@@ -21,12 +21,12 @@ public class LongestPalindromicSubstring {
     }
 
     for (int len = 2; len <= n; len++) {
-      for (int l = 0; l <= n - len; l++) {
-        if ((len == 2 || isPalindrome[l + 1][l + len - 1])
-            && s.charAt(l) == s.charAt(l + len - 1)) {
-          isPalindrome[l][l + len] = true;
-          idx[0] = l;
-          idx[1] = l + len;
+      for (int i = 0; i <= n - len; i++) {
+        if ((len == 2 || isPalindrome[i + 1][i + len - 1])
+            && s.charAt(i) == s.charAt(i + len - 1)) {
+          isPalindrome[i][i + len] = true;
+          idx[0] = i;
+          idx[1] = i + len;
         }
       }
     }
