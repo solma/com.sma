@@ -64,16 +64,14 @@ public class Vector {
   static double linePointDist(double[][] line, double[] C, boolean isSegment) {
     double[] A = line[0];
     double[] B = line[1];
-    double dist = cross(A, B, C) / distance(A, B);
+    double dist = Math.abs(cross(A, B, C) / distance(A, B));
     if (isSegment) {
       double dot1 = dot(A, B, C);
-      if (dot1 > 0)
-        return distance(B, C);
+      if (dot1 > 0) { return distance(B, C); }
       double dot2 = dot(B, A, C);
-      if (dot2 > 0)
-        return distance(A, C);
+      if (dot2 > 0) { return distance(A, C); }
     }
-    return Math.abs(dist);
+    return dist;
   }
 
   /**
@@ -82,9 +80,7 @@ public class Vector {
    */
   static double[] linesIntersect(double[] l1, double[] l2) {
     double det = l1[0] * l2[1] - l1[1] * l2[0];
-    if (det == 0) {
-      return null;
-    }
+    if (det == 0) { return null; }
     double x = (l2[1] * l1[2] - l1[1] * l2[2]) / det;
     double y = (l1[0] * l2[2] - l2[0] * l1[2]) / det;
     System.out.println(x + " " + y);
@@ -101,14 +97,14 @@ public class Vector {
 
   /** Return true if two lines intersect */
   static boolean segmentsIntersect(double[][] seg1, double[][] seg2) {
-    Orientation o1 = crossOrientation(seg1[0], seg1[1], seg2[0]), o2 =
-        crossOrientation(seg1[0], seg1[1], seg2[1]),
-        o3 = crossOrientation(seg2[0], seg2[1], seg1[0]), o4 =
-        crossOrientation(seg2[0], seg2[1], seg1[1]);
+    Orientation o1 = crossOrientation(seg1[0], seg1[1], seg2[0]),
+        o2 = crossOrientation(seg1[0], seg1[1], seg2[1]),
+        o3 = crossOrientation(seg2[0], seg2[1], seg1[0]),
+        o4 = crossOrientation(seg2[0], seg2[1], seg1[1]);
 
     //System.out.println(o1 + " " + o2 + " " + o3 + " " + o4);
-    if ((!o1.equals(o2) && !o3.equals(o4)) || (o1 == Orientation.COLLINEAR && o1 == o2 && o1 == o3
-        && o1 == o4 && (pointOnSegment(seg1, seg2[0]) || pointOnSegment(seg1, seg2[1]))))
+    if ((!o1.equals(o2) && !o3.equals(o4))
+        || (o1 == Orientation.COLLINEAR && o1 == o2 && o1 == o3 && o1 == o4 && (pointOnSegment(seg1, seg2[0]) || pointOnSegment(seg1, seg2[1]))))
       return true;
     return false;
   }

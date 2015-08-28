@@ -36,10 +36,7 @@ public class Shape {
     double d1 = distance(circleCenter, seg[0]), d2 = distance(circleCenter, seg[1]);
     double d = linePointDist(seg, circleCenter, true);
     System.out.println(d1 + " " + d2 + " " + d);
-    if ((d1 >= circleRadius || d2 >= circleRadius) && d <= circleRadius)
-      return true;
-    else
-      return false;
+    return (d1 >= circleRadius || d2 >= circleRadius) && d <= circleRadius;
   }
 
   /** Return true if two rectangles overlap
