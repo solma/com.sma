@@ -16,10 +16,10 @@ import java.util.Set;
  * All possible combinations of a product.
  */
 @Tag(algs = {Arithmetic, Backtracking, Recursion})
-public class AllDecompositionOfProduct {
+public class AllDecompositionsOfProduct {
 
   public static void main(String[] args) {
-    AllDecompositionOfProduct ins = new AllDecompositionOfProduct();
+    AllDecompositionsOfProduct ins = new AllDecompositionsOfProduct();
     System.out.println(ins.bottomUpRecursionWithMemory(108));
   }
 

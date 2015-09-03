@@ -14,7 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-@Tag(dl = D3, dss = {Array, MonotonicSequence}, references = LeetCode) public class SkylineProblem {
+@Tag(dl = D3, dss = {Array, MonotonicSequence}, references = LeetCode)
+public class SkylineProblem {
 
   public static void main(String[] args) {
     //int[][] buildings = new int[][] {{2, 9, 10}, {3, 7, 15}, {5, 12, 12}, {15, 20, 10}, {19, 24, 8}};
@@ -45,6 +46,7 @@ import java.util.PriorityQueue;
     Collections.sort(edges, new Comparator<Edge>() {
       public int compare(Edge a, Edge b) {
         if (a.x != b.x) { return a.x - b.x; }
+        // closing edge before starting edge
         if (a.isStart ^ b.isStart) return a.isStart ? -1 : 1;
         // both start
         if (a.isStart) { return b.height - a.height; }

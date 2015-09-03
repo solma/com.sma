@@ -40,8 +40,7 @@ public class BestTimeToBuyandSellStockIV {
     for (int i = 1; i < n; i++) {
       int diff = prices[i] - prices[i - 1];
       for (int j = k; j >= 1; j--) {
-        lastTransactionOnLastDay[j] = Math.max(lastTransactionOnLastDay[j] + diff,
-            maxProfit[j - 1] + Math.max(0, diff));
+        lastTransactionOnLastDay[j] = Math.max(lastTransactionOnLastDay[j], maxProfit[j - 1]) + diff;
         maxProfit[j] = Math.max(maxProfit[j], lastTransactionOnLastDay[j]);
       }
     }
@@ -56,8 +55,7 @@ public class BestTimeToBuyandSellStockIV {
     for (int i = 1; i < n; i++) {
       int diff = prices[i] - prices[i - 1];
       for (int j = 1; j <= k; j++) {
-        lastTransactionOnLastDay[i][j] = Math.max(lastTransactionOnLastDay[i - 1][j] + diff,
-            maxProfit[i - 1][j - 1] + Math.max(0, diff));
+        lastTransactionOnLastDay[i][j] = Math.max(lastTransactionOnLastDay[i - 1][j], maxProfit[i - 1][j - 1]) + diff;
         maxProfit[i][j] = Math.max(maxProfit[i - 1][j], lastTransactionOnLastDay[i][j]);
       }
     }

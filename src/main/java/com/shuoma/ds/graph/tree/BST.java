@@ -3,6 +3,7 @@ package com.shuoma.ds.graph.tree;
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
+import static java.lang.Integer.parseInt;
 import static java.util.Collections.reverse;
 
 import com.shuoma.annotation.Tag;
@@ -150,7 +151,7 @@ public class BST {
   public static BSTNode delete(BSTNode cur, String id) {
     if (isNullOrEmpty(id)) return cur;
     if (cur == null) return null;
-    int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
+    int compare = parseInt(id) - parseInt(cur.id);
     // replace cur with its inorder successor, i.e. leftmost node in the right subtree
     if (compare == 0) {
       // no right subtree
@@ -182,7 +183,7 @@ public class BST {
   public static BSTNode find(BSTNode cur, String id) {
     if (cur == null)
       return null;
-    int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
+    int compare = parseInt(id) - parseInt(cur.id);
     if (compare == 0)
       return cur;
     else
@@ -194,7 +195,7 @@ public class BST {
     if (cur == null) {
       return ret;
     }
-    int compare = Integer.parseInt(id) - Integer.parseInt(cur.id);
+    int compare = parseInt(id) - parseInt(cur.id);
     if (compare > 0) {
       return findAll(cur.right, id);
     }
@@ -310,7 +311,7 @@ public class BST {
       return leaf;
     }
 
-    if (Integer.parseInt(cur.id) >= Integer.parseInt(key)) {
+    if (parseInt(cur.id) >= parseInt(key)) {
       cur.left = insert(cur.left, key);
     }
     else {
@@ -375,23 +376,28 @@ public class BST {
   }
 
   public static BSTNode lowestCommonAncestor(BSTNode cur, String n1Id, String n2Id) {
-    if (cur == null) return null;
-    if (n1Id == null) return new BSTNode(n2Id);
-    if (n2Id == null) return new BSTNode(n1Id);
+    if (cur == null) { return null; }
+    if (n1Id == null) { return new BSTNode(n2Id); }
+    if (n2Id == null) { return new BSTNode(n1Id); }
 
     if (cur.id.equals(n1Id) || cur.id.equals(n2Id)) {
       return cur;
     }
-    BSTNode l = lowestCommonAncestor(cur.left, n1Id, n2Id);
-    BSTNode r = lowestCommonAncestor(cur.right, n1Id, n2Id);
-    if (l != null && r != null) {
+
+    if (parseInt(cur.id) > parseInt(n1Id) && parseInt(cur.id) > parseInt(n2Id)) {
+      return lowestCommonAncestor(cur.left, n1Id, n2Id);
+    }
+
+    if (parseInt(cur.id) < parseInt(n1Id) && parseInt(cur.id) < parseInt(n2Id)) {
+      return lowestCommonAncestor(cur.right, n1Id, n2Id);
+    }
+
+    if (lowestCommonAncestor(cur.left, n1Id, n2Id) != null
+        && lowestCommonAncestor(cur.right, n1Id, n2Id) != null) {
       return cur;
     }
 
-    if (l != null) {
-      return l;
-    }
-    return r;
+    return null;
   }
 
   public static int longestOnesidePath(BSTNode root) {
@@ -783,7 +789,7 @@ public class BST {
   public static int rankOf(BSTNode cur, String key) {
     if (cur == null) return 0;
 
-    int comp = Integer.parseInt(cur.id) - Integer.parseInt(key);
+    int comp = parseInt(cur.id) - parseInt(key);
 
     if(comp > 0) {
       return rankOf(cur.left, key);
