@@ -25,8 +25,12 @@ public class Shape {
     int N = polygon.length;
 
     double[] origin = {0., 0.};
-    for (int i = 0; i < N; i++) {
-      area += cross(origin, polygon[(i + 1) % N], polygon[i % N]);
+//    for (int i = 0; i < N; i++) {
+//      area += cross(origin, polygon[(i + 1) % N], polygon[i % N]);
+//    }
+
+    for (int i = 1; i <= N - 2; i++) {
+      area += cross(polygon[0], polygon[(i + 1) % N], polygon[i % N]);
     }
     return area / 2.0;
   }
@@ -70,8 +74,8 @@ public class Shape {
     for(int i = 0; i < len; i++){
       double[] s = polygon[i % len], e = polygon[(i + 1) % len];
       Orientation o = crossOrientation(s, e, X);
-      if (polygonOrientation == o) return false;
-      if (o == COLLINEAR && pointOnSegment(new double[][] {s, e}, X)) return true;
+      if (polygonOrientation == o) { return false; }
+      if (o == COLLINEAR && pointOnSegment(new double[][] {s, e}, X)) { return true; }
     }
     return true;
   }

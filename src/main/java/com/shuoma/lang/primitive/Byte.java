@@ -19,5 +19,7 @@ public class Byte {
     // unsign a byte
     int ub = ((byte) -1 & 0xFF);
     System.out.println(ub);
+
+    System.out.println(Integer.SIZE + " " + java.lang.Byte.SIZE);
   }
 }
