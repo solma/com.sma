@@ -1,6 +1,6 @@
 package com.shuoma.alg;
 
-/*
+/**
  * given an array A,size=n,elements range from 0~n-1, some number missing some repeated. Find which
  * numbers are missing and which are repeated. Time: O(n), Space: O(1)? Reference: daizhiguizhong
  */
@@ -20,13 +20,15 @@ public class CountMissingAndRepeatingNumbers {
 
   public void stat(int[] A) {
     int n = A.length;
-    if (n == 0) return;
+    if (n == 0) { return; }
     System.out.println(Arrays.toString(A));
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
       A[A[i] % n] += n;
+    }
     System.out.println(Arrays.toString(A));
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
       A[i] /= n;
+    }
     System.out.println(Arrays.toString(A));
   }
 }

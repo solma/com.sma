@@ -11,6 +11,7 @@ public class MyString {
 
   void containNullOrEmpty() {
     String s = "s";
-    System.out.println(s.contains("") + " " + s.contains(null));
+    //System.out.println(s.contains("") + " " + s.contains(null));
+    System.out.println("0+0-1".replaceAll("[+-0]",""));
   }
 }

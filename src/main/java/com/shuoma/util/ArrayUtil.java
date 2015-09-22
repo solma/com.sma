@@ -327,17 +327,16 @@ public class ArrayUtil {
 
   public static void swap(int[] a, int i, int j) {
     int n = a.length;
-    if (i == j || i < 0 || j < 0 || i >= n || j >= n)
-      return;
+    if (i == j || i < 0 || j < 0 || i >= n || j >= n) { return; }
     a[i] = a[i] ^ a[j];
     a[j] = a[i] ^ a[j];
     a[i] = a[i] ^ a[j];
   }
 
-  public static int[] toValue(int[] arr, int[] indexs) {
-    int[] values = new int[indexs.length];
-    for (int i = 0; i < indexs.length; i++) {
-      values[i] = arr[indexs[i]];
+  public static int[] toValue(int[] arr, int[] indices) {
+    int[] values = new int[indices.length];
+    for (int i = 0; i < indices.length; i++) {
+      values[i] = arr[indices[i]];
     }
     return  values;
   }

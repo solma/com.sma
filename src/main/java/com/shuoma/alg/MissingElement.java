@@ -1,27 +1,26 @@
 package com.shuoma.alg;
 
 import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 
 /**
- * Given an array of [1...n] with one number missing, find the missing number.
+ * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+ * For example, given nums = [0, 1, 3] return 2.
  */
-@Tag(algs = BitManipulation)
+@Tag(algs = BitManipulation, references = LeetCode)
 public class MissingElement {
 
-  public static void main(String[] args) {
-    System.out.println(missingElement(new int[] {1, 5, 6, 4, 7, 3}));
-  }
-
-  static int missingElement(int[] a) {
-    int res = 0;
-    for (int i = 0; i <= a.length; i++) {
-      res ^= i + 1;
+  int missingElement(int[] nums) {
+    int xor = 0;
+    int n = nums.length;
+    for (int i = 0; i < n; i++) {
+      xor ^= nums[i];
     }
-    for (int i = 0; i < a.length; i++) {
-      res ^= a[i];
+    for (int i = 0; i <= n; i++) {
+      xor ^= i;
     }
-    return res;
+    return xor;
   }
 }

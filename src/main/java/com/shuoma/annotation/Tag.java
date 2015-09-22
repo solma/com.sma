@@ -52,6 +52,7 @@ public @interface Tag {
     DirectedGraph,
     Hash,
     IntervalT,
+    IteratorT,
     LinkedListT,
     MatrixGraph,
     MinimumSpanningTree,
