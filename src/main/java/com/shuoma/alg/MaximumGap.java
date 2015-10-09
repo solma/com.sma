@@ -1,14 +1,18 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.Hash;
-import static com.shuoma.annotation.Tag.Difficulty.D2;
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
-
 import com.shuoma.annotation.Tag;
 
 import java.util.Arrays;
 
+import static com.shuoma.annotation.Tag.DataStructure.Hash;
+import static com.shuoma.annotation.Tag.Difficulty.D2;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
+
 @Tag(dl = D2, dss = Hash, references = LeetCode)
+/**
+ * Given an unsorted array, find the maximum gap between two numbers that are
+ * neighbors if the array is sorted.
+ */
 public class MaximumGap {
 
   int maximumGap(int[] num) {
