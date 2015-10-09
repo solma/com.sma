@@ -105,6 +105,7 @@ public @interface Tag {
     InplaceSwap,
     PseudoHead,
     TwoOrMorePointers,
+    TortoiseAndHare,
     NA,
   }
 }
