@@ -27,6 +27,7 @@ public class MaximumGap {
     }
 
     // second pass: bucketize and get the max and min in each bucket
+    // maximum gap at least = (max - min) / n - 1, otherwise contradicts that the array has a range of [min, max], so we only need to check the diff btw minOfCurBucket and maxOfPrevBucket
     int bucketGap = (int) Math.ceil((max - min + .0) / (n - 1));
     int[] maxB = new int[n];
     int[] minB = new int[n];
