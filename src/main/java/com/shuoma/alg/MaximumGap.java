@@ -46,6 +46,7 @@ public class MaximumGap {
     int maxGap = 0, prev = min;
     for (int i = 0; i < n; i++) {
       // the bucket is unmodified, i.e. no element falls in this bucket
+      // minB[i] and maxB[i] are always changed together
       if (minB[i] == Integer.MAX_VALUE && maxB[i] == Integer.MIN_VALUE) { continue; }
       maxGap = Math.max(maxGap, minB[i] - prev);
       prev = maxB[i];
