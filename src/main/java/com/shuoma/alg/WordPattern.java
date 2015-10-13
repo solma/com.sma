@@ -22,7 +22,8 @@ import static com.shuoma.annotation.Tag.Reference.LeetCode;
  * Notes:
  * You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
  */
-@Tag(algs = {Recursion}, dss = {Hash, StringT}, references = {LeetCode}) public class WordPattern {
+@Tag(algs = {Recursion}, dss = {Hash, StringT}, references = {LeetCode})
+public class WordPattern {
 
   boolean wordPattern(String p, String s) {
     String[] values = s.split(" ");
