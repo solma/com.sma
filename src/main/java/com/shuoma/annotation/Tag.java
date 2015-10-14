@@ -1,10 +1,10 @@
 package com.shuoma.annotation;
 
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.SOURCE;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 @Target(TYPE)
 @Retention(SOURCE)
@@ -30,6 +30,7 @@ public @interface Tag {
     DynamicProgramming,
     Geometry,
     Greedy,
+    Math,
     RandomT,
     Recursion,
     RegularExpression,

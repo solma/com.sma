@@ -42,16 +42,15 @@ public class GameOfLife {
   void gameOfLife(int[][] board) {
     int m = board.length;
     int n = board[0].length;
-    int[][] next = new int[m][n];
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
-        next[i][j] = isLive(board, i, j, m, n) ? 1 : 0;
+        board[i][j] |= isLive(board, i, j, m, n) ? 2 : 0;
       }
     }
 
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
-        board[i][j] = next[i][j];
+        board[i][j] >>= 1;
       }
     }
   }
@@ -64,12 +63,12 @@ public class GameOfLife {
           continue;
         }
         int nRow = row + i, nCol = col + j;
-        if (!outOfBound(nRow, nCol, m, n) && board[nRow][nCol] == LIVE) {
+        if (!outOfBound(nRow, nCol, m, n) && (board[nRow][nCol] & 1) == LIVE) {
           liveCnt++;
         }
       }
     }
-    return liveCnt == 3 || (liveCnt == 2 && board[row][col] == LIVE);
+    return liveCnt == 3 || (liveCnt == 2 && (board[row][col] & 1) == LIVE);
   }
 
   boolean outOfBound(int i, int j, int m, int n) {
