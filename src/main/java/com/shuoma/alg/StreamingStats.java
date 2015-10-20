@@ -1,5 +1,9 @@
 package com.shuoma.alg;
 
+import com.shuoma.annotation.Tag;
+
+import java.util.*;
+
 import static com.shuoma.annotation.Tag.Algorithm.SlidingWindow;
 import static com.shuoma.annotation.Tag.Algorithm.Streaming;
 import static com.shuoma.annotation.Tag.DataStructure.PriorityQueueT;
@@ -7,14 +11,6 @@ import static com.shuoma.annotation.Tag.DataStructure.QueueT;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.util.CollectionsUtil.increaseMapCounter;
-
-import com.shuoma.annotation.Tag;
-
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
 
 /** Given a stream, compute the stats, e.g. average, min of a sliding window. */
 @Tag(algs = {SlidingWindow, Streaming}, dss = {QueueT, PriorityQueueT}, references = {LeetCode, Interview})
@@ -106,13 +102,10 @@ public class StreamingStats {
     assert (n >= 2);
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>(20, Collections.reverseOrder());
     PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-    maxHeap.add(Math.min(nums[0], nums[1]));
-    minHeap.add(Math.max(nums[0], nums[1]));
+    maxHeap.add(nums[0]);
 
     int[] medians = new int[n - 1];
-    medians[0] = (maxHeap.peek() + minHeap.peek()) / 2;
-
-    for (int i = 2; i < n; i++) {
+    for (int i = 1; i < n; i++) {
       if (nums[i] < maxHeap.peek()) maxHeap.offer(nums[i]);
       else minHeap.offer(nums[i]);
 
