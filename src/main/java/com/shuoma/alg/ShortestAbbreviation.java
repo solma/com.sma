@@ -21,7 +21,7 @@ public class ShortestAbbreviation {
  String shortestAbbreviation(Set<String> dict, String s) {
     if (s == null || s.isEmpty()) return "";
     int n = s.length();
-    if (dict.isEmpty() || isLengthUnique(dict, s)) return n + "";
+    if (isLengthUnique(dict, s)) return n + "";
     if (dict.contains(s)) return s;
 
     String shortestAbbr = s;
