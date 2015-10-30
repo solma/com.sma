@@ -1,15 +1,13 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.Algorithm.Recursion;
-import static com.shuoma.annotation.Tag.DataStructure.Subarray;
-import static com.shuoma.annotation.Tag.Reference.Interview;
-
-import com.google.common.collect.ImmutableSet;
-
 import com.shuoma.annotation.Tag;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.shuoma.annotation.Tag.Algorithm.Recursion;
+import static com.shuoma.annotation.Tag.DataStructure.Subarray;
+import static com.shuoma.annotation.Tag.Reference.Interview;
 
 /**
  * Abbreviation: e.g. "apple" can be abbreviated to 5, a4, 4e, a3e, ...
@@ -20,14 +18,7 @@ import java.util.Set;
 @Tag(algs = Recursion, dss = Subarray, references = Interview)
 public class ShortestAbbreviation {
 
-  public static void main(String[] args) {
-    ShortestAbbreviation ins = new ShortestAbbreviation();
-    Set<String> dict = ImmutableSet.of("plain", "amber", "blade", "spain", "loped", "hallo",
-        "aplan", "aqewe");
-    System.out.println(ins.shortestAbbreviation(dict, "apple"));
-  }
-
-  String shortestAbbreviation(Set<String> dict, String s) {
+ String shortestAbbreviation(Set<String> dict, String s) {
     if (s == null || s.isEmpty()) return "";
     int n = s.length();
     if (dict.isEmpty() || isLengthUnique(dict, s)) return n + "";

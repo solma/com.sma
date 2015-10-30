@@ -8,7 +8,7 @@ import com.shuoma.annotation.Tag;
 
 /**
  Implement a encoding system as following: Abckkkkkkkkkkk55p => Abc11xk55p.
- Encoding rules: encoded them as: [n]x[c], where n is the repetition count and c is the actual character,
+ Encoding rules: encoded them as: [n]x[c], where n>=3 is the repetition count and c is the actual character,
  X is the special character.
  Decoder side: Any time above pattern is detected, it will output n number of c. If x is the last character,
  output x.
