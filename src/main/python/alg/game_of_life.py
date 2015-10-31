@@ -1,3 +1,8 @@
+from label import Label
+
+Label(Label.BitManipulation, Label.LeetCode)
+
+
 class Solution(object):
     def game_of_life(self, board):
         dx = (1, 1, 1, 0, 0, -1, -1, -1)
