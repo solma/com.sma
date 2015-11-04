@@ -1,21 +1,14 @@
 package com.shuoma.ds.graph.tree;
 
-import static com.shuoma.ds.graph.tree.BST.countTree;
-import static com.shuoma.ds.graph.tree.BST.delete;
-import static com.shuoma.ds.graph.tree.BST.insert;
-import static com.shuoma.ds.graph.tree.BST.lowestCommonAncestor;
-import static com.shuoma.ds.graph.tree.BST.maxDistanceBtwLeaves;
-import static com.shuoma.ds.graph.tree.BST.pathBetweenTwoNodes;
-import static com.shuoma.ds.graph.tree.BST.pathFromChildToAncestorR;
-import static com.shuoma.ds.graph.tree.BST.sameTree;
-import static java.util.Collections.reverse;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.shuoma.ds.graph.tree.BST.*;
+import static java.util.Collections.reverse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BSTTest {
 

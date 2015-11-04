@@ -1,21 +1,14 @@
 package com.shuoma.ds.graph.tree;
 
+import com.shuoma.annotation.Tag;
+
+import java.util.*;
+
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.shuoma.annotation.Tag.DataStructure.BinarySearchTree;
 import static com.shuoma.annotation.Tag.DataStructure.BinaryTree;
 import static java.lang.Integer.parseInt;
 import static java.util.Collections.reverse;
-
-import com.shuoma.annotation.Tag;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
 
 @Tag(dss = {BinarySearchTree, BinaryTree})
 public class BST {
@@ -375,29 +368,29 @@ public class BST {
     return 1 + Math.max(leftHeight, rightHeight);
   }
 
-  public static BSTNode lowestCommonAncestor(BSTNode cur, String n1Id, String n2Id) {
-    if (cur == null) { return null; }
+  public static BSTNode lowestCommonAncestor(BSTNode root, String n1Id, String n2Id) {
+    if (root == null) { return null; }
     if (n1Id == null) { return new BSTNode(n2Id); }
     if (n2Id == null) { return new BSTNode(n1Id); }
 
-    if (cur.id.equals(n1Id) || cur.id.equals(n2Id)) {
-      return cur;
+    if (root.id.equals(n1Id) || root.id.equals(n2Id)) {
+      return root;
     }
 
-    if (parseInt(cur.id) > parseInt(n1Id) && parseInt(cur.id) > parseInt(n2Id)) {
-      return lowestCommonAncestor(cur.left, n1Id, n2Id);
+    if (parseInt(root.id) > parseInt(n1Id) && parseInt(root.id) > parseInt(n2Id)) {
+      return lowestCommonAncestor(root.left, n1Id, n2Id);
     }
 
-    if (parseInt(cur.id) < parseInt(n1Id) && parseInt(cur.id) < parseInt(n2Id)) {
-      return lowestCommonAncestor(cur.right, n1Id, n2Id);
+    if (parseInt(root.id) < parseInt(n1Id) && parseInt(root.id) < parseInt(n2Id)) {
+      return lowestCommonAncestor(root.right, n1Id, n2Id);
     }
 
-    if (lowestCommonAncestor(cur.left, n1Id, n2Id) != null
-        && lowestCommonAncestor(cur.right, n1Id, n2Id) != null) {
-      return cur;
+    BSTNode leftRet = lowestCommonAncestor(root.left, n1Id, n2Id),
+        rightRet = lowestCommonAncestor(root.right, n1Id, n2Id);
+    if (leftRet != null && rightRet != null) {
+      return root;
     }
-
-    return null;
+    return leftRet != null ? leftRet : rightRet;
   }
 
   public static int longestOnesidePath(BSTNode root) {

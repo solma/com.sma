@@ -4,6 +4,7 @@ package com.shuoma.alg;
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 import com.shuoma.annotation.Tag;
 import com.shuoma.util.ArrayUtil;
@@ -17,7 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = MonotonicSequence)
+@Tag(algs = DynamicProgramming, dl = D3, dss = MonotonicSequence, references = LeetCode)
 public class LongestIncreasingSubsequence {
   public static void main(String[] args) {
     new LongestIncreasingSubsequence().main();
@@ -49,6 +50,7 @@ public class LongestIncreasingSubsequence {
   }
 
   int[] patienceSortingMethod(int[] num) {
+    if (num.length == 0) { return num; }
     List<Node> pileTops = new LinkedList<>();
     for (int i : num) {
       Node n = new Node(i);
