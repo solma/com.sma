@@ -23,56 +23,57 @@ You may assume that the secret number and your friend's guess only contain digit
 from label import Label
 from util.map import MapCounter
 
-Label(Label.StringT, Label.Array, Label.LeetCode)
+Label(Label.StringT, Label.Array, Label.Hash, Label.LeetCode)
 
 
 class Solution:
     def getHint(self, secret, guess):
-        return self.one_pass(secret, guess)
-        #return self.two_pass(secret, guess)
 
-    def one_pass(self, secret, guess):
-        # table records the appearance of a digit
-        # digit from secret will increase the counter
-        # digit from guess will decrease the counter
-        count = [0] * 10
-        bull_cnt = 0
-        cow_cnt = 0
+        def one_pass(secret, guess):
+            # table records the appearance of a digit
+            # digit from secret will increase the counter
+            # digit from guess will decrease the counter
+            count = [0] * 10
+            bull_cnt = 0
+            cow_cnt = 0
 
-        for i in range(len(secret)):
-            a = ord(secret[i]) - ord('0')
-            b = ord(guess[i]) - ord('0')
-            if a == b:
-                bull_cnt += 1
-            else:
-                # if prev part of guess has curr digit in secret
-                # then we found a pair that has same digit with different position
-                if count[a] < 0:
+            for i in range(len(secret)):
+                a = ord(secret[i]) - ord('0')
+                b = ord(guess[i]) - ord('0')
+                if a == b:
+                    bull_cnt += 1
+                else:
+                    # if prev part of guess has curr digit in secret
+                    # then we found a pair that has same digit with different position
+                    if count[a] < 0:
+                        cow_cnt += 1
+                    # if prev part of secret has curr digit in guess
+                    # then we found a pair that has same digit with different position
+                    if count[b] > 0:
+                        cow_cnt += 1
+
+                    count[a] += 1
+                    count[b] -= 1
+            return '%dA%dB' % (bull_cnt, cow_cnt)
+
+        def two_pass(secret, guess):
+            bull_cnt = 0
+            dict_counter = MapCounter()
+            cows_candidates = []
+            for i in range(len(secret)):
+                if guess[i] == secret[i]:
+                    bull_cnt += 1
+                else:
+                    dict_counter.increment(secret[i], 1)
+                    cows_candidates += [guess[i]]
+
+            cow_cnt = 0
+            for candidate in cows_candidates:
+                if candidate in dict_counter.keys():
                     cow_cnt += 1
-                # if prev part of secret has curr digit in guess
-                # then we found a pair that has same digit with different position
-                if count[b] > 0:
-                    cow_cnt += 1
+                    dict_counter.increment(candidate, -1)
 
-                count[a] += 1
-                count[b] -= 1
-        return '%dA%dB' % (bull_cnt, cow_cnt)
+            return '%dA%dB' % (bull_cnt, cow_cnt)
 
-    def two_pass(self, secret, guess):
-        bull_cnt = 0
-        dict_counter = MapCounter()
-        cows_candidates = []
-        for i in range(len(secret)):
-            if guess[i] == secret[i]:
-                bull_cnt += 1
-            else:
-                dict_counter.increment(secret[i], 1)
-                cows_candidates += [guess[i]]
-
-        cow_cnt = 0
-        for candidate in cows_candidates:
-            if candidate in dict_counter.keys():
-                cow_cnt += 1
-                dict_counter.increment(candidate, -1)
-
-        return '%dA%dB' % (bull_cnt, cow_cnt)
+        #return one_pass(secret, guess)
+        return two_pass(secret, guess)
