@@ -1,7 +1,5 @@
-
 def play_with_multiple_line_string():
-    conf = """
-
+  conf = """
     BqLoad  {
         projectId="ups-dev"
         datasetId="solma_udf_test"
@@ -10,7 +8,8 @@ def play_with_multiple_line_string():
         gcsFileSchema="model:String country_code:String area_code:String area_name:String device_cnt:String"
     }
     """
-    print [line for line in conf.splitlines() if '{' in line][0].split('{')[0].strip()
+  print([line for line in conf.splitlines() if '{' in line][0].split('{')[0].strip())
+
 
 if __name__ == "__main__":
-    play_with_multiple_line_string()
+  play_with_multiple_line_string()

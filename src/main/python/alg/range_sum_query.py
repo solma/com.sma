@@ -10,16 +10,16 @@ You may assume that the array does not change.
 There are many calls to sumRange function.
 """
 
-from label import Label
+from src.main.python.alg.label import Label
 
 Label(Label.Array, Label.DynamicProgramming)
 
 
 class NumArray(object):
-    def __init__(self, nums):
-        self._sum = nums
-        for i in range(1, len(nums)):
-            self._sum[i] += self._sum[i - 1]
+  def __init__(self, nums):
+    self._sum = nums
+    for i in range(1, len(nums)):
+      self._sum[i] += self._sum[i - 1]
 
-    def sumRange(self, i, j):
-       return self._sum[j] - (0 if i == 0 else self._sum[i - 1])
+  def sumRange(self, i, j):
+    return self._sum[j] - (0 if i == 0 else self._sum[i - 1])
