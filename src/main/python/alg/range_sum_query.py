@@ -12,7 +12,7 @@ There are many calls to sumRange function.
 
 from src.main.python.alg.label import Label
 
-Label(Label.Array, Label.DynamicProgramming)
+Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
 
 
 class NumArray(object):

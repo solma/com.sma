@@ -5,6 +5,9 @@ libs/
 bin/
 target/
 
+# private files
+src/main/python/private/
+
 # media files
 *.png
 
