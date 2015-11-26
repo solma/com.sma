@@ -1,17 +1,14 @@
 package com.shuoma.alg;
 
+import com.shuoma.annotation.Tag;
+
 import static com.shuoma.annotation.Tag.DataStructure.Array;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 import static com.shuoma.annotation.Tag.Trick.CheckAtEveryIndex;
 import static com.shuoma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
-import com.shuoma.annotation.Tag;
-
 @Tag(dss = Array, references = LeetCode, tricks = {CheckAtEveryIndex, ForwardAndBackwardScan})
 public class BestTimeToBuyandSellStockIII {
-  public static void main(String[] args) {
-    System.out.println(new BestTimeToBuyandSellStockIII().maxProfit(new int[] {3, 2, 6, 5, 0, 3}));
-  }
 
   public int maxProfit(int[] prices) {
     int n = prices.length;

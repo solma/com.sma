@@ -68,6 +68,7 @@ public @interface Tag {
     Substring,
     ThreadT,
     TournamentTree,
+    Tree,
     Trie,
     UndirectedGraph,
     UnionFind,

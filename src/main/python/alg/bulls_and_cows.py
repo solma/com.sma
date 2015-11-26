@@ -21,7 +21,7 @@ You may assume that the secret number and your friend's guess only contain digit
 """
 
 from src.main.python.alg.label import Label
-from src.main.python.alg.util.map import MapCounter
+from src.main.python.alg.util.map_helper import MapCounter
 
 Label(Label.StringT, Label.Array, Label.Hash, Label.LeetCode)
 

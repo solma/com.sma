@@ -104,9 +104,9 @@ def flatten(dic, parent_key='', sep='.'):
 
 def diff(this_dict_repr,
          that_dict_repr,
-         this_dict_factory = ast.literal_eval,
-         that_dict_factory = ast.literal_eval,
-         print_result = False):
+         this_dict_factory=ast.literal_eval,
+         that_dict_factory=ast.literal_eval,
+         print_result=False):
   no_diff, ret = DictDiffer(this_dict_factory(this_dict_repr), that_dict_factory(that_dict_repr)).diff_flatten()
   if print_result and not no_diff:
     print(ret)

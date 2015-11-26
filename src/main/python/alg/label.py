@@ -52,9 +52,10 @@ class Label:
     Substring = 221
     ThreadT = 222
     TournamentTree = 223
-    Trie = 224
-    UndirectedGraph = 225
-    UnionFind = 226
+    Tree = 224
+    Trie = 225
+    UndirectedGraph = 226
+    UnionFind = 227
 
     CrackingTheCodeInterview = 301
     CSDN = 302
