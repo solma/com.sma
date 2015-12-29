@@ -28,7 +28,7 @@ class LongestPathInTree(object):
         if len(ret_longest_path) < len(longest_path):
           ret_longest_path = longest_height_path
 
-    if len(ret_longest_path) < len(longest_height_path) + 1 + len(sec_longest_height_path):
+    if len(ret_longest_path) < len(longest_height_path) + 2 + len(sec_longest_height_path):
       ret_longest_path = longest_height_path + [cur] + sec_longest_height_path
 
     return ret_height_path, ret_longest_path

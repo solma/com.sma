@@ -23,10 +23,10 @@ You may assume that the secret number and your friend's guess only contain digit
 from src.main.python.alg.label import Label
 from src.main.python.alg.util.map_helper import MapCounter
 
-Label(Label.StringT, Label.Array, Label.Hash, Label.LeetCode)
+Label(Label.String, Label.Array, Label.Hash, Label.LeetCode)
 
 
-class Solution:
+class BullsAndCows:
   def getHint(self, secret, guess):
 
     def one_pass(secret, guess):
@@ -57,22 +57,27 @@ class Solution:
       return '%dA%dB' % (bull_cnt, cow_cnt)
 
     def two_pass(secret, guess):
+      from collections import Counter
       bull_cnt = 0
-      dict_counter = MapCounter()
+      #dict_counter = MapCounter()
+      dict_counter = Counter()
       cows_candidates = []
       for i in range(len(secret)):
         if guess[i] == secret[i]:
           bull_cnt += 1
         else:
-          dict_counter.increment(secret[i], 1)
+          #dict_counter.increment(secret[i], 1)
+          dict_counter += Counter([secret[i]])
           cows_candidates += [guess[i]]
 
       cow_cnt = 0
       for candidate in cows_candidates:
         if candidate in dict_counter.keys():
           cow_cnt += 1
-          dict_counter.increment(candidate, -1)
-
+          #dict_counter.increment(candidate, -1)
+          dict_counter -= Counter([candidate])
+          if dict_counter[candidate] == 0:
+            del dict_counter[candidate]
       return '%dA%dB' % (bull_cnt, cow_cnt)
 
     # return one_pass(secret, guess)

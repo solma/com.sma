@@ -14,7 +14,6 @@ from src.main.python.alg.label import Label
 
 Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
 
-
 class NumArray(object):
   def __init__(self, nums):
     self._sum = nums
