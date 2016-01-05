@@ -16,6 +16,7 @@ def demo1():
   a_function()
 
 def demo2():
+  # first pass in decorator args then wrap function
   def decoratorFunctionWithArguments(arg1, arg2, arg3):
     def wrap(f):
       print "Inside wrap()"
@@ -57,7 +58,7 @@ def demo3():
 
 if __name__ == '__main__':
   #demo1()
-  #demo2()
-  demo3()
+  demo2()
+  #demo3()
 
 

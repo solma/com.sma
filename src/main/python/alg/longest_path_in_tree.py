@@ -1,4 +1,4 @@
-from src.main.python.alg.util.graph_helper import to_adjacent_lists
+from utils.graph_helper import to_adjacent_lists
 
 #ref: http://cs.stackexchange.com/questions/11263/longest-path-in-an-undirected-tree-with-only-one-traversal
 class LongestPathInTree(object):

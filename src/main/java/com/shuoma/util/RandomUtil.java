@@ -23,16 +23,16 @@ public class RandomUtil {
    *
    * @param length: size of array
    * @param maxNumber: possible maximum value for elements
-   * @param oneBased: index starting from 1
+   * @param canBeZero: elements can only be positive (excluding zero)
    * @param canBeNegative: elements can be negative
    * @return random array
    */
-  public static int[] genRandomArray(int length, int maxNumber, boolean oneBased, boolean canBeNegative) {
+  public static int[] genRandomArray(int length, int maxNumber, boolean canBeZero, boolean canBeNegative) {
     int[] ret = new int[length];
     for (int i = 0; i < length; i++) {
       ret[i] = r.nextInt(maxNumber + 1);
     }
-    if (oneBased) {
+    if (!canBeZero) {
       for (int i = 0; i < length; i++) {
         ret[i] += 1;
       }

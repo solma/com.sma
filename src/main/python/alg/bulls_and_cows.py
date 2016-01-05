@@ -21,10 +21,8 @@ You may assume that the secret number and your friend's guess only contain digit
 """
 
 from src.main.python.alg.label import Label
-from src.main.python.alg.util.map_helper import MapCounter
 
 Label(Label.String, Label.Array, Label.Hash, Label.LeetCode)
-
 
 class BullsAndCows:
   def getHint(self, secret, guess):
