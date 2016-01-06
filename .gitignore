@@ -4,10 +4,8 @@
 libs/
 # ignore any child folder named bin
 **/bin/
+**/playground
 target/
-
-# private files
-src/main/python/private/
 
 # media files
 *.png
