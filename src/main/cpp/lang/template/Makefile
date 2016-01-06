@@ -1,7 +1,7 @@
 TARGETS=template
 
 template: template.cpp
-	gcc -o bin/template template.cpp
+	g++ -o bin/template template.cpp
 
 all: $(TARGETS)
 
