@@ -1,5 +1,5 @@
 def demo1():
-  class DecoratorWithNoArgs(object):
+  class DecoratorClassWithNoArgs(object):
     def __init__(self, f):
       print "inside myDecorator.__init__()"
       f() # Prove that function definition has completed
@@ -7,7 +7,7 @@ def demo1():
     def __call__(self):
       print "inside myDecorator.__call__()"
 
-  @DecoratorWithNoArgs
+  @DecoratorClassWithNoArgs
   def a_function():
     print "inside aFunction()"
 
@@ -41,11 +41,9 @@ def demo2():
 def demo3():
   def dynamic_programming(f):
     def memorized(*args):
-      try:
-        ret = cached_result[args]
-      except KeyError:
-        ret = cached_result[args] = f(*args)
-      return ret
+      if args not in cached_result:
+        cached_result[args] = f(*args)
+      return cached_result[args]
 
     cached_result = {}
     return memorized
@@ -57,8 +55,8 @@ def demo3():
   print fib(10)
 
 if __name__ == '__main__':
-  #demo1()
-  demo2()
-  #demo3()
+  demo1()
+  # demo2()
+  # demo3()
 
 

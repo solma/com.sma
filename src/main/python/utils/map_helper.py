@@ -14,7 +14,7 @@ class MapCounter:
     if key not in self.__counter.keys():
       self.__counter[key] = value
     else:
-      self.__counter[key] = self.__counter[key] + value
+      self.__counter[key] += value
     if self.__counter[key] == 0:
       del self.__counter[key]
 

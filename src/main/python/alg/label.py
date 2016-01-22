@@ -9,10 +9,10 @@ class Label:
     Backtracking = 3
     BinarySearch = 4
     BitManipulation = 5
-    BreadthFirstSearch = 6
+    BFS = 6
     BottomUp = 7
     Concurrent = 8
-    DepthFirstSearch = 9
+    DFS = 9
     DivideConquer = 10
     DynamicProgramming = 11
     Geometry = 12

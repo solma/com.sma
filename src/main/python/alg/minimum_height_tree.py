@@ -37,7 +37,7 @@ return [3, 4]
 from utils.graph_helper import to_adjacent_lists
 from src.main.python.alg.label import Label
 
-Label(Label.Tree, Label.BreadthFirstSearch, Label.DepthFirstSearch, Label.LeetCode)
+Label(Label.Tree, Label.BFS, Label.DFS, Label.LeetCode)
 
 class Solution(object):
   def findMinHeightTrees(self, n, edges):

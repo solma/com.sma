@@ -11,7 +11,7 @@ Examples:
 
 from src.main.python.alg.label import Label
 
-Label(Label.BreadthFirstSearch, Label.DepthFirstSearch, Label.LeetCode)
+Label(Label.BFS, Label.DFS, Label.LeetCode)
 
 
 class Solution(object):
