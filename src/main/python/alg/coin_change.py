@@ -26,10 +26,20 @@ class CoinChange(object):
       if dp[i] == -1:
         continue
       for c in coins:
-        if c + i > amount:
+        if i + c > amount:
           continue
-        if dp[i + c] == -1 or dp[c + i] > dp[i] + 1:
+        if dp[i + c] == -1 or dp[i + c] > dp[i] + 1:
           dp[i + c] = dp[i] + 1
+    return dp[amount]
+
+  def coinChangeBackward(self, coins, amount):
+    dp = [0] + [-1] * amount
+    for i in range(1, amount + 1):
+      for c in coins:
+        if i < c or dp[i - c] == -1:
+          continue
+        if dp[i] == -1 or dp[i - c] + 1 < dp[i]:
+          dp[i] = dp[i - c] + 1
     return dp[amount]
 
   def coinChangeBFS(self, coins, amount):
@@ -50,5 +60,5 @@ class CoinChange(object):
           steps[front + c] = level + 1
     return -1
 
-print CoinChange().coinChangeBFS([3,7,405,436], 8839)
+print CoinChange().coinChangeBackward([3,7,405,436], 8839)
 

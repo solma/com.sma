@@ -2,14 +2,14 @@ package com.shuoma.ds.misc;
 
 import java.util.Arrays;
 
-public class CircularArrayQueue {
+public class FixedSizeQueue {
 
   private Object[] Q;
   private final int capa;
   private int nWIdx = 0; // next write
-  private int size = 0;
+  private int size = 0; // Trick! use size instead of endIdx
 
-  public CircularArrayQueue(int capacity){
+  public FixedSizeQueue(int capacity){
     capa = capacity;
     Q = new Object[capa];
   }
@@ -26,6 +26,11 @@ public class CircularArrayQueue {
     return size == capa;
   }
 
+  /**
+   * Push as many as possible, discard left data once the queue is full.
+   * @param data
+   * @return
+   */
   public int enqueue(Object[] data){
     if(isFull()){ return 0; }
 
@@ -48,7 +53,6 @@ public class CircularArrayQueue {
       ret[i] = Q[(nWIdx - size + i + capa) % capa];
     }
     size -= readLen;
-    //System.out.println(this);
     return ret;
   }
 

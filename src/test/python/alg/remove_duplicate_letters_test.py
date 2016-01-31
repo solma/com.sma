@@ -13,4 +13,4 @@ class TestRemoveDuplicateLetters(TestCase):
     ]
     ins = RemoveDuplicateLetters()
     for case in cases:
-      self.assertEquals(case[1], ins.removeDuplicateLetters(case[0]))
+      self.assertEquals(case[1], ins.removeDuplicateLettersGreedy(case[0]))

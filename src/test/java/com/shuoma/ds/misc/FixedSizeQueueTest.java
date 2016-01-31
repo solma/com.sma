@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class CircularArrayQueueTest extends TestCase {
+public class FixedSizeQueueTest extends TestCase {
 
   @Test
   public void test() {
-    CircularArrayQueue queue = new CircularArrayQueue(3);
+    FixedSizeQueue queue = new FixedSizeQueue(3);
     queue.enqueue(new Object[] {1, 2});
     System.out.println(Arrays.asList(queue.dequeue(2)));
     queue.enqueue(new Object[] {1, 2, 3});

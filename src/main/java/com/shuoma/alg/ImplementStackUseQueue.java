@@ -1,14 +1,14 @@
 package com.shuoma.alg;
 
-import static com.shuoma.annotation.Tag.DataStructure.QueueT;
-import static com.shuoma.annotation.Tag.DataStructure.StackT;
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
-
 import com.shuoma.annotation.Tag;
 
 import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import static com.shuoma.annotation.Tag.DataStructure.QueueT;
+import static com.shuoma.annotation.Tag.DataStructure.StackT;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 @Tag(dss = {StackT, QueueT}, references = LeetCode)
 public class ImplementStackUseQueue {
@@ -28,7 +28,7 @@ class MyStack1 {
   Queue<Integer> in = new LinkedList<>();
   Queue<Integer> out = new LinkedList<>();
 
-  // Push element x onto stack.
+  // O(n): n size of the stack Push element x onto stack.
   public void push(int x) {
     in.offer(x);
     while (!out.isEmpty()) {
@@ -37,7 +37,7 @@ class MyStack1 {
     swap();
   }
 
-  // Removes the element on top of the stack.
+  // O(1) Removes the element on top of the stack.
   public void pop() {
     out.poll();
   }

@@ -39,7 +39,7 @@ def demo2():
   print "after second sayHello() call"
 
 def demo3():
-  def dynamic_programming(f):
+  def memoize(f):
     def memorized(*args):
       if args not in cached_result:
         cached_result[args] = f(*args)
@@ -48,15 +48,15 @@ def demo3():
     cached_result = {}
     return memorized
 
-  @dynamic_programming
+  @memoize
   def fib(n):
     return n if n < 2 else fib(n - 1) + fib(n - 2)
 
   print fib(10)
 
 if __name__ == '__main__':
-  demo1()
+  # demo1()
   # demo2()
-  # demo3()
+  demo3()
 
 

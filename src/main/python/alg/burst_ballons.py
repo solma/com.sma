@@ -23,12 +23,13 @@ class BurstBallons(object):
   def maxCoins(self, nums):
     nums = [1] + [i for i in nums if i > 0] + [1]
     n = len(nums)
-    ret = [[0] * n for _ in range(n)]
+    # dp[i][j] excluding both ends
+    dp = [[0] * n for _ in range(n)]
     for size in range(1, n - 1):
       for l in range(0, n - size - 1):
         r = l + size + 1
         for m in range(l + 1, r):
-          ret[l][r] = max(ret[l][r], ret[l][m] + ret[m][r] + nums[l] * nums[m] * nums[r])
-    return ret[0][-1]
+          dp[l][r] = max(dp[l][r], dp[l][m] + dp[m][r] + nums[l] * nums[m] * nums[r])
+    return dp[0][-1]
 
 print BurstBallons().maxCoins([3, 1, 5, 8])
