@@ -2,7 +2,6 @@ from src.main.python.alg.label import Label
 
 Label(Label.BitManipulation, Label.LeetCode)
 
-
 class Solution(object):
   def game_of_life(self, board):
 

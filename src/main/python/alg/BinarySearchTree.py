@@ -146,23 +146,18 @@ class BinarySearchTree:
     value_width = 2
     for line in tree:
       if isinstance(line, str):
-        print
-        line[min_pos:]
+        print line[min_pos:]
       else:
         for i in range(len(line)):
           if i == 0:
-            print
-            "%*s" % (line[i][0] - min_pos, line[i][1]),
+            print "%*s" % (line[i][0] - min_pos, line[i][1]),
           else:
-            print
-            "%*s" % (line[i][0] - line[i - 1][0], line[i][1]),
-        print
+            print "%*s" % (line[i][0] - line[i - 1][0], line[i][1]),
 
   def max_leaf_depth_diff(self):
     mm = [0, sys.maxsize]
     self._dfs_diff(self._root, 0, mm)
-    print
-    mm[0], mm[1], mm[0] - mm[1]
+    print mm[0], mm[1], mm[0] - mm[1]
 
   def _dfs_diff(self, node, depth, mm):
     if node:
@@ -200,8 +195,7 @@ class BinarySearchTree:
     for i in range(min, max + 1):
       left = self._printAllBinaryTree(N, min, i - 1)
       right = self._printAllBinaryTree(N, i + 1, max)
-      print
-      i, left, right
+      print i, left, right
       for l in left:
         for r in right:
           bst.append(l + str(i) + r)
@@ -244,16 +238,12 @@ li = []
 for i in range(10):
   li.append(randint(-10, 10))
 # """
-print
-li
+print li
 
 for i in range(len(li)):
   bst.insert(i, li[i])
-print
-print
-bst._values
-print
-bst._depth
+print bst._values
+print bst._depth
 
 print
 bst._countTree(3)

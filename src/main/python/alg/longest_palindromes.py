@@ -89,6 +89,7 @@ def fastLongestPalindromes(seq):
   lLen = len(l)
   s = lLen - 2
   e = s - (2 * seqLen + 1 - lLen)
+  start_idx = end_idx = 0
   for i in xrange(s, e, -1):
     # The d here uses the same formula as the d in the inner loop
     # above.  (Computes distance to left edge of the last
@@ -97,20 +98,14 @@ def fastLongestPalindromes(seq):
     # We bound l[i] with min for the same reason as in the inner
     # loop above.
     l.append(min(d, l[i]))
-
-    print
-    l
-
+    print l
     max_len = 0
-    start_idx = 0
-    end_idx = 0
     for i in range(len(l)):
       if l[i] > max_len:
         max_len = l[i]
         start_idx = i - l[i]
         end_idx = i + l[i] + 1
-        print
-        i, l[i], seq[i]
+        print i, l[i], seq[i]
   return seq[start_idx:end_idx]
 
 

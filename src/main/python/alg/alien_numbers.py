@@ -1,10 +1,10 @@
-'''
+"""
 example input :
 4
 9 0123456789 oF8
 Foo oF8 0123456789
 13 0123456789abcdef 01
-'''
+"""
 
 import sys
 
