@@ -39,7 +39,7 @@ from src.main.python.alg.label import Label
 
 Label(Label.Tree, Label.BFS, Label.DFS, Label.LeetCode)
 
-class Solution(object):
+class MinimumHeightTree(object):
   def findMinHeightTrees(self, n, edges):
     children = to_adjacent_lists(edges)
     vertices = set(children.keys())

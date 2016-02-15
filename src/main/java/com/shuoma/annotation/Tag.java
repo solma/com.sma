@@ -28,6 +28,7 @@ public @interface Tag {
     DepthFirstSearch,
     DivideConquer,
     DynamicProgramming,
+    GameTheory,
     Geometry,
     Greedy,
     Math,

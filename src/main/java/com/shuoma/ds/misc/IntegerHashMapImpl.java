@@ -1,11 +1,9 @@
 package com.shuoma.ds.misc;
 
-import java.util.Arrays;
-
 public class IntegerHashMapImpl {
   private static final int TABLE_SIZE = 128;
 
-  HashEntry[] table = new HashEntry[TABLE_SIZE]; // size is ususally power of 2
+  HashEntry[] table = new HashEntry[TABLE_SIZE]; // size is usually power of 2
 
   public void put(int key, int value) {
     int hash = key % table.length;
@@ -26,7 +24,12 @@ public class IntegerHashMapImpl {
 
   @Override
   public String toString() {
-    return Arrays.toString(table);
+    StringBuilder sb = new StringBuilder();
+    for (HashEntry entry: table) {
+      if (entry == null) continue;
+      sb.append(entry + "\n");
+    }
+    return sb.toString();
   }
 
   public static void main(String[] args) {
@@ -34,6 +37,8 @@ public class IntegerHashMapImpl {
     map.put(1, 90);
     map.put(2, 91);
     map.put(129, 92);
+    map.put(1, 20);
+    map.put(129, 3);
     System.out.println(map);
   }
 

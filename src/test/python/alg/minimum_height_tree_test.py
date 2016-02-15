@@ -1,11 +1,11 @@
 from unittest import TestCase
 
-from src.main.python.alg.minimum_height_tree import Solution
+from src.main.python.alg.minimum_height_tree import MinimumHeightTree
 
 
-class TestSolution(TestCase):
+class MinimumHeightTreeTest(TestCase):
   def test_findMinHeightTrees(self):
-    ins = Solution()
+    ins = MinimumHeightTree()
     edges = [[1, 0], [1, 2], [1, 3]]
     self.assertEqual([1], ins.findMinHeightTrees(len(edges) + 1, edges))
     edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]

@@ -1,8 +1,8 @@
 package com.shuoma.ds.linkedlist;
 
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
-
 import com.shuoma.annotation.Tag;
+
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 @Tag(references = LeetCode)
 /**
@@ -113,16 +113,19 @@ public class ListNode {
       prev = after;
       if (prev != null) cur = prev.next;
     }
-    if (before != null) before.next = prev;
+    before.next = prev;
     return pseudo.next;
   }
 
   @Override
   public boolean equals(Object other) {
+    if (other == null) return false;
     ListNode that = (ListNode) other;
-    return val == that.val
-        && ((next == null && that.next == null) || next.equals(that.next))
-        && ((prev == null && that.prev == null) || prev.equals(that.prev));
+    if (next == null && that.next != null) return false;
+    if (prev == null && that.prev != null) return false;
+    return val == that.val &&
+        (next == null || next.equals(that.next)) &&
+        (prev == null || prev.equals(that.prev));
   }
 
   @Override

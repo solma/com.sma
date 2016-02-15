@@ -38,25 +38,33 @@ def demo2():
   sayHello("a", "different", "set of", "arguments")
   print "after second sayHello() call"
 
+def memoize(f):
+  def memorized(*args):
+    if args not in cached_result:
+      cached_result[args] = f(*args)
+    return cached_result[args]
+
+  cached_result = {}
+  return memorized
+
 def demo3():
-  def memoize(f):
-    def memorized(*args):
-      if args not in cached_result:
-        cached_result[args] = f(*args)
-      return cached_result[args]
-
-    cached_result = {}
-    return memorized
-
   @memoize
   def fib(n):
     return n if n < 2 else fib(n - 1) + fib(n - 2)
-
   print fib(10)
+
+def demo4():
+  @memoize
+  def cum(x, y):
+    if x < 0 or y < 0:
+      return 0
+    return 1 if x == y == 0 else (cum(x - 1, y) + cum(x, y - 1))
+  print cum(2, 2)
 
 if __name__ == '__main__':
   # demo1()
   # demo2()
-  demo3()
+  # demo3()
+  demo4()
 
 

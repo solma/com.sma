@@ -5,7 +5,7 @@ def get_index(key, n):
   return key / (WORD_LENGTH / n), key % (WORD_LENGTH / n)  # an integer is 32-bit long
 
 
-class NBitMap:
+class NBitMap(object):
   """
   An implementation of NBitMap class
   """
