@@ -1,6 +1,5 @@
 from unittest.mock import patch
 
-
 class MyClass(object):
   def callee(self, a, b):
     return 'Inside Callee'
