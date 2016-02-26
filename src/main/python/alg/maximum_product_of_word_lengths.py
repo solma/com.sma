@@ -20,19 +20,21 @@ No such pair of words.
 """
 import collections
 import string
+
 from src.main.python.alg.label import Label
 
-Label(Label.BitManipulation, Label.Hash, Label.LeetCode)
+Label(Label.Hash, Label.LeetCode)
+
 
 class MaximumProductOfWordLengths(object):
   def maxProduct(self, words):
     es = [set() for _ in range(26)]
     ml = collections.defaultdict(int)
     for w in words:
-      num = sum(1 << (ord(x) - ord('a')) for x in set(w))
-      ml[num] = max(ml[num], len(w))
+      hash = sum(1 << (ord(x) - ord('a')) for x in set(w))
+      ml[hash] = max(ml[hash], len(w))
       for x in set(string.lowercase) - set(w):
-        es[ord(x) - ord('a')].add(num)
+        es[ord(x) - ord('a')].add(hash)
 
     ans = 0
     for w in words:
