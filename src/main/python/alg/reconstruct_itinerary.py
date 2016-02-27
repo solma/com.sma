@@ -16,14 +16,15 @@ tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]
 Return ["JFK","ATL","JFK","SFO","ATL","SFO"].
 Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"]. But it is larger in lexical order.
 """
-from src.main.python.alg.label import Label
 import collections
 from collections import deque
 
+from src.main.python.alg.label import Label
+
 Label(Label.GraphTheory, Label.DFS, Label.LeetCode)
 
-class ReconstructItinerary(object):
 
+class ReconstructItinerary(object):
   # Hierholzer's algorithm for Eulerian Path
   # Eulerian Path: visit each edge exactly once
   def findItinerary(self, tickets):

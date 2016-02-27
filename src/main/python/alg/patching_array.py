@@ -28,6 +28,7 @@ Label(Label.Greedy, Label.LeetCode)
 
 class PatchingArray(object):
   def minPatches(self, nums, n):
+    assert len(nums) == 0 or nums[0] == 1
     next_sum, i, no_of_patch = 1, 0, 0
     l = len(nums)
     while next_sum < n:
@@ -35,6 +36,6 @@ class PatchingArray(object):
         next_sum += nums[i]
         i += 1
       else:
-        next_sum <<= 1
         no_of_patch += 1
+        next_sum <<= 1
     return no_of_patch
