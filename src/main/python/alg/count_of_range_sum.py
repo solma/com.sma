@@ -14,7 +14,7 @@ import bisect
 
 from src.main.python.alg.label import Label
 
-Label(Label.BinaryTree, Label.DivideConquer, Label.LeetCode)
+Label(Label.BinaryIndexedTree, Label.BitManipulation, Label.DivideConquer, Label.LeetCode)
 
 class CountOfRangeSum(object):
   def countRangeSum(self, nums, lower, upper):
@@ -32,16 +32,26 @@ class CountOfRangeSum(object):
     return ans
 
 class FenwickTree(object):
+  """
+  tree[idx] stores the cumulative sum in range [idx - 2^r + 1, idx], where
+  r is the position of the least significant bit 1 in binary representation of idx.
+  """
   def __init__(self, n):
     self.n = n
     self.sums = [0] * (n + 1)
+  def lowbit(self, x):
+    return x & -x
   def add(self, x, val):
+    """
+    update: only care left subtree
+    """
     while x <= self.n:
       self.sums[x] += val
       x += self.lowbit(x)
-  def lowbit(self, x):
-    return x & -x
   def sum(self, x):
+    """
+    lookup: only care right subtree
+    """
     res = 0
     while x > 0:
       res += self.sums[x]

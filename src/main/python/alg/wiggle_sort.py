@@ -12,19 +12,21 @@ Follow Up:
 Can you do it in O(n) time (average time complexity) and/or in-place with O(1) extra space?
 """
 from src.main.python.alg.label import Label
+
 Label(Label.LeetCode)
 
+
 class WiggleSort(object):
-  def wiggleSort1(nums): # O(nlogn)
+  def wiggleSort1(self, nums):  # O(nlogn)
     size = len(nums)
     sorted_nums = sorted(nums)
     for x in range(1, size, 2) + range(0, size, 2):
       nums[x] = sorted_nums.pop()
     return nums
 
-  def wiggleSort(nums): # O(n)
+  def wiggleSort(self, nums):  # O(n)
     for i in range(1, len(nums)):
-      if (i % 2 == 1 and nums[i] < nums[i - 1]) \
-          or (i % 2 == 0 and nums[i] > nums[i - 1]):
+      if (i % 2 == 1 and nums[i] < nums[i - 1]
+          or i % 2 == 0 and nums[i] > nums[i - 1]):
         nums[i - 1], nums[i] = nums[i], nums[i - 1]
     return nums

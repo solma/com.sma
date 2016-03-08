@@ -1,12 +1,12 @@
 package com.shuoma.util;
 
-import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
-import static com.shuoma.annotation.Tag.Reference.LeetCode;
-
 import com.shuoma.annotation.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import static com.shuoma.annotation.Tag.Algorithm.BitManipulation;
+import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
 // More bit operation hacks
 // https://graphics.stanford.edu/~seander/bithacks.html
@@ -29,6 +29,11 @@ public class BitUtil {
       y = sum;
     } while (carry != 0);
     return sum;
+  }
+
+  /** Get the additive inverse of n, i.e. -n. */
+  public static long additiveInverse(long n) {
+    return ~(n - 1);
   }
 
   /** Addition implementation using bit and comparison operators only. */
@@ -59,7 +64,7 @@ public class BitUtil {
 
   /** Extract the lowest set bit. */
   public static long extractLowestSetBit(long n) {
-    return n & ~(n - 1);
+    return n & -n;
   }
 
   /** Division implementation using bit and comparison operators only.
