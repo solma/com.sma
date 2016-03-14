@@ -1,23 +1,18 @@
 package com.shuoma.alg;
 
+import com.google.common.collect.ImmutableSet;
+import com.shuoma.annotation.Tag;
+
+import java.util.*;
+
 import static com.shuoma.annotation.Tag.Algorithm.Greedy;
 import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.Interview;
 
-import com.google.common.collect.ImmutableSet;
-
-import com.shuoma.annotation.Tag;
-
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
 /**
- * Given a dictionary, find longest palindrome built by the combination of words
- * (without duplication).
+ Given a dictionary, find longest palindrome built by the combination of words
+ (without duplication).
  */
 // TODO: algorithm is incorrect
 @Tag(algs = Greedy, dl = D3, dss = StringT, references = Interview)

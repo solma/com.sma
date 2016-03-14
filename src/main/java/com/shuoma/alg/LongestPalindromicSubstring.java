@@ -1,12 +1,16 @@
 package com.shuoma.alg;
 
+import com.shuoma.annotation.Tag;
+
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.Substring;
 import static com.shuoma.annotation.Tag.Difficulty.D3;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
-import com.shuoma.annotation.Tag;
-
+/**
+ Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000,
+ and there exists one unique longest palindromic substring.
+ */
 @Tag(algs = DynamicProgramming, dl = D3, dss = Substring, references = LeetCode)
 public class LongestPalindromicSubstring {
 

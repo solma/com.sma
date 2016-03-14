@@ -1,11 +1,19 @@
 package com.shuoma.alg;
 
+import com.shuoma.annotation.Tag;
+
 import static com.shuoma.annotation.Tag.DataStructure.Palindrome;
 import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
-import com.shuoma.annotation.Tag;
+/**
+ Given a string S, you are allowed to convert it to a palindrome by adding characters in front of it.
+ Find and return the shortest palindrome you can find by performing this transformation.
 
+ For example:
+ Given "aacecaaa", return "aaacecaaa".
+ Given "abcd", return "dcbabcd".
+ */
 @Tag(dss = {Palindrome, StringT}, references = LeetCode)
 public class ShortestPalindrome {
 

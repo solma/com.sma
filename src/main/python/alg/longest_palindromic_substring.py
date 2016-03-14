@@ -1,3 +1,11 @@
+"""
+Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000,
+and there exists one unique longest palindromic substring.
+"""
+from src.main.python.alg.label import Label
+
+Label(Label.DynamicProgramming, Label.Substring, Label.LeetCode)
+
 def fastLongestPalindromes(seq):
   """
   Behaves identically to naiveLongestPalindrome (see below), but

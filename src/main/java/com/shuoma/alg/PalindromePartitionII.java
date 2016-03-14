@@ -1,11 +1,18 @@
 package com.shuoma.alg;
 
+import com.shuoma.annotation.Tag;
+
 import static com.shuoma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.shuoma.annotation.Tag.DataStructure.StringT;
 import static com.shuoma.annotation.Tag.Reference.LeetCode;
 
-import com.shuoma.annotation.Tag;
+/**
+ Given a string s, partition s such that every substring of the partition is a palindrome.
+ Return the minimum cuts needed for a palindrome partitioning of s.
 
+ For example, given s = "aab",
+ Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
+ */
 @Tag(algs = DynamicProgramming, dss = StringT, references = LeetCode)
 public class PalindromePartitionII {
   public static void main(String[] args) {
