@@ -1,4 +1,4 @@
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Hash, Label.SlidingWindow, Label.TwoOrMorePointers)
 

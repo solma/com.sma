@@ -20,7 +20,7 @@ k = 3
 return [9, 8, 9]
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Array, Label.Sorting, Label.Stack, Label.LeetCode)
 

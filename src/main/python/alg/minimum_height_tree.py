@@ -35,7 +35,7 @@ return [3, 4]
 """
 
 from utils.graph_helper import to_adjacent_lists
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Tree, Label.BFS, Label.DFS, Label.LeetCode)
 

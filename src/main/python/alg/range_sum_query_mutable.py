@@ -13,7 +13,7 @@ The array is only modifiable by the update function.
 You may assume the number of calls to update and sumRange function is distributed evenly.
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.BinarySearchTree, Label.SegmentTree, Label.LeetCode)
 

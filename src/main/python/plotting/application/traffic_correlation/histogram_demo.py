@@ -1,8 +1,3 @@
-'''
-Created on Feb 27, 2014
-
-@author: Shuo
-'''
 import numpy as np
 import pylab as P
 

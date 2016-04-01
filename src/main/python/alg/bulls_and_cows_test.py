@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.bulls_and_cows import BullsAndCows
+from alg.bulls_and_cows import BullsAndCows
 
 class TestBullsAndCows(TestCase):
   def test_getHint(self):

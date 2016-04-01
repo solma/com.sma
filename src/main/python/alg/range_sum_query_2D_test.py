@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.main.python.alg.range_sum_query_2D import NumMatrix
+from alg.range_sum_query_2D import NumMatrix
 
 
 class NumMatrixTest(TestCase):

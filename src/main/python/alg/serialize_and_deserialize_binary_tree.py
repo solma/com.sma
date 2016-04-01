@@ -19,8 +19,8 @@ Note: Do not use class member/global/static variables to store states. Your seri
 should be stateless.
 """
 
-from src.main.python.alg.data_structure import TreeNode
-from src.main.python.alg.label import Label
+from alg.data_structure import TreeNode
+from alg.label import Label
 
 Label(Label.BinaryTree, Label.LeetCode)
 

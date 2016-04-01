@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.util.sorting_helper import *
+from utils.sorting_helper import *
 from utils.random_helper import *
 
 NUM_TEST_CASE = 1000

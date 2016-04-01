@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.create_maximum_number import CreateMaxNumber
+from alg.create_maximum_number import CreateMaxNumber
 
 class CreateMaxNumberTest(TestCase):
   def test_maxNumber(self):

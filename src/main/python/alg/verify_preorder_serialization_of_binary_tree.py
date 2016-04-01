@@ -31,7 +31,7 @@ Example 3:
 Return false
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.BinaryTree, Label.LeetCode)
 

@@ -24,7 +24,7 @@ There are many calls to sumRegion function.
 You may assume that row1 <= row2 and col1 <= col2.
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Array, Label.MatrixGraph, Label.DynamicProgramming, Label.LeetCode)
 

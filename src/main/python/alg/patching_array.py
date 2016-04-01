@@ -22,7 +22,7 @@ nums = [1, 2, 2], n = 5
 Return 0.
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Greedy, Label.LeetCode)
 

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.minimum_height_tree import MinimumHeightTree
+from alg.minimum_height_tree import MinimumHeightTree
 
 
 class MinimumHeightTreeTest(TestCase):

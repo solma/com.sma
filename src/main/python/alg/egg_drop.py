@@ -1,6 +1,6 @@
 import sys
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.BinarySearch, Label.DynamicProgramming)
 

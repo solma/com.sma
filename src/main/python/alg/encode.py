@@ -1,3 +1,4 @@
+# coding: utf-8
 """
 # http://blog.csdn.net/Solstice/article/details/653418
 

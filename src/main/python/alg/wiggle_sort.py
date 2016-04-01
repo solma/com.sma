@@ -11,7 +11,7 @@ You may assume all input has valid answer.
 Follow Up:
 Can you do it in O(n) time (average time complexity) and/or in-place with O(1) extra space?
 """
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.LeetCode)
 

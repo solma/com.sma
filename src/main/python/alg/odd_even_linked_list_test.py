@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from src.main.python.alg.data_structure import *
-from src.main.python.alg.odd_even_linked_list import OddEvenLinkedList
+from alg.data_structure import *
+from alg.odd_even_linked_list import OddEvenLinkedList
 
 class OddEvenLinkedListTest(TestCase):
   def test_oddEvenList(self):

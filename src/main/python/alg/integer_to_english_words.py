@@ -7,7 +7,7 @@ For example,
 1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Arithmetic, Label.Greedy, Label.LeetCode)
 

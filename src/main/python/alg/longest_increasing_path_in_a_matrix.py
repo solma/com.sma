@@ -24,7 +24,7 @@ The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
 """
 import itertools
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.DFS, Label.TopologicalSorting, Label.LeetCode)
 

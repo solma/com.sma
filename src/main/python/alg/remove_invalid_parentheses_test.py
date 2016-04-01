@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.remove_invalid_parentheses import *
+from alg.remove_invalid_parentheses import *
 
 
 class TestSolution(TestCase):

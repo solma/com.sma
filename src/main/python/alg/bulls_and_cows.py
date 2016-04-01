@@ -20,7 +20,7 @@ to indicate the cows, in the above example, your function should return 1A3B.
 You may assume that the secret number and your friend's guess only contain digits, and their lengths are always equal.
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.String, Label.Array, Label.Hash, Label.LeetCode)
 

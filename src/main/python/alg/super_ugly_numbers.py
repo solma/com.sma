@@ -6,7 +6,7 @@ Note:
 2. The given numbers in primes are in ascending order.
 3. 0 < k <= 100, 0 < n <= 106, 0 < primes[i] < 1000.
 """
-from src.main.python.alg.label import Label
+from alg.label import Label
 from collections import deque
 import heapq as hq
 

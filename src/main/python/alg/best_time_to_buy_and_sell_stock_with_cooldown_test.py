@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.best_time_to_buy_and_sell_stock_with_cooldown import Solution
+from alg.best_time_to_buy_and_sell_stock_with_cooldown import Solution
 
 class TestSolution(TestCase):
   def testMaxProfit(self):

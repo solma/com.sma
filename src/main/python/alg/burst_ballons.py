@@ -14,7 +14,7 @@ Return 167
   nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
   coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
 """
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.DivideConquer, Label.DynamicProgramming, Label.LeetCode)
 

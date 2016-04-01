@@ -1,7 +1,7 @@
 """
 Given an integer < 2^32, write a function to determine if it is a power of three.
 """
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Math, Label.LeetCode)
 

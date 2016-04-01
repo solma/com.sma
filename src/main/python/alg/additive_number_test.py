@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.additive_number import Solution
+from alg.additive_number import Solution
 
 class TestSolution(TestCase):
   def test_isAdditiveNumber(self):

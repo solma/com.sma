@@ -13,7 +13,7 @@ maxProfit = 3
 transactions = [buy, sell, cooldown, buy, sell]
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
 

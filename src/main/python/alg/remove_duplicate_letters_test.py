@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.main.python.alg.remove_duplicate_letters import RemoveDuplicateLetters
+from alg.remove_duplicate_letters import RemoveDuplicateLetters
 
 class TestRemoveDuplicateLetters(TestCase):
   def test_removeDuplicateLetters(self):

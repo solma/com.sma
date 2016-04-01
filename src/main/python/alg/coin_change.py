@@ -15,7 +15,7 @@ Note:
 You may assume that you have an infinite number of each kind of coin.
 """
 
-from src.main.python.alg.label import Label
+from alg.label import Label
 
 Label(Label.BFS, Label.DynamicProgramming, Label.LeetCode)
 

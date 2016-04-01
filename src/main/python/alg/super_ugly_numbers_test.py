@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main.python.alg.super_ugly_numbers import SuperUglyNumbers
+from alg.super_ugly_numbers import SuperUglyNumbers
 
 class TestSuperUglyNumbers(TestCase):
   def testNthSuperUglyNumber(self):

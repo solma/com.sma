@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.main.python.alg.increasing_triplet_subsequence import IncreasingTripletSubsequence
+from alg.increasing_triplet_subsequence import IncreasingTripletSubsequence
 from src.main.python.utils.random_helper import gen_rand_array
 
 class IncreasingTripletSubsequenceTest(TestCase):

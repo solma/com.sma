@@ -6,8 +6,7 @@ def calNext(t, m):
     i = 0
     j = -1
     while i < len(t) - 1:
-      print
-      i, t[i], j, t[j], t[:i + 1], next[:i + 1]
+      print i, t[i], j, t[j], t[:i + 1], next[:i + 1]
       if j == -1 or t[i] == t[j]:
         i += 1
         j += 1
@@ -30,8 +29,7 @@ def match(s, t, m):
   while i + j < len(s):
     if s[i + j] == t[j]:
       if j == len(t) - 1:
-        print
-        s[0:i], s[i:i + len(t)], s[i + len(t):]
+        print s[0:i], s[i:i + len(t)], s[i + len(t):]
         return i
       j += 1
     else:

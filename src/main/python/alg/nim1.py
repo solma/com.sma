@@ -4,7 +4,7 @@ Each player can take either 1 or 2 stones in one turn. Whoever takes the last st
 wins the game. Now suppose the pile has N stones, return true if there is a winning
 strategy for the player who plays first.
 """
-from src.main.python.alg.label import Label
+from alg.label import Label
 from src.main.python.lang.decorators.decorator_example import memoize
 
 Label(Label.GameTheory, Label.DynamicProgramming)
