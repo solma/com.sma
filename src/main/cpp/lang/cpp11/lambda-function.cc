@@ -22,7 +22,7 @@ int main(int argc, char** argv)
   auto lf = [argc, &argv]() {
     std::cout << "argc: " << argc << std::endl;
     for (int arg = 0; arg < argc; arg++) {
-      std::cout << arg << " th arg: " << argv[arg] << std::endl; 
+      std::cout << arg << " th arg: " << argv[arg] << std::endl;
     }
   };
   lf();

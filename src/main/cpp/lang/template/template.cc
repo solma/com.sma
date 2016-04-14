@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 using std::ostream;
 
-template <typename Object, typename BetterComparator>
-const Object & isBetter(const Object & o1, const Object & o2, const BetterComparator & bc) {
+template <typename Object, typename ComparatorImplementParentheseOperator>
+const Object & isBetter(const Object & o1, const Object & o2, const ComparatorImplementParentheseOperator & bc) {
   // requirement: bc overloads operator()
   return bc(o1, o2) == true ? o1 : o2;
 }
