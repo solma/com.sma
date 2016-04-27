@@ -1,0 +1,20 @@
+def memoize(hash_func = lambda args : args):
+  def memoize_wrap(f):
+    def memorized(*args):
+      hash_value = hash_func(args)
+      if hash_value not in mem:
+        # Note args are wrapped as a tuple not list, so it is hashable
+        mem[hash_value] = f(*args)
+      return mem[hash_value]
+    mem = {}
+    return memorized
+  return memoize_wrap
+
+def timediff(f):
+  def timed(*args, **kwargs):
+    import time
+    start = time.time()
+    f(*args, **kwargs)
+    end = time.time()
+    print "running time (in secs): " + str(end - start)
+  return timed

@@ -1,6 +1,6 @@
 from alg.label import Label
 
-Label(Label.Hash, Label.SlidingWindow, Label.TwoOrMorePointers)
+Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.TwoOrMorePointers)
 
 from collections import OrderedDict
 from collections import defaultdict

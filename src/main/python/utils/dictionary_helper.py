@@ -84,7 +84,6 @@ def as_dict(key_values):
       idx_first_equal = key_value.find('=')
       dic[key_value[:idx_first_equal]] = key_value[idx_first_equal + 1:]
   except:
-    print(key_value)
     e = sys.exc_info()[0]
     print(e)
     raise
