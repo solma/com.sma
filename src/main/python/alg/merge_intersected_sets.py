@@ -1,9 +1,6 @@
 from collections import defaultdict
-
 from alg.label import Label
-
 Label(Label.Array, Label.GraphTheory, Label.Interview, Label.LeetCode)
-
 
 class MergeIntersectedSets(object):
   # O(n^2m)

@@ -1,16 +1,19 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
+import java.util.HashMap;
+
 import static com.sma.annotation.Tag.DataStructure.Hash;
 import static com.sma.annotation.Tag.DataStructure.LinkedListT;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 import static com.sma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
-import com.sma.annotation.Tag;
-
-import java.util.HashMap;
-
 @Tag(dl = D3, dss = {LinkedListT, Hash}, references = LeetCode, tricks = ForwardAndBackwardScan)
+/**
+ * Equivalently implementing LinkedHashMap.
+ */
 public class LRUCache {
 
   public static void main(String[] args) {

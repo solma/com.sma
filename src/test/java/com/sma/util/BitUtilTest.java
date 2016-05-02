@@ -1,32 +1,11 @@
 package com.sma.util;
 
-import static com.sma.util.BitUtil.add;
-import static com.sma.util.BitUtil.addAlterImpl;
-import static com.sma.util.BitUtil.clearBit;
-import static com.sma.util.BitUtil.clearBits;
-import static com.sma.util.BitUtil.clearLowestSetBit;
-import static com.sma.util.BitUtil.divide;
-import static com.sma.util.BitUtil.extractLowestSetBit;
-import static com.sma.util.BitUtil.flipBit;
-import static com.sma.util.BitUtil.getBit;
-import static com.sma.util.BitUtil.isPowerOfFour;
-import static com.sma.util.BitUtil.isPowerOfTwo;
-import static com.sma.util.BitUtil.maxWithoutComparisonOperator;
-import static com.sma.util.BitUtil.minus;
-import static com.sma.util.BitUtil.multiply;
-import static com.sma.util.BitUtil.nextNumberWithSameNumberOfOnes;
-import static com.sma.util.BitUtil.numberOfOnes;
-import static com.sma.util.BitUtil.prevNumberWithSameNumberOfOnes;
-import static com.sma.util.BitUtil.reverseBits;
-import static com.sma.util.BitUtil.setBit;
-import static com.sma.util.BitUtil.setBits;
-import static com.sma.util.BitUtil.swapOddAnEvenBits;
-import static com.sma.util.BitUtil.swapTwoBits;
-
 import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.Arrays;
+
+import static com.sma.util.BitUtil.*;
 
 public class BitUtilTest extends TestCase {
 
@@ -86,20 +65,6 @@ public class BitUtilTest extends TestCase {
   public void testGetBit() throws Exception {
     assertEquals(1, getBit(0xF1L, 0));
     assertEquals(0, getBit(0xF1L, 1));
-  }
-
-  @Test
-  public void testIsPowerOfFour() throws Exception {
-    assertEquals(false, isPowerOfFour(32));
-    assertEquals(true, isPowerOfFour(16));
-    assertEquals(true, isPowerOfFour(1));
-  }
-
-  @Test
-  public void testIsPowerOfTwo() throws Exception {
-    assertEquals(true, isPowerOfTwo(32));
-    assertEquals(true, isPowerOfTwo(1));
-    assertEquals(false, isPowerOfTwo(3));
   }
 
   @Test

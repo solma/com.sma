@@ -108,16 +108,6 @@ public class BitUtil {
     return (int) (n >> ith & 1);
   }
 
-  /** Check if a number is power of four. */
-  public static boolean isPowerOfFour(long n) {
-    return isPowerOfTwo(n) && 0 == (n & 0xAAAAAAAAAAAAAAAAL); // all odd bits are zero
-  }
-
-  /** Check if a number is power of two. */
-  public static boolean isPowerOfTwo(long n) {
-    return 0 == (n & (n - 1));
-  }
-
   /** Max number. */
   public static long maxWithoutComparisonOperator(long n, long m) {
     long diff = n - m;

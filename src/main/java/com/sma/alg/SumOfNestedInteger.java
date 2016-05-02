@@ -1,11 +1,12 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Recursion;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 
 import java.util.List;
+
+import static com.sma.annotation.Tag.Algorithm.Recursion;
+import static com.sma.annotation.Tag.DataStructure.IteratorT;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 /**
  * Given a nested list of integers,
@@ -14,7 +15,7 @@ import java.util.List;
  * {{1,1},2,{1,1}} return 10 (four 1's at depth 2, one 2 at depth 1)
  * {1,{4,{6}}} return 27 (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3)
  */
-@Tag(algs = Recursion, references = LeetCode)
+@Tag(algs = Recursion, dss = IteratorT, references = LeetCode)
 public class SumOfNestedInteger {
 
   int getListSum(List<NestedInteger> lni, int depth) {
@@ -34,15 +35,15 @@ public class SumOfNestedInteger {
 
 interface NestedInteger {
   // Returns true if this NestedInteger holds a single integer, rather than a nested list
-  public boolean isInteger();
+  boolean isInteger();
 
   // Returns the single integer that this NestedInteger holds, if it holds a single integer
   // Returns null if this NestedInteger holds a nested list
-  public Integer getInteger();
+  Integer getInteger();
 
   // Returns the nested list that this NestedInteger holds, if it holds a nested list
   // Returns null if this NestedInteger holds a single integer
-  public List<NestedInteger> getList();
+  List<NestedInteger> getList();
 }
 
 
