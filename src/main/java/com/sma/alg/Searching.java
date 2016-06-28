@@ -1,11 +1,11 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.BinarySearch;
 import static com.sma.annotation.Tag.Algorithm.Searching;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
 
 @Tag(algs = {BinarySearch, Searching}, dss = {Array}, references = LeetCode)
 public class Searching {
@@ -27,7 +27,7 @@ public class Searching {
       if (a[m] < key) l = m;
       else r = m;
     }
-    if (r >= a.length || a[r] != key) return -1; // this is the tricky line
+    if (r >= a.length || a[r] != key) { return -1; } // this is the tricky line
     return r;
   }
 

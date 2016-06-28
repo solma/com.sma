@@ -10,7 +10,7 @@ def memoize(hash_func = lambda args : args):
     return memorized
   return memoize_wrap
 
-def timediff(f):
+def elapsedtime(f):
   def timed(*args, **kwargs):
     import time
     start = time.time()

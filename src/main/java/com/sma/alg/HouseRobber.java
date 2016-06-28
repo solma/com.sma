@@ -15,14 +15,12 @@ public class HouseRobber {
 
   int rob1(int[] num, int start, int end) {
     int n = end - start + 1;
-    if (n == 0) {
-      return 0;
-    }
+    if (n == 0) { return 0; }
     int notRobCurMax = 0;
     int ret = num[start];
     for (int i = start + 1; i <= end; i++) {
       int tmp = ret;
-      ret = Math.max(ret, notRobCurMax + num[i]);
+      ret = Math.max(ret, Math.max(notRobCurMax, 0) + num[i]);
       notRobCurMax = tmp;
     }
     return ret;
@@ -30,16 +28,31 @@ public class HouseRobber {
 
   int rob2(int[] num, int start, int end) {
     int n = end - start + 1;
-    if (n <= 0) return 0;
+    if (n <= 0) { return 0; }
     int[] dp = new int[n];
     dp[0] = num[start];
-    if (n <= 1) return dp[0];
+    if (n == 1) { return dp[0]; }
     dp[1] = Math.max(num[start + 1], dp[0]);
     for (int j = start + 2; j <= end; j++) {
       int i = j - start;
-      dp[i] = Math.max(dp[i - 1], num[j] + dp[i - 2]);
+      dp[i] = Math.max(dp[i - 1], num[j] + Math.max(0, dp[i - 2]));
     }
-    return dp[end];
+    return dp[n - 1];
+  }
+
+  int rob2Bug1(int[] num, int start, int end) {
+    int n = end - start + 1;
+    if (n <= 0) { return 0; }
+    int[] dp = new int[n];
+    dp[0] = num[start];
+    if (n == 1) { return dp[0]; }
+    dp[1] = Math.max(num[start + 1], dp[0]);
+    for (int j = start + 2; j <= end; j++) {
+      int i = j - start;
+      if (dp[i - 1] < 0 && dp[i - 2] < 0 && num[i] > 0) { dp[i] = num[i]; }
+      else { dp[i] = Math.max(dp[i - 1], num[j] + dp[i - 2]); }
+    }
+    return dp[n - 1];
   }
 
   int rob3(int[] num, int start, int end) {
@@ -47,7 +60,7 @@ public class HouseRobber {
     if (n <= 0) {
       return 0;
     }
-    int ret = 0;
+    int ret = Integer.MIN_VALUE;
     int[][] decisionR1 = new int[n][3];
     for (int j = start; j <= end; j++) {
       int i = j - start;
@@ -102,6 +115,6 @@ public class HouseRobber {
     int n = num.length;
     if (n == 0) return 0;
     if (n == 1) return num[0];
-    return Math.max(rob3(num, 0, num.length - 2), rob3(num, 1, num.length - 1));
+    return Math.max(rob2(num, 0, num.length - 2), rob2(num, 1, num.length - 1));
   }
 }

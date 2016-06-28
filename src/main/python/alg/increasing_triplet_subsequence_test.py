@@ -1,11 +1,11 @@
 from unittest import TestCase
 from alg.increasing_triplet_subsequence import IncreasingTripletSubsequence
-from src.main.python.utils.random_helper import gen_rand_array
+from utils.random_helper import gen_rand_array
 
 class IncreasingTripletSubsequenceTest(TestCase):
   def test_increasingTriplet(self):
     ins = IncreasingTripletSubsequence()
-    for n in range(100):
+    for n in range(1000):
       li = gen_rand_array(8, 100, True, True)
       res = ins.increasingTriplet(li)
       if res is False:

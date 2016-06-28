@@ -1,13 +1,13 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Recursion;
-import static com.sma.annotation.Tag.DataStructure.BinaryTree;
-
 import com.sma.annotation.Tag;
 import com.sma.ds.graph.tree.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.sma.annotation.Tag.Algorithm.Recursion;
+import static com.sma.annotation.Tag.DataStructure.BinaryTree;
 
 @Tag(algs = Recursion, dss = BinaryTree)
 /** Given a tree, find its max independent set. */
@@ -42,11 +42,9 @@ public class TreeMaxIndependentSet {
   }
 
   static double maxIndependentSet(TreeNode cur, boolean selected) {
-    if (cur == null)
-      return 0;
+    if (cur == null) { return 0; }
     String key = cur.getValue() + "" + selected;
-    if (memory.containsKey(key))
-      return memory.get(key);
+    if (memory.containsKey(key)) { return memory.get(key); }
 
     double sum;
     if (selected) {
@@ -56,13 +54,13 @@ public class TreeMaxIndependentSet {
       }
       memory.put(key, sum);
       return sum;
+    } else {
+      sum = 0;
+      for (TreeNode child : cur.getChildren()) {
+        sum += maxIndependentSet(child);
+      }
+      memory.put(key, sum);
+      return sum;
     }
-
-    sum = 0;
-    for (TreeNode child : cur.getChildren()) {
-      sum += maxIndependentSet(child);
-    }
-    memory.put(key, sum);
-    return sum;
   }
 }

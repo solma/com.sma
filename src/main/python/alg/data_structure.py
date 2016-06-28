@@ -29,3 +29,11 @@ class TreeNode(object):
     self.val = x
     self.left = None
     self.right = None
+
+class Interval(object):
+  def __init__(self, s=0, e=0):
+    self.start = s
+    self.end = e
+
+  def __str__(self):
+    return '(%d, %d)'%(self.start, self.end)

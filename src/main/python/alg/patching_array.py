@@ -24,7 +24,7 @@ Return 0.
 
 from alg.label import Label
 
-Label(Label.Greedy, Label.LeetCode)
+Label(Label.Math, Label.Greedy, Label.LeetCode)
 
 class PatchingArray(object):
   def minPatches(self, nums, n):

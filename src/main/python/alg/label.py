@@ -56,9 +56,10 @@ class Label():
   Thread = 223
   TournamentTree = 224
   Tree = 225
-  Trie = 226
-  UndirectedGraph = 227
-  UnionFind = 228
+  TreeSet = 226
+  Trie = 227
+  UndirectedGraph = 228
+  UnionFind = 229
 
   CrackingTheCodeInterview = 301
   CSDN = 302

@@ -1,22 +1,16 @@
 package com.sma.alg;
 
 // http://blog.csdn.net/liangbopirates/article/details/9421399
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.MonotonicSequence;
-import static com.sma.annotation.Tag.Difficulty.D3;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 import com.sma.util.ArrayUtil;
 import com.sma.util.RandomUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.DataStructure.MonotonicSequence;
+import static com.sma.annotation.Tag.Difficulty.D3;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 @Tag(algs = DynamicProgramming, dl = D3, dss = MonotonicSequence, references = LeetCode)
 public class LongestIncreasingSubsequence {
@@ -89,8 +83,7 @@ public class LongestIncreasingSubsequence {
   // this can only be used to get the length but not the actual sequence
   int[] queueBasedLengthOnly(int[] num) {
     int n = num.length;
-    if (n == 0)
-      return null;
+    if (n == 0) { return null; }
     List<Integer> queue = new ArrayList<>();
     for (int i = 0; i < n; i++) {
       if (queue.isEmpty() || queue.get(queue.size() - 1) < num[i])
@@ -100,16 +93,15 @@ public class LongestIncreasingSubsequence {
         // replace the first one larger or equal than num[i]
         while (L + 1 != R) {
           int M = L + (R - L) / 2;
-          if (queue.get(M) < num[i])
-            L = M;
-          else
-            R = M;
+          if (queue.get(M) < num[i]) { L = M; }
+          else { R = M; }
         }
-        // replace Rth element;
+        // replace Rth element, i.e queue[R] = num[i]
         queue.remove(R);
         queue.add(R, num[i]);
       }
     }
+
     int[] ret = new int[queue.size()];
     for (int i = 0; i < ret.length; i++)
       ret[i] = queue.get(i);
