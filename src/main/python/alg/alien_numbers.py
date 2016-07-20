@@ -9,7 +9,6 @@ Foo oF8 0123456789
 import sys
 
 N = int(sys.stdin.readline().rstrip('\n'))
-
 for case in range(N):
   word, s_lan_alphabet, d_lan_alphabet = sys.stdin.readline().strip('\n').split()
   s_lan_base = {}
