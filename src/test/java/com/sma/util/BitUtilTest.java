@@ -11,13 +11,13 @@ public class BitUtilTest extends TestCase {
 
   @Test
   public void testAdd() throws Exception {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
       int[] pair = RandomUtil.genRandomKNumbers(2, -220000, 220000);
       long[] res = new long[3];
       res[0] = pair[0] + pair[1];
       res[1] = add(pair[0], pair[1]);
       res[2] = addAlterImpl(pair[0], pair[1]);
-      if (res[0] != res[1] || res[0] != res[2]) {
+      if (!(res[0] == res[1] && res[0] == res[2])) {
         System.out.println(Arrays.toString(pair) + " + " + Arrays.toString(res));
       }
     }

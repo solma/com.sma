@@ -53,6 +53,7 @@ public @interface Tag {
     Calculator,
     DirectedGraph,
     Hash,
+    Heap,
     IntervalT,
     IteratorT,
     LinkedListT,

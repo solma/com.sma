@@ -2,21 +2,24 @@
 
 function Parameters::Special() {
   IFS=:
+  FIRST=$1
+  SECOND=$2
+  echo "First: ${FIRST}" "Second: ${SECOND}"
   echo "Description: expand * under double quotes -> IFS.join(positional parameters)"
-  echo "Result: " "$*"
+  echo "$*"
   echo "Description: expand * without double quotes -> expand each positional parameter to a separate word"
-  echo "Result: " $*
+  echo $*
   echo "Description: expand @ under double quotes -> expand each positional parameter to a separate word"
-  echo "Result: " "$@"
+  echo "$@"
   echo "Description: expand @ without double quotes -> expand each positional parameter to a separate word"
-  echo "Result: " "$@"
+  echo $@
 }
 
 main() {
-  FIRST=1st
-  SECOND=2nd
-#  Parameters::Special "${FIRST} parameter" "2nd parameter"
-  Parameters::Special 000 000
+  FIRST="1st Param"
+  SECOND="2nd Param"
+  Parameters::Special "${FIRST}" "${SECOND}"
+#  Parameters::Special 000 000
 }
 
 main "$@"

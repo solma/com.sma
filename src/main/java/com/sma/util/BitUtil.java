@@ -15,7 +15,7 @@ public class BitUtil {
 
   public static void main (String[] args) {
     //System.out.println(reverseBits(65536L));
-    System.out.println(add(3L, 1L));
+    System.out.println(add(-2, 2));
   }
 
   /** Addition implementation using bit and comparison operators only. */

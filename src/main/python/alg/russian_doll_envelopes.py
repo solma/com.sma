@@ -11,10 +11,9 @@ you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).
 """
 
 from alg.label import Label
-
 Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
 
-class RussionDollEnvelopes(object):
+class RussianDollEnvelopes(object):
   def maxEnvelopes(self, envelopes):
     # sorted base on width then reversed height, so that dolls with the same width
     # will only contribute at most one height to the LIS.
@@ -38,7 +37,7 @@ class RussionDollEnvelopes(object):
     # dp is not necessarily the correct answer
     return len(dp)
 
-ins = RussionDollEnvelopes()
+ins = RussianDollEnvelopes()
 inputs = [
   [[4,5],[4,6],[6,7],[2,3],[1,1]],
   [[5,4],[6,4],[6,7],[2,3]],

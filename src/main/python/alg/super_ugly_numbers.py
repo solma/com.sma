@@ -12,7 +12,7 @@ from alg.label import Label
 from collections import deque
 import heapq as hq
 
-Label(Label.PriorityQueueT, Label.Stack, Label.LeetCode)
+Label(Label.Heap, Label.Stack, Label.LeetCode)
 
 class SuperUglyNumbers(object):
   def nthSuperUglyNumber(self, n, primes):

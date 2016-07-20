@@ -58,7 +58,7 @@ class NestedIterator(object):
         self._list.append(nested_integer)
       else:
         nested_iterator = NestedIterator(nested_integer.getList())
-        if nested_iterator.hasNext():
+        if nested_iterator.hasNext(): # if this nested iterator is not empty
           self._list.append(nested_iterator)
 
   def next(self):
