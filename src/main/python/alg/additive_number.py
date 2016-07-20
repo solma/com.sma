@@ -16,9 +16,7 @@ Given a string represents an integer, write a function to determine if it's an a
 """
 
 from alg.label import Label
-
 Label(Label.Recursion, Label.Backtracking, Label.LeetCode)
-
 
 class Solution(object):
   def isAdditiveNumber(self, num):
