@@ -344,8 +344,9 @@ if [[ $SHELL == "/usr/local/bin/bash" ]]; then
 else
   plugins=(.bash_git) #docker googlecloud guru latex maven spark storm'
 fi
+CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for plugin in ${plugins}; do
-  source ${WORKSPACE_HOME}/com.sma/src/main/shell/bashconfig/${plugin}
+  source ${CUR_DIR}/${plugin}
 done
 
 ############################################
