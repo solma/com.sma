@@ -4,13 +4,14 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 
 /**
  * Allow at most K transactions
  */
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, timecomplexity = Quadratic, references = LeetCode)
 public class BestTimeToBuyandSellStockIV {
 
   /**

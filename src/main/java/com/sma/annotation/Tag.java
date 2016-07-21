@@ -15,6 +15,8 @@ public @interface Tag {
   Difficulty dl() default Difficulty.D1;
   Reference[] references() default Reference.NA;
   Trick[] tricks() default Trick.NA;
+  Complexity[] timecomplexity() default Complexity.NA;
+  Complexity[] spacecomplexity() default Complexity.NA;
 
   enum Algorithm {
     Arithmetic,
@@ -110,6 +112,20 @@ public @interface Tag {
     PseudoHead,
     TwoOrMorePointers,
     TortoiseAndHare,
+    NA,
+  }
+
+  enum Complexity {
+    Constant,
+    Logarithmic,
+    Polylogarithmic,
+    Linear,
+    Linearithmic,
+    Quadratic,
+    Cubic,
+    Polynomial,
+    Exponential,
+    Factorial,
     NA,
   }
 }

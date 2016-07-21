@@ -2,7 +2,7 @@ import sys
 
 from alg.label import Label
 
-Label(Label.BinarySearch, Label.DynamicProgramming)
+Label(Label.BinarySearch, Label.DynamicProgramming, Label.QuadraticTime)
 
 # n=int(sys.stdin.readline().rstrip('\n'))
 n = 1  # number of cases

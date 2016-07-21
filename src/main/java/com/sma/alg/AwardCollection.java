@@ -3,6 +3,7 @@ package com.sma.alg;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.MatrixGraph;
 import static com.sma.annotation.Tag.Reference.Interview;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 
@@ -14,7 +15,7 @@ import java.util.Collections;
  * You start from the upper-left corner. At each step you can go down or right one cell.
  * Find the maximum number of apples you can collect.
  */
-@Tag(algs = {DynamicProgramming}, dss = MatrixGraph, references = Interview)
+@Tag(algs = {DynamicProgramming}, dss = MatrixGraph, timecomplexity = Quadratic, references = Interview)
 public class AwardCollection {
 
   public int onePerson(int[][] board) {

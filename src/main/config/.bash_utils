@@ -234,15 +234,37 @@ alias word="less $worddictionary"
 ################ Intelligent string search #########################
 
 # search files for string
-# $1 string to be searched; $2 file format; $3 return file name only
+# $1 string to be searched: "match_words -v reverse_match_words"
+# $2 file format;
+# $3 return file name only
 function fj() {
   KEY_WORD=$1
   EXT=$2
   RETURN_FILE_PATH_ONLY=$3
+
+  DELIMITER=" -v " # separator for forward and backward search keywords
+  match=$(echo ${KEY_WORD} | sed "s/$DELIMITER/*/g" | cut -d* -f1)
+  echo "match: ${match}"
   if [[ "${RETURN_FILE_PATH_ONLY}" ]]; then
-    find . -name "*.""$EXT" | xargs grep -i "${KEY_WORD}" | grep -o ".*\.""$EXT" | uniq | sort
+    if [[ ${KEY_WORD} =~ .*${DELIMITER}.* ]]; then
+        reverse=$(echo ${KEY_WORD} | sed "s/$DELIMITER/*/g" | cut -d* -f2)
+        echo "reverse match: ${reverse}"
+        for f in $(find . -name "*.""$EXT" | xargs grep -i "${match}" | grep -o ".*\.""$EXT" | uniq | sort); do
+            if ! [[ $(cat $f | grep -i "${reverse}") ]]; then
+                echo $f
+            fi
+        done
+    else
+        find . -name "*.""$EXT" | xargs grep -i "${match}" | grep -o ".*\.""$EXT" | uniq | sort
+    fi
   else
-    find . -name "*.""$EXT" | xargs grep -i "${KEY_WORD}"
+    if [[ ${KEY_WORD} =~ .*${DELIMITER}.* ]]; then
+        reverse=$(echo ${KEY_WORD} | sed "s/$DELIMITER/*/g" | cut -d* -f2)
+        echo "reverse: ${reverse}"
+        find . -name "*.""$EXT" | xargs grep -i "${match}" | grep -v "${reverse}"
+    else
+        find . -name "*.""$EXT" | xargs grep -i "${match}"
+    fi
   fi
 }
 

@@ -11,7 +11,7 @@ you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).
 """
 
 from alg.label import Label
-Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.Array, Label.DynamicProgramming, Label.LinearithmicTime, Label.LeetCode)
 
 class RussianDollEnvelopes(object):
   def maxEnvelopes(self, envelopes):

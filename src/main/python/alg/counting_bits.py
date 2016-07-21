@@ -15,12 +15,12 @@ Can you do it like a boss? Do it without using any builtin function like __built
 
 from alg.label import Label
 
-Label(Label.BitManipulation, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.BitManipulation, Label.DynamicProgramming, Label.LinearTime, Label.LeetCode)
 
 class CountingBits(object):
   def countBits(self, num):
     res = [0] * (num + 1)
     # i has the same # of 1's as i/2 when i is even
-    for i in range(1,num + 1):
+    for i in range(1, num + 1):
       res[i] = res[i >> 1] + (i & 1)
     return res

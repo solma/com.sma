@@ -15,7 +15,7 @@ transactions = [buy, sell, cooldown, buy, sell]
 
 from alg.label import Label
 
-Label(Label.Array, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.Array, Label.DynamicProgramming, Label.LinearTime, Label.LeetCode)
 
 class Solution(object):
   def maxProfit(self, prices):

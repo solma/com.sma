@@ -2,6 +2,7 @@ package com.sma.alg;
 
 import static com.sma.annotation.Tag.Algorithm.Backtracking;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 import com.sma.util.CollectionsUtil;
@@ -18,7 +19,7 @@ import java.util.Set;
  * Given an array of denominations and a number X, write code to find out
  * the number of unique ways that amount X can be decomposed.
  */
-@Tag(algs = {Backtracking, DynamicProgramming})
+@Tag(algs = {Backtracking, DynamicProgramming}, timecomplexity = Quadratic)
 public class ChangeCoin {
 
   //dp[i][j] = f(dp[i][j-denom[k])], dp[i-1][j])

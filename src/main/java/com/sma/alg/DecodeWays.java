@@ -1,13 +1,14 @@
 package com.sma.alg;
 
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array, timecomplexity = Linear, references = LeetCode)
 public class DecodeWays {
 
   public int numDecodings(String s) {

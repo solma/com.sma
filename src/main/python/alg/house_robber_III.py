@@ -24,7 +24,7 @@ Maximum amount of money the thief can rob = 4 + 5 = 9.
 
 from alg.label import Label
 
-Label(Label.BinaryTree, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.BinaryTree, Label.DynamicProgramming, Label.LeetCode, Label.LinearithmicTime)
 
 class HouseRobberIII(object):
   def rob(self, root):

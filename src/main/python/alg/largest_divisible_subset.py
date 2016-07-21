@@ -12,7 +12,7 @@ Result: [1,2,4,8]
 """
 
 from alg.label import Label
-Label(Label.DynamicProgramming, Label.LeetCode)
+Label(Label.DynamicProgramming, Label.QuadraticTime, Label.LeetCode)
 
 class LargestDivisibleSubset(object):
   def largestDivisibleSubset(self, nums):

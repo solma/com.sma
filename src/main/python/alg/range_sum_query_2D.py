@@ -26,7 +26,7 @@ You may assume that row1 <= row2 and col1 <= col2.
 
 from alg.label import Label
 
-Label(Label.Array, Label.MatrixGraph, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.Array, Label.MatrixGraph, Label.DynamicProgramming, Label.QuadraticTime, Label.LeetCode)
 
 
 class NumMatrix(object):

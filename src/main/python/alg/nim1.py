@@ -5,9 +5,9 @@ wins the game. Now suppose the pile has N stones, return true if there is a winn
 strategy for the player who plays first.
 """
 from alg.label import Label
-from src.main.python.lang.decorators.decorator_example import memoize
+from utils.decorators import memoize
 
-Label(Label.GameTheory, Label.DynamicProgramming)
+Label(Label.GameTheory, Label.DynamicProgramming, Label.CubicTime)
 
 @memoize
 def IsWin(n):

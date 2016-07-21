@@ -3,10 +3,11 @@ package com.sma.alg;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = StringT, references = LeetCode)
+@Tag(algs = DynamicProgramming, dss = StringT, timecomplexity = Quadratic, references = LeetCode)
 /**
  Given a string S and a string T, count the number of distinct subsequences of S that equal to T.
  Here is an example:

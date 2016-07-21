@@ -14,7 +14,7 @@ The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
 
 from alg.label import Label
 
-Label(Label.DynamicProgramming, Label.LeetCode)
+Label(Label.DynamicProgramming, Label.CubicTime, Label.LeetCode)
 
 class PalindromePairs(object):
 

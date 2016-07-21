@@ -16,7 +16,7 @@ Return 167
 """
 from alg.label import Label
 
-Label(Label.DivideConquer, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.DivideConquer, Label.DynamicProgramming, Label.CubicTime, Label.LeetCode)
 
 class BurstBallons(object):
   def maxCoins(self, nums):

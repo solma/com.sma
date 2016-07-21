@@ -4,10 +4,11 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.MatrixGraph;
 import static com.sma.annotation.Tag.Difficulty.D2;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = MatrixGraph, timecomplexity = Quadratic, references = LeetCode)
 public class DungeonGame {
 
   // dp[i][j]: min health value at cell (i, j) after collecting

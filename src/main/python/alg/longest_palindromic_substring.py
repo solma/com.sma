@@ -4,7 +4,7 @@ and there exists one unique longest palindromic substring.
 """
 from alg.label import Label
 
-Label(Label.DynamicProgramming, Label.Substring, Label.LeetCode)
+Label(Label.DynamicProgramming, Label.Substring, Label.QuadraticTime, Label.LinearTime, Label.LeetCode)
 
 def fastLongestPalindromes(seq):
   """

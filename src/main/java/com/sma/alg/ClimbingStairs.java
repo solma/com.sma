@@ -3,10 +3,11 @@ package com.sma.alg;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Linear;
 
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Subarray, timecomplexity = Linear, references = LeetCode)
 public class ClimbingStairs {
   //second pass
   public int climbStairs(int n) {

@@ -17,7 +17,7 @@ You may assume that you have an infinite number of each kind of coin.
 
 from alg.label import Label
 
-Label(Label.BFS, Label.DynamicProgramming, Label.LeetCode)
+Label(Label.BFS, Label.DynamicProgramming, Label.QuadraticTime, Label.LeetCode)
 
 class CoinChange(object):
   def coinChange(self, coins, amount):

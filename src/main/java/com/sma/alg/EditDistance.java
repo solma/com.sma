@@ -4,10 +4,11 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Difficulty.D2;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D2, dss = Subarray, timecomplexity = Quadratic, references = LeetCode)
 public class EditDistance {
   public static void main(String[] args) {
     System.out.println(new EditDistance().minDistance("ab", "bc"));

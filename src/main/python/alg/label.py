@@ -84,3 +84,25 @@ class Label():
   PseudoHead = 408
   TwoOrMorePointers = 409
   TortoiseAndHare = 410
+
+  ConstantTime = 801
+  LogarithmicTime= 802
+  PolylogarithmicTime = 803
+  LinearTime = 804
+  LinearithmicTime = 805
+  QuadraticTime = 806
+  CubicTime = 807
+  PolynomialTime = 808
+  ExponentialTime = 809
+  FactorialTime = 810
+
+  ConstantSpace = 901
+  LogarithmicSpace= 902
+  PolylogarithmicSpace = 903
+  LinearTimeSpace = 904
+  LinearithmicSpace = 905
+  QuadraticSpace = 906
+  CubicSpace = 907
+  PolynomialSpace = 908
+  ExponentialSpace = 909
+  FactorialSpace = 910
