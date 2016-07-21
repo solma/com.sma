@@ -345,7 +345,7 @@ else
   plugins=(.bash_git) #docker googlecloud guru latex maven spark storm'
 fi
 for plugin in ${plugins}; do
-  source ${WORKSPACE_HOME}/com.sma/src/main/config/${plugin}
+  source ${WORKSPACE_HOME}/com.sma/src/main/shell/bashconfig/${plugin}
 done
 
 ############################################
