@@ -16,13 +16,6 @@ alias python='python2.7'
 alias top='top -o mem'
 alias umnt='sudo umount -f /Volumes/SeagateBackupPlusDrive/' # eject mounted volume
 
-# save all bash profiles to dropbox
-function sb {
-  for f in ~/.bash_profile ~/.bash_* ~/.vimrc; do
-    cp $f ~/Dropbox/programming-environment/bash/
-  done
-}
-
 # show hidden files in Finder
 alias shf='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hhf='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -340,13 +333,13 @@ function fgf() {
 # Source outside bash config files
 ###########################################
 if [[ $SHELL == "/usr/local/bin/bash" ]]; then
-  plugins='git.sh' #.bash_git_completion' #docker googlecloud guru latex maven spark storm'
+  plugins='git git_completion' #docker googlecloud guru latex maven spark'
 else
-  plugins=(git.sh) #docker googlecloud guru latex maven spark storm'
+  plugins=(git)
 fi
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for plugin in ${plugins}; do
-  source ${CUR_DIR}/${plugin}
+  source ${CUR_DIR}/${plugin}.sh
 done
 
 ############################################
