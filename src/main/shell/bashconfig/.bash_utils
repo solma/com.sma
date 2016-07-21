@@ -340,9 +340,9 @@ function fgf() {
 # Source outside bash config files
 ###########################################
 if [[ $SHELL == "/usr/local/bin/bash" ]]; then
-  plugins='.bash_git' #.bash_git_completion' #docker googlecloud guru latex maven spark storm'
+  plugins='git.sh' #.bash_git_completion' #docker googlecloud guru latex maven spark storm'
 else
-  plugins=(.bash_git) #docker googlecloud guru latex maven spark storm'
+  plugins=(git.sh) #docker googlecloud guru latex maven spark storm'
 fi
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for plugin in ${plugins}; do
