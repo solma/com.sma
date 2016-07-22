@@ -1,12 +1,13 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Subarray;
-
 import com.sma.annotation.Tag;
 import com.sma.util.RandomUtil;
 
 import java.util.Arrays;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
+import static com.sma.annotation.Tag.DataStructure.Subarray;
 
 /*
  * reference: http://www.mitbbs.com/article_t/JobHunting/32719993.html
@@ -17,7 +18,7 @@ import java.util.Arrays;
  * given [1 0 1]，reverse 0，return 3
  * given [1 1 0 1 0 0]，reverse the 0 or 1 in the middle，return 4.
  */
-@Tag(algs = DynamicProgramming, dss = Subarray)
+@Tag(algs = DynamicProgramming, timecomplexity = Linear, dss = Subarray)
 public class LongestContinuousSubarrayWithChange {
 
   public static void main(String[] args) {

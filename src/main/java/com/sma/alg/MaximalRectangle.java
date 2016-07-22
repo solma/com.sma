@@ -1,14 +1,16 @@
 package com.sma.alg;
 //ref: http://yyeclipse.blogspot.com/2012/11/solving-maximal-rectangle-problem-based.html
 //ref: http://wansishuang.appspot.com/?p=38002
+import com.sma.annotation.Tag;
+
 import static com.sma.alg.LargestRectangleInHistogram.largestRectangleArea;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Polylogarithmic;
 import static com.sma.annotation.Tag.DataStructure.StackT;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dss = StackT, references = LeetCode)
+@Tag(algs = DynamicProgramming, timecomplexity = Polylogarithmic,
+    dss = StackT, references = LeetCode)
 public class MaximalRectangle {
 
   public int maximalRectangle(char[][] matrix) {

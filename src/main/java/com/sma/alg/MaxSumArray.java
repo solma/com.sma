@@ -5,13 +5,14 @@ package com.sma.alg;
  *  the contiguous subarray [4,-1,2,1] has the largest sum = 6.
  */
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode)
+@Tag(algs = DynamicProgramming, timecomplexity = Linear, dss = Subarray, references = LeetCode)
 public class MaxSumArray {
   //second pass
   public int maxSubArray(int[] A) {

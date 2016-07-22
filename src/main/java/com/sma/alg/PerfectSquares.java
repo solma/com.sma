@@ -1,18 +1,19 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 
 import java.util.Arrays;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 /**
  * Given a positive integer n, find the least number of perfect square numbers
  * (for example, 1, 4, 9, 16, ...) which sum to n.
  * For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.
  */
-@Tag(algs = {DynamicProgramming}, references = LeetCode)
+@Tag(algs = {DynamicProgramming}, timecomplexity = Quadratic, references = LeetCode)
 public class PerfectSquares {
   public int numSquares(int n) {
     int nRoot = (int) Math.sqrt(n);

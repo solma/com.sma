@@ -6,6 +6,9 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.Algorithm.Math;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Linear;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+
 import static java.lang.Math.max;
 import static java.lang.Math.pow;
 
@@ -16,7 +19,8 @@ import static java.lang.Math.pow;
  Note: you may assume that n is not less than 2.
  */
 
-@Tag(algs = {DynamicProgramming, Math}, dss = Array, references = LeetCode)
+@Tag(algs = {DynamicProgramming, Math}, dss = Array,
+    timecomplexity = {Linear, Quadratic}, references = LeetCode)
 public class IntegerBreak {
 
   public static void main(String[] args) {

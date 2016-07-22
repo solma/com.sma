@@ -1,18 +1,18 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Backtracking;
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.StringT;
-import static com.sma.annotation.Tag.Difficulty.D3;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.google.common.collect.ImmutableSet;
-
 import com.sma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import static com.sma.annotation.Tag.Algorithm.Backtracking;
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.DataStructure.StringT;
+import static com.sma.annotation.Tag.Difficulty.D3;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 // dynamic programming+dfs on dp results
 // 1.dp for each position in s, find matching substring and record it in dp
@@ -23,7 +23,8 @@ import java.util.Set;
 //   we do not need to search. no segmentation is available
 
 
-@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3, dss = StringT, references = LeetCode)
+@Tag(algs = {Backtracking, DynamicProgramming}, dl = D3,
+    timecomplexity = Quadratic, dss = StringT, references = LeetCode)
 public class WordBreakII {
   public static void main(String[] args) {
     //"leet", "code", "le", "et", "co", "de"

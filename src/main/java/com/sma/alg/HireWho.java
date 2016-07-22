@@ -1,23 +1,19 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-import static com.sma.annotation.Tag.Difficulty.D3;
-import static com.sma.annotation.Tag.Reference.JulyEdu;
-
 import com.google.common.collect.ImmutableList;
-
 import com.sma.annotation.Tag;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.MutableTriple;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.DataStructure.Array;
+import static com.sma.annotation.Tag.Difficulty.D3;
+import static com.sma.annotation.Tag.Reference.JulyEdu;
+import static com.sma.annotation.Tag.Complexity.Polynomial;
 
 /**
  * Given a list of candidates (M males and F females), each of which has
@@ -25,7 +21,7 @@ import java.util.Map;
  * hire X males and Y female within the budget and maximizes the total ability
  */
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array, references = JulyEdu)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Array, timecomplexity = Polynomial, references = JulyEdu)
 public class HireWho {
 
   List<List<Integer>> hireWhoDp(final int[] ability, final int[] cost, final boolean[] male, int nM, int nF, int budget) {

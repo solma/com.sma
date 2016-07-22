@@ -1,13 +1,14 @@
 package com.sma.alg;
 
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Subarray;
-
 import com.sma.annotation.Tag;
 
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
+import static com.sma.annotation.Tag.DataStructure.Subarray;
+
 /** Find longest increasing subarray for specified array. */
-@Tag(algs = DynamicProgramming, dss = Subarray)
+@Tag(algs = DynamicProgramming, timecomplexity = Linear, dss = Subarray)
 public class LongestIncreasingSubArray {
 
   int longestIncreasingSubarray(final int[] a) {

@@ -5,8 +5,9 @@ import com.sma.annotation.Tag;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Linear;
 
-@Tag(algs = DynamicProgramming, dss = Array, references = LeetCode)
+@Tag(algs = DynamicProgramming, dss = Array, timecomplexity = Linear, references = LeetCode)
 public class HouseRobber {
 
   public int rob(int[] num) {

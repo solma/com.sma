@@ -1,14 +1,15 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Array;
-
-import com.sma.annotation.Tag;
+import static com.sma.annotation.Tag.Complexity.Polynomial;
 
 /**
  * Given a string, insert minimum number of '+' so the partitions sum up to the
  * specific number. */
-@Tag(algs = DynamicProgramming, dss = Array)
+@Tag(algs = DynamicProgramming, timecomplexity = Polynomial, dss = Array)
 public class QuickSum {
   //TODO: unfinished
   String insert(String s, int m) {

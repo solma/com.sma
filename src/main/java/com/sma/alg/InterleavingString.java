@@ -1,13 +1,14 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dl = D3, dss = StringT, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = StringT, timecomplexity = Quadratic, references = LeetCode)
 public class InterleavingString {
   public boolean isInterleave(String s1, String s2, String s3) {
     int m = s1.length();

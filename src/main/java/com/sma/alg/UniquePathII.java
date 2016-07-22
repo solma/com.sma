@@ -1,12 +1,14 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dss = Subarray, references = LeetCode) public class UniquePathII {
+@Tag(algs = DynamicProgramming, dss = Subarray,
+    timecomplexity = Quadratic, references = LeetCode) public class UniquePathII {
   public static void main(String[] args) {
     UniquePathII ins = new UniquePathII();
     int n = 10;

@@ -1,15 +1,15 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Subarray;
-
 import com.sma.annotation.Tag;
+
+import static com.sma.annotation.Tag.DataStructure.Subarray;
+import static com.sma.annotation.Tag.Trick.TwoOrMorePointers;
 
 // reference:
 // http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODIzNDQ3Mw==&appmsgid=10000220&itemidx=1&sign=6ba8275053d9c400e9535f392b4cbaa7
 // given a array of postivie numbers, find the shortest subarray such that the sum of the element in
 // the subarray is greater than S
-@Tag(algs = DynamicProgramming, dss = Subarray)
+@Tag(dss = Subarray, tricks = TwoOrMorePointers)
 public class ShortestSubArray {
   public static void main(String[] args) {
     new ShortestSubArray().shortestSubArray(new int[] {5, 1, 3, 5, 10, 7, 4, 9, 2, 8}, 18);

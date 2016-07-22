@@ -1,12 +1,5 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-import static com.sma.annotation.Tag.DataStructure.SegmentTree;
-import static com.sma.annotation.Tag.Difficulty.D3;
-import static com.sma.annotation.Tag.Reference.JulyEdu;
-import static com.sma.annotation.Tag.Reference.LintCode;
-
 import com.sma.annotation.Tag;
 import com.sma.ds.graph.tree.SegmentTreeNode;
 import com.sma.ds.misc.Interval;
@@ -14,7 +7,21 @@ import com.sma.ds.misc.Interval;
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, SegmentTree}, references = {JulyEdu, LintCode})
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.DataStructure.Array;
+import static com.sma.annotation.Tag.DataStructure.SegmentTree;
+import static com.sma.annotation.Tag.Difficulty.D3;
+import static com.sma.annotation.Tag.Reference.JulyEdu;
+import static com.sma.annotation.Tag.Reference.LintCode;
+import static com.sma.annotation.Tag.Complexity.Linear;
+import static com.sma.annotation.Tag.Complexity.Logarithmic;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.Complexity.Constant;
+
+@Tag(algs = DynamicProgramming, dl = D3, dss = {Array, SegmentTree},
+    timecomplexity = {Linear, Logarithmic, Quadratic},
+    spacecomplexity = {Logarithmic, Constant},
+    references = {JulyEdu, LintCode})
 public class RangeMinimumQuery {
 
   public enum Algorithm {

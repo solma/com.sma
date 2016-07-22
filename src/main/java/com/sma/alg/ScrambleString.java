@@ -1,13 +1,15 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Polynomial;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3,
+    timecomplexity = Polynomial, dss = Subarray, references = LeetCode)
 //ref http://www.blogjava.net/sandy/archive/2013/05/22/399605.html
 public class ScrambleString {
 

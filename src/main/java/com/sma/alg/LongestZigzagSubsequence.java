@@ -13,16 +13,17 @@ package com.sma.alg;
  * that is a zig-zag sequence. A subsequence is obtained by deleting some number of elements (possibly zero)
  * from the original sequence, leaving the remaining elements in their original order.
  */
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-import static com.sma.annotation.Tag.Reference.Topcoder;
-
 import com.sma.annotation.Tag;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
-@Tag(algs = DynamicProgramming, dss = Array, references = Topcoder)
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.DataStructure.Array;
+import static com.sma.annotation.Tag.Reference.Topcoder;
+
+@Tag(algs = DynamicProgramming, timecomplexity = Quadratic, dss = Array, references = Topcoder)
 public class LongestZigzagSubsequence {
 
   public int longestZigZagSubsequence(int[] num) {

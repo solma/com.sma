@@ -1,15 +1,17 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.BottomUp;
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Tag(algs = {BottomUp, DynamicProgramming}, references = LeetCode) public class Triangle {
+import static com.sma.annotation.Tag.Algorithm.BottomUp;
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.Reference.LeetCode;
+
+@Tag(algs = {BottomUp, DynamicProgramming}, timecomplexity = Quadratic, references = LeetCode)
+public class Triangle {
   public static void main(String[] args) {
     new Triangle().main();
   }

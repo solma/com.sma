@@ -1,13 +1,14 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
+import java.util.Arrays;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.CrackingTheCodeInterview;
 import static com.sma.util.ArrayUtil.comparatorIntArray;
-
-import com.sma.annotation.Tag;
-
-import java.util.Arrays;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 /**
  You have a stack of n boxes, with widths wi, height hi and depth di. The boxes can't be rotated and
@@ -15,7 +16,8 @@ import java.util.Arrays;
  above it in width and depth. Implement a method to build the tallest stack possible,
  where the height of a stack is the sum of the heights of each box.
  */
-@Tag(algs = {DynamicProgramming}, dss = {Array}, references = CrackingTheCodeInterview)
+@Tag(algs = {DynamicProgramming}, dss = {Array},
+    timecomplexity = Quadratic, references = CrackingTheCodeInterview)
 public class StackOfBoxes {
 
   public static void main(String[] args) {

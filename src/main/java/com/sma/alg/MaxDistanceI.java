@@ -5,13 +5,15 @@ import com.sma.annotation.Tag;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Reference.Interview;
+import static com.sma.annotation.Tag.Complexity.Linear;
 
 /**
  * Given an int array A[], define distance as A[i] + A[j] + (j-i), for any j > i.
  * Find max distance in A[]. Requirement O(n) time
  */
 
-@Tag(algs = DynamicProgramming, dss = Subarray, references = Interview)
+@Tag(algs = DynamicProgramming, timecomplexity = Linear,
+    dss = Subarray, references = Interview)
 public class MaxDistanceI {
 
   int[] maxDistance(int[] nums){

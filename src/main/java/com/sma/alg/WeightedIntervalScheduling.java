@@ -1,21 +1,17 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-import static com.sma.annotation.Tag.Difficulty.D3;
-
 import com.sma.annotation.Tag;
 import com.sma.ds.misc.Interval;
 import com.sma.util.RandomUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = Array)
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Logarithmic;
+import static com.sma.annotation.Tag.DataStructure.Array;
+import static com.sma.annotation.Tag.Difficulty.D3;
+
+@Tag(algs = DynamicProgramming, timecomplexity = Logarithmic, dl = D3, dss = Array)
 public class WeightedIntervalScheduling {
 
   final List<Interval> intervals;

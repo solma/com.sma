@@ -1,11 +1,12 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 
-@Tag(algs = DynamicProgramming, references = LeetCode)
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
+import static com.sma.annotation.Tag.Reference.LeetCode;
+
+@Tag(algs = DynamicProgramming, timecomplexity = Linear, references = LeetCode)
 public class LongestValidParenthesis {
 
   //O(n)

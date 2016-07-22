@@ -1,17 +1,19 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.MatrixGraph;
-import static com.sma.annotation.Tag.DataStructure.Subarray;
-
 import com.sma.annotation.Tag;
 import com.sma.util.ArrayUtil;
 import com.sma.util.RandomUtil;
 
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Polynomial;
+import static com.sma.annotation.Tag.DataStructure.MatrixGraph;
+import static com.sma.annotation.Tag.DataStructure.Subarray;
+
 /**
  * Given a matrix, each cell having only 0's or 1's, find the largest sub matrix with equal number of 0's and 1's in it.
  */
-@Tag(algs = DynamicProgramming, dss = {MatrixGraph, Subarray})
+@Tag(algs = DynamicProgramming, timecomplexity = Polynomial,
+    dss = {MatrixGraph, Subarray})
 public class MaxRectangleWithEqualZerosAndOnes {
   public static void main(String[] args) {
     int[][] board = RandomUtil.genRandomMatrix(6, 7, 1, false, false);

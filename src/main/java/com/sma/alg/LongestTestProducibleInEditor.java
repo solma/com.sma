@@ -1,11 +1,12 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.StringT;
-
 import com.sma.annotation.Tag;
 
 import java.util.Arrays;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.DataStructure.StringT;
 
 // You are provided with four possible operations that can be done on the editor(each operation
 // requires
@@ -20,7 +21,7 @@ import java.util.Arrays;
 
 // reference : http://4remembrance.blogspot.com/2013/01/longest-text-producible-in-editor.html
 
-@Tag(algs = DynamicProgramming, dss = StringT)
+@Tag(algs = DynamicProgramming, timecomplexity = Quadratic, dss = StringT)
 public class LongestTestProducibleInEditor {
   public static void main(String[] args) {
     System.out.println(longestText(80));

@@ -5,6 +5,7 @@ import com.sma.annotation.Tag;
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 /**
  Given a string s, partition s such that every substring of the partition is a palindrome.
@@ -13,7 +14,7 @@ import static com.sma.annotation.Tag.Reference.LeetCode;
  For example, given s = "aab",
  Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
  */
-@Tag(algs = DynamicProgramming, dss = StringT, references = LeetCode)
+@Tag(algs = DynamicProgramming, timecomplexity = Quadratic, dss = StringT, references = LeetCode)
 public class PalindromePartitionII {
   public static void main(String[] args) {
     //"aoecddceoaaeqeeqe"

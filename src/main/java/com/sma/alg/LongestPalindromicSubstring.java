@@ -6,12 +6,14 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.Substring;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 
 /**
  Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000,
  and there exists one unique longest palindromic substring.
  */
-@Tag(algs = DynamicProgramming, dl = D3, dss = Substring, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, dss = Substring,
+    timecomplexity = Quadratic, references = LeetCode)
 public class LongestPalindromicSubstring {
 
   public String longestPalindrome(String s) {

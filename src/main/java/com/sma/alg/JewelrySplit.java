@@ -1,8 +1,5 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-
 import com.sma.annotation.Tag;
 import com.sma.util.ArrayUtil;
 import com.sma.util.CollectionsUtil;
@@ -11,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Cubic;
+import static com.sma.annotation.Tag.DataStructure.Array;
 
 /**
  * You have been given a list of jewelry items that must be split amongst two people: Frank and Bob.
@@ -45,7 +46,7 @@ import java.util.List;
  * There are 9 legal ways of allocating the jewelry to Bob and Frank given the policy, so your method would return 9.
  */
 
-@Tag(algs = DynamicProgramming, dss = Array)
+@Tag(algs = DynamicProgramming, timecomplexity = Cubic, dss = Array)
 public class JewelrySplit {
 
   List<List<List<Integer>>> split(int[] jewelries) {

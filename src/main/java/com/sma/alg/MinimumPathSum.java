@@ -1,12 +1,14 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dss = Array, references = LeetCode)
+@Tag(algs = DynamicProgramming, timecomplexity = Quadratic,
+    dss = Array, references = LeetCode)
 public class MinimumPathSum {
   public static void main(String[] args) {
     int[][] grid = new int[][] {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};

@@ -1,22 +1,19 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-
 import com.sma.annotation.Tag;
 import com.sma.util.CollectionsUtil;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Cubic;
+import static com.sma.annotation.Tag.DataStructure.Array;
 
 /**
  * Given an array, and a number, find all combinations of elements in the array that the sum
  * equals to the given number, subject to the tabu array.
  */
-@Tag(algs = DynamicProgramming, dss = Array)
+@Tag(algs = DynamicProgramming, timecomplexity = Cubic, dss = Array)
 public class FindSum {
 
   public static void main(String[] args) {

@@ -1,13 +1,15 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dl = D3, dss = StringT, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3,
+    timecomplexity = Quadratic, dss = StringT, references = LeetCode)
 public class WildcardMatching {
 
   public boolean isMatch(String s, String p) {

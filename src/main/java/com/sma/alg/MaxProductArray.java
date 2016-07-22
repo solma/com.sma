@@ -1,14 +1,16 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Linear;
 import static com.sma.annotation.Tag.DataStructure.Subarray;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 import static com.sma.annotation.Tag.Trick.ForwardAndBackwardScan;
 
-import com.sma.annotation.Tag;
-
-@Tag(algs = DynamicProgramming, dl = D3, dss = Subarray, references = LeetCode, tricks = ForwardAndBackwardScan)
+@Tag(algs = DynamicProgramming, dl = D3,
+    timecomplexity = Linear, dss = Subarray, references = LeetCode, tricks = ForwardAndBackwardScan)
 public class MaxProductArray {
 
   // return range and the product

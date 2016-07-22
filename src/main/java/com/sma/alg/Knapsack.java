@@ -1,8 +1,5 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
-import static com.sma.annotation.Tag.DataStructure.Array;
-
 import com.sma.annotation.Tag;
 
 import java.util.HashMap;
@@ -10,7 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@Tag(algs = DynamicProgramming, dss = Array)
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Complexity.Quadratic;
+import static com.sma.annotation.Tag.DataStructure.Array;
+
+@Tag(algs = DynamicProgramming, timecomplexity = Quadratic, dss = Array)
 public class Knapsack {
 
   public int itemMajorOrder(int capacity, int[] weight, int[] value, boolean noLimitForEachItem) {

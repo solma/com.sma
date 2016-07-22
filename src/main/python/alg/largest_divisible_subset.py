@@ -27,7 +27,7 @@ class LargestDivisibleSubset(object):
     nums = sorted(nums)
     dp = [[nums[i]] for i in range(n)]
     for i in range(1, n):
-      for j in range(0, i):
+      for j in range(i):
         if nums[i] % nums[j] != 0:
           continue
         if len(dp[j]) >= len(dp[i]):

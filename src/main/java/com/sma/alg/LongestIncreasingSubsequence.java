@@ -11,8 +11,10 @@ import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.DataStructure.MonotonicSequence;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
+import static com.sma.annotation.Tag.Complexity.Linearithmic;
 
-@Tag(algs = DynamicProgramming, dl = D3, dss = MonotonicSequence, references = LeetCode)
+@Tag(algs = DynamicProgramming, dl = D3, timecomplexity = Linearithmic,
+    dss = MonotonicSequence, references = LeetCode)
 public class LongestIncreasingSubsequence {
   public static void main(String[] args) {
     new LongestIncreasingSubsequence().main();
