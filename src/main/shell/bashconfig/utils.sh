@@ -71,7 +71,7 @@ if ! [[ "$1" ]]; then
   return 0
 fi
 
-sftp solma.mtv.corp.google.com <<-COMMANDS
+sftp ${SOLMA_WORKSTATION_DNS} <<-COMMANDS
 put ${SFTP_FILE_MAP_LOCAL[$1]} ${SFTP_FILE_MAP_REMOTE[$1]}
 COMMANDS
 }
@@ -84,8 +84,8 @@ if ! [[ "$1" ]]; then
   return 0
 fi
 
-#sftp solma@solma.mtv.corp.google.com:workspace/pinax_ss.sh
-sftp solma.mtv.corp.google.com <<-COMMANDS
+#sftp solma@${SOLMA_WORKSTATION_DNS}:workspace/pinax_ss.sh
+sftp ${SOLMA_WORKSTATION_DNS} <<-COMMANDS
 get ${SFTP_FILE_MAP_REMOTE[$1]} ${SFTP_FILE_MAP_LOCAL[$1]}
 COMMANDS
 }
