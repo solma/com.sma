@@ -54,9 +54,6 @@ alias pd='open $HOME/Downloads'
 ###########################################
 
 ############## sftp alias and functions ##################
-alias s3='ssh solma.mtv.corp.google.com'
-alias sf='sftp solma.mtv.corp.google.com'
-
 declare -A SFTP_FILE_MAP_LOCAL
 declare -A SFTP_FILE_MAP_REMOTE
 SFTP_FILE_MAP_LOCAL[p]="/Users/solma/workspace/playground/pinax_ss.sh"
