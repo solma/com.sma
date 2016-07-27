@@ -26,13 +26,18 @@ import static com.sma.annotation.Tag.Reference.LeetCode;
 @Tag(algs = {Backtracking, DynamicProgramming}, dl = D3,
     timecomplexity = Quadratic, dss = StringT, references = LeetCode)
 public class WordBreakII {
+
+  private static boolean outloopIsDict = false;
+
   public static void main(String[] args) {
     //"leet", "code", "le", "et", "co", "de"
     Set<String> dict = ImmutableSet.of("b", "a");
-    String inputString = "ab";
+    String inputString = "aba";
 
-    for (String s : wordBreak(inputString, dict)) {
-      System.out.println(s);
+    for (boolean b: new boolean[]{true, false}) {
+      outloopIsDict = b;
+      for (String s : wordBreak(inputString, dict)) { System.out.println(s); }
+      System.out.println();
     }
   }
 
@@ -42,11 +47,8 @@ public class WordBreakII {
       dp.add(new ArrayList<Integer>());
     }
 
-    for (String e : dict) {
-      System.out.print(e + "\t");
-    }
+//    for (String e : dict) { System.out.print(e + "\t"); }
 
-    boolean outloopIsDict = true;
     if (outloopIsDict) {
       for (String e : dict) {
         for (int i = 1; i <= s.length(); i++) {
@@ -68,9 +70,7 @@ public class WordBreakII {
       }
     }
 
-    for (List<Integer> prev : dp) {
-      System.out.println(prev);
-    }
+//    for (List<Integer> prev : dp) { System.out.println(prev); }
 
     List<String> results = new ArrayList<>();
     StringBuilder re = new StringBuilder();
@@ -84,13 +84,11 @@ public class WordBreakII {
       return;
     }
     for (int p : dp.get(cur)) {
-      if (cur < s.length())
-        re.insert(0, " ");
+      if (cur < s.length()) { re.insert(0, " "); }
       re.insert(0, s.substring(p, cur));
       helper(results, re, s, dp, p);
       re.delete(0, cur - p);
-      if (cur < s.length())
-        re.deleteCharAt(0);
+      if (cur < s.length()) { re.deleteCharAt(0); }
     }
   }
 }
