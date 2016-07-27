@@ -15,7 +15,7 @@ in-place with O(1) extra space?
 """
 
 from alg.label import Label
-Label(Label.LinearithmicTime, Label.LinearTime, Label.LeetCode)
+Label(Label.LinearithmicTime, Label.Greedy, Label.LinearTime, Label.LeetCode)
 
 
 class WiggleSort(object):

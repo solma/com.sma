@@ -9,6 +9,21 @@ import com.sma.annotation.Tag;
 import java.util.*;
 //each element can be used multiple times
 
+/**
+ Given a set of candidate numbers (C) and a target number (T),
+ find all unique combinations in C where the candidate numbers sums to T.
+ The same repeated number may be chosen from C unlimited number of times.
+
+ Note:
+ All numbers (including target) will be positive integers.
+ The solution set must not contain duplicate combinations.
+ For example, given candidate set [2, 3, 6, 7] and target 7,
+ A solution set is:
+ [
+ [7],
+ [2, 2, 3]
+ ]
+ */
 @Tag(algs = Recursion, dl = D2, references = LeetCode)
 public class CombinationSum {
   public static void main(String[] args) {
@@ -27,11 +42,13 @@ public class CombinationSum {
   public List<int[]> combinationSum(int[] candidates, int target) {
     //Arrays.sort(candidates);
     //return combinationSum(candidates, target, 0,new ArrayList<Integer>());
-    return combinationSum(candidates, target, 0, new ArrayList<Integer>(), new int[candidates.length]);
+    return combinationSum(candidates, target, 0, new ArrayList<Integer>(),
+        new int[candidates.length]);
   }
 
-  public List<int[]> combinationSum(int[] candidates, int target, int sIdx, List<Integer> com, int[] countArr) {
-    //ArrayList<ArrayList<Integer>> ret=new ArrayList<ArrayList<Integer>>();
+  public List<int[]> combinationSum(int[] candidates, int target, int sIdx,
+                                    List<Integer> com, int[] countArr) {
+    //List<List<Integer>> ret=new ArrayList<ArrayList<Integer>>();
     List<int[]> ret = new ArrayList<>();
     //int ret=0;
 
@@ -44,13 +61,14 @@ public class CombinationSum {
       return ret;
     }
     for (; sIdx < candidates.length; sIdx++) {
-      if (countArr[sIdx] > 11)
-        continue;
+      if (countArr[sIdx] > 11) { continue; }
       com.add(candidates[sIdx]);
       countArr[sIdx]++;
       //System.out.println(sIdx+"  "+i+" "+target+" "+com);
-      ret.addAll(combinationSum(candidates, target - candidates[sIdx], sIdx, com, countArr));
-      //            ret+=combinationSum(candidates, target-candidates[sIdx], sIdx, com, countArr);
+      ret.addAll(combinationSum(candidates, target - candidates[sIdx], sIdx,
+          com, countArr));
+//      ret += combinationSum(candidates, target-candidates[sIdx], sIdx,
+//          com, countArr);
       com.remove(com.size() - 1);
       countArr[sIdx]--;
     }

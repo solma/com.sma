@@ -1,9 +1,5 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Arithmetic;
-import static com.sma.annotation.Tag.Algorithm.Backtracking;
-import static com.sma.annotation.Tag.Algorithm.Recursion;
-
 import com.sma.annotation.Tag;
 import com.sma.util.CollectionsUtil;
 
@@ -12,11 +8,16 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static com.sma.annotation.Tag.Algorithm.Arithmetic;
+import static com.sma.annotation.Tag.Algorithm.Backtracking;
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
+import static com.sma.annotation.Tag.Algorithm.Recursion;
+
 
 /**
  * All possible combinations of a sum.
  */
-@Tag(algs = {Arithmetic, Backtracking, Recursion})
+@Tag(algs = {Arithmetic, Backtracking, Recursion, DynamicProgramming})
 public class AllDecompositionsOfSum {
 
   public Set<Map<Integer, Integer>> bottomUpRecursionWithMemory(int n){
