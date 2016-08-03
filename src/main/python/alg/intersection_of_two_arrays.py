@@ -15,7 +15,6 @@ load all elements into the memory at once?
 """
 
 from alg.label import Label
-
 Label(Label.Array, Label.Greedy, Label.LeetCode)
 
 class IntersectionOfTwoArrays(object):
