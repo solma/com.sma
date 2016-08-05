@@ -8,9 +8,7 @@ For example,
 """
 
 from alg.label import Label
-
 Label(Label.Arithmetic, Label.Greedy, Label.LeetCode)
-
 
 class IntegerToEnglishWords(object):
   def numberToWords(self, num):
