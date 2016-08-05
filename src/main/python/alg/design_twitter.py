@@ -33,6 +33,8 @@ twitter.getNewsFeed(1);
 """
 
 from collections import defaultdict
+from alg.label import Label
+Label(Label.Heap, Label.Hash, Label.LeetCode)
 
 class Twitter(object):
 
