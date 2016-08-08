@@ -1,7 +1,7 @@
 TARGETS=endian
 
 float: endian.cc
-	g++ -std=c++11 -stdlib=libc++ -o bin/endian endian.cc
+	g++ -std=c++11 -o bin/endian endian.cc
 
 all: $(TARGETS)
 
