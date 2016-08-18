@@ -84,6 +84,7 @@ class Label():
   PseudoHead = 408
   TwoOrMorePointers = 409
   TortoiseAndHare = 410
+  ReservoirSampling = 411
 
   ConstantTime = 801
   LogarithmicTime= 802
