@@ -31,7 +31,11 @@ alias lld='ld .'
 
 # find $1 files that contain $2 and are modified most recently
 function lm(){
-    ls -thl | cat | grep $2 | head -$1
+  if [[ "$2" ]]; then
+    ls -thl | cat | grep $2 | head -$1 2>/dev/null
+  else
+    ls -thl | head -$1 2>/dev/null
+  fi
 }
 alias lsc='ls -aF --color=always'
 
