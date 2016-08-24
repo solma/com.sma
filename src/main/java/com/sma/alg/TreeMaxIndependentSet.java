@@ -6,10 +6,11 @@ import com.sma.ds.graph.tree.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.sma.annotation.Tag.Algorithm.DynamicProgramming;
 import static com.sma.annotation.Tag.Algorithm.Recursion;
 import static com.sma.annotation.Tag.DataStructure.BinaryTree;
 
-@Tag(algs = Recursion, dss = BinaryTree)
+@Tag(algs = {DynamicProgramming, Recursion}, dss = BinaryTree)
 /** Given a tree, find its max independent set. */
 public class TreeMaxIndependentSet {
   public static void main(String[] args) {
