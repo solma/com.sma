@@ -6,8 +6,7 @@ The input size may be as large as 5,000,000.
 """
 
 class LexicographicalNumbers(object):
-  # TLE
-  def lexicalOrder(self, n):
+  def lexicalOrder_TLE(self, n):
 
     def lexicalOrder_recur(i):
       if i > n:
@@ -20,6 +19,18 @@ class LexicographicalNumbers(object):
     for i in range(1, 10):
       lexicalOrder_recur(i)
     return ret
+
+  def lexicalOrder(self, n):
+    result = []
+    stack = [1]
+    while stack:
+      y = stack.pop()
+      result.append(y)
+      if y < n and y % 10 < 9:
+        stack.append(y + 1)
+      if y * 10 <= n:
+        stack.append(y * 10)
+    return result
 
 ins = LexicographicalNumbers()
 print ins.lexicalOrder(113)
