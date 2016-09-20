@@ -28,8 +28,9 @@ class Label():
   SlidingWindow = 22
   Streaming = 23
   Sorting = 24
-  TopDown = 25
-  TopologicalSorting = 26
+  TailRecursion = 26
+  TopDown = 27
+  TopologicalSorting = 28
 
   Array = 201
   BTree = 202

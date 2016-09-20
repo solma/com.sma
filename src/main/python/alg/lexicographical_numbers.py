@@ -4,15 +4,18 @@ For example, given 13, return: [1,10,11,12,13,2,3,4,5,6,7,8,9].
 Please optimize your algorithm to use less time and space.
 The input size may be as large as 5,000,000.
 """
+from label import Label
+Label(Label.TailRecursion, Label.Stack, Label.LeetCode)
 
 class LexicographicalNumbers(object):
   def lexicalOrder_recur(self, n):
 
     def lexicalOrder(i):
+      if i > n:
+        return
       ret.append(i)
-      if i * 10 < n:
-        lexicalOrder(i * 10)
-      if i % 10 < 9 and i < n:
+      lexicalOrder(i * 10)
+      if i % 10 < 9:
         lexicalOrder(i + 1)
 
     ret = []
@@ -32,4 +35,4 @@ class LexicographicalNumbers(object):
     return result
 
 ins = LexicographicalNumbers()
-print ins.lexicalOrder_recur(13)
+print ins.lexicalOrder_recur(123)
