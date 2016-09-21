@@ -31,17 +31,9 @@ Label(Label.Math, Label.ReservoirSampling, Label.LinearithmicTime, Label.LeetCod
 class LinkedListRandomNode(object):
 
   def __init__(self, head):
-    """
-    @param head The linked list's head. Note that the head is guanranteed to be not null, so it contains at least one node.
-    :type head: ListNode
-    """
     self.head = head
 
   def getRandom(self):
-    """
-    Returns a random node's value.
-    :rtype: int
-    """
     import random
     ans, cnt = 0, 0
     head = self.head
