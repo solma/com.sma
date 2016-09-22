@@ -102,7 +102,7 @@ class Label():
   ConstantSpace = 901
   LogarithmicSpace= 902
   PolylogarithmicSpace = 903
-  LinearTimeSpace = 904
+  LinearSpace = 904
   LinearithmicSpace = 905
   QuadraticSpace = 906
   CubicSpace = 907

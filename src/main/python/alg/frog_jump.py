@@ -36,7 +36,7 @@ Return false. There is no way to jump to the last stone as
 the gap between the 5th and 6th stone is too large.
 """
 from label import Label
-Label(Label.DynamicProgramming, Label.Hash, Label.LinearTimeSpace, Label.LeetCode)
+Label(Label.DynamicProgramming, Label.Hash, Label.LinearSpace, Label.LeetCode)
 
 class FrogJump(object):
   def canCross(self, stones):

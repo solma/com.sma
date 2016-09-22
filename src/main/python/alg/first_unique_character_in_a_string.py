@@ -12,7 +12,7 @@ return 2.
 Note: You may assume the string contain only lowercase letters.
 """
 from label import Label
-Label(Label.Hash, Label.LinearTimeSpace, Label.LeetCode)
+Label(Label.Hash, Label.LinearSpace, Label.LeetCode)
 
 class FirstUniqueChar(object):
   def firstUniqChar(self, s):
