@@ -2,10 +2,6 @@ package com.sma.util;
 
 public class StringUtil {
 
-  /**
-   * @start: index of the starting field (inclusive)
-   * @end: index of the ending field (exclusive)
-   */
   public static String join(String[] fields, int start, int end, String connectingDelimeter){
       try{
           StringBuilder sb=new StringBuilder();
@@ -18,6 +14,31 @@ public class StringUtil {
           ex.printStackTrace();
           return null;
       }
+  }
+
+  /**
+   * @param s: string
+   * @param x: (leading or trailing) character to be deleted
+   * @param isLeading:
+   */
+  public static String removePaddingCharacters(String s, char x, boolean isLeading) {
+    if (s == null) { return s; }
+    int i;
+    if (isLeading) {
+      for (i = 0; i < s.length(); i++) {
+        if (s.charAt(i) != x) {
+          break;
+        }
+      }
+      return s.substring(i);
+    } else {
+      for (i = s.length() - 1; i >= 0; i--) {
+        if (s.charAt(i) != x) {
+          break;
+        }
+      }
+      return s.substring(0, i + 1);
+    }
   }
 
   public static char[][] toCharMatrix(String[] strs) {

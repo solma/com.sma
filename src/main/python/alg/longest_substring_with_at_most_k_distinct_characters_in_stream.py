@@ -1,6 +1,8 @@
+"""
+Given a string, find the longest substring with at most k distinct characters.
+"""
 from alg.label import Label
-
-Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.TwoOrMorePointers)
+Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.Substring, Label.TwoOrMorePointers)
 
 from collections import OrderedDict
 from collections import defaultdict

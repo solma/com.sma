@@ -1,3 +1,8 @@
+########
+BASHCONFIG_DIR=${WORKSPACE_HOME}/com.sma/src/main/shell/bashconfig/
+source ${BASHCONFIG_DIR}/git.sh
+source ${BASHCONFIG_DIR}/git_completion.sh
+########
 ############################################
 # Command alias
 ###########################################

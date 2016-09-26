@@ -6,12 +6,12 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class RemoveToProduceSmallestNumberTest extends TestCase {
+public class RemoveKDigitsTest extends TestCase {
 
   @Test
   public void testRemove() throws Exception {
     int[] res = new int[3];
-    RemoveToProduceSmallestNumber ins = new RemoveToProduceSmallestNumber();
+    RemoveKDigits ins = new RemoveKDigits();
     for (int i = 0; i < 10000; i++) {
       int n = 123 + RandomUtil.r.nextInt(100000), k = 1 + RandomUtil.r.nextInt(3);
       //int n = 69611, k = 3;
