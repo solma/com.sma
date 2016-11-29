@@ -16,33 +16,29 @@ return false.
 
 from alg.label import Label
 
-Label(Label.Array, Label.Greedy, Label.LeetCode)
+Label(Label.Array, Label.Greedy, Label.Subarray, Label.LeetCode, Label.LinearTime)
 
 class IncreasingTripletSubsequence(object):
   def increasingTriplet(self, nums):
-    small = small_idx = middle = middle_idx = old_small_idx = None
-    for i in range(len(nums)):
-      n = nums[i]
-      if small is None or n <= small:
+    small = middle = small_of_middle = float('inf')
+    for n in nums:
+      if n <= small:
         small = n
-        old_small_idx = small_idx
-        small_idx = i
-        small_idx_smaller_than_middle_idx = False
-      elif middle is None or n <= middle:
+      elif n <= middle:
         middle = n
-        middle_idx = i
-        small_idx_smaller_than_middle_idx = True
+        small_of_middle = small
       else:
-        return [small_idx if small_idx_smaller_than_middle_idx else old_small_idx, middle_idx, i]
+        return [small_of_middle, middle, n]
     return False
 
   # return only true/false
+  # 2314
   def increasingTriplet_binary(self, nums):
-    small = middle = None
+    small = middle = float('inf')
     for n in nums:
-      if small is None or n <= small:
+      if n <= small:
         small = n
-      elif middle is None or n <= middle:
+      elif n <= middle:
         middle = n
       else:
         return True

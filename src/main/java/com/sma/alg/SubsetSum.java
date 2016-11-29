@@ -1,16 +1,17 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Arithmetic;
-import static com.sma.annotation.Tag.Algorithm.Recursion;
-
 import com.sma.annotation.Tag;
 import com.sma.util.RandomUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static com.sma.annotation.Tag.Algorithm.Arithmetic;
+import static com.sma.annotation.Tag.Algorithm.Recursion;
+
+/***
+ * Given an array of numbers, partition the array into two subsets whose size differ at most by 1,
+ * find the min difference between the sum of the two sub sets.
+ */
 
 @Tag(algs = {Arithmetic, Recursion})
 public class SubsetSum {

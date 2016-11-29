@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.sma.annotation.Tag.Algorithm.DivideConquer;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.DataStructure.BinarySearchTree;
 import static com.sma.annotation.Tag.Reference.LeetCode;
@@ -17,8 +18,14 @@ import static com.sma.annotation.Tag.Reference.LeetCode;
  *  in A[i+1] ~ A[n-1] which is smaller than A[i]. Time complexity: O(nlgn)
  */
 
-@Tag(dss = {Array, BinarySearchTree}, references = {LeetCode})
+@Tag(algs = {DivideConquer}, dss = {Array, BinarySearchTree}, references = {LeetCode})
 public class CountOfSmallerNumbersAfterSelf {
+  public static void main(String[] args) {
+    int[] arr = {1, 4, 3, 2};
+    CounterInversionDivideConquer ins = new CounterInversionDivideConquer();
+    System.out.println(ins.count(arr));
+  }
+
   int[] countInversion(int[] arr) {
     BSTWithSize bst = new BSTWithSize(arr);
     return ArrayUtil.integerListToIntArray(bst.result);
@@ -62,5 +69,49 @@ public class CountOfSmallerNumbersAfterSelf {
     public String toString() {
       return String.valueOf(value);
     }
+  }
+}
+
+class CounterInversionDivideConquer {
+  int count(int[] arr) {
+    return count(arr, 0 , arr.length - 1);
+  }
+
+  private int count(int[] arr, int s, int e) {
+    assert(s <= e);
+    if (s == e) { return 0; }
+    int m = (s + e) >> 1;
+    int inversion;
+    inversion = count(arr, s, m);
+    if (m < e) {
+      inversion += count(arr, m + 1, e) + merge(arr, s, m, e);
+//      System.out.println(s + " " + m + " " + e + " " + inversion);
+    }
+    return inversion;
+  }
+
+  private int merge(int[] arr, int s, int m, int e) {
+    // merge [s, m] and [m + 1, e] and return inversion between two subarrays
+    int[] tmp = new int[e - s + 1];
+    int i = s, j = m + 1, k = 0, inversion = 0;
+    while (i <= m && j <= e) {
+      if (arr[i] <= arr[j]) {
+        tmp[k++] = arr[i++];
+      } else {
+        tmp[k++] = arr[j++];
+        inversion += m - i + 1;
+      }
+    }
+    if (i == m + 1) {
+      for (; j <= e; j++) {
+        tmp[k++] = arr[j];
+      }
+    } else {
+      for (; i <= m; i++) {
+        tmp[k++] = arr[i];
+      }
+    }
+    System.arraycopy(tmp, 0, arr, s, tmp.length);
+    return inversion;
   }
 }

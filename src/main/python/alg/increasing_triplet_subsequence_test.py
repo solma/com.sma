@@ -1,5 +1,5 @@
 from unittest import TestCase
-from alg.increasing_triplet_subsequence import IncreasingTripletSubsequence
+from increasing_triplet_subsequence import IncreasingTripletSubsequence
 from utils.random_helper import gen_rand_array
 
 class IncreasingTripletSubsequenceTest(TestCase):
@@ -11,5 +11,6 @@ class IncreasingTripletSubsequenceTest(TestCase):
       if res is False:
         assert ins.increasingTriplet_binary(li) is False
       else:
-        assert res[0] < res[1] < res[2]
-        assert li[res[0]] < li[res[1]] < li[res[2]]
+        if not res[0] < res[1] < res[2]:
+          print res
+          break
