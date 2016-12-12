@@ -4,27 +4,27 @@ import threading
 
 class Name(object):
   def __init__(self, first_name, last_name):
-    self.__first_name = first_name
-    self.__last_name = last_name
+    self._first_name = first_name
+    self._last_name = last_name
 
   @property
   def first_name(self):
-    return self.__first_name
+    return self._first_name
 
   @first_name.setter
   def first_name(self, value):
-    self.__first_name = value
+    self._first_name = value
 
   @property
   def last_name(self):
-    return self.__last_name
+    return self._last_name
 
   @last_name.setter
   def last_name(self, value):
-    self.__last_name = value
+    self._last_name = value
 
   def __str__(self):
-    return '(%s, %s)' % (self.__first_name, self.__last_name)
+    return '(%s, %s)' % (self._first_name, self._last_name)
 
 class SynchronizedListImplementation(object):
   MULTIPROCESSING_MANAGER = 1
@@ -35,7 +35,7 @@ class Family(object):
   def __init__(self, last_name,
                synchronized_approach=SynchronizedListImplementation.THREAD_LOCK):
     print 'Create a new family object'
-    self.__last_name = last_name
+    self._last_name = last_name
     self.synchronized_approach = synchronized_approach
     if self.synchronized_approach == SynchronizedListImplementation.MULTIPROCESSING_MANAGER:
       self._members = Manager().list()
@@ -45,25 +45,25 @@ class Family(object):
     self._cnt = 0
 
   def Add(self, first_name):
-    if self.synchronized_approach == SynchronizedListImplementation.THREAD_LOCK:
-      self._lock.acquire()
-    name = Name(first_name, self.__last_name)
+    # if self.synchronized_approach == SynchronizedListImplementation.THREAD_LOCK:
+    #   self._lock.acquire()
+    name = Name(first_name, self._last_name)
     if name not in self._members:
       self._members.append(name)
-    if self.synchronized_approach == SynchronizedListImplementation.THREAD_LOCK:
-      self._lock.release()
+    # if self.synchronized_approach == SynchronizedListImplementation.THREAD_LOCK:
+    #   self._lock.release()
 
   @property
   def last_name(self):
-    return self.__last_name
+    return self._last_name
 
   @last_name.setter
   def last_name(self, value):
-    self.__last_name = value
+    self._last_name = value
 
   def __str__(self):
     return '%s Family:\n%s' % (
-      self.__last_name, '\n'.join([str(name) for name in self._members]))
+      self._last_name, '\n'.join([str(name) for name in self._members]))
 
 def PrintFullName(first_name, last_name):
   return str(Name(first_name, last_name))
