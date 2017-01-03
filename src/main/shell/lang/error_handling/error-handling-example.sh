@@ -3,17 +3,16 @@ set -e
 
 # Source the file with the definition of `run` (previous code snippet).
 # Alternatively, you may paste that code directly here and comment the next line.
-source ./error_handling_utils.sh
+source error-handling-utils.sh
 
-main() {
+function main() {
   echo "--> main: $@"
   #  CLEANUP=cleanup run inner "$@" # alternative of using trap
   run inner "$@"
   echo "<-- main"
 }
 
-
-inner() {
+function inner() {
   echo "--> inner: $@"
   sleep 0.5
   if [ "$1" = 'fail' ]; then
@@ -22,8 +21,7 @@ inner() {
   echo "<-- inner"
 }
 
-
-cleanup() {
+function cleanup() {
   sleep 1
   echo "inside cleanup with ${CLEANUP_PARAM}"
 }

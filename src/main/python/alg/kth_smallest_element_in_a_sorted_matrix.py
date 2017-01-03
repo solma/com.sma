@@ -54,4 +54,4 @@ matrix = [
   [10, 11, 13],
   [12, 13, 15]
 ]
-print ins.kthSmallest(matrix, 8)
+print(ins.kthSmallest(matrix, 8))

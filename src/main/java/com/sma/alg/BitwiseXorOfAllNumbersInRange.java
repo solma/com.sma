@@ -14,7 +14,8 @@ public class BitwiseXorOfAllNumbersInRange {
   public int getXor(int a, int b) {
     return f(a - 1) ^ f(b); // cancel numbers in 0 ~ a-1
   }
-
+  
+  // f(x) = xor(0~x)
   int f(int a) {
     if (a < 0) { return 0; }
     int[] res = {a, 1, a + 1, 0};

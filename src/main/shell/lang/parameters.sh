@@ -15,7 +15,7 @@ function Parameters::Special() {
   echo $@
 }
 
-main() {
+function main() {
   FIRST="1st Param"
   SECOND="2nd Param"
   Parameters::Special "${FIRST}" "${SECOND}"

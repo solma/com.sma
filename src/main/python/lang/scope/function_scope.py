@@ -10,9 +10,10 @@ def enclosing_scope():
     try:
       enclosed_func = enclosed_func
     except NameError as e:
-      print '%s'%e
+      print('%s'%e)
+      print('class cannot access function/attributes defined at the same enclose level')
 
   return EnclosedClass
 
-enclosing_scope()
-
+if __name__ == '__main__':
+  enclosing_scope()

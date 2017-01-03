@@ -13,7 +13,7 @@
 # If `cleanup_cmd` is set, `run` will return the exit code of that
 # command. Otherwise, it will return the exit code of `cmd`.
 #
-run() {
+function run() {
   local cmd="$1"; shift
   local e_was_set=1
   if ! is_shell_attribute_set e; then
@@ -44,8 +44,7 @@ run() {
   return $exit_code
 }
 
-
-is_shell_attribute_set() { # attribute, like "x"
+function is_shell_attribute_set() { # attribute, like "x"
   case "$-" in
     *"$1"*) return 0 ;;
     *)    return 1 ;;

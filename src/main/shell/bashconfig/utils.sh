@@ -53,7 +53,6 @@ alias .3='cd ../../../'
 
 alias cdl='open ${HOME}/Dropbox/pl-books/C++-for-Java-Programmers.pdf'
 alias cds='cd ${WORKSPACE_HOME}/com.sma/src/main'
-alias cdsc='cds; cd cpp/lang'
 alias d='cd ${HOME}/Desktop/'
 alias pl='open ${HOME}/Dropbox/pl-books'
 alias pd='open $HOME/Downloads'
@@ -72,7 +71,7 @@ SFTP_FILE_MAP_REMOTE[b]="./.bashrc"
 SFTP_FILE_MAP_LOCAL[h]="/Users/solma/workspace/playground/helper.sh"
 SFTP_FILE_MAP_REMOTE[h]="workspace/helper.sh"
 
-sfu(){
+function sfu(){
 if ! [[ "$1" ]]; then
   for k in "${!SFTP_FILE_MAP_LOCAL[@]}"; do
     sfu $k
@@ -85,7 +84,7 @@ put ${SFTP_FILE_MAP_LOCAL[$1]} ${SFTP_FILE_MAP_REMOTE[$1]}
 COMMANDS
 }
 
-sfd(){
+function sfd(){
 if ! [[ "$1" ]]; then
   for k in "${!SFTP_FILE_MAP_LOCAL[@]}"; do
     sfd $k
@@ -121,9 +120,16 @@ function cdw(){
   cd $dest
 }
 
+function cdsc() {
+  cds && cd cpp/lang
+  if [[ "$1" ]]; then
+    cd $1
+  fi
+}
+
 ################## smart cd to last and next sibling directory##############
-scd(){
-  DIRLIST=/home/administrator/.bash/dirlist
+function scd(){
+  DIRLIST=$1
   : > ${DIRLIST}
   ls -l .. | grep ^d | awk '{print $NF}' >> $DIRLIST
   headdir=$(head -1 ${DIRLIST})
@@ -184,28 +190,6 @@ function ct(){
   fi
 }
 
-###### playground functions ############
-# dummy callee params consumer
-function dceec() {
-  while [[ "$1" ]]; do
-    echo "$1"
-    shift
-  done
-}
-
-# dummy callee params producer
-function dceep() {
-  fname=${FUNCNAME[ 0 ]}
-  echo "\"${fname: 0: 1} ${fname: -1}\"" "${fname: 1: 2}"
-}
-
-#dummy caller
-function dcer() {
-  params=$(dceep)
-  echo $params
-  dceec $params
-}
-
 ############# Dictionary Functions ############################
 
 # lookup a word
@@ -218,7 +202,7 @@ function def(){
 
 # add a word to a local dictionay file
 worddictionary="$HOME/EnglishNewWords.txt"
-dic(){
+function dic(){
   cdate=$(date --iso-8601=date &)
   if ! cat ${worddictionary} | egrep -x ${cdate}.* ;then
     echo -e "$cdate\r" >> "$worddictionary"
@@ -243,7 +227,7 @@ function fj() {
 
   DELIMITER=" -v " # separator for forward and backward search keywords
   match=$(echo ${KEY_WORD} | sed "s/$DELIMITER/*/g" | cut -d* -f1)
-  echo "match: ${match}"
+  echo "match: ${match} ext: ${EXT}"
   if [[ "${RETURN_FILE_PATH_ONLY}" ]]; then
     if [[ ${KEY_WORD} =~ .*${DELIMITER}.* ]]; then
         reverse=$(echo ${KEY_WORD} | sed "s/$DELIMITER/*/g" | cut -d* -f2)
@@ -372,7 +356,7 @@ sol=/media/sol
 system=/media/system
 lenovo=/media/lenovo
 #allmount
-mountall(){
+function mountall(){
   if ! [ -d ${sol} ];then sudo mkdir -p ${sol}; fi
   if ! [ -d ${system} ];then sudo mkdir -p ${system}; fi
   if ! [ -d ${lenovo} ];then sudo mkdir -p ${lenovo}; fi
@@ -380,6 +364,20 @@ mountall(){
   sudo mount -t ntfs /dev/sda5 ${sol}
   sudo mount -t ntfs /dev/sda4 ${lenovo}
 }
-umountall(){
+
+function umountall(){
   sudo umount ${sol} ${system} ${lenovo}
+}
+
+################ miscellaneous ##########################
+# Run cpp binary defined in src/main/cpp/lang
+function rcpp(){
+  # run this cmd under the directory where Makefile is defined
+  if [[ "$1" ]]; then
+    local NAME=$1
+  else
+    local NAME=$(pwd | awk -F/ '{print $NF}')
+  fi
+  make $NAME
+  bin/$NAME
 }

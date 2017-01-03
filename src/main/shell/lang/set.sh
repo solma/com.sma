@@ -10,7 +10,7 @@ function Set::-U() {
   set +u
 }
 
-main() {
+function main() {
 #  Set::-U
 
   echo "null has no special meaning in bash."
