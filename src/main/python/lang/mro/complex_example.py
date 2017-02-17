@@ -1,4 +1,4 @@
-# <mro.py>
+# <lang.mro.py>
 
 class __metaclass__(type):
   """All classes are metamagically modified to be nicely printed"""
@@ -126,4 +126,4 @@ def print_mro(C):
 
 print_mro(ex_9.Z)
 
-# </mro.py>
+# </lang.mro.py>

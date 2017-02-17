@@ -10,7 +10,7 @@ def play_with_multiple_line_string():
     """
   multiple_line_without_triple_quotes = ("line1, "
                                          "line2")
-  print multiple_line_without_triple_quotes
+  print(multiple_line_without_triple_quotes)
   # print([line for line in conf.splitlines() if '{' in line][0].split('{')[0].strip())
 
 

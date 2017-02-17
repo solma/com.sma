@@ -14,4 +14,4 @@ updated_importer_contents = re.sub(
     import "//production/borg/topic-server-dev/e1.borg" as tmpl
   ''',
   flags=re.M)
-print updated_importer_contents
+print(updated_importer_contents)
