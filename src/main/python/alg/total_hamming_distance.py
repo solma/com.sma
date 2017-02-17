@@ -13,19 +13,22 @@ showing the four bits relevant in this case). So the answer will be:
 HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
 """
 
+from alg.label import Label
+Label(Label.BitManipulation, Label.LeetCode, Label.LinearTime)
+
 class TotalHammingDistance(object):
-    def totalHammingDistance(self, nums):
-        cnt = 0
-        for i in range(32):
-            zeros, ones = 0, 0
-            for n in nums:
-                bit = (n >> i) & 1
-                if bit == 1:
-                    ones += 1
-                else:
-                    zeros += 1
-            cnt += ones * zeros
-        return cnt
+  def totalHammingDistance(self, nums):
+    cnt = 0
+    for i in range(32):
+      zeros, ones = 0, 0
+      for n in nums:
+        bit = (n >> i) & 1
+        if bit == 1:
+          ones += 1
+        else:
+          zeros += 1
+        cnt += ones * zeros
+    return cnt
 
 ins = TotalHammingDistance()
 print ins.totalHammingDistance([4, 14, 2])
