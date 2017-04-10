@@ -28,4 +28,4 @@ class FindKPairsWithSmallestSum(object):
     return pairs
 
 ins = FindKPairsWithSmallestSum()
-print ins.kSmallestPairs([1, 2, 3], [2, 5, 6], 5)
+print(ins.kSmallestPairs([1, 2, 3], [2, 5, 6], 5))

@@ -24,7 +24,7 @@ class FirstUniqueChar(object):
     return -1
 
 ins = FirstUniqueChar()
-print ins.firstUniqChar('leetcode')
-print ins.firstUniqChar('loveleetcode')
-print ins.firstUniqChar('aabb')
+print(ins.firstUniqChar('leetcode'))
+print(ins.firstUniqChar('loveleetcode'))
+print(ins.firstUniqChar('aabb'))
 

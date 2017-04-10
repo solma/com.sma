@@ -1,6 +1,7 @@
 #include <functional>
 #include <iostream>
 
+namespace { // unamed namespace
 struct Foo {
   Foo(int num) : num_(num) {}
   void print_add(int i) const {
@@ -24,10 +25,30 @@ struct PrintNum {
   }
 };
 
+
+class BindClassMemberMethod {
+ public:
+   void fooMinus(const std::string & msg, int a, int b) const {
+     std::cout << msg << ": " << a - b << std::endl;
+   }
+
+   void partialFooMinus() const {
+     // bind a class member function within the class body
+     // 2nd paramter is an instance of the class
+     auto bind_member = std::bind(&BindClassMemberMethod::fooMinus, this, "inside class", std::placeholders::_1, 0);
+     bind_member(2);
+   }
+};
+} // namespace
+
 int main() {
   // store a free function
   std::function<void(int)> f_display = print_num;
-  f_display(-9);
+  f_display(0);
+
+  // bind a free function
+  f_display = std::bind(print_num, std::placeholders::_1);
+  f_display(1);
 
   // store a lambda
   std::function<void()> f_display_42 = []() { print_num(42); };
@@ -52,14 +73,19 @@ int main() {
 
   // store a call to a member function and object
   using std::placeholders::_1;
-  std::function<void(int)> f_add_display2 = std::bind( &Foo::print_add, foo, _1 );
+  std::function<void(int)> f_add_display2 = std::bind(&Foo::print_add, foo, _1 );
   f_add_display2(2);
 
   // store a call to a member function and object ptr
-  std::function<void(int)> f_add_display3 = std::bind( &Foo::print_add, &foo, _1 );
+  std::function<void(int)> f_add_display3 = std::bind(&Foo::print_add, &foo, _1 );
   f_add_display3(3);
 
   // store a call to a function object
   std::function<void(int)> f_display_obj = PrintNum();
   f_display_obj(18);
+
+  BindClassMemberMethod bar;
+  bar.partialFooMinus();
+  auto bind_member = std::bind(&BindClassMemberMethod::fooMinus, bar, "bind 2nd parameter of a member function", std::placeholders::_1, 2);
+  bind_member(2);
 }

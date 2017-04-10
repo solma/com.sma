@@ -1,4 +1,4 @@
-class Label():
+class Label(object):
   """ Labels for class """
 
   def __init__(self, *args):

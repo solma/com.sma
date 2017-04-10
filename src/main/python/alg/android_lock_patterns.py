@@ -17,13 +17,13 @@ is visited before connecting 6 and 2.
 Find out the number of valid patterns.
 """
 from alg.label import Label
-from utils.decorators import elapsedtime
+from utils.decorators import profile
 from utils.decorators import memoize
 Label(Label.Backtracking, Label.GraphTheory, Label.Interview, Label.LeetCode)
 
 
 class AndroidLockPatterns(object):
-  @elapsedtime
+  @profile
   def android_lock_patterns(self):
     def is_neighbor(visited, cur_idx, next_idx):
       return (abs(cur_idx % 3 - next_idx % 3) == 1 or
@@ -48,7 +48,7 @@ class AndroidLockPatterns(object):
       cnt += 1 if len(permutation) >= 4 else 0
       return cnt
 
-    print "cnt = " + str(dfs([]))
+    print("cnt = " + str(dfs([])))
 
 ins = AndroidLockPatterns()
 ins.android_lock_patterns()

@@ -10,11 +10,11 @@ def memoize(hash_func = lambda args : args):
     return memorized
   return memoize_wrap
 
-def elapsedtime(f):
+def profile(f):
   def timed(*args, **kwargs):
     import time
     start = time.time()
     f(*args, **kwargs)
     end = time.time()
-    print "running time (in secs): " + str(end - start)
+    print("running time (in secs): " + str(end - start))
   return timed

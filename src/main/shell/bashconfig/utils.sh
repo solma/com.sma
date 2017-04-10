@@ -378,6 +378,5 @@ function rcpp(){
   else
     local NAME=$(pwd | awk -F/ '{print $NF}')
   fi
-  make $NAME
-  bin/$NAME
+  make $NAME && bin/$NAME
 }
