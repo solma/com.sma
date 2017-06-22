@@ -14,7 +14,7 @@ public class HouseRobber {
     return rob1(num, 0, num.length - 1);
   }
 
-  int rob1(int[] num, int start, int end) {
+  public int rob1(int[] num, int start, int end) {
     int n = end - start + 1;
     if (n == 0) { return 0; }
     int notRobCurMax = 0;
@@ -27,7 +27,7 @@ public class HouseRobber {
     return ret;
   }
 
-  int rob2(int[] num, int start, int end) {
+  public int rob2(int[] num, int start, int end) {
     int n = end - start + 1;
     if (n <= 0) { return 0; }
     int[] dp = new int[n];
@@ -73,7 +73,7 @@ public class HouseRobber {
     return ret;
   }
 
-  int rob1Circle(int[] num, int start, int end) {
+  public int rob1Circle(int[] num, int start, int end) {
     int n = end - start + 1;
     if (n == 0) {
       return 0;

@@ -13,6 +13,13 @@ def play_with_multiple_line_string():
   print(multiple_line_without_triple_quotes)
   # print([line for line in conf.splitlines() if '{' in line][0].split('{')[0].strip())
 
+def encode():
+  raw_iteral = u'你好，世界'
+  raw_iteral_in_unicode = raw_iteral.encode('utf-8')
+  escaped_iteral_in_unicode = repr(raw_iteral_in_unicode)
+  for s in [raw_iteral, raw_iteral_in_unicode, escaped_iteral_in_unicode]:
+    print(s)
 
 if __name__ == "__main__":
-  play_with_multiple_line_string()
+  # play_with_multiple_line_string()
+  encode()
