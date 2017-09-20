@@ -12,7 +12,7 @@ class CountDistinctNumbers(object):
       """
       direct hash
       """
-      import math as m
+      import mathproblems as m
       bm = [0] * int(m.ceil(N / 8.0))
       for r in li:
         bm[(r - 1) / 8] |= 0x1 << (r - 1) % 8

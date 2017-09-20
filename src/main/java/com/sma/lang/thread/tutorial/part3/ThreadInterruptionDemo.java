@@ -26,16 +26,14 @@ class ThreadA extends Thread {
   public void run() {
     int sleepTime = (int) (Math.random() * 10000);
 
-    System.out.println(getName() + " sleeping for " + sleepTime +
-        " milliseconds.");
+    System.out.println(getName() + " sleeping for " + sleepTime + " milliseconds.");
 
     try {
       Thread.sleep(sleepTime);
     } catch (InterruptedException e) {
     }
 
-    System.out.println(getName() + " waking up, interrupting other " +
-        "thread and terminating.");
+    System.out.println(getName() + " waking up, interrupting other " + "thread and terminating.");
     thdOther.interrupt();
   }
 }

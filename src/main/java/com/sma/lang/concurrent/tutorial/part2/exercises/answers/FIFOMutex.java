@@ -7,7 +7,7 @@ import java.util.concurrent.locks.LockSupport;
 
 public class FIFOMutex {
   private final AtomicBoolean locked = new AtomicBoolean(false);
-  private final Queue<Thread> waiters = new ConcurrentLinkedQueue<Thread>();
+  private final Queue<Thread> waiters = new ConcurrentLinkedQueue<>();
 
   public void lock() {
     boolean wasInterrupted = false;
@@ -22,8 +22,9 @@ public class FIFOMutex {
     }
 
     waiters.remove();
-    if (wasInterrupted)          // reassert interrupt status on exit
+    if (wasInterrupted) {  // reassert interrupt status on exit
       current.interrupt();
+    }
   }
 
   public void unlock() {

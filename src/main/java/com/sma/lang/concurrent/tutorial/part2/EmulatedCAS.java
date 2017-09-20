@@ -9,8 +9,9 @@ public class EmulatedCAS {
 
   public synchronized int compareAndSwap(int expectedValue, int newValue) {
     int readValue = value;
-    if (readValue == expectedValue)
+    if (readValue == expectedValue) {
       value = newValue;
+    }
     return readValue;
   }
 }

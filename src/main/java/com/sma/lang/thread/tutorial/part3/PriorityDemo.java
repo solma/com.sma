@@ -1,78 +1,64 @@
 package com.sma.lang.thread.tutorial.part3;
 // PriorityDemo.java
 
-public class PriorityDemo
-{
-   public static void main (String [] args)
-   {
-      BlockingThread bt = new BlockingThread ();
-      bt.setPriority (Thread.NORM_PRIORITY + 1);
 
-      CalculatingThread ct = new CalculatingThread ();
+public class PriorityDemo {
+  public static void main(String[] args) {
+    BlockingThread bt = new BlockingThread();
+    bt.setPriority(Thread.NORM_PRIORITY + 1);
 
-      bt.start ();
-      ct.start ();
+    CalculatingThread ct = new CalculatingThread();
 
-      try
-      {
-          Thread.sleep (10000);
-      }
-      catch (InterruptedException e)
-      {
-      }
+    bt.start();
+    ct.start();
 
-      bt.setFinished (true);
-      ct.setFinished (true);
-   }
+    try {
+      Thread.sleep(10000);
+    } catch (InterruptedException e) {
+    }
+
+    bt.setFinished(true);
+    ct.setFinished(true);
+  }
 }
 
-class BlockingThread extends Thread
-{
-   private boolean finished = false;
 
-   public void run ()
-   {
-      while (!finished)
-      {
-         try
-         {
-            int i;
+class BlockingThread extends Thread {
+  private boolean finished = false;
 
-            do
-            {
-               i = System.in.read ();
-               System.out.print (i + " ");
-            }
-            while (i != '\n');
+  public void run() {
+    while (!finished) {
+      try {
+        int i;
 
-            System.out.print ('\n');
-         }
-         catch (java.io.IOException e)
-         {
-         }
+        do {
+          i = System.in.read();
+          System.out.print(i + " ");
+        } while (i != '\n');
+
+        System.out.print('\n');
+      } catch (java.io.IOException e) {
       }
-   }
+    }
+  }
 
-   public void setFinished (boolean f)
-   {
-      finished = f;
-   }
+  public void setFinished(boolean f) {
+    finished = f;
+  }
 }
 
-class CalculatingThread extends Thread
-{
-   private boolean finished = false;
 
-   public void run ()
-   {
-      int sum = 0;
+class CalculatingThread extends Thread {
+  private boolean finished = false;
 
-      while (!finished)
-         sum++;
-   }
+  public void run() {
+    int sum = 0;
 
-   public void setFinished (boolean f)
-   {
-      finished = f;
-   }
+    while (!finished)
+      sum++;
+  }
+
+  public void setFinished(boolean f) {
+    finished = f;
+  }
 }

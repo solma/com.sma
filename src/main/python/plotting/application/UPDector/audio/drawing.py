@@ -5,7 +5,7 @@ Created on Sep 18, 2013
 '''
 from pylab import *
 from scipy.io.wavfile import read
-from math import *
+from mathproblems import *
 
 
 def plotSpectrogram(data, Fs):

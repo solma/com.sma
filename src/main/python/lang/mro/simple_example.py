@@ -86,8 +86,10 @@ def demo_print():
       super(DBCA, self).__init__()
       print('DBCA leave')
 
-  DBCA()
+  ins = DBCA()
+  print(DBCA.mro())
   DBC()
+
 
 
 # demo_init()

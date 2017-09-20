@@ -12,9 +12,9 @@ public class Clock1 {
     Timer t = new Timer();
 
     t.schedule(new TimerTask() {
-                 public void run() {
-                   System.out.println(new Date().toString());
-                 }
-               }, 0, 1000);
+      public void run() {
+        System.out.println(new Date().toString());
+      }
+    }, 0, 1000);
   }
 }

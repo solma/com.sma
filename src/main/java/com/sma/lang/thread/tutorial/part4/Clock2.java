@@ -12,10 +12,10 @@ public class Clock2 {
     Timer t = new Timer();
 
     t.scheduleAtFixedRate(new TimerTask() {
-                            public void run() {
-                              System.out.println(new Date().
-                                  toString());
-                            }
-                          }, 0, 1000);
+      public void run() {
+        System.out.println(new Date().
+            toString());
+      }
+    }, 0, 1000);
   }
 }

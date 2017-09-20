@@ -8,14 +8,16 @@ public class YieldDemo extends Thread {
     new YieldDemo().start();
     for (int i = 1; i <= 200000; i++) {
       sum++;
-      if (args.length == 0)
+      if (args.length == 0) {
         Thread.yield();
+      }
     }
     finished = true;
   }
 
   public void run() {
-    while (!finished)
+    while (!finished) {
       System.out.println("sum = " + sum);
+    }
   }
 }

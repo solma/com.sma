@@ -14,11 +14,6 @@ void print_num(int i) {
   std::cout << i << '\n';
 }
 
-void print_no_arg() {
-  for (int i = 6; i < 9; i++) { std::cout << i; }
-  std::cout << std::endl;
-}
-
 struct PrintNum {
   void operator()(int i) const {
     std::cout << i << '\n';
@@ -26,8 +21,14 @@ struct PrintNum {
 };
 
 
-class BindClassMemberMethod {
+class FooClass {
+
  public:
+   static void print_no_arg() {
+           for (int i = 6; i < 9; i++) { std::cout << i; }
+           std::cout << std::endl;
+         }
+
    void fooMinus(const std::string & msg, int a, int b) const {
      std::cout << msg << ": " << a - b << std::endl;
    }
@@ -35,7 +36,7 @@ class BindClassMemberMethod {
    void partialFooMinus() const {
      // bind a class member function within the class body
      // 2nd paramter is an instance of the class
-     auto bind_member = std::bind(&BindClassMemberMethod::fooMinus, this, "inside class", std::placeholders::_1, 0);
+     auto bind_member = std::bind(&FooClass::fooMinus, this, "inside class", std::placeholders::_1, 0);
      bind_member(2);
    }
 };
@@ -59,7 +60,7 @@ int main() {
   f_display_431333();
 
   // store the result of a call without args to std::bind
-  std::function<void()> f_display_678 = std::bind(print_no_arg);
+  std::function<void()> f_display_678 = std::bind(FooClass::print_no_arg);
   f_display_678();
 
   // store a call to a member function
@@ -84,8 +85,8 @@ int main() {
   std::function<void(int)> f_display_obj = PrintNum();
   f_display_obj(18);
 
-  BindClassMemberMethod bar;
+  FooClass bar;
   bar.partialFooMinus();
-  auto bind_member = std::bind(&BindClassMemberMethod::fooMinus, bar, "bind 2nd parameter of a member function", std::placeholders::_1, 2);
+  auto bind_member = std::bind(&FooClass::fooMinus, bar, "bind 2nd parameter of a member function", std::placeholders::_1, 2);
   bind_member(2);
 }

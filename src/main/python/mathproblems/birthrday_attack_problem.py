@@ -1,5 +1,5 @@
 from utils import math_helper
-from math import log1p, sqrt
+from mathproblems import log1p, sqrt
 
 DEFAULT_OUTPUT_SPACE_SIZE = 365.
 DEFAULT_SAMPLE_SIZE_FOR_COLLISION = 23.

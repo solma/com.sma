@@ -12,11 +12,11 @@ public class ProdCons1 {
   static class Shared {
     private char c = '\u0000';
 
-    void setSharedChar(char c) {
+    void produceSharedChar(char c) {
       this.c = c;
     }
 
-    char getSharedChar() {
+    char consumeSharedChar() {
       return c;
     }
   }
@@ -32,10 +32,10 @@ public class ProdCons1 {
     public void run() {
       for (char ch = 'A'; ch <= 'Z'; ch++) {
         try {
-          Thread.sleep((int) (Math.random() * 4000));
+          Thread.sleep((int) (Math.random() * 1000));
         } catch (InterruptedException e) {}
 
-        s.setSharedChar(ch);
+        s.produceSharedChar(ch);
         System.out.println(ch + " produced by producer.");
       }
     }
@@ -54,10 +54,10 @@ public class ProdCons1 {
 
       do {
         try {
-          Thread.sleep((int) (Math.random() * 4000));
+          Thread.sleep((int) (Math.random() * 1000));
         } catch (InterruptedException e) {}
 
-        ch = s.getSharedChar();
+        ch = s.consumeSharedChar();
         System.out.println(ch + " consumed by consumer.");
       } while (ch != 'Z');
     }

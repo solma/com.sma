@@ -2,7 +2,7 @@
 # Code modified based on https://github.com/mattm/simple-neural-network/blob/master/neural-network.py
 # Ref: http://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
 import random
-import math
+import mathproblems
 
 #
 # Shorthand:

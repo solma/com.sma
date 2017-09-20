@@ -121,8 +121,9 @@ public class BitUtil {
 
   /** Multiplication implementation using bit and comparison operators only. */
   public static long multiply(long x, long y) {
-    if (x == 0 || y == 0)
+    if (x == 0 || y == 0) {
       return 0;
+    }
     boolean negative = x < 0 ^ y < 0;
     if (x < 0) {
       x = add(~x, 1);

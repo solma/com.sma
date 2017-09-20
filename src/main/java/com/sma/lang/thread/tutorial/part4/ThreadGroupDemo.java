@@ -12,8 +12,7 @@ public class ThreadGroupDemo {
 
     tg = Thread.currentThread().getThreadGroup();
     int agc = tg.activeGroupCount();
-    System.out.println("Active thread groups in " + tg.getName() +
-        " thread group: " + agc);
+    System.out.println("Active thread groups in " + tg.getName() + " thread group: " + agc);
 
     tg.list();
   }

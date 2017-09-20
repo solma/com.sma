@@ -1,16 +1,16 @@
 package com.sma.alg;
 
 /**
- * given a set of {x: N}, where x is a character and N is the number x should be used. put all
+ * Given a set of {x: N}, where x is a character and N is the number x should be used. put all
  * characters in one line such that for any x, no two occurrences of x are next to each other.
  */
-import static com.sma.annotation.Tag.Algorithm.Greedy;
-import static com.sma.annotation.Tag.DataStructure.StringT;
-import static com.sma.annotation.Tag.Reference.Interview;
-
 import com.sma.annotation.Tag;
 
 import java.util.PriorityQueue;
+
+import static com.sma.annotation.Tag.Algorithm.Greedy;
+import static com.sma.annotation.Tag.DataStructure.StringT;
+import static com.sma.annotation.Tag.Reference.Interview;
 
 @Tag(algs = Greedy, dss = {StringT, Tag.DataStructure.PriorityQueueT}, references = Interview)
 public class SeperateSameLetters {

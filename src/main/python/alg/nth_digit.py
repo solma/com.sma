@@ -34,7 +34,7 @@ class NthDigit(object):
       i += 1
       li.append(sum)
 
-    import bisect, math
+    import bisect, mathproblems
     idx = bisect.bisect_left(li, n)
     reminder = n - (li[idx - 1] if idx > 0 else 0)
     if reminder == 0:

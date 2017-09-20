@@ -34,7 +34,7 @@ public class CondDemo {
       return lock;
     }
 
-    char getSharedChar() {
+    char consumeSharedChar() {
       lock.lock();
       try {
         while (!available)
@@ -51,7 +51,7 @@ public class CondDemo {
       }
     }
 
-    void setSharedChar(char c) {
+    void produceSharedChar(char c) {
       lock.lock();
       try {
         while (available)
@@ -89,7 +89,7 @@ public class CondDemo {
     @Override public void run() {
       for (char ch = 'A'; ch <= 'Z'; ch++) {
         l.lock();
-        s.setSharedChar(ch);
+        s.produceSharedChar(ch);
         System.out.println(ch + " produced by producer.");
         l.unlock();
       }
@@ -117,7 +117,7 @@ public class CondDemo {
       char ch;
       do {
         l.lock();
-        ch = s.getSharedChar();
+        ch = s.consumeSharedChar();
         System.out.println(ch + " consumed by consumer.");
         l.unlock();
       } while (ch != 'Z');
