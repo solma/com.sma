@@ -1,7 +1,7 @@
-TARGETS=function_pointer copy_ellision return_value
+TARGETS=function_pointer copy_elision return_value
 
-copy_ellision: copy_ellision.cc dummy_class.h
-	g++ -std=c++14 -o bin/copy_ellision copy_ellision.cc
+copy_elision: copy_elision.cc dummy_class.h
+	g++ -std=c++14 -o bin/copy_elision copy_elision.cc
 
 function_pointer: function_pointer.cc
 	g++ -std=c++14 -o bin/function_pointer function_pointer.cc
