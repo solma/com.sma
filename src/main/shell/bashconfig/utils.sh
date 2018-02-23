@@ -18,7 +18,7 @@ alias zrc='vim $HOME/.zshrc'
 alias kd='killall Dock' # quick fix for three-finger gesture failure on Mac
 alias mnt='sudo ~/Dropbox/ntfs.sh'
 alias python='python2.7'
-alias top='top -o mem'
+alias topm='top -o %MEM'
 alias umnt='sudo umount -f /Volumes/SeagateBackupPlusDrive/' # eject mounted volume
 
 # show hidden files in Finder
@@ -200,16 +200,19 @@ function def(){
     dict "$1"
 }
 
-# add a word to a local dictionay file
+# add a word to a local dictionary file
 worddictionary="$HOME/EnglishNewWords.txt"
 function dic(){
-  cdate=$(date --iso-8601=date &)
-  if ! cat ${worddictionary} | egrep -x ${cdate}.* ;then
-    echo -e "$cdate\r" >> "$worddictionary"
-  fi
+#  cdate=$(date --iso-8601=date &)
+#  # save the date
+#  if ! cat ${worddictionary} | egrep -x ${cdate}.* ;then
+#    echo -e "$cdate\r" >> "$worddictionary"
+#  fi
+  # save the word only when the lookup returns successfully
   if dict $1 ;then
-  # save the word only when the lookup returns succesfully
     echo -e "$1\r" >> "$worddictionary"
+    # dedup and sort alphabetically
+    sort -d -u ${worddictionary} -o ${worddictionary}
   fi
 }
 alias word="less $worddictionary"

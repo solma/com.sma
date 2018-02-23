@@ -3,7 +3,7 @@ Args:
   agi: adjusted gross income
   tax_brackets: list of triples
 """
-def calculate_tax(agi=0, tax_brackets=[]):
+def calculate_tax(agi, tax_brackets):
   tax_brackets = sorted(tax_brackets)
   tax = 0
   for lo, hi, rate in tax_brackets:
