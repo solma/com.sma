@@ -33,7 +33,7 @@ def surface():
   ax.set_zlim(0, 50000)
   # plt.show()
 
-  fig.savefig('/Users/solma/Desktop/surface.png')
+  fig.savefig('/tmp/surface.png')
 
 
 def linear():

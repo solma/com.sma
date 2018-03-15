@@ -1,3 +1,4 @@
+from mpl_toolkits.mplot3d import axes3d
 from pylab import *
 
 x = linspace(-5, 5, 300)
