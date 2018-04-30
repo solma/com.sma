@@ -25,4 +25,4 @@ if __name__ == "__main__":
 
   pylab.plt.grid()
   pylab.plt.show()
-  # fig.savefig('/Users/solma/Desktop/geometry.png')
+  fig.savefig('/home/solma/geometry.png')
