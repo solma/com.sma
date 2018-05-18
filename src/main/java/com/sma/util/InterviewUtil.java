@@ -1,7 +1,9 @@
-package main.java.com.sma.util;
+package com.sma.util;
 
 
 import com.sma.alg.HouseRobber;
+
+import java.util.Arrays;
 
 import static com.sma.util.RandomUtil.genRandomArray;
 
@@ -17,7 +19,7 @@ public class InterviewUtil {
       int ground_truth = ins.rob(arr);
       int candidate  = CandidateImpl(arr);
       if (ground_truth != candidate) {
-        System.out.println(arr);
+        System.out.println(Arrays.toString(arr));
         System.out.println(ground_truth + " " +candidate);
       }
     }
