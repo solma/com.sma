@@ -2,8 +2,8 @@ from collections import Counter
 
 def demo():
 
-  def pprint(msg, ctr):
-    print msg + " : " + str(ctr)
+  def my_print(msg, ctr):
+    print(msg + " : " + str(ctr))
 
   def RemoveZeroCnt(ctr):
     zero_cnts = [ele for ele in set(ctr) if ctr[ele] == 0]
@@ -18,17 +18,17 @@ def demo():
       freq[k] /= tot_sum * 1.0
     return freq
 
-  li = range(1, 10, 2) + range(2, 10, 3) + range(3, 10, 4)
+  li = list(range(1, 10, 2)) + list(range(2, 10, 3)) + list(range(3, 10, 4))
   ctr = Counter(li)
-  pprint("Initially", ctr)
-  pprint("All keys", list(ctr))
-  pprint("All elements", list(ctr.elements()))
+  my_print("Initially", ctr)
+  my_print("All keys", list(ctr))
+  my_print("All elements", list(ctr.elements()))
   ctr.subtract([1, 2, 3])
-  pprint("After subtraction", ctr)
-  pprint("After removing zero counts", RemoveZeroCnt(ctr))
+  my_print("After subtraction", ctr)
+  my_print("After removing zero counts", RemoveZeroCnt(ctr))
   ctr.update([1, 2])
-  pprint("After addition", ctr)
-  pprint("Converted to frequency", ConvertToPercentage(ctr))
+  my_print("After addition", ctr)
+  my_print("Converted to frequency", ConvertToPercentage(ctr))
 
 if __name__ == '__main__':
   demo()
