@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest import mock
 
-from src.main.python.lang.mock.mock_example import MyClass
+from lang.mock_example import MyClass
 
 
 class MyClassTest(TestCase):
