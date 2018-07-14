@@ -4,6 +4,8 @@ import itertools
 from utils.decorators import timer
 from utils.decorators import memoize
 
+# Requires python3 because use '/' for float division.
+
 HAND_SIZE = 4
 
 @timer
@@ -48,9 +50,6 @@ def game_24(hand, target=24):
               if n < HAND_SIZE or diff == target:
                 add_expressions(part2_exprs, v2, part1_exprs, v1, diff, '-')
 
-              # if v1 == 96 or v2 == 96:
-              #   print(str(v1) + ':' + str(v2))
-              #   print(str(idx_set) + '\n' + str(part1_exprs) + '\n' + str(part2_exprs))
               if v2 != 0:
                 div = v1 / v2 * 1.0
                 if n < HAND_SIZE or div == target:
@@ -74,11 +73,12 @@ hands = [
   [11, 11, 1, 5],
   [11, 13, 1, 6]
 ]
-# hands = [rh.gen_rand_array(l=4, max_num=13, can_be_zero=False, can_be_negative=False) for _ in range(100)]
+hands = [rh.gen_rand_array(l=4, max_num=13, can_be_zero=False, can_be_negative=False) for _ in range(100)]
 for hand in hands:
-  print(str(hand) + '\n')
+  print(str(hand))
   sols = game_24(hand)
   print('\n'.join(sols))
+  print('\n')
 
 
 
