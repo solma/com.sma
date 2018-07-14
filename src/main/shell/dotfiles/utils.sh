@@ -51,7 +51,8 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias .3='cd ../../../'
 
-alias open=xdg-open
+# xde-open is for linux
+#alias open=xdg-open
 alias cdl='open ${HOME}/Dropbox/pl-books/C++-for-Java-Programmers.pdf'
 alias cds='cd ${WORKSPACE_HOME}/com.sma/src/main'
 alias d='cd ${HOME}/Desktop/'
