@@ -1,7 +1,7 @@
 # binary files
 *.class
 *.pyc
-libs/
+
 # ignore any child folder named bin
 **/bin/
 **/playground
@@ -10,10 +10,20 @@ target/
 # media files
 *.png
 
+# Libraries
+libs/
+lib/
+
 # IDE related
 .idea/
 *.iml
 .DS_Store
 .classpath
 .project
-lib/
+
+# python runtime
+.Python
+include/
+out/
+pip-selfcheck.json
+venv/
