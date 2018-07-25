@@ -1,10 +1,15 @@
-# binary files
+# binary/object files
 *.class
 *.pyc
+*.so
+*.o
+*.profraw
 
-# ignore any child folder named bin
+# ignore any child folder that is binary.build related
 **/bin/
 **/playground
+**/build.temp.*
+
 target/
 
 # media files

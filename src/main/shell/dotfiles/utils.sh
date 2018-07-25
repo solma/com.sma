@@ -14,6 +14,15 @@ alias du='du -ch'
 alias h='history'
 alias zrc='vim $HOME/.zshrc'
 
+# Mac related
+
+function brew_link() {
+	# Usage: brew_link /usr/local/Cellar/swig/3.0.12/bin/swig swig
+	source_file=$1
+	bin=$2
+	sudo ln -s $1 /usr/local/bin/$2
+}
+
 #http://apple.stackexchange.com/questions/128402/three-finger-trackpad-gesture-on-mission-control-and-expose-not-working-in-my-ma
 alias kd='killall Dock' # quick fix for three-finger gesture failure on Mac
 alias mnt='sudo ~/Dropbox/ntfs.sh'

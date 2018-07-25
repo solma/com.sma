@@ -5,8 +5,6 @@ import com.sma.alg.HouseRobber;
 
 import java.util.Arrays;
 
-import static com.sma.util.RandomUtil.genRandomArray;
-
 public class InterviewUtil {
   public static void main(String args[]) {
     new InterviewUtil().main();
@@ -14,8 +12,9 @@ public class InterviewUtil {
 
   void main() {
     com.sma.alg.HouseRobber ins = new HouseRobber();
-    for (int i = 0; i < 10; i++) {
-      int[] arr = genRandomArray(5, 5, true, true);
+    for (int i = 0; i < 1; i++) {
+      //int[] arr = genRandomArray(5, 5, true, true);
+      int[] arr = {-1, -2, 100};
       int ground_truth = ins.rob(arr);
       int candidate  = CandidateImpl(arr);
       if (ground_truth != candidate) {
