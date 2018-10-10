@@ -368,7 +368,6 @@ function ucup {
   rm ~/Desktop/"${ZIP_FILE}"
 }
 
-
 ############ automatically u/mount partitions of window7 ###################
 sol=/media/sol
 system=/media/system
