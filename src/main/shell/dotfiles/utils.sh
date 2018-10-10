@@ -8,6 +8,7 @@ source ${BASHCONFIG_DIR}/git_completion.sh
 ###########################################
 alias bc='bc -l'
 alias brc='vim $HOME/.bash_profile' # shortcut to bash profile
+alias crontab_history='grep CRON /var/log/syslog'
 alias cls='clear'
 alias df='df -H'
 alias du='du -ch'
