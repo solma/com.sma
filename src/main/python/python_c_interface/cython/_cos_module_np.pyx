@@ -16,5 +16,5 @@ cdef extern from "cos_module_np.h":
 def cos_np_func(np.ndarray[double, ndim=1, mode="c"] in_array not None,
                 np.ndarray[double, ndim=1, mode="c"] out_array not None):
     cos_np(<double*> np.PyArray_DATA(in_array),
-                <double*> np.PyArray_DATA(out_array),
-                in_array.shape[0])
+           <double*> np.PyArray_DATA(out_array),
+           in_array.shape[0])

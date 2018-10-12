@@ -8,12 +8,10 @@ def rob(arr):
     return max(arr)
   # prev/cur is the max utility at current/previous index
   prev, cur = 0, arr[0]
-  ret = cur
   for i in range(1, n):
     # cur = case not using arr[i];   max(prev, 0) + arr[i] = case using arr[i]
     tmp = max(cur, max(prev, 0) + arr[i])
     prev = cur
     cur = tmp
-    ret = max(ret, cur)
-  return ret
+  return cur
 

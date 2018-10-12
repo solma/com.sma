@@ -28,7 +28,8 @@ def home():
       if i == 0:
         continue
       dt = datetime.datetime.strptime(line[0], '%m/%d/%Y')
-      if dt < datetime.datetime.strptime('1/01/2017', '%m/%d/%Y'):
+      if (dt < datetime.datetime.strptime('1/01/2018', '%m/%d/%Y') or
+          dt > datetime.datetime.strptime('1/01/2019', '%m/%d/%Y')):
         continue
       cost = float(line[3])
       notes = line[-1].lower()
