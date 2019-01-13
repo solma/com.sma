@@ -80,9 +80,9 @@ def test():
       res1 = ins.merge_intersected_sets(case)
       res2 = ins.merge_intersected_sets_1(case)
       if res1 != res2:
-        print case
-        print res1
-        print res2
+        print(case)
+        print(res1)
+        print(res2)
       assert res1 == res2
 
   ins = MergeIntersectedSets()
@@ -90,3 +90,5 @@ def test():
   automated_test_cases()
 
 test()
+import sys
+print(sys.path)

@@ -15,5 +15,19 @@ def enclosing_scope():
 
   return EnclosedClass
 
+import functools
+
+def func_closure():
+  funcs = []
+  for i in range(3):
+    def f1():
+      return i
+    def f2(i):
+      return i
+    funcs.append((f1, functools.partial(f2, i)))
+  return funcs
+
 if __name__ == '__main__':
-  enclosing_scope()
+  # enclosing_scope()
+  for i, (f1, f2) in enumerate(func_closure()):
+    print('idx: %d, f1: %d, f2: %d' %(i, f1(), f2()))
