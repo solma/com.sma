@@ -36,24 +36,13 @@ class NeuralNetwork:
     self.output_layer = NeuralNetwork.NeuronLayer(
       num_outputs, output_layer_bias, activation_func, activation_d_func)
 
-    self.init_weights_from_inputs_to_hidden_layer_neurons(hidden_layer_weights)
-    self.init_weights_from_hidden_layer_neurons_to_output_layer_neurons(output_layer_weights)
+    self.init_weights(self.hidden_layer, self.num_inputs, hidden_layer_weights)
+    self.init_weights(self.output_layer, len(self.hidden_layer.neurons), output_layer_weights)
 
-  def init_weights_from_inputs_to_hidden_layer_neurons(self, hidden_layer_weights):
-    weight_idx = 0
-    for h in range(len(self.hidden_layer.neurons)):
-      for _ in range(self.num_inputs):
-        self.hidden_layer.neurons[h].weights.append(
-          random.random() if hidden_layer_weights is None else hidden_layer_weights[weight_idx])
-        weight_idx += 1
 
-  def init_weights_from_hidden_layer_neurons_to_output_layer_neurons(self, output_layer_weights):
-    weight_idx = 0
-    for o in range(len(self.output_layer.neurons)):
-      for h in range(len(self.hidden_layer.neurons)):
-        self.output_layer.neurons[o].weights.append(
-          random.random() if output_layer_weights is None else output_layer_weights[weight_idx])
-        weight_idx += 1
+  def init_weights(self, layer, num_inputs, layer_weights):
+    for h in range(len(layer.neurons)):
+      layer.neurons[h].weights = layer_weights[h] if layer_weights else [random.random() for _ in range(num_inputs)]
 
   def inspect(self):
     print('------')
@@ -233,9 +222,9 @@ def foo_example():
   """
   nn = NeuralNetwork(
     2, 2, 2,
-    hidden_layer_weights=[0.15, 0.2, 0.25, 0.3],
+    hidden_layer_weights=[[0.15, 0.2], [0.25, 0.3]],
     hidden_layer_bias=0.35,
-    output_layer_weights=[0.4, 0.45, 0.5, 0.55],
+    output_layer_weights=[[0.4, 0.45], [0.5, 0.55]],
     output_layer_bias=0.6)
   for i in range(10001):
     nn.train([0.05, 0.1], [0.01, 0.99])

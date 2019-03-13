@@ -24,10 +24,14 @@ def func_closure():
       return i
     def f2(i):
       return i
-    funcs.append((f1, functools.partial(f2, i)))
+    def f3(i):
+      def f():
+        return i
+      return f
+    funcs.append((f1, functools.partial(f2, i), f3(i)))
   return funcs
 
 if __name__ == '__main__':
   # enclosing_scope()
-  for i, (f1, f2) in enumerate(func_closure()):
-    print('idx: %d, f1: %d, f2: %d' %(i, f1(), f2()))
+  for i, (f1, f2, f3) in enumerate(func_closure()):
+    print('idx: %d, f1: %d, f2: %d, f3: %d' %(i, f1(), f2(), f3()))
