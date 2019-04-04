@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function Escaping::Parameters() {
+Escaping::Parameters() {
   IFS=:
   FIRST=$1
   SECOND=$2
@@ -15,7 +15,7 @@ function Escaping::Parameters() {
   echo $@
 }
 
-function Escaping::Dummy() {
+Escaping::Dummy() {
 # https://goo.gl/utcoeB
   echo \\s
   echo '\\s'
@@ -24,7 +24,7 @@ function Escaping::Dummy() {
   echo "'\\\s'"
 }
 
-function main() {
+main() {
   FIRST="1st Param"
   SECOND="2nd Param"
 #  Escaping::Parameters "${FIRST}" "${SECOND}"

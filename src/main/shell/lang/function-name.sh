@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # dummy callee params consumer
-function dceec() {
+dceec() {
   while [[ "$1" ]]; do
     echo "$1"
     shift
@@ -8,13 +8,13 @@ function dceec() {
 }
 
 # dummy callee params producer
-function dceep() {
+dceep() {
   fname=${FUNCNAME[ 0 ]}
   echo "\"${fname: 0: 1} ${fname: -1}\"" "${fname: 1: 2}"
 }
 
 #dummy caller
-function dcer() {
+dcer() {
   # echo from dceep is assigned to params
   params=$(dceep)
   echo $params

@@ -13,7 +13,7 @@ alias gm='git commit -m'
 alias gpl='git pull --rebase'
 alias gpu='git push origin HEAD:refs/for/main-dev'
 
-function gpa() {
+gpa() {
   pushd . > /dev/null
   for repo in ${WORKSPACE_HOME}/spray ${WORKSPACE_HOME}/spark ${WORKSPACE_HOME}/spark-jobserver\
               ${MY_WORKSPACE}/interview
@@ -23,7 +23,7 @@ function gpa() {
   popd > /dev/null
 }
 
-function push() {
+push() {
     if [ -n "$1" ]; then
       msg=$1
     else
@@ -33,7 +33,7 @@ function push() {
     git push origin master
 }
 
-function pusha() {
+pusha() {
   pushd . > /dev/null
   for repo in ${MY_WORKSPACE}/com.sma
   do

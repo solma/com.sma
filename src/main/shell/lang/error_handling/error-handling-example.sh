@@ -5,14 +5,14 @@ set -e
 # Alternatively, you may paste that code directly here and comment the next line.
 source error-handling-utils.sh
 
-function main() {
+main() {
   echo "--> main: $@"
   #  CLEANUP=cleanup run inner "$@" # alternative of using trap
   run inner "$@"
   echo "<-- main"
 }
 
-function inner() {
+inner() {
   echo "--> inner: $@"
   sleep 0.5
   if [ "$1" = 'fail' ]; then
@@ -21,7 +21,7 @@ function inner() {
   echo "<-- inner"
 }
 
-function cleanup() {
+cleanup() {
   sleep 1
   echo "inside cleanup with ${CLEANUP_PARAM}"
 }

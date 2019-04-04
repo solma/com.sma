@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function Set::-U() {
+Set::-U() {
   set -u
   echo "Unset (i.e. uninitialized) parameters and variables except '@' or '*'"\
        "are considered error when performing expansion"
@@ -10,7 +10,7 @@ function Set::-U() {
   set +u
 }
 
-function Set::-X() {
+Set::-X() {
   if [ "$1" != "xx" ]; then
     set -x
     echo $1
@@ -21,7 +21,7 @@ function Set::-X() {
   { set +x; } 2>/dev/null
 }
 
-function main() {
+main() {
 #  Set::-U
 
   echo "null has no special meaning in bash."

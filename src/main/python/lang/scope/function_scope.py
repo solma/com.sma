@@ -1,6 +1,8 @@
 def some_func():
   x = 10
 
+
+
 def enclosing_scope():
   def enclosed_func():
     x = 1
@@ -34,4 +36,5 @@ def func_closure():
 if __name__ == '__main__':
   # enclosing_scope()
   for i, (f1, f2, f3) in enumerate(func_closure()):
+    print(f1, f2, f3)
     print('idx: %d, f1: %d, f2: %d, f3: %d' %(i, f1(), f2(), f3()))

@@ -16,7 +16,7 @@ alias zrc='vim $HOME/.zshrc'
 
 # Mac related
 
-function brew_link() {
+brew_link() {
 	# Usage: brew_link /usr/local/Cellar/swig/3.0.12/bin/swig swig
 	source_file=$1
 	bin=$2
@@ -38,13 +38,13 @@ alias hhf='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder 
 alias l.='ls -d .*'
 alias ll='ls -lah'
 
-function ld(){
+ld(){
   ls -d --color=always $1/*/
 }
 alias lld='ld .'
 
 # find $1 files that contain $2 and are modified most recently
-function lm(){
+lm(){
   if [[ "$2" ]]; then
     ls -thl | cat | grep $2 | head -$1 2>/dev/null
   else
@@ -72,7 +72,7 @@ alias pd='open $HOME/Downloads'
 # Miscellaneous functions
 ###########################################
 
-function crontab_history() {
+crontab_history() {
  grep CRON /var/log/syslog | tail -$1
 }
 
@@ -86,7 +86,7 @@ SFTP_FILE_MAP_REMOTE[b]="./.bashrc"
 SFTP_FILE_MAP_LOCAL[h]="/Users/solma/workspace/playground/helper.sh"
 SFTP_FILE_MAP_REMOTE[h]="workspace/helper.sh"
 
-function sfu(){
+sfu(){
 if ! [[ "$1" ]]; then
   for k in "${!SFTP_FILE_MAP_LOCAL[@]}"; do
     sfu $k
@@ -99,7 +99,7 @@ put ${SFTP_FILE_MAP_LOCAL[$1]} ${SFTP_FILE_MAP_REMOTE[$1]}
 COMMANDS
 }
 
-function sfd(){
+sfd(){
 if ! [[ "$1" ]]; then
   for k in "${!SFTP_FILE_MAP_LOCAL[@]}"; do
     sfd $k
@@ -116,7 +116,7 @@ COMMANDS
 ###### fast accesses to folder ############
 
 # fast track to folder under ${MY_WORKSPACE}
-function cdm(){
+cdm(){
   dest=${MY_WORKSPACE}
   if [[ "$#" -eq 1 ]]
   then
@@ -126,7 +126,7 @@ function cdm(){
 }
 
 # fast track to folder under ${WORKSPACE_HOME}
-function cdw(){
+cdw(){
   dest=${WORKSPACE_HOME}
   if [[ "$#" -eq 1 ]]
   then
@@ -135,7 +135,7 @@ function cdw(){
   cd $dest
 }
 
-function cdsc() {
+cdsc() {
   cds && cd cpp/lang
   if [[ "$1" ]]; then
     cd $1
@@ -143,7 +143,7 @@ function cdsc() {
 }
 
 ################## smart cd to last and next sibling directory##############
-function scd(){
+scd(){
   DIRLIST=$1
   : > ${DIRLIST}
   ls -l .. | grep ^d | awk '{print $NF}' >> $DIRLIST
@@ -181,7 +181,7 @@ function scd(){
 ################ date time functions ###############################
 
 # show current datetime
-function ct(){
+ct(){
   # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
   # if command -v gdate >/dev/null 2>&1;
   if hash gdate 2>/dev/null; then
@@ -208,7 +208,7 @@ function ct(){
 ############# Dictionary Functions ############################
 
 # lookup a word
-function def(){
+def(){
     # espeak for the pronunciation audible output and phonetic alphabet string
     echo "Phoneme mnemonics: $(espeak -ven-uk-rp -x -s 120 "$1" 2> /dev/null)"
     # dict - the client for the dictionary server
@@ -217,7 +217,7 @@ function def(){
 
 # add a word to a local dictionary file
 worddictionary="$HOME/EnglishNewWords.txt"
-function dic(){
+dic(){
 #  cdate=$(date --iso-8601=date &)
 #  # save the date
 #  if ! cat ${worddictionary} | egrep -x ${cdate}.* ;then
@@ -238,7 +238,7 @@ alias word="less $worddictionary"
 # $1 string to be searched: "match_words -v reverse_match_words"
 # $2 file format;
 # $3 return file name only
-function fj() {
+fj() {
   KEY_WORD=$1
   EXT=$2
   RETURN_FILE_PATH_ONLY=$3
@@ -270,7 +270,7 @@ function fj() {
 }
 
 # extract information from function names
-function extractFormatFromFuncName() {
+extractFormatFromFuncName() {
   # FUNCNAME is a stack, 0 is the most recent one, 1 is the 2nd most recent one, etc.
   fname=${FUNCNAME[ 1 ]}
   len=${#fname}
@@ -292,46 +292,46 @@ function extractFormatFromFuncName() {
 }
 
 # search java files
-function fgj() {
+fgj() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 # search java files return file name only
-function fgjf() {
+fgjf() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 alias fgjfdp="fgjf \"algs.*DynamicProgramming\""
 
 # search python files
-function fgp() {
+fgp() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 # search python files return file name only
-function fgpf() {
+fgpf() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 # search scala files for string
-function fgs() {
+fgs() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 # search scala files for string return file name only
-function fgsf() {
+fgsf() {
   fj "$1" $(extractFormatFromFuncName)
 }
 
 # search string across all file types
-function fg() {
+fg() {
   for x in j p s; do
     fg${x} $1
   done
 }
 
 # search string across all file types
-function fgf() {
+fgf() {
   for x in j p s; do
     fg${x}f $1
   done
@@ -355,7 +355,7 @@ done
 ###########################################
 
 # update urban computing 2015 web jar file
-function ucup {
+ucup {
   local ZIP_FILE="UrbComp2016.zip"
   cp $HOME/Dropbox/UrbComp\ 2011/${ZIP_FILE} ~/Desktop/
   unzip -qq -d ~/Desktop/ ~/Desktop/${ZIP_FILE}
@@ -373,7 +373,7 @@ sol=/media/sol
 system=/media/system
 lenovo=/media/lenovo
 #allmount
-function mountall(){
+mountall(){
   if ! [ -d ${sol} ];then sudo mkdir -p ${sol}; fi
   if ! [ -d ${system} ];then sudo mkdir -p ${system}; fi
   if ! [ -d ${lenovo} ];then sudo mkdir -p ${lenovo}; fi
@@ -382,13 +382,13 @@ function mountall(){
   sudo mount -t ntfs /dev/sda4 ${lenovo}
 }
 
-function umountall(){
+umountall(){
   sudo umount ${sol} ${system} ${lenovo}
 }
 
 ################ miscellaneous ##########################
 # Run cpp binary defined in src/main/cpp/lang
-function rcpp(){
+rcpp(){
   # run this cmd under the directory where Makefile is defined
   if [[ "$1" ]]; then
     local NAME=$1
