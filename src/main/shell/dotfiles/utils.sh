@@ -355,7 +355,7 @@ done
 ###########################################
 
 # update urban computing 2015 web jar file
-ucup {
+ucup() {
   local ZIP_FILE="UrbComp2016.zip"
   cp $HOME/Dropbox/UrbComp\ 2011/${ZIP_FILE} ~/Desktop/
   unzip -qq -d ~/Desktop/ ~/Desktop/${ZIP_FILE}
