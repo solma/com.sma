@@ -16,7 +16,7 @@ static int y_global_init = 2;
 extern int z_global;
 
 /* 这是一个存在于程序别处的某个函数的声明（如果你愿意，你可以在语句前加上 "extern"关键字，但没有这个必要） */
-int fn_a( int x, int y);
+extern int fn_a( int x, int y);
 
 /* 这是一个函数的定义，但由于这个函数前加了 static限定，因此它只能在当前 C文件内使用 */
 static int fn_b(int x)
@@ -39,7 +39,9 @@ int fn_c(int x_local)
     return (x_global_uninit + y_local_uninit);
 }
 
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
-	fn_c(1)
+  const char *message = "Hello, world";
+
+  return fn_a(11,12);
 }
