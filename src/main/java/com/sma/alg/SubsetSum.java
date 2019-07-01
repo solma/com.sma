@@ -50,7 +50,7 @@ public class SubsetSum {
       set.add(i);
       List<List<Integer>> tmp = partitionProblem(arr, sum, set, setSum + arr[i], minDiff);
       if (!tmp.isEmpty()) res = tmp;
-      set.remove(new Integer(i));
+      set.remove(i);
     }
     return res;
   }

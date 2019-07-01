@@ -1,20 +1,14 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
+import java.util.*;
+
 import static com.sma.annotation.Tag.Algorithm.Backtracking;
 import static com.sma.annotation.Tag.Algorithm.Recursion;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Difficulty.D3;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
 
 @Tag(algs = {Backtracking, Recursion}, dl = D3, dss = StringT, references = LeetCode)
 public class WordLadderII {
@@ -93,7 +87,7 @@ public class WordLadderII {
   List<List<String>> buildPath(WordNode cur) {
     List<List<String>> paths = new LinkedList<>();
     if (cur == null) {
-      paths.add(new LinkedList<String>());
+      paths.add(new LinkedList<>());
       return paths;
     }
     for (WordNode prev : cur.prev) {

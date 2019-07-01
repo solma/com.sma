@@ -1,10 +1,10 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.Recursion;
 import static com.sma.annotation.Tag.DataStructure.BinaryTree;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
 
 @Tag(algs = Recursion, dss = BinaryTree, references = LeetCode)
 public class SumRootToLeafNumbers {
@@ -17,18 +17,17 @@ public class SumRootToLeafNumbers {
   }
 
   private void topdown(TreeNode node, StringBuilder sb, int[] sum) {
-    sb.append(String.valueOf(node.val));
+    sb.append(node.val);
     if (node.left != null) {
       topdown(node.left, sb, sum);
-      sb = sb.deleteCharAt(sb.length() - 1);
+      sb.deleteCharAt(sb.length() - 1);
     }
     if (node.right != null) {
       topdown(node.right, sb, sum);
-      sb = sb.deleteCharAt(sb.length() - 1);
+      sb.deleteCharAt(sb.length() - 1);
     }
     if (node.left == null && node.right == null) {
       sum[0] += Integer.parseInt(sb.toString());
-      return;
     }
   }
 }

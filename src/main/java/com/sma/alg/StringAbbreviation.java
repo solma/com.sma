@@ -1,10 +1,10 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Reference.Interview;
-
-import com.sma.annotation.Tag;
 
 /**
  Implement a encoding system as following: Abckkkkkkkkkkk55p => Abc11xk55p.
@@ -66,7 +66,7 @@ public class StringAbbreviation {
         continue;
       }
 
-      if (ary[i] == REP.charAt(0) && i < ary.length && digitStart != -1) {
+      if (ary[i] == REP.charAt(0) && digitStart != -1) {
         int cnt = Integer.parseInt(s.substring(digitStart, i));
         for (int j = 0; j < cnt; j++) ret.append(ary[i + 1]);
         digitStart = -1;

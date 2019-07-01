@@ -1,11 +1,11 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.DataStructure.Array;
-import static com.sma.annotation.Tag.Reference.LeetCode;
-
 import com.sma.annotation.Tag;
 
 import java.util.ArrayList;
+
+import static com.sma.annotation.Tag.DataStructure.Array;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 @Tag(dss = Array, references = LeetCode)
 public class SpiralMatrix {
@@ -22,7 +22,7 @@ public class SpiralMatrix {
 
   //second pass
   public ArrayList<Integer> spiralOrder(int[][] matrix) {
-    ArrayList<Integer> ret = new ArrayList<Integer>();
+    ArrayList<Integer> ret = new ArrayList<>();
     int n = matrix.length;
     if (n == 0)
       return ret;
@@ -64,36 +64,4 @@ public class SpiralMatrix {
       return false;
     return true;
   }
-
-  //first pass
-  // public ArrayList<Integer> spiralOrder(int[][] matrix) {
-  // ArrayList<Integer> ret=new ArrayList<Integer>();
-  // int nRow=matrix.length;
-  // if(nRow==0) return ret;
-  // int nCol=matrix[0].length;
-  // int [][] visitFlag=new int[nRow][nCol];
-  // int i, j;
-  // for(i=0;i<nRow;i++)
-  // for(j=0;j<nCol;j++)
-  // visitFlag[i][j]=0;
-  // i=0;
-  // j=0;
-  // int[][] dir=new int[][]{{0,1}, {1,0}, {0,-1}, {-1, 0}};
-  // int dirIdx=0;
-  // int dirChange=0;
-  // while(visitFlag[i][j]==0||dirChange==1){
-  // visitFlag[i][j]=1;
-  // if(dirChange==0) ret.add(matrix[i][j]);
-  // if( ((j>0&&dirIdx==2)|| (j<nCol-1&&dirIdx==0)||(i<nRow-1&&dirIdx==1)||(i>0&&dirIdx==3))&&visitFlag[i+dir[dirIdx][0]][j+dir[dirIdx][1]]==0){
-  // dirChange=0;
-  // i+=dir[dirIdx][0];
-  // j+=dir[dirIdx][1];
-  // }else{
-  // dirIdx=(dirIdx+1)%4;
-  // dirChange+=1;
-  // }
-  // }
-
-  // return ret;
-  // }
 }

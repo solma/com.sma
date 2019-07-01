@@ -1,13 +1,15 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static com.sma.annotation.Tag.Algorithm.Recursion;
 import static com.sma.annotation.Tag.DataStructure.BinaryTree;
 import static com.sma.annotation.Tag.Difficulty.D2;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
-
-import java.util.*;
 
 @Tag(algs = Recursion, dl = D2, dss = BinaryTree, references = LeetCode)
 public class PathSumII {
@@ -42,7 +44,7 @@ public class PathSumII {
   public List<List<Integer>> pathSumFirstPass(TreeNode root, int sum) {
     List<List<Integer>> res = new ArrayList<>();
     if (root != null)
-      pathSum(root, sum, new ArrayList<Integer>(), res);
+      pathSum(root, sum, new ArrayList<>(), res);
     return res;
   }
 

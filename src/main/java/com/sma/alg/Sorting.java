@@ -1,20 +1,14 @@
 package com.sma.alg;
 
-import static com.sma.annotation.Tag.Algorithm.Sorting;
-import static com.sma.annotation.Tag.DataStructure.Array;
-
 import com.sma.annotation.Tag;
 import com.sma.ds.misc.MaxHeap;
 import com.sma.util.ArrayUtil;
 import com.sma.util.RandomUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Stack;
+import java.util.*;
+
+import static com.sma.annotation.Tag.Algorithm.Sorting;
+import static com.sma.annotation.Tag.DataStructure.Array;
 
 @Tag(algs = Sorting, dss = Array)
 public class Sorting {
@@ -34,7 +28,6 @@ public class Sorting {
 
   int[] bubbleSort(int[] a) {
     // in place
-    int tmp;
     for (int i = 0; i < a.length; i++)
       for (int j = i + 1; j < a.length; j++)
         if (a[j] < a[i]) {
@@ -156,7 +149,7 @@ public class Sorting {
   int[] radixSort(int[] a) {
     if (a.length == 0) return null;
     List<Integer>[] lists = new LinkedList[3];
-    for(int i = 0; i<lists.length; i++) lists[i] = new LinkedList<>();
+    for(int i = 0; i<lists.length; i++) { lists[i] = new LinkedList<>(); }
     for (int i : a){
       int idx;
       if (i == 0) idx = 1;

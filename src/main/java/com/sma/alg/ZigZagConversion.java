@@ -1,10 +1,10 @@
 package com.sma.alg;
 
+import com.sma.annotation.Tag;
+
 import static com.sma.annotation.Tag.Algorithm.Arithmetic;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
 
 @Tag(algs = Arithmetic, dss = Array, references = LeetCode)
 public class ZigZagConversion {
@@ -45,23 +45,24 @@ public class ZigZagConversion {
 
 
   //first pass
-  // public String convert(String s, int nRows) {
-  // if (nRows == 1) return s;
+  public String convert1(String s, int nRows) {
+    if (nRows == 1) {
+      return s;
+    }
 
-  // StringBuffer buf = new StringBuffer();
-  // int diff = nRows + nRows - 2;
-  // for (int i = 0; i < nRows; i++) {
-  // int index = i;
-  // while (index < s.length()) {
-  // buf.append(s.charAt(index));
-  // index += diff;
-  // if (i != 0 && i != nRows - 1 && index - i - i < s.length()) { //add zag column
-  // buf.append(s.charAt(index - i - i));
-  // }
-  // }
-  // }
+    StringBuffer buf = new StringBuffer();
+    int diff = nRows + nRows - 2;
+    for (int i = 0; i < nRows; i++) {
+      int index = i;
+      while (index < s.length()) {
+        buf.append(s.charAt(index));
+        index += diff;
+        if (i != 0 && i != nRows - 1 && index - i - i < s.length()) { //add zag column
+          buf.append(s.charAt(index - i - i));
+        }
+      }
+    }
 
-  // return buf.toString();
-
-  // }
+    return buf.toString();
+  }
 }

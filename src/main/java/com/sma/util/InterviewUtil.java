@@ -4,7 +4,6 @@ package com.sma.util;
 import com.sma.alg.HouseRobber;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 
 public class InterviewUtil {
   public static void main(String args[]) {
@@ -26,21 +25,6 @@ public class InterviewUtil {
   }
 
   int CandidateImpl(int[] arr) {
-    LinkedList<Integer[]> subarrays = new LinkedList<>();
-    for (int i : arr) {
-      subarrays.add({i});
-
-    }
-
     return 0;
-  }
-
-  LinkedList<Integer[]> createSubarrays(int current_idx, int[] array) {
-    int current_item = array[current_idx];
-    if (current_idx + 1 > array.length) {
-      return {current_item};
-    } else {
-      for (int i = current_idx + 2; i)
-    }
   }
 }
