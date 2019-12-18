@@ -34,7 +34,7 @@ class ReconstructArrayFromInversionArray(object):
     for x in inversion:
       selected = root.Select(x + 1)
       ret.append(selected.value)
-      print ret
+      print(ret)
       root = root.Delete(selected)
     return ret
 
@@ -89,7 +89,7 @@ class BinaryTreeNode(object):
     return Delete(self, node)
 
 ins = ReconstructArrayFromInversionArray()
-print ins.ReconstructArrayFromInversionArrayBinaryTreeBased([0, 1, 0, 0])
+print(ins.ReconstructArrayFromInversionArrayBinaryTreeBased([0, 1, 0, 0]))
 
 
 

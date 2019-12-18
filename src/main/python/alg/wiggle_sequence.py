@@ -60,4 +60,4 @@ class WiggleSequence(object):
     return max(inc + dec) if size else 0
 
 ins = WiggleSequence()
-print ins.wiggleMaxLength([1, 3, 5, 7, 2, 6])
+print(ins.wiggleMaxLength([1, 3, 5, 7, 2, 6]))

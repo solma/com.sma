@@ -46,4 +46,4 @@ class PalindromePairs(object):
     return pairs
 
 ins = PalindromePairs()
-print ins.palindromePairs(["abcd", "dcba", "lls", "s", "sssll"])
+print(ins.palindromePairs(["abcd", "dcba", "lls", "s", "sssll"]))

@@ -108,19 +108,19 @@ class Twitter(object):
 def test_case1():
   twitter = Twitter()
   twitter.postTweet(1, 1)
-  print twitter.getNewsFeed(1)
+  print(twitter.getNewsFeed(1))
   twitter.follow(2, 1)
-  print twitter.getNewsFeed(2)
+  print(twitter.getNewsFeed(2))
 
 def test_case2():
   twitter = Twitter()
   twitter.postTweet(1, 5)
-  print twitter.getNewsFeed(1)
+  print(twitter.getNewsFeed(1))
   twitter.follow(1, 2)
   twitter.postTweet(2, 6)
 
-  print twitter.getNewsFeed(1)
+  print(twitter.getNewsFeed(1))
   twitter.unfollow(1, 2)
-  print twitter.getNewsFeed(1)
+  print(twitter.getNewsFeed(1))
 
 test_case2()

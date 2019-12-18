@@ -55,8 +55,7 @@ def read_data(paras, lane_based=False, express_or_hov_lane=False, tmc=None):
           if len(title) > 0:
             title[-1] += curCond
           title.append('Speed : ' + curCond + '~')
-        print
-        title[-1]
+        print(title[-1])
         if xAxis:  # xAxis not empty
           # print paras, [len(s) for s in xAxis],[len(s) for s in yAxis],[len(s) for s in yError]
           del xAxis[-1][-1]  # remove the last bucket of each line
@@ -70,8 +69,7 @@ def read_data(paras, lane_based=False, express_or_hov_lane=False, tmc=None):
         yProbeSpdStd.append([])
       else:
         fields = line[:-1].split(',')
-        print
-        fields
+        print(fields)
         xAxis[-1].append(float(fields[-5]))
         if plotting_error:
           yAxis[-1].append(float(fields[-4]))

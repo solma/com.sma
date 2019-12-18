@@ -1,8 +1,6 @@
 def some_func():
   x = 10
 
-
-
 def enclosing_scope():
   def enclosed_func():
     x = 1

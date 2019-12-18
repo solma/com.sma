@@ -39,4 +39,4 @@ class Solution(object):
       return ['']
     return list(st)
 
-# print Solution().removeInvalidParentheses("()(k)o)()()")
+print(Solution().removeInvalidParentheses("()(k)o)()()"))

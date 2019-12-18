@@ -31,17 +31,33 @@ MARRIED_JOINTLY_2018 = generate_tax_brackets(
   [10, 12, 22, 24, 32, 35, 37],
 )
 
+CHINESE_2018 = generate_tax_brackets(
+  [3000, 12000, 25000, 35000, 55000, 80000],
+  [3, 10, 20, 25, 30, 35, 45],
+)
+
 for agi in range(300000, 500001, 50000):
   print(agi, "(%.2f, %.2f)" % calculate_tax(agi, MARRIED_JOINTLY_2017), "(%.2f, %.2f)" % calculate_tax(agi, MARRIED_JOINTLY_2018))
 
 agi = list(range(1, 500000, 1000))
 import functools
-tax_series_2017 = map(functools.partial(calculate_tax, tax_brackets=MARRIED_JOINTLY_2017), agi)
-tax_series_2018 = map(functools.partial(calculate_tax, tax_brackets=MARRIED_JOINTLY_2018), agi)
-
 import pylab
-pylab.plt.scatter(agi, [tax for tax, rate in tax_series_2017], s=[10], c=['r'], alpha=0.5)
-pylab.plt.scatter(agi, [tax for tax, rate in tax_series_2018], s=[10], c=['g'], alpha=0.5)
+
+for tax_rates, color in zip(
+    [
+      MARRIED_JOINTLY_2017,
+      MARRIED_JOINTLY_2018,
+      CHINESE_2018,
+    ],
+    [
+      'r',
+      'g',
+      'b',
+    ],
+):
+  tax_series = map(functools.partial(calculate_tax, tax_brackets=tax_rates), agi)
+  pylab.plt.scatter(agi, [tax for tax, rate in tax_series], s=[10], c=[color], alpha=0.5)
+  pylab.plt.savefig('/tmp/tax.png')
 
 pylab.plt.grid()
 pylab.plt.show()

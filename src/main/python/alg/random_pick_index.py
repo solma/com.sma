@@ -58,4 +58,4 @@ ins = RandomPickIndex.LinearSpaceSolution([1, 2, 3, 2, 1, 3, 2])
 c = defaultdict(int)
 for i in range(1000000):
   c[ins.pick(2)] += 1
-print c
+print(c)

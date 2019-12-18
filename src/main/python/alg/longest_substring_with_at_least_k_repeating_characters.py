@@ -34,4 +34,4 @@ class LongestSubstringWithAtLeastKRepeatingCharacters(object):
     return max(self.longestSubstring(t, k) for t in tokens)
 
 ins = LongestSubstringWithAtLeastKRepeatingCharacters()
-print ins.longestSubstring('abadbfcaebbc', 2)
+print(ins.longestSubstring('abadbfcaebbc', 2))

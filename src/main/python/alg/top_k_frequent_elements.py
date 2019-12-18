@@ -26,4 +26,4 @@ class TopKFrequentElements(object):
     return ret
 
 ins = TopKFrequentElements()
-print ins.topKFrequent([1,1,1,2,2,3], 2)
+print(ins.topKFrequent([1,1,1,2,2,3], 2))

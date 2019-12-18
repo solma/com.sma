@@ -74,6 +74,6 @@ class SplitArrayLargestSum(object):
     return low
 
 ins = SplitArrayLargestSum()
-print ins.splitArray([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)
+print(ins.splitArray([1, 2, 3, 4, 5, 6, 7, 8, 9], 3))
 
 

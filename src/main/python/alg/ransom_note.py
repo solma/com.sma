@@ -34,7 +34,7 @@ class RansomNote(object):
     return True
 
 ins = RansomNote()
-print ins.canConstruct("a", "b")
-print ins.canConstruct("aa", "ab")
-print ins.canConstruct("aa", "aab")
+print(ins.canConstruct("a", "b"))
+print(ins.canConstruct("aa", "ab"))
+print(ins.canConstruct("aa", "aab"))
 

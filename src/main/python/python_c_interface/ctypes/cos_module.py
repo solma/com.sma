@@ -23,4 +23,4 @@ def cos_func(arg):
     ''' Wrapper for cos from math.h '''
     return libm.cos(arg)
 
-print 'cos_func(100):', cos_func(100)
+print('cos_func(100):', cos_func(100))

@@ -55,7 +55,7 @@ class EvaluateDivision(object):
           variables[numerator] = values[i] * variables[denominator]
           for d in multiples[numerator]:
             variables[d] *= values[i] * variables[denominator]
-        print variables, multiples
+        print(variables, multiples)
 
     def evaluate():
       ret = []
@@ -100,7 +100,7 @@ cases = [
    [["b","a"],["a","f"],["f","f"],["e","e"],["c","c"],["a","c"],["f","e"]])
 ]
 for case in cases[-1:]:
-  print ins.calcEquationGraph(case[0], case[1], case[2])
+  print(ins.calcEquationGraph(case[0], case[1], case[2]))
 
 
 

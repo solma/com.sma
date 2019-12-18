@@ -62,4 +62,4 @@ class SummaryRanges(object):
 obj = SummaryRanges()
 for val in range(100):
   obj.addNum(val)
-  print ' '.join(str(ele) for ele in obj.getIntervals())
+  print(' '.join(str(ele) for ele in obj.getIntervals()))

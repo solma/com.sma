@@ -1,17 +1,17 @@
-def get_undefined_key(dict):
+def get_undefined_key(dic):
   try:
-    return dict['undefined']
+    return dic['undefined']
   except KeyError as e:
     print(e)  # , str(e))
 
 
-def replace_all_unformatted_values(dict):
+def replace_all_unformatted_values(dic):
   cnt = 1
-  for key in dict:
-    if '%(placeholder)s' in dict[key]:
-      dict[key] %= {'placeholder': cnt}
+  for key in dic:
+    if '%(placeholder)s' in dic[key]:
+      dic[key] %= {'placeholder': cnt}
       cnt += 1
-  return dict
+  return dic
 
 
 if __name__ == "__main__":

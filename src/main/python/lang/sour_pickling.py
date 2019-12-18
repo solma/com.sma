@@ -2,7 +2,7 @@ import os, pickle
 
 class Test(object):
   def __reduce__(self):
-    return (os.system, ('id', ))
+    return os.system, ('id', )
 
 Test().__reduce__()
 

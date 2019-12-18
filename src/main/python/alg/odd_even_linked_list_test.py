@@ -11,6 +11,6 @@ class OddEvenLinkedListTest(TestCase):
     ]
     for case in cases:
       res = ins.oddEvenList(case[0])
-      print list2str(res)
-      print list2str(case[1])
+      print(list2str(res))
+      print(list2str(case[1]))
       self.assertTrue(is_equal_list(res, case[1]))

@@ -35,4 +35,4 @@ class LexicographicalNumbers(object):
     return result
 
 ins = LexicographicalNumbers()
-print ins.lexicalOrder_recur(123)
+print(ins.lexicalOrder_recur(123))

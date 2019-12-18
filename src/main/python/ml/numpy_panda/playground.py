@@ -1,5 +1,6 @@
 import numpy as np
+import os
 s='/tmp/testModels/sb/sc/sd'
 p='/tmp/testModels'
 print(s[s.find(p) + len(p):])
-os.path.relpath(full_path, '/book/html')
+os.path.relpath('', '/book/html')

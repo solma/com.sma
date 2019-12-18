@@ -75,20 +75,15 @@ def xcombination(seq, length):
 # print list(permutation_generator("abc",""))
 # print list(combination_generator("abc","",0))
 allPermutations = permutation_generator("abc", "")
-print
-allPermutations.next()
-print
-allPermutations.next()
+print(allPermutations.next())
+print(allPermutations.next())
 
 allCombinations = combination_generator("abc", "", 0)
-print
-allCombinations.next()
-print
-allCombinations.next()
+print(allCombinations.next())
+print(allCombinations.next())
 
 c_5_3 = xcombination("abcde", 3)
-print
-list(c_5_3)
+print(list(c_5_3))
 
 
 # res=[]

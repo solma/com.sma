@@ -44,4 +44,4 @@ class Pattern132(object):
 ins = Pattern132()
 for arr in [[1, 2, 3, 4], [3, 1, 4, 2], [-1, 3, 2, 0],
             [1, 0, 1, -4, -3]]:
-  print ins.find132pattern(arr)
+  print(ins.find132pattern(arr))

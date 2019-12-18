@@ -1,5 +1,4 @@
-from utils import math_helper
-from mathproblems import log1p, sqrt
+import math
 
 DEFAULT_OUTPUT_SPACE_SIZE = 365.
 DEFAULT_SAMPLE_SIZE_FOR_COLLISION = 23.
@@ -20,7 +19,7 @@ def birthday_attack(
 
     def alg2():
       assert collision_probability == 0.5
-      return sqrt(2. * output_space_size * -log1p(-collision_probability))
+      return math.sqrt(2. * output_space_size * -math.log1p(-collision_probability))
 
     return 'sample_size : {0}, {1}'.format(alg1(), alg2())
 

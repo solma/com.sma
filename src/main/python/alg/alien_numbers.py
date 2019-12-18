@@ -32,5 +32,4 @@ for case in range(N):
     word_trans.append(d_lan_alphabet[c])
     word_in_decimal -= c * base ** l
   word_trans.extend([d_lan_alphabet[0]] * l)
-  print
-  "Case #%d: %s" % (case + 1, ''.join(word_trans))
+  print("Case #%d: %s" % (case + 1, ''.join(word_trans)))

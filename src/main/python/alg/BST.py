@@ -262,7 +262,7 @@ class BinarySearchTree(object):
     #     in sorted order.
     #   - If (pre,post) = (_RIGHT,_LEFT), then this will generate items
     #     in reverse-sorted order.
-    # We use an iterative implemenation (rather than the recursive one)
+    # We use an iterative implementation (rather than the recursive one)
     # for efficiency.
     stack = []
     node = self._root
@@ -280,9 +280,9 @@ class BinarySearchTree(object):
     Returns a (top_lines, mid_line, bot_lines) tuple,
     """
     if max_depth == 0:
-      return ([], '- ...', [])
+      return [], '- ...', []
     elif not node:
-      return ([], '- EMPTY', [])
+      return [], '- EMPTY', []
     else:
       top_lines = []
       bot_lines = []
@@ -304,7 +304,7 @@ class BinarySearchTree(object):
                       for (i, line) in enumerate(t)]
         bot_lines.append(indent + '\\' + m)
         bot_lines += [indent + ' ' + line for line in b]
-      return (top_lines, mid_line, bot_lines)
+      return top_lines, mid_line, bot_lines
 
 
 try:

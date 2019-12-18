@@ -52,4 +52,4 @@ class DecodeString(object):
 
 ins = DecodeString()
 for s in ['10[a]2[bc]', '3[a11[c]]', '2[abc]3[cd]ef']:
-  print '%s: %s' % (s, ins.decodeString(s))
+  print('%s: %s' % (s, ins.decodeString(s)))

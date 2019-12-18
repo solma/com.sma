@@ -1,12 +1,12 @@
 # calculate the next array in KMP/sunday algorithm
-def calNext(t, m):
+def cal_next(t, m):
   if m == "kmp":
     next = [0] * len(t)
     next[0] = -1
     i = 0
     j = -1
     while i < len(t) - 1:
-      print i, t[i], j, t[j], t[:i + 1], next[:i + 1]
+      print(i, t[i], j, t[j], t[:i + 1], next[:i + 1])
       if j == -1 or t[i] == t[j]:
         i += 1
         j += 1
@@ -23,13 +23,14 @@ def calNext(t, m):
 
 def match(s, t, m):
   # preprocessing before match
-  if m == "kmp" or m == "sunday": next = calNext(t, m)
+  if m == "kmp" or m == "sunday":
+    next = cal_next(t, m)
 
   i = j = 0
   while i + j < len(s):
     if s[i + j] == t[j]:
       if j == len(t) - 1:
-        print s[0:i], s[i:i + len(t)], s[i + len(t):]
+        print(s[0:i], s[i:i + len(t)], s[i + len(t):])
         return i
       j += 1
     else:
@@ -44,12 +45,10 @@ def match(s, t, m):
           i += next[ord(s[min(i + len(t), len(s) - 1)]) - ord('a')]
           j = 0
 
-  print
-  s + " failed to match " + t
+  print(s + " failed to match " + t)
   return -1
 
 
-# print next('ababc')
 # match('abbba', 'bba', 'bf')
 mode = "sunday"
 match('abbcbba', 'bba', mode)

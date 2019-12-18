@@ -14,10 +14,9 @@ def find_duplicate(li):
       else:
         idx = li[i]
         li[i], li[idx] = li[idx], li[i]
-        # print li
 
 li = [0, 1, 2, 3, 4, 5, 6, 6, 7]
 shuffle(li)
-print li
-print find_duplicate(li)
-print li
+print(li)
+print(find_duplicate(li))
+print(li)

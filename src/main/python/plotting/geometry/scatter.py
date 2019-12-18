@@ -3,8 +3,8 @@ import random as rand
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
-def PlotScatterPlotAndHistogram(plot_path, ops, indices, y_values, joint_y_label,
-                                margin_x_label):
+def plot_scatter_and_histogram(plot_path, ops, indices, y_values, joint_y_label,
+                               margin_x_label):
   x, y = indices, y_values
   fig = plt.figure()
   gs = gridspec.GridSpec(6, 6)
@@ -35,6 +35,6 @@ N = 10
 ops = ['op' + str(i) for i in range(N)]
 ys = np.array([rand.randint(0, 100) for _ in range(N)])
 xs = np.array(range(len(ys)))
-PlotScatterPlotAndHistogram('/home/solma/Desktop/scatter.png', ops, xs,
-                            ys, 'Compatibility Percent',
+plot_scatter_and_histogram('/home/solma/Desktop/scatter.png', ops, xs,
+                           ys, 'Compatibility Percent',
                             '# of models')

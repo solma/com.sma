@@ -16,4 +16,4 @@ def IsWin(n):
   return IsWin(n - 2) and IsWin(n - 3) or IsWin(n - 3) and IsWin(n - 4)
 
 for i in range(1, 11):
-  print "%s: %s"%(str(i), str(IsWin(i)))
+  print("%s: %s"%(str(i), str(IsWin(i))))

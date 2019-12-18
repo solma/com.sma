@@ -42,6 +42,6 @@ class ShuffleAnArray(object):
 
 # Your Solution object will be instantiated and called as such:
 obj = ShuffleAnArray([1, 2, 3, 4, 5, 6, 7])
-print obj.shuffle()
-print obj.reset()
-print obj.shuffle()
+print(obj.shuffle())
+print(obj.reset())
+print(obj.shuffle())

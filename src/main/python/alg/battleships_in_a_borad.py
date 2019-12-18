@@ -22,6 +22,7 @@ This is an invalid board that you will not receive - as battleships will always 
 separating between them.
 """
 from label import Label
+
 Label(Label.Array, Label.LeetCode)
 
 class BattleshipsInABoard(object):
@@ -41,4 +42,4 @@ ins = BattleshipsInABoard()
 for board in [
   [['X', '.', '.', 'X'], ['.', '.', '.', 'X'], ['.', '.', '.', 'X']],
 ]:
-  print ins.countBattleships(board)
+  print(ins.countBattleships(board))

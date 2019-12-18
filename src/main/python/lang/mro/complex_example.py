@@ -108,7 +108,7 @@ def merge(seqs):
       else:
         break
     if not cand:
-      raise 'Inconsistent hierarchy'
+      raise Exception('Inconsistent hierarchy')
     res.append(cand)
     for seq in nonemptyseqs:  # remove cand
       if seq[0] == cand: del seq[0]

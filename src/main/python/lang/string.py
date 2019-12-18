@@ -14,10 +14,10 @@ def play_with_multiple_line_string():
   # print([line for line in conf.splitlines() if '{' in line][0].split('{')[0].strip())
 
 def encode():
-  raw_iteral = u'你好，世界'
-  raw_iteral_in_unicode = raw_iteral.encode('utf-8')
-  escaped_iteral_in_unicode = repr(raw_iteral_in_unicode)
-  for s in [raw_iteral, raw_iteral_in_unicode, escaped_iteral_in_unicode]:
+  raw_literal = u'你好，世界'
+  raw_literal_in_unicode = raw_literal.encode('utf-8')
+  escaped_iteral_in_unicode = repr(raw_literal_in_unicode)
+  for s in [raw_literal, raw_literal_in_unicode, escaped_iteral_in_unicode]:
     print(s)
 
 if __name__ == "__main__":

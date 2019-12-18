@@ -14,7 +14,7 @@ Label(Label.Math, Label.LeetCode)
 class CountNumbersWithUniqueDigits(object):
   def countNumbersWithUniqueDigits(self, n):
     nums = [9]
-    for x in xrange(9, 0, -1):
+    for x in range(9, 0, -1):
       nums.append(nums[-1] * x)
     return sum(nums[:n]) + 1 # +1 to include zero
 

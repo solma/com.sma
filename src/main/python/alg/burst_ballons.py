@@ -31,4 +31,4 @@ class BurstBallons(object):
           dp[l][r] = max(dp[l][r], dp[l][m] + dp[m][r] + nums[l] * nums[m] * nums[r])
     return dp[0][-1]
 
-print BurstBallons().maxCoins([3, 1, 5, 8])
+print(BurstBallons().maxCoins([3, 1, 5, 8]))

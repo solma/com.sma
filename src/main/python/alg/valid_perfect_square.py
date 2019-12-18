@@ -23,5 +23,5 @@ class ValidPerfectSquare(object):
 
 ins = ValidPerfectSquare()
 for i in range(1, 20):
-  print i, ins.isPerfectSquare(i)
+  print(i, ins.isPerfectSquare(i))
 

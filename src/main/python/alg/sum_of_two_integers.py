@@ -18,4 +18,4 @@ class SumOfTwoIntegers(object):
 
 ins = SumOfTwoIntegers()
 for a, b in [(-2, 2), (1, -9), (-14, 16), (-2, -3)]:
-  print a + b, ins.getSum(a, b)
+  print(a + b, ins.getSum(a, b))

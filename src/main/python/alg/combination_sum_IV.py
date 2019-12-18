@@ -38,5 +38,5 @@ class CombinationSumIV(object):
     return dp[target]
 
 ins = CombinationSumIV()
-print ins.combinationSum4([1, 2, 3], 5)
+print(ins.combinationSum4([1, 2, 3], 5))
 

@@ -88,7 +88,6 @@ class ReconstructOriginalDigitsFromEnglish(object):
           counters[key] = (nc, counters[counter_key][1] + str(i))
           if nc == sc:
             return ''.join(sorted(counters[key][1]))
-    raise RuntimeError
 
 
   """
@@ -120,6 +119,6 @@ for s in [
   'fviefuro',
   'fvowoztneoeriefuro',
   'zerozero'][:]:
-  print ins.originalDigitsTrick(s)
+  print(ins.originalDigitsTrick(s))
 
 

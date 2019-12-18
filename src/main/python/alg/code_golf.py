@@ -43,7 +43,7 @@ def quick_sort_sc(ls):
 
 def select(li, k, left, right):
   while True:
-    pivot_idx = partition(li, left + (right - left) / 2, left, right)
+    pivot_idx = partition(li, int(left + (right - left) / 2), left, right)
     pivot_dist = pivot_idx - left + 1
     if pivot_dist == k:
       return
@@ -60,7 +60,7 @@ def quick_sort(li, left, right):
   return top k elements in li
   """
   if left < right:
-    pivot_idx = partition(li, (left + right) / 2, left, right)
+    pivot_idx = partition(li, int((left + right) / 2), left, right)
     quick_sort(li, left, pivot_idx - 1)
     quick_sort(li, pivot_idx + 1, right)
 
@@ -135,24 +135,19 @@ def print_sudoko(board):
   for i in range(len(board)):
     if i % 3 == 0:
       if i % 9 > 0:
-        print
-        '|',
-      else:
-        print
-    if i % 27 == 0 and i: print
-    ''.join(['-'] * 6 + ['+'] + ['-'] * 7 + ['+'] + ['-'] * 6)
-    print
-    board[i],
+        print('|',)
+    if i % 27 == 0 and i:
+      print(''.join(['-'] * 6 + ['+'] + ['-'] * 7 + ['+'] + ['-'] * 6))
+    print(board[i],)
 
 
 # #####################################
 if __name__ == "__main__":
   array = [10, 231, 195, 3, 133, 6275, 610, 721]
-  # print radix_sort(array)
+  # print(radix_sort(array))
 
   # quick_sort(array, 0, len(array)-1)
-  # print array
+  # print(array)
 
   select(array, 3, 0, len(array) - 1)
-  print
-  array
+  print(array)

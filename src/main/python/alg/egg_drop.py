@@ -76,16 +76,16 @@ def dp(f, d, b):
 """
 
 for case in range(n):
-  print "input #floor #drop #egg"
+  print("input #floor #drop #egg")
   f, d, b = map(int, sys.stdin.readline().rstrip('\n').split(' '))
-  # print rc(d, b)
+  # print(rc(d, b))
   # generate dp table
   for i in range(MAX_N):
     if i == 1:
       t.append([0] + [1] * (MAX_N - 1))
     else:
       t.append([0] * MAX_N)
-  # print t[:2]
+  # print(t[:2])
   for i in range(1, MAX_N):
     for j in range(1, MAX_N):
       x = t[i - 1][j]
@@ -99,6 +99,6 @@ for case in range(n):
   if fmax >= INF: fmax = -1
   dmin = getd(f, d, b)
   bmin = getb(f, d, b)
-  print "Case #%d: %d %d %d" % (case + 1, fmax, dmin, bmin)
+  print("Case #%d: %d %d %d" % (case + 1, fmax, dmin, bmin))
 
-  # print "Case #%d: %s"%(case+1, ' '.join(map(str, dp(f,d,b))) )
+  # print("Case #%d: %s"%(case+1, ' '.join(map(str, dp(f,d,b))))

@@ -43,5 +43,5 @@ inputs = [
   [[5,4],[6,4],[6,7],[2,3]],
 ]
 for envelopes in inputs:
-  print envelopes, ins.maxEnvelopes(envelopes)
+  print(envelopes, ins.maxEnvelopes(envelopes))
 

@@ -51,6 +51,6 @@ class IntegerReplacement(object):
 
 ins = IntegerReplacement()
 for x in [3, 6, 7, 100, 65535]:
-  print ins.integerReplacement(x)
+  print(ins.integerReplacement(x))
 
 

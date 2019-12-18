@@ -32,8 +32,7 @@ class ElimationGame(object):
     while len(ret) > 1:
       ret = ret[1::2] if flag else ret[-2::-2][::-1]
       flag ^= True
-      # print ret
     return ret[0]
 
 ins = ElimationGame()
-print ins.lastRemaining(10)
+print(ins.lastRemaining(10))

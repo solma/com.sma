@@ -57,5 +57,4 @@ class NBitMap(object):
 nbm = NBitMap(8)
 key = 10
 nbm.set_value(key, 92)
-print
-nbm.get_value(key)
+print(nbm.get_value(key))

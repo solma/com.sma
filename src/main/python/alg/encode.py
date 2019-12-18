@@ -35,4 +35,4 @@ def count(a):
     return sum(pn(a))
 
 
-print count("ABAAB")
+print(count("ABAAB"))

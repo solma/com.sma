@@ -38,4 +38,4 @@ class AssignCookies(object):
     return gi
 
 ins = AssignCookies()
-print ins.findContentChildren([1, 2], [1, 2, 3])
+print(ins.findContentChildren([1, 2], [1, 2, 3]))

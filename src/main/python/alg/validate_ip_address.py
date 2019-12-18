@@ -42,7 +42,7 @@ class ValidateIPAddress(object):
 
   def isValidIpV4(self, ip):
     segs = ip.split('.')
-    print segs
+    print(segs)
     if len(segs) != 4:
       return False
     for seg in segs:
@@ -71,4 +71,4 @@ class ValidateIPAddress(object):
 
 ins = ValidateIPAddress()
 for ip in ['02001:0db8:85a3:0000:0000:8a2e:0370:7334', '2001:0db8:85a3:0:0:8A2E:0370:7334', '256.256.256.256', '192.168.0.1', '1.1.1.01']:
-  print ins.validIPAddress(ip)
+  print(ins.validIPAddress(ip))

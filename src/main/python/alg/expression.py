@@ -37,14 +37,13 @@ def eval(expr):
 
 def calc(op1, op2, operator):
   if operator == '+':
-    return op1 + op2;
+    return op1 + op2
   if operator == '-':
-    return op2 - op1;
+    return op2 - op1
   if operator == '*':
-    return op1 * op2;
+    return op1 * op2
   if operator == '/':
     return op2 / op1;
 
 
-print
-eval(shunting_yard("(3+3/3*(1+3))-4/2"))
+print(eval(shunting_yard("(3+3/3*(1+3))-4/2")))

@@ -20,7 +20,7 @@ from alg.label import Label
 Label(Label.BFS, Label.DynamicProgramming, Label.QuadraticTime, Label.LeetCode)
 
 class CoinChange(object):
-  def coinChange(self, coins, amount):
+  def coin_change(self, coins, amount):
     dp = [0] + [-1] * amount
     for i in range(amount):
       if dp[i] == -1:
@@ -32,7 +32,7 @@ class CoinChange(object):
           dp[i + c] = dp[i] + 1
     return dp[amount]
 
-  def coinChangeBackward(self, coins, amount):
+  def coin_change_backward(self, coins, amount):
     dp = [0] + [-1] * amount
     for i in range(1, amount + 1):
       for c in coins:
@@ -42,7 +42,7 @@ class CoinChange(object):
           dp[i] = dp[i - c] + 1
     return dp[amount]
 
-  def coinChangeBFS(self, coins, amount):
+  def coin_change_bfs(self, coins, amount):
     import collections
     steps = collections.defaultdict(int)
     queue = collections.deque([0])
@@ -60,5 +60,5 @@ class CoinChange(object):
           steps[front + c] = level + 1
     return -1
 
-print CoinChange().coinChangeBackward([3,7,405,436], 8839)
+print(CoinChange().coin_change_backward([3, 7, 405, 436], 8839))
 

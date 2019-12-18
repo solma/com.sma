@@ -22,18 +22,18 @@ class CountDistinctNumbers(object):
         for i in range(8):
           if e >> i & 0x1 == 1:
             cnt += 1
-      print cnt
+      print(cnt)
 
     def sampling():
       minimum = 1
       for r in li:
         minimum = min(minimum, r / (N - 1.0))
-      print 1 / minimum - 1
+      print(1 / minimum - 1)
 
     def groundTruth():
       from collections import Counter
       c = Counter(li)
-      print len(c.keys())
+      print(len(c.keys()))
 
     groundTruth()
     direct_hash()

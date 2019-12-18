@@ -28,7 +28,7 @@ class LargestRectangleIn2DHistogram(object):
     for i in range(1, n):
       start_idx[i] += start_idx[i - 1]
     rightmost = start_idx[n - 1] + widths[n - 1]
-    print start_idx, widths
+    print(start_idx, widths)
 
     for column in zip(heights, start_idx):
       if not stck or stck[-1][0] <= column[0]:
@@ -49,4 +49,4 @@ class LargestRectangleIn2DHistogram(object):
 
 
 ins = LargestRectangleIn2DHistogram()
-print ins.largest_rectangle([1, 2, 3, 2, 1], [2, 1, 2, 1, 2])
+print(ins.largest_rectangle([1, 2, 3, 2, 1], [2, 1, 2, 1, 2]))

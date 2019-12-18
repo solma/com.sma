@@ -34,18 +34,18 @@ class NthDigit(object):
       i += 1
       li.append(sum)
 
-    import bisect, mathproblems
+    import bisect, math
     idx = bisect.bisect_left(li, n)
     reminder = n - (li[idx - 1] if idx > 0 else 0)
     if reminder == 0:
       return str(10 ** idx - 1)[-1]
     else:
       num = int((math.ceil(reminder / (idx + 1.0)) - 1)) + 10 ** idx
-      print idx, li, num
+      print(idx, li, num)
       return int(str(num)[reminder % (idx + 1) - 1])
 
 ins = NthDigit()
 for x in [1, 3, 10, 11, 20, 100, 10000]:
-  print ins.findNthDigit(x)
+  print(ins.findNthDigit(x))
 
 

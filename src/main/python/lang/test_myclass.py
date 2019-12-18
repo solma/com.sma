@@ -8,7 +8,7 @@ class MyClassTest(TestCase):
   @mock.patch.object(MyClass, 'callee', autospec=True)
   def testAutoSpec1(self, mock_callee):
 
-    def TestCallCount(count):
+    def test_call_count(count):
       self.assertEqual(mock_callee.call_count, count)
 
     ins = MyClass()
@@ -18,11 +18,11 @@ class MyClassTest(TestCase):
       # ins = MyClass()
     mock_callee.return_value='mock via decorator.'
     self.assertEqual('mock via decorator.', ins.caller('callee', 1, 2))
-    TestCallCount(1)
+    test_call_count(1)
 
     mock_callee.return_value='mock via decorator again.'
     self.assertEqual('mock via decorator again.', ins.caller('callee', 1, 2))
-    TestCallCount(2)
+    test_call_count(2)
     try:
       # call it with only one parameter
       self.assertEqual('mock via decorator.', ins.caller('callee', 1))

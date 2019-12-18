@@ -6,6 +6,5 @@ from alg.label import Label
 
 Label(Label.Arithmetic, Label.LeetCode)
 
-class BulbSwitcher(object):
-  def bulbSwitch(self, n):
-    return int(n ** 0.5)
+def bulb_switch(n):
+  return int(n ** 0.5)

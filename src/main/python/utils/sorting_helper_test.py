@@ -15,7 +15,7 @@ class SortingHelperTest(TestCase):
       try:
         assert expected == actual
       except AssertionError:
-        print nums, sorted_nums, idx, expected, actual
+        print(nums, sorted_nums, idx, expected, actual)
 
   def test_partition(self):
     for i in range(NUM_TEST_CASE):
@@ -26,4 +26,4 @@ class SortingHelperTest(TestCase):
       try:
         assert nums[low_idx] == nums[high_idx] == pivot
       except AssertionError:
-        print nums, idx, pivot, low_idx, high_idx
+        print(nums, idx, pivot, low_idx, high_idx)

@@ -100,8 +100,7 @@ if __name__ == '__main__':
         raw_probe_spd.append(probe['speed'])
       raw_probe_spd.sort()
 
-      print
-      pair['tmc'], pair['time'] / 180, pair['density'], '\n', qml_probe_spd, '\n', raw_probe_spd
+      print(pair['tmc'], pair['time'] / 180, pair['density'], '\n', qml_probe_spd, '\n', raw_probe_spd)
       dl = ''
       dh = ''
       if pair['density'] <= 10:
