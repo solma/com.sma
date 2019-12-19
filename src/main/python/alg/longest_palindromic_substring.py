@@ -3,10 +3,12 @@ Given a string S, find the longest palindromic substring in S. You may assume th
 and there exists one unique longest palindromic substring.
 """
 from alg.label import Label
+from utils.decorators import timer
 
 Label(Label.DynamicProgramming, Label.Substring, Label.QuadraticTime, Label.LinearTime, Label.LeetCode)
 
-def fastLongestPalindromes(seq):
+@timer
+def longest_palindromes_fast(seq):
   """
   Behaves identically to naiveLongestPalindrome (see below), but
   runs in linear time.
@@ -48,7 +50,7 @@ def fastLongestPalindromes(seq):
     # to the edge of the last palindrome.
     s = len(l) - 2
     e = s - palLen
-    for j in xrange(s, e, -1):
+    for j in range(s, e, -1):
       # d is the value l[j] must have in order for the
       # palindrome centered there to share the left edge with
       # the last palindrome.  (Drawing it out is helpful to
@@ -116,8 +118,8 @@ def fastLongestPalindromes(seq):
         print(i, l[i], seq[i])
   return seq[start_idx:end_idx]
 
-
-def bfLongestPalindromes(s):
+@timer
+def longest_palindromes_bf(s):
   start_idx = 0
   end_idx = 0
   max_len = 0
@@ -131,11 +133,11 @@ def bfLongestPalindromes(s):
         # print(s[i:j],)
   return s[start_idx:end_idx]
 
-
-def dpLongestPalindromes(s):
+@timer
+def longest_palindromes_dp(s):
   start_idx = 0
   end_idx = 1
-  dp = [[False for j in range(len(s) + 1)] for i in range(len(s) + 1)]
+  dp = [[False for _ in range(len(s) + 1)] for _ in range(len(s) + 1)]
   max_length = 0
 
   for length in range(1, len(s)):
@@ -154,7 +156,6 @@ def dpLongestPalindromes(s):
 if __name__ == "__main__":
   s = "FourscoreandsevenyearsagoourfaathersbroughtforthonthiscontainentanewnationconceivedinzLibertyanddedicatedtothepropositionthatallmenarecreatedequalNowweareengagedinagreahtcivilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
   ss = "acaacb"
-  print(fastLongestPalindromes(s))
-
-# print(dpLongestPalindromes(s))
-# print(bfLongestPalindromes(s))
+  print(longest_palindromes_fast(s))
+  print(longest_palindromes_dp(s))
+  print(longest_palindromes_bf(s))
