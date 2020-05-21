@@ -23,7 +23,7 @@ public class QuickSum {
         for (int k = i; k <= j; k++) {
           for (int sum = 1; sum <= Math.min(m, parse(s, i, j)); sum++) {
             for (int partSum = 1; partSum <= Math.min(sum, Math.min(parse(s, i, k), sum - parse(s, k + 1, j))); partSum++) {
-              //int tmp =
+              //int tmp.txt =
               cntMem[i][j][sum] = cntMem[i][k][partSum] + cntMem[k + 1][j][sum - partSum] + 1;
               insertMem[i][j][sum] = k; //after k
               partSumMem[i][j][sum] = partSum;
