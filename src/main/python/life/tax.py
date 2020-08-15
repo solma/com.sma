@@ -57,7 +57,7 @@ for tax_rates, color in zip(
 ):
   tax_series = map(functools.partial(calculate_tax, tax_brackets=tax_rates), agi)
   pylab.plt.scatter(agi, [tax for tax, rate in tax_series], s=[10], c=[color], alpha=0.5)
-  pylab.plt.savefig('/tmp/tax.png')
+  pylab.plt.savefig('/tmp.txt/tax.png')
 
 pylab.plt.grid()
 pylab.plt.show()

@@ -9,7 +9,9 @@ using std::ostream;
 template <typename Object, typename ComparatorImplementParentheseOperator>
 const Object & isBetter(const Object& o1, const Object& o2, const ComparatorImplementParentheseOperator& bc) {
   // requirement: bc overloads operator()
-  bc(o1, o2);
+  if (bc(o1, o2)) {
+    return o1;
+  }
   // dummy: always return o2
   return o2;
 }
@@ -44,10 +46,10 @@ ostream & operator<< (ostream & out, const Toy & t) {
   return out;
 }
 
-template <>
-const Toy & isBetter(const Toy& t1, const Toy& t2, const ToyComparator& qc) {
-  return qc(t1, t2) ? t1 : t2;
-}
+//template <>
+//const Toy & isBetter(const Toy& t1, const Toy& t2, const ToyComparator& qc) {
+//  return qc(t1, t2) ? t1 : t2;
+//}
 } // namespace tmpl
 } // namespace lang
 
@@ -56,6 +58,6 @@ namespace lt = lang::tmpl;
 int main(int argc, char** argv)
 {
   std::cout << lt::isBetter(10, 6, lt::IntComparator()) << lt::endl;
-  lt::cout << lt::isBetter(lt::Toy(10), lt::Toy(6), lt::ToyComparator());
+  lt::cout << lt::isBetter<lt::Toy, lt::ToyComparator>(lt::Toy(10), lt::Toy(6), lt::ToyComparator());
 }
 
