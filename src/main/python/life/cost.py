@@ -20,7 +20,7 @@ def amazon():
     amazon(year)
 
 def home():
-  with open('/Users/solma/Downloads/transactions.csv', 'r') as f:
+  with open('/Users/solma/Downloads/mint_transactions.csv', 'r') as f:
     reader = csv.reader(f)
     total_cost = 0
     cost_map = defaultdict(float)
@@ -28,9 +28,6 @@ def home():
       if i == 0:
         continue
       dt = datetime.datetime.strptime(line[0], '%m/%d/%Y')
-      if (dt < datetime.datetime.strptime('1/01/2017', '%m/%d/%Y') or
-          dt > datetime.datetime.strptime('1/01/2019', '%m/%d/%Y')):
-        continue
       cost = float(line[3])
       notes = line[-1].lower()
 

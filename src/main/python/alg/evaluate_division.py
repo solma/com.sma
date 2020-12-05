@@ -28,7 +28,7 @@ Label(Label.DirectedGraph, Label.UnionFind, Label.LeetCode)
 from collections import defaultdict
 class EvaluateDivision(object):
   def calcEquation(self, equations, values, queries):
-    multiples = defaultdict(list)
+    multiples = defaultdict(set)
     variables = {}
     parent = {}
 
@@ -42,8 +42,8 @@ class EvaluateDivision(object):
       for i, eq in enumerate(equations):
         numerator, denominator = eq
         parent[get_cluster(denominator)] = get_cluster(numerator)
-        multiples[denominator].append(numerator)
-        multiples[denominator] += multiples[numerator]
+        multiples[denominator].add(numerator)
+        multiples[denominator].update(multiples[numerator])
 
         if denominator not in variables:
           if numerator not in variables:
@@ -55,7 +55,7 @@ class EvaluateDivision(object):
           variables[numerator] = values[i] * variables[denominator]
           for d in multiples[numerator]:
             variables[d] *= values[i] * variables[denominator]
-        print(variables, multiples)
+        # print(variables, multiples)
 
     def evaluate():
       ret = []
@@ -99,8 +99,13 @@ cases = [
   ([["a","b"],["e","f"],["b","e"]], [3.4,1.4,2.3],
    [["b","a"],["a","f"],["f","f"],["e","e"],["c","c"],["a","c"],["f","e"]])
 ]
-for case in cases[-1:]:
-  print(ins.calcEquationGraph(case[0], case[1], case[2]))
+
+import numpy
+for i, case in enumerate(cases[:]):
+  equations, values, queries = case[0], case[1], case[2]
+  ans1, ans2 = ins.calcEquationGraph(equations, values, queries), ins.calcEquation(equations, values, queries)
+  if not numpy.allclose(ans1, ans2):
+    print('case %s:\n ans1 = %s\n ans2 = %s' % (str(i), ans1, ans2))
 
 
 
