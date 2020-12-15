@@ -31,3 +31,13 @@ class SuperUglyNumbers(object):
       qs[i].append(v * primes[i])
     hq.heappush(heap, (qs[idx][0], idx))
     return v
+
+from unittest import TestCase
+class TestSuperUglyNumbers(TestCase):
+  def testNthSuperUglyNumber(self):
+    ins = SuperUglyNumbers()
+    cases = [
+      (12, [2, 7, 13, 19], 32)
+    ]
+    for case in cases:
+      self.assertEqual(case[2], ins.nthSuperUglyNumber(case[0], case[1]))

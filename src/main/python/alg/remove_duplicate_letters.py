@@ -55,3 +55,18 @@ class RemoveDuplicateLetters(object):
       if set(suffix) == set(s):
         return c + self.removeDuplicateLettersRecursion(suffix.replace(c, ''))
     return ''
+
+from unittest import TestCase
+class TestRemoveDuplicateLetters(TestCase):
+  def test_removeDuplicateLetters(self):
+    cases = [
+      ('cabc', 'abc'),
+      ('ccbbaa', 'cba'),
+      ('cbacdcbc', 'acdb'),
+      ('bcabc', 'abc'),
+      ('ccacbaba', 'acb'),
+      ('abacb', 'abc')
+    ]
+    ins = RemoveDuplicateLetters()
+    for case in cases:
+      self.assertEquals(case[1], ins.removeDuplicateLettersGreedy(case[0]))

@@ -22,3 +22,12 @@ class NumArray(object):
 
   def sumRange(self, i, j):
     return self._sum[j] - (0 if i == 0 else self._sum[i - 1])
+
+
+from unittest import TestCase
+class TestNumArray(TestCase):
+  def test_sumRange(self):
+    na = NumArray([-2, 0, 3, -5, 2, -1])
+    self.assertEqual(1, na.sumRange(0, 2))
+    self.assertEqual(-1, na.sumRange(2, 5))
+    self.assertEqual(-3, na.sumRange(0, 5))

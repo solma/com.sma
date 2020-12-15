@@ -12,14 +12,14 @@ def combination_recursion(input, s, idx, li):
   for i in range(idx, len(input)):
     s += input[i]
     li.append(s)
-    print
-    s, idx
+    print(s, idx)
     combination_recursion(input, s, i + 1, li)
     s = s[0:-1]
 
 
 def permutation_iteration(input):
   level = [input[0]]
+  nList = []
   for i in range(1, len(input)):
     nList = []
     for item in level:
@@ -41,9 +41,6 @@ def combination_iteration(input):
 
 
 def permutation_generator(input, s):
-  """
-  more pythnic syntax using generator
-  """
   if len(s) == len(input): yield s
   for i in input:
     if i in s: continue
@@ -53,9 +50,6 @@ def permutation_generator(input, s):
 
 
 def combination_generator(input, s, idx):
-  """
-  more pythnic syntax using generator
-  """
   for i in range(idx, len(input)):
     s = s + input[i]
     yield s
@@ -63,26 +57,26 @@ def combination_generator(input, s, idx):
     s = s[:-1]
 
 
-def xcombination(seq, length):
+def xcombination_generator(seq, length):
   if not length:
     yield []
   else:
     for i in range(len(seq)):
-      for result in xcombination(seq[i + 1:], length - 1):
+      for result in xcombination_generator(seq[i + 1:], length - 1):
         yield [seq[i]] + result
 
 
 # print list(permutation_generator("abc",""))
 # print list(combination_generator("abc","",0))
 allPermutations = permutation_generator("abc", "")
-print(allPermutations.next())
-print(allPermutations.next())
+print(next(allPermutations))
+print(next(allPermutations))
 
 allCombinations = combination_generator("abc", "", 0)
-print(allCombinations.next())
-print(allCombinations.next())
+print(next(allCombinations))
+print(next(allCombinations))
 
-c_5_3 = xcombination("abcde", 3)
+c_5_3 = xcombination_generator("abcde", 3)
 print(list(c_5_3))
 
 

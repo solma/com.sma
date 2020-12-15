@@ -38,3 +38,17 @@ class OddEvenLinkedList(object):
     # concat odd list with even list
     odd.next = even_head
     return head
+
+from unittest import TestCase
+import alg.data_structure as ds
+class OddEvenLinkedListTest(TestCase):
+  def test_oddEvenList(self):
+    ins = OddEvenLinkedList()
+    cases = [
+      (ds.make_list(range(1, 9)), ds.make_list(list(range(1, 9, 2)) + list(range(2, 9, 2))))
+    ]
+    for case in cases:
+      res = ins.oddEvenList(case[0])
+      print(ds.list2str(res))
+      print(ds.list2str(case[1]))
+      self.assertTrue(ds.is_equal_list(res, case[1]))

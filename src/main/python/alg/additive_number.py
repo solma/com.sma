@@ -41,3 +41,16 @@ class Solution(object):
         else:
           return self.is_additive_number_recur(num, n, j, k, k + l)
     return False
+
+from unittest import TestCase
+class TestSolution(TestCase):
+  def test_isAdditiveNumber(self):
+    ins = Solution()
+    self.assertTrue(ins.isAdditiveNumber('101'))
+    self.assertTrue(ins.isAdditiveNumber('112'))
+    self.assertTrue(ins.isAdditiveNumber('112358'))
+    self.assertTrue(ins.isAdditiveNumber('199100199'))
+    self.assertFalse(ins.isAdditiveNumber('19910019'))
+    self.assertFalse(ins.isAdditiveNumber('113'))
+    self.assertFalse(ins.isAdditiveNumber('1023'))
+    self.assertFalse(ins.isAdditiveNumber('1203'))

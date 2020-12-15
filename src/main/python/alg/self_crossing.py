@@ -22,10 +22,11 @@ from alg.label import Label
 
 Label(Label.Geometry, Label.LeetCode)
 
+
 class Solution(object):
   def isSelfCrossing(self, x):
     for i in range(3, len(x)):
-          # Case 1: current line crosses the line 3 steps ahead of it
+      # Case 1: current line crosses the line 3 steps ahead of it
       if (x[i] >= x[i - 2] and x[i - 1] <= x[i - 3] or
           # Case 2: current line crosses the line 4 steps ahead of it
           i >= 4 and x[i - 1] == x[i - 3] and x[i] + x[i - 4] >= x[i - 2] or

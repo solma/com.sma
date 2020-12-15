@@ -39,4 +39,19 @@ class Solution(object):
       return ['']
     return list(st)
 
+
 print(Solution().removeInvalidParentheses("()(k)o)()()"))
+
+from unittest import TestCase
+
+
+class TestSolution(TestCase):
+  def test_remove_invalid_parentheses(self):
+    ins = Solution()
+    cases = {
+      '()())()': ["()()()", "(())()"],
+      '(a)())()': ["(a)()()", "(a())()"],
+      ")(": [""],
+    }
+    for case, ans in cases.items():
+      self.assertEqual(set(ans), set(ins.removeInvalidParentheses(case)))

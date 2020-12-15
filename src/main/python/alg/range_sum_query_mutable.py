@@ -14,6 +14,7 @@ You may assume the number of calls to update and sumRange function is distribute
 """
 
 from alg.label import Label
+from alg.data_structure import SegmentTreeNode
 
 Label(Label.BinarySearchTree, Label.SegmentTree, Label.LeetCode)
 
@@ -58,9 +59,14 @@ class NumArray(object):
     return self._sum_range(node, max(i, node.range[0]), min(j, node.range[1]))
 
 
-class SegmentTreeNode(object):
-  def __init__(self, value, idx_range, left = None, right = None):
-    self.sum = value
-    self.left = left
-    self.right = right
-    self.range = idx_range
+from unittest import TestCase
+class TestNumArray(TestCase):
+  def test_sumRange(self):
+    na = NumArray([-2, 0, 3, -5, 2, -1])
+    self.assertEqual(1, na.sumRange(0, 2))
+    self.assertEqual(-1, na.sumRange(2, 5))
+    self.assertEqual(-3, na.sumRange(0, 5))
+    na.update(0, 1)
+    self.assertEqual(4, na.sumRange(0, 2))
+    self.assertEqual(-1, na.sumRange(2, 5))
+    self.assertEqual(0, na.sumRange(0, 5))

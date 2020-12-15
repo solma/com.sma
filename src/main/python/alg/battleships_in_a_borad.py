@@ -21,7 +21,7 @@ XXXX
 This is an invalid board that you will not receive - as battleships will always have a cell
 separating between them.
 """
-from label import Label
+from alg.label import Label
 
 Label(Label.Array, Label.LeetCode)
 
