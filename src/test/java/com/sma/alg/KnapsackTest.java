@@ -1,30 +1,26 @@
 package com.sma.alg;
 
-import static com.sma.util.RandomUtil.r;
-
-import static com.sma.util.ArrayUtil.intToDoubleArray;
 import com.sma.util.RandomUtil;
 import org.apache.commons.math3.stat.descriptive.summary.Sum;
 import org.junit.Test;
 
 import java.util.Arrays;
 
+import static com.sma.util.ArrayUtil.intToDoubleArray;
+import static com.sma.util.RandomUtil.r;
+
 public class KnapsackTest {
 
   @Test
-  public void test() throws Exception {
+  public void test() {
     Knapsack ins = new Knapsack();
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 10; i++) {
       int len = r.nextInt(10) + 3;
       int maxNumber = 10;
       int[] weights = RandomUtil.genRandomArray(len, maxNumber, true, false);
       int[] values = RandomUtil.genRandomArray(len, maxNumber, true, false);
       double multiplier = (5 + r.nextInt(5)) / 10.0;
       int W = (int) ((new Sum()).evaluate(intToDoubleArray(weights), 0, len) * multiplier);
-
-      weights = new int[]{2, 3, 4};
-      values = new int[]{2, 3, 3};
-      W = 8;
 
       int[] res = new int[3];
       res[0] = packDummy(W, weights, values);

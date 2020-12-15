@@ -9,7 +9,7 @@ import java.util.Map;
 public class AllFactorsOfNumberTest extends TestCase {
 
   @Test
-  public void testFactorization() throws Exception {
+  public void testFactorization() {
     AllFactorsOfNumber ins = new AllFactorsOfNumber();
     for (int i = 0; i < 10; i++) {
       int n = RandomUtil.r.nextInt(Integer.MAX_VALUE / 10) + 2;

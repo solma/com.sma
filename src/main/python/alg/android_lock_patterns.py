@@ -26,9 +26,8 @@ class AndroidLockPatterns(object):
   @timer
   def android_lock_patterns(self):
     def is_neighbor(visited, cur_idx, next_idx):
-      return (abs(cur_idx % 3 - next_idx % 3) == 1 or
-              abs(cur_idx / 3 - next_idx / 3) == 1 or
-              ((cur_idx + next_idx) / 2) in visited)
+      return ((abs(cur_idx % 3 - next_idx % 3) <= 1 and abs(cur_idx / 3 - next_idx / 3) <= 1)
+              or ((cur_idx + next_idx) / 2) in visited)
 
     def hash_func(permutation):
       return (str(set(permutation[:-1])) + '-' + str(permutation[-1])

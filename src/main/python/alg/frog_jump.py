@@ -35,7 +35,7 @@ Example 2:
 Return false. There is no way to jump to the last stone as
 the gap between the 5th and 6th stone is too large.
 """
-from label import Label
+from alg.label import Label
 Label(Label.DynamicProgramming, Label.Hash, Label.LinearSpace, Label.LeetCode)
 
 class FrogJump(object):
@@ -65,8 +65,8 @@ class FrogJump(object):
     return stones[-1] in dp
 
 ins = FrogJump()
-print ins.canCross([0,1])
-print ins.canCross([0,2147483647])
-print ins.canCross([0,1,3,5,6,8,12,17])
-print ins.canCross([0,1,2,3,4,8,9,11])
-print ins.canCross([0,1,2,3,4])
+print(ins.canCross([0,1]))
+print(ins.canCross([0,2147483647]))
+print(ins.canCross([0,1,3,5,6,8,12,17]))
+print(ins.canCross([0,1,2,3,4,8,9,11]))
+print(ins.canCross([0,1,2,3,4]))

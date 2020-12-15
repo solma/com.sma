@@ -16,8 +16,8 @@ def play_with_multiple_line_string():
 def encode():
   raw_literal = u'你好，世界'
   raw_literal_in_unicode = raw_literal.encode('utf-8')
-  escaped_iteral_in_unicode = repr(raw_literal_in_unicode)
-  for s in [raw_literal, raw_literal_in_unicode, escaped_iteral_in_unicode]:
+  escaped_literal_in_unicode = repr(raw_literal_in_unicode)
+  for s in [raw_literal, raw_literal_in_unicode, escaped_literal_in_unicode]:
     print(s)
 
 if __name__ == "__main__":
