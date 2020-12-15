@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>[24.1.1,)</version>
             <scope>compile</scope>
         </dependency>
 
@@ -97,7 +97,7 @@
                     <skipTests>false</skipTests>
                   </configuration>
                 </plugin>
-                <!-- enable scalatest -->
+                <!-- enable scala test -->
                 <plugin>
                   <groupId>org.scalatest</groupId>
                   <artifactId>scalatest-maven-plugin</artifactId>
