@@ -2,31 +2,29 @@
 Given a string, find the longest substring with k distinct characters.
 """
 from alg.label import Label
+
 Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.Substring)
-from utils import random_helper
 from collections import Counter
-import random as r
 
 
 class LongestSubstringWithKDistinctCharacters:
-  # O(n)
-  def longest_substring_with_k_distinct_characters(self, str, K):
+  def longest_substring_with_k_distinct_characters(self, s, K):
     m = dict()
     l = 0
     ret = ''
-    for i, c in enumerate(str):
+    for i, c in enumerate(s):
       if c not in m:
         m[c] = 0
       m[c] += 1
       if len(m) == K:
         r = i + 1
-        substring = str[l:r]
+        substring = s[l:r]
         if len(substring) > len(ret):
           ret = substring
       elif len(m) == K + 1:
         # slide left side of the window
         while len(m) == K + 1:
-          lc = str[l]
+          lc = s[l]
           m[lc] -= 1
           if m[lc] == 0:
             del m[lc]
@@ -47,6 +45,7 @@ class LongestSubstringWithKDistinctCharacters:
           if j - i > len(ret):
             ret = substring
     return ret
+
 
 ins = LongestSubstringWithKDistinctCharacters()
 cases = [

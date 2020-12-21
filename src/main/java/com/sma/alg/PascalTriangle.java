@@ -1,13 +1,17 @@
-package com.sma.alg;
+/*
+ Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+*/
 
-import static com.sma.annotation.Tag.Algorithm.TopDown;
-import static com.sma.annotation.Tag.DataStructure.StringT;
-import static com.sma.annotation.Tag.Reference.LeetCode;
+package com.sma.alg;
 
 import com.sma.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.sma.annotation.Tag.Algorithm.TopDown;
+import static com.sma.annotation.Tag.DataStructure.StringT;
+import static com.sma.annotation.Tag.Reference.LeetCode;
 
 @Tag(algs = TopDown, dss = StringT, references = LeetCode)
 public class PascalTriangle {

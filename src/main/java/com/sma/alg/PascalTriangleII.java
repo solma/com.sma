@@ -1,38 +1,23 @@
+/*
+ Given an integer rowIndex, return the rowIndexth row of the Pascal's triangle.
+ Notice that the row index starts from 0.
+*/
 package com.sma.alg;
+
+import com.sma.annotation.Tag;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.sma.annotation.Tag.Algorithm.TopDown;
 import static com.sma.annotation.Tag.DataStructure.StringT;
 import static com.sma.annotation.Tag.Reference.LeetCode;
-
-import com.sma.annotation.Tag;
-
-import java.util.*;
 
 @Tag(algs = TopDown, dss = StringT, references = LeetCode)
 public class PascalTriangleII {
   public static void main(String[] args) {
     new PascalTriangleII().getRow(30);
   }
-
-  // public ArrayList<Integer> getRow(int rowIndex) {
-  // ArrayList<Integer> res=new ArrayList<Integer>();
-  // numRows+=1;
-  // ArrayList<Integer> lastRow=new ArrayList<Integer>();
-  // lastRow.add(1);
-  // if(numRows==1) return lastRow;
-  // ArrayList<Integer> curRow=null;
-  // for(int row=1;row<numRows;row++){
-  // curRow=new ArrayList<Integer>();
-  // for(int i=0;i<lastRow.size();i++){
-  // if(i==0) curRow.add(lastRow.get(i));
-  // if(i==lastRow.size()-1) curRow.add(lastRow.get(i));
-  // if(i<lastRow.size()-1) curRow.add(lastRow.get(i)+lastRow.get(i+1));
-  // }
-  // lastRow=curRow;
-  // }
-  // res=curRow;
-  // return res;
-  // }
 
   public long comb(long m, long n) {
     if (n == 0 || n == m)

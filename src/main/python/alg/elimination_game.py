@@ -25,14 +25,35 @@ Output:
 
 """
 
+
 class ElimationGame(object):
   def lastRemaining(self, n):
+    iteration = 0  # record the iteration
+    point = 1  # point to the first element in the list
+    interval = 1  # record the interval between elements
+    while n > 1:
+      # if we eliminate from the left or the length of list is even,
+      # the first element will move forward one place and the interval will double
+      if n % 2 == 1 or iteration % 2 == 0:
+        point += interval
+        iteration += 1
+        interval *= 2
+        n = n // 2
+      # if we eliminate the element from right and the length of list is odd, the first element doesn't change
+      else:
+        iteration += 1
+        interval *= 2
+        n = n // 2
+    return point
+
+  def lastRemaining1(self, n):
     ret = range(1, n + 1)
     flag = True
     while len(ret) > 1:
       ret = ret[1::2] if flag else ret[-2::-2][::-1]
       flag ^= True
     return ret[0]
+
 
 ins = ElimationGame()
 print(ins.lastRemaining(10))

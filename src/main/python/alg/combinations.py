@@ -1,3 +1,6 @@
+from alg.label import Label
+Label(Label.Recursion)
+
 def permutation_recursion(input, s, li):
   if len(s) == len(input):
     li.append(s)
@@ -5,7 +8,7 @@ def permutation_recursion(input, s, li):
     if input[i] not in s:
       s += input[i]
       permutation_recursion(input, s, li)
-      s = s[0:-1]
+      s = s[:-1]
 
 
 def combination_recursion(input, s, idx, li):
@@ -14,30 +17,7 @@ def combination_recursion(input, s, idx, li):
     li.append(s)
     print(s, idx)
     combination_recursion(input, s, i + 1, li)
-    s = s[0:-1]
-
-
-def permutation_iteration(input):
-  level = [input[0]]
-  nList = []
-  for i in range(1, len(input)):
-    nList = []
-    for item in level:
-      nList.append(item + input[i])
-      for j in range(len(item)):
-        nList.append(item[0:j] + input[i] + item[j:])
-    level = nList
-  return nList
-
-
-def combination_iteration(input):
-  level = ['']
-  for i in range(len(input)):
-    nList = []
-    for item in level:
-      nList.append(item + input[i])
-    level += nList
-  return level[1:]
+    s = s[:-1]
 
 
 def permutation_generator(input, s):
@@ -66,23 +46,38 @@ def xcombination_generator(seq, length):
         yield [seq[i]] + result
 
 
-# print list(permutation_generator("abc",""))
-# print list(combination_generator("abc","",0))
-allPermutations = permutation_generator("abc", "")
+def permutation_iteration(input):
+  ret = ['']
+  for i in range(len(input)):
+    nList = []
+    for item in ret:
+      for j in range(len(item) + 1):
+        nList.append(item[0:j] + input[i] + item[j:])
+    ret = nList
+  return ret
+
+
+def combination_iteration(input):
+  ret = ['']
+  for i in range(len(input)):
+    nList = []
+    for item in ret:
+      nList.append(item + input[i])
+    ret += nList
+  return ret[1:]
+
+
+res=[]
+permutation_recursion('abcd', '', res)
+assert(set(permutation_iteration('abcd')) == set(res))
+
+allPermutations = permutation_generator('abc', '')
 print(next(allPermutations))
 print(next(allPermutations))
 
-allCombinations = combination_generator("abc", "", 0)
+allCombinations = combination_generator('abc', '', 0)
 print(next(allCombinations))
 print(next(allCombinations))
 
-c_5_3 = xcombination_generator("abcde", 3)
+c_5_3 = xcombination_generator('abcde', 3)
 print(list(c_5_3))
-
-
-# res=[]
-# permutation_recursion('abc', '', res)
-# combination_recursion('abc', '', 0, res)
-# res=permutation_iteration('12345')
-# print res
-# print combination_iteration('abc')

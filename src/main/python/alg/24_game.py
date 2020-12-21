@@ -1,8 +1,11 @@
+from alg.label import Label
 from utils import random_helper as rh
+from utils.decorators import memoize
+from utils.decorators import timer
 from collections import defaultdict
 import itertools
-from utils.decorators import timer
-from utils.decorators import memoize
+
+Label(Label.DynamicProgramming, Label.Backtracking)
 
 # Requires python3 because use '/' for float division.
 

@@ -1,3 +1,6 @@
+from alg.label import Label
+
+Label(Label.Tree, Label.DFS)
 from utils.graph_helper import to_adjacent_lists
 
 #ref: http://cs.stackexchange.com/questions/11263/longest-path-in-an-undirected-tree-with-only-one-traversal

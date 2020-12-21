@@ -30,6 +30,11 @@ class TreeNode(object):
     self.left = None
     self.right = None
 
+class TrieNode(object):
+  def __init__(self, x = None):
+    self.val = x
+    self.children = {}
+
 class SegmentTreeNode(object):
   def __init__(self, value, idx_range, left = None, right = None):
     self.sum = value

@@ -38,7 +38,7 @@ return [3, 4]
 from alg.label import Label
 from utils.graph_helper import to_adjacent_lists
 
-Label(Label.Tree, Label.BFS, Label.DFS, Label.LeetCode)
+Label(Label.Tree, Label.UndirectedGraph, Label.Greedy, Label.LeetCode)
 
 
 class MinimumHeightTree(object):

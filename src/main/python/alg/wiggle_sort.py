@@ -22,7 +22,7 @@ class WiggleSort(object):
   def wiggleSort1(self, nums):  # O(nlogn)
     size = len(nums)
     sorted_nums = sorted(nums)
-    for x in range(1, size, 2) + range(0, size, 2):
+    for x in list(range(1, size, 2)) + list(range(0, size, 2)):
       nums[x] = sorted_nums.pop()
     return nums
 
