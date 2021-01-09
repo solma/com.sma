@@ -1,3 +1,12 @@
+def verify_solution(sol, method, cases, ret_value_size=1):
+  for case in cases:
+    args = case[:-ret_value_size]
+    expected = case[-ret_value_size] if ret_value_size == 1 else args[-ret_value_size:]
+    m = getattr(sol, method)
+    actual = m(*args)
+    if expected != actual:
+      print('case := ', args, "\nexpected = ", expected, ", actual = ", actual)
+
 class Label(object):
   """ Labels for class """
 
@@ -83,7 +92,7 @@ class Label(object):
   FromTwoEndsToMiddle = 406
   InplaceSwap = 407
   PseudoHead = 408
-  TwoOrMorePointers = 409
+  TwoPointers = 409
   TortoiseAndHare = 410
   ReservoirSampling = 411
   Sampling = 412

@@ -9,7 +9,7 @@ Examples:
 ")(" -> [""]
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BFS, Label.DFS, Label.LeetCode)
 

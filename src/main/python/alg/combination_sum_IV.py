@@ -24,7 +24,7 @@ How does it change the problem?
 What limitation we need to add to the question to allow negative numbers?
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.QuadraticTime, Label.DynamicProgramming, Label.LeetCode)
 
 class CombinationSumIV(object):

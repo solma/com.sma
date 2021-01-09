@@ -14,7 +14,7 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 load all elements into the memory at once?
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.Greedy, Label.LeetCode)
 
 class IntersectionOfTwoArrays(object):

@@ -12,7 +12,7 @@ The three ranges are : [0, 0], [2, 2], [0, 2] and their respective sums are: -2,
 """
 import bisect
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BinaryIndexedTree, Label.BitManipulation, Label.DivideConquer, Label.LeetCode)
 

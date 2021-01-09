@@ -15,7 +15,7 @@ Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1,
 Given a string represents an integer, write a function to determine if it's an additive number.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Recursion, Label.Backtracking, Label.LeetCode)
 
 class Solution(object):

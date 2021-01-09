@@ -4,7 +4,7 @@ Calculate the sum of two integers a and b, but you are not allowed to use the op
 Example:
 Given a = 1 and b = 2, return 3.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.BitManipulation, Label.LeetCode)
 
 class SumOfTwoIntegers(object):

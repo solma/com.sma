@@ -7,7 +7,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 excluding [11,22,33,44,55,66,77,88,99])
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Math, Label.LeetCode)
 

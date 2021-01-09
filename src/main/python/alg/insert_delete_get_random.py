@@ -33,7 +33,7 @@ randomSet.insert(2);
 randomSet.getRandom();
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.Hash, Label.ConstantTime, Label.LeetCode)
 
 class RandomizedSet(object):

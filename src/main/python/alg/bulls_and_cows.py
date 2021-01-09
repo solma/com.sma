@@ -22,7 +22,7 @@ You may assume that the secret number and your friend's guess only contain digit
 their lengths are always equal.
 """
 
-from alg.label import Label
+from alg.label import *
 from collections import Counter
 
 Label(Label.String, Label.Array, Label.Hash, Label.LeetCode)

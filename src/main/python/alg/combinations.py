@@ -1,4 +1,4 @@
-from alg.label import Label
+from alg.label import *
 Label(Label.Recursion)
 
 def permutation_recursion(input, s, li):

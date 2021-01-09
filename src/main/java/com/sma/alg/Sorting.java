@@ -37,12 +37,11 @@ public class Sorting {
   }
 
   int[] countSort(int[] a) {
-    // add RandomUtil.MAX_RANDOM_VALUE to offset negative numbers
     for (int i = 0; i < a.length; i++) a[i] += RandomUtil.MAX_RANDOM_VALUE;
     // not in place
     int[] c = new int[RandomUtil.MAX_RANDOM_VALUE * 2 + 1];
     Arrays.fill(c, 0);
-    for (int i = 0; i < a.length; i++) c[a[i]]++;
+    for (int j : a) c[j]++;
     for (int i = 1; i < c.length; i++) c[i] += c[i - 1];
     int[] b = new int[a.length];
     for (int num: a) {
@@ -80,6 +79,7 @@ public class Sorting {
     return b;
   }
 
+  // two-way merge sort
   int[] mergeSort(int[] a) {
     return mergeSort(a, 0, a.length - 1);
   }
@@ -110,6 +110,7 @@ public class Sorting {
     return r;
   }
 
+  // k-way merge sort
   int[] patienceSort(int[] a) {
     List<Pile> piles = new ArrayList<>();
     for (int ele : a) {
@@ -175,19 +176,19 @@ public class Sorting {
     int dev = 1;
     int maxDigitSymbols = getDigitLength((int) ArrayUtil.max(ArrayUtil.intToDoubleArray(a)), radix);
     for (int i = 0; i < maxDigitSymbols; i++, dev *= radix) {
-        for(int j = 0; j < a.length; j++) {
-            int bucket = (a[j] / dev) % radix;
-            counter[bucket].add(a[j]);
-        }
+      for (int k : a) {
+        int bucket = (k / dev) % radix;
+        counter[bucket].add(k);
+      }
         //System.out.println(Arrays.toString(counter));
 
         int pos = 0;
-        for(int j = 0; j < counter.length; j++) {
-            Integer value;
-            while ((value = counter[j].poll()) != null) {
-                a[pos++] = value;
-            }
+      for (LinkedList<Integer> integers : counter) {
+        Integer value;
+        while ((value = integers.poll()) != null) {
+          a[pos++] = value;
         }
+      }
     }
     return a;
   }
@@ -206,7 +207,7 @@ public class Sorting {
     int n = a.length;
 
     List<Stack<Integer>> threeStacks = new ArrayList<>(3);
-    for (int i = 0; i < 3; i++) threeStacks.add(new Stack<Integer>());
+    for (int i = 0; i < 3; i++) threeStacks.add(new Stack<>());
 
     for (int ai : a) threeStacks.get(0).push(ai);
     stackSort(threeStacks, n, 0, 2);

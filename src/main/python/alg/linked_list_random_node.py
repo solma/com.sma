@@ -19,7 +19,7 @@ Each element should have equal probability of returning.
 solution.getRandom();
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Math, Label.ReservoirSampling, Label.LinearithmicTime, Label.LeetCode)
 
 # Definition for singly-linked list.

@@ -24,7 +24,7 @@ Note:
     Explanation: The two heater was placed in the position 1 and 4. We need to use radius 1 standard,
     then all the houses can be warmed.
 """
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Array, Label.BinarySearch, Label.LeetCode, Label.LinearithmicTime)
 import bisect

@@ -1,6 +1,6 @@
 import sys
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BinarySearch, Label.DynamicProgramming, Label.QuadraticTime)
 

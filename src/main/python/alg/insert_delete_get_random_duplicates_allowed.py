@@ -30,7 +30,7 @@ collection.remove(1);
 collection.getRandom();
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.Hash, Label.ConstantTime, Label.LeetCode)
 
 class RandomizedCollection(object):

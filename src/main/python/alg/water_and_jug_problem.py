@@ -18,7 +18,7 @@ Input: x = 2, y = 6, z = 5
 Output: False
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Math, Label.LeetCode)
 
 class WaterAndJugProblem(object):

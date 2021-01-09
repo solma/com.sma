@@ -19,7 +19,7 @@ Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"]. But it
 import collections
 from collections import deque
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.GraphTheory, Label.DFS, Label.LeetCode)
 

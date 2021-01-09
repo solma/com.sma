@@ -14,7 +14,7 @@ maxProfit = 3
 transactions = [buy, sell, cool down, buy, sell]
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Array, Label.DynamicProgramming, Label.LinearTime, Label.LeetCode)
 

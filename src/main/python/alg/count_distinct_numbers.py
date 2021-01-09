@@ -1,7 +1,7 @@
 """
 Count # of distinct numbers in a large array
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Hash, Label.Sampling, Label.LeetCode)
 
 class CountDistinctNumbers(object):

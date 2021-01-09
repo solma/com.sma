@@ -14,7 +14,7 @@ b = [1,0]
 Result: 1024
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Math, Label.LogarithmicTime, Label.LeetCode)
 
 class SuperPow(object):

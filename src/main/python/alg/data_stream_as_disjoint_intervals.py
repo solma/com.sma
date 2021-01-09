@@ -18,7 +18,7 @@ small compared to the data stream's size?
 
 import bisect
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Array, Label.BinarySearch, Label.UnionFind, Label.LeetCode)
 

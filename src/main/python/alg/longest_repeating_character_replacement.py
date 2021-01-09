@@ -27,10 +27,10 @@ Replace the one 'A' in the middle with 'B' and form "AABBBBA".
 The substring "BBBB" has the longest repeating letters, which is 4.
 """
 import collections
-from alg.label import Label
+from alg.label import *
 from utils.debug_helper import debug_print
 
-Label(Label.Array, Label.TwoOrMorePointers, Label.SlidingWindow, Label.LeetCode)
+Label(Label.Array, Label.TwoPointers, Label.SlidingWindow, Label.LeetCode)
 
 _DEBUG = True
 
@@ -57,13 +57,11 @@ class Solution:
         window_counts[s[l]] -= 1
         l += 1
 
-      debug_print(_DEBUG, s[r], s[l:r + 1], dict(window_counts))
+      # debug_print(_DEBUG, s[r], s[l:r + 1], dict(window_counts))
 
     return n - l
 
-ins = Solution()
-for s, k in [
-  ('abaccc', 1),
-  ('AABABBA', 1),
-]:
-  print(ins.characterReplacement(s, k))
+verify_solution(Solution(), "characterReplacement", [
+  ('abaccc', 1, 4),
+  ('AABABBA', 1, 4),
+])

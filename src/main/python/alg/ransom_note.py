@@ -12,7 +12,7 @@ canConstruct("aa", "ab") -> false
 canConstruct("aa", "aab") -> true
 """
 
-from alg.label import Label
+from alg.label import *
 import collections
 Label(Label.Hash, Label.LinearTime, Label.LeetCode)
 

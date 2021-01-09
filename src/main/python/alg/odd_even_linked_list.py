@@ -14,7 +14,7 @@ The relative order inside both the even and odd groups should remain as it was i
 The first node is considered odd, the second node even and so on ...
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.LinkedList)
 

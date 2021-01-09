@@ -22,7 +22,7 @@ Example 2:
 Maximum amount of money the thief can rob = 4 + 5 = 9.
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BinaryTree, Label.DynamicProgramming, Label.LeetCode, Label.LinearithmicTime)
 

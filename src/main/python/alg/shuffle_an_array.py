@@ -18,7 +18,7 @@ solution.reset();
 solution.shuffle();
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.RandomT, Label.LinearTime, Label.LeetCode)
 
 class ShuffleAnArray(object):

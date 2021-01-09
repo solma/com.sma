@@ -8,7 +8,7 @@ Note:
 You may assume k is always valid, 1 <= k <= number of unique elements.
 Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Hash, Label.Heap, Label.LeetCode)
 
 class TopKFrequentElements(object):

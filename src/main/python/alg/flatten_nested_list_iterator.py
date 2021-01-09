@@ -41,7 +41,7 @@ next should be: [1,4,6].
 # i, v = NestedIterator(nestedList), []
 # while i.hasNext(): v.append(i.next())
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Iterator, Label.Recursion, Label.LeetCode)
 
 class NestedIterator(object):

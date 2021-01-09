@@ -35,7 +35,7 @@ Given n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
 return [3, 4]
 """
 
-from alg.label import Label
+from alg.label import *
 from utils.graph_helper import to_adjacent_lists
 
 Label(Label.Tree, Label.UndirectedGraph, Label.Greedy, Label.LeetCode)

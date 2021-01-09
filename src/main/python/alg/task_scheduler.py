@@ -18,7 +18,7 @@ The number of tasks is in the range [1, 10000].
 The integer n is in the range [0, 100].
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Greedy, Label.PriorityQueueT, Label.LeetCode)
 
 class Solution(object):

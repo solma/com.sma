@@ -27,11 +27,11 @@ public class Searching {
       if (a[m] < key) l = m;
       else r = m;
     }
-    if (r >= a.length || a[r] != key) { return -1; } // this is the tricky line
+    if (r >= a.length || a[r] != key) return -1; // this is the tricky line
     return r;
   }
 
-  // this is not O(nlogn) worst case is O(n)
+  // this is not O(logn) worst case is O(n)
   public static int binarySearchFirstAppear1(int[] a, int key) {
     int l = 0, r = a.length - 1, m;
     while (l <= r) {
@@ -51,10 +51,8 @@ public class Searching {
     int l = -1, r = a.length, m;
     while (l + 1 < r) {
       m = l + (r - l) / 2;
-      if (a[m] > key)
-        r = m;
-      else
-        l = m;
+      if (a[m] > key) r = m;
+      else l = m;
     }
     if (l < 0 || a[l] != key) l = -1;// this is the tricky line
     return l;

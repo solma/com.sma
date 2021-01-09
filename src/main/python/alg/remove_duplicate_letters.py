@@ -10,7 +10,7 @@ Return "abc"
 Given "cbacdcbc"
 Return "acdb"
 """
-from alg.label import Label
+from alg.label import *
 import collections
 
 Label(Label.String, Label.Greedy, Label.Stack, Label.LeetCode)

@@ -15,7 +15,7 @@ k = 8,
 return 13.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.BinarySearch, Label.Heap, Label.LinearithmicTime, Label.LeetCode)
 
 class KthSmallestElementInASortedMatrix(object):

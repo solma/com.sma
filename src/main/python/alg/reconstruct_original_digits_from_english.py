@@ -16,7 +16,7 @@ Input: "fviefuro"
 Output: "45"
 
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Greedy, Label.Recursion, Label.LeetCode)
 
 from collections import Counter

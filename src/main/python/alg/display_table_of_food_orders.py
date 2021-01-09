@@ -39,7 +39,7 @@ Input: orders = [["Laura","2","Bean Burrito"],["Jhon","2","Beef Burrito"],["Meli
 Output: [["Table","Bean Burrito","Beef Burrito","Soda"],["2","1","1","1"]]
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.LeetCode, Label.Hash)
 

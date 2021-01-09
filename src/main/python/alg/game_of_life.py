@@ -1,4 +1,4 @@
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BitManipulation, Label.LeetCode)
 

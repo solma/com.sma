@@ -23,7 +23,7 @@ Explanation:
 or
 7 -> 6 -> 3 -> 2 -> 1
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Math, Label.Recursion, Label.LeetCode)
 
 class IntegerReplacement(object):

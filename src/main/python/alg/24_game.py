@@ -1,4 +1,4 @@
-from alg.label import Label
+from alg.label import *
 from utils import random_helper as rh
 from utils.decorators import memoize
 from utils.decorators import timer

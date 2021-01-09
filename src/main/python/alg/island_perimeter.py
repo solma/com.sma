@@ -12,7 +12,7 @@ Answer: 16
 Explanation: The perimeter is the 16 yellow stripes in the image below:
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.MatrixGraph, Label.Math, Label.LeetCode, Label.LinearTime)
 
 class IslandPerimeter(object):

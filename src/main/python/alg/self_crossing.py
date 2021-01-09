@@ -18,7 +18,7 @@ Given x = [1, 1, 1, 1],
 Return true (self crossing)
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Geometry, Label.LeetCode)
 

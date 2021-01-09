@@ -21,7 +21,7 @@ No such pair of words.
 import collections
 import string
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Hash, Label.LeetCode)
 

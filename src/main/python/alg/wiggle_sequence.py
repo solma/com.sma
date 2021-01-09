@@ -28,7 +28,7 @@ Follow up:
 Can you do it in O(n) time?
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Greedy, Label.LinearTime,
       Label.DynamicProgramming, Label.QuadraticTime,
       Label.LeetCode)

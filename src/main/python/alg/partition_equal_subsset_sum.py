@@ -14,7 +14,7 @@ Input: [1, 2, 3, 5]
 Output: false
 Explanation: The array cannot be partitioned into equal sum subsets.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Recursion, Label.DynamicProgramming, Label.LeetCode)
 
 class PartitionEqualSubsetSum(object):

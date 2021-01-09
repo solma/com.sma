@@ -4,7 +4,7 @@ of some permutation [a1, a2, ... an] of [1, ..., N]. That is, A[i] means
 that there are A[i] numbers from [aj, an] that is smaller than ai.
 Return the permutation [a1, a2, ... an].
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Queue, Label.QuadraticTime, Label.LinearithmicTime, Label.Interview)
 
 class ReconstructArrayFromInversionArray(object):

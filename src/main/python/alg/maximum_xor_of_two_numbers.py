@@ -32,7 +32,7 @@ Constraints:
 """
 
 from alg.data_structure import TrieNode
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BitManipulation, Label.Trie, Label.LeetCode)
 

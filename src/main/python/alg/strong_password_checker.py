@@ -29,7 +29,7 @@ Input: password = "1337C0d3"
 Output: 0
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BFS, Label.Backtracking, Label.LeetCode)
 

@@ -7,7 +7,7 @@ Given s = "hello", return "holle".
 Example 2:
 Given s = "leetcode", return "leotcede".
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.String, Label.LeetCode)
 
 class ReverseVowelsOfAString(object):

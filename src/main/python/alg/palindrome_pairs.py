@@ -12,7 +12,7 @@ Return [[0, 1], [1, 0], [3, 2], [2, 4]]
 The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.DynamicProgramming, Label.CubicTime, Label.LeetCode)
 

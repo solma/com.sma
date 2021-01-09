@@ -14,7 +14,7 @@ s = "3[a2[c]]", return "accaccacc".
 s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Stack, Label.ConstantTime, Label.LeetCode)
 
 class DecodeString(object):

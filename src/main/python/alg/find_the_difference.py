@@ -15,7 +15,7 @@ e
 Explanation:
 'e' is the letter that was added.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Hash, Label.LinearTime, Label.LeetCode)
 
 class FindTheDifference(object):

@@ -35,7 +35,7 @@ Example 1:
   Explanation: This is neither a IPv4 address nor a IPv6 address.
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.String, Label.LeetCode, Label.LinearTime)
 

@@ -20,7 +20,7 @@ should be stateless.
 """
 
 from alg.data_structure import TreeNode
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BinaryTree, Label.LeetCode)
 

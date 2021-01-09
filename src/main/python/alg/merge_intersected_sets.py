@@ -1,5 +1,5 @@
 from collections import defaultdict
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.GraphTheory, Label.Interview, Label.LeetCode)
 
 class MergeIntersectedSets(object):

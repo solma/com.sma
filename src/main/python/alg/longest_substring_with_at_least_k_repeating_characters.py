@@ -18,7 +18,7 @@ Output:
 The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is
 repeated 3 times.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Recursion, Label.DivideConquer, Label.LeetCode)
 
 from collections import Counter

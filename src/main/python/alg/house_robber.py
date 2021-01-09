@@ -1,4 +1,4 @@
-from alg.label import Label
+from alg.label import *
 
 Label(Label.DynamicProgramming, Label.LeetCode, Label.LinearithmicTime)
 

@@ -1,10 +1,23 @@
+/*
+Write an efficient algorithm that searches for a value in an m x n matrix.
+This matrix has the following properties:
+
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+
+
+Example 1:
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+ */
 package com.sma.alg;
+
+import com.sma.annotation.Tag;
 
 import static com.sma.annotation.Tag.Algorithm.BinarySearch;
 import static com.sma.annotation.Tag.DataStructure.Array;
 import static com.sma.annotation.Tag.Reference.LeetCode;
 import static com.sma.annotation.Tag.Trick.TwoOrMorePointers;
-import com.sma.annotation.Tag;
 
 @Tag(algs = BinarySearch, dss = Array, references = LeetCode, tricks = TwoOrMorePointers)
 public class Search2DMatrix {
@@ -64,9 +77,7 @@ public class Search2DMatrix {
         else
           R = M;
       }
-      if (R == m || matrix[rowIdx][R] != target)
-        return false;
-      return true;
+      return R != m && matrix[rowIdx][R] == target;
     } else {
       return true;
     }

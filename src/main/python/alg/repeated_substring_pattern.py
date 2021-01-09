@@ -19,7 +19,7 @@ Output: True
 Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.String, Label.Math, Label.Substring, Label.LeetCode, Label.LinearTime)
 
 class RepeatedSubstringPattern(object):

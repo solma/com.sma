@@ -11,7 +11,7 @@ s = "loveleetcode",
 return 2.
 Note: You may assume the string contain only lowercase letters.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Hash, Label.LinearSpace, Label.LeetCode)
 
 class FirstUniqueChar(object):

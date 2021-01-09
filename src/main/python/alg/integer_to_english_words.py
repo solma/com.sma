@@ -7,7 +7,7 @@ For example,
 1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Arithmetic, Label.Greedy, Label.LeetCode)
 
 class IntegerToEnglishWords(object):

@@ -16,7 +16,7 @@ is visited before connecting 6 and 2.
 
 Find out the number of valid patterns.
 """
-from alg.label import Label
+from alg.label import *
 from utils.decorators import timer
 from utils.decorators import memoize
 Label(Label.Backtracking, Label.GraphTheory, Label.Interview, Label.LeetCode)

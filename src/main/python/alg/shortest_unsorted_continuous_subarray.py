@@ -11,7 +11,7 @@ Note:
 Then length of the input array is in range [1, 10,000].
 The input array may contain duplicates, so ascending order here means <=.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Subarray, Label.Stack, Label.Sorting, Label.LeetCode)
 
 class Solution(object):

@@ -1,6 +1,6 @@
 from utils import random_helper
 from utils import decorators
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BitManipulation, Label.Sorting)
 

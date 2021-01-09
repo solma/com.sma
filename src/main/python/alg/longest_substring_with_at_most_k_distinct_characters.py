@@ -1,10 +1,12 @@
 """
 Given a string, find the longest substring with at most k distinct characters.
 """
-from alg.label import Label
-Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.Substring, Label.TwoOrMorePointers)
+from alg.label import *
+
+Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.Substring, Label.TwoPointers)
 
 import collections
+
 
 class LongestSubstringWithAtMostKDistinctCharacters:
   # O(n)
@@ -44,13 +46,13 @@ class LongestSubstringWithAtMostKDistinctCharacters:
         ret = s[l:r]
     return ret
 
-ins = LongestSubstringWithAtMostKDistinctCharacters()
-cases = [('aaabcd', 10),
-         ('bbacc', 2),
-         ('abcabbabccccdddaaadadaoiwuertlknbkjhggggggggggggggggh', 2),
-         ('ababcbcbaaabbdef', 2)
-         ]
-for s, K in cases:
-  res1 = ins.longest_substring_with_at_most_k_distinct_characters(s, K)
-  res2 = ins.longest_substring_with_at_most_k_distinct_characters_1(s, K)
-  assert res1 == res2
+
+verify_solution(
+  LongestSubstringWithAtMostKDistinctCharacters(),
+  "longest_substring_with_at_most_k_distinct_characters",
+  [
+    ('aaabcd', 10, 'aaabcd'),
+    ('bbacc', 2, 'bba'),
+    ('abcabbabccccdddaaadadaoiwuertlknbkjhggggggggggggggggh', 2, 'hggggggggggggggggh'),
+    ('ababcbcbaaabbdef', 2, 'baaabb')
+  ])

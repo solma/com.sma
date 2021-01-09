@@ -11,7 +11,7 @@ nums: [1,2,4,8]
 Result: [1,2,4,8]
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.DynamicProgramming, Label.QuadraticTime, Label.LeetCode)
 
 class LargestDivisibleSubset(object):

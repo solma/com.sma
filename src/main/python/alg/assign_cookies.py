@@ -29,7 +29,7 @@ You have 3 cookies and their sizes are big enough to gratify all of the children
 You need to output 2.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Greedy, Label.Array, Label.LeetCode, Label.LinearTime)
 
 class AssignCookies(object):

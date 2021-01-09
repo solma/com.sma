@@ -19,7 +19,7 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 """
 from typing import List
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Hash, Label.Interview, Label.SlidingWindow, Label.Subarray)
 

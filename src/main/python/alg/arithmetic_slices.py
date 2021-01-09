@@ -27,7 +27,7 @@ A = [1, 2, 3, 4]
 return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.Subarray, Label.LinearTime, Label.LeetCode)
 
 class Solution(object):

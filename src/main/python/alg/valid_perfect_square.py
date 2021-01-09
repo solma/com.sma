@@ -4,7 +4,7 @@ Given a positive integer num, write a function which returns True if num is a pe
 Note: Do not use any built-in library function such as sqrt.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Arithmetic, Label.BinarySearch, Label.LeetCode)
 
 class ValidPerfectSquare(object):

@@ -14,7 +14,7 @@ Given [5, 4, 3, 2, 1],
 return false.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Array, Label.Greedy, Label.Subarray, Label.LeetCode, Label.LinearTime)
 
 class IncreasingTripletSubsequence(object):

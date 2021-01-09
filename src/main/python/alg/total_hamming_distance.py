@@ -13,7 +13,7 @@ showing the four bits relevant in this case). So the answer will be:
 HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.BitManipulation, Label.LeetCode, Label.LinearTime)
 
 class TotalHammingDistance(object):

@@ -15,7 +15,7 @@ Input:
 Output:
 [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.Queue, Label.Greedy, Label.QuadraticTime, Label.LeetCode)
 
 class QueueReconstructionByHeight(object):

@@ -1,7 +1,7 @@
 """
 Given an integer < 2^32, write a function to determine if it is a power of N.
 """
-from alg.label import Label
+from alg.label import *
 
 Label(Label.BitManipulation, Label.Math, Label.LeetCode)
 

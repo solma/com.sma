@@ -20,7 +20,7 @@ There are four ways to split nums into two subarrays.
 The best way is to split it into [1,2,3] and [4,5],
 where the largest sum among the two subarrays is only 9.
 """
-from alg.label import Label
+from alg.label import *
 Label(Label.BinarySearch, Label.DynamicProgramming, Label.LeetCode)
 
 class SplitArrayLargestSum(object):

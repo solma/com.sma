@@ -23,7 +23,7 @@ Return a NestedInteger object containing a nested list with 2 elements:
          a. An integer containing value 789.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.Stack, Label.LinearTime, Label.LeetCode)
 
 # """

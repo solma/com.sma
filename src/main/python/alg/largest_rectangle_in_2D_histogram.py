@@ -1,6 +1,6 @@
 import pylab
 
-from alg.label import Label
+from alg.label import *
 from plotting.geometry.shape_drawing import setup_figure
 
 Label(Label.MonotonicSequence, Label.Stack, Label.DaiZhiGuiZhong)

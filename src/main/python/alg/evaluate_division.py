@@ -22,7 +22,7 @@ The input may be not valid, e.g. a/b = 2 and a/b = 3. If the input valid, return
 You may assume that evaluating the queries will result in no division by zero.
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.DirectedGraph, Label.UnionFind, Label.LeetCode)
 
 from collections import defaultdict

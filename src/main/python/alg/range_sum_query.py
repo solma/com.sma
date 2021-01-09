@@ -10,7 +10,7 @@ You may assume that the array does not change.
 There are many calls to sumRange function.
 """
 
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Array, Label.DynamicProgramming, Label.LinearTime, Label.LeetCode)
 

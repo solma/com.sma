@@ -1,4 +1,4 @@
-from alg.label import Label
+from alg.label import *
 
 Label(Label.Tree, Label.DFS)
 from utils.graph_helper import to_adjacent_lists

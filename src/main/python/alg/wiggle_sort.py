@@ -14,7 +14,7 @@ Can you do it in O(n) time (average time complexity) and/or
 in-place with O(1) extra space?
 """
 
-from alg.label import Label
+from alg.label import *
 Label(Label.LinearithmicTime, Label.Greedy, Label.LinearTime, Label.LeetCode)
 
 
